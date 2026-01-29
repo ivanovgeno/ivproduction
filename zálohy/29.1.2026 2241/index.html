@@ -241,90 +241,13 @@
             color: var(--gold) !important;
         }
 
-        /* Mobile Menu Button */
-        .mobile-menu-toggle {
+        .mobile-menu {
             display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
             background: none;
             border: none;
-            cursor: pointer;
-            z-index: 1002;
-            padding: 0;
-        }
-
-        .mobile-menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: var(--light);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-            background: var(--primary);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
-            background: var(--primary);
-        }
-
-        /* Mobile Menu Overlay */
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(10, 10, 15, 0.98);
-            backdrop-filter: blur(20px);
-            z-index: 1001;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            gap: 2rem;
-        }
-
-        .mobile-menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-menu-link {
-            font-size: 1.5rem;
             color: var(--light);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .mobile-menu-link:hover,
-        .mobile-menu-link.active {
-            color: var(--primary);
-            transform: scale(1.1);
-        }
-
-        .mobile-menu-cta {
-            background: var(--gradient);
-            color: var(--dark) !important;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            margin-top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         @media (max-width: 900px) {
@@ -332,8 +255,8 @@
                 display: none;
             }
 
-            .mobile-menu-toggle {
-                display: flex;
+            .mobile-menu {
+                display: block;
             }
         }
 
@@ -2373,14 +2296,6 @@
     <header class="header" id="header">
         <div class="header-inner">
             <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
-
-            <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
             <nav class="nav">
                 <a href="svatby.html">Svatby</a>
                 <a href="reality.html">Reality</a>
@@ -2404,19 +2319,6 @@
                 <a href="kontakt.html">Kontakt</a>
                 <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
             </nav>
-        </div>
-
-        <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-            <a href="index.html" class="mobile-menu-link">Domů</a>
-            <a href="svatby.html" class="mobile-menu-link">Svatby</a>
-            <a href="plesy.html" class="mobile-menu-link">Plesy</a>
-            <a href="fotobudka.html" class="mobile-menu-link">Fotobudka</a>
-            <a href="360budka.html" class="mobile-menu-link">360° Budka</a>
-            <a href="konference.html" class="mobile-menu-link">Konference</a>
-            <a href="podcast.html" class="mobile-menu-link">Podcast</a>
-            <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
-            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -4264,27 +4166,6 @@
                 partnerWrapper.addEventListener('touchend', () => isHovered = false);
             }
         });
-
-        // Mobile Menu Logic
-        const mobileToggle = document.getElementById('mobileMenuToggle');
-        const mobileOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileLinks = document.querySelectorAll('.mobile-menu-link');
-
-        if (mobileToggle && mobileOverlay) {
-            function toggleMenu() {
-                mobileToggle.classList.toggle('active');
-                mobileOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
-            }
-
-            mobileToggle.addEventListener('click', toggleMenu);
-
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    toggleMenu(); // Close on click
-                });
-            });
-        }
     </script>
 </body>
 

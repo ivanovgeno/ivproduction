@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="cs">
 
 <head>
@@ -169,6 +169,7 @@
             transition: all 0.3s ease;
             font-size: 0.95rem;
             padding: 0.5rem 0.75rem;
+            border-radius: 8px;
             position: relative;
         }
 
@@ -181,7 +182,7 @@
             background: var(--gradient);
             color: var(--dark) !important;
             padding: 0.75rem 1.5rem;
-            border-radius: 100px;
+            border-radius: 50px;
             font-weight: 600 !important;
             transition: all 0.3s ease !important;
         }
@@ -191,140 +192,13 @@
             box-shadow: var(--shadow-gold);
         }
 
-        /* Dropdown Menu */
-        .nav-dropdown {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-dropdown-trigger {
-            cursor: pointer;
-        }
-
-        .nav-dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            background: rgba(18, 18, 26, 0.98);
-            border: 1px solid rgba(201, 162, 39, 0.2);
-            border-radius: 16px;
-            padding: 0.75rem;
-            min-width: 180px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(20px);
-            z-index: 1001;
-        }
-
-        .nav-dropdown:hover .nav-dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .nav-dropdown-menu a {
-            display: block;
-            padding: 0.6rem 1rem;
-            color: var(--gray-light) !important;
-            font-size: 0.9rem;
-            border-radius: 8px;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .nav-dropdown-menu a:hover {
-            background: rgba(201, 162, 39, 0.1);
-            color: var(--gold) !important;
-        }
-
-        /* Mobile Menu Button */
-        .mobile-menu-toggle {
+        .mobile-menu {
             display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
             background: none;
             border: none;
-            cursor: pointer;
-            z-index: 1002;
-            padding: 0;
-        }
-
-        .mobile-menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: var(--light);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-            background: var(--primary);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
-            background: var(--primary);
-        }
-
-        /* Mobile Menu Overlay */
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(10, 10, 15, 0.98);
-            backdrop-filter: blur(20px);
-            z-index: 1001;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            gap: 2rem;
-        }
-
-        .mobile-menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-menu-link {
-            font-size: 1.5rem;
             color: var(--light);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .mobile-menu-link:hover,
-        .mobile-menu-link.active {
-            color: var(--primary);
-            transform: scale(1.1);
-        }
-
-        .mobile-menu-cta {
-            background: var(--gradient);
-            color: var(--dark) !important;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            margin-top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         @media (max-width: 900px) {
@@ -332,8 +206,8 @@
                 display: none;
             }
 
-            .mobile-menu-toggle {
-                display: flex;
+            .mobile-menu {
+                display: block;
             }
         }
 
@@ -568,14 +442,14 @@
             background-repeat: no-repeat;
             border-radius: 20px;
             padding: 2rem;
-            border: 2px solid rgba(201, 162, 39, 0.3);
+            border: 1px solid rgba(201, 162, 39, 0.2);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            min-height: 320px;
+            aspect-ratio: 1 / 1;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
             text-align: center;
             color: var(--light);
@@ -882,380 +756,214 @@
             font-weight: bold;
         }
 
-        /* Google Reviews Widget Mock - Custom Dark Theme */
-        .google-widget-wrapper {
-            background: linear-gradient(145deg, rgba(26, 26, 46, 0.8), rgba(15, 15, 26, 0.9));
-            border-radius: 16px;
-            padding: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            font-family: 'Outfit', sans-serif;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            box-shadow: var(--shadow-gold);
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%);
         }
 
-        .gw-header {
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .testimonials-track {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
             gap: 1.5rem;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial-card {
+            flex: 0 0 calc(33.333% - 1rem);
+            min-width: 320px;
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 26, 0.98));
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 25px rgba(201, 162, 39, 0.15), inset 0 0 20px rgba(201, 162, 39, 0.03);
+        }
+
+        @media (max-width: 1200px) {
+            .testimonial-card {
+                flex: 0 0 calc(50% - 0.75rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-card {
+                flex: 0 0 100%;
+                min-width: 280px;
+            }
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            padding-bottom: 1.5rem;
         }
 
-        .gw-rating-box {
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-        }
-
-        .gw-score {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--light);
-            line-height: 1;
-        }
-
-        .gw-stars {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-        }
-
-        .gw-reviews-count {
-            color: var(--gray);
-            font-size: 0.95rem;
-            margin-top: 0.25rem;
-        }
-
-        .gw-write-btn {
-            background: var(--gradient);
-            color: var(--dark) !important;
-            padding: 0.8rem 1.75rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.2);
-        }
-
-        .gw-write-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
-        }
-
-        .gw-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .gw-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .gw-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .gw-user {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .gw-avatar {
+        .testimonial-avatar {
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background: var(--dark);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: var(--gold);
+            background: var(--gradient);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+            flex-shrink: 0;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
             font-weight: 600;
-        }
-
-        .gw-avatar.orange {
-            color: #ff9e80;
-            border-color: #ff9e80;
-        }
-
-        .gw-avatar.blue {
-            color: #82b1ff;
-            border-color: #82b1ff;
-        }
-
-        .gw-avatar.green {
-            color: #b9f6ca;
-            border-color: #b9f6ca;
-        }
-
-        .gw-user-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .gw-name {
-            font-weight: 600;
+            font-size: 0.95rem;
             color: var(--light);
-            font-size: 1rem;
         }
 
-        .gw-date {
-            color: var(--gray);
+        .testimonial-stars {
+            color: #fbbf24;
             font-size: 0.85rem;
-        }
-
-        .gw-card-stars {
-            color: #fbbc04;
-            /* Keep Google Star Color or use var(--gold) */
-            font-size: 1rem;
             letter-spacing: 1px;
         }
 
-        .gw-text {
+        .google-logo {
+            width: 50px;
+            height: auto;
+            opacity: 0.8;
+            filter: brightness(0.9);
+        }
+
+        .testimonial-text {
             color: var(--gray-light);
             font-size: 0.95rem;
             line-height: 1.7;
-            flex-grow: 1;
+            margin: 0;
         }
 
-        .gw-google-logo {
-            width: 24px;
-            height: 24px;
-            margin-left: auto;
-            opacity: 0.8;
-            filter: grayscale(100%) brightness(200%);
-            /* Make logo white/silver */
-        }
-
-        /* Script Placeholder Warning */
-        .script-placeholder-info {
-            background: rgba(201, 162, 39, 0.1);
-            border: 1px dashed rgba(201, 162, 39, 0.3);
-            color: var(--gold);
-            font-size: 0.8rem;
-            text-align: center;
-            padding: 0.75rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-        }
-
-        /* Slider Styles using Google Widget Cards */
-        .gw-slider-viewport {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-            padding: 5rem 1rem;
-            margin: -4rem 0;
-            mask-image: linear-gradient(90deg, transparent, white 2%, white 98%, transparent);
-            -webkit-mask-image: linear-gradient(90deg, transparent, white 2%, white 98%, transparent);
-            scroll-behavior: smooth;
-        }
-
-        .gw-slider-track {
+        .testimonials-nav {
             display: flex;
-            gap: 2rem;
-            /* animation removed to allow JS control */
-            width: max-content;
-            scroll-behavior: smooth;
-            padding: 1rem 0;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
         }
 
-        .gw-card:hover {
-            z-index: 100;
-        }
-
-        .gw-slider-track:hover {
-            animation-play-state: paused;
-        }
-
-        /* Navigation Buttons */
-        .gw-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.03);
-            /* Match card glass style */
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            color: var(--gold);
+        .testimonial-prev,
+        .testimonial-next {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.9), rgba(15, 15, 26, 0.95));
+            color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            z-index: 100;
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .gw-nav-btn:hover {
-            background: var(--gradient);
-            border-color: transparent;
-            color: var(--dark);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-            transform: translateY(-50%) scale(1.1);
+        .testimonial-prev:hover,
+        .testimonial-next:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+            transform: scale(1.05);
         }
 
-        .gw-prev {
-            left: 10px;
-            /* Slight adjustment */
+        .testimonial-prev svg,
+        .testimonial-next svg {
+            stroke: currentColor;
+            width: 20px;
+            height: 20px;
         }
 
-        .gw-next {
-            right: 10px;
-            /* Slight adjustment */
-        }
-
-        .gw-card {
-            width: 320px;
-            /* Fixed width for slider items */
-            flex-shrink: 0;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+        .testimonials-dots {
             display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
+            gap: 0.5rem;
+        }
+
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(201, 162, 39, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 4rem 2rem;
+            background: var(--secondary);
             overflow: hidden;
         }
 
-        .gw-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: var(--gold);
-            background: rgba(26, 26, 46, 0.8);
-            box-shadow:
-                0 10px 30px -10px rgba(0, 0, 0, 0.5),
-                0 0 20px rgba(201, 162, 39, 0.2),
-                inset 0 0 20px rgba(201, 162, 39, 0.05);
-        }
-
-        .gw-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transition: 0.5s;
-        }
-
-        .gw-card:hover::before {
-            left: 100%;
-        }
-
-        /* Partners Slider */
         .partners-slider {
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
             position: relative;
-            padding: 4rem 1rem;
-            margin: -3rem 0;
-            mask-image: linear-gradient(90deg, transparent, white 2%, white 98%, transparent);
-            -webkit-mask-image: linear-gradient(90deg, transparent, white 2%, white 98%, transparent);
+            overflow: hidden;
+            mask-image: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
         }
 
         .partners-track {
             display: flex;
-            gap: 2rem;
-            align-items: center;
-            width: max-content;
+            gap: 3rem;
+            animation: scroll 25s linear infinite;
         }
 
-        /* Partner Cards (Gold Fill) */
-        .partner-card {
-            width: 220px;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* Default: Dark Premium Box */
-            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 26, 0.98));
-            border: 1px solid rgba(201, 162, 39, 0.15);
-            border-radius: 16px;
-            padding: 0;
-            transition: all 0.4s ease;
-            position: relative;
-            flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        .partners-track:hover {
+            animation-play-state: paused;
         }
 
-        .partner-card:hover {
-            /* Hover: Gold Fill */
-            background: var(--gradient);
-            z-index: 50;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-            border-color: transparent;
-            transform: none;
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .partner-logo {
-            max-width: 65%;
-            /* Slightly smaller for breathing room */
-            max-height: 65%;
-            object-fit: contain;
-            /* Default: White on Dark */
-            filter: grayscale(1) invert(1);
-            mix-blend-mode: screen;
-            opacity: 0.8;
-            transition: all 0.4s ease;
-            pointer-events: none;
-            /* Let clicks pass to card */
+            flex-shrink: 0;
+            padding: 1.25rem 2rem;
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 12px;
+            font-weight: 500;
+            color: var(--light);
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            cursor: default;
         }
 
-        .partner-logo.transparent-logo {
-            /* Special handling for PNGs with transparent bg */
-            mix-blend-mode: normal;
-        }
-
-        .partner-card:hover .partner-logo {
-            /* Hover: Black on Gold */
-            filter: none;
-            mix-blend-mode: multiply;
-            opacity: 1;
-            transform: none;
-        }
-
-        .partner-card:hover .partner-logo.transparent-logo {
-            /* Force black for transparent logos on gold bg */
-            filter: brightness(0);
-            mix-blend-mode: normal;
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-            .gw-nav-btn {
-                width: 40px;
-                height: 40px;
-            }
+        .partner-logo:hover {
+            border-color: var(--gold);
+            background: rgba(201, 162, 39, 0.15);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.2);
         }
 
         /* CTA Section */
@@ -1432,7 +1140,25 @@
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        .partner-logo {
+            flex-shrink: 0;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 26, 0.98));
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 16px;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            color: var(--gray-light);
+            transition: all 0.3s ease;
+            min-width: 220px;
+            text-align: center;
+        }
 
+        .partner-logo:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 25px rgba(201, 162, 39, 0.15);
+            color: var(--light);
+        }
 
         .partner-nav {
             width: 56px;
@@ -1925,24 +1651,11 @@
             font-size: 1.25rem;
             text-decoration: none;
             transition: all 0.3s ease;
-            color: var(--gray-light);
         }
 
         .social-btn:hover {
             background: var(--gradient);
             transform: translateY(-3px) rotate(5deg);
-            color: var(--dark);
-        }
-
-        .social-btn svg polygon {
-            fill: var(--dark);
-            /* Default dark play button */
-            transition: fill 0.3s ease;
-        }
-
-        .social-btn:hover svg polygon {
-            fill: var(--gray-light);
-            /* Light play button on hover */
         }
 
         /* Back to Top */
@@ -1950,21 +1663,22 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--dark);
-            border: 1px solid rgba(201, 162, 39, 0.4);
-            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 26, 0.98));
+            border: 2px solid rgba(201, 162, 39, 0.4);
+            border-radius: 16px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            z-index: 9999;
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            color: var(--gold);
-            text-decoration: none;
         }
 
         .back-to-top.visible {
@@ -1973,77 +1687,32 @@
         }
 
         .back-to-top:hover {
-            background: var(--gradient);
-            color: var(--dark);
-            border-color: transparent;
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(201, 162, 39, 0.3);
+            border-color: var(--primary);
+            box-shadow: 0 12px 40px rgba(201, 162, 39, 0.3);
         }
 
         .back-to-top svg {
-            width: 24px;
-            height: 24px;
-            stroke: currentColor;
-            fill: none;
+            stroke: var(--primary);
         }
 
-        /* Quick Contact */
-        .quick-contact {
-            position: fixed;
-            right: 2rem;
-            bottom: 6rem;
-            /* Stacks above Back to Top */
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            z-index: 10000;
-        }
-
-        .qc-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(201, 162, 39, 0.4);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            font-size: 1.25rem;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--gray-light);
         }
 
-        .qc-btn-whatsapp {
-            background: rgba(10, 10, 15, 0.8);
-            color: #25D366;
-        }
-
-        .qc-btn-messenger {
-            background: rgba(10, 10, 15, 0.8);
-            color: #0084FF;
-        }
-
-        .qc-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            background: var(--gradient);
-            /* Gold Gradient on Hover */
-            border-color: transparent;
-            box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
-        }
-
-        .qc-btn:hover svg {
-            fill: var(--dark);
-            /* Icon turns dark on gold background */
-        }
-
-        .qc-btn svg {
-            width: 28px;
-            height: 28px;
-            fill: currentColor;
-            transition: fill 0.3s ease;
-            z-index: 2;
+        .social-btn svg {
+            color: var(--gray-light);
+            transition: color 0.3s ease;
         }
 
         .social-btn:hover {
@@ -2152,6 +1821,40 @@
             /* Reduced padding */
         }
 
+        /* Play Button */
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+            cursor: pointer;
+        }
+
+        .play-button::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 12px 0 12px 20px;
+            border-color: transparent transparent transparent var(--dark);
+            margin-left: 4px;
+        }
+
+        .portfolio-item:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 30px rgba(201, 162, 39, 0.6);
+        }
+
         /* Lightbox */
         .lightbox {
             display: none;
@@ -2218,154 +1921,6 @@
                 opacity: 1;
             }
         }
-
-        /* Portfolio Section */
-        .portfolio-section {
-            padding: 6rem 0;
-            background: var(--secondary);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            aspect-ratio: 16/10;
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(201, 162, 39, 0.25);
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 30%, rgba(10, 10, 15, 0.95) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 2rem;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-category {
-            color: var(--gold);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--light);
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 5;
-            transition: all 0.3s;
-            opacity: 0;
-        }
-
-        .portfolio-item:hover .play-button {
-            opacity: 1;
-        }
-
-        .play-button::after {
-            content: '';
-            border-style: solid;
-            border-width: 12px 0 12px 20px;
-            border-color: transparent transparent transparent var(--dark);
-            margin-left: 4px;
-        }
-
-        /* Video Lightbox */
-        .video-lightbox {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .video-lightbox.active {
-            display: flex;
-        }
-
-        .video-lightbox-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: rgba(201, 162, 39, 0.2);
-            border: 1px solid rgba(201, 162, 39, 0.3);
-            border-radius: 50%;
-            color: var(--light);
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .video-lightbox-close:hover {
-            background: var(--gradient);
-            color: var(--dark);
-        }
-
-        .video-container {
-            width: 100%;
-            max-width: 1000px;
-            aspect-ratio: 16/9;
-        }
-
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 16px;
-        }
     </style>
 </head>
 
@@ -2373,50 +1928,24 @@
     <header class="header" id="header">
         <div class="header-inner">
             <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
-
-            <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
             <nav class="nav">
                 <a href="svatby.html">Svatby</a>
                 <a href="reality.html">Reality</a>
-                <div class="nav-dropdown">
-                    <a href="fotobudka.html" class="nav-dropdown-trigger">Fotobudky ▾</a>
-                    <div class="nav-dropdown-menu">
-                        <a href="fotobudka.html">Fotobudka</a>
-                        <a href="360budka.html">360° Budka</a>
-                    </div>
-                </div>
-                <a href="plesy.html">Plesy</a>
-                <div class="nav-dropdown">
-                    <a href="homepage.html#sluzby" class="nav-dropdown-trigger">Další služby ▾</a>
-                    <div class="nav-dropdown-menu">
-                        <a href="konference.html">Konference</a>
-                        <a href="podcast.html">Podcast</a>
-                    </div>
-                </div>
-                <a href="portfolio.html">Portfolio</a>
-                <a href="blog.html">Blog</a>
+                <a href="fotobudka.html">Fotobudky</a>
+                <a href="#sluzby">Služby</a>
+                <a href="#onas">O nás</a>
                 <a href="kontakt.html">Kontakt</a>
                 <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
             </nav>
-        </div>
+            <button class="mobile-menu" aria-label="Menu">
+                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
 
-        <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-            <a href="index.html" class="mobile-menu-link">Domů</a>
-            <a href="svatby.html" class="mobile-menu-link">Svatby</a>
-            <a href="plesy.html" class="mobile-menu-link">Plesy</a>
-            <a href="fotobudka.html" class="mobile-menu-link">Fotobudka</a>
-            <a href="360budka.html" class="mobile-menu-link">360° Budka</a>
-            <a href="konference.html" class="mobile-menu-link">Konference</a>
-            <a href="podcast.html" class="mobile-menu-link">Podcast</a>
-            <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
-            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -2772,27 +2301,24 @@
                     </div>
                 </div>
 
-                <div class="portfolio-item reveal" data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
+                <div class="portfolio-item reveal">
                     <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800" alt="Konference">
-                    <div class="play-button"></div>
                     <div class="portfolio-overlay">
                         <div class="portfolio-category">Konference</div>
                         <div class="portfolio-title">Business Summit 2025</div>
                     </div>
                 </div>
 
-                <div class="portfolio-item reveal" data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
+                <div class="portfolio-item reveal">
                     <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800" alt="Podcast">
-                    <div class="play-button"></div>
                     <div class="portfolio-overlay">
                         <div class="portfolio-category">Podcast</div>
                         <div class="portfolio-title">Naše studio</div>
                     </div>
                 </div>
 
-                <div class="portfolio-item reveal" data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
+                <div class="portfolio-item reveal">
                     <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800" alt="Svatba">
-                    <div class="play-button"></div>
                     <div class="portfolio-overlay">
                         <div class="portfolio-category">Svatba</div>
                         <div class="portfolio-title">Petra & Jan</div>
@@ -2836,673 +2362,178 @@
         </div>
     </section>
 
-    <!-- Reviews Section (Google Widget Mock) -->
+    <!-- Testimonials Section -->
     <section class="testimonials" id="recenze">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Google recenze</div>
+                <div class="section-badge">Google recenze ⭐ 5.0</div>
                 <h2 class="section-title">Co o nás říkají <span>klienti</span></h2>
-                <div class="script-placeholder-info">
-                    <!-- TIP PRO VÁS: Sem v budoucnu vložte kód z Elfsight nebo jiné služby pro živé recenze -->
-                    <!-- Kód by přišel místo divu .google-widget-wrapper níže -->
-                    Live Widget Placeholder
+                <p class="section-subtitle">Důvěřuje nám více než 500 spokojených zákazníků</p>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="testimonials-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">EK</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Eva K.</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Rádi bychom Vám touto formou ještě jednou poděkovali za úžasná videjka a za celý strávený
+                            den s námi. Jste úžasný pár, který jsme moc rádi poznali! Výsledná videa předčila naše
+                            očekávání, zachytili jste přesně ty momenty, které jsme chtěli. Všem nevěstám vřele
+                            doporučujeme!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">MS</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Monika Stejskalová</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Profesionální přístup, vědí, jaké momenty zachytit. Moc děkujeme za to, že nám natočili na
+                            památku náš svatební den! Geno a jeho tým jsou skvělí profesionálové, kteří vás celý den
+                            vedou a zároveň jsou nenápadní. Video jsme sledovali už minimálně 50x a stále nás dojímá.
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">MV</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Marek Veverka</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Vřele můžeme s manželkou doporučit, se svatebním videem jsme naprosto spokojení. Skvělá
+                            práce! Komunikace byla bezproblémová, video jsme měli hotové dříve, než bylo slíbeno.
+                            Kvalita záběrů je úžasná, střih profesionální. Díky moc za zachycení našeho dne!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">IS</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Iveta Schmiedlova</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Naprosto bez komentáře. Výsledek nás ohromil, bylo to přesně to, co jsme chtěli.
+                            Doporučujeme všem! Geno je neuvěřitelně šikovný a kreativní. Dokázal zachytit emoce, smích i
+                            slzy dojetí. Když jsme video poprvé viděli, brečeli jsme štěstím. Děkujeme!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">PH</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Petra Horáková</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Absolutně nejlepší rozhodnutí, které jsme pro naši svatbu udělali! Geno a jeho tým jsou
+                            profesionálové od A do Z. Komunikace skvělá, přístup k nám i hostům byl naprosto přátelský.
+                            Video nás dojímá pokaždé, když se na něj podíváme. Vřele doporučujeme každému!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">TM</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Tomáš Malý</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Fotobudka na našem plese byla absolutní hit! Hosté si ji zamilovali a fronty se netrhly celý
+                            večer. Obsluha byla profesionální a příjemná. Fotky byly v super kvalitě a online galerie
+                            fungovala skvěle. Určitě objednáme znovu na příští rok!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">LK</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Lucie Kratochvílová</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            360° budka byla hvězdou naší firemní akce! Kolegové se předháněli, kdo natočí nejlepší
+                            video. Výsledky byly úžasné a sdíleli jsme je na sociálních sítích firmy. Profesionální
+                            servis, rychlé dodání videí. Moc děkujeme a těšíme se na další spolupráci!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">JN</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Jan Novotný</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Natáčení podcastu v jejich studiu bylo skvělé! Profesionální prostředí, kvalitní zvuk i
+                            obraz. Geno nám poradil s nastavením a celý proces proběhl hladce. Výsledné video vypadá
+                            jako od velké produkční společnosti. Jednoznačně doporučuji všem podcasterům!
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="google-widget-wrapper">
-                <div class="gw-header">
-                    <div class="gw-rating-box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"
-                            height="30">
-                        <div>
-                            <div class="gw-score">5.0 <span class="gw-stars">★★★★★</span></div>
-                            <div class="gw-reviews-count">Na základě 50+ recenzí</div>
-                        </div>
-                    </div>
-                    <a href="https://www.google.com/search?q=ivproduction+hradec+kralove&review=1" target="_blank"
-                        class="gw-write-btn">Napsat
-                        recenzi</a>
-                </div>
+            <div class="testimonials-nav">
+                <button class="testimonial-prev" onclick="slideTestimonials(-1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+                <div class="testimonials-dots" id="testimonialDots"></div>
+                <button class="testimonial-next" onclick="slideTestimonials(1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </button>
+            </div>
 
-                <div class="gw-slider-container" style="position: relative; padding: 0 2rem;">
-                    <div class="gw-slider-viewport" id="gwViewport">
-                        <div class="gw-slider-track" id="gwTrack">
-                            <!-- All Real Reviews (Full List) -->
-
-                            <!-- Eva K. -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar orange">E</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Eva K.</div>
-                                        <div class="gw-date">před 4 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Rádi bychom Vám touto formou ještě jednou poděkovali za úžasná
-                                    videjka a za celý strávený den s námi ❤ jste úžasný pár, který sme moc rádi poznali.
-                                    Bylo na vás vidět že vás natáčení opravdu baví a skvěle jste se doplňovali ❤
-                                    vyzařovala z vás pozitivní energie a váš přátelský a milý přístup (na to že jsme se
-                                    viděli poprvé naživo) to bylo něco neuvěřitelného ❤ každému Vás můžeme jen a jen
-                                    doporučit a určitě Vás zase někdy rádi uvidíme ❤ Evča a Pája K. ❤</p>
-                            </div>
-
-                            <!-- Dan Vejnar -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar blue">D</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Dan Vejnar</div>
-                                        <div class="gw-date">před týdnem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Agentůru Iv Production můžu z vlastní zkušenosti jenom doporučit.
-                                    Dodané svatební video je skvěle sestříhané a vystihlo atmosféru celého dne. Zvláště
-                                    bych chtěl poděkovat Genovi Ivanovi za jeho profesionální a individuální přístup.
-                                </p>
-                            </div>
-
-                            <!-- Tomáš Hampl -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar green">T</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Tomáš Hampl</div>
-                                        <div class="gw-date">před 2 měsíci</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Chceme moc poděkovat Genovi Ivanovovi a všem co se o nás starali, za
-                                    skvělou spolupráci a nádherná videa i fotografie z naší svatby. Oceňujeme jeho
-                                    profesionální, ale zároveň velmi osobní přístup už během příprav, výbornou práci
-                                    přímo na místě a dokonalý výsledek díky precizní postprodukci.</p>
-                            </div>
-
-                            <!-- Kristýna Novotná -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar purple">K</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Kristýna Novotná</div>
-                                        <div class="gw-date">před 3 měsíci</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Moc děkujeme za naprosto úžasné zachycení našeho svatebního dne! 🎥✨
-                                    S výsledkem jsme maximálně spokojení – video je nádherné, plné emocí a krásných
-                                    detailů. Spolupráce byla od začátku skvělá. Díky vám budeme mít naše vzpomínky
-                                    uchované navždy. ❤️</p>
-                            </div>
-
-                            <!-- Daniel Belada -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar orange">D</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Daniel Belada</div>
-                                        <div class="gw-date">před 10 měsíci</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Nejlepší fotokoutek !!! Doporučeno !</p>
-                            </div>
-
-                            <!-- Petr Kašpar -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar blue">P</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Petr Kašpar</div>
-                                        <div class="gw-date">před 10 měsíci</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Naprostá spokojenost</p>
-                            </div>
-
-                            <!-- Filip Trkal -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar green">F</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Filip Trkal</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Super fotka</p>
-                            </div>
-
-                            <!-- lluuaaxx -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar purple">L</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">lluuaaxx</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Geno s Market nam prirostli k srdci uz na svatbe meho kamarada. Jsou
-                                    opravdu moc sikovni a vysledne video je paradni. Jsme moc spokojeni a urcite vrele
-                                    doporucujeme! :-)</p>
-                            </div>
-
-                            <!-- Pavel Imlauf -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar orange">P</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Pavel Imlauf</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Pokud chcete kvalitní produkt a jako bonus milou a příjemnou
-                                    spolupráci, je Geno ten pravý. Děkujeme</p>
-                            </div>
-
-                            <!-- Aneta Škodová -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar blue">A</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Aneta Škodová</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Geno nam natacel maturitni ples. Skvělá spoluprace, moc mily
-                                    kameraman, nadherne video!!! Vsem vřele doporučuji vsema 10 vyuzit vsechny sluzby!
-                                    🤩👍🏼</p>
-                            </div>
-
-                            <!-- Kristýna Štefanisko Kuličková -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar green">K</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Kristýna Štefanisko Kuličková</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Po týdnech hledání svatebního kameramana jsem náhodou narazila na IV
-                                    Production. Cena byla více než příznivá, a výsledek je báječný. Na videích je vidět,
-                                    že díky Vám nikdo nebyl v křeči. Moc děkujeme za tento přístup, pokračujte prosím v
-                                    tom co děláte.</p>
-                            </div>
-
-                            <!-- Hanka Kryšpínová -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar purple">H</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Hanka Kryšpínová</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Když jsme plánovali svatbu, tak jsme opravdu pečlivě vybírali
-                                    kameramana. Nakonec jsme zvolili IV production a rozhodně nelitujeme. Perfektní
-                                    spolupráce, příjemná komunikace. Naše svatební video si pouštím pravidelně a pořád
-                                    jsem z něj nadšená. :-)</p>
-                            </div>
-
-                            <!-- Tereza Borkova -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar orange">T</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Tereza Borkova</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Geno a Maky nám natáčeli náš svatební den a výsledek je nádherný!
-                                    Ačkoliv jsme o nich většinu času nevěděli, tak máme krásnou vzpomínku. Moc děkujeme
-                                    a určitě všem doporučujeme :)</p>
-                            </div>
-
-                            <!-- Marek Kyncl -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar blue">M</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Marek Kyncl</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Geno je přesně ten kameraman kterého hledáte! Svoji práci dělá vážně
-                                    dobře. Během akce kolem vás proletí jako blesk, ani si ho nevšimnete. O pár dní
-                                    později vám dodá úžasné video kde nechybí žádný důležitý moment.</p>
-                            </div>
-
-                            <!-- Natálie Holá -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar green">N</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Natálie Holá</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Se službami jsem vždy maximálně spokojená. Profesionální přístup.</p>
-                            </div>
-
-                            <!-- Lukáš Bartl -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar purple">L</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Lukáš Bartl</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Jednoznačně DOPORUČUJEM ✨. Profesionální přístup, organizace, velmi
-                                    sympatický pár. Špičkové zařízení kombinace kamera, dron a nejlepší TOPKA byla
-                                    FOTOBOUDKA!! kterou doporučujeme všem.</p>
-                            </div>
-
-                            <!-- Anežka -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar orange">A</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Anežka</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Skvělý kameraman :) Doporučuji</p>
-                            </div>
-
-                            <!-- Viktorie Votroubková -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar blue">V</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Viktorie Votroubková</div>
-                                        <div class="gw-date">před rokem</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Jsme naprosto spokojené! Video krásné, skvělá komunikace a
-                                    spolupráce❤️</p>
-                            </div>
-
-                            <!-- Petr Vališ -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar green">P</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Petr Vališ</div>
-                                        <div class="gw-date">před 2 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Už jsme spolupracovali s hodně kameramany a fotografy a víme, že
-                                    polovina úspěchu je osobnost autora. U Gena se sešlo oboje. Je to skvělý, zodpovědný
-                                    a pracovitý člověk. Výsledkem jsou skvělé materiály a výstupy.</p>
-                            </div>
-
-                            <!-- Martin Pokorný -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar purple">M</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Martin Pokorný</div>
-                                        <div class="gw-date">před 2 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Skvělá komunikace, perfektní svatební videa, přátelská atmosféra. IV
-                                    Production můžeme doporučit, Geno a Markéta jsou profesionálové. Moc děkujeme,
-                                    manželé Pokorní 😊</p>
-                            </div>
-
-                            <!-- Kristýna Havlová -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar orange">K</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Kristýna Havlová</div>
-                                        <div class="gw-date">před 2 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Jsme rádi že jsme se pro svatební video s manželem rozhodli.
-                                    Komunikace byla na jedničku a dal nám i spousty rad. Natáčení jsme si užili a to
-                                    díky profesionálnímu, ale zároveň milému a kamarádskému přístupu.</p>
-                            </div>
-
-                            <!-- Michal Prošek -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar blue">M</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Michal Prošek</div>
-                                        <div class="gw-date">před 2 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Geno a Markéta jsou profesionálové na správném místě. Vždy byli tam,
-                                    kde jich bylo potřeba a zachytili nejkrásnější momenty našeho svatebního dne. Z
-                                    výsledného videa nám doslova spadla brada. Děkujeme. Manželé Proškovi :-)</p>
-                            </div>
-
-                            <!-- Marie Havelková -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar green">M</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Marie Havelková</div>
-                                        <div class="gw-date">před 2 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Mockrát děkujeme za svatebni video. Jsem moc ráda, že jsme si vybrali
-                                    Gena. Velmi příjemný kameraman, který ví, co dělá. Vybrala bych znovu :)</p>
-                            </div>
-
-                            <!-- Jakub Kněžínek -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar purple">J</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Jakub Kněžínek</div>
-                                        <div class="gw-date">před 2 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Geno je super kameraman/střihač a moc fajn člověk. Spolupracuju s ním
-                                    už nějaký ten rok a vždy jsem byl s výsledkem spokojený.</p>
-                            </div>
-
-                            <!-- Martin Probošt -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar orange">M</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Martin Probošt</div>
-                                        <div class="gw-date">před 2 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Profesionální přístup.</p>
-                            </div>
-
-                            <!-- Iveta Vartová -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar blue">I</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Iveta Vartová</div>
-                                        <div class="gw-date">před 3 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Kameramana pro naší svatbu jsme hledali dlouho. Ve chvíli kdy jsme
-                                    narazili na Gena bylo jasno. Naprosto profesionální přístup, ale na druhou stranu
-                                    jsem měla pocit,že je jedním z nás. Pokud bych někdy příště potřebovala kameramana,
-                                    nebudu váhat a znovu se obrátím na Genu.</p>
-                            </div>
-
-                            <!-- Tereza Koubková -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar green">T</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Tereza Koubková</div>
-                                        <div class="gw-date">před 3 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Jsem ráda, že jsem si u manžela svatební video prosadila. Byla to ta
-                                    nejlepší svatební investice. Natáčení jsme si moc užili a vzpomínáme na něj, hlavně
-                                    díky milému a profesionálnímu přístupu pana kameramana.</p>
-                            </div>
-
-                            <!-- Kristýna Gottwaldová -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar purple">K</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Kristýna Gottwaldová</div>
-                                        <div class="gw-date">před 3 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Absolutně 100% výsledek a absolutně 100% spokojenost, video je
-                                    nádherné, domluva byla vždy rychlá a bezchybná. Profesionálové na svém místě a
-                                    užasní lidé ! absolutně všem doporučuji <3< /p>
-                            </div>
-
-                            <!-- Monika Ekrtová -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar orange">M</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Monika Ekrtová</div>
-                                        <div class="gw-date">před 3 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Geno a Markét jsou profesionálové, kteří dokázali skrze objektiv
-                                    zhmotnit pohádku. Věříme, že jsme nezískali jen naprosto skvělé video, ale také jsme
-                                    poznali skvělé lidi, za kterými se vždy budeme rádi vracet. Geno a Markét, děkujeme.
-                                    <3< /p>
-                            </div>
-
-                            <!-- Denisa Boháčová -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar blue">D</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Denisa Boháčová</div>
-                                        <div class="gw-date">před 3 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Geno byl po celou dobu natáčení naši svatby naprostým profesionálem a
-                                    zachytával ty pravé momenty. Záběry z dronu neměli chybu a dokonce máme jako bonus i
-                                    fotku. Ještě jednou moc děkujeme za krásné svatební video 👍😊</p>
-                            </div>
-
-                            <!-- Marek Veverka -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar green">M</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Marek Veverka</div>
-                                        <div class="gw-date">před 4 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Vřele můžeme s manželkou doporučit, se svatebním videem jsme naprosto
-                                    spokojení. Nejdříve jsme měli obavy z přítomnosti "cizích" lidí na naší svatbě, ale
-                                    v době přípravy svatby i během ní, šli naše obavy stranou a to zejména díky osobnímu
-                                    a přátelskému přístupů kameramanů.</p>
-                            </div>
-
-                            <!-- Monika Stejskalová -->
-                            <div class="gw-card">
-                                <div class="gw-user">
-                                    <div class="gw-avatar purple">M</div>
-                                    <div class="gw-user-info">
-                                        <div class="gw-name">Monika Stejskalová</div>
-                                        <div class="gw-date">před 4 lety</div>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
-                                </div>
-                                <div class="gw-card-stars">★★★★★</div>
-                                <p class="gw-text">Ještě jednou moc děkujeme IV svatby za to, že nám natočili na památku
-                                    náš svatební den 😊 Profesionální přístup, vědí, jaké momenty zachytit, aby byl
-                                    perfektní výsledek a přizpůsobili se plně našim přáním. Navíc video krásně
-                                    sestříhali na písničku dle našeho výběru 😊😁</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Navigation Arrows -->
-                    <button class="gw-nav-btn gw-prev" aria-label="Předchozí">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M15 18l-6-6 6-6" />
-                        </svg>
-                    </button>
-                    <button class="gw-nav-btn gw-next" aria-label="Další">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M9 18l6-6-6-6" />
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    const track = document.getElementById('gwTrack');
-                                    const viewport = document.getElementById('gwViewport'); // We scroll this
-                                    const container = document.querySelector('.gw-slider-container');
-                                    const nextBtn = document.querySelector('.gw-next');
-                                    const prevBtn = document.querySelector('.gw-prev');
-
-                                    let isHovered = false;
-                                    const scrollSpeed = 0.8;
-                                    const cardWidth = 320 + 32; // width + gap
-
-                                    // Cloning logic for infinite loop
-                                    const originalCards = Array.from(track.children);
-
-                                    // Clone cards enough times to fill space and allow scrolling
-                                    // 2 sets is good
-                                    originalCards.forEach(card => {
-                                        const clone = card.cloneNode(true);
-                                        track.appendChild(clone);
-                                    });
-                                    originalCards.forEach(card => {
-                                        const clone = card.cloneNode(true);
-                                        track.appendChild(clone);
-                                    });
-
-                                    // Start position
-                                    let animationId;
-
-                                    function autoScroll() {
-                                        if (!isHovered) {
-                                            // CRITICAL FIX: Scroll the VIEWPORT, not the TRACK
-                                            viewport.scrollLeft += scrollSpeed;
-
-                                            // Infinite Loop Reset Logic
-                                            // When we have scrolled past the first set(s) of content
-                                            // The total width of the first set of cards = originalCards.length * cardWidth
-                                            // We reset when we've scrolled that distance
-                                            const resetThreshold = originalCards.length * cardWidth;
-
-                                            if (viewport.scrollLeft >= resetThreshold) {
-                                                // Smoothly snap back to 0 (or subtraction) to wrap around
-                                                // To make it seamless, we subtract the chunk width
-                                                viewport.scrollLeft = viewport.scrollLeft - resetThreshold;
-                                            }
-                                        }
-                                        animationId = requestAnimationFrame(autoScroll);
-                                    }
-
-                                    // Start the loop
-                                    animationId = requestAnimationFrame(autoScroll);
-
-                                    // Manual Navigation
-                                    nextBtn.addEventListener('click', () => {
-                                        viewport.scrollBy({ left: cardWidth, behavior: 'smooth' });
-                                    });
-
-                                    prevBtn.addEventListener('click', () => {
-                                        viewport.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-                                    });
-
-                                    // Pause on container hover
-                                    container.addEventListener('mouseenter', () => isHovered = true);
-                                    container.addEventListener('mouseleave', () => isHovered = false);
-
-                                    // Touch support
-                                    container.addEventListener('touchstart', () => isHovered = true);
-                                    container.addEventListener('touchend', () => isHovered = false);
-                                });
-                            </script>
-
-
-                </div>
-
-                <div style="text-align: center; margin-top: 1.5rem;">
-                    <a href="https://www.google.com/search?q=ivproduction+hradec+kralove&check_reviews=1"
-                        target="_blank"
-                        style="color: var(--gold); font-weight: 500; text-decoration: none; transition: color 0.3s;">Zobrazit
-                        další recenze na
-                        Google Maps →</a>
-                </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://maps.app.goo.gl/ivproduction" target="_blank" class="btn btn-outline">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                    Zobrazit všech 50+ recenzí na Google
+                </a>
             </div>
         </div>
     </section>
@@ -3515,47 +2546,35 @@
                 <h2 class="section-title">Naši <span>partneři</span></h2>
             </div>
 
-            <div class="partners-wrapper" style="position: relative;">
-                <!-- Navigation Arrows (Styled like Google Reviews) -->
-                <button class="gw-nav-btn gw-prev partner-prev" aria-label="Předchozí" style="left: -20px;">
+            <div class="partners-wrapper">
+                <button class="partner-nav partner-prev" onclick="slidePartners(-1)">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M15 18l-6-6 6-6" />
                     </svg>
                 </button>
 
-                <div class="partners-slider" id="partnersSlider">
+                <div class="partners-slider">
                     <div class="partners-track" id="partnersTrack">
-                        <div class="partner-card">
-                            <img src="partners/logo-real.png" alt="Real Partner" class="partner-logo transparent-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-nexus.png" alt="Nexus Systems" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-next.png" alt="Next Corp" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-peak.png" alt="Peak Solutions" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-orbit.png" alt="Orbit Studio" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-nexus.png" alt="Nexus Systems" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-next.png" alt="Next Corp" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-peak.png" alt="Peak Solutions" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-orbit.png" alt="Orbit Studio" class="partner-logo">
-                        </div>
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=HOTEL+NOVE+ADALBERTINUM"
+                            alt="Hotel Nové Adalbertinum" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=ALDIS+CONGRESS"
+                            alt="Aldis Congress Center" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=ZAMEK+HRADEK"
+                            alt="Zámek Hrádek u Nechanic" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=FARNOST+HK"
+                            alt="Farnost Hradec Králové" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=DJ+MARTIN+SOUND" alt="DJ Martin Sound"
+                            class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=KVETINY+ROMANTIKA"
+                            alt="Květiny Romantika" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=SWEET+DREAMS"
+                            alt="Cukrárna Sweet Dreams" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=FOTO+PETR+NOVAK"
+                            alt="Fotograf Petr Novák" class="partner-logo">
                     </div>
                 </div>
 
-                <button class="gw-nav-btn gw-next partner-next" aria-label="Další" style="right: -20px;">
+                <button class="partner-nav partner-next" onclick="slidePartners(1)">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 18l6-6-6-6" />
                     </svg>
@@ -3563,17 +2582,6 @@
             </div>
         </div>
     </section>
-
-
-
-
-    <!-- Video Lightbox -->
-    <div class="video-lightbox" id="videoLightbox">
-        <button class="video-lightbox-close" id="closeLightbox">✕</button>
-        <div class="video-container">
-            <iframe id="videoFrame" src="" allowfullscreen></iframe>
-        </div>
-    </div>
 
     <!-- Stats Counter Section -->
     <section class="stats-section">
@@ -3923,7 +2931,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#0a0a0f" />
                         </svg>
                     </a>
                 </div>
@@ -3971,29 +2979,11 @@
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
-        <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 19V5M5 12l7-7 7 7" />
         </svg>
     </button>
-
-    <!-- Quick Contact -->
-    <div class="quick-contact">
-        <!-- Messenger -->
-        <a href="https://m.me/ivproductioncz" target="_blank" class="qc-btn qc-btn-messenger"
-            title="Napsat na Messenger">
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M12 2C6.347 2 2 6.167 2 11.25c0 2.9 1.416 5.503 3.693 7.21l-.57 2.922 3.093-1.637c1.196.44 2.493.687 3.847.687 5.626 0 10.187-4.167 10.187-9.25C22.187 6.167 17.627 2 12 2zm1.217 12.35l-2.023-3.136-4.07 3.136 4.39-4.522 2.07 3.083 4.02-3.083-4.387 4.522z" />
-            </svg>
-        </a>
-        <!-- WhatsApp -->
-        <a href="https://wa.me/420773210194" target="_blank" class="qc-btn qc-btn-whatsapp" title="Napsat na WhatsApp">
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-            </svg>
-        </a>
-    </div>
 
 
 
@@ -4157,11 +3147,221 @@
         <img class="lightbox-content" id="lightbox-img">
         <div id="lightbox-caption"></div>
     </div>
+
+    <!-- Video Lightbox -->
+    <div class="video-lightbox" id="videoLightbox">
+        <button class="video-lightbox-close" id="closeLightbox">×</button>
+        <div class="video-container">
+            <iframe id="videoFrame" src="" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Global Floating Elements -->
+    <style>
+        /* Video Lightbox Styles */
+        .video-lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-lightbox.active {
+            display: flex;
+        }
+
+        .video-container {
+            width: 90%;
+            max-width: 1000px;
+            aspect-ratio: 16/9;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: var(--light);
+            font-size: 50px;
+            font-weight: 300;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 2001;
+            line-height: 1;
+            background: none;
+            border: none;
+        }
+
+        .video-lightbox-close:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--dark);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--gradient);
+            color: var(--dark);
+            border-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+        }
+
+        /* Quick Contact */
+        .quick-contact {
+            position: fixed;
+            right: 2rem;
+            bottom: 6rem;
+            /* Stacks above Back to Top */
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 10000;
+        }
+
+        .qc-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qc-btn-whatsapp {
+            background: rgba(10, 10, 15, 0.8);
+            color: #25D366;
+        }
+
+        .qc-btn-messenger {
+            background: rgba(10, 10, 15, 0.8);
+            color: #0084FF;
+        }
+
+        .qc-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: var(--gradient);
+            /* Gold Gradient on Hover */
+            border-color: transparent;
+            box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
+        }
+
+        .qc-btn:hover svg {
+            fill: var(--dark);
+            /* Icon turns dark on gold background */
+        }
+
+        .qc-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+            transition: fill 0.3s ease;
+            z-index: 2;
+        }
+    </style>
+
+    <a href="#" class="back-to-top" onclick="scrollToTop(); return false;">
+        <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </a>
+
+    <div class="quick-contact">
+        <!-- Messenger (Corrected Icon) -->
+        <a href="https://m.me/ivproductioncz" target="_blank" class="qc-btn qc-btn-messenger"
+            title="Napsat na Messenger">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 2C6.347 2 2 6.167 2 11.25c0 2.9 1.416 5.503 3.693 7.21l-.57 2.922 3.093-1.637c1.196.44 2.493.687 3.847.687 5.626 0 10.187-4.167 10.187-9.25C22.187 6.167 17.627 2 12 2zm1.217 12.35l-2.023-3.136-4.07 3.136 4.39-4.522 2.07 3.083 4.02-3.083-4.387 4.522z" />
+            </svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/420773210194" target="_blank" class="qc-btn qc-btn-whatsapp" title="Napsat na WhatsApp">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+        </a>
+    </div>
+
     <script>
+        // Back to Top Logic
+        const backToTopBtn = document.querySelector('.back-to-top');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
         // Video Lightbox functionality
         const vidLightbox = document.getElementById('videoLightbox');
         const videoFrame = document.getElementById('videoFrame');
-        const closeVidLightbox = document.getElementById('closeLightbox');
+        const vidCloseBtn = document.getElementById('closeLightbox');
 
         document.querySelectorAll('.portfolio-item[data-video]').forEach(item => {
             item.addEventListener('click', () => {
@@ -4172,8 +3372,8 @@
             });
         });
 
-        if (closeVidLightbox) {
-            closeVidLightbox.addEventListener('click', () => {
+        if (vidCloseBtn) {
+            vidCloseBtn.addEventListener('click', () => {
                 vidLightbox.classList.remove('active');
                 videoFrame.src = '';
                 document.body.style.overflow = '';
@@ -4196,92 +3396,147 @@
                 videoFrame.src = '';
                 document.body.style.overflow = '';
             }
-        });</script>
+        });
+    </script>
+    <!-- Mobile Menu Logic -->
+    <style>
+        /* Mobile Menu Styles */
+        @media (max-width: 900px) {
+            .mobile-menu {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid rgba(212, 175, 55, 0.3);
+                border-radius: 8px;
+                padding: 0.5rem;
+                background: rgba(10, 10, 15, 0.8);
+                backdrop-filter: blur(10px);
+                color: var(--gold);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                z-index: 1001;
+            }
+
+            .mobile-menu:hover {
+                background: var(--gradient);
+                color: var(--dark);
+                border-color: transparent;
+            }
+
+            .nav {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(5, 5, 8, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                z-index: 999;
+                /* Below open button */
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-20px);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .nav.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .nav a {
+                font-size: 1.5rem;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s ease;
+            }
+
+            .nav.active a {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Staggered animation for links */
+            .nav.active a:nth-child(1) {
+                transition-delay: 0.1s;
+            }
+
+            .nav.active a:nth-child(2) {
+                transition-delay: 0.15s;
+            }
+
+            .nav.active a:nth-child(3) {
+                transition-delay: 0.2s;
+            }
+
+            .nav.active a:nth-child(4) {
+                transition-delay: 0.25s;
+            }
+
+            .nav.active a:nth-child(5) {
+                transition-delay: 0.3s;
+            }
+
+            .nav.active a:nth-child(6) {
+                transition-delay: 0.35s;
+            }
+
+            .nav.active a:nth-child(7) {
+                transition-delay: 0.4s;
+            }
+
+            .nav.active a:nth-child(8) {
+                transition-delay: 0.45s;
+            }
+
+            .nav-cta {
+                width: 80%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+
     <script>
-        // Partners Slider Logic
-        document.addEventListener('DOMContentLoaded', function () {
-            const partnerSlider = document.getElementById('partnersSlider');
-            const partnersTrack = document.getElementById('partnersTrack');
-            const partnerPrevBtn = document.querySelector('.partner-prev');
-            const partnerNextBtn = document.querySelector('.partner-next');
-            const partnerWrapper = document.querySelector('.partners-wrapper');
+        // Mobile Menu Toggle
+        const mobileBtn = document.querySelector('.mobile-menu');
+        const nav = document.querySelector('.nav');
 
-            if (partnerSlider && partnersTrack && partnerPrevBtn && partnerNextBtn) {
-                // Config
-                const scrollSpeed = 0.5; // continuous move speed
-                const itemWidth = 220 + 24; // 220px width + 1.5rem gap (24px)
+        if (mobileBtn && nav) {
+            mobileBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                mobileBtn.classList.toggle('active');
 
-                // Clone items for infinite loop
-                const originalItems = Array.from(partnersTrack.children);
-
-                // Clone enough sets to fill screen + buffer
-                // 3 sets total (original + 2 clones) usually safe
-                originalItems.forEach(item => {
-                    partnersTrack.appendChild(item.cloneNode(true));
-                });
-                originalItems.forEach(item => {
-                    partnersTrack.appendChild(item.cloneNode(true));
-                });
-
-                let isHovered = false;
-                let animationId;
-
-                // Auto Scroll Function
-                function autoScrollPartners() {
-                    if (!isHovered) {
-                        partnerSlider.scrollLeft += scrollSpeed;
-
-                        // Reset logic
-                        // Width of one full set of items
-                        const resetThreshold = originalItems.length * itemWidth;
-
-                        if (partnerSlider.scrollLeft >= resetThreshold) {
-                            // Snap back seamlessly
-                            partnerSlider.scrollLeft -= resetThreshold;
-                        }
-                    }
-                    animationId = requestAnimationFrame(autoScrollPartners);
+                // Toggle Icon
+                const svg = mobileBtn.querySelector('svg');
+                if (nav.classList.contains('active')) {
+                    // Close IX
+                    svg.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
+                } else {
+                    // Hamburger
+                    svg.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
                 }
 
-                // Start Loop
-                animationId = requestAnimationFrame(autoScrollPartners);
+                // Prevent scrolling
+                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+            });
 
-                // Manual Navigation
-                partnerPrevBtn.addEventListener('click', () => {
-                    partnerSlider.scrollBy({ left: -itemWidth, behavior: 'smooth' });
-                });
-
-                partnerNextBtn.addEventListener('click', () => {
-                    partnerSlider.scrollBy({ left: itemWidth, behavior: 'smooth' });
-                });
-
-                // Hover Pause
-                partnerWrapper.addEventListener('mouseenter', () => isHovered = true);
-                partnerWrapper.addEventListener('mouseleave', () => isHovered = false);
-
-                // Touch Pause
-                partnerWrapper.addEventListener('touchstart', () => isHovered = true);
-                partnerWrapper.addEventListener('touchend', () => isHovered = false);
-            }
-        });
-
-        // Mobile Menu Logic
-        const mobileToggle = document.getElementById('mobileMenuToggle');
-        const mobileOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileLinks = document.querySelectorAll('.mobile-menu-link');
-
-        if (mobileToggle && mobileOverlay) {
-            function toggleMenu() {
-                mobileToggle.classList.toggle('active');
-                mobileOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
-            }
-
-            mobileToggle.addEventListener('click', toggleMenu);
-
-            mobileLinks.forEach(link => {
+            // Close when clicking links
+            const navLinks = nav.querySelectorAll('a');
+            navLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    toggleMenu(); // Close on click
+                    nav.classList.remove('active');
+                    mobileBtn.classList.remove('active');
+                    document.body.style.overflow = '';
+                    // Reset icon
+                    const svg = mobileBtn.querySelector('svg');
+                    svg.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
                 });
             });
         }
