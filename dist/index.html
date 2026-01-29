@@ -1,0 +1,3255 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IV Production | Svatební video a fotobudky Hradec Králové</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="description"
+        content="Profesionální video produkce pro svatby, reality a promo videa. Dva zkušení kameramani s dronem. Hradec Králové a celá ČR. Kvalita, emoce, kreativita.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "IV Production",
+        "url": "https://www.ivproduction.cz",
+        "logo": "https://www.ivproduction.cz/logo.png",
+        "description": "Profesionální video produkce a fotobudky",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Hradec Králové",
+            "addressCountry": "CZ"
+        },
+        "sameAs": [
+            "https://facebook.com/ivproduction",
+            "https://instagram.com/ivproduction",
+            "https://youtube.com/@ivproduction"
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            /* Luxusní zlatá paleta */
+            --gold-dark: #8B6914;
+            --gold: #C9A227;
+            --gold-light: #E8C547;
+            --gold-shine: #FFE55C;
+            --gold-pale: #FFF4B8;
+
+            /* Aliasy pro kompatibilitu */
+            --primary: var(--gold);
+            --primary-dark: var(--gold-dark);
+            --primary-light: var(--gold-light);
+
+            /* Pozadí */
+            --secondary: #12121A;
+            --dark: #0A0A0F;
+            --darker: #050508;
+            --light: #F8F8FA;
+            --gray: #6B7280;
+            --gray-light: #9CA3AF;
+
+            /* Luxusní zlaté gradienty */
+            --gradient: linear-gradient(135deg,
+                    var(--gold-dark) 0%,
+                    var(--gold) 25%,
+                    var(--gold-shine) 50%,
+                    var(--gold) 75%,
+                    var(--gold-dark) 100%);
+            --gradient-shine: linear-gradient(135deg,
+                    var(--gold) 0%,
+                    var(--gold-shine) 30%,
+                    var(--gold-pale) 50%,
+                    var(--gold-shine) 70%,
+                    var(--gold) 100%);
+            --gradient-subtle: linear-gradient(180deg,
+                    rgba(201, 162, 39, 0.15) 0%,
+                    rgba(201, 162, 39, 0.05) 100%);
+            --gradient-dark: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+
+            /* 3D stíny pro zlato */
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            --shadow-gold: 0 10px 40px rgba(201, 162, 39, 0.25),
+                0 20px 60px rgba(201, 162, 39, 0.15),
+                inset 0 1px 0 rgba(255, 244, 184, 0.3);
+            --shadow-gold-intense: 0 0 20px rgba(201, 162, 39, 0.4),
+                0 0 40px rgba(201, 162, 39, 0.2),
+                0 0 60px rgba(201, 162, 39, 0.1);
+            --text-shadow-gold: 0 2px 10px rgba(201, 162, 39, 0.5),
+                0 4px 20px rgba(201, 162, 39, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(15, 15, 26, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 0.75rem 2rem;
+            background: rgba(15, 15, 26, 0.98);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 55px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled .logo img {
+            height: 45px;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 10px rgba(255, 229, 92, 1)) drop-shadow(0 0 20px rgba(201, 162, 39, 0.8)) drop-shadow(0 0 40px rgba(201, 162, 39, 0.6));
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .nav a:not(.nav-cta):hover {
+            color: var(--gold-shine);
+            text-shadow: 0 0 15px rgba(201, 162, 39, 1), 0 0 30px rgba(201, 162, 39, 0.6), 0 0 50px rgba(201, 162, 39, 0.3);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: var(--dark) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .nav {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+
+        /* Hero Background - Sjednoceno s podstránkami */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: #1a1a1a;
+            background-image: url('hero-bg.png');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            filter: brightness(0.55);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 10, 15, 0.2) 0%, rgba(10, 10, 15, 0.7) 100%);
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.35rem;
+            color: var(--gray-light);
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: filter 0.5s ease, text-shadow 0.5s ease;
+        }
+
+        .stat-number.counted {
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.7));
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--gradient-dark);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--gradient);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 10, 15, 0.4) 0%, rgba(10, 10, 15, 0.85) 100%);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(201, 162, 39, 0.3), 0 0 30px rgba(255, 229, 92, 0.15);
+            border-color: rgba(201, 162, 39, 0.5);
+        }
+
+        .service-card:hover::before {
+            background: linear-gradient(180deg, rgba(10, 10, 15, 0.3) 0%, rgba(10, 10, 15, 0.7) 100%);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+        }
+
+        .service-card p {
+            color: var(--gray-light);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-link {
+            background: var(--gradient);
+            color: var(--dark) !important;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            padding: 0.6rem 1.25rem;
+            border-radius: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        .about-text {
+            color: var(--gray-light);
+            line-height: 1.9;
+        }
+
+        .about-text p {
+            margin-bottom: 1.25rem;
+        }
+
+        .about-intro {
+            font-size: 1.3rem;
+            color: var(--light);
+            margin-bottom: 1.5rem !important;
+        }
+
+        .about-intro strong {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-team h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            color: transparent;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .team-member {
+            padding: 1.5rem;
+            background: rgba(201, 162, 39, 0.05);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .team-photo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 0.75rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(201, 162, 39, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member:hover .team-photo {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+        }
+
+        .team-name {
+            font-weight: 600;
+            color: var(--light);
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 2rem;
+            background: var(--dark);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 30%, rgba(15, 15, 26, 0.95) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-category {
+            color: var(--primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Studio Section */
+        .studio {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--dark) 0%, var(--secondary) 100%);
+        }
+
+        .studio-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .studio-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .studio-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .studio-info h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .studio-info p {
+            color: var(--gray-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .studio-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .studio-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--light);
+        }
+
+        .studio-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%);
+        }
+
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial-card {
+            flex: 0 0 calc(33.333% - 1rem);
+            min-width: 320px;
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 26, 0.98));
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 25px rgba(201, 162, 39, 0.15), inset 0 0 20px rgba(201, 162, 39, 0.03);
+        }
+
+        @media (max-width: 1200px) {
+            .testimonial-card {
+                flex: 0 0 calc(50% - 0.75rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-card {
+                flex: 0 0 100%;
+                min-width: 280px;
+            }
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .testimonial-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+            flex-shrink: 0;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--light);
+        }
+
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .google-logo {
+            width: 50px;
+            height: auto;
+            opacity: 0.8;
+            filter: brightness(0.9);
+        }
+
+        .testimonial-text {
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .testimonials-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .testimonial-prev,
+        .testimonial-next {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.9), rgba(15, 15, 26, 0.95));
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-prev:hover,
+        .testimonial-next:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+            transform: scale(1.05);
+        }
+
+        .testimonial-prev svg,
+        .testimonial-next svg {
+            stroke: currentColor;
+            width: 20px;
+            height: 20px;
+        }
+
+        .testimonials-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(201, 162, 39, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 4rem 2rem;
+            background: var(--secondary);
+            overflow: hidden;
+        }
+
+        .partners-slider {
+            position: relative;
+            overflow: hidden;
+            mask-image: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+        }
+
+        .partners-track {
+            display: flex;
+            gap: 3rem;
+            animation: scroll 25s linear infinite;
+        }
+
+        .partners-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .partner-logo {
+            flex-shrink: 0;
+            padding: 1.25rem 2rem;
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 12px;
+            font-weight: 500;
+            color: var(--light);
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .partner-logo:hover {
+            border-color: var(--gold);
+            background: rgba(201, 162, 39, 0.15);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.2);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 2rem;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.8), rgba(15, 15, 26, 0.9));
+            border-radius: 32px;
+            padding: 4rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .cta h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 2rem 2rem;
+            background: var(--darker);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: var(--gray);
+        }
+
+        .footer-links h4 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--gray);
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Partners Slider */
+        .partners {
+            padding: 4rem 0;
+            background: var(--darker);
+            overflow: hidden;
+        }
+
+        .partners-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .partners-slider {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .partners-track {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .partner-logo {
+            flex-shrink: 0;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 26, 0.98));
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 16px;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            color: var(--gray-light);
+            transition: all 0.3s ease;
+            min-width: 220px;
+            text-align: center;
+        }
+
+        .partner-logo:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 25px rgba(201, 162, 39, 0.15);
+            color: var(--light);
+        }
+
+        .partner-nav {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.9), rgba(15, 15, 26, 0.95));
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        .partner-nav:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+            transform: scale(1.05);
+        }
+
+        .partner-nav svg {
+            stroke: currentColor;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, var(--dark) 0%, var(--secondary) 100%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(201, 162, 39, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(201, 162, 39, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-counter {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* SEO Content Section */
+        .seo-content {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+        }
+
+        .seo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .seo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .seo-block {
+            padding: 2rem;
+            background: rgba(26, 26, 46, 0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .seo-block h2,
+        .seo-block h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .seo-block h2 span,
+        .seo-block h3 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .seo-block p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .seo-block strong {
+            color: var(--gray-light);
+        }
+
+        .seo-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .seo-list li {
+            color: var(--gray);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .seo-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Tech Section */
+        .tech-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tech-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-title span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tech-intro {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tech-category {
+            margin-bottom: 1rem;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.4), rgba(15, 15, 26, 0.6));
+            transition: all 0.3s ease;
+        }
+
+        .tech-category:hover {
+            border-color: rgba(201, 162, 39, 0.4);
+            box-shadow: 0 4px 20px rgba(201, 162, 39, 0.1);
+        }
+
+        .tech-category.active {
+            border-color: var(--primary);
+            box-shadow: 0 8px 30px rgba(201, 162, 39, 0.2);
+        }
+
+        .tech-category-title {
+            color: var(--light);
+            font-size: 1.2rem;
+            margin: 0;
+            padding: 1.25rem 1.5rem;
+            border-left: 4px solid var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(90deg, rgba(201, 162, 39, 0.1), transparent);
+        }
+
+        .tech-category-title:hover {
+            background: linear-gradient(90deg, rgba(201, 162, 39, 0.2), rgba(201, 162, 39, 0.05));
+            color: var(--gold-shine);
+        }
+
+        .tech-category-title::after {
+            content: '▼';
+            font-size: 0.75rem;
+            color: var(--primary);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+
+        .tech-category.active .tech-category-title::after {
+            transform: rotate(180deg);
+        }
+
+        .tech-category.active .tech-category-title {
+            background: var(--gradient);
+            color: var(--dark);
+            border-left-color: transparent;
+        }
+
+        .tech-category.active .tech-category-title::after {
+            color: var(--dark);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.5rem;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+        }
+
+        .tech-category.active .tech-grid {
+            max-height: 2000px;
+            padding: 1.5rem;
+        }
+
+        .tech-item {
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.6), rgba(15, 15, 26, 0.8));
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(201, 162, 39, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.8), rgba(15, 15, 26, 0.95));
+        }
+
+        .tech-img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+        }
+
+        .tech-item:hover .tech-img {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .tech-name {
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .tech-desc {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 0;
+            background: var(--dark);
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: linear-gradient(145deg, rgba(18, 18, 26, 0.8), rgba(10, 10, 15, 0.9));
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(201, 162, 39, 0.4);
+        }
+
+        .faq-item.active {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-toggle {
+            width: 30px;
+            height: 30px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            background: var(--gradient);
+            color: var(--dark);
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 2rem;
+            color: var(--gray-light);
+            line-height: 1.8;
+            transition: all 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 2rem 1.5rem;
+        }
+
+        /* Enhanced CTA */
+        .cta {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .cta-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 10s infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn-lg {
+            padding: 1.25rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-trust {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Footer Social */
+        .footer-social {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Footer Legal Links */
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(201, 162, 39, 0.15);
+            margin-top: 2rem;
+        }
+
+        .footer-legal a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--primary);
+        }
+
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--gradient);
+            transform: translateY(-3px) rotate(5deg);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(15, 15, 26, 0.98));
+            border: 2px solid rgba(201, 162, 39, 0.4);
+            border-radius: 16px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 40px rgba(201, 162, 39, 0.3);
+        }
+
+        .back-to-top svg {
+            stroke: var(--primary);
+        }
+
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            color: var(--gray-light);
+        }
+
+        .social-btn svg {
+            color: var(--gray-light);
+            transition: color 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--gradient);
+            transform: translateY(-3px) rotate(5deg);
+        }
+
+        /* Contact Form in CTA */
+        .cta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            text-align: left;
+        }
+
+        @media (max-width: 900px) {
+            .cta-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row .form-group {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(201, 162, 39, 0.1);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 15px rgba(201, 162, 39, 0.15);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient);
+            border: none;
+            border-radius: 10px;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(201, 162, 39, 0.3);
+        }
+
+        /* Adjust CTA content for grid */
+        .cta-content {
+            max-width: 1200px;
+            /* Increased from 800px */
+            padding: 3rem;
+            /* Reduced padding */
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: auto;
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            animation: zoom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        #lightbox-caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: var(--gray-light);
+            padding: 20px 0;
+            font-size: 1.1rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: var(--light);
+            font-size: 40px;
+            font-weight: 300;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 2001;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
+            <nav class="nav">
+                <a href="svatby.html">Svatby</a>
+                <a href="reality.html">Reality</a>
+                <a href="fotobudka.html">Fotobudky</a>
+                <a href="#sluzby">Služby</a>
+                <a href="#onas">O nás</a>
+                <a href="kontakt.html">Kontakt</a>
+                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+            </nav>
+            <button class="mobile-menu" aria-label="Menu">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                🎬 Profesionální video produkce
+            </div>
+            <h1>
+                Profesionální video produkce s <span>vizí</span>
+            </h1>
+            <p class="hero-subtitle">
+                Tvoříme vizuální obsah, který prodává, dojímá a zůstane v paměti. Svatby, firemní promo, realitní videa
+                i eventy v té nejvyšší kvalitě.
+            </p>
+            <div class="hero-buttons">
+                <a href="kontakt.html" class="btn btn-primary">
+                    Nezávazná poptávka
+                </a>
+                <a href="#portfolio" class="btn btn-outline">
+                    Podívejte se na naši práci
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number" data-target="500" data-suffix="+">0</div>
+                    <div class="stat-label">Natočených akcí</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="6" data-suffix="+">0</div>
+                    <div class="stat-label">Let zkušeností</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="5.0" data-suffix="" data-decimal="true">0</div>
+                    <div class="stat-label">Hodnocení Google</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="sluzby">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Naše služby</div>
+                <h2 class="section-title">Co pro vás můžeme <span>udělat</span>?</h2>
+                <p class="section-subtitle">Nabízíme komplexní video služby pro každou příležitost</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600');">
+                    <h3>Svatební videa</h3>
+                    <p>Zachytíme emoce vašeho velkého dne. Filmový příběh, který budete sledovat znovu a znovu.</p>
+                    <a href="svatby.html" class="service-link">Zjistit více</a>
+                </div>
+
+                <div class="service-card reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600');">
+                    <h3>Reality</h3>
+                    <p>Profesionální video prohlídky, dronové záběry a virtuální 3D prohlídky nemovitostí.</p>
+                    <a href="reality.html" class="service-link">Zjistit více</a>
+                </div>
+
+                <div class="service-card reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600');">
+                    <h3>Plesy a akce</h3>
+                    <p>Aftermovie, které zachytí atmosféru a energii vaší události.</p>
+                    <a href="plesy.html" class="service-link">Zjistit více</a>
+                </div>
+
+                <div class="service-card reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600');">
+                    <h3>Promo videa</h3>
+                    <p>Reklamní spoty a prezentační videa pro vaši firmu nebo projekt.</p>
+                    <a href="promo.html" class="service-link">Zjistit více →</a>
+                </div>
+
+                <div class="service-card reveal" style="background-image: url('fotobudka-bg.jpg');">
+                    <h3>Fotobudka</h3>
+                    <p>Zábava pro vaše hosty s neomezeným tiskem a online galerií.</p>
+                    <a href="fotobudka.html" class="service-link">Zjistit více →</a>
+                </div>
+
+                <div class="service-card reveal" style="background-image: url('360budka-bg.jpg');">
+                    <h3>360° Budka</h3>
+                    <p>Moderní zážitek pro vaše hosty – virální videa z 360° rotačního stojanu.</p>
+                    <a href="360budka.html" class="service-link">Zjistit více →</a>
+                </div>
+
+                <div class="service-card reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600');">
+                    <h3>Konference</h3>
+                    <p>Profesionální dokumentace konferencí, seminářů a firemních setkání.</p>
+                    <a href="konference.html" class="service-link">Zjistit více →</a>
+                </div>
+
+                <div class="service-card reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600');">
+                    <h3>Podcast</h3>
+                    <p>Natáčení podcastů ve vysoké kvalitě. Video i audio produkce.</p>
+                    <a href="podcast.html" class="service-link">Zjistit více →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O nás Section -->
+    <section class="about" id="onas">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">O nás</div>
+                <h2 class="section-title">Kdo <span>stojí</span> za IV Production</h2>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <p class="about-intro">Jmenuji se <strong>Geno Ivanov</strong> a jsem zakladatel IV Production.</p>
+
+                    <p>Se svoji ženou žiji nedaleko Jaroměře ve Východních Čechách, ale vzhledem k povaze mé práce
+                        navštěvuji různé kouty celé České republiky.</p>
+
+                    <p>Jsem vášnivý kameraman, který svoji práci bere jako poslání a proto se vždy snažím zachytit ty
+                        správné momenty, ke kterým se v budoucnu budete rádi s úsměvem na rtech vracet.</p>
+
+                    <p>Rád pro Vás natočím vše, co bude Vašim přáním. Věnuji se nejen svatbám, ale realizuji se i při
+                        natáčení různých akcí, plesů, konferencí, eventů či koncertů.</p>
+                </div>
+
+                <div class="about-team reveal">
+                    <h3
+                        style="background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        Náš tým</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="team-photo">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"
+                                    alt="Geno">
+                            </div>
+                            <div class="team-name">Geno</div>
+                            <div class="team-role">Zakladatel & Hlavní kameraman</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-photo">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face"
+                                    alt="Markéta">
+                            </div>
+                            <div class="team-name">Markéta</div>
+                            <div class="team-role">Kreativní ředitelka & Koordinace</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-photo">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face"
+                                    alt="Sofia">
+                            </div>
+                            <div class="team-name">Sofia</div>
+                            <div class="team-role">Kamera & Postprodukce & Grafika</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-photo">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face"
+                                    alt="Kuba">
+                            </div>
+                            <div class="team-name">Kuba</div>
+                            <div class="team-role">Kameraman</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Naše technika -->
+            <div class="tech-section reveal">
+                <h3 class="tech-title">Naše <span>technika</span></h3>
+                <p class="tech-intro">Používáme profesionální vybavení pro dosažení nejlepších výsledků</p>
+
+                <div class="tech-category">
+                    <h4 class="tech-category-title">Kamery</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <img src="tech-sony-a7siii.png" alt="Sony A7S III" class="tech-img">
+                            <div class="tech-name">Sony A7S III</div>
+                            <div class="tech-desc">Špičková kamera s neuvěřitelnou citlivostí na světlo, díky které
+                                zachytíme každý detail vaší svatby i v té nejtmavší atmosfře bez šumu. </div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-sony-a7iv.png" alt="Sony A7 IV" class="tech-img">
+                            <div class="tech-name">Sony A7 IV</div>
+                            <div class="tech-desc">Nejnovější hybridní technologie pro dokonale ostrý obraz v 4K
+                                rozlišení s věrným podáním barev vaší pleti.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-sony-a7iii.png" alt="Sony A7 III" class="tech-img">
+                            <div class="tech-name">Sony A7 III</div>
+                            <div class="tech-desc">Osvědčený full-frame standard, který nám slouží jako spolehlivá
+                                záložní kamera pro zachycení každého okamžiku z více úhlů.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-dji-osmo-pocket3.png" alt="DJI Osmo Pocket 3" class="tech-img">
+                            <div class="tech-name">DJI Osmo Pocket 3</div>
+                            <div class="tech-desc">Inovativní kamera s 1" snímačem, která nám umožňuje být nenápadní a
+                                zachytit ty nejupřímnější emoce přímo v centru dění.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-insta360-x3.png" alt="Insta360 X3" class="tech-img">
+                            <div class="tech-name">Insta360 X3</div>
+                            <div class="tech-desc">Unikátní 360° kamera pro kreativní záběry, která dodá vašemu videu
+                                dynamiku a perspektivu, jakou jinde nenajdete.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h4 class="tech-category-title">Objektivy</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <img src="tech-sony-35mm.png" alt="Sony 35mm f/1.4 GM" class="tech-img">
+                            <div class="tech-name">Sony 35mm f/1.4 GM</div>
+                            <div class="tech-desc">Mistrovský objektiv řady G Master s úchvatnou kresbou, který dodává
+                                záběrům ten pravý filmový vzhled.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-sony-50mm.png" alt="Sony 50mm f/1.2 GM" class="tech-img">
+                            <div class="tech-name">Sony 50mm f/1.2 GM</div>
+                            <div class="tech-desc">Extrémně světelný objektiv pro snové portréty s nádherně rozmazaným
+                                pozadím (bokehem), který oddělí vás od okolí.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-sony-135mm.png" alt="Sony 135mm f/1.8 GM" class="tech-img">
+                            <div class="tech-name">Sony 135mm f/1.8 GM</div>
+                            <div class="tech-desc">Teleobjektiv s nekompromisní ostrostí, kterým zachytíme vaše emoce na
+                                dálku, aniž byste o nás věděli.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-tamron-70-180.png" alt="Tamron 70-180 f/2.8 G2" class="tech-img">
+                            <div class="tech-name">Tamron 70-180 f/2.8 G2</div>
+                            <div class="tech-desc">Všestranný teleobjektiv, díky kterému nám neunikne žádný detail ani
+                                emoce, i když jsme na druhé straně sálu.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-tamron-28-75.png" alt="Tamron 28-75 f/2.8 G2" class="tech-img">
+                            <div class="tech-name">Tamron 28-75 f/2.8 G2</div>
+                            <div class="tech-desc">Náš univerzální pracant pro reportážní záběry, který zvládne zachytit
+                                celou scénu i detaily bez výměny objektivu.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-laowa-12mm.png" alt="Laowa 12mm f/2.8 Zero-D" class="tech-img">
+                            <div class="tech-name">Laowa 12mm f/2.8 Zero-D</div>
+                            <div class="tech-desc">Ultra-širokoúhlý objektiv s nulovým zkreslením pro epické záběry
+                                architektury a velkolepých prostorů.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h4 class="tech-category-title">Drony & Stabilizace</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <img src="tech-dji-air2s.png" alt="DJI Air 2S" class="tech-img">
+                            <div class="tech-name">DJI Air 2S</div>
+                            <div class="tech-desc">Dron s velkým 1" snímačem pro dechberoucí letecké záběry vaší svatby
+                                nebo lokace v kinematografické kvalitě 5.4K.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-dji-avata2.png" alt="DJI Avata 2" class="tech-img">
+                            <div class="tech-name">DJI Avata 2</div>
+                            <div class="tech-desc">FPV dron pro dynamické a akční průlety interiérem i exteriérem, které
+                                dodají vašemu videu moderní "drive".</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-dji-rs3.png" alt="DJI RS 3" class="tech-img">
+                            <div class="tech-name">DJI RS 3</div>
+                            <div class="tech-desc">Profesionální stabilizátor, díky kterému jsou všechny naše pohyby
+                                kamerou hladké jako ve filmu, bez jakéhokoliv třesu.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-dji-rsc2.png" alt="DJI RSC 2" class="tech-img">
+                            <div class="tech-name">DJI RSC 2</div>
+                            <div class="tech-desc">Kompaktní a lehký gimbal, který nám umožňuje být mobilní a kreativní
+                                po celý den natáčení.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h4 class="tech-category-title">Zvuk & Světla</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <img src="tech-dji-mic2.png" alt="DJI Mic 2" class="tech-img">
+                            <div class="tech-name">DJI Mic 2</div>
+                            <div class="tech-desc">Špičkový systém pro nahrávání zvuku v 32-bitové hloubce, který
+                                zaručí, že váš slib i proslovy budou znít křišťálově čistě.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-rode-wirelessgo2.png" alt="Rode Wireless GO II" class="tech-img">
+                            <div class="tech-name">Rode Wireless GO II</div>
+                            <div class="tech-desc">Spolehlivé záložní mikrofony, abychom měli jistotu, že nám neunikne
+                                žádné slovo ani v náročných podmínkách.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-lensbot-gl330.png" alt="Lensbot GL 330" class="tech-img">
+                            <div class="tech-name">Lensbot GL 330</div>
+                            <div class="tech-desc">Výkonné studiové světlo, které nám umožní vytvořit perfektní
+                                atmosféru a nasvícení i v naprosté tmě.</div>
+                        </div>
+                        <div class="tech-item">
+                            <img src="tech-lensbot-gl120rgb.png" alt="Lensbot GL 120RGB" class="tech-img">
+                            <div class="tech-name">Lensbot GL 120RGB</div>
+                            <div class="tech-desc">Kreativní RGB světla pro barvení scény, která dodají vašemu videu
+                                unikátní mood a vizuální styl.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Portfolio</div>
+                <h2 class="section-title">Naše práce <span>mluví</span> za nás</h2>
+                <p class="section-subtitle">Podívejte se na ukázky z našich projektů</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item reveal">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" alt="Svatba">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-category">Svatba</div>
+                        <div class="portfolio-title">Tereza & Martin</div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item reveal">
+                    <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800" alt="Reality">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-category">Reality</div>
+                        <div class="portfolio-title">Luxusní vila Praha</div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item reveal">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800" alt="Ples">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-category">Ples</div>
+                        <div class="portfolio-title">Maturitní ples 2025</div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item reveal">
+                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800" alt="Konference">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-category">Konference</div>
+                        <div class="portfolio-title">Business Summit 2025</div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item reveal">
+                    <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800" alt="Podcast">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-category">Podcast</div>
+                        <div class="portfolio-title">Naše studio</div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item reveal">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800" alt="Svatba">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-category">Svatba</div>
+                        <div class="portfolio-title">Petra & Jan</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="portfolio.html" class="btn btn-outline">Zobrazit více ukázek</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studio Section -->
+    <section class="studio" id="studio">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Studio</div>
+                <h2 class="section-title">Naše <span>studio</span></h2>
+                <p class="section-subtitle">Moderně vybavené studio pro natáčení podcastů a videí</p>
+            </div>
+            <div class="studio-content">
+                <div class="studio-image reveal">
+                    <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200"
+                        alt="IV Production Studio">
+                </div>
+                <div class="studio-info reveal">
+                    <h3>Profesionální prostředí</h3>
+                    <p>Disponujeme vlastním studiem vybaveným profesionálním osvětlením, kvalitními mikrofony a
+                        kamerami. Ideální pro natáčení podcastů, rozhovorů, produktových videí nebo firemních
+                        prezentací.</p>
+                    <ul class="studio-features">
+                        <li>4K kamery a profesionální osvětlení</li>
+                        <li>Kvalitní audio vybavení</li>
+                        <li>Zelené/černé pozadí</li>
+                        <li>Klimatizace a komfortní zázemí</li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn-primary">Rezervovat studio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="recenze">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Google recenze ⭐ 5.0</div>
+                <h2 class="section-title">Co o nás říkají <span>klienti</span></h2>
+                <p class="section-subtitle">Důvěřuje nám více než 500 spokojených zákazníků</p>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="testimonials-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">EK</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Eva K.</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Rádi bychom Vám touto formou ještě jednou poděkovali za úžasná videjka a za celý strávený
+                            den s námi. Jste úžasný pár, který jsme moc rádi poznali! Výsledná videa předčila naše
+                            očekávání, zachytili jste přesně ty momenty, které jsme chtěli. Všem nevěstám vřele
+                            doporučujeme!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">MS</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Monika Stejskalová</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Profesionální přístup, vědí, jaké momenty zachytit. Moc děkujeme za to, že nám natočili na
+                            památku náš svatební den! Geno a jeho tým jsou skvělí profesionálové, kteří vás celý den
+                            vedou a zároveň jsou nenápadní. Video jsme sledovali už minimálně 50x a stále nás dojímá.
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">MV</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Marek Veverka</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Vřele můžeme s manželkou doporučit, se svatebním videem jsme naprosto spokojení. Skvělá
+                            práce! Komunikace byla bezproblémová, video jsme měli hotové dříve, než bylo slíbeno.
+                            Kvalita záběrů je úžasná, střih profesionální. Díky moc za zachycení našeho dne!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">IS</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Iveta Schmiedlova</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Naprosto bez komentáře. Výsledek nás ohromil, bylo to přesně to, co jsme chtěli.
+                            Doporučujeme všem! Geno je neuvěřitelně šikovný a kreativní. Dokázal zachytit emoce, smích i
+                            slzy dojetí. Když jsme video poprvé viděli, brečeli jsme štěstím. Děkujeme!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">PH</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Petra Horáková</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Absolutně nejlepší rozhodnutí, které jsme pro naši svatbu udělali! Geno a jeho tým jsou
+                            profesionálové od A do Z. Komunikace skvělá, přístup k nám i hostům byl naprosto přátelský.
+                            Video nás dojímá pokaždé, když se na něj podíváme. Vřele doporučujeme každému!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">TM</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Tomáš Malý</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Fotobudka na našem plese byla absolutní hit! Hosté si ji zamilovali a fronty se netrhly celý
+                            večer. Obsluha byla profesionální a příjemná. Fotky byly v super kvalitě a online galerie
+                            fungovala skvěle. Určitě objednáme znovu na příští rok!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">LK</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Lucie Kratochvílová</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            360° budka byla hvězdou naší firemní akce! Kolegové se předháněli, kdo natočí nejlepší
+                            video. Výsledky byly úžasné a sdíleli jsme je na sociálních sítích firmy. Profesionální
+                            servis, rychlé dodání videí. Moc děkujeme a těšíme se na další spolupráci!
+                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">JN</div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Jan Novotný</div>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
+                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                alt="Google" class="google-logo">
+                        </div>
+                        <p class="testimonial-text">
+                            Natáčení podcastu v jejich studiu bylo skvělé! Profesionální prostředí, kvalitní zvuk i
+                            obraz. Geno nám poradil s nastavením a celý proces proběhl hladce. Výsledné video vypadá
+                            jako od velké produkční společnosti. Jednoznačně doporučuji všem podcasterům!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials-nav">
+                <button class="testimonial-prev" onclick="slideTestimonials(-1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+                <div class="testimonials-dots" id="testimonialDots"></div>
+                <button class="testimonial-next" onclick="slideTestimonials(1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </button>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://maps.app.goo.gl/ivproduction" target="_blank" class="btn btn-outline">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                    Zobrazit všech 50+ recenzí na Google
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners" id="partneri">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Důvěřují nám</div>
+                <h2 class="section-title">Naši <span>partneři</span></h2>
+            </div>
+
+            <div class="partners-wrapper">
+                <button class="partner-nav partner-prev" onclick="slidePartners(-1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+
+                <div class="partners-slider">
+                    <div class="partners-track" id="partnersTrack">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=HOTEL+NOVE+ADALBERTINUM"
+                            alt="Hotel Nové Adalbertinum" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=ALDIS+CONGRESS"
+                            alt="Aldis Congress Center" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=ZAMEK+HRADEK"
+                            alt="Zámek Hrádek u Nechanic" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=FARNOST+HK"
+                            alt="Farnost Hradec Králové" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=DJ+MARTIN+SOUND" alt="DJ Martin Sound"
+                            class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=KVETINY+ROMANTIKA"
+                            alt="Květiny Romantika" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=SWEET+DREAMS"
+                            alt="Cukrárna Sweet Dreams" class="partner-logo">
+                        <img src="https://placehold.co/200x80/1a1a2e/c9a227?text=FOTO+PETR+NOVAK"
+                            alt="Fotograf Petr Novák" class="partner-logo">
+                    </div>
+                </div>
+
+                <button class="partner-nav partner-next" onclick="slidePartners(1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-counter" data-target="500" data-suffix="+">0</div>
+                    <div class="stat-label">Natočených akcí</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-counter" data-target="210" data-suffix="+">0</div>
+                    <div class="stat-label">Svatebních videí</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-counter" data-target="6" data-suffix="+">0</div>
+                    <div class="stat-label">Let zkušeností</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-counter" data-target="100" data-suffix="%">0</div>
+                    <div class="stat-label">Spokojených klientů</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Otázky & Odpovědi</div>
+                <h2 class="section-title">Často kladené <span>otázky</span></h2>
+                <p class="section-subtitle">Nenašli jste odpověď? Neváhejte nás kontaktovat!</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Jak dlouho dopředu mám rezervovat termín?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Doporučujeme rezervovat minimálně 3–6 měsíců předem, zejména pro svatby v hlavní sezóně
+                        (květen–září). Pro ostatní služby stačí obvykle 2-4 týdny.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Působíte pouze v Hradci Králové?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Ne, působíme po celé České republice. Doprava je v ceně našich balíčků bez ohledu na vzdálenost.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Jak probíhá platba?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Při rezervaci vybíráme zálohu 30%, zbytek je splatný po předání hotového videa. Přijímáme platby
+                        převodem i v hotovosti.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Jak dlouho trvá zpracování videa?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Standardní doba zpracování je 4–6 týdnů od události. Express zpracování (do 2 týdnů) je možné za
+                        příplatek 3000 Kč.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Mohu si video před finalizací prohlédnout?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Ano! Před finálním předáním vám pošleme náhled ke schválení. Drobné úpravy (změna hudby, střih)
+                        jsou v ceně.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Co když bude špatné počasí?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Máme zkušenosti s natáčením za každého počasí. Případně můžeme využít alternativní lokace nebo
+                        naplánovat náhradní záběry.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="seo-content">
+        <div class="container">
+            <div class="seo-grid">
+                <div class="seo-block reveal">
+                    <h2>Profesionální <span>kameraman</span> pro vaše akce</h2>
+                    <p>
+                        Hledáte spolehlivého <strong>kameramana v Hradci Králové</strong> nebo <strong>Královéhradeckém
+                            kraji</strong>?
+                        IV Production je váš partner pro profesionální video produkci. Specializujeme se na
+                        <strong>svatební videa</strong>,
+                        <strong>aftermovie z plesů a akcí</strong>, <strong>natáčení podcastů</strong> a firemní
+                        prezentace.
+                    </p>
+                    <p>
+                        Naše služby <strong>kameramana na svatbu</strong> zahrnují kompletní dokumentaci vašeho velkého
+                        dne –
+                        od příprav až po večerní párty. Vytváříme emotivní <strong>svatební klip</strong>, který zachytí
+                        atmosféru a emoce tak, jak jste je prožívali.
+                    </p>
+                </div>
+
+                <div class="seo-block reveal">
+                    <h3>Aftermovie a <span>video z plesu</span></h3>
+                    <p>
+                        Pořádáte <strong>maturitní ples</strong>, firemní večírek nebo společenskou akci? Náš tým natočí
+                        profesionální <strong>aftermovie</strong>, které zachytí nejlepší momenty večera.
+                        <strong>Video z plesu</strong> je skvělou vzpomínkou pro všechny účastníky a perfektní propagací
+                        pro rok příští.
+                    </p>
+                    <p>
+                        Působíme primárně v <strong>Hradci Králové</strong>, <strong>Pardubicích</strong>,
+                        <strong>Náchodě</strong>,
+                        <strong>Trutnově</strong>, <strong>Jičíně</strong> a dalších městech <strong>východních
+                            Čech</strong>.
+                        Na požádání vyjíždíme po celé České republice.
+                    </p>
+                </div>
+
+                <div class="seo-block reveal">
+                    <h3>Natáčení <span>podcastů</span> a rozhovorů</h3>
+                    <p>
+                        Disponujeme moderním studiem pro <strong>natáčení podcastů</strong> a video rozhovorů. Nabízíme
+                        kompletní servis včetně profesionálního osvětlení, kvalitního zvuku a postprodukce. Váš
+                        <strong>podcast</strong> bude vypadat a znít profesionálně.
+                    </p>
+                    <p>
+                        Ať už potřebujete <strong>video pro YouTube</strong>, firemní interview nebo seriózní rozhovor –
+                        postaráme se o vše od A do Z. Studio se nachází v <strong>Královéhradeckém kraji</strong> s
+                        dobrou
+                        dostupností z celého regionu.
+                    </p>
+                </div>
+
+                <div class="seo-block reveal">
+                    <h3>Proč zvolit <span>IV Production</span>?</h3>
+                    <ul class="seo-list">
+                        <li><strong>6+ let zkušeností</strong> v oblasti video produkce</li>
+                        <li><strong>500+ natočených akcí</strong> včetně svateb, plesů a konferencí</li>
+                        <li>Profesionální vybavení: <strong>Sony A7S III</strong>, DJI drony, gimbaly</li>
+                        <li><strong>5.0 hodnocení na Google</strong> od spokojených klientů</li>
+                        <li>Působení po celém <strong>Královéhradeckém</strong> a <strong>Pardubickém kraji</strong>
+                        </li>
+                        <li>Flexibilní přístup a rychlé dodání hotových videí</li>
+                    </ul>
+                </div>
+
+                <div class="seo-block reveal">
+                    <h3><span>Fotobudka</span> na svatbu, ples i firemní akci</h3>
+                    <p>
+                        Hledáte <strong>fotobudku v Hradci Králové</strong> nebo okolí? Nabízíme pronájem
+                        <strong>fotobudky na svatbu</strong>, <strong>fotobudky na ples</strong> i
+                        <strong>fotobudky na firemní akce</strong>. Náš <strong>fotokoutek</strong> je vybaven
+                        profesionálním osvětlením, rekvizitami a okamžitým tiskem fotografií.
+                    </p>
+                    <p>
+                        <strong>Fotobudka na akci</strong> je skvělým zpestřením pro vaše hosty. Zajišťujeme
+                        <strong>pronájem fotobudky</strong> včetně obsluhy, neomezených výtisků a online galerie.
+                        <strong>Fotokoutek na svatbu</strong> nebo <strong>fotokoutek na ples</strong> u nás
+                        objednáte snadno a za férovou cenu. Působíme v <strong>Hradci Králové</strong>,
+                        <strong>Pardubicích</strong>, <strong>Náchodě</strong> a celém <strong>Královéhradeckém
+                            kraji</strong>.
+                    </p>
+                </div>
+
+                <div class="seo-block reveal">
+                    <h3><span>360° video budka</span> – virální zážitek pro hosty</h3>
+                    <p>
+                        Přineste na svou akci něco speciálního! <strong>360 video budka</strong> (známá také jako
+                        <strong>360spin</strong>, <strong>360° fotokoutek</strong> nebo <strong>spinner booth</strong>)
+                        vytváří efektní zpomalená videa, která jsou hitem sociálních sítí. <strong>360 video
+                            koutek</strong>
+                        je ideální volbou pro moderní akce.
+                    </p>
+                    <p>
+                        Nabízíme <strong>pronájem 360 budky</strong> na svatby, plesy, firemní večírky a speciální
+                        eventy. <strong>360° video budka v Hradci Králové</strong> a okolí – zajistíme instalaci,
+                        obsluhu i okamžité sdílení videí. <strong>360spin budka</strong> je skvělá pro
+                        <strong>maturitní plesy</strong>, <strong>svatební hostiny</strong> i <strong>firemní
+                            teambuildingy</strong>
+                        po celých <strong>východních Čechách</strong>.
+                    </p>
+                </div>
+
+                <div class="seo-block reveal">
+                    <h3>Kompletní <span>video a foto služby</span> na jednom místě</h3>
+                    <p>
+                        IV Production je vaše komplexní <strong>video produkce v Královéhradeckém kraji</strong>.
+                        Ať už hledáte <strong>kameramana na svatbu v Hradci Králové</strong>,
+                        <strong>fotobudku na maturitní ples</strong>, <strong>360° budku na firemní akci</strong>
+                        nebo profesionální <strong>natáčení podcasts</strong> – jsme tu pro vás.
+                    </p>
+                    <p>
+                        Náš tým zajistí <strong>svatební video</strong>, <strong>aftermovie z plesu</strong>,
+                        <strong>promo video pro firmy</strong>, <strong>realitní video</strong> i dokumentaci
+                        konferencí. Vše na jednom místě, s jednotnou kvalitou a osobním přístupem. Kontaktujte nás
+                        pro <strong>nezávaznou nabídku</strong> – působíme v <strong>Hradci Králové</strong>,
+                        <strong>Pardubicích</strong>, <strong>Liberci</strong>, <strong>Praze</strong> i po celé ČR.
+                    </p>
+                </div>
+
+                <div class="seo-block reveal">
+                    <h3>Video produkce <span>Hradec Králové</span> a okolí</h3>
+                    <p>
+                        Jsme <strong>video produkce z Hradce Králové</strong> s profesionálním přístupem a vášní
+                        pro kvalitní obraz. Nabízíme <strong>natáčení videí v Královéhradeckém kraji</strong>,
+                        <strong>Pardubickém kraji</strong> i po celé <strong>České republice</strong>. Specializujeme
+                        se na <strong>svatební videa</strong>, <strong>firemní prezentace</strong>,
+                        <strong>aftermovie z akcí</strong> a <strong>reklamní spoty</strong>.
+                    </p>
+                    <p>
+                        Vybavení na profesionální úrovni – <strong>Sony A7S III</strong>, <strong>DJI drony</strong>,
+                        <strong>gimbaly</strong> a studiové osvětlení. Každý projekt zpracujeme s důrazem na detail,
+                        od předprodukce přes natáčení až po finální <strong>střih a color grading</strong>.
+                        Kontaktujte nás pro <strong>nezávaznou konzultaci</strong> – jsme tu pro vás!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-glow"></div>
+        <div class="cta-particles" id="particles"></div>
+        <div class="cta-content reveal">
+            <div class="cta-grid">
+                <div class="cta-text">
+                    <h2>Napište nám o <span>vaší</span> představě</h2>
+                    <p style="margin-bottom: 2rem; color: var(--gray-light);">
+                        Máte dotaz nebo zájem o nezávaznou poptávku? Vyplňte formulář a my se vám ozveme co nejdříve.
+                        Rádi s vámi probereme detaily vaší svatby, plesu nebo firemní akce.
+                    </p>
+
+                    <div class="cta-trust" style="justify-content: flex-start; margin-bottom: 2rem;">
+                        <span>⭐ 5.0 na Google</span>
+                        <span>•</span>
+                        <span>✓ 500+ akcí</span>
+                    </div>
+
+                    <div class="cta-buttons" style="justify-content: flex-start;">
+                        <a href="tel:+420XXXXXXXXX" class="btn btn-outline">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" style="margin-right: 0.5rem">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            Zavolejte nám
+                        </a>
+                        <a href="mailto:info@ivproduction.cz" class="btn btn-outline">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" style="margin-right: 0.5rem">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            info@ivproduction.cz
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="name" placeholder="Vaše jméno *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email" placeholder="Váš e-mail *" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="tel" class="form-input" name="phone" placeholder="Telefon *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-input" name="event_date" placeholder="Datum akce *" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="address" placeholder="Adresa/Místo konání akce *"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-textarea" name="message"
+                            placeholder="Jak vám můžeme pomoci? (Typ akce, další detaily...)" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Odeslat nezávaznou poptávku</button>
+                    <p style="font-size: 0.8rem; color: var(--gray); margin-top: 1rem; text-align: center;">
+                        * Povinná pole. Odesláním souhlasíte se zpracováním osobních údajů.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo"><img src="logo-light.png" alt="IV Production"></a>
+                <p>Profesionální video produkce a fotobudky pro nezapomenutelné momenty.</p>
+                <div class="footer-social">
+                    <a href="https://facebook.com/ivproduction" class="social-btn" aria-label="Facebook"
+                        target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/ivproduction" class="social-btn" aria-label="Instagram"
+                        target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="https://tiktok.com/@ivproduction" class="social-btn" aria-label="TikTok" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com/@ivproduction" class="social-btn" aria-label="YouTube" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#0a0a0f" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Služby</h4>
+                <ul>
+                    <li><a href="svatby.html">Svatby</a></li>
+                    <li><a href="reality.html">Reality</a></li>
+                    <li><a href="plesy.html">Plesy</a></li>
+                    <li><a href="fotobudka.html">Fotobudka</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Informace</h4>
+                <ul>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="#faq">Časté otázky</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="tel:+420XXXXXXXXX">+420 XXX XXX XXX</a></li>
+                    <li><a href="mailto:info@ivproduction.cz">info@ivproduction.cz</a></li>
+                    <li>Hradec Králové a celá ČR</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-legal">
+            <a href="obchodni-podminky.html">Obchodní podmínky</a>
+            <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
+            <a href="marketingovy-souhlas.html">Marketingový souhlas</a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 IV Production. Všechna práva vyhrazena.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
+
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            backToTop.classList.toggle('visible', window.scrollY > 500);
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                if (revealTop < windowHeight - 150) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // FAQ Toggle
+        function toggleFaq(item) {
+            const wasActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!wasActive) item.classList.add('active');
+        }
+
+        // Tech Accordion Toggle
+        document.querySelectorAll('.tech-category-title').forEach(title => {
+            title.addEventListener('click', function () {
+                const category = this.parentElement;
+                const wasActive = category.classList.contains('active');
+
+                // Close all categories
+                document.querySelectorAll('.tech-category').forEach(cat => {
+                    cat.classList.remove('active');
+                });
+
+                // Toggle clicked category
+                if (!wasActive) {
+                    category.classList.add('active');
+                }
+            });
+        });
+
+        // Open first category by default
+        const firstCategory = document.querySelector('.tech-category');
+        if (firstCategory) {
+            firstCategory.classList.add('active');
+        }
+
+        // Unified Counter Animation
+        const runCounterAnimation = (el) => {
+            const target = parseFloat(el.getAttribute('data-target'));
+            const suffix = el.getAttribute('data-suffix') || '';
+            const isDecimal = el.getAttribute('data-decimal') === 'true';
+            const duration = 2000; // 2 seconds for all
+            const startTime = performance.now();
+
+            const update = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // EaseOutQuart function for smooth effect
+                const ease = 1 - Math.pow(1 - progress, 4);
+
+                const currentValue = target * ease;
+
+                if (isDecimal) {
+                    el.textContent = currentValue.toFixed(1) + suffix;
+                } else {
+                    el.textContent = Math.floor(currentValue) + suffix;
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = (isDecimal ? target.toFixed(1) : target) + suffix;
+                    el.classList.add('counted');
+                }
+            };
+
+            requestAnimationFrame(update);
+        };
+
+        // Observer for all stats
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Check if already animated to prevent re-running
+                    if (!entry.target.classList.contains('counted-started')) {
+                        entry.target.classList.add('counted-started');
+                        runCounterAnimation(entry.target);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe elements from both sections
+        document.querySelectorAll('.stat-number, .stat-counter').forEach(el => {
+            statsObserver.observe(el);
+        });
+
+        // Lightbox Functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById("lightbox-img");
+        const captionText = document.getElementById("lightbox-caption");
+
+        document.querySelectorAll('.portfolio-item img, .studio-image img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function () {
+                lightbox.style.display = "flex";
+                lightboxImg.src = this.src;
+                // Use alt text or portfolio title for caption
+                const title = this.parentElement.querySelector('.portfolio-title')?.innerText || this.alt;
+                captionText.innerHTML = title;
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.style.display = "none";
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        document.querySelector('.lightbox-close').onclick = closeLightbox;
+
+        lightbox.onclick = function (e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        }
+
+        // Keydown 'Esc' to close
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+    </script>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="lightbox-caption"></div>
+    </div>
+    <!-- Global Floating Elements -->
+    <style>
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--dark);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--gradient);
+            color: var(--dark);
+            border-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+        }
+
+        /* Quick Contact */
+        .quick-contact {
+            position: fixed;
+            right: 2rem;
+            bottom: 6rem;
+            /* Stacks above Back to Top */
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 10000;
+        }
+
+        .qc-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qc-btn-whatsapp {
+            background: rgba(10, 10, 15, 0.8);
+            color: #25D366;
+        }
+
+        .qc-btn-messenger {
+            background: rgba(10, 10, 15, 0.8);
+            color: #0084FF;
+        }
+
+        .qc-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: var(--gradient);
+            /* Gold Gradient on Hover */
+            border-color: transparent;
+            box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
+        }
+
+        .qc-btn:hover svg {
+            fill: var(--dark);
+            /* Icon turns dark on gold background */
+        }
+
+        .qc-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+            transition: fill 0.3s ease;
+            z-index: 2;
+        }
+    </style>
+
+    <a href="#" class="back-to-top" onclick="scrollToTop(); return false;">
+        <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </a>
+
+    <div class="quick-contact">
+        <!-- Messenger (Corrected Icon) -->
+        <a href="https://m.me/ivproductioncz" target="_blank" class="qc-btn qc-btn-messenger"
+            title="Napsat na Messenger">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 2C6.347 2 2 6.167 2 11.25c0 2.9 1.416 5.503 3.693 7.21l-.57 2.922 3.093-1.637c1.196.44 2.493.687 3.847.687 5.626 0 10.187-4.167 10.187-9.25C22.187 6.167 17.627 2 12 2zm1.217 12.35l-2.023-3.136-4.07 3.136 4.39-4.522 2.07 3.083 4.02-3.083-4.387 4.522z" />
+            </svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/420773210194" target="_blank" class="qc-btn qc-btn-whatsapp" title="Napsat na WhatsApp">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+        </a>
+    </div>
+
+    <script>
+        // Back to Top Logic
+        const backToTopBtn = document.querySelector('.back-to-top');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>

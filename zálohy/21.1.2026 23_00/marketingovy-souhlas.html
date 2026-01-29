@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marketingový souhlas - IV Production, video produkce a fotobudky">
+    <title>Marketingový souhlas | IV Production</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #C9A227;
+            --gold-dark: #8B6914;
+            --gold-light: #E8C547;
+            --gold-shine: #FFE55C;
+            --primary: var(--gold);
+            --secondary: #12121A;
+            --dark: #0A0A0F;
+            --light: #F8F8FA;
+            --gray: #6B7280;
+            --gray-light: #9CA3AF;
+            --gradient: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 25%, var(--gold-shine) 50%, var(--gold) 75%, var(--gold-dark) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.8;
+        }
+
+        .header {
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--gold-shine);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: var(--dark) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+        }
+
+        .legal-hero {
+            padding: 10rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%);
+            text-align: center;
+        }
+
+        .legal-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .legal-hero p {
+            color: var(--gray-light);
+            font-size: 1.1rem;
+        }
+
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .legal-section {
+            margin-bottom: 3rem;
+        }
+
+        .legal-section h2 {
+            font-size: 1.5rem;
+            color: var(--light);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .legal-section h2 span {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .legal-section h3 {
+            font-size: 1.2rem;
+            color: var(--light);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .legal-section p {
+            color: var(--gray-light);
+            margin-bottom: 1rem;
+        }
+
+        .legal-section ul,
+        .legal-section ol {
+            color: var(--gray-light);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            background: var(--secondary);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .footer p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: gap 0.3s ease;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .back-link span {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-link:hover {
+            gap: 1rem;
+        }
+
+        .info-box {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box strong {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .consent-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(201, 162, 39, 0.05));
+            border: 2px solid rgba(201, 162, 39, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .consent-box h3 {
+            color: var(--light);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .consent-box h3 span {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .consent-box p {
+            color: var(--gray-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .consent-btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .consent-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(201, 162, 39, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .legal-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="homepage.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
+            <nav class="nav">
+                <a href="homepage.html">Domů</a>
+                <a href="homepage.html#sluzby">Služby</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="kontakt.html" class="nav-cta">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="legal-hero">
+        <h1>Marketingový souhlas</h1>
+        <p>Souhlas se zasíláním obchodních sdělení a použitím záběrů</p>
+    </section>
+
+    <main class="legal-content">
+        <a href="homepage.html" class="back-link">← <span>Zpět</span> na hlavní stránku</a>
+
+        <section class="legal-section">
+            <h2>1. O tomto <span>souhlasu</span></h2>
+            <p>Tento dokument upravuje podmínky udělení souhlasu se zasíláním obchodních sdělení a s použitím vizuálního
+                obsahu (fotografií a videí) pro marketingové účely společnosti IV Production.</p>
+            <p>Udělení souhlasu je dobrovolné a nemá vliv na poskytnutí objednaných služeb.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>2. Souhlas se <span>zasíláním</span> obchodních sdělení</h2>
+            <p>Udělením tohoto souhlasu souhlasíte s tím, že vám budeme zasílat:</p>
+            <ul>
+                <li>Informace o novinkách a aktuálních nabídkách</li>
+                <li>Pozvánky na speciální akce a slevy</li>
+                <li>Tipy a inspirace z oblasti video produkce</li>
+                <li>Informace o nových službách</li>
+            </ul>
+            <p>Obchodní sdělení budeme zasílat na vámi poskytnutou e-mailovou adresu maximálně 2× měsíčně.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>3. Souhlas s použitím <span>záběrů</span></h2>
+            <p>Udělením tohoto souhlasu souhlasíte s tím, že IV Production může použít fotografie a videozáznamy z vaší
+                akce pro následující účely:</p>
+            <ul>
+                <li><strong>Portfolio</strong> – ukázky práce na webových stránkách</li>
+                <li><strong>Sociální sítě</strong> – prezentace na Facebook, Instagram, TikTok, YouTube</li>
+                <li><strong>Reklamní materiály</strong> – tištěné i digitální propagační materiály</li>
+                <li><strong>Reference</strong> – ukázky pro potenciální klienty</li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>Důležité:</strong> Vždy dbáme na důstojné a profesionální použití záběrů. Nikdy nebudeme
+                    zveřejňovat záběry, které by mohly být vnímány jako nevhodné nebo znevažující.</p>
+            </div>
+        </section>
+
+        <section class="legal-section">
+            <h2>4. Doba <span>platnosti</span> souhlasu</h2>
+            <p>Souhlas je udělen na dobu neurčitou, dokud jej neodvoláte.</p>
+            <p>V případě souhlasu s použitím záběrů platí souhlas po dobu 10 let od vytvoření záznamu, není-li dohodnuto
+                jinak.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>5. <span>Odvolání</span> souhlasu</h2>
+            <p>Svůj souhlas můžete kdykoli odvolat, a to:</p>
+            <ul>
+                <li><strong>E-mailem</strong> na adresu info@ivproduction.cz</li>
+                <li><strong>Telefonicky</strong> na číslo +420 XXX XXX XXX</li>
+                <li><strong>Písemně</strong> na adresu sídla společnosti</li>
+                <li><strong>Odhlášením</strong> z odběru newsletteru (odkaz v každém e-mailu)</li>
+            </ul>
+            <p>Odvolání souhlasu nemá vliv na zákonnost zpracování před jeho odvoláním.</p>
+            <p>Po odvolání souhlasu s použitím záběrů odstraníme vaše záběry z propagačních materiálů v přiměřené lhůtě
+                (zpravidla do 30 dnů).</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>6. Vaše <span>práva</span></h2>
+            <p>Máte právo:</p>
+            <ul>
+                <li>Požádat o informace, jaké záběry používáme</li>
+                <li>Požádat o odstranění konkrétních záběrů</li>
+                <li>Vznést námitku proti použití záběrů</li>
+                <li>Podat stížnost u Úřadu pro ochranu osobních údajů</li>
+            </ul>
+        </section>
+
+        <div class="consent-box">
+            <h3>Chcete udělit nebo <span>odvolat</span> souhlas?</h3>
+            <p>Kontaktujte nás e-mailem nebo telefonicky a my váš požadavek vyřídíme.</p>
+            <a href="mailto:info@ivproduction.cz?subject=Marketingový souhlas" class="consent-btn">Kontaktovat nás</a>
+        </div>
+
+        <section class="legal-section">
+            <h2>7. <span>Kontaktní</span> údaje</h2>
+            <div class="info-box">
+                <p><strong>IV Production</strong></p>
+                <p>E-mail: info@ivproduction.cz</p>
+                <p>Telefon: +420 XXX XXX XXX</p>
+                <p>Adresa: Hradec Králové</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 IV Production. Všechna práva vyhrazena. | <a href="homepage.html">Zpět na hlavní stránku</a></p>
+    </footer>
+</body>
+
+</html>

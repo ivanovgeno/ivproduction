@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Obchodní podmínky IV Production - video produkce a fotobudky">
+    <title>Obchodní podmínky | IV Production</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #C9A227;
+            --gold-dark: #8B6914;
+            --gold-light: #E8C547;
+            --gold-shine: #FFE55C;
+            --primary: var(--gold);
+            --secondary: #12121A;
+            --dark: #0A0A0F;
+            --light: #F8F8FA;
+            --gray: #6B7280;
+            --gray-light: #9CA3AF;
+            --gradient: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 25%, var(--gold-shine) 50%, var(--gold) 75%, var(--gold-dark) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.8;
+        }
+
+        .header {
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--gold-shine);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: var(--dark) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+        }
+
+        .legal-hero {
+            padding: 10rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%);
+            text-align: center;
+        }
+
+        .legal-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .legal-hero p {
+            color: var(--gray-light);
+            font-size: 1.1rem;
+        }
+
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .legal-section {
+            margin-bottom: 3rem;
+        }
+
+        .legal-section h2 {
+            font-size: 1.5rem;
+            color: var(--light);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .legal-section h2 span {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .legal-section h3 {
+            font-size: 1.2rem;
+            color: var(--light);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .legal-section p {
+            color: var(--gray-light);
+            margin-bottom: 1rem;
+        }
+
+        .legal-section ul,
+        .legal-section ol {
+            color: var(--gray-light);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            background: var(--secondary);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .footer p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: gap 0.3s ease;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .back-link span {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-link:hover {
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .legal-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="homepage.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
+            <nav class="nav">
+                <a href="homepage.html">Domů</a>
+                <a href="homepage.html#sluzby">Služby</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="kontakt.html" class="nav-cta">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="legal-hero">
+        <h1>Obchodní podmínky</h1>
+        <p>Platné od 1. ledna 2026</p>
+    </section>
+
+    <main class="legal-content">
+        <a href="homepage.html" class="back-link">← <span>Zpět</span> na hlavní stránku</a>
+
+        <section class="legal-section">
+            <h2>1. <span>Úvodní</span> ustanovení</h2>
+            <p>Tyto obchodní podmínky (dále jen „OP") upravují vzájemná práva a povinnosti mezi poskytovatelem služeb a
+                zákazníkem.</p>
+            <p><strong>Poskytovatel:</strong> IV Production, IČO: XXXXXXXX, se sídlem Hradec Králové (dále jen
+                „Poskytovatel")</p>
+            <p>Tyto OP se vztahují na všechny služby poskytované Poskytovatelem, zejména na natáčení svatebních videí,
+                realitních videí, aftermovie, promo videí, pronájem fotobudky a 360° video budky.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>2. <span>Objednávka</span> a uzavření smlouvy</h2>
+            <p>2.1. Objednávka služeb se provádí prostřednictvím kontaktního formuláře, e-mailu nebo telefonicky.</p>
+            <p>2.2. Smlouva je uzavřena potvrzením objednávky ze strany Poskytovatele a úhradou zálohy.</p>
+            <p>2.3. Záloha činí 50 % z celkové ceny služby a je nevratná v případě zrušení ze strany zákazníka méně než
+                30 dní před akcí.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>3. <span>Ceny</span> a platební podmínky</h2>
+            <p>3.1. Ceny služeb jsou uvedeny v aktuálním ceníku nebo individuální nabídce.</p>
+            <p>3.2. Poskytovatel není plátcem DPH.</p>
+            <p>3.3. Doplatek je splatný nejpozději 7 dní před konáním akce nebo dle individuální dohody.</p>
+            <p>3.4. V případě prodlení s platbou si Poskytovatel vyhrazuje právo nepředat výsledné dílo do úplného
+                zaplacení.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>4. <span>Dodání</span> díla</h2>
+            <p>4.1. Termín dodání hotového videa je zpravidla 6–12 týdnů od konání akce, není-li dohodnuto jinak.</p>
+            <p>4.2. Video je dodáno v digitální podobě prostřednictvím odkazu ke stažení.</p>
+            <p>4.3. Surové záběry nejsou součástí dodávky, pokud není výslovně dohodnuto jinak.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>5. <span>Autorská</span> práva</h2>
+            <p>5.1. Poskytovatel si ponechává autorská práva k vytvořeným dílům.</p>
+            <p>5.2. Zákazník získává nevýhradní licenci k užití díla pro osobní účely.</p>
+            <p>5.3. Poskytovatel si vyhrazuje právo použít dílo pro vlastní propagační účely (portfolio, sociální sítě),
+                pokud zákazník písemně nevyjádří nesouhlas.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>6. <span>Storno</span> podmínky</h2>
+            <ul>
+                <li><strong>Více než 60 dní před akcí:</strong> Vrácení zálohy v plné výši</li>
+                <li><strong>30–60 dní před akcí:</strong> Vrácení 50 % zálohy</li>
+                <li><strong>Méně než 30 dní před akcí:</strong> Záloha je nevratná</li>
+                <li><strong>Méně než 14 dní před akcí:</strong> Splatná je celá cena služby</li>
+            </ul>
+            <p>V případě nemoci nebo vyšší moci na straně Poskytovatele bude zajištěna adekvátní náhrada nebo vrácení
+                platby.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>7. <span>Reklamace</span></h2>
+            <p>7.1. Reklamace je nutné uplatnit písemně do 14 dnů od převzetí díla.</p>
+            <p>7.2. Drobné technické nedokonalosti vyplývající z povahy akce (špatné osvětlení, hluk apod.) nejsou
+                důvodem k reklamaci.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>8. <span>Závěrečná</span> ustanovení</h2>
+            <p>8.1. Tyto OP jsou platné a účinné od 1. 1. 2026.</p>
+            <p>8.2. Poskytovatel si vyhrazuje právo na změnu těchto OP.</p>
+            <p>8.3. Vztahy neupravené těmito OP se řídí právním řádem České republiky.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 IV Production. Všechna práva vyhrazena. | <a href="homepage.html">Zpět na hlavní stránku</a></p>
+    </footer>
+</body>
+
+</html>

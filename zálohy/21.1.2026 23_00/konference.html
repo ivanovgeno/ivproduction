@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natáčení konferencí | IV Production – Profesionální dokumentace</title>
+    <meta name="description"
+        content="Profesionální natáčení konferencí, seminářů a firemních akcí. Více kamer, živý přenos, střih. ✓ Celá ČR">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --gold-dark: #8B6914;
+            --gold: #C9A227;
+            --gold-light: #E8C547;
+            --gold-shine: #FFE55C;
+            --primary: var(--gold);
+            --secondary: #12121A;
+            --dark: #0A0A0F;
+            --light: #F8F8FA;
+            --gray: #6B7280;
+            --gray-light: #9CA3AF;
+            --gradient: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            --shadow-gold: 0 10px 40px rgba(201, 162, 39, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--gold-shine);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: var(--dark) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+        }
+
+        @media (max-width: 900px) {
+            .nav {
+                display: none;
+            }
+        }
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1920') center/cover;
+            filter: brightness(0.5);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 10, 15, 0.2) 0%, rgba(10, 10, 15, 0.8) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray-light);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, rgba(18, 18, 26, 0.9), rgba(10, 10, 15, 0.95));
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            transition: all 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 162, 39, 0.4);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-title span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-text {
+            color: var(--gray-light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: linear-gradient(145deg, rgba(18, 18, 26, 0.9), rgba(10, 10, 15, 0.95));
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            transition: all 0.4s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(201, 162, 39, 0.4);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-price span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray-light);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--gold);
+            margin-right: 0.75rem;
+        }
+
+        .cta-section {
+            padding: 5rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), transparent);
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section p {
+            color: var(--gray-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            background: var(--secondary);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .footer p {
+            color: var(--gray);
+        }
+
+        .footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="homepage.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
+            <nav class="nav">
+                <a href="homepage.html">Domů</a>
+                <a href="homepage.html#sluzby">Služby</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="kontakt.html" class="nav-cta">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Natáčení <span>konferencí</span></h1>
+            <p>Profesionální video dokumentace vašich firemních akcí, seminářů a konferencí. Více kamer, živý přenos,
+                kompletní postprodukce.</p>
+            <a href="kontakt.html" class="btn btn-primary">Nezávazná poptávka</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Co <span>zajistíme</span></h2>
+            <p class="section-subtitle">Komplexní služby pro vaši firemní akci</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎥</div>
+                    <h3 class="feature-title"><span>Multi-kamera</span> setup</h3>
+                    <p class="feature-text">Až 4 kamery pro zachycení všech důležitých momentů z různých úhlů.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3 class="feature-title"><span>Živý</span> přenos</h3>
+                    <p class="feature-text">Live streaming na YouTube, Facebook nebo vaši firemní platformu.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎤</div>
+                    <h3 class="feature-title"><span>Profesionální</span> zvuk</h3>
+                    <p class="feature-text">Kvalitní nahrávka přednášek s bezdrátovými mikrofony.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✂️</div>
+                    <h3 class="feature-title"><span>Střih</span> a postprodukce</h3>
+                    <p class="feature-text">Kompletní zpracování záznamu včetně prezentací a grafiky.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title"><span>Integrace</span> prezentací</h3>
+                    <p class="feature-text">Vložení slidů, grafů a prezentačních materiálů do videa.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <h3 class="feature-title"><span>Highlight</span> video</h3>
+                    <p class="feature-text">Krátký sestřih pro sociální sítě a propagaci.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--secondary);">
+        <div class="container">
+            <h2 class="section-title">Ceník <span>služeb</span></h2>
+            <p class="section-subtitle">Individuální cenová nabídka dle rozsahu akce</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Základní záznam</div>
+                    <div class="pricing-price"><span>od 12 000 Kč</span></div>
+                    <ul class="pricing-features">
+                        <li>1-2 kamery</li>
+                        <li>Záznam přednášek</li>
+                        <li>Základní střih</li>
+                        <li>Dodání plného záznamu</li>
+                        <li>Do 4 hodin akce</li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                        zájem</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-name">Profesionální</div>
+                    <div class="pricing-price"><span>od 25 000 Kč</span></div>
+                    <ul class="pricing-features">
+                        <li>3-4 kamery</li>
+                        <li>Profesionální zvuk</li>
+                        <li>Integrace prezentací</li>
+                        <li>Střih po jednotlivých blocích</li>
+                        <li>Highlight video</li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                        zájem</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-name">Live Stream</div>
+                    <div class="pricing-price"><span>od 35 000 Kč</span></div>
+                    <ul class="pricing-features">
+                        <li>Živý přenos na platformy</li>
+                        <li>Multi-kamera režie</li>
+                        <li>Grafické prvky v reálném čase</li>
+                        <li>Technická podpora</li>
+                        <li>Záznam živého vysílání</li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                        zájem</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Plánujete <span>konferenci</span>?</h2>
+            <p>Kontaktujte nás a připravíme nabídku na míru vaší akci.</p>
+            <a href="kontakt.html" class="btn btn-primary">Domluvit schůzku</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 IV Production. Všechna práva vyhrazena. | <a href="homepage.html">Zpět na hlavní stránku</a></p>
+    </footer>
+</body>
+
+</html>

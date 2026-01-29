@@ -1,0 +1,14 @@
+# IV Production - robots.txt
+# https://www.ivproduction.cz
+
+User-agent: *
+Allow: /
+
+# Zákaz indexace záložních složek
+Disallow: /zálohy/
+
+# Sitemap
+Sitemap: https://www.ivproduction.cz/sitemap.xml
+
+# Crawl-delay pro slušné boty
+Crawl-delay: 1

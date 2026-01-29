@@ -1,0 +1,804 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360° Video Budka | IV Production – Virální zážitek pro vaše hosty</title>
+    <meta name="description"
+        content="360° video budka pro svatby, plesy a firemní akce. Virální videa, okamžité sdílení. ✓ Obsluha v ceně ✓ Celá ČR">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --gold-dark: #8B6914;
+            --gold: #C9A227;
+            --gold-light: #E8C547;
+            --gold-shine: #FFE55C;
+            --primary: var(--gold);
+            --secondary: #12121A;
+            --dark: #0A0A0F;
+            --light: #F8F8FA;
+            --gray: #6B7280;
+            --gray-light: #9CA3AF;
+            --gradient: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            --shadow-gold: 0 10px 40px rgba(201, 162, 39, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+                .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            padding: 0.5rem 0.75rem;
+        }
+
+        .nav a:not(.nav-cta):hover {
+            color: var(--gold-shine);
+            text-shadow: 0 0 15px rgba(201, 162, 39, 1), 0 0 30px rgba(201, 162, 39, 0.6);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            color: var(--dark) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 600 !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(201, 162, 39, 0.3);
+        }
+
+        /* Dropdown Menu */
+        .nav-dropdown { position: relative; display: flex; align-items: center; }
+        .nav-dropdown-trigger { cursor: pointer; }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(18, 18, 26, 0.98);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 16px;
+            padding: 0.75rem;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            z-index: 1001;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: var(--gray-light) !important;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-dropdown-menu a:hover {
+            background: rgba(201, 162, 39, 0.1);
+            color: var(--gold) !important;
+        }
+
+        @media (max-width: 900px) {
+            .nav {
+                display: none;
+            }
+        }
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('360budka-bg.jpg') center/cover;
+            filter: brightness(0.5);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 10, 15, 0.2) 0%, rgba(10, 10, 15, 0.8) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray-light);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Video Showcase */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, rgba(18, 18, 26, 0.9), rgba(10, 10, 15, 0.95));
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            transition: all 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 162, 39, 0.4);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-title span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-text {
+            color: var(--gray-light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: linear-gradient(145deg, rgba(18, 18, 26, 0.9), rgba(10, 10, 15, 0.95));
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            transition: all 0.4s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(201, 162, 39, 0.4);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--gold);
+        }
+
+        .pricing-card.featured::before {
+            content: 'NEJOBLÍBENĚJŠÍ';
+            position: absolute;
+            top: 1.5rem;
+            right: -3rem;
+            background: var(--gradient);
+            color: var(--dark);
+            padding: 0.5rem 4rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+        }
+
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-price span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray-light);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--gold);
+            margin-right: 0.75rem;
+        }
+
+        .cta-section {
+            padding: 5rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), transparent);
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section p {
+            color: var(--gray-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            background: var(--secondary);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .footer p {
+            color: var(--gray);
+        }
+
+        .footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.05), transparent);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(18, 18, 26, 0.9), rgba(10, 10, 15, 0.95));
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            transition: all 0.4s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 162, 39, 0.3);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--gray-light);
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .testimonial-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            padding: 1rem 0;
+            background: rgba(10, 10, 15, 0.8);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+            margin-top: 77px;
+        }
+
+        .breadcrumbs-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumbs a {
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumbs a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumbs span {
+            color: var(--gray);
+        }
+
+        .breadcrumbs .current {
+            color: var(--gold);
+        }
+    
+        /* Dropdown Menu */
+        .nav-dropdown { position: relative; display: flex; align-items: center; }
+        .nav-dropdown-trigger { cursor: pointer; }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(18, 18, 26, 0.98);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 16px;
+            padding: 0.75rem;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            z-index: 1001;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: var(--gray-light) !important;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-dropdown-menu a:hover {
+            background: rgba(201, 162, 39, 0.1);
+            color: var(--gold) !important;
+        }</style>
+</head>
+
+<body>
+                    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="homepage.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
+            <nav class="nav">
+                <a href="svatby.html">Svatby</a>
+                <a href="reality.html">Reality</a>
+                <div class="nav-dropdown">
+                    <a href="fotobudka.html" class="nav-dropdown-trigger">Fotobudky ▾</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="fotobudka.html">Fotobudka</a>
+                        <a href="360budka.html">360° Budka</a>
+                    </div>
+                </div>
+                <a href="plesy.html">Plesy</a>
+                <div class="nav-dropdown">
+                    <a href="homepage.html#sluzby" class="nav-dropdown-trigger">Další služby ▾</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="konference.html">Konference</a>
+                        <a href="podcast.html">Podcast</a>
+                    </div>
+                </div>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html">Blog</a>
+                <a href="kontakt.html">Kontakt</a>
+                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs">
+        <div class="breadcrumbs-inner">
+            <a href="homepage.html">Domů</a>
+            <span>›</span>
+            <a href="homepage.html#sluzby">Služby</a>
+            <span>›</span>
+            <span class="current">360° Budka</span>
+        </div>
+    </nav>
+
+    <section class="hero" style="margin-top: 0; min-height: 60vh;">
+        <div class="hero-content">
+            <h1><span>360° Video</span> Budka</h1>
+            <p>Virální zážitek pro vaše hosty! Efektní zpomalená videa z rotačního stojanu, která jsou hitem sociálních
+                sítí.</p>
+            <a href="kontakt.html" class="btn btn-primary">Nezávazná poptávka</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Co je <span>360° budka</span>?</h2>
+            <p class="section-subtitle">Moderní atrakce pro svatby, plesy a firemní akce</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title"><span>Virální</span> videa</h3>
+                    <p class="feature-text">Efektní slow-motion videa, která jsou perfektní pro TikTok a Instagram.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title"><span>360°</span> rotace</h3>
+                    <p class="feature-text">Plynulá rotace kamery kolem hostů pro dramatický efekt.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title"><span>Okamžité</span> sdílení</h3>
+                    <p class="feature-text">Hotové video na mobilu hostů během pár sekund.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3 class="feature-title"><span>Vlastní</span> hudba</h3>
+                    <p class="feature-text">Výběr z knihovny hudby nebo vaše vlastní skladba.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title"><span>Custom</span> branding</h3>
+                    <p class="feature-text">Logo, barvy a text podle vaší akce nebo firemního stylu.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👔</div>
+                    <h3 class="feature-title"><span>Obsluha</span> v ceně</h3>
+                    <p class="feature-text">Profesionální operátor, který se o vše postará.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Showcase Section -->
+    <section class="section" style="background: var(--secondary);">
+        <div class="container">
+            <h2 class="section-title">Podívejte se na <span>ukázku</span></h2>
+            <p class="section-subtitle">360° budka v akci</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen
+                    loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Ceník <span>360° budky</span></h2>
+            <p class="section-subtitle">Pronájem včetně dopravy, instalace a obsluhy</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">3 hodiny</div>
+                    <div class="pricing-price"><span>8 000 Kč</span></div>
+                    <ul class="pricing-features">
+                        <li>3 hodiny provozu</li>
+                        <li>Neomezený počet videí</li>
+                        <li>Okamžité sdílení</li>
+                        <li>Profesionální obsluha</li>
+                        <li>Doprava do 50 km zdarma</li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn-primary"
+                        style="width: 100%; justify-content: center;">Rezervovat</a>
+                </div>
+                <div class="pricing-card" style="position: relative; overflow: hidden;">
+                    <div class="pricing-name">5 hodin</div>
+                    <div class="pricing-price"><span>11 000 Kč</span></div>
+                    <ul class="pricing-features">
+                        <li>5 hodin provozu</li>
+                        <li>Neomezený počet videí</li>
+                        <li>Okamžité sdílení</li>
+                        <li>Custom branding</li>
+                        <li>Doprava do 100 km zdarma</li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn-primary"
+                        style="width: 100%; justify-content: center;">Rezervovat</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-name">Celá akce</div>
+                    <div class="pricing-price"><span>15 000 Kč</span></div>
+                    <ul class="pricing-features">
+                        <li>Až 8 hodin provozu</li>
+                        <li>Neomezený počet videí</li>
+                        <li>Premium efekty</li>
+                        <li>Rekvizity a doplňky</li>
+                        <li>Doprava po celé ČR</li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn-primary"
+                        style="width: 100%; justify-content: center;">Rezervovat</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title reveal">Co říkají <span>hosté</span></h2>
+            <p class="section-subtitle reveal">Ohlas na 360° budku</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"360° budka byla absolutní hit naší svatby! Hosté se bavíli celý večer a
+                        videa jsou fantastická."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">EK</div>
+                        <div class="testimonial-info">
+                            <h4>Eva Kowalská</h4>
+                            <p>Nevěsta, Svatba 2025</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Perfektní atrakce na firemní akci. Všichni kolegové si to užili a
+                        sdíleli videa na sociálních sítích."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RN</div>
+                        <div class="testimonial-info">
+                            <h4>Robert Novák</h4>
+                            <p>HR Manager, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Udělejte z vaší akce <span>virální hit</span></h2>
+            <p>Rezervujte 360° budku a zajistěte hostům nezapomenutelný zážitek.</p>
+            <a href="kontakt.html" class="btn btn-primary">Rezervovat termín</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 IV Production. Všechna práva vyhrazena. | <a href="homepage.html">Zpět na hlavní stránku</a></p>
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                if (revealTop < windowHeight - 100) el.classList.add('active');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
+
+</html>

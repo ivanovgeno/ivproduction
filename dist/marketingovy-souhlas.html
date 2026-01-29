@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marketingový souhlas - IV Production, video produkce a fotobudky">
+    <title>Marketingový souhlas | IV Production</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #C9A227;
+            --gold-dark: #8B6914;
+            --gold-light: #E8C547;
+            --gold-shine: #FFE55C;
+            --primary: var(--gold);
+            --secondary: #12121A;
+            --dark: #0A0A0F;
+            --light: #F8F8FA;
+            --gray: #6B7280;
+            --gray-light: #9CA3AF;
+            --gradient: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 25%, var(--gold-shine) 50%, var(--gold) 75%, var(--gold-dark) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.8;
+        }
+
+        .header {
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--gold-shine);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: var(--dark) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+        }
+
+        .legal-hero {
+            padding: 10rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%);
+            text-align: center;
+        }
+
+        .legal-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .legal-hero p {
+            color: var(--gray-light);
+            font-size: 1.1rem;
+        }
+
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .legal-section {
+            margin-bottom: 3rem;
+        }
+
+        .legal-section h2 {
+            font-size: 1.5rem;
+            color: var(--light);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .legal-section h2 span {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .legal-section h3 {
+            font-size: 1.2rem;
+            color: var(--light);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .legal-section p {
+            color: var(--gray-light);
+            margin-bottom: 1rem;
+        }
+
+        .legal-section ul,
+        .legal-section ol {
+            color: var(--gray-light);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            background: var(--secondary);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .footer p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: gap 0.3s ease;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .back-link span {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-link:hover {
+            gap: 1rem;
+        }
+
+        .info-box {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box strong {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .consent-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(201, 162, 39, 0.05));
+            border: 2px solid rgba(201, 162, 39, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .consent-box h3 {
+            color: var(--light);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .consent-box h3 span {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .consent-box p {
+            color: var(--gray-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .consent-btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .consent-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(201, 162, 39, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .legal-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
+            <nav class="nav">
+                <a href="index.html">Domů</a>
+                <a href="homepage.html#sluzby">Služby</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="kontakt.html" class="nav-cta">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="legal-hero">
+        <h1>Marketingový souhlas</h1>
+        <p>Souhlas se zasíláním obchodních sdělení a použitím záběrů</p>
+    </section>
+
+    <main class="legal-content">
+        <a href="index.html" class="back-link">← <span>Zpět</span> na hlavní stránku</a>
+
+        <section class="legal-section">
+            <h2>1. O tomto <span>souhlasu</span></h2>
+            <p>Tento dokument upravuje podmínky udělení souhlasu se zasíláním obchodních sdělení a s použitím vizuálního
+                obsahu (fotografií a videí) pro marketingové účely společnosti IV Production.</p>
+            <p>Udělení souhlasu je dobrovolné a nemá vliv na poskytnutí objednaných služeb.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>2. Souhlas se <span>zasíláním</span> obchodních sdělení</h2>
+            <p>Udělením tohoto souhlasu souhlasíte s tím, že vám budeme zasílat:</p>
+            <ul>
+                <li>Informace o novinkách a aktuálních nabídkách</li>
+                <li>Pozvánky na speciální akce a slevy</li>
+                <li>Tipy a inspirace z oblasti video produkce</li>
+                <li>Informace o nových službách</li>
+            </ul>
+            <p>Obchodní sdělení budeme zasílat na vámi poskytnutou e-mailovou adresu maximálně 2× měsíčně.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>3. Souhlas s použitím <span>záběrů</span></h2>
+            <p>Udělením tohoto souhlasu souhlasíte s tím, že IV Production může použít fotografie a videozáznamy z vaší
+                akce pro následující účely:</p>
+            <ul>
+                <li><strong>Portfolio</strong> – ukázky práce na webových stránkách</li>
+                <li><strong>Sociální sítě</strong> – prezentace na Facebook, Instagram, TikTok, YouTube</li>
+                <li><strong>Reklamní materiály</strong> – tištěné i digitální propagační materiály</li>
+                <li><strong>Reference</strong> – ukázky pro potenciální klienty</li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>Důležité:</strong> Vždy dbáme na důstojné a profesionální použití záběrů. Nikdy nebudeme
+                    zveřejňovat záběry, které by mohly být vnímány jako nevhodné nebo znevažující.</p>
+            </div>
+        </section>
+
+        <section class="legal-section">
+            <h2>4. Doba <span>platnosti</span> souhlasu</h2>
+            <p>Souhlas je udělen na dobu neurčitou, dokud jej neodvoláte.</p>
+            <p>V případě souhlasu s použitím záběrů platí souhlas po dobu 10 let od vytvoření záznamu, není-li dohodnuto
+                jinak.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>5. <span>Odvolání</span> souhlasu</h2>
+            <p>Svůj souhlas můžete kdykoli odvolat, a to:</p>
+            <ul>
+                <li><strong>E-mailem</strong> na adresu info@ivproduction.cz</li>
+                <li><strong>Telefonicky</strong> na číslo +420 XXX XXX XXX</li>
+                <li><strong>Písemně</strong> na adresu sídla společnosti</li>
+                <li><strong>Odhlášením</strong> z odběru newsletteru (odkaz v každém e-mailu)</li>
+            </ul>
+            <p>Odvolání souhlasu nemá vliv na zákonnost zpracování před jeho odvoláním.</p>
+            <p>Po odvolání souhlasu s použitím záběrů odstraníme vaše záběry z propagačních materiálů v přiměřené lhůtě
+                (zpravidla do 30 dnů).</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>6. Vaše <span>práva</span></h2>
+            <p>Máte právo:</p>
+            <ul>
+                <li>Požádat o informace, jaké záběry používáme</li>
+                <li>Požádat o odstranění konkrétních záběrů</li>
+                <li>Vznést námitku proti použití záběrů</li>
+                <li>Podat stížnost u Úřadu pro ochranu osobních údajů</li>
+            </ul>
+        </section>
+
+        <div class="consent-box">
+            <h3>Chcete udělit nebo <span>odvolat</span> souhlas?</h3>
+            <p>Kontaktujte nás e-mailem nebo telefonicky a my váš požadavek vyřídíme.</p>
+            <a href="mailto:info@ivproduction.cz?subject=Marketingový souhlas" class="consent-btn">Kontaktovat nás</a>
+        </div>
+
+        <section class="legal-section">
+            <h2>7. <span>Kontaktní</span> údaje</h2>
+            <div class="info-box">
+                <p><strong>IV Production</strong></p>
+                <p>E-mail: info@ivproduction.cz</p>
+                <p>Telefon: +420 XXX XXX XXX</p>
+                <p>Adresa: Hradec Králové</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 IV Production. Všechna práva vyhrazena. | <a href="index.html">Zpět na hlavní stránku</a></p>
+    </footer>
+    <!-- Global Floating Elements -->
+    <style>
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--dark);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--gradient);
+            color: var(--dark);
+            border-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+        }
+
+        /* Quick Contact */
+        .quick-contact {
+            position: fixed;
+            right: 2rem;
+            bottom: 6rem;
+            /* Stacks above Back to Top */
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 10000;
+        }
+
+        .qc-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qc-btn-whatsapp {
+            background: rgba(10, 10, 15, 0.8);
+            color: #25D366;
+        }
+
+        .qc-btn-messenger {
+            background: rgba(10, 10, 15, 0.8);
+            color: #0084FF;
+        }
+
+        .qc-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: var(--gradient);
+            /* Gold Gradient on Hover */
+            border-color: transparent;
+            box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
+        }
+
+        .qc-btn:hover svg {
+            fill: var(--dark);
+            /* Icon turns dark on gold background */
+        }
+
+        .qc-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+            transition: fill 0.3s ease;
+            z-index: 2;
+        }
+    </style>
+
+    <a href="#" class="back-to-top" onclick="scrollToTop(); return false;">
+        <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </a>
+
+    <div class="quick-contact">
+        <!-- Messenger (Corrected Icon) -->
+        <a href="https://m.me/ivproductioncz" target="_blank" class="qc-btn qc-btn-messenger"
+            title="Napsat na Messenger">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 2C6.347 2 2 6.167 2 11.25c0 2.9 1.416 5.503 3.693 7.21l-.57 2.922 3.093-1.637c1.196.44 2.493.687 3.847.687 5.626 0 10.187-4.167 10.187-9.25C22.187 6.167 17.627 2 12 2zm1.217 12.35l-2.023-3.136-4.07 3.136 4.39-4.522 2.07 3.083 4.02-3.083-4.387 4.522z" />
+            </svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/420773210194" target="_blank" class="qc-btn qc-btn-whatsapp" title="Napsat na WhatsApp">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+        </a>
+    </div>
+
+    <script>
+        // Back to Top Logic
+        const backToTopBtn = document.querySelector('.back-to-top');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>

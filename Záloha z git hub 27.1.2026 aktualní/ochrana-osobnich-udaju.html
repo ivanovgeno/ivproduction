@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ochrana osobních údajů - IV Production, video produkce a fotobudky">
+    <title>Ochrana osobních údajů | IV Production</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #C9A227;
+            --gold-dark: #8B6914;
+            --gold-light: #E8C547;
+            --gold-shine: #FFE55C;
+            --primary: var(--gold);
+            --secondary: #12121A;
+            --dark: #0A0A0F;
+            --light: #F8F8FA;
+            --gray: #6B7280;
+            --gray-light: #9CA3AF;
+            --gradient: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 25%, var(--gold-shine) 50%, var(--gold) 75%, var(--gold-dark) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.8;
+        }
+
+        .header {
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--gold-shine);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: var(--dark) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+        }
+
+        .legal-hero {
+            padding: 10rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%);
+            text-align: center;
+        }
+
+        .legal-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .legal-hero p {
+            color: var(--gray-light);
+            font-size: 1.1rem;
+        }
+
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .legal-section {
+            margin-bottom: 3rem;
+        }
+
+        .legal-section h2 {
+            font-size: 1.5rem;
+            color: var(--light);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .legal-section h2 span {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .legal-section h3 {
+            font-size: 1.2rem;
+            color: var(--light);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .legal-section p {
+            color: var(--gray-light);
+            margin-bottom: 1rem;
+        }
+
+        .legal-section ul,
+        .legal-section ol {
+            color: var(--gray-light);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            background: var(--secondary);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .footer p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: gap 0.3s ease;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .back-link span {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-link:hover {
+            gap: 1rem;
+        }
+
+        .info-box {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box strong {
+            background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .legal-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    
+        /* Dropdown Menu */
+        .nav-dropdown { position: relative; display: flex; align-items: center; }
+        .nav-dropdown-trigger { cursor: pointer; }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(18, 18, 26, 0.98);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 16px;
+            padding: 0.75rem;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            z-index: 1001;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: var(--gray-light) !important;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-dropdown-menu a:hover {
+            background: rgba(201, 162, 39, 0.1);
+            color: var(--gold) !important;
+        }</style>
+</head>
+
+<body>
+                    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="homepage.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
+            <nav class="nav">
+                <a href="svatby.html">Svatby</a>
+                <a href="reality.html">Reality</a>
+                <div class="nav-dropdown">
+                    <a href="fotobudka.html" class="nav-dropdown-trigger">Fotobudky ▾</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="fotobudka.html">Fotobudka</a>
+                        <a href="360budka.html">360° Budka</a>
+                    </div>
+                </div>
+                <a href="plesy.html">Plesy</a>
+                <div class="nav-dropdown">
+                    <a href="homepage.html#sluzby" class="nav-dropdown-trigger">Další služby ▾</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="konference.html">Konference</a>
+                        <a href="podcast.html">Podcast</a>
+                    </div>
+                </div>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html">Blog</a>
+                <a href="kontakt.html">Kontakt</a>
+                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="legal-hero">
+        <h1>Ochrana osobních údajů</h1>
+        <p>Informace o zpracování osobních údajů dle GDPR</p>
+    </section>
+
+    <main class="legal-content">
+        <a href="homepage.html" class="back-link">← <span>Zpět</span> na hlavní stránku</a>
+
+        <section class="legal-section">
+            <h2>1. <span>Správce</span> osobních údajů</h2>
+            <div class="info-box">
+                <p><strong>IV Production</strong></p>
+                <p>IČO: XXXXXXXX</p>
+                <p>Sídlo: Hradec Králové</p>
+                <p>E-mail: video@ivproduction.cz</p>
+                <p>Telefon: +420 773 210 194</p>
+            </div>
+            <p>Jako správce osobních údajů zpracováváme vaše údaje v souladu s Nařízením Evropského parlamentu a Rady
+                (EU) 2016/679 (GDPR) a souvisejícími právními předpisy České republiky.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>2. Jaké <span>údaje</span> zpracováváme</h2>
+            <p>V rámci poskytování našich služeb zpracováváme následující kategorie osobních údajů:</p>
+
+            <h3>Identifikační údaje</h3>
+            <ul>
+                <li>Jméno a příjmení</li>
+                <li>Adresa bydliště nebo místa konání akce</li>
+                <li>Datum narození (pouze pokud je nezbytné)</li>
+            </ul>
+
+            <h3>Kontaktní údaje</h3>
+            <ul>
+                <li>E-mailová adresa</li>
+                <li>Telefonní číslo</li>
+            </ul>
+
+            <h3>Údaje o akci</h3>
+            <ul>
+                <li>Datum a místo akce</li>
+                <li>Typ služby (svatba, ples, firemní akce apod.)</li>
+                <li>Obrazový a zvukový záznam z akce</li>
+            </ul>
+        </section>
+
+        <section class="legal-section">
+            <h2>3. <span>Účel</span> zpracování</h2>
+            <p>Vaše osobní údaje zpracováváme pro následující účely:</p>
+            <ul>
+                <li><strong>Plnění smlouvy</strong> – pro poskytnutí objednaných služeb</li>
+                <li><strong>Komunikace</strong> – pro odpovědi na dotazy a konzultace</li>
+                <li><strong>Fakturace</strong> – pro vystavení daňových dokladů</li>
+                <li><strong>Marketing</strong> – pro zasílání nabídek (pouze se souhlasem)</li>
+                <li><strong>Právní povinnosti</strong> – pro splnění zákonných požadavků</li>
+            </ul>
+        </section>
+
+        <section class="legal-section">
+            <h2>4. <span>Právní</span> základ zpracování</h2>
+            <p>Osobní údaje zpracováváme na základě:</p>
+            <ul>
+                <li><strong>Plnění smlouvy</strong> (čl. 6 odst. 1 písm. b) GDPR)</li>
+                <li><strong>Právní povinnost</strong> (čl. 6 odst. 1 písm. c) GDPR) – účetní a daňové předpisy</li>
+                <li><strong>Oprávněný zájem</strong> (čl. 6 odst. 1 písm. f) GDPR) – propagace služeb</li>
+                <li><strong>Souhlas</strong> (čl. 6 odst. 1 písm. a) GDPR) – marketing, zveřejnění ukázek</li>
+            </ul>
+        </section>
+
+        <section class="legal-section">
+            <h2>5. Doba <span>uchování</span> údajů</h2>
+            <ul>
+                <li><strong>Smluvní údaje:</strong> po dobu trvání smlouvy + 3 roky</li>
+                <li><strong>Účetní doklady:</strong> 10 let dle zákona o účetnictví</li>
+                <li><strong>Marketingové souhlasy:</strong> do odvolání souhlasu</li>
+                <li><strong>Obrazové záznamy:</strong> 5 let od vytvoření, není-li dohodnuto jinak</li>
+            </ul>
+        </section>
+
+        <section class="legal-section">
+            <h2>6. Vaše <span>práva</span></h2>
+            <p>V souvislosti se zpracováním osobních údajů máte následující práva:</p>
+            <ul>
+                <li><strong>Právo na přístup</strong> – získat informace o zpracovávaných údajích</li>
+                <li><strong>Právo na opravu</strong> – požádat o opravu nepřesných údajů</li>
+                <li><strong>Právo na výmaz</strong> – požádat o smazání údajů („právo být zapomenut")</li>
+                <li><strong>Právo na omezení zpracování</strong></li>
+                <li><strong>Právo na přenositelnost</strong> – získat údaje ve strojově čitelném formátu</li>
+                <li><strong>Právo vznést námitku</strong> – proti zpracování na základě oprávněného zájmu</li>
+                <li><strong>Právo odvolat souhlas</strong> – kdykoli bez udání důvodu</li>
+                <li><strong>Právo podat stížnost</strong> – u Úřadu pro ochranu osobních údajů (www.uoou.cz)</li>
+            </ul>
+        </section>
+
+        <section class="legal-section">
+            <h2>7. <span>Zabezpečení</span> údajů</h2>
+            <p>Vaše osobní údaje chráníme pomocí přiměřených technických a organizačních opatření:</p>
+            <ul>
+                <li>Šifrované úložiště dat</li>
+                <li>Heslem chráněný přístup</li>
+                <li>Pravidelné zálohování</li>
+                <li>Omezený přístup pouze pro oprávněné osoby</li>
+            </ul>
+        </section>
+
+        <section class="legal-section">
+            <h2>8. <span>Kontakt</span></h2>
+            <p>Pro uplatnění vašich práv nebo dotazy ohledně zpracování osobních údajů nás kontaktujte:</p>
+            <div class="info-box">
+                <p><strong>E-mail:</strong> video@ivproduction.cz</p>
+                <p><strong>Telefon:</strong> +420 773 210 194</p>
+            </div>
+            <p>Na vaši žádost odpovíme bez zbytečného odkladu, nejpozději do 30 dnů.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 IV Production. Všechna práva vyhrazena. | <a href="homepage.html">Zpět na hlavní stránku</a></p>
+    </footer>
+</body>
+
+</html>
