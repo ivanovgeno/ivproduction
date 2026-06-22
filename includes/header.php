@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/assets/css/camera-choreography-v4.css?v=20260622-camera6">
     <link rel="stylesheet" href="/assets/css/ux-fixes-v4.css?v=20260622-camera6">
     <link rel="stylesheet" href="/assets/css/camera-fix-v5.css?v=20260622-camera6">
-    <link rel="stylesheet" href="/assets/css/camera-layer-v6.css?v=20260622-camera6">
+    <link rel="stylesheet" href="/assets/css/camera-layer-v6.css?v=20260622-camera6-1">
 </head>
 <body class="route-<?= e($route === '' ? 'home' : $route) ?>">
 <a class="skip-link" href="#main-content">Přeskočit na obsah</a>
