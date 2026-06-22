@@ -46,7 +46,15 @@ if ('IntersectionObserver' in window && sceneTargets.length) {
   sceneTargets.forEach((element) => cameraStateObserver.observe(element));
 }
 
+document.querySelectorAll('input,select,textarea').forEach((control) => {
+  control.addEventListener('pointerenter', () => document.body.classList.add('cursor-form'));
+  control.addEventListener('pointerleave', () => document.body.classList.remove('cursor-form'));
+  control.addEventListener('focus', () => document.body.classList.add('cursor-form'));
+  control.addEventListener('blur', () => document.body.classList.remove('cursor-form'));
+});
+
 addEventListener('pageshow', () => {
+  document.body.classList.remove('cursor-form');
   document.querySelectorAll('.button.is-loading,[aria-busy="true"]').forEach((element) => {
     element.classList.remove('is-loading');
     element.removeAttribute('aria-busy');
