@@ -9,6 +9,9 @@ require __DIR__ . '/includes/functions.php';
 
 $route = current_path();
 $route = preg_replace('/\.(php|html)$/', '', $route) ?? '';
+if ($route === 'index') {
+    $route = '';
+}
 
 $allowedRoutes = array_merge(
     ['', 'portfolio', 'blog', 'kontakt'],
