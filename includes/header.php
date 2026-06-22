@@ -15,12 +15,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/app.css?v=20260622-polish4c">
-    <link rel="stylesheet" href="/assets/css/cinematic.css?v=20260622-polish4c">
-    <link rel="stylesheet" href="/assets/css/forms-services.css?v=20260622-polish4c">
-    <link rel="stylesheet" href="/assets/css/signature-v3.css?v=20260622-polish4c">
-    <link rel="stylesheet" href="/assets/css/polish-v4.css?v=20260622-polish4c">
-    <link rel="stylesheet" href="/assets/css/camera-choreography-v4.css?v=20260622-polish4c">
+    <link rel="stylesheet" href="/assets/css/app.css?v=20260622-polish4d">
+    <link rel="stylesheet" href="/assets/css/cinematic.css?v=20260622-polish4d">
+    <link rel="stylesheet" href="/assets/css/forms-services.css?v=20260622-polish4d">
+    <link rel="stylesheet" href="/assets/css/signature-v3.css?v=20260622-polish4d">
+    <link rel="stylesheet" href="/assets/css/polish-v4.css?v=20260622-polish4d">
+    <link rel="stylesheet" href="/assets/css/camera-choreography-v4.css?v=20260622-polish4d">
+    <link rel="stylesheet" href="/assets/css/ux-fixes-v4.css?v=20260622-polish4d">
 </head>
 <body class="route-<?= e($route === '' ? 'home' : $route) ?>">
 <a class="skip-link" href="#main-content">Přeskočit na obsah</a>
