@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="/assets/css/cinematic.css">
+    <link rel="stylesheet" href="/assets/css/forms-services.css">
 </head>
 <body class="route-<?= e($route === '' ? 'home' : $route) ?>">
 <div class="site-grain" aria-hidden="true"></div>
