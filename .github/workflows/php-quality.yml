@@ -34,4 +34,4 @@ jobs:
           node --check assets/js/interaction-v3.js
 
       - name: Validate module JavaScript syntax
-        run: node --input-type=module --check < assets/js/scene.js
+        run: node --input-type=module --check < assets/js/scene-v5.js
