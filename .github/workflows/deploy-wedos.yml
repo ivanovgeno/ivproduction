@@ -22,6 +22,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Validate PHP syntax
+        run: find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Validate frontend JavaScript
+        run: |
+          node --check assets/js/app.js
+          node --check assets/js/runtime-polish.js
+          node --check assets/js/interaction-v3.js
+          node --input-type=module --check < assets/js/scene.js
+
       - name: Check FTP configuration
         id: ftp_config
         shell: bash
@@ -88,4 +104,5 @@ jobs:
         run: |
           echo "### WEDOS deployment completed" >> "$GITHUB_STEP_SUMMARY"
           echo "Branch: \`feature/3d-24k-rebuild\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "Validation: PHP and JavaScript passed" >> "$GITHUB_STEP_SUMMARY"
           echo "Mode: safe upload without deleting remote files" >> "$GITHUB_STEP_SUMMARY"
