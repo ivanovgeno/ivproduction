@@ -37,9 +37,9 @@
         </div>
     </div>
 </footer>
-<script src="/assets/js/runtime-polish.js?v=20260622-polish4f" defer></script>
-<script src="/assets/js/app.js?v=20260622-polish4f" defer></script>
-<script src="/assets/js/interaction-v3.js?v=20260622-polish4f" defer></script>
-<script type="module" src="/assets/js/scene.js?v=20260622-polish4f"></script>
+<script src="/assets/js/runtime-polish.js?v=20260622-camera5" defer></script>
+<script src="/assets/js/app.js?v=20260622-camera5" defer></script>
+<script src="/assets/js/interaction-v3.js?v=20260622-camera5" defer></script>
+<script type="module" src="/assets/js/scene-v5.js?v=20260622-camera5"></script>
 </body>
 </html>
