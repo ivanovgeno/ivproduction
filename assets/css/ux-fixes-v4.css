@@ -1,0 +1,8 @@
+/* Final UX corrections. */
+body.has-custom-cursor .iv-cursor-dot,body.has-custom-cursor .iv-cursor-ring{opacity:0!important}
+body.cursor-hover:not(.cursor-form) .iv-cursor-dot,body.cursor-hover:not(.cursor-form) .iv-cursor-ring{opacity:1!important}
+body.cursor-hover:not(.cursor-form) a:hover,body.cursor-hover:not(.cursor-form) button:hover,body.cursor-hover:not(.cursor-form) .experience-panel:hover,body.cursor-hover:not(.cursor-form) .work-card:hover,body.cursor-hover:not(.cursor-form) .portfolio-card:hover,body.cursor-hover:not(.cursor-form) .service-card:hover{cursor:none}
+body.cursor-form .iv-cursor-dot,body.cursor-form .iv-cursor-ring{opacity:0!important}
+.service-choice.is-selected>span{border-color:#d4af37!important;background:linear-gradient(135deg,rgba(212,175,55,.16),rgba(212,175,55,.04))!important;box-shadow:inset 0 0 32px rgba(212,175,55,.055),0 0 0 1px rgba(255,232,151,.04)!important}
+.main-nav .button[aria-current="page"]{box-shadow:0 0 0 2px rgba(255,237,170,.32),0 12px 34px rgba(92,58,4,.34)!important}
+@media(pointer:coarse){.iv-cursor-dot,.iv-cursor-ring{display:none!important}}
