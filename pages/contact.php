@@ -2,6 +2,7 @@
 $selectedService = trim((string) ($_GET['sluzba'] ?? ''));
 $success = flash('success');
 $error = flash('error');
+$isStaticPreview = ($_ENV['STATIC_EXPORT'] ?? '') === '1';
 ?>
 <section class="page-hero compact contact-hero">
     <div class="container page-hero-content" data-reveal>
@@ -26,16 +27,20 @@ $error = flash('error');
         </aside>
 
         <div class="inquiry-card" data-reveal>
-            <?php if ($success): ?>
+            <?php if ($isStaticPreview): ?>
+                <div class="form-alert success" role="status">Toto je testovací náhled na GitHub Pages. PHP odesílání formuláře bude aktivní až na produkčním hostingu.</div>
+            <?php elseif ($success): ?>
                 <div class="form-alert success" role="status"><?= e($success) ?></div>
             <?php endif; ?>
-            <?php if ($error): ?>
+            <?php if (!$isStaticPreview && $error): ?>
                 <div class="form-alert error" role="alert"><?= e($error) ?></div>
             <?php endif; ?>
 
-            <form class="premium-form" action="/kontakt" method="post">
-                <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
-                <label class="honeypot" aria-hidden="true">Web<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            <form class="premium-form" action="<?= $isStaticPreview ? '' : '/kontakt' ?>" method="<?= $isStaticPreview ? 'get' : 'post' ?>">
+                <?php if (!$isStaticPreview): ?>
+                    <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
+                    <label class="honeypot" aria-hidden="true">Web<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                <?php endif; ?>
 
                 <div class="form-section-head"><span>01</span><div><h2>Co plánujete?</h2><p>Vyberte hlavní službu.</p></div></div>
                 <div class="service-choice-grid">
@@ -71,7 +76,12 @@ $error = flash('error');
                 </div>
                 <label>Telefon<input type="tel" name="phone" autocomplete="tel" placeholder="+420"></label>
                 <label class="consent"><input type="checkbox" name="consent" required><span>Souhlasím se zpracováním osobních údajů za účelem vyřízení této poptávky.</span></label>
-                <button class="button gold-button submit-button" type="submit"><span>Odeslat nezávaznou poptávku</span></button>
+
+                <?php if ($isStaticPreview): ?>
+                    <a class="button gold-button submit-button" href="mailto:<?= e($site['email']) ?>"><span>Napsat přímo e-mail</span></a>
+                <?php else: ?>
+                    <button class="button gold-button submit-button" type="submit"><span>Odeslat nezávaznou poptávku</span></button>
+                <?php endif; ?>
             </form>
         </div>
     </div>
