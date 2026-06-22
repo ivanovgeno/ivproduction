@@ -1,47 +1,61 @@
-# Ruční FTP aktualizace — Elite V2 + Sony A7
+# Ruční FTP aktualizace — Signature V3 + Sony A7
 
 Cílový kořen subdomény:
 
 `/www/domains/iv.socialhero.cz/`
 
-## Povinné soubory
+## Soubory pro aktuální opravu
 
-Nahrajte nebo přepište přesně tyto soubory a zachovejte jejich složky:
+Nahrajte nebo přepište přesně těchto pět souborů:
 
 1. `includes/header.php`
 2. `includes/footer.php`
-3. `assets/css/forms-services.css`
-4. `assets/css/elite-v2.css`
-5. `assets/css/camera-scene.css`
-6. `assets/css/camera-scene-layer.css`
-7. `assets/js/scene.js`
+3. `assets/css/signature-v3.css`
+4. `assets/js/interaction-v3.js`
+5. `assets/js/scene.js`
 
-Soubory `header.php` a `footer.php` obsahují verzování assetů. Bez nich může prohlížeč dál zobrazovat starý vzhled z cache.
+Hlavička a patička používají nové verzování `20260622-signature3`, takže prohlížeč nebude používat staré CSS nebo JavaScript z cache.
+
+## Co Signature V3 obsahuje
+
+- obnovený animovaný 24K gold foil efekt,
+- zlatý shimmer na CTA tlačítkách,
+- A7-style procedurální 3D fotoaparát viditelný i bez externího modelu,
+- automatické nahrazení procedurálního modelu skutečným GLB modelem,
+- plynulé otáčení a zoom mezi sekcemi podle scrollu,
+- zlaté 3D halo prstence a jemné částice,
+- vlastní kurzor,
+- magnetická tlačítka,
+- spotlight efekt na kartách,
+- navigaci mezi sekcemi a horní scroll progress.
 
 ## Skutečný 3D model
 
-Pro zobrazení 3D fotoaparátu nahrajte licencovaný GLB model:
+Volitelně nahrajte licencovaný GLB model:
 
-8. `assets/3d/sony-a7.glb`
+`assets/3d/sony-a7.glb`
 
-Pokud složka `assets/3d/` neexistuje, vytvořte ji. Název souboru musí být přesně `sony-a7.glb`.
+Výsledná cesta:
 
-Bez skutečného modelu se 3D scéna nezobrazí. Záměrně už nepoužíváme procedurální fallback, protože nepůsobil dostatečně realisticky. Web bez modelu zůstane čistý a plně funkční.
+`/www/domains/iv.socialhero.cz/assets/3d/sony-a7.glb`
 
-## Doporučené pořadí nahrávání
+Pokud model není přítomen, web zobrazí detailní procedurální A7-style fotoaparát. Po nahrání skutečného modelu se fallback automaticky nahradí.
 
-1. nejprve všechny CSS soubory,
-2. potom `scene.js`,
-3. potom `header.php` a `footer.php`,
-4. nakonec volitelný `sony-a7.glb`.
+## Doporučené pořadí
 
-Po nahrání otevřete web v anonymním okně. Díky verzování by nemělo být nutné ruční mazání cache, ale lze použít také `Ctrl + F5`.
+1. `signature-v3.css`
+2. `interaction-v3.js`
+3. `scene.js`
+4. `header.php`
+5. `footer.php`
+6. volitelně `sony-a7.glb`
 
-## Kontrolní adresy
+## Kontrola
 
-- `https://iv.socialhero.cz/assets/css/elite-v2.css`
-- `https://iv.socialhero.cz/assets/css/forms-services.css`
+Po nahrání otevřete web v anonymním okně. Lze ověřit také tyto adresy:
+
+- `https://iv.socialhero.cz/assets/css/signature-v3.css`
+- `https://iv.socialhero.cz/assets/js/interaction-v3.js`
 - `https://iv.socialhero.cz/assets/js/scene.js`
-- `https://iv.socialhero.cz/assets/3d/sony-a7.glb` — pouze pokud byl model nahrán
 
-Pokud první tři adresy vrací obsah nebo soubor bez chyby 404, Elite V2 assety jsou na serveru. Pokud GLB vrací 404, web bude fungovat bez 3D kamery.
+Všechny tři adresy musí vracet obsah bez chyby 404.
