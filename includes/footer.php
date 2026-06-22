@@ -3,7 +3,7 @@
 <footer class="site-footer">
     <div class="container footer-grid">
         <div>
-            <a class="brand footer-brand" href="/"><img src="/logo-light.png" alt="IV Production"></a>
+            <a class="brand footer-brand" href="/" aria-label="IV Production – domů"><img src="/logo-light.png" alt="IV Production"></a>
             <p>Profesionální video produkce, fotobudky a 360° video zážitky pro okamžiky, které stojí za to uchovat.</p>
         </div>
         <div>
@@ -30,15 +30,15 @@
     </div>
     <div class="container footer-bottom">
         <span>© <?= date('Y') ?> IV Production · Crafted in cinematic 24K</span>
-        <div class="socials">
-            <a href="<?= e($site['social']['instagram']) ?>" target="_blank" rel="noopener">Instagram</a>
-            <a href="<?= e($site['social']['facebook']) ?>" target="_blank" rel="noopener">Facebook</a>
-            <a href="<?= e($site['social']['youtube']) ?>" target="_blank" rel="noopener">YouTube</a>
+        <div class="socials" aria-label="Sociální sítě">
+            <a href="<?= e($site['social']['instagram']) ?>" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="<?= e($site['social']['facebook']) ?>" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="<?= e($site['social']['youtube']) ?>" target="_blank" rel="noopener noreferrer">YouTube</a>
         </div>
     </div>
 </footer>
-<script src="/assets/js/app.js?v=20260622-signature3" defer></script>
-<script src="/assets/js/interaction-v3.js?v=20260622-signature3" defer></script>
-<script type="module" src="/assets/js/scene.js?v=20260622-signature3"></script>
+<script src="/assets/js/app.js?v=20260622-polish4" defer></script>
+<script src="/assets/js/interaction-v3.js?v=20260622-polish4" defer></script>
+<script type="module" src="/assets/js/scene.js?v=20260622-polish4"></script>
 </body>
 </html>
