@@ -53,6 +53,16 @@ document.querySelectorAll('input,select,textarea').forEach((control) => {
   control.addEventListener('blur', () => document.body.classList.remove('cursor-form'));
 });
 
+const formAlert = document.querySelector('.form-alert');
+if (formAlert) {
+  formAlert.setAttribute('tabindex', '-1');
+  formAlert.setAttribute('aria-live', formAlert.classList.contains('error') ? 'assertive' : 'polite');
+  requestAnimationFrame(() => {
+    formAlert.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+    setTimeout(() => formAlert.focus({ preventScroll: true }), 500);
+  });
+}
+
 addEventListener('pageshow', () => {
   document.body.classList.remove('cursor-form');
   document.querySelectorAll('.button.is-loading,[aria-busy="true"]').forEach((element) => {
