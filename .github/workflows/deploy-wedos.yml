@@ -1,0 +1,109 @@
+name: Deploy to WEDOS
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/3d-24k-rebuild
+
+concurrency:
+  group: wedos-testing-deploy
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: testing
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Validate PHP syntax
+        run: find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Validate frontend JavaScript
+        run: |
+          node --check assets/js/app.js
+          node --check assets/js/runtime-polish.js
+          node --check assets/js/interaction-v3.js
+          node --input-type=module --check < assets/js/scene-v5.js
+
+      - name: Check FTP configuration
+        id: ftp_config
+        shell: bash
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH }}
+        run: |
+          if [[ -z "$FTP_SERVER" || -z "$FTP_USERNAME" || -z "$FTP_PASSWORD" || -z "$FTP_REMOTE_PATH" ]]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::FTP deployment is not configured yet. Add FTP_SERVER, FTP_USERNAME, FTP_PASSWORD and FTP_REMOTE_PATH repository secrets, then run this workflow manually."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Prepare deployment package
+        if: steps.ftp_config.outputs.configured == 'true'
+        shell: bash
+        run: |
+          mkdir -p deploy
+          rsync -a ./ deploy/ \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='_site/' \
+            --exclude='scripts/' \
+            --exclude='*.md' \
+            --exclude='*.html' \
+            --exclude='router.php' \
+            --exclude='start-local.bat' \
+            --exclude='start-local.sh' \
+            --exclude='analyze_structure.py' \
+            --exclude='deploy/'
+
+      - name: Install lftp
+        if: steps.ftp_config.outputs.configured == 'true'
+        shell: bash
+        run: sudo apt-get update && sudo apt-get install --yes lftp
+
+      - name: Upload to WEDOS over FTPS
+        if: steps.ftp_config.outputs.configured == 'true'
+        shell: bash
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH }}
+        run: |
+          lftp <<LFTP_COMMANDS
+          set cmd:fail-exit yes
+          set ftp:ssl-force yes
+          set ftp:ssl-protect-data yes
+          set ssl:verify-certificate yes
+          set net:max-retries 3
+          set net:timeout 25
+          open --user "$FTP_USERNAME" --password "$FTP_PASSWORD" "$FTP_SERVER"
+          mirror --reverse --verbose --parallel=4 --no-perms --only-newer ./deploy/ "$FTP_REMOTE_PATH"
+          bye
+          LFTP_COMMANDS
+
+      - name: Deployment summary
+        if: steps.ftp_config.outputs.configured == 'true'
+        shell: bash
+        run: |
+          echo "### WEDOS deployment completed" >> "$GITHUB_STEP_SUMMARY"
+          echo "Branch: \`feature/3d-24k-rebuild\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "Scene: Camera V5" >> "$GITHUB_STEP_SUMMARY"
+          echo "Validation: PHP and JavaScript passed" >> "$GITHUB_STEP_SUMMARY"
+          echo "Mode: safe upload without deleting remote files" >> "$GITHUB_STEP_SUMMARY"

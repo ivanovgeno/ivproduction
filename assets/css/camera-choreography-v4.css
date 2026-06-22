@@ -1,0 +1,45 @@
+/* Cinematic camera choreography driven by body[data-active-scene]. */
+.scene-stage{
+  transform-origin:72% 50%;
+  transition:transform 1.35s cubic-bezier(.16,1,.3,1),opacity .9s ease,filter 1.1s ease!important;
+}
+.scene-stage::before{
+  content:"";
+  position:absolute;
+  width:42vw;
+  height:42vw;
+  min-width:520px;
+  min-height:520px;
+  right:-8vw;
+  top:50%;
+  translate:0 -50%;
+  border-radius:50%;
+  pointer-events:none;
+  opacity:.34;
+  background:conic-gradient(from 120deg,transparent,rgba(244,208,101,.08),transparent 28%,rgba(255,240,176,.04),transparent 58%);
+  filter:blur(12px);
+  animation:cameraAura 18s linear infinite;
+}
+@keyframes cameraAura{to{rotate:360deg}}
+
+body[data-active-scene="hero"] .scene-stage{transform:translate3d(0,0,0) scale(1);filter:saturate(1.04) contrast(1.04)}
+body[data-active-scene="intro"] .scene-stage{transform:translate3d(5vw,-1vh,0) scale(.96);filter:saturate(.95) contrast(1.02)}
+body[data-active-scene="services"] .scene-stage{transform:translate3d(-6vw,2vh,0) scale(1.08);filter:saturate(1.08) contrast(1.05)}
+body[data-active-scene="premium"] .scene-stage{transform:translate3d(4vw,-2vh,0) scale(.94);filter:saturate(1.15) contrast(1.06)}
+body[data-active-scene="portfolio"] .scene-stage{transform:translate3d(-7vw,1vh,0) scale(.91);filter:saturate(.92) contrast(1.07)}
+body[data-active-scene="process"] .scene-stage{transform:translate3d(5vw,2vh,0) scale(1.04);filter:saturate(1) contrast(1.05)}
+body[data-active-scene="contact"] .scene-stage{transform:translate3d(-1vw,0,0) scale(1.13);filter:saturate(1.12) contrast(1.08)}
+
+body[data-active-scene="premium"] .scene-overlay{background:linear-gradient(90deg,rgba(5,4,2,.96),rgba(8,6,3,.62) 42%,rgba(5,4,2,.03) 65%,rgba(8,5,2,.4))!important}
+body[data-active-scene="portfolio"] .scene-overlay{background:linear-gradient(90deg,rgba(3,4,5,.78),rgba(3,4,5,.38) 38%,rgba(3,4,5,.08) 64%,rgba(3,4,5,.5))!important}
+body[data-active-scene="contact"] .scene-overlay{background:radial-gradient(circle at 58% 50%,rgba(212,175,55,.07),transparent 32%),linear-gradient(90deg,rgba(3,4,5,.86),rgba(3,4,5,.34) 50%,rgba(3,4,5,.54))!important}
+
+@media(max-width:1100px){
+  .scene-stage{transform-origin:78% 48%}
+  body[data-active-scene] .scene-stage{transform:translate3d(5vw,0,0) scale(.94)}
+}
+@media(max-width:760px){.scene-stage{display:none!important}}
+@media(prefers-reduced-motion:reduce){
+  .scene-stage{transition:none!important;transform:none!important}
+  .scene-stage::before{animation:none}
+}
