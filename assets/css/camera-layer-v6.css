@@ -1,0 +1,59 @@
+/* Camera V6: hero-only foreground layering and real visual zoom. */
+.site-header{z-index:100!important}
+.site-footer{position:relative;z-index:4!important}
+
+/* Outside hero the camera stays safely behind page content. */
+.scene-stage.camera-v5{z-index:1!important}
+body:not([data-active-scene="hero"]) main{position:relative;z-index:2!important}
+
+/* In hero the canvas is above the section background, while copy remains above it. */
+body[data-active-scene="hero"] main{position:relative;z-index:auto!important}
+body[data-active-scene="hero"] .scene-stage.camera-v5{
+  z-index:3!important;
+  transform:translate3d(-1.5vw,0,0) scale(1.26)!important;
+  transform-origin:76% 50%!important;
+  filter:saturate(1.12) contrast(1.07) brightness(1.08)!important;
+}
+
+.hero-3d{
+  isolation:auto!important;
+  z-index:auto!important;
+}
+.hero-3d::before,.hero-3d::after{z-index:0!important}
+.hero-vignette{z-index:4!important;pointer-events:none}
+.hero-3d-grid,.hero-copy,.hero-object-label,.scroll-cue{position:relative;z-index:6!important}
+
+/* Reveal more of the body and gold edges instead of hiding it in the overlay. */
+body[data-active-scene="hero"] .camera-v5 .scene-overlay{
+  background:linear-gradient(90deg,rgba(3,4,5,.96) 0%,rgba(3,4,5,.72) 39%,rgba(3,4,5,.015) 61%,rgba(3,4,5,.12) 100%)!important;
+}
+body[data-active-scene="hero"] .camera-v5::after{
+  background:radial-gradient(circle at 73% 49%,rgba(250,216,110,.18),transparent 27%)!important;
+}
+
+/* Prevent the small edition label from covering the camera body. */
+.hero-object-label{
+  right:clamp(18px,3.8vw,72px)!important;
+  bottom:clamp(42px,7vh,76px)!important;
+  max-width:190px!important;
+}
+
+@media(max-width:1280px){
+  body[data-active-scene="hero"] .scene-stage.camera-v5{
+    transform:translate3d(5vw,1vh,0) scale(1.13)!important;
+    transform-origin:82% 50%!important;
+  }
+  .hero-object-label{display:none!important}
+}
+
+@media(max-width:900px){
+  body[data-active-scene="hero"] .scene-stage.camera-v5{
+    transform:translate3d(13vw,2vh,0) scale(1.02)!important;
+    opacity:.78!important;
+  }
+}
+
+@media(max-width:760px){.scene-stage.camera-v5{display:none!important}}
+@media(prefers-reduced-motion:reduce){
+  body[data-active-scene="hero"] .scene-stage.camera-v5{transform:none!important}
+}
