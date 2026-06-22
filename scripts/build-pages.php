@@ -26,33 +26,6 @@ function removeDirectory(string $path): void
     rmdir($path);
 }
 
-function copyDirectory(string $source, string $destination): void
-{
-    if (!is_dir($source)) {
-        return;
-    }
-
-    $iterator = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator($source, FilesystemIterator::SKIP_DOTS),
-        RecursiveIteratorIterator::SELF_FIRST
-    );
-
-    foreach ($iterator as $item) {
-        $target = $destination . DIRECTORY_SEPARATOR . $iterator->getSubPathName();
-        if ($item->isDir()) {
-            if (!is_dir($target)) {
-                mkdir($target, 0777, true);
-            }
-        } else {
-            $directory = dirname($target);
-            if (!is_dir($directory)) {
-                mkdir($directory, 0777, true);
-            }
-            copy($item->getPathname(), $target);
-        }
-    }
-}
-
 function renderRoute(string $route, string $root): string
 {
     $command = escapeshellarg(PHP_BINARY)
@@ -99,23 +72,19 @@ $routes = array_merge(
 );
 
 foreach ($routes as $route) {
-    $html = applyBasePath(renderRoute($route, $root), $basePath);
     $destination = $route === ''
         ? $output . '/index.html'
         : $output . '/' . $route . '/index.html';
-
     $directory = dirname($destination);
+
     if (!is_dir($directory)) {
         mkdir($directory, 0777, true);
     }
 
-    file_put_contents($destination, $html);
+    file_put_contents($destination, renderRoute($route, $root));
 }
 
-$notFound = applyBasePath(renderRoute('stranka-neexistuje', $root), $basePath);
-file_put_contents($output . '/404.html', $notFound);
-
-copyDirectory($root . '/assets', $output . '/assets');
+file_put_contents($output . '/404.html', renderRoute('stranka-neexistuje', $root));
 
 $allowedExtensions = [
     'avif', 'css', 'gif', 'ico', 'jpeg', 'jpg', 'js', 'json', 'm4v', 'mov',
@@ -133,12 +102,7 @@ $iterator = new RecursiveIteratorIterator(
 );
 
 foreach ($iterator as $file) {
-    if (!$file->isFile()) {
-        continue;
-    }
-
-    $extension = strtolower($file->getExtension());
-    if (!in_array($extension, $allowedExtensions, true)) {
+    if (!$file->isFile() || !in_array(strtolower($file->getExtension()), $allowedExtensions, true)) {
         continue;
     }
 
