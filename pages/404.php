@@ -1,0 +1,1 @@
+<section class="page-hero compact"><div class="container page-hero-content"><span class="eyebrow">Chyba 404</span><h1>Stránka nebyla nalezena</h1><p>Požadovaná adresa neexistuje nebo byla přesunuta.</p><a class="button" href="/">Zpět na hlavní stránku</a></div></section>
