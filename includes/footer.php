@@ -37,7 +37,8 @@
         </div>
     </div>
 </footer>
-<script src="/assets/js/app.js?v=20260622-elite2" defer></script>
-<script type="module" src="/assets/js/scene.js?v=20260622-elite2"></script>
+<script src="/assets/js/app.js?v=20260622-signature3" defer></script>
+<script src="/assets/js/interaction-v3.js?v=20260622-signature3" defer></script>
+<script type="module" src="/assets/js/scene.js?v=20260622-signature3"></script>
 </body>
 </html>
