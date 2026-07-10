@@ -5,9 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IV Production | Svatební video a fotobudky Hradec Králové</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
     <meta name="description"
         content="Profesionální video produkce pro svatby, reality a promo videa. Dva zkušení kameramani s dronem. Hradec Králové a celá ČR. Kvalita, emoce, kreativita.">
+    <link rel="canonical" href="https://www.ivproduction.cz/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:title" content="IV Production | Svatební video, reality a fotobudky">
+    <meta property="og:description" content="Profesionální video produkce pro svatby, reality, eventy a firemní promo. Hradec Králové a celá ČR.">
+    <meta property="og:url" content="https://www.ivproduction.cz/">
+    <meta property="og:image" content="https://www.ivproduction.cz/og-image.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +29,7 @@
         "@type": "Organization",
         "name": "IV Production",
         "url": "https://www.ivproduction.cz",
-        "logo": "https://www.ivproduction.cz/logo.png",
+        "logo": "https://www.ivproduction.cz/logo-light.png",
         "description": "Profesionální video produkce a fotobudky",
         "address": {
             "@type": "PostalAddress",
@@ -30,8 +37,8 @@
             "addressCountry": "CZ"
         },
         "sameAs": [
-            "https://facebook.com/ivproduction",
-            "https://instagram.com/ivproduction",
+            "https://www.facebook.com/IVproductionCZ",
+            "https://www.instagram.com/ivproduction_video/",
             "https://youtube.com/@ivproduction"
         ]
     }
@@ -744,6 +751,17 @@
             object-fit: cover;
         }
 
+        .team-photo-initial {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            background: var(--gradient);
+            color: var(--dark);
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
         .team-member:hover .team-photo {
             border-color: var(--primary);
             box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
@@ -1250,6 +1268,20 @@
             mix-blend-mode: normal;
         }
 
+        .partner-name {
+            color: var(--light);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-align: center;
+            padding: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .partner-card:hover .partner-name {
+            color: var(--dark);
+        }
+
         /* Mobile Adjustments */
         @media (max-width: 768px) {
             .gw-nav-btn {
@@ -1719,6 +1751,21 @@
             filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
         }
 
+        .tech-placeholder {
+            width: 100%;
+            height: 80px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            border-radius: 14px;
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            background: rgba(201, 162, 39, 0.06);
+        }
+
         .tech-item:hover .tech-img {
             transform: scale(1.05);
             transition: transform 0.3s ease;
@@ -2126,6 +2173,42 @@
             min-height: 120px;
         }
 
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .form-consent {
+            display: flex;
+            gap: 0.65rem;
+            align-items: flex-start;
+            margin: 1.25rem 0;
+            color: var(--gray-light);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .form-consent input {
+            accent-color: var(--gold);
+            margin-top: 0.2rem;
+        }
+
+        .form-consent a {
+            color: var(--gold-light);
+        }
+
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+        }
+
         .form-submit {
             width: 100%;
             padding: 1rem;
@@ -2393,7 +2476,7 @@
                 </div>
                 <a href="plesy.html">Plesy</a>
                 <div class="nav-dropdown">
-                    <a href="homepage.html#sluzby" class="nav-dropdown-trigger">Další služby ▾</a>
+                    <a href="index.html#sluzby" class="nav-dropdown-trigger">Další služby ▾</a>
                     <div class="nav-dropdown-menu">
                         <a href="konference.html">Konference</a>
                         <a href="podcast.html">Podcast</a>
@@ -2555,32 +2638,28 @@
                     <div class="team-grid">
                         <div class="team-member">
                             <div class="team-photo">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"
-                                    alt="Geno">
+                                <span class="team-photo-initial" aria-hidden="true">G</span>
                             </div>
                             <div class="team-name">Geno</div>
                             <div class="team-role">Zakladatel & Hlavní kameraman</div>
                         </div>
                         <div class="team-member">
                             <div class="team-photo">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face"
-                                    alt="Markéta">
+                                <span class="team-photo-initial" aria-hidden="true">M</span>
                             </div>
                             <div class="team-name">Markéta</div>
                             <div class="team-role">Kreativní ředitelka & Koordinace</div>
                         </div>
                         <div class="team-member">
                             <div class="team-photo">
-                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face"
-                                    alt="Sofia">
+                                <span class="team-photo-initial" aria-hidden="true">S</span>
                             </div>
                             <div class="team-name">Sofia</div>
                             <div class="team-role">Kamera & Postprodukce & Grafika</div>
                         </div>
                         <div class="team-member">
                             <div class="team-photo">
-                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face"
-                                    alt="Kuba">
+                                <span class="team-photo-initial" aria-hidden="true">K</span>
                             </div>
                             <div class="team-name">Kuba</div>
                             <div class="team-role">Kameraman</div>
@@ -2610,7 +2689,7 @@
                                 rozlišení s věrným podáním barev vaší pleti.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-sony-a7iii.png" alt="Sony A7 III" class="tech-img">
+                            <div class="tech-placeholder" aria-hidden="true">A7 III</div>
                             <div class="tech-name">Sony A7 III</div>
                             <div class="tech-desc">Osvědčený full-frame standard, který nám slouží jako spolehlivá
                                 záložní kamera pro zachycení každého okamžiku z více úhlů.</div>
@@ -2622,7 +2701,7 @@
                                 zachytit ty nejupřímnější emoce přímo v centru dění.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-insta360-x3.png" alt="Insta360 X3" class="tech-img">
+                            <div class="tech-placeholder" aria-hidden="true">360°</div>
                             <div class="tech-name">Insta360 X3</div>
                             <div class="tech-desc">Unikátní 360° kamera pro kreativní záběry, která dodá vašemu videu
                                 dynamiku a perspektivu, jakou jinde nenajdete.</div>
@@ -2640,31 +2719,31 @@
                                 záběrům ten pravý filmový vzhled.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-sony-50mm.png" alt="Sony 50mm f/1.2 GM" class="tech-img">
+                            <div class="tech-placeholder" aria-hidden="true">50 mm</div>
                             <div class="tech-name">Sony 50mm f/1.2 GM</div>
                             <div class="tech-desc">Extrémně světelný objektiv pro snové portréty s nádherně rozmazaným
                                 pozadím (bokehem), který oddělí vás od okolí.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-sony-135mm.png" alt="Sony 135mm f/1.8 GM" class="tech-img">
+                            <div class="tech-placeholder" aria-hidden="true">135 mm</div>
                             <div class="tech-name">Sony 135mm f/1.8 GM</div>
                             <div class="tech-desc">Teleobjektiv s nekompromisní ostrostí, kterým zachytíme vaše emoce na
                                 dálku, aniž byste o nás věděli.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-tamron-70-180.png" alt="Tamron 70-180 f/2.8 G2" class="tech-img">
+                            <div class="tech-placeholder" aria-hidden="true">70–180 mm</div>
                             <div class="tech-name">Tamron 70-180 f/2.8 G2</div>
                             <div class="tech-desc">Všestranný teleobjektiv, díky kterému nám neunikne žádný detail ani
                                 emoce, i když jsme na druhé straně sálu.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-tamron-28-75.png" alt="Tamron 28-75 f/2.8 G2" class="tech-img">
+                            <div class="tech-placeholder" aria-hidden="true">28–75 mm</div>
                             <div class="tech-name">Tamron 28-75 f/2.8 G2</div>
                             <div class="tech-desc">Náš univerzální pracant pro reportážní záběry, který zvládne zachytit
                                 celou scénu i detaily bez výměny objektivu.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-laowa-12mm.png" alt="Laowa 12mm f/2.8 Zero-D" class="tech-img">
+                            <div class="tech-placeholder" aria-hidden="true">12 mm</div>
                             <div class="tech-name">Laowa 12mm f/2.8 Zero-D</div>
                             <div class="tech-desc">Ultra-širokoúhlý objektiv s nulovým zkreslením pro epické záběry
                                 architektury a velkolepých prostorů.</div>
@@ -2682,7 +2761,7 @@
                                 nebo lokace v kinematografické kvalitě 5.4K.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-dji-avata2.png" alt="DJI Avata 2" class="tech-img">
+                            <div class="tech-placeholder" aria-hidden="true">FPV</div>
                             <div class="tech-name">DJI Avata 2</div>
                             <div class="tech-desc">FPV dron pro dynamické a akční průlety interiérem i exteriérem, které
                                 dodají vašemu videu moderní "drive".</div>
@@ -2694,7 +2773,7 @@
                                 kamerou hladké jako ve filmu, bez jakéhokoliv třesu.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-dji-rsc2.png" alt="DJI RSC 2" class="tech-img">
+                            <div class="tech-placeholder" aria-hidden="true">RSC 2</div>
                             <div class="tech-name">DJI RSC 2</div>
                             <div class="tech-desc">Kompaktní a lehký gimbal, který nám umožňuje být mobilní a kreativní
                                 po celý den natáčení.</div>
@@ -2718,13 +2797,13 @@
                                 žádné slovo ani v náročných podmínkách.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-lensbot-gl330.png" alt="Lensbot GL 330" class="tech-img">
+                            <div class="tech-placeholder" aria-hidden="true">GL 330</div>
                             <div class="tech-name">Lensbot GL 330</div>
                             <div class="tech-desc">Výkonné studiové světlo, které nám umožní vytvořit perfektní
                                 atmosféru a nasvícení i v naprosté tmě.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-lensbot-gl120rgb.png" alt="Lensbot GL 120RGB" class="tech-img">
+                            <div class="tech-placeholder" aria-hidden="true">GL 120 RGB</div>
                             <div class="tech-name">Lensbot GL 120RGB</div>
                             <div class="tech-desc">Kreativní RGB světla pro barvení scény, která dodají vašemu videu
                                 unikátní mood a vizuální styl.</div>
@@ -2842,11 +2921,6 @@
             <div class="section-header">
                 <div class="section-badge">Google recenze</div>
                 <h2 class="section-title">Co o nás říkají <span>klienti</span></h2>
-                <div class="script-placeholder-info">
-                    <!-- TIP PRO VÁS: Sem v budoucnu vložte kód z Elfsight nebo jiné služby pro živé recenze -->
-                    <!-- Kód by přišel místo divu .google-widget-wrapper níže -->
-                    Live Widget Placeholder
-                </div>
             </div>
 
             <div class="google-widget-wrapper">
@@ -3525,33 +3599,13 @@
 
                 <div class="partners-slider" id="partnersSlider">
                     <div class="partners-track" id="partnersTrack">
-                        <div class="partner-card">
-                            <img src="partners/logo-real.png" alt="Real Partner" class="partner-logo transparent-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-nexus.png" alt="Nexus Systems" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-next.png" alt="Next Corp" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-peak.png" alt="Peak Solutions" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-orbit.png" alt="Orbit Studio" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-nexus.png" alt="Nexus Systems" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-next.png" alt="Next Corp" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-peak.png" alt="Peak Solutions" class="partner-logo">
-                        </div>
-                        <div class="partner-card">
-                            <img src="partners/logo-orbit.png" alt="Orbit Studio" class="partner-logo">
-                        </div>
+                        <div class="partner-card"><span class="partner-name">JYSK</span></div>
+                        <div class="partner-card"><span class="partner-name">JUTA</span></div>
+                        <div class="partner-card"><span class="partner-name">Miss Czech Republic</span></div>
+                        <div class="partner-card"><span class="partner-name">MPSV</span></div>
+                        <div class="partner-card"><span class="partner-name">Resort Dolní Morava</span></div>
+                        <div class="partner-card"><span class="partner-name">JamRock</span></div>
+                        <div class="partner-card"><span class="partner-name">Hradecký Koštýř</span></div>
                     </div>
                 </div>
 
@@ -3626,7 +3680,8 @@
                         <div class="faq-toggle">+</div>
                     </div>
                     <div class="faq-answer">
-                        Ne, působíme po celé České republice. Doprava je v ceně našich balíčků bez ohledu na vzdálenost.
+                        Ne, natáčíme v celém Česku. Konkrétní dopravu a případné náklady vždy jasně uvedeme v nabídce
+                        před potvrzením spolupráce.
                     </div>
                 </div>
 
@@ -3636,8 +3691,8 @@
                         <div class="faq-toggle">+</div>
                     </div>
                     <div class="faq-answer">
-                        Při rezervaci vybíráme zálohu 30%, zbytek je splatný po předání hotového videa. Přijímáme platby
-                        převodem i v hotovosti.
+                        Konkrétní podmínky rezervace, cenu i způsob platby vám vždy přehledně potvrdíme v nabídce a ve
+                        smlouvě předem.
                     </div>
                 </div>
 
@@ -3647,8 +3702,8 @@
                         <div class="faq-toggle">+</div>
                     </div>
                     <div class="faq-answer">
-                        Standardní doba zpracování je 4–6 týdnů od události. Express zpracování (do 2 týdnů) je možné za
-                        příplatek 3000 Kč.
+                        Termín závisí na rozsahu zakázky a sezóně. Reálný harmonogram vám potvrdíme už při domlouvání
+                        zakázky.
                     </div>
                 </div>
 
@@ -3658,8 +3713,8 @@
                         <div class="faq-toggle">+</div>
                     </div>
                     <div class="faq-answer">
-                        Ano! Před finálním předáním vám pošleme náhled ke schválení. Drobné úpravy (změna hudby, střih)
-                        jsou v ceně.
+                        Způsob schvalování a rozsah případných úprav domluvíme podle vybraného balíčku ještě před
+                        začátkem práce.
                     </div>
                 </div>
 
@@ -3838,7 +3893,7 @@
                     </div>
 
                     <div class="cta-buttons" style="justify-content: flex-start;">
-                        <a href="tel:+420XXXXXXXXX" class="btn btn-outline">
+                        <a href="tel:+420773210194" class="btn btn-outline">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" style="margin-right: 0.5rem">
                                 <path
@@ -3846,45 +3901,59 @@
                             </svg>
                             Zavolejte nám
                         </a>
-                        <a href="mailto:info@ivproduction.cz" class="btn btn-outline">
+                        <a href="mailto:video@ivproduction.cz" class="btn btn-outline">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" style="margin-right: 0.5rem">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                                 <polyline points="22,6 12,13 2,6" />
                             </svg>
-                            info@ivproduction.cz
+                            video@ivproduction.cz
                         </a>
                     </div>
                 </div>
 
-                <form class="contact-form" action="#" method="POST">
+                <form class="contact-form" action="kontakt-handler.php" method="POST">
+                    <div class="honeypot" aria-hidden="true">
+                        <label for="company">Společnost</label>
+                        <input id="company" type="text" name="company" tabindex="-1" autocomplete="off">
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <input type="text" class="form-input" name="name" placeholder="Vaše jméno *" required>
+                            <label class="sr-only" for="cta-name">Vaše jméno</label>
+                            <input id="cta-name" type="text" class="form-input" name="name" placeholder="Vaše jméno *" autocomplete="name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" name="email" placeholder="Váš e-mail *" required>
+                            <label class="sr-only" for="cta-email">Váš e-mail</label>
+                            <input id="cta-email" type="email" class="form-input" name="email" placeholder="Váš e-mail *" autocomplete="email" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <input type="tel" class="form-input" name="phone" placeholder="Telefon *" required>
+                            <label class="sr-only" for="cta-phone">Telefon</label>
+                            <input id="cta-phone" type="tel" class="form-input" name="phone" placeholder="Telefon *" autocomplete="tel" required>
                         </div>
                         <div class="form-group">
-                            <input type="date" class="form-input" name="event_date" placeholder="Datum akce *" required>
+                            <label class="sr-only" for="cta-event-date">Datum akce</label>
+                            <input id="cta-event-date" type="date" class="form-input" name="event_date" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-input" name="address" placeholder="Adresa/Místo konání akce *"
+                        <label class="sr-only" for="cta-address">Adresa nebo místo konání akce</label>
+                        <input id="cta-address" type="text" class="form-input" name="address" placeholder="Adresa/Místo konání akce *"
                             required>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-textarea" name="message"
+                        <label class="sr-only" for="cta-message">Vaše zpráva</label>
+                        <textarea id="cta-message" class="form-textarea" name="message"
                             placeholder="Jak vám můžeme pomoci? (Typ akce, další detaily...)" required></textarea>
                     </div>
+                    <label class="form-consent">
+                        <input type="checkbox" name="consent" value="1" required>
+                        <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
+                    </label>
                     <button type="submit" class="form-submit">Odeslat nezávaznou poptávku</button>
                     <p style="font-size: 0.8rem; color: var(--gray); margin-top: 1rem; text-align: center;">
-                        * Povinná pole. Odesláním souhlasíte se zpracováním osobních údajů.
+                        * Povinná pole. Ozveme se vám co nejdříve.
                     </p>
                 </form>
             </div>
@@ -3898,13 +3967,13 @@
                 <a href="index.html" class="logo footer-logo"><img src="logo-light.png" alt="IV Production"></a>
                 <p>Profesionální video produkce a fotobudky pro nezapomenutelné momenty.</p>
                 <div class="footer-social">
-                    <a href="https://facebook.com/ivproduction" class="social-btn" aria-label="Facebook"
+                    <a href="https://www.facebook.com/IVproductionCZ" class="social-btn" aria-label="Facebook"
                         target="_blank">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                         </svg>
                     </a>
-                    <a href="https://instagram.com/ivproduction" class="social-btn" aria-label="Instagram"
+                    <a href="https://www.instagram.com/ivproduction_video/" class="social-btn" aria-label="Instagram"
                         target="_blank">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -3951,8 +4020,8 @@
             <div class="footer-links">
                 <h4>Kontakt</h4>
                 <ul>
-                    <li><a href="tel:+420XXXXXXXXX">+420 XXX XXX XXX</a></li>
-                    <li><a href="mailto:info@ivproduction.cz">info@ivproduction.cz</a></li>
+                    <li><a href="tel:+420773210194">+420 773 210 194</a></li>
+                    <li><a href="mailto:video@ivproduction.cz">video@ivproduction.cz</a></li>
                     <li>Hradec Králové a celá ČR</li>
                 </ul>
             </div>
@@ -4060,6 +4129,7 @@
         if (firstCategory) {
             firstCategory.classList.add('active');
         }
+
 
         // Unified Counter Animation
         const runCounterAnimation = (el) => {

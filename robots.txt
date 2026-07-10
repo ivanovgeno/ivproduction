@@ -6,6 +6,9 @@ Allow: /
 
 # Zákaz indexace záložních složek
 Disallow: /zálohy/
+Disallow: /Záloha%20z%20git%20hub%2027.1.2026%20aktuální/
+Disallow: /index_v1_backup.html
+Disallow: /index%20chyba.html
 
 # Sitemap
 Sitemap: https://www.ivproduction.cz/sitemap.xml
