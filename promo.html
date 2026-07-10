@@ -352,19 +352,21 @@
             text-decoration: none;
         }
     </style>
+    <link rel="stylesheet" href="premium.css">
+    <script src="premium.js" defer></script>
 </head>
 
 <body>
     <header class="header">
         <div class="header-inner">
             <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
-            <nav class="nav">
+            <nav class="nav" id="mobileNavigation">
                 <a href="index.html">Domů</a>
                 <a href="index.html#sluzby">Služby</a>
                 <a href="portfolio.html">Portfolio</a>
                 <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
             </nav>
-            <button class="mobile-menu" aria-label="Menu">
+            <button class="mobile-menu" aria-label="Otevřít menu" aria-controls="mobileNavigation" aria-expanded="false">
                 <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
                     <line x1="3" y1="12" x2="21" y2="12"></line>

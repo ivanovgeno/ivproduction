@@ -2450,6 +2450,7 @@
             border-radius: 16px;
         }
     </style>
+    <link rel="stylesheet" href="premium.css">
 </head>
 
 <body>
@@ -2458,7 +2459,7 @@
             <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
 
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -2490,15 +2491,18 @@
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Hlavní navigace" aria-hidden="true">
             <a href="index.html" class="mobile-menu-link">Domů</a>
             <a href="svatby.html" class="mobile-menu-link">Svatby</a>
             <a href="plesy.html" class="mobile-menu-link">Plesy</a>
+            <a href="reality.html" class="mobile-menu-link">Reality</a>
+            <a href="promo.html" class="mobile-menu-link">Promo</a>
             <a href="fotobudka.html" class="mobile-menu-link">Fotobudka</a>
             <a href="360budka.html" class="mobile-menu-link">360° Budka</a>
             <a href="konference.html" class="mobile-menu-link">Konference</a>
             <a href="podcast.html" class="mobile-menu-link">Podcast</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
+            <a href="blog.html" class="mobile-menu-link">Blog</a>
             <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
@@ -4339,20 +4343,48 @@
         const mobileToggle = document.getElementById('mobileMenuToggle');
         const mobileOverlay = document.getElementById('mobileMenuOverlay');
         const mobileLinks = document.querySelectorAll('.mobile-menu-link');
+        let lastFocusedElement = null;
 
         if (mobileToggle && mobileOverlay) {
             function toggleMenu() {
-                mobileToggle.classList.toggle('active');
-                mobileOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+                const willOpen = !mobileOverlay.classList.contains('active');
+
+                if (willOpen) {
+                    lastFocusedElement = document.activeElement;
+                }
+
+                const isOpen = mobileOverlay.classList.toggle('active');
+                mobileToggle.classList.toggle('active', isOpen);
+                mobileToggle.setAttribute('aria-expanded', String(isOpen));
+                mobileToggle.setAttribute('aria-label', isOpen ? 'Zavřít menu' : 'Otevřít menu');
+                mobileOverlay.setAttribute('aria-hidden', String(!isOpen));
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+
+                if (isOpen) {
+                    mobileOverlay.querySelector('a')?.focus();
+                } else {
+                    lastFocusedElement?.focus();
+                }
+            }
+
+            function closeMenu() {
+                if (mobileOverlay.classList.contains('active')) {
+                    toggleMenu();
+                }
             }
 
             mobileToggle.addEventListener('click', toggleMenu);
 
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    toggleMenu(); // Close on click
+                    closeMenu();
                 });
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeMenu();
+                }
             });
         }
     </script>
