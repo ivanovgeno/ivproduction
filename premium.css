@@ -399,7 +399,7 @@ body::before {
 
 .services-grid {
     gap: 1rem;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .service-card {
@@ -407,11 +407,44 @@ body::before {
     border-radius: 10px;
     min-height: 420px;
     padding: 1.65rem;
+    scroll-margin-top: 6.5rem;
     text-align: left;
 }
 
+.service-card-label {
+    align-items: center;
+    backdrop-filter: blur(12px);
+    background: rgba(11, 11, 13, 0.74);
+    border: 1px solid rgba(240, 212, 119, 0.64);
+    border-radius: 4px;
+    color: var(--gold-shine);
+    display: inline-flex;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 800;
+    gap: 0.52rem;
+    left: 1.15rem;
+    letter-spacing: 0.12em;
+    max-width: calc(100% - 2.3rem);
+    padding: 0.52rem 0.64rem;
+    position: absolute;
+    text-transform: uppercase;
+    top: 1.15rem;
+    z-index: 5;
+}
+
+.service-card-label span {
+    align-items: center;
+    border-right: 1px solid rgba(240, 212, 119, 0.48);
+    color: var(--gold-light);
+    display: inline-flex;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    padding-right: 0.52rem;
+}
+
 .service-card::before {
-    background: linear-gradient(180deg, rgba(18, 18, 21, 0.02) 0%, rgba(18, 18, 21, 0.95) 86%);
+    background: linear-gradient(180deg, rgba(18, 18, 21, 0.12) 0%, rgba(18, 18, 21, 0.93) 86%);
 }
 
 .service-card:hover {
@@ -436,6 +469,16 @@ body::before {
     font-size: 0.94rem;
     line-height: 1.55;
 }
+
+.service-card--wedding { background-position: center 46%; }
+.service-card--real-estate { background-position: center; }
+.service-card--event { background-position: center; }
+.service-card--promo { background-position: center; }
+.service-card--reels { background-position: center; }
+.service-card--photobooth { background-position: center; }
+.service-card--360 { background-position: center; }
+.service-card--conference { background-position: center; }
+.service-card--podcast { background-position: center; }
 
 .service-link {
     align-self: flex-start;
@@ -933,7 +976,7 @@ textarea:focus-visible {
     border-bottom: 1px solid rgba(250, 249, 246, 0.13);
     border-top: 1px solid rgba(250, 249, 246, 0.13);
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     margin: 2.6rem 0 1rem;
 }
 
@@ -951,11 +994,11 @@ textarea:focus-visible {
     transition: background-color 240ms var(--ease-premium), color 240ms var(--ease-premium), transform 240ms var(--ease-premium);
 }
 
-.service-directory a:nth-child(4n) {
+.service-directory a:nth-child(3n) {
     border-right: 0;
 }
 
-.service-directory a:nth-child(n + 5) {
+.service-directory a:nth-child(n + 4) {
     border-top: 1px solid rgba(250, 249, 246, 0.13);
 }
 
@@ -1195,7 +1238,7 @@ textarea:focus-visible {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .service-directory a:nth-child(4n) {
+    .service-directory a:nth-child(3n) {
         border-right: 1px solid rgba(250, 249, 246, 0.13);
     }
 
@@ -1392,5 +1435,118 @@ textarea:focus-visible {
 
     .contact-email {
         text-align: center;
+    }
+}
+
+/* On phones, fixed contact badges cover form fields and page actions. The navigation
+   and contact section already keep these actions reachable without obscuring content. */
+@media (max-width: 900px) {
+    .quick-contact,
+    .back-to-top {
+        display: none !important;
+    }
+}
+
+/* Subpage headers use a backdrop filter, which traps a fixed child on iOS.
+   The mobile panel is therefore portaled to body by premium.js and layered below
+   the header button, so it always fills the viewport and keeps its links tappable. */
+@media (max-width: 900px) {
+    .header:has(.mobile-menu) {
+        backdrop-filter: none !important;
+        z-index: 1001 !important;
+    }
+
+    body > .mobile-nav-panel {
+        align-items: stretch !important;
+        background: linear-gradient(145deg, rgba(11, 11, 13, 0.995), rgba(30, 25, 15, 0.99)) !important;
+        bottom: 0 !important;
+        box-sizing: border-box;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        justify-content: flex-start !important;
+        left: 0 !important;
+        opacity: 0 !important;
+        overflow-y: auto !important;
+        padding: calc(5.9rem + env(safe-area-inset-top)) max(1.25rem, env(safe-area-inset-right)) calc(1.5rem + env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left)) !important;
+        pointer-events: none !important;
+        position: fixed !important;
+        right: 0 !important;
+        top: 0 !important;
+        transform: translateY(-1rem) !important;
+        transition: opacity 260ms var(--ease-premium), transform 300ms var(--ease-premium), visibility 300ms !important;
+        visibility: hidden !important;
+        z-index: 1000 !important;
+    }
+
+    body > .mobile-nav-panel.active {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+        visibility: visible !important;
+    }
+
+    body > .mobile-nav-panel a {
+        align-items: center !important;
+        border-bottom: 1px solid rgba(250, 249, 246, 0.13) !important;
+        border-radius: 0 !important;
+        color: rgba(250, 249, 246, 0.92) !important;
+        display: flex !important;
+        font-family: 'Playfair Display', Georgia, serif !important;
+        font-size: clamp(1.2rem, 5vw, 1.6rem) !important;
+        font-weight: 500 !important;
+        justify-content: space-between !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.1 !important;
+        min-height: 3.35rem !important;
+        opacity: 1 !important;
+        padding: 0.72rem 0 !important;
+        text-align: left !important;
+        text-decoration: none !important;
+        text-transform: none !important;
+        transform: none !important;
+        width: 100% !important;
+    }
+
+    body > .mobile-nav-panel a.active,
+    body > .mobile-nav-panel a:hover {
+        background: transparent !important;
+        color: var(--gold-light) !important;
+        text-shadow: none !important;
+    }
+
+    body > .mobile-nav-panel .nav-cta {
+        border: 0 !important;
+        border-radius: 7px !important;
+        color: #121215 !important;
+        justify-content: center !important;
+        margin-top: 1rem !important;
+        min-height: 3.45rem !important;
+        padding: 0.9rem 1rem !important;
+        text-align: center !important;
+    }
+
+    body > .mobile-nav-panel .nav-dropdown,
+    body > .mobile-nav-panel .nav-dropdown-menu {
+        display: block !important;
+        position: static !important;
+        transform: none !important;
+        width: 100% !important;
+    }
+
+    body > .mobile-nav-panel .nav-dropdown-menu {
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        opacity: 1 !important;
+        padding: 0 0 0.35rem 1rem !important;
+        visibility: visible !important;
+    }
+
+    body > .mobile-nav-panel .nav-dropdown-menu a {
+        color: rgba(250, 249, 246, 0.68) !important;
+        font-family: 'DM Sans', sans-serif !important;
+        font-size: 0.95rem !important;
+        min-height: 2.6rem !important;
     }
 }

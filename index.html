@@ -2450,7 +2450,7 @@
             border-radius: 16px;
         }
     </style>
-    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="premium.css?v=20260712-mobilefix">
 </head>
 
 <body>
@@ -2479,6 +2479,7 @@
                 <div class="nav-dropdown">
                     <a href="index.html#sluzby" class="nav-dropdown-trigger">Další služby ▾</a>
                     <div class="nav-dropdown-menu">
+                        <a href="#reels">Reels</a>
                         <a href="konference.html">Konference</a>
                         <a href="podcast.html">Podcast</a>
                     </div>
@@ -2497,6 +2498,7 @@
             <a href="plesy.html" class="mobile-menu-link">Plesy</a>
             <a href="reality.html" class="mobile-menu-link">Reality</a>
             <a href="promo.html" class="mobile-menu-link">Promo</a>
+            <a href="#reels" class="mobile-menu-link">Reels</a>
             <a href="fotobudka.html" class="mobile-menu-link">Fotobudka</a>
             <a href="360budka.html" class="mobile-menu-link">360° Budka</a>
             <a href="konference.html" class="mobile-menu-link">Konference</a>
@@ -2553,7 +2555,7 @@
             <div class="section-header">
                 <div class="section-badge">Naše služby</div>
                 <h2 class="section-title">Co pro vás můžeme <span>udělat</span>?</h2>
-                <p class="section-subtitle">Nabízíme komplexní video služby pro každou příležitost</p>
+                <p class="section-subtitle">Video, foto zážitky i obsah pro sociální sítě — vše na jednom místě.</p>
             </div>
 
             <div class="service-directory" aria-label="Přehled služeb IV Production">
@@ -2561,62 +2563,79 @@
                 <a href="reality.html"><span>02</span> Reality</a>
                 <a href="plesy.html"><span>03</span> Plesy a akce</a>
                 <a href="promo.html"><span>04</span> Promo videa</a>
-                <a href="fotobudka.html"><span>05</span> Fotobudka</a>
-                <a href="360budka.html"><span>06</span> 360° Budka</a>
-                <a href="konference.html"><span>07</span> Konference</a>
-                <a href="podcast.html"><span>08</span> Podcast</a>
+                <a href="#reels"><span>05</span> Reels</a>
+                <a href="fotobudka.html"><span>06</span> Fotobudka</a>
+                <a href="360budka.html"><span>07</span> 360° Budka</a>
+                <a href="konference.html"><span>08</span> Konference</a>
+                <a href="podcast.html"><span>09</span> Podcast</a>
             </div>
 
             <div class="services-grid">
-                <div class="service-card reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600');">
+                <div class="service-card service-card--wedding reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85');">
+                    <div class="service-card-label" aria-hidden="true"><span>01</span> Svatební videa</div>
                     <h3>Svatební videa</h3>
                     <p>Zachytíme emoce vašeho velkého dne. Filmový příběh, který budete sledovat znovu a znovu.</p>
                     <a href="svatby.html" class="service-link">Zjistit více</a>
                 </div>
 
-                <div class="service-card reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600');">
+                <div class="service-card service-card--real-estate reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85');">
+                    <div class="service-card-label" aria-hidden="true"><span>02</span> Reality</div>
                     <h3>Reality</h3>
                     <p>Profesionální video prohlídky, dronové záběry a virtuální 3D prohlídky nemovitostí.</p>
                     <a href="reality.html" class="service-link">Zjistit více</a>
                 </div>
 
-                <div class="service-card reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600');">
+                <div class="service-card service-card--event reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85');">
+                    <div class="service-card-label" aria-hidden="true"><span>03</span> Plesy a akce</div>
                     <h3>Plesy a akce</h3>
                     <p>Aftermovie, které zachytí atmosféru a energii vaší události.</p>
                     <a href="plesy.html" class="service-link">Zjistit více</a>
                 </div>
 
-                <div class="service-card reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600');">
+                <div class="service-card service-card--promo reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85');">
+                    <div class="service-card-label" aria-hidden="true"><span>04</span> Promo videa</div>
                     <h3>Promo videa</h3>
                     <p>Reklamní spoty a prezentační videa pro vaši firmu nebo projekt.</p>
                     <a href="promo.html" class="service-link">Zjistit více →</a>
                 </div>
 
-                <div class="service-card reveal" style="background-image: url('fotobudka-bg.jpg');">
+                <div class="service-card service-card--reels reveal" id="reels"
+                    style="background-image: url('https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=1200&q=85');">
+                    <div class="service-card-label" aria-hidden="true"><span>05</span> Reels</div>
+                    <h3>Reels</h3>
+                    <p>Krátká vertikální videa pro sociální sítě, která zaujmou hned v prvních vteřinách.</p>
+                    <a href="kontakt.html" class="service-link">Poptat Reels</a>
+                </div>
+
+                <div class="service-card service-card--photobooth reveal" style="background-image: url('fotobudka-bg.jpg');">
+                    <div class="service-card-label" aria-hidden="true"><span>06</span> Fotobudka</div>
                     <h3>Fotobudka</h3>
                     <p>Zábava pro vaše hosty s neomezeným tiskem a online galerií.</p>
                     <a href="fotobudka.html" class="service-link">Zjistit více →</a>
                 </div>
 
-                <div class="service-card reveal" style="background-image: url('360budka-bg.jpg');">
+                <div class="service-card service-card--360 reveal" style="background-image: url('360budka-bg.jpg');">
+                    <div class="service-card-label" aria-hidden="true"><span>07</span> 360° Budka</div>
                     <h3>360° Budka</h3>
                     <p>Moderní zážitek pro vaše hosty – virální videa z 360° rotačního stojanu.</p>
                     <a href="360budka.html" class="service-link">Zjistit více →</a>
                 </div>
 
-                <div class="service-card reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600');">
+                <div class="service-card service-card--conference reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=85');">
+                    <div class="service-card-label" aria-hidden="true"><span>08</span> Konference</div>
                     <h3>Konference</h3>
                     <p>Profesionální dokumentace konferencí, seminářů a firemních setkání.</p>
                     <a href="konference.html" class="service-link">Zjistit více →</a>
                 </div>
 
-                <div class="service-card reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600');">
+                <div class="service-card service-card--podcast reveal"
+                    style="background-image: url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=1200&q=85');">
+                    <div class="service-card-label" aria-hidden="true"><span>09</span> Podcast</div>
                     <h3>Podcast</h3>
                     <p>Natáčení podcastů ve vysoké kvalitě. Video i audio produkce.</p>
                     <a href="podcast.html" class="service-link">Zjistit více →</a>

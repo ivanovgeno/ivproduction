@@ -6,6 +6,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mobileQuery = window.matchMedia('(max-width: 900px)');
     const managesNavigation = mobileButton.hasAttribute('data-nav-controller');
+    const navigationOrigin = document.createComment('mobile navigation origin');
+    navigation.parentNode.insertBefore(navigationOrigin, navigation);
+    let navigationIsPortaled = false;
+
+    function positionNavigation() {
+        if (mobileQuery.matches && !navigationIsPortaled) {
+            navigation.classList.add('mobile-nav-panel');
+            document.body.append(navigation);
+            navigationIsPortaled = true;
+            return;
+        }
+
+        if (!mobileQuery.matches && navigationIsPortaled) {
+            navigation.classList.remove('mobile-nav-panel', 'active');
+            navigationOrigin.after(navigation);
+            navigationIsPortaled = false;
+        }
+    }
 
     function updateMenuIcon(isOpen) {
         const icon = mobileButton.querySelector('svg');
@@ -17,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateNavigationState() {
+        positionNavigation();
+
         const isOpen = navigation.classList.contains('active');
         const isMobile = mobileQuery.matches;
 
@@ -73,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = '';
         }
 
+        positionNavigation();
         window.requestAnimationFrame(updateNavigationState);
     });
     updateNavigationState();
