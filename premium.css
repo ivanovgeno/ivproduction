@@ -2216,6 +2216,137 @@ body.home-page .hero-content {
     }
 }
 
+/* Team pyramid: Geno leads, with Markéta and Sofie as the close creative core below. */
+.about-team .team-grid--pyramid {
+    align-items: start;
+    gap: clamp(1rem, 2vw, 1.35rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 1.6rem auto 0;
+    max-width: 39rem;
+}
+
+.about-team .team-grid--pyramid .team-member {
+    align-items: center;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.014));
+    border: 1px solid rgba(240, 212, 119, 0.2);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: clamp(1rem, 2vw, 1.35rem);
+    text-align: center;
+}
+
+.about-team .team-grid--pyramid .team-member--lead {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(100%, 18rem);
+}
+
+.about-team .team-photo {
+    align-items: center;
+    aspect-ratio: 4 / 5;
+    background:
+        radial-gradient(circle at 50% 16%, rgba(240, 212, 119, 0.2), transparent 30%),
+        linear-gradient(145deg, #1d1b18, #101014 72%);
+    border: 1px solid rgba(240, 212, 119, 0.5);
+    border-radius: 9px;
+    box-shadow: inset 0 0 0 0.35rem rgba(10, 10, 13, 0.7), 0 1rem 2.2rem rgba(0, 0, 0, 0.22);
+    display: flex;
+    height: auto;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    max-width: 12rem;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.about-team .team-photo::before {
+    background:
+        linear-gradient(125deg, transparent 0 43%, rgba(240, 212, 119, 0.1) 43.5% 44%, transparent 44.5% 100%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 1.35rem);
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+.about-team .team-photo::after {
+    border: 1px solid rgba(250, 249, 246, 0.11);
+    border-radius: 5px;
+    content: '';
+    inset: 0.45rem;
+    pointer-events: none;
+    position: absolute;
+}
+
+.about-team .team-photo img {
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.about-team .team-photo-initial {
+    color: var(--gold-light);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(3.8rem, 8vw, 5.4rem);
+    font-weight: 500;
+    line-height: 1;
+    position: relative;
+    text-shadow: 0 0 1.8rem rgba(240, 212, 119, 0.18);
+    z-index: 1;
+}
+
+.about-team .team-photo-status {
+    bottom: 0.85rem;
+    color: rgba(250, 249, 246, 0.58);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.56rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.about-team .team-name {
+    color: var(--light);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.35rem, 2vw, 1.6rem);
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+}
+
+.about-team .team-role {
+    color: rgba(250, 249, 246, 0.62);
+    font-size: 0.79rem;
+    line-height: 1.45;
+}
+
+.about-team .team-member--lead .team-photo {
+    max-width: 13.5rem;
+}
+
+@media (max-width: 600px) {
+    .about-team .team-grid--pyramid {
+        grid-template-columns: 1fr;
+        max-width: 20rem;
+    }
+
+    .about-team .team-grid--pyramid .team-member--lead {
+        grid-column: auto;
+        width: 100%;
+    }
+
+    .about-team .team-photo,
+    .about-team .team-member--lead .team-photo {
+        max-width: 13rem;
+    }
+}
+
 /* Final hero art direction: cinematic grading, readable copy and a restrained premium finish. */
 body.page-360 .hero::before,
 body.page-fotobudka .hero::before,
