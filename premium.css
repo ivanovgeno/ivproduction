@@ -572,6 +572,7 @@ body::before {
 .nav-cta,
 .mobile-menu-cta,
 .service-link,
+.form-submit,
 .pricing-btn,
 .budka-btn,
 .submit-btn,
@@ -593,6 +594,7 @@ body::before {
 .nav-cta::after,
 .mobile-menu-cta::after,
 .service-link::after,
+.form-submit::after,
 .pricing-btn::after,
 .budka-btn::after,
 .submit-btn::after,
@@ -685,6 +687,7 @@ body::before {
     .nav-cta:hover,
     .mobile-menu-cta:hover,
     .service-link:hover,
+    .form-submit:hover,
     .pricing-btn:hover,
     .budka-btn:hover,
     .submit-btn:hover,
@@ -697,6 +700,7 @@ body::before {
     .nav-cta:hover::after,
     .mobile-menu-cta:hover::after,
     .service-link:hover::after,
+    .form-submit:hover::after,
     .pricing-btn:hover::after,
     .budka-btn:hover::after,
     .submit-btn:hover::after,
@@ -797,6 +801,7 @@ body::before {
     .nav-cta:active,
     .mobile-menu-cta:active,
     .service-link:active,
+    .form-submit:active,
     .pricing-btn:active,
     .budka-btn:active,
     .submit-btn:active,
@@ -920,5 +925,472 @@ textarea:focus-visible {
         animation-duration: 0.01ms !important;
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+/* Homepage service overview and project journey. */
+.service-directory {
+    border-bottom: 1px solid rgba(250, 249, 246, 0.13);
+    border-top: 1px solid rgba(250, 249, 246, 0.13);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 2.6rem 0 1rem;
+}
+
+.service-directory a {
+    align-items: center;
+    border-right: 1px solid rgba(250, 249, 246, 0.13);
+    color: rgba(250, 249, 246, 0.9);
+    display: flex;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem;
+    gap: 0.68rem;
+    min-height: 4.2rem;
+    padding: 0.9rem 1rem;
+    text-decoration: none;
+    transition: background-color 240ms var(--ease-premium), color 240ms var(--ease-premium), transform 240ms var(--ease-premium);
+}
+
+.service-directory a:nth-child(4n) {
+    border-right: 0;
+}
+
+.service-directory a:nth-child(n + 5) {
+    border-top: 1px solid rgba(250, 249, 246, 0.13);
+}
+
+.service-directory a span {
+    color: var(--gold-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+}
+
+.process {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.07), transparent 34%), #101014;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.16);
+    border-top: 1px solid rgba(212, 175, 55, 0.16);
+    padding: 7.5rem 2rem;
+}
+
+.process-steps {
+    counter-reset: process;
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    list-style: none;
+    margin: 3.25rem 0 2.25rem;
+    padding: 1px;
+    position: relative;
+}
+
+.process-steps::before {
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.68), rgba(212, 175, 55, 0.08));
+    content: '';
+    height: 1px;
+    left: 8%;
+    position: absolute;
+    right: 8%;
+    top: 3.2rem;
+}
+
+.process-step {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(250, 249, 246, 0.11);
+    min-height: 17rem;
+    padding: 1.35rem;
+    position: relative;
+    transition: border-color 320ms var(--ease-premium), box-shadow 320ms var(--ease-premium), transform 320ms var(--ease-premium);
+}
+
+.process-number {
+    align-items: center;
+    background: #151519;
+    border: 1px solid rgba(212, 175, 55, 0.55);
+    border-radius: 50%;
+    color: var(--gold-light);
+    display: inline-flex;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    height: 2.75rem;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    margin-bottom: 2.1rem;
+    position: relative;
+    width: 2.75rem;
+    z-index: 1;
+}
+
+.process-step h3 {
+    color: var(--light);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.45rem;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    margin: 0 0 0.85rem;
+}
+
+.process-step p {
+    color: rgba(250, 249, 246, 0.66);
+    font-size: 0.92rem;
+    line-height: 1.62;
+    margin: 0;
+}
+
+.process-action {
+    display: flex;
+    justify-content: center;
+}
+
+/* The enquiry form follows the FAQ, while the closing CTA stays lightweight. */
+.contact-enquiry {
+    background: radial-gradient(circle at 8% 20%, rgba(212, 175, 55, 0.12), transparent 26rem), #121215;
+    padding: 7.5rem 2rem;
+}
+
+.contact-enquiry-shell {
+    background: linear-gradient(130deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+    border: 1px solid rgba(212, 175, 55, 0.27);
+    border-radius: 12px;
+    display: grid;
+    gap: clamp(2rem, 6vw, 6rem);
+    grid-template-columns: minmax(0, 0.88fr) minmax(22rem, 1.12fr);
+    overflow: hidden;
+    padding: clamp(1.25rem, 4vw, 3.75rem);
+    position: relative;
+}
+
+.contact-enquiry-shell::before {
+    background: linear-gradient(180deg, var(--gold-shine), transparent);
+    content: '';
+    height: 10rem;
+    opacity: 0.16;
+    position: absolute;
+    right: 22%;
+    top: -7rem;
+    transform: rotate(24deg);
+    width: 1px;
+}
+
+.contact-enquiry-copy {
+    align-self: center;
+    max-width: 34rem;
+}
+
+.contact-enquiry-copy h2 {
+    color: var(--light);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.6rem, 4.2vw, 4.5rem);
+    letter-spacing: -0.052em;
+    line-height: 0.98;
+    margin: 1.15rem 0 1.4rem;
+}
+
+.contact-enquiry-copy h2 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-enquiry-copy > p {
+    color: rgba(250, 249, 246, 0.72);
+    font-size: 1.04rem;
+    line-height: 1.75;
+    margin: 0;
+}
+
+.contact-enquiry-points {
+    border-left: 1px solid rgba(212, 175, 55, 0.52);
+    display: grid;
+    gap: 0.72rem;
+    margin: 2rem 0;
+    padding-left: 1rem;
+}
+
+.contact-enquiry-points span {
+    color: rgba(250, 249, 246, 0.82);
+    font-size: 0.83rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+}
+
+.contact-enquiry-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.contact-email {
+    color: var(--gold-light);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+
+.contact-enquiry-form {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.form-note {
+    color: var(--gray);
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.cta-contact-options {
+    grid-template-columns: minmax(0, 44rem);
+    justify-content: center;
+    text-align: center;
+}
+
+.cta-contact-options .cta-text {
+    text-align: center;
+}
+
+.cta-contact-options .cta-buttons,
+.cta-contact-options .cta-trust {
+    justify-content: center !important;
+}
+
+/* A single responsive pattern for all subpage navigation. */
+.mobile-menu {
+    display: none;
+}
+
+@media (min-width: 901px) {
+    .mobile-menu {
+        display: none !important;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .service-directory a:hover {
+        background: rgba(212, 175, 55, 0.1);
+        color: var(--gold-shine);
+        transform: translateY(-2px);
+    }
+
+    .process-step:hover {
+        border-color: rgba(212, 175, 55, 0.68);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22), inset 0 0 0 1px rgba(212, 175, 55, 0.12);
+        transform: translateY(-5px);
+    }
+
+    .contact-email:hover {
+        color: var(--gold-shine);
+    }
+}
+
+@media (max-width: 900px) {
+    .service-directory {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .service-directory a:nth-child(4n) {
+        border-right: 1px solid rgba(250, 249, 246, 0.13);
+    }
+
+    .service-directory a:nth-child(2n) {
+        border-right: 0;
+    }
+
+    .service-directory a:nth-child(n + 3) {
+        border-top: 1px solid rgba(250, 249, 246, 0.13);
+    }
+
+    .process {
+        padding: 5.5rem 1.25rem;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr;
+        margin-top: 2.5rem;
+    }
+
+    .process-steps::before {
+        bottom: 6%;
+        height: auto;
+        left: 2.7rem;
+        right: auto;
+        top: 6%;
+        width: 1px;
+    }
+
+    .process-step {
+        min-height: 0;
+        padding: 1.2rem 1.2rem 1.35rem 5rem;
+    }
+
+    .process-number {
+        left: 1.2rem;
+        margin: 0;
+        position: absolute;
+        top: 1.25rem;
+    }
+
+    .contact-enquiry {
+        padding: 5.5rem 1.25rem;
+    }
+
+    .contact-enquiry-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .header:has(.mobile-menu) .header-inner,
+    .header:has(.mobile-menu) .header-content {
+        position: relative;
+        z-index: 1401;
+    }
+
+    .header:has(.mobile-menu) .mobile-menu {
+        align-items: center;
+        background: rgba(18, 18, 21, 0.86);
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        border-radius: 8px;
+        color: var(--gold-light);
+        cursor: pointer;
+        display: inline-flex !important;
+        height: 3rem;
+        justify-content: center;
+        min-height: 3rem;
+        min-width: 3rem;
+        padding: 0.35rem;
+        position: relative;
+        touch-action: manipulation;
+        width: 3rem;
+        z-index: 1402;
+    }
+
+    .header:has(.mobile-menu) .mobile-menu svg {
+        height: 1.4rem;
+        pointer-events: none;
+        width: 1.4rem;
+    }
+
+    .header:has(.mobile-menu) .nav {
+        align-items: stretch;
+        background: linear-gradient(145deg, rgba(11, 11, 13, 0.99), rgba(30, 25, 15, 0.985));
+        bottom: 0;
+        display: flex !important;
+        flex-direction: column;
+        gap: 0;
+        justify-content: flex-start;
+        left: 0;
+        opacity: 0;
+        overflow-y: auto;
+        padding: calc(5.7rem + env(safe-area-inset-top)) max(1.25rem, env(safe-area-inset-right)) calc(1.5rem + env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
+        pointer-events: none;
+        position: fixed;
+        right: 0;
+        top: 0;
+        transform: translateY(-1rem);
+        transition: opacity 260ms var(--ease-premium), transform 300ms var(--ease-premium), visibility 300ms;
+        visibility: hidden;
+        z-index: 1400;
+    }
+
+    .header:has(.mobile-menu) .nav.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    .header:has(.mobile-menu) .nav a {
+        align-items: center;
+        border-bottom: 1px solid rgba(250, 249, 246, 0.12);
+        border-radius: 0;
+        color: rgba(250, 249, 246, 0.92);
+        display: flex;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(1.2rem, 5vw, 1.6rem);
+        font-weight: 500;
+        justify-content: space-between;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        min-height: 3.25rem;
+        opacity: 1;
+        padding: 0.72rem 0;
+        text-align: left;
+        text-transform: none;
+        transform: none;
+        width: 100%;
+    }
+
+    .header:has(.mobile-menu) .nav a.active,
+    .header:has(.mobile-menu) .nav a:hover {
+        background: transparent;
+        color: var(--gold-light);
+        text-shadow: none;
+    }
+
+    .header:has(.mobile-menu) .nav .nav-cta {
+        border: 0;
+        border-radius: 7px;
+        color: #121215 !important;
+        justify-content: center;
+        margin-top: 1rem;
+        min-height: 3.45rem;
+        padding: 0.9rem 1rem !important;
+        text-align: center;
+    }
+
+    .header:has(.mobile-menu) .nav-dropdown,
+    .header:has(.mobile-menu) .nav-dropdown-menu {
+        display: block;
+        position: static;
+        transform: none;
+        width: 100%;
+    }
+
+    .header:has(.mobile-menu) .nav-dropdown-menu {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        opacity: 1;
+        padding: 0 0 0.35rem 1rem;
+        visibility: visible;
+    }
+
+    .header:has(.mobile-menu) .nav-dropdown-menu a {
+        color: rgba(250, 249, 246, 0.68) !important;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.95rem;
+        min-height: 2.6rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .service-directory a {
+        font-size: 0.93rem;
+        gap: 0.45rem;
+        min-height: 3.8rem;
+        padding: 0.8rem 0.65rem;
+    }
+
+    .service-directory a span {
+        font-size: 0.58rem;
+    }
+
+    .contact-enquiry-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .contact-enquiry-actions .btn {
+        justify-content: center;
+    }
+
+    .contact-email {
+        text-align: center;
     }
 }

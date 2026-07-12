@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cenov· kalkulaËka | IV Production</title>
+    <title>Cenov√° kalkulaƒçka | IV Production</title>
 
     <link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
     <meta name="description"
-        content="OrientaËnÌ cenov· kalkulaËka pro video sluûby IV Production. Svatby, reality, promo videa.">
+        content="Orientaƒçn√≠ cenov√° kalkulaƒçka pro video slu≈æby IV Production. Svatby, reality, promo videa.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -385,25 +385,27 @@
             color: var(--gold) !important;
         }
     </style>
+    <link rel="stylesheet" href="premium.css">
+    <script src="premium.js" defer></script>
 </head>
 
 <body>
     <header class="header" id="header">
         <div class="header-inner">
             <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
-            <nav class="nav">
+            <nav class="nav" id="mobileNavigation">
                 <a href="svatby.html">Svatby</a>
                 <a href="reality.html">Reality</a>
                 <div class="nav-dropdown">
-                    <a href="fotobudka.html" class="nav-dropdown-trigger">Fotobudky ?</a>
+                    <a href="fotobudka.html" class="nav-dropdown-trigger">Fotobudky ‚ñæ</a>
                     <div class="nav-dropdown-menu">
                         <a href="fotobudka.html">Fotobudka</a>
-                        <a href="360budka.html">360∞ Budka</a>
+                        <a href="360budka.html">360¬∞ Budka</a>
                     </div>
                 </div>
                 <a href="plesy.html">Plesy</a>
                 <div class="nav-dropdown">
-                    <a href="index.html#sluzby" class="nav-dropdown-trigger">DalöÌ sluûby ?</a>
+                    <a href="index.html#sluzby" class="nav-dropdown-trigger">Dal≈°√≠ slu≈æby ‚ñæ</a>
                     <div class="nav-dropdown-menu">
                         <a href="konference.html">Konference</a>
                         <a href="podcast.html">Podcast</a>
@@ -412,15 +414,22 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
-                <a href="kontakt.html" class="nav-cta">Nez·vazn· popt·vka</a>
+                <a href="kontakt.html" class="nav-cta">Nez√°vazn√° popt√°vka</a>
             </nav>
+            <button class="mobile-menu" data-nav-controller aria-label="Otev≈ô√≠t menu" aria-controls="mobileNavigation" aria-expanded="false">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
         </div>
     </header>
 
     <section class="calc-hero">
         <div class="container">
-            <h1>Cenov· <span>kalkulaËka</span></h1>
-            <p>Sestavte si orientaËnÌ cenu vaöÌ video zak·zky</p>
+            <h1>Cenov√° <span>kalkulaƒçka</span></h1>
+            <p>Sestavte si orientaƒçn√≠ cenu va≈°√≠ video zak√°zky</p>
         </div>
     </section>
 
@@ -428,38 +437,38 @@
         <div class="calculator">
             <!-- Service Type -->
             <div class="calc-section">
-                <h3>1. Typ sluûby</h3>
+                <h3>1. Typ slu≈æby</h3>
                 <div class="calc-options" id="serviceType">
-                    <div class="calc-option" data-price="15000" data-name="SvatebnÌ video">
+                    <div class="calc-option" data-price="15000" data-name="Svatebn√≠ video">
                         <div class="calc-option-icon">??</div>
-                        <div class="calc-option-name">SvatebnÌ video</div>
-                        <div class="calc-option-price">od 15 000 KË</div>
+                        <div class="calc-option-name">Svatebn√≠ video</div>
+                        <div class="calc-option-price">od 15 000 Kƒç</div>
                     </div>
-                    <div class="calc-option" data-price="8000" data-name="RealitnÌ video">
+                    <div class="calc-option" data-price="8000" data-name="Realitn√≠ video">
                         <div class="calc-option-icon">??</div>
-                        <div class="calc-option-name">RealitnÌ video</div>
-                        <div class="calc-option-price">od 8 000 KË</div>
+                        <div class="calc-option-name">Realitn√≠ video</div>
+                        <div class="calc-option-price">od 8 000 Kƒç</div>
                     </div>
                     <div class="calc-option" data-price="12000" data-name="Promo video">
                         <div class="calc-option-icon">??</div>
                         <div class="calc-option-name">Promo video</div>
-                        <div class="calc-option-price">od 12 000 KË</div>
+                        <div class="calc-option-price">od 12 000 Kƒç</div>
                     </div>
                     <div class="calc-option" data-price="6000" data-name="Fotobudka">
                         <div class="calc-option-icon">??</div>
                         <div class="calc-option-name">Fotobudka</div>
-                        <div class="calc-option-price">od 6 000 KË</div>
+                        <div class="calc-option-price">od 6 000 Kƒç</div>
                     </div>
                 </div>
             </div>
 
             <!-- Package -->
             <div class="calc-section">
-                <h3>2. BalÌËek</h3>
+                <h3>2. Bal√≠ƒçek</h3>
                 <div class="calc-options" id="packageType">
-                    <div class="calc-option" data-multiplier="1" data-name="Z·kladnÌ">
+                    <div class="calc-option" data-multiplier="1" data-name="Z√°kladn√≠">
                         <div class="calc-option-icon">?</div>
-                        <div class="calc-option-name">Z·kladnÌ</div>
+                        <div class="calc-option-name">Z√°kladn√≠</div>
                         <div class="calc-option-price">1 kameraman</div>
                     </div>
                     <div class="calc-option" data-multiplier="1.5" data-name="Standard">
@@ -477,58 +486,58 @@
 
             <!-- Addons -->
             <div class="calc-section">
-                <h3>3. DoplÚkovÈ sluûby</h3>
+                <h3>3. Dopl≈àkov√© slu≈æby</h3>
                 <div class="addon-list" id="addons">
                     <div class="addon-item" data-price="3000">
                         <div class="addon-left">
                             <div class="addon-checkbox"></div>
-                            <span>DronovÈ z·bÏry</span>
+                            <span>Dronov√© z√°bƒõry</span>
                         </div>
-                        <span class="addon-price">+ 3 000 KË</span>
+                        <span class="addon-price">+ 3 000 Kƒç</span>
                     </div>
                     <div class="addon-item" data-price="2500">
                         <div class="addon-left">
                             <div class="addon-checkbox"></div>
                             <span>Teaser video (do 1 min)</span>
                         </div>
-                        <span class="addon-price">+ 2 500 KË</span>
+                        <span class="addon-price">+ 2 500 Kƒç</span>
                     </div>
                     <div class="addon-item" data-price="4000">
                         <div class="addon-left">
                             <div class="addon-checkbox"></div>
-                            <span>RozöÌ¯en· verze videa</span>
+                            <span>Roz≈°√≠≈ôen√° verze videa</span>
                         </div>
-                        <span class="addon-price">+ 4 000 KË</span>
+                        <span class="addon-price">+ 4 000 Kƒç</span>
                     </div>
                     <div class="addon-item" data-price="1500">
                         <div class="addon-left">
                             <div class="addon-checkbox"></div>
-                            <span>ExpresnÌ dod·nÌ (do 7 dn˘)</span>
+                            <span>Expresn√≠ dod√°n√≠ (do 7 dn≈Ø)</span>
                         </div>
-                        <span class="addon-price">+ 1 500 KË</span>
+                        <span class="addon-price">+ 1 500 Kƒç</span>
                     </div>
                     <div class="addon-item" data-price="2000">
                         <div class="addon-left">
                             <div class="addon-checkbox"></div>
-                            <span>Druh˝ kameraman navÌc</span>
+                            <span>Druh√Ω kameraman nav√≠c</span>
                         </div>
-                        <span class="addon-price">+ 2 000 KË</span>
+                        <span class="addon-price">+ 2 000 Kƒç</span>
                     </div>
                 </div>
             </div>
 
             <!-- Result -->
             <div class="calc-result">
-                <div class="result-label">OrientaËnÌ cena</div>
-                <div class="result-price" id="totalPrice">0 KË</div>
-                <div class="result-note">* Fin·lnÌ cena z·visÌ na konkrÈtnÌch poûadavcÌch</div>
-                <a href="kontakt.html" class="btn btn-primary">Nez·vazn· popt·vka õ</a>
+                <div class="result-label">Orientaƒçn√≠ cena</div>
+                <div class="result-price" id="totalPrice">0 Kƒç</div>
+                <div class="result-note">* Fin√°ln√≠ cena z√°vis√≠ na konkr√©tn√≠ch po≈æadavc√≠ch</div>
+                <a href="kontakt.html" class="btn btn-primary">Nez√°vazn√° popt√°vka ‚Ä∫</a>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <p>© 2026 IV Production. Vöechna pr·va vyhrazena. | <a href="index.html">ZpÏt na hlavnÌ str·nku</a></p>
+        <p>¬© 2026 IV Production. V≈°echna pr√°va vyhrazena. | <a href="index.html">Zpƒõt na hlavn√≠ str√°nku</a></p>
     </footer>
 
     <script>
@@ -575,7 +584,7 @@
 
         function updateTotal() {
             const total = Math.round(basePrice * multiplier + addonsTotal);
-            document.getElementById('totalPrice').textContent = total.toLocaleString('cs-CZ') + ' KË';
+            document.getElementById('totalPrice').textContent = total.toLocaleString('cs-CZ') + ' Kƒç';
         }
 
         // Initialize

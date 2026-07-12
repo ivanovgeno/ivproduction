@@ -2501,6 +2501,7 @@
             <a href="360budka.html" class="mobile-menu-link">360° Budka</a>
             <a href="konference.html" class="mobile-menu-link">Konference</a>
             <a href="podcast.html" class="mobile-menu-link">Podcast</a>
+            <a href="#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
             <a href="blog.html" class="mobile-menu-link">Blog</a>
             <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
@@ -2553,6 +2554,17 @@
                 <div class="section-badge">Naše služby</div>
                 <h2 class="section-title">Co pro vás můžeme <span>udělat</span>?</h2>
                 <p class="section-subtitle">Nabízíme komplexní video služby pro každou příležitost</p>
+            </div>
+
+            <div class="service-directory" aria-label="Přehled služeb IV Production">
+                <a href="svatby.html"><span>01</span> Svatební videa</a>
+                <a href="reality.html"><span>02</span> Reality</a>
+                <a href="plesy.html"><span>03</span> Plesy a akce</a>
+                <a href="promo.html"><span>04</span> Promo videa</a>
+                <a href="fotobudka.html"><span>05</span> Fotobudka</a>
+                <a href="360budka.html"><span>06</span> 360° Budka</a>
+                <a href="konference.html"><span>07</span> Konference</a>
+                <a href="podcast.html"><span>08</span> Podcast</a>
             </div>
 
             <div class="services-grid">
@@ -2609,6 +2621,49 @@
                     <p>Natáčení podcastů ve vysoké kvalitě. Video i audio produkce.</p>
                     <a href="podcast.html" class="service-link">Zjistit více →</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="jak-to-funguje" aria-labelledby="processTitle">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Spolupráce krok za krokem</div>
+                <h2 class="section-title" id="processTitle">Jak to s námi <span>funguje</span></h2>
+                <p class="section-subtitle">Od prvního nápadu po výsledek, který můžete s hrdostí sdílet.</p>
+            </div>
+
+            <ol class="process-steps">
+                <li class="process-step reveal">
+                    <span class="process-number">01</span>
+                    <h3>Nezávazně se propojíme</h3>
+                    <p>Popíšete nám svou představu, termín a cíl. My se doptáme na vše důležité.</p>
+                </li>
+                <li class="process-step reveal">
+                    <span class="process-number">02</span>
+                    <h3>Vyladíme koncept a nabídku</h3>
+                    <p>Navrhneme rozsah, harmonogram a jasnou nabídku odpovídající vašemu projektu.</p>
+                </li>
+                <li class="process-step reveal">
+                    <span class="process-number">03</span>
+                    <h3>Připravíme produkci</h3>
+                    <p>Domluvíme průběh, lokace a technické detaily, aby v den natáčení vše plynulo.</p>
+                </li>
+                <li class="process-step reveal">
+                    <span class="process-number">04</span>
+                    <h3>Zachytíme to podstatné</h3>
+                    <p>Na místě pracujeme soustředěně, citlivě a s respektem k atmosféře vaší akce.</p>
+                </li>
+                <li class="process-step reveal">
+                    <span class="process-number">05</span>
+                    <h3>Dotáhneme finální výsledek</h3>
+                    <p>Ve střižně proměníme záběry v hotové video a předáme ho podle domluveného zadání.</p>
+                </li>
+            </ol>
+
+            <div class="process-action">
+                <a href="#poptavka" class="btn btn-outline">Probrat svůj projekt</a>
             </div>
         </div>
     </section>
@@ -3736,6 +3791,69 @@
         </div>
     </section>
 
+    <!-- Contact Form Section -->
+    <section class="contact-enquiry" id="poptavka" aria-labelledby="enquiryTitle">
+        <div class="container">
+            <div class="contact-enquiry-shell">
+                <div class="contact-enquiry-copy reveal">
+                    <div class="section-badge">Nezávazná poptávka</div>
+                    <h2 id="enquiryTitle">Napište nám o <span>vaší</span> představě</h2>
+                    <p>Stačí pár informací. Ozveme se vám a společně najdeme nejlepší podobu vaší svatby, akce nebo videa pro firmu.</p>
+                    <div class="contact-enquiry-points" aria-label="Co se bude dít po odeslání formuláře">
+                        <span>01 — potvrdíme si zadání</span>
+                        <span>02 — navrhneme další krok</span>
+                        <span>03 — pošleme jasnou nabídku</span>
+                    </div>
+                    <div class="contact-enquiry-actions">
+                        <a href="tel:+420773210194" class="btn btn-outline">Zavolejte nám</a>
+                        <a href="mailto:video@ivproduction.cz" class="contact-email">video@ivproduction.cz</a>
+                    </div>
+                </div>
+
+                <form class="contact-form contact-enquiry-form" action="kontakt-handler.php" method="POST">
+                    <div class="honeypot" aria-hidden="true">
+                        <label for="company">Společnost</label>
+                        <input id="company" type="text" name="company" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="sr-only" for="cta-name">Vaše jméno</label>
+                            <input id="cta-name" type="text" class="form-input" name="name" placeholder="Vaše jméno *" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="cta-email">Váš e-mail</label>
+                            <input id="cta-email" type="email" class="form-input" name="email" placeholder="Váš e-mail *" autocomplete="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="sr-only" for="cta-phone">Telefon</label>
+                            <input id="cta-phone" type="tel" class="form-input" name="phone" placeholder="Telefon *" autocomplete="tel" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="cta-event-date">Datum akce</label>
+                            <input id="cta-event-date" type="date" class="form-input" name="event_date" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="cta-address">Adresa nebo místo konání akce</label>
+                        <input id="cta-address" type="text" class="form-input" name="address" placeholder="Adresa nebo místo konání akce *" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="cta-message">Vaše zpráva</label>
+                        <textarea id="cta-message" class="form-textarea" name="message" placeholder="Jak vám můžeme pomoci? (Typ akce, další detaily...)" required></textarea>
+                    </div>
+                    <label class="form-consent">
+                        <input type="checkbox" name="consent" value="1" required>
+                        <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
+                    </label>
+                    <button type="submit" class="form-submit">Odeslat nezávaznou poptávku</button>
+                    <p class="form-note">* Povinná pole. Ozveme se vám co nejdříve.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- SEO Content Section -->
     <section class="seo-content">
         <div class="container">
@@ -3882,12 +4000,12 @@
         <div class="cta-glow"></div>
         <div class="cta-particles" id="particles"></div>
         <div class="cta-content reveal">
-            <div class="cta-grid">
+            <div class="cta-grid cta-contact-options">
                 <div class="cta-text">
-                    <h2>Napište nám o <span>vaší</span> představě</h2>
+                    <h2>Máte raději <span>rychlý</span> kontakt?</h2>
                     <p style="margin-bottom: 2rem; color: var(--gray-light);">
-                        Máte dotaz nebo zájem o nezávaznou poptávku? Vyplňte formulář a my se vám ozveme co nejdříve.
-                        Rádi s vámi probereme detaily vaší svatby, plesu nebo firemní akce.
+                        Zavolejte nám nebo napište e-mail. Rádi s vámi probereme detaily vaší svatby, plesu nebo
+                        firemní akce.
                     </p>
 
                     <div class="cta-trust" style="justify-content: flex-start; margin-bottom: 2rem;">
@@ -3916,50 +4034,6 @@
                     </div>
                 </div>
 
-                <form class="contact-form" action="kontakt-handler.php" method="POST">
-                    <div class="honeypot" aria-hidden="true">
-                        <label for="company">Společnost</label>
-                        <input id="company" type="text" name="company" tabindex="-1" autocomplete="off">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="sr-only" for="cta-name">Vaše jméno</label>
-                            <input id="cta-name" type="text" class="form-input" name="name" placeholder="Vaše jméno *" autocomplete="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="cta-email">Váš e-mail</label>
-                            <input id="cta-email" type="email" class="form-input" name="email" placeholder="Váš e-mail *" autocomplete="email" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="sr-only" for="cta-phone">Telefon</label>
-                            <input id="cta-phone" type="tel" class="form-input" name="phone" placeholder="Telefon *" autocomplete="tel" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="cta-event-date">Datum akce</label>
-                            <input id="cta-event-date" type="date" class="form-input" name="event_date" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="cta-address">Adresa nebo místo konání akce</label>
-                        <input id="cta-address" type="text" class="form-input" name="address" placeholder="Adresa/Místo konání akce *"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="cta-message">Vaše zpráva</label>
-                        <textarea id="cta-message" class="form-textarea" name="message"
-                            placeholder="Jak vám můžeme pomoci? (Typ akce, další detaily...)" required></textarea>
-                    </div>
-                    <label class="form-consent">
-                        <input type="checkbox" name="consent" value="1" required>
-                        <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
-                    </label>
-                    <button type="submit" class="form-submit">Odeslat nezávaznou poptávku</button>
-                    <p style="font-size: 0.8rem; color: var(--gray); margin-top: 1rem; text-align: center;">
-                        * Povinná pole. Ozveme se vám co nejdříve.
-                    </p>
-                </form>
             </div>
         </div>
     </section>
