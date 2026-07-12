@@ -384,9 +384,11 @@
             color: var(--gold);
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260712-heroimagesmenu">
-    <script src="premium.js?v=20260712-heroimagesmenu" defer></script>
-    <script src="experience.js?v=20260712-heroimagesmenu" defer></script>
+    <link rel="stylesheet" href="premium.css?v=20260712-portfoliohub">
+    <script src="premium.js?v=20260712-portfoliohub" defer></script>
+    <script src="experience.js?v=20260712-portfoliohub" defer></script>
+    <script src="portfolio-data.js?v=20260712-portfoliohub" defer></script>
+    <script src="portfolio-gallery.js?v=20260712-portfoliohub" defer></script>
 </head>
 
 <body class="page-portfolio">
@@ -446,7 +448,7 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Projekty, které mluví <span>obrazem</span></h1>
+            <h1>Projekty, které<br><span>mluví obrazem</span></h1>
             <p>Vybrané filmy, eventy i značkové příběhy. Prohlédněte si, jak vypadá práce, která má vlastní atmosféru.</p>
             <a href="#projekty" class="btn btn-primary">Prohlédnout ukázky</a>
         </div>
@@ -455,96 +457,19 @@
     <section class="section" id="projekty">
         <div class="container">
             <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">Vše</button>
-                <button class="filter-tab" data-filter="svatby">Svatby</button>
-                <button class="filter-tab" data-filter="reality">Reality</button>
-                <button class="filter-tab" data-filter="plesy">Plesy</button>
-                <button class="filter-tab" data-filter="promo">Promo</button>
+                <button class="filter-tab active" data-portfolio-filter data-filter="all">Vše</button>
+                <button class="filter-tab" data-portfolio-filter data-filter="svatby">Svatby</button>
+                <button class="filter-tab" data-portfolio-filter data-filter="reality">Reality</button>
+                <button class="filter-tab" data-portfolio-filter data-filter="plesy">Plesy</button>
+                <button class="filter-tab" data-portfolio-filter data-filter="fotobudka">Fotobudka</button>
+                <button class="filter-tab" data-portfolio-filter data-filter="360budka">360° Budka</button>
+                <button class="filter-tab" data-portfolio-filter data-filter="promo">Promo</button>
+                <button class="filter-tab" data-portfolio-filter data-filter="konference">Konference</button>
+                <button class="filter-tab" data-portfolio-filter data-filter="podcast">Podcast</button>
+                <button class="filter-tab" data-portfolio-filter data-filter="reels">Reels</button>
             </div>
 
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="svatby"
-                    data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" alt="Svatba">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Svatba</div>
-                        <div class="portfolio-title">Tereza & Martin</div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="reality"
-                    data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800" alt="Reality">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Reality</div>
-                        <div class="portfolio-title">Luxusní vila Praha</div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="plesy"
-                    data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800" alt="Ples">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Ples</div>
-                        <div class="portfolio-title">Maturitní ples 2025</div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="svatby"
-                    data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800" alt="Svatba">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Svatba</div>
-                        <div class="portfolio-title">Petra & Jan</div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="reality"
-                    data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800" alt="Reality">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Reality</div>
-                        <div class="portfolio-title">Moderní byt Hradec</div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="promo"
-                    data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800" alt="Konference">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Konference</div>
-                        <div class="portfolio-title">Business Summit 2025</div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="svatby"
-                    data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800" alt="Svatba">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Svatba</div>
-                        <div class="portfolio-title">Lucie & David</div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="plesy"
-                    data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800" alt="Event">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Event</div>
-                        <div class="portfolio-title">Městský ples Jaroměř</div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="promo"
-                    data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800" alt="Podcast">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Podcast</div>
-                        <div class="portfolio-title">Studio Session</div>
-                    </div>
-                </div>
-            </div>
+            <div class="portfolio-grid" data-portfolio-grid aria-live="polite"></div>
         </div>
     </section>
 
@@ -562,27 +487,6 @@
         <p>© 2026 <a href="index.html">IV Production</a>. Všechna práva vyhrazena.</p>
     </footer>
 
-    <script>
-        // Filter functionality
-        const tabs = document.querySelectorAll('.filter-tab');
-        const items = document.querySelectorAll('.portfolio-item');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                const filter = tab.dataset.filter;
-                items.forEach(item => {
-                    if (filter === 'all' || item.dataset.category === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
     <!-- Global Floating Elements -->
     <style>
         /* Back to Top */
