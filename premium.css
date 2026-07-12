@@ -149,6 +149,16 @@ body::before {
 }
 
 @media (min-width: 901px) {
+    /* The padding is an invisible hover bridge: moving to the panel never drops the menu. */
+    .header[data-unified-nav] .nav-dropdown {
+        margin-bottom: -0.65rem;
+        padding-bottom: 0.65rem;
+    }
+
+    .header[data-unified-nav] .nav-dropdown-menu {
+        top: 100% !important;
+    }
+
     .header[data-unified-nav] .nav-dropdown:hover .nav-dropdown-menu,
     .header[data-unified-nav] .nav-dropdown:focus-within .nav-dropdown-menu {
         opacity: 1 !important;
@@ -1864,6 +1874,83 @@ body.page-wedding .hero::before { background-position: center 48%; }
 body.page-event .hero::before { background-position: center 45%; }
 body.page-podcast .hero::before { background-position: center 53%; }
 body.page-reels .hero::before { background-position: center 40%; }
+
+/* Every entry point has a visual subject that matches the visitor's next task. */
+body.page-blog .blog-hero {
+    background-color: #111115;
+    background-image:
+        linear-gradient(90deg, rgba(10, 10, 13, 0.94) 0%, rgba(10, 10, 13, 0.68) 48%, rgba(10, 10, 13, 0.28) 100%),
+        url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=2200&q=88');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body.page-calculator .calc-hero {
+    background-color: #111115;
+    background-image:
+        linear-gradient(90deg, rgba(10, 10, 13, 0.94) 0%, rgba(10, 10, 13, 0.7) 48%, rgba(10, 10, 13, 0.3) 100%),
+        url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=2200&q=88');
+    background-position: center 48%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body.page-portfolio .hero {
+    background-color: #111115;
+    background-image:
+        linear-gradient(90deg, rgba(10, 10, 13, 0.94) 0%, rgba(10, 10, 13, 0.68) 48%, rgba(10, 10, 13, 0.25) 100%),
+        url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=2200&q=88');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body.page-contact .hero {
+    background-color: #111115;
+    background-image:
+        linear-gradient(90deg, rgba(10, 10, 13, 0.95) 0%, rgba(10, 10, 13, 0.72) 50%, rgba(10, 10, 13, 0.3) 100%),
+        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=2200&q=88');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body.page-privacy .legal-hero {
+    background-color: #111115;
+    background-image:
+        linear-gradient(90deg, rgba(10, 10, 13, 0.96) 0%, rgba(10, 10, 13, 0.74) 55%, rgba(10, 10, 13, 0.33) 100%),
+        url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=2200&q=88');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body.page-terms .legal-hero {
+    background-color: #111115;
+    background-image:
+        linear-gradient(90deg, rgba(10, 10, 13, 0.96) 0%, rgba(10, 10, 13, 0.74) 55%, rgba(10, 10, 13, 0.33) 100%),
+        url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=2200&q=88');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body.page-marketing-consent .legal-hero {
+    background-color: #111115;
+    background-image:
+        linear-gradient(90deg, rgba(10, 10, 13, 0.96) 0%, rgba(10, 10, 13, 0.74) 55%, rgba(10, 10, 13, 0.33) 100%),
+        url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2200&q=88');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body.page-contact .hero > .btn {
+    position: relative;
+    width: fit-content;
+    z-index: 1;
+}
 
 @media (max-width: 760px) {
     body.page-360 .hero,
