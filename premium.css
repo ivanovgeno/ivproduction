@@ -1673,6 +1673,246 @@ textarea:focus-visible {
     }
 }
 
+/* Themed subpage heroes: each service keeps its own image while sharing one composed, editorial layout. */
+body.page-360 .hero,
+body.page-fotobudka .hero,
+body.page-event .hero,
+body.page-podcast .hero,
+body.page-conference .hero,
+body.page-promo .hero,
+body.page-reality .hero,
+body.page-wedding .hero,
+body.page-portfolio .hero,
+body.page-contact .hero,
+body.page-reels .hero,
+body.page-blog .blog-hero,
+body.page-calculator .calc-hero,
+body.page-privacy .legal-hero,
+body.page-terms .legal-hero,
+body.page-marketing-consent .legal-hero {
+    align-items: flex-end;
+    display: flex;
+    isolation: isolate;
+    min-height: clamp(25rem, 49vw, 40rem);
+    overflow: hidden;
+    padding: clamp(7rem, 12vw, 10rem) clamp(1.5rem, 7vw, 7rem) clamp(3.5rem, 7vw, 6rem);
+    position: relative;
+}
+
+body.page-privacy .legal-hero,
+body.page-terms .legal-hero,
+body.page-marketing-consent .legal-hero,
+body.page-calculator .calc-hero {
+    min-height: clamp(19rem, 32vw, 28rem);
+}
+
+body.page-blog .blog-hero,
+body.page-calculator .calc-hero,
+body.page-privacy .legal-hero,
+body.page-terms .legal-hero,
+body.page-marketing-consent .legal-hero,
+body.page-contact .hero,
+body.page-portfolio .hero {
+    background:
+        radial-gradient(circle at 78% 15%, rgba(212, 175, 55, 0.2), transparent 25rem),
+        linear-gradient(130deg, #111115 0%, #1d1b18 55%, #111115 100%);
+}
+
+body.page-blog .blog-hero::before,
+body.page-calculator .calc-hero::before,
+body.page-privacy .legal-hero::before,
+body.page-terms .legal-hero::before,
+body.page-marketing-consent .legal-hero::before,
+body.page-contact .hero::before,
+body.page-portfolio .hero::before {
+    background-image:
+        linear-gradient(rgba(240, 212, 119, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(240, 212, 119, 0.1) 1px, transparent 1px);
+    background-size: 3rem 3rem;
+    content: '';
+    inset: 0;
+    -webkit-mask-image: linear-gradient(90deg, #000, transparent 78%);
+    mask-image: linear-gradient(90deg, #000, transparent 78%);
+    opacity: 0.3;
+    position: absolute;
+}
+
+body.page-360 .hero::after,
+body.page-fotobudka .hero::after,
+body.page-event .hero::after,
+body.page-podcast .hero::after,
+body.page-conference .hero::after,
+body.page-promo .hero::after,
+body.page-reality .hero::after,
+body.page-wedding .hero::after,
+body.page-portfolio .hero::after,
+body.page-contact .hero::after,
+body.page-reels .hero::after,
+body.page-blog .blog-hero::after,
+body.page-calculator .calc-hero::after,
+body.page-privacy .legal-hero::after,
+body.page-terms .legal-hero::after,
+body.page-marketing-consent .legal-hero::after {
+    background:
+        linear-gradient(90deg, rgba(10, 10, 13, 0.94) 0%, rgba(10, 10, 13, 0.74) 48%, rgba(10, 10, 13, 0.25) 100%),
+        linear-gradient(0deg, rgba(10, 10, 13, 0.94) 0%, transparent 52%);
+    content: '';
+    inset: 0;
+    position: absolute;
+    z-index: 0;
+}
+
+body.page-360 .hero-content,
+body.page-fotobudka .hero-content,
+body.page-event .hero-content,
+body.page-podcast .hero-content,
+body.page-conference .hero-content,
+body.page-promo .hero-content,
+body.page-reality .hero-content,
+body.page-wedding .hero-content,
+body.page-portfolio .hero-content,
+body.page-reels .hero-content,
+body.page-blog .blog-hero .container,
+body.page-calculator .calc-hero .container,
+body.page-contact .hero > h1,
+body.page-contact .hero > p,
+body.page-privacy .legal-hero > h1,
+body.page-privacy .legal-hero > p,
+body.page-terms .legal-hero > h1,
+body.page-terms .legal-hero > p,
+body.page-marketing-consent .legal-hero > h1,
+body.page-marketing-consent .legal-hero > p {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: min(48rem, 100%);
+    position: relative;
+    text-align: left;
+    width: 100%;
+    z-index: 1;
+}
+
+body.page-contact .hero,
+body.page-privacy .legal-hero,
+body.page-terms .legal-hero,
+body.page-marketing-consent .legal-hero {
+    align-content: end;
+    display: grid;
+    gap: 0.8rem;
+}
+
+body.page-contact .hero > p,
+body.page-privacy .legal-hero > p,
+body.page-terms .legal-hero > p,
+body.page-marketing-consent .legal-hero > p {
+    margin-bottom: 0;
+}
+
+body.page-360 .hero h1::before,
+body.page-fotobudka .hero h1::before,
+body.page-event .hero h1::before,
+body.page-podcast .hero h1::before,
+body.page-conference .hero h1::before,
+body.page-promo .hero h1::before,
+body.page-reality .hero h1::before,
+body.page-wedding .hero h1::before,
+body.page-portfolio .hero h1::before,
+body.page-contact .hero h1::before,
+body.page-blog .blog-hero h1::before,
+body.page-calculator .calc-hero h1::before,
+body.page-privacy .legal-hero h1::before,
+body.page-terms .legal-hero h1::before,
+body.page-marketing-consent .legal-hero h1::before {
+    color: var(--gold-light);
+    content: 'IV PRODUCTION';
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    margin-bottom: 1.1rem;
+    text-transform: uppercase;
+}
+
+body.page-360 .hero h1::before { content: '360° VIDEO EXPERIENCE'; }
+body.page-fotobudka .hero h1::before { content: 'FOTOBUDKA NA VAŠI AKCI'; }
+body.page-event .hero h1::before { content: 'PLESY A EVENTY'; }
+body.page-podcast .hero h1::before { content: 'PODCASTOVÁ PRODUKCE'; }
+body.page-conference .hero h1::before { content: 'FIREMNÍ EVENTY'; }
+body.page-promo .hero h1::before { content: 'OBSAH PRO ZNAČKY'; }
+body.page-reality .hero h1::before { content: 'REALITNÍ PRODUKCE'; }
+body.page-wedding .hero h1::before { content: 'SVATEBNÍ FILM'; }
+body.page-portfolio .hero h1::before { content: 'VYBRANÉ PROJEKTY'; }
+body.page-contact .hero h1::before { content: 'POJĎME ZAČÍT'; }
+body.page-blog .blog-hero h1::before { content: 'INSPIRACE A KNOW-HOW'; }
+body.page-calculator .calc-hero h1::before { content: 'ORIENTAČNÍ ROZPOČET'; }
+body.page-privacy .legal-hero h1::before,
+body.page-terms .legal-hero h1::before,
+body.page-marketing-consent .legal-hero h1::before { content: 'DŮLEŽITÉ INFORMACE'; }
+
+.hero-kicker {
+    color: var(--gold-light) !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 0.68rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.16em;
+    margin: 0 0 1.1rem !important;
+    text-transform: uppercase;
+}
+
+body.page-reality .hero::before { background-position: center 56%; }
+body.page-wedding .hero::before { background-position: center 48%; }
+body.page-event .hero::before { background-position: center 45%; }
+body.page-podcast .hero::before { background-position: center 53%; }
+body.page-reels .hero::before { background-position: center 40%; }
+
+@media (max-width: 760px) {
+    body.page-360 .hero,
+    body.page-fotobudka .hero,
+    body.page-event .hero,
+    body.page-podcast .hero,
+    body.page-conference .hero,
+    body.page-promo .hero,
+    body.page-reality .hero,
+    body.page-wedding .hero,
+    body.page-portfolio .hero,
+    body.page-contact .hero,
+    body.page-reels .hero,
+    body.page-blog .blog-hero,
+    body.page-calculator .calc-hero,
+    body.page-privacy .legal-hero,
+    body.page-terms .legal-hero,
+    body.page-marketing-consent .legal-hero {
+        min-height: 27rem;
+        padding: 7rem 1.25rem 3.2rem;
+    }
+
+    body.page-privacy .legal-hero,
+    body.page-terms .legal-hero,
+    body.page-marketing-consent .legal-hero,
+    body.page-calculator .calc-hero {
+        min-height: 21rem;
+    }
+
+    body.page-360 .hero::after,
+    body.page-fotobudka .hero::after,
+    body.page-event .hero::after,
+    body.page-podcast .hero::after,
+    body.page-conference .hero::after,
+    body.page-promo .hero::after,
+    body.page-reality .hero::after,
+    body.page-wedding .hero::after,
+    body.page-portfolio .hero::after,
+    body.page-contact .hero::after,
+    body.page-reels .hero::after,
+    body.page-blog .blog-hero::after,
+    body.page-calculator .calc-hero::after,
+    body.page-privacy .legal-hero::after,
+    body.page-terms .legal-hero::after,
+    body.page-marketing-consent .legal-hero::after {
+        background: linear-gradient(180deg, rgba(10, 10, 13, 0.4) 0%, rgba(10, 10, 13, 0.96) 76%);
+    }
+}
+
 /* Immersive motion system: purposeful depth without sacrificing readability. */
 .site-scroll-progress {
     background: var(--gradient);

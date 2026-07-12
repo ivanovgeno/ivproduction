@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fotobudka na Svatbu & Akce | IV Budka</title>
+    <title>Reels pro sociální sítě | IV Production</title>
     <meta name="description"
-        content="Prémiová fotobudka s neomezeným tiskem a online galerií. Svatby, plesy, firemní akce. Cena od 6000 Kč.">
-    <link rel="canonical" href="https://www.ivproduction.cz/fotobudka.html">
+        content="Reels pro Instagram, TikTok a YouTube Shorts. Krátká videa, která zaujmou během prvních vteřin a fungují pro vaši značku.">
+    <link rel="canonical" href="https://www.ivproduction.cz/reels.html">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,12 +21,12 @@
             --gold-light: #E8C547;
             --gold-shine: #FFE55C;
             --primary: var(--gold);
+            --secondary: #12121A;
             --dark: #0A0A0F;
-            --darker: #050508;
             --light: #F8F8FA;
             --gray: #6B7280;
             --gray-light: #9CA3AF;
-            --gradient: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 25%, var(--gold-shine) 50%, var(--gold) 75%, var(--gold-dark) 100%);
+            --gradient: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%);
             --shadow-gold: 0 10px 40px rgba(201, 162, 39, 0.25);
         }
 
@@ -34,6 +34,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -72,13 +76,6 @@
         .logo img {
             height: 45px;
             width: auto;
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover img {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 10px rgba(255, 229, 92, 1)) drop-shadow(0 0 20px rgba(201, 162, 39, 0.8)) drop-shadow(0 0 40px rgba(201, 162, 39, 0.6));
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav {
@@ -92,13 +89,10 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            padding: 0.5rem 0.75rem;
         }
 
-        .nav a:not(.nav-cta):hover,
-        .nav a.active {
+        .nav a:hover {
             color: var(--gold-shine);
-            text-shadow: 0 0 15px rgba(201, 162, 39, 1), 0 0 30px rgba(201, 162, 39, 0.6);
         }
 
         .nav-cta {
@@ -119,31 +113,31 @@
             min-height: 70vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             position: relative;
             padding: 8rem 2rem 4rem;
+            text-align: center;
         }
 
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: url('https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1920') center/cover;
-            filter: brightness(0.55);
+            background: url('https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=1920&q=90') center/cover;
+            filter: brightness(0.5);
         }
 
         .hero::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(10, 10, 15, 0.2) 0%, rgba(10, 10, 15, 0.7) 100%);
+            background: linear-gradient(180deg, rgba(10, 10, 15, 0.2) 0%, rgba(10, 10, 15, 0.8) 100%);
         }
 
         .hero-content {
             position: relative;
             z-index: 10;
             max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
         }
 
         .hero h1 {
@@ -156,6 +150,7 @@
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
@@ -206,6 +201,7 @@
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .section-subtitle {
@@ -215,100 +211,144 @@
             margin-bottom: 3rem;
         }
 
-        .budka-types {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .budka-card {
+        .feature-card {
             background: linear-gradient(145deg, rgba(18, 18, 26, 0.9), rgba(10, 10, 15, 0.95));
-            border-radius: 24px;
-            padding: 3rem;
+            border-radius: 20px;
+            padding: 2rem;
             border: 1px solid rgba(201, 162, 39, 0.15);
             transition: all 0.4s;
         }
 
-        .budka-card:hover {
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 162, 39, 0.4);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-title span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-text {
+            color: var(--gray-light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: linear-gradient(145deg, rgba(18, 18, 26, 0.9), rgba(10, 10, 15, 0.95));
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            transition: all 0.4s;
+        }
+
+        .pricing-card:hover {
             transform: translateY(-10px);
             border-color: rgba(201, 162, 39, 0.4);
             box-shadow: var(--shadow-gold);
         }
 
-        .budka-icon {
-            font-size: 4rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .budka-card h3 {
-            font-size: 2rem;
-            text-align: center;
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
-        .budka-card .subtitle {
-            text-align: center;
-            color: var(--gray);
-            margin-bottom: 2rem;
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
         }
 
-        .budka-features {
+        .pricing-price span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pricing-features {
             list-style: none;
             margin-bottom: 2rem;
         }
 
-        .budka-features li {
+        .pricing-features li {
             padding: 0.75rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            color: var(--gray-light);
         }
 
-        .budka-features li::before {
+        .pricing-features li::before {
             content: '✓';
             color: var(--gold);
-            font-weight: 700;
+            margin-right: 0.75rem;
         }
 
-        .budka-price {
+        .cta-section {
+            padding: 5rem 0;
             text-align: center;
-            font-size: 2rem;
-            font-weight: 800;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), transparent);
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section h2 span {
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
+            background-clip: text;
         }
 
-        .budka-btn {
-            display: block;
-            text-align: center;
-            padding: 1rem;
-            background: var(--gradient);
-            color: var(--dark);
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .budka-btn:hover {
-            box-shadow: var(--shadow-gold);
-            transform: translateY(-2px);
+        .cta-section p {
+            color: var(--gray-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
         }
 
         .footer {
+            background: var(--secondary);
             padding: 3rem 2rem;
-            background: var(--darker);
-            border-top: 1px solid rgba(201, 162, 39, 0.1);
             text-align: center;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .footer p {
             color: var(--gray);
         }
 
         .footer a {
-            color: var(--primary);
+            color: var(--gold);
             text-decoration: none;
         }
     </style>
@@ -317,7 +357,7 @@
     <script src="experience.js?v=20260712-themedheroes" defer></script>
 </head>
 
-<body class="page-fotobudka">
+<body class="page-reels">
     <header class="header" id="header" data-unified-nav>
         <div class="header-inner">
             <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
@@ -372,85 +412,105 @@
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero subpage-hero subpage-hero--reels">
         <div class="hero-content">
-            <h1>Fotobudka <span>IV Budka</span></h1>
-            <p>Zábava pro vaše hosty s neomezeným tiskem a online galerií. Klasická fotobudka i moderní 360° budka.</p>
-            <a href="kontakt.html" class="btn btn-primary">Nezávazná poptávka</a>
-        </div>
-    </section>
-
-    <section class="section" style="padding-bottom: 0;">
-        <div class="container">
-            <h2 class="section-title">Zábava, která <span>spojuje</span></h2>
-            <div
-                style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--gray-light); line-height: 1.8; font-size: 1.1rem;">
-                <p style="margin-bottom: 1.5rem;">
-                    Hledáte způsob, jak oživit svou svatbu, firemní večírek nebo oslavu? Naše moderní fotobudka je
-                    zárukou skvělé zábavy pro všechny generace. Okamžitý tisk fotografií, množství vtipných rekvizit a
-                    možnost sdílení na sociální sítě zajistí, že se vaši hosté nebudou nudit ani minutu.
-                </p>
-                <p>
-                    Fotokoutek není jen o focení, je to zážitek. Každá vytištěná fotka slouží jako krásná památka na
-                    vaši akci. Nabízíme různé formáty tisku, personalizovanou grafiku na míru a profesionální obsluhu,
-                    která se postará o hladký průběh po celou dobu pronájmu.
-                </p>
-            </div>
+            <p class="hero-kicker">KRÁTKÁ VIDEA PRO SOCIÁLNÍ SÍTĚ</p>
+            <h1>Reels, které <span>zastaví scroll</span></h1>
+            <p>Proměníme vaši značku, službu nebo příběh v krátké video, které má rytmus, jasnou myšlenku a funguje na Instagramu, TikToku i YouTube Shorts.</p>
+            <a href="kontakt.html" class="btn btn-primary">Poptat Reels</a>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Vyberte si <span>typ budky</span></h2>
-            <p class="section-subtitle">Máme dvě varianty pro různé typy akcí</p>
+            <h2 class="section-title">Reels od nápadu po <span>publikování</span></h2>
+            <p class="section-subtitle">Obsah, který vypadá přirozeně, ale vzniká s promyšleným záměrem.</p>
 
-            <div class="budka-types">
-                <div class="budka-card">
-                    <h3>IV Budka</h3>
-                    <p class="subtitle">Klasická fotobudka</p>
-                    <ul class="budka-features">
-                        <li>Neomezený počet fotografií</li>
-                        <li>Okamžitý tisk na místě</li>
-                        <li>Online galerie pro hosty</li>
-                        <li>Rekvizity v ceně</li>
-                        <li>Obsluha po celou dobu</li>
-                        <li>Vlastní grafika na fotky</li>
-                    </ul>
-                    <div class="budka-price">od 6 000 Kč</div>
-                    <a href="kontakt.html" class="budka-btn">Nezávazná poptávka</a>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 class="feature-title"><span>Silný</span> začátek</h3>
+                    <p class="feature-text">Vymyslíme hook, který diváka zaujme dřív, než posune dál.</p>
                 </div>
-
-                <div class="budka-card">
-                    <h3>IV Budka 360°</h3>
-                    <p class="subtitle">Rotační video budka</p>
-                    <ul class="budka-features">
-                        <li>360° videa pro sociální sítě</li>
-                        <li>Slow motion efekty</li>
-                        <li>Okamžité sdílení</li>
-                        <li>Virální obsah pro hosty</li>
-                        <li>Obsluha po celou dobu</li>
-                        <li>Branded overlay</li>
-                    </ul>
-                    <div class="budka-price">od 8 000 Kč</div>
-                    <a href="kontakt.html" class="budka-btn">Nezávazná poptávka</a>
+                <div class="feature-card">
+                    <h3 class="feature-title"><span>Nativní</span> formát</h3>
+                    <p class="feature-text">Vertikální obraz, správné tempo a bezpečný prostor pro titulky i rozhraní sítí.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title"><span>Produkt</span> v pohybu</h3>
+                    <p class="feature-text">Detaily, lidé i prostředí natočíme tak, aby bylo hned jasné, proč si vás vybrat.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title"><span>Střih</span> s rytmem</h3>
+                    <p class="feature-text">Dynamický střih, hudba a titulky drží pozornost bez zbytečné vaty.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title"><span>Varianty</span> pro sítě</h3>
+                    <p class="feature-text">Připravíme výstupy pro Reels, TikTok a Shorts podle cíle konkrétní kampaně.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title"><span>Pravidelný</span> obsah</h3>
+                    <p class="feature-text">Navážeme sérií, která dá vašemu profilu rozpoznatelný vizuální rukopis.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" style="background: linear-gradient(180deg, rgba(18,18,26,1) 0%, var(--dark) 100%);">
-        <div class="container" style="text-align: center;">
-            <h2 class="section-title">Speciální <span>nabídka</span></h2>
-            <p class="section-subtitle" style="max-width: 600px; margin-left: auto; margin-right: auto;">
-                K video balíčkům navíc kompletní fotokoutek s naší IV Budkou pouze za <strong
-                    style="color: var(--gold);">6 000 Kč</strong> po celou dobu naší přítomnosti!
-            </p>
-            <a href="kontakt.html" class="btn btn-primary">Nezávazná poptávka</a>
+    <section class="section" style="background: var(--secondary);">
+        <div class="container">
+            <h2 class="section-title">Rozsah, který sedí <span>vašemu cíli</span></h2>
+            <p class="section-subtitle">Každý výstup připravíme podle značky, objemu i způsobu publikování.</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Reels Start</div>
+                    <div class="pricing-price"><span>Na míru</span></div>
+                    <ul class="pricing-features">
+                        <li>Jeden promyšlený Reels výstup</li>
+                        <li>Natočení a střih ve vertikále</li>
+                        <li>Titulky a hudební podkres</li>
+                        <li>Výstup připravený k publikaci</li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                        zájem</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-name">Obsahová série</div>
+                    <div class="pricing-price"><span>Na míru</span></div>
+                    <ul class="pricing-features">
+                        <li>Série Reels pro pravidelnou komunikaci</li>
+                        <li>Jeden natáčecí blok s více výstupy</li>
+                        <li>Jednotný střihový a titulkový systém</li>
+                        <li>Plán výstupů podle témat</li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                        zájem</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-name">Kampaň</div>
+                    <div class="pricing-price"><span>Na míru</span></div>
+                    <ul class="pricing-features">
+                        <li>Koncept pro konkrétní produkt nebo službu</li>
+                        <li>Scénář, casting i lokace podle potřeby</li>
+                        <li>Více střihových variant a formátů</li>
+                        <li>Materiál pro placenou i organickou komunikaci</li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                        zájem</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Pojďme vytvořit Reels, které <span>mají smysl</span></h2>
+            <p>Popište nám značku, cíl a termín. Navrhneme formát, který bude fungovat dlouhodobě.</p>
+            <a href="kontakt.html" class="btn btn-primary">Probrat Reels</a>
         </div>
     </section>
 
     <footer class="footer">
-        <p>© 2026 <a href="index.html">IV Production</a>. Všechna práva vyhrazena.</p>
+        <p>© 2026 IV Production. Všechna práva vyhrazena. | <a href="index.html">Zpět na hlavní stránku</a></p>
     </footer>
     <!-- Global Floating Elements -->
     <style>
