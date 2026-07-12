@@ -278,24 +278,24 @@ body::before {
     }
 }
 
-.hero {
+body.home-page .hero {
     isolation: isolate;
     min-height: min(880px, 100svh);
     padding: 9rem 2rem 5.5rem;
 }
 
-.hero::before {
+body.home-page .hero::before {
     filter: brightness(0.43) saturate(0.73) contrast(1.12);
     transform: scale(1.025);
 }
 
-.hero::after {
+body.home-page .hero::after {
     background:
         linear-gradient(90deg, rgba(18, 18, 21, 0.93) 0%, rgba(18, 18, 21, 0.73) 44%, rgba(18, 18, 21, 0.4) 100%),
         linear-gradient(0deg, rgba(18, 18, 21, 0.96) 0%, transparent 43%);
 }
 
-.hero-content {
+body.home-page .hero-content {
     margin: 0 auto;
     max-width: 1260px;
     padding-right: min(27vw, 18rem);
@@ -303,7 +303,7 @@ body::before {
     width: 100%;
 }
 
-.hero-badge,
+body.home-page .hero-badge,
 .section-badge {
     background: transparent;
     border: 1px solid rgba(212, 175, 55, 0.55);
@@ -316,7 +316,7 @@ body::before {
     text-transform: uppercase;
 }
 
-.hero h1,
+body.home-page .hero h1,
 .section-title,
 .tech-title,
 .cta h2,
@@ -328,14 +328,14 @@ body::before {
     letter-spacing: -0.052em;
 }
 
-.hero h1 {
+body.home-page .hero h1 {
     font-size: clamp(3.7rem, 7vw, 7.1rem);
     line-height: 0.94;
     margin: 0 0 1.55rem;
     max-width: 850px;
 }
 
-.hero h1 span,
+body.home-page .hero h1 span,
 .section-title span,
 .tech-title span,
 .seo-block h2 span,
@@ -347,7 +347,7 @@ body::before {
     -webkit-text-fill-color: transparent;
 }
 
-.hero-subtitle {
+body.home-page .hero-subtitle {
     color: rgba(250, 249, 246, 0.76);
     font-size: clamp(1.05rem, 1.7vw, 1.28rem);
     line-height: 1.7;
@@ -355,7 +355,7 @@ body::before {
     max-width: 620px;
 }
 
-.hero-buttons {
+body.home-page .hero-buttons {
     justify-content: flex-start;
 }
 
@@ -392,7 +392,7 @@ body::before {
     color: var(--gold-shine);
 }
 
-.hero-stats {
+body.home-page .hero-stats {
     border-left: 1px solid rgba(212, 175, 55, 0.45);
     gap: 0;
     justify-content: flex-start;
@@ -989,7 +989,7 @@ textarea:focus-visible {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .hero-content {
+    body.home-page .hero-content {
         padding-right: min(14vw, 7rem);
     }
 }
@@ -1004,35 +1004,35 @@ textarea:focus-visible {
         height: 38px;
     }
 
-    .hero {
+    body.home-page .hero {
         align-items: flex-end;
         min-height: 760px;
         padding: 6.4rem 1.25rem 3rem;
     }
 
-    .hero::after {
+    body.home-page .hero::after {
         background: linear-gradient(180deg, rgba(18, 18, 21, 0.36) 0%, rgba(18, 18, 21, 0.96) 71%);
     }
 
-    .hero-content {
+    body.home-page .hero-content {
         padding-right: 0;
         text-align: left;
     }
 
-    .hero h1 {
+    body.home-page .hero h1 {
         font-size: clamp(3.15rem, 15vw, 4.7rem);
     }
 
-    .hero-buttons {
+    body.home-page .hero-buttons {
         align-items: stretch;
         flex-direction: column;
     }
 
-    .hero-buttons .btn {
+    body.home-page .hero-buttons .btn {
         justify-content: center;
     }
 
-    .hero-stats {
+    body.home-page .hero-stats {
         display: grid;
         gap: 0.7rem 0;
         grid-template-columns: repeat(3, 1fr);
@@ -1707,11 +1707,11 @@ textarea:focus-visible {
     opacity: 0.9;
 }
 
-.hero {
+body.home-page .hero {
     isolation: isolate;
 }
 
-.hero-content {
+body.home-page .hero-content {
     position: relative;
     z-index: 4;
 }
