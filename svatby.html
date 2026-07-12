@@ -382,33 +382,63 @@
             text-decoration: none;
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260712-aura">
-    <script src="premium.js?v=20260712-aura" defer></script>
-    <script src="experience.js?v=20260712-aura" defer></script>
+    <link rel="stylesheet" href="premium.css?v=20260712-unifiednav">
+    <script src="premium.js?v=20260712-unifiednav" defer></script>
+    <script src="experience.js?v=20260712-unifiednav" defer></script>
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" id="header" data-unified-nav>
         <div class="header-inner">
             <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
-            <nav class="nav" id="mobileNavigation">
-                <a href="svatby.html" class="active">Svatby</a>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav">
+                <a href="svatby.html">Svatby</a>
                 <a href="reality.html">Reality</a>
-                <a href="fotobudka.html">Fotobudky</a>
+                <div class="nav-dropdown">
+                    <a href="fotobudka.html" class="nav-dropdown-trigger">Fotobudky ▾</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="fotobudka.html">Fotobudka</a>
+                        <a href="360budka.html">360° Budka</a>
+                    </div>
+                </div>
                 <a href="plesy.html">Plesy</a>
-                <a href="index.html#sluzby">Služby</a>
-                <a href="index.html#onas">O nás</a>
+                <div class="nav-dropdown">
+                    <a href="index.html#sluzby" class="nav-dropdown-trigger">Další služby ▾</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="index.html#reels">Reels</a>
+                        <a href="konference.html">Konference</a>
+                        <a href="podcast.html">Podcast</a>
+                    </div>
+                </div>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
                 <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
             </nav>
-            <button class="mobile-menu" aria-label="Otevřít menu" aria-controls="mobileNavigation" aria-expanded="false">
-                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
+        </div>
+
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Hlavní navigace" aria-hidden="true">
+            <a href="index.html" class="mobile-menu-link">Domů</a>
+            <a href="svatby.html" class="mobile-menu-link">Svatby</a>
+            <a href="plesy.html" class="mobile-menu-link">Plesy</a>
+            <a href="reality.html" class="mobile-menu-link">Reality</a>
+            <a href="promo.html" class="mobile-menu-link">Promo</a>
+            <a href="index.html#reels" class="mobile-menu-link">Reels</a>
+            <a href="fotobudka.html" class="mobile-menu-link">Fotobudka</a>
+            <a href="360budka.html" class="mobile-menu-link">360° Budka</a>
+            <a href="konference.html" class="mobile-menu-link">Konference</a>
+            <a href="podcast.html" class="mobile-menu-link">Podcast</a>
+            <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
+            <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
+            <a href="blog.html" class="mobile-menu-link">Blog</a>
+            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 

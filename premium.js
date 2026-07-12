@@ -1,100 +1,73 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mobileButton = document.querySelector('.mobile-menu');
-    const navigation = document.querySelector('.nav');
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const mobileOverlay = document.getElementById('mobileMenuOverlay');
 
-    if (!mobileButton || !navigation) return;
+    if (!mobileToggle || !mobileOverlay) return;
 
     const mobileQuery = window.matchMedia('(max-width: 900px)');
-    const managesNavigation = mobileButton.hasAttribute('data-nav-controller');
-    const navigationOrigin = document.createComment('mobile navigation origin');
-    navigation.parentNode.insertBefore(navigationOrigin, navigation);
-    let navigationIsPortaled = false;
+    const overlayOrigin = document.createComment('mobile menu overlay origin');
+    mobileOverlay.parentNode.insertBefore(overlayOrigin, mobileOverlay);
+    let overlayIsPortaled = false;
+    let lastFocusedElement = null;
 
-    function positionNavigation() {
-        if (mobileQuery.matches && !navigationIsPortaled) {
-            navigation.classList.add('mobile-nav-panel');
-            document.body.append(navigation);
-            navigationIsPortaled = true;
+    function positionOverlay() {
+        if (mobileQuery.matches && !overlayIsPortaled) {
+            document.body.append(mobileOverlay);
+            overlayIsPortaled = true;
             return;
         }
 
-        if (!mobileQuery.matches && navigationIsPortaled) {
-            navigation.classList.remove('mobile-nav-panel', 'active');
-            navigationOrigin.after(navigation);
-            navigationIsPortaled = false;
+        if (!mobileQuery.matches && overlayIsPortaled) {
+            mobileOverlay.classList.remove('active');
+            overlayOrigin.after(mobileOverlay);
+            overlayIsPortaled = false;
         }
     }
 
-    function updateMenuIcon(isOpen) {
-        const icon = mobileButton.querySelector('svg');
-        if (!icon) return;
+    function setMenuState(isOpen, restoreFocus = false) {
+        mobileOverlay.classList.toggle('active', isOpen);
+        mobileToggle.classList.toggle('active', isOpen);
+        mobileToggle.setAttribute('aria-expanded', String(isOpen));
+        mobileToggle.setAttribute('aria-label', isOpen ? 'Zavřít menu' : 'Otevřít menu');
+        mobileOverlay.setAttribute('aria-hidden', String(!isOpen));
+        document.body.style.overflow = isOpen ? 'hidden' : '';
 
-        icon.innerHTML = isOpen
-            ? '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>'
-            : '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
+        if (isOpen) {
+            mobileOverlay.querySelector('a')?.focus();
+        } else if (restoreFocus) {
+            lastFocusedElement?.focus();
+        }
     }
 
-    function updateNavigationState() {
-        positionNavigation();
-
-        const isOpen = navigation.classList.contains('active');
-        const isMobile = mobileQuery.matches;
-
-        mobileButton.setAttribute('aria-expanded', String(isOpen));
-        mobileButton.setAttribute('aria-label', isOpen ? 'Zavřít menu' : 'Otevřít menu');
-        navigation.setAttribute('aria-hidden', String(isMobile && !isOpen));
-        navigation.inert = isMobile && !isOpen;
-        updateMenuIcon(isOpen);
+    function closeMenu(restoreFocus = true) {
+        if (mobileOverlay.classList.contains('active')) {
+            setMenuState(false, restoreFocus);
+        }
     }
 
-    if (managesNavigation) {
-        mobileButton.addEventListener('click', () => {
-            const willOpen = !navigation.classList.contains('active');
-            navigation.classList.toggle('active', willOpen);
-            mobileButton.classList.toggle('active', willOpen);
-            document.body.style.overflow = willOpen ? 'hidden' : '';
-            updateNavigationState();
-        });
-    } else {
-        mobileButton.addEventListener('click', () => {
-            window.requestAnimationFrame(updateNavigationState);
-        });
-    }
+    mobileToggle.addEventListener('click', () => {
+        const willOpen = !mobileOverlay.classList.contains('active');
 
-    navigation.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-            if (managesNavigation && mobileQuery.matches) {
-                navigation.classList.remove('active');
-                mobileButton.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+        if (willOpen) {
+            lastFocusedElement = document.activeElement;
+        }
 
-            window.requestAnimationFrame(updateNavigationState);
-        });
+        setMenuState(willOpen);
+    });
+
+    mobileOverlay.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => closeMenu(false));
     });
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && navigation.classList.contains('active')) {
-            if (managesNavigation) {
-                navigation.classList.remove('active');
-                mobileButton.classList.remove('active');
-                document.body.style.overflow = '';
-                updateNavigationState();
-            } else {
-                mobileButton.click();
-            }
-        }
+        if (event.key === 'Escape') closeMenu();
     });
 
     mobileQuery.addEventListener('change', () => {
-        if (!mobileQuery.matches) {
-            navigation.classList.remove('active');
-            mobileButton.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        positionNavigation();
-        window.requestAnimationFrame(updateNavigationState);
+        closeMenu(false);
+        positionOverlay();
     });
-    updateNavigationState();
+
+    positionOverlay();
+    setMenuState(false);
 });
