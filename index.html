@@ -2450,7 +2450,8 @@
             border-radius: 16px;
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260712-mobilefix">
+    <link rel="stylesheet" href="premium.css?v=20260712-ux3d">
+    <script src="experience.js?v=20260712-ux3d" defer></script>
 </head>
 
 <body>
@@ -2512,6 +2513,26 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-scene" aria-hidden="true">
+            <div class="hero-scene-grid"></div>
+            <div class="hero-scene-layer hero-scene-layer--orbit" data-parallax="0.6">
+                <div class="hero-orbit hero-orbit--outer"></div>
+                <div class="hero-orbit hero-orbit--inner"></div>
+            </div>
+            <div class="hero-scene-layer hero-scene-layer--main" data-parallax="0.28">
+                <div class="hero-float-card hero-float-card--primary">
+                    <span class="hero-float-eyebrow">IV / MOTION</span>
+                    <span class="hero-float-title">FRAME<br><em>THE MOMENT</em></span>
+                    <span class="hero-float-footer"><i></i> KINO. EMOCE. DETAIL.</span>
+                </div>
+            </div>
+            <div class="hero-scene-layer hero-scene-layer--detail" data-parallax="0.12">
+                <div class="hero-float-card hero-float-card--detail">
+                    <span>01</span>
+                    <strong>Váš příběh<br>v pohybu</strong>
+                </div>
+            </div>
+        </div>
 
         <div class="hero-content">
             <div class="hero-badge">
@@ -2546,6 +2567,10 @@
                     <div class="stat-label">Hodnocení Google</div>
                 </div>
             </div>
+            <a class="hero-scroll-cue" href="#sluzby">
+                <span>Objevte naše služby</span>
+                <i aria-hidden="true">↓</i>
+            </a>
         </div>
     </section>
 
