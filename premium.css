@@ -1709,6 +1709,23 @@ textarea:focus-visible {
     box-shadow: 0 2rem 5.5rem rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.09);
 }
 
+/* Desktop-only cursor light: a restrained gold halo that keeps the content readable. */
+.site-pointer-aura {
+    background:
+        radial-gradient(5.5rem circle at var(--pointer-x, -200px) var(--pointer-y, -200px), rgba(250, 249, 246, 0.075) 0%, rgba(240, 212, 119, 0.065) 28%, transparent 72%),
+        radial-gradient(31rem circle at var(--pointer-x, -200px) var(--pointer-y, -200px), rgba(212, 175, 55, 0.11) 0%, rgba(212, 175, 55, 0.045) 30%, transparent 66%);
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    transition: opacity 420ms var(--ease-premium);
+    z-index: 8;
+}
+
+.pointer-aura-active .site-pointer-aura {
+    opacity: 1;
+}
+
 @media (hover: hover) and (pointer: fine) {
     .experience-tilt {
         box-shadow: 0 1.65rem 3.6rem rgba(0, 0, 0, 0.32), 0 0.7rem 1.8rem rgba(212, 175, 55, 0.11), inset 0 0 0 1px rgba(240, 212, 119, 0.22) !important;
@@ -1744,12 +1761,21 @@ textarea:focus-visible {
     .section-header::after {
         margin-top: 1.3rem;
     }
+
+    .site-pointer-aura {
+        display: none;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .site-scroll-progress,
     .hero-editorial-accent,
-    .hero-scroll-cue i {
+    .hero-scroll-cue i,
+    .site-pointer-aura {
         transition: none !important;
+    }
+
+    .site-pointer-aura {
+        display: none;
     }
 }

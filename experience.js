@@ -41,6 +41,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!finePointer.matches || reduceMotion.matches) return;
 
+    const pointerAura = document.createElement('div');
+    pointerAura.className = 'site-pointer-aura';
+    pointerAura.setAttribute('aria-hidden', 'true');
+    document.body.append(pointerAura);
+
+    let auraFrame;
+    let pointerX = -200;
+    let pointerY = -200;
+
+    function hidePointerAura() {
+        root.classList.remove('pointer-aura-active');
+    }
+
+    function paintPointerAura() {
+        root.style.setProperty('--pointer-x', `${pointerX}px`);
+        root.style.setProperty('--pointer-y', `${pointerY}px`);
+        root.classList.add('pointer-aura-active');
+        auraFrame = undefined;
+    }
+
+    document.addEventListener('pointermove', (event) => {
+        if (event.pointerType && event.pointerType !== 'mouse') return;
+
+        pointerX = event.clientX;
+        pointerY = event.clientY;
+
+        if (auraFrame) return;
+        auraFrame = window.requestAnimationFrame(paintPointerAura);
+    }, { passive: true });
+
+    document.addEventListener('pointerout', (event) => {
+        if (!event.relatedTarget) hidePointerAura();
+    });
+    window.addEventListener('blur', hidePointerAura);
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) hidePointerAura();
+    });
+    reduceMotion.addEventListener('change', (event) => {
+        if (event.matches) hidePointerAura();
+    });
+
     const tiltTargets = document.querySelectorAll([
         '.service-card',
         '.process-step',
