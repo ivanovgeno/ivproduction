@@ -3643,3 +3643,13 @@ body.page-portfolio .hero h1 {
         min-width: 0;
     }
 }
+
+
+/* Geno's portrait: preserve the premium frame while retaining both face and camera in the crop. */
+.about-team--pyramid .team-photo--geno {
+    background: #111114;
+}
+
+.about-team--pyramid .team-photo--geno img {
+    object-position: 42% 46%;
+}
