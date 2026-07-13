@@ -2450,7 +2450,7 @@
             border-radius: 16px;
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260713-mobile-responsive">
+    <link rel="stylesheet" href="premium.css?v=20260713-menu-centered-slider">
     <script src="premium.js?v=20260713-mobile-responsive" defer></script>
     <script src="experience.js?v=20260713-unified-player" defer></script>
     <script src="portfolio-data.js?v=20260713-unified-player" defer></script>
@@ -4266,7 +4266,7 @@
         <div id="lightbox-caption"></div>
     </div>
     <script>
-        // Partners Slider Logic
+        // Partner carousel: transform animation stays reliable on Safari and touch devices.
         document.addEventListener('DOMContentLoaded', function () {
             const partnerSlider = document.getElementById('partnersSlider');
             const partnersTrack = document.getElementById('partnersTrack');
@@ -4274,63 +4274,119 @@
             const partnerNextBtn = document.querySelector('.partner-next');
             const partnerWrapper = document.querySelector('.partners-wrapper');
 
-            if (partnerSlider && partnersTrack && partnerPrevBtn && partnerNextBtn) {
-                // Config
-                const scrollSpeed = 0.5; // continuous move speed
-                const itemWidth = 220 + 24; // 220px width + 1.5rem gap (24px)
+            if (!partnerSlider || !partnersTrack || !partnerPrevBtn || !partnerNextBtn || !partnerWrapper || partnersTrack.dataset.carouselReady) return;
 
-                // Clone items for infinite loop
-                const originalItems = Array.from(partnersTrack.children);
+            partnersTrack.dataset.carouselReady = 'true';
+            partnerSlider.setAttribute('aria-roledescription', 'karusel partnerů');
 
-                // Clone enough sets to fill screen + buffer
-                // 3 sets total (original + 2 clones) usually safe
-                originalItems.forEach(item => {
-                    partnersTrack.appendChild(item.cloneNode(true));
+            const originalItems = Array.from(partnersTrack.children);
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            const speed = 30;
+            let loopWidth = 0;
+            let offset = 0;
+            let lastTimestamp = 0;
+            let isPaused = false;
+            let activePointerId = null;
+            let dragStartX = 0;
+            let dragStartOffset = 0;
+
+            function clonePartnerSet() {
+                originalItems.forEach((item) => {
+                    const clone = item.cloneNode(true);
+                    clone.setAttribute('aria-hidden', 'true');
+                    partnersTrack.appendChild(clone);
                 });
-                originalItems.forEach(item => {
-                    partnersTrack.appendChild(item.cloneNode(true));
-                });
+            }
 
-                let isHovered = false;
-                let animationId;
+            clonePartnerSet();
+            clonePartnerSet();
 
-                // Auto Scroll Function
-                function autoScrollPartners() {
-                    if (!isHovered) {
-                        partnerSlider.scrollLeft += scrollSpeed;
+            function getGap() {
+                const gap = parseFloat(window.getComputedStyle(partnersTrack).gap);
+                return Number.isFinite(gap) ? gap : 0;
+            }
 
-                        // Reset logic
-                        // Width of one full set of items
-                        const resetThreshold = originalItems.length * itemWidth;
+            function normalize(value) {
+                if (!loopWidth) return 0;
+                return ((value % loopWidth) + loopWidth) % loopWidth;
+            }
 
-                        if (partnerSlider.scrollLeft >= resetThreshold) {
-                            // Snap back seamlessly
-                            partnerSlider.scrollLeft -= resetThreshold;
-                        }
-                    }
-                    animationId = requestAnimationFrame(autoScrollPartners);
+            function render() {
+                partnersTrack.style.transform = `translate3d(${-offset}px, 0, 0)`;
+            }
+
+            function measure() {
+                const gap = getGap();
+                loopWidth = originalItems.reduce((total, item) => total + item.getBoundingClientRect().width, 0) + (gap * originalItems.length);
+                offset = normalize(offset);
+                render();
+            }
+
+            function stepWidth() {
+                return (originalItems[0]?.getBoundingClientRect().width || 220) + getGap();
+            }
+
+            function moveBy(amount) {
+                offset = normalize(offset + amount);
+                render();
+            }
+
+            function animate(timestamp) {
+                if (!lastTimestamp) lastTimestamp = timestamp;
+                const elapsed = Math.min(timestamp - lastTimestamp, 64);
+                lastTimestamp = timestamp;
+
+                if (!isPaused && !reducedMotion.matches && document.visibilityState === 'visible' && loopWidth) {
+                    offset = normalize(offset + ((speed * elapsed) / 1000));
+                    render();
                 }
 
-                // Start Loop
-                animationId = requestAnimationFrame(autoScrollPartners);
-
-                // Manual Navigation
-                partnerPrevBtn.addEventListener('click', () => {
-                    partnerSlider.scrollBy({ left: -itemWidth, behavior: 'smooth' });
-                });
-
-                partnerNextBtn.addEventListener('click', () => {
-                    partnerSlider.scrollBy({ left: itemWidth, behavior: 'smooth' });
-                });
-
-                // Hover Pause
-                partnerWrapper.addEventListener('mouseenter', () => isHovered = true);
-                partnerWrapper.addEventListener('mouseleave', () => isHovered = false);
-
-                // Touch Pause
-                partnerWrapper.addEventListener('touchstart', () => isHovered = true);
-                partnerWrapper.addEventListener('touchend', () => isHovered = false);
+                requestAnimationFrame(animate);
             }
+
+            partnerPrevBtn.addEventListener('click', () => moveBy(-stepWidth()));
+            partnerNextBtn.addEventListener('click', () => moveBy(stepWidth()));
+
+            if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                partnerWrapper.addEventListener('mouseenter', () => { isPaused = true; });
+                partnerWrapper.addEventListener('mouseleave', () => { isPaused = false; });
+            }
+
+            partnerSlider.addEventListener('pointerdown', (event) => {
+                if (event.pointerType === 'mouse') return;
+                activePointerId = event.pointerId;
+                dragStartX = event.clientX;
+                dragStartOffset = offset;
+                isPaused = true;
+                partnerSlider.setPointerCapture?.(event.pointerId);
+            });
+
+            partnerSlider.addEventListener('pointermove', (event) => {
+                if (event.pointerId !== activePointerId) return;
+                offset = normalize(dragStartOffset - (event.clientX - dragStartX));
+                render();
+            });
+
+            function finishDrag(event) {
+                if (event.pointerId !== activePointerId) return;
+                partnerSlider.releasePointerCapture?.(event.pointerId);
+                activePointerId = null;
+                isPaused = false;
+            }
+
+            partnerSlider.addEventListener('pointerup', finishDrag);
+            partnerSlider.addEventListener('pointercancel', finishDrag);
+
+            if ('ResizeObserver' in window) {
+                new ResizeObserver(measure).observe(partnerSlider);
+            } else {
+                window.addEventListener('resize', measure);
+            }
+
+            requestAnimationFrame(() => {
+                measure();
+                requestAnimationFrame(animate);
+            });
         });
 
     </script>

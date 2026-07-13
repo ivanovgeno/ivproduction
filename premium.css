@@ -3600,3 +3600,46 @@ body.page-portfolio .hero h1 {
         transform: none;
     }
 }
+
+/* Centred mobile navigation and a transform-based partner carousel for iOS. */
+@media (max-width: 900px) {
+    .mobile-menu-overlay {
+        align-items: center;
+    }
+
+    .mobile-menu-link {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .mobile-menu-link:hover,
+    .mobile-menu-link.active {
+        transform: none;
+    }
+
+    .mobile-menu-cta {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+.partners-wrapper {
+    min-width: 0;
+}
+
+.partners-slider {
+    overflow: hidden !important;
+    touch-action: pan-y;
+}
+
+.partners-track {
+    transition: none !important;
+    will-change: transform;
+}
+
+@media (max-width: 760px) {
+    .partners-wrapper,
+    .partners-slider {
+        min-width: 0;
+    }
+}
