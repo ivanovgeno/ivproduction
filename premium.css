@@ -1952,6 +1952,53 @@ body.page-contact .hero > .btn {
     z-index: 1;
 }
 
+/* Portfolio and contact: each hero ends with one clear, comfortably spaced action. */
+body.page-portfolio .hero-content {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+
+body.page-portfolio .hero h1 {
+    margin: 0 0 1.15rem;
+}
+
+body.page-portfolio .hero-content > p,
+body.page-contact .hero > p {
+    color: rgba(250, 249, 246, 0.78);
+    font-size: clamp(1rem, 1.45vw, 1.2rem);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 43rem;
+}
+
+body.page-portfolio .hero-cta,
+body.page-contact .hero-cta {
+    align-self: flex-start;
+    margin-top: 1.6rem;
+    text-decoration: none;
+}
+
+body.page-contact .hero {
+    gap: 0;
+}
+
+body.page-contact .hero > h1 {
+    margin-bottom: 1.15rem;
+}
+
+.portfolio-closing-cta {
+    margin-top: 0.25rem;
+    text-decoration: none;
+}
+
+@media (max-width: 760px) {
+    body.page-portfolio .hero-cta,
+    body.page-contact .hero-cta {
+        margin-top: 1.35rem;
+    }
+}
+
 @media (max-width: 760px) {
     body.page-360 .hero,
     body.page-fotobudka .hero,
