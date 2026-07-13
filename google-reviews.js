@@ -246,32 +246,42 @@
         if (!track || !sliderContainer) return;
 
         let destroySlider = initialiseSlider(sliderContainer);
-        const endpoint = section.dataset.googleReviewsEndpoint || 'api/google-reviews.php';
+        const sources = [
+            section.dataset.googleReviewsEndpoint || 'api/google-reviews.php',
+            section.dataset.googleReviewsStaticSource || 'google-reviews.json'
+        ].filter((source, index, list) => source && list.indexOf(source) === index);
         const controller = new AbortController();
         const timeout = window.setTimeout(() => controller.abort(), 8000);
 
-        fetch(endpoint, {
-            cache: 'no-store',
-            headers: { Accept: 'application/json' },
-            signal: controller.signal
-        })
-            .then((response) => {
-                if (!response.ok) throw new Error('Google reviews endpoint is unavailable.');
-                return response.json();
-            })
-            .then((data) => {
-                if (!data || data.status !== 'ok' || !Array.isArray(data.reviews)) return;
+        const loadReviews = async () => {
+            for (const source of sources) {
+                try {
+                    const response = await fetch(source, {
+                        cache: 'no-store',
+                        headers: { Accept: 'application/json' },
+                        signal: controller.signal
+                    });
+                    if (!response.ok) continue;
 
-                destroySlider();
-                track.replaceChildren(...data.reviews.map(createReviewCard));
-                updateSummary(section, data);
-                section.dataset.googleReviewsSource = data.cached ? 'cached' : 'live';
-                destroySlider = initialiseSlider(sliderContainer);
-            })
-            .catch(() => {
-                // On GitHub Pages, before configuration, or during a temporary
-                // API outage, the existing static review cards remain visible.
-            })
-            .finally(() => window.clearTimeout(timeout));
+                    const data = await response.json();
+                    if (!data || data.status !== 'ok' || !Array.isArray(data.reviews)) continue;
+
+                    destroySlider();
+                    track.replaceChildren(...data.reviews.map(createReviewCard));
+                    updateSummary(section, data);
+                    section.dataset.googleReviewsSource = data.cached ? 'cached' : source === sources[0] ? 'live' : 'github-cache';
+                    destroySlider = initialiseSlider(sliderContainer);
+                    return;
+                } catch {
+                    // Try the next safe source. GitHub Pages has no PHP runtime,
+                    // while a PHP host can use the static GitHub export if its
+                    // server endpoint is not configured yet.
+                }
+            }
+
+            // With neither source available the existing static cards remain.
+        };
+
+        loadReviews().finally(() => window.clearTimeout(timeout));
     });
 })();

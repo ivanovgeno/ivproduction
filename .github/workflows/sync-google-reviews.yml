@@ -1,0 +1,51 @@
+name: Synchronizovat Google recenze
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-google-reviews.yml'
+      - 'scripts/sync-google-reviews.mjs'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: google-reviews-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Načíst web
+        uses: actions/checkout@v4
+
+      - name: Nastavit Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Načíst recenze z Google Business Profile
+        run: node scripts/sync-google-reviews.mjs
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_BUSINESS_ACCOUNT_ID: ${{ secrets.GOOGLE_BUSINESS_ACCOUNT_ID }}
+          GOOGLE_BUSINESS_LOCATION_ID: ${{ secrets.GOOGLE_BUSINESS_LOCATION_ID }}
+
+      - name: Uložit aktuální recenze pro GitHub Pages
+        run: |
+          if git diff --quiet -- google-reviews.json; then
+            echo "Recenze se nezměnily."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add google-reviews.json
+          git commit -m "Aktualizovat Google recenze"
+          git push
