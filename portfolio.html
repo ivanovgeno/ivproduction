@@ -384,11 +384,11 @@
             color: var(--gold);
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260713-portfolio-contact-cta">
+    <link rel="stylesheet" href="premium.css?v=20260713-unified-player">
     <script src="premium.js?v=20260712-portfoliohub" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260712-portfoliohub" defer></script>
-    <script src="portfolio-gallery.js?v=20260712-portfoliohub" defer></script>
+    <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
 </head>
 
 <body class="page-portfolio">
@@ -632,55 +632,6 @@
                 behavior: 'smooth'
             });
         }
-    </script>
-    <!-- Video Lightbox -->
-    <div class="video-lightbox" id="videoLightbox">
-        <button class="video-lightbox-close" id="closeLightbox">✕</button>
-        <div class="video-container">
-            <iframe id="videoFrame" src="" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <script>
-        // Video Lightbox functionality
-        const vidLightbox = document.getElementById('videoLightbox');
-        const videoFrame = document.getElementById('videoFrame');
-        const closeVidLightbox = document.getElementById('closeLightbox');
-
-        document.querySelectorAll('.portfolio-item[data-video]').forEach(item => {
-            item.addEventListener('click', () => {
-                const videoUrl = item.dataset.video;
-                videoFrame.src = videoUrl;
-                vidLightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        if (closeVidLightbox) {
-            closeVidLightbox.addEventListener('click', () => {
-                vidLightbox.classList.remove('active');
-                videoFrame.src = '';
-                document.body.style.overflow = '';
-            });
-        }
-
-        if (vidLightbox) {
-            vidLightbox.addEventListener('click', (e) => {
-                if (e.target === vidLightbox) {
-                    vidLightbox.classList.remove('active');
-                    videoFrame.src = '';
-                    document.body.style.overflow = '';
-                }
-            });
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && vidLightbox && vidLightbox.classList.contains('active')) {
-                vidLightbox.classList.remove('active');
-                videoFrame.src = '';
-                document.body.style.overflow = '';
-            }
-        });
     </script>
 </body>
 

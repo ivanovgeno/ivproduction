@@ -2450,8 +2450,10 @@
             border-radius: 16px;
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260713-team-centered">
-    <script src="experience.js?v=20260713-team-centered" defer></script>
+    <link rel="stylesheet" href="premium.css?v=20260713-unified-player">
+    <script src="experience.js?v=20260713-unified-player" defer></script>
+    <script src="portfolio-data.js?v=20260713-unified-player" defer></script>
+    <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
 </head>
 
 <body class="home-page">
@@ -2909,61 +2911,7 @@
                 <p class="section-subtitle">Podívejte se na ukázky z našich projektů</p>
             </div>
 
-            <div class="portfolio-grid">
-                <div class="portfolio-item reveal" data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" alt="Svatba">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Svatba</div>
-                        <div class="portfolio-title">Tereza & Martin</div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal" data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800" alt="Reality">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Reality</div>
-                        <div class="portfolio-title">Luxusní vila Praha</div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal" data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800" alt="Ples">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Ples</div>
-                        <div class="portfolio-title">Maturitní ples 2025</div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal" data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800" alt="Konference">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Konference</div>
-                        <div class="portfolio-title">Business Summit 2025</div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal" data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800" alt="Podcast">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Podcast</div>
-                        <div class="portfolio-title">Naše studio</div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item reveal" data-video="https://www.youtube.com/embed/7VZKvRrJV0E">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800" alt="Svatba">
-                    <div class="play-button"></div>
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-category">Svatba</div>
-                        <div class="portfolio-title">Petra & Jan</div>
-                    </div>
-                </div>
-            </div>
+            <div class="portfolio-grid" data-home-portfolio-grid aria-live="polite"></div>
 
             <div style="text-align: center; margin-top: 3rem;">
                 <a href="portfolio.html" class="btn btn-outline">Zobrazit více ukázek</a>
@@ -3704,17 +3652,6 @@
         </div>
     </section>
 
-
-
-
-    <!-- Video Lightbox -->
-    <div class="video-lightbox" id="videoLightbox">
-        <button class="video-lightbox-close" id="closeLightbox">✕</button>
-        <div class="video-container">
-            <iframe id="videoFrame" src="" allowfullscreen></iframe>
-        </div>
-    </div>
-
     <!-- Stats Counter Section -->
     <section class="stats-section">
         <div class="container">
@@ -4327,46 +4264,6 @@
         <img class="lightbox-content" id="lightbox-img">
         <div id="lightbox-caption"></div>
     </div>
-    <script>
-        // Video Lightbox functionality
-        const vidLightbox = document.getElementById('videoLightbox');
-        const videoFrame = document.getElementById('videoFrame');
-        const closeVidLightbox = document.getElementById('closeLightbox');
-
-        document.querySelectorAll('.portfolio-item[data-video]').forEach(item => {
-            item.addEventListener('click', () => {
-                const videoUrl = item.dataset.video;
-                videoFrame.src = videoUrl;
-                vidLightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        if (closeVidLightbox) {
-            closeVidLightbox.addEventListener('click', () => {
-                vidLightbox.classList.remove('active');
-                videoFrame.src = '';
-                document.body.style.overflow = '';
-            });
-        }
-
-        if (vidLightbox) {
-            vidLightbox.addEventListener('click', (e) => {
-                if (e.target === vidLightbox) {
-                    vidLightbox.classList.remove('active');
-                    videoFrame.src = '';
-                    document.body.style.overflow = '';
-                }
-            });
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && vidLightbox && vidLightbox.classList.contains('active')) {
-                vidLightbox.classList.remove('active');
-                videoFrame.src = '';
-                document.body.style.overflow = '';
-            }
-        });</script>
     <script>
         // Partners Slider Logic
         document.addEventListener('DOMContentLoaded', function () {

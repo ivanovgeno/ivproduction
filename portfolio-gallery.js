@@ -50,12 +50,14 @@
         const frame = lightbox.querySelector('iframe');
         if (frame) frame.src = '';
         document.body.style.overflow = '';
+        lightbox._lastTrigger?.focus();
     }
 
-    function openProject(project) {
+    function openProject(project, trigger) {
         if (!project?.video) return;
         const lightbox = ensureLightbox();
         const frame = lightbox.querySelector('iframe');
+        lightbox._lastTrigger = trigger || document.activeElement;
         frame.src = `${project.video}${project.video.includes('?') ? '&' : '?'}autoplay=1&rel=0`;
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
@@ -79,8 +81,19 @@
         scope.querySelectorAll('[data-portfolio-project]').forEach((card) => {
             if (card.dataset.portfolioBound) return;
             card.dataset.portfolioBound = 'true';
-            card.addEventListener('click', () => openProject(findProject(card.dataset.portfolioProject)));
+            card.addEventListener('click', () => openProject(findProject(card.dataset.portfolioProject), card));
         });
+    }
+
+    function initHomePortfolio() {
+        const grid = document.querySelector('[data-home-portfolio-grid]');
+        if (!grid) return;
+
+        grid.innerHTML = projects
+            .slice(0, 6)
+            .map((project) => projectCard(project))
+            .join('');
+        bindProjectCards(grid);
     }
 
     function setPortfolioFilter(grid, filter, tabs) {
@@ -180,6 +193,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', () => {
+        initHomePortfolio();
         initPortfolioPage();
         initRelatedWorkSliders();
     });

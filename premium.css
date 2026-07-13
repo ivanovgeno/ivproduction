@@ -2654,24 +2654,25 @@ body.page-portfolio .hero h1 {
 
 .portfolio-card__play {
     align-items: center;
-    backdrop-filter: blur(10px);
-    background: rgba(12, 12, 14, 0.55);
-    border: 1px solid rgba(240, 212, 119, 0.52);
-    border-radius: 50%;
+    background: var(--gradient);
+    border: 0;
+    border-radius: 7px;
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.34);
     display: flex;
-    height: 3.2rem;
+    height: 3.6rem;
     justify-content: center;
-    left: 1.25rem;
+    left: 50%;
     position: absolute;
-    top: 1.25rem;
-    transition: background-color 280ms ease, transform 320ms var(--ease-premium);
-    width: 3.2rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: box-shadow 280ms ease, transform 320ms var(--ease-premium);
+    width: 3.6rem;
     z-index: 2;
 }
 
 .portfolio-card__play i {
     border-bottom: 0.42rem solid transparent;
-    border-left: 0.64rem solid var(--gold-shine);
+    border-left: 0.64rem solid #121215;
     border-top: 0.42rem solid transparent;
     display: block;
     margin-left: 0.14rem;
@@ -2679,8 +2680,8 @@ body.page-portfolio .hero h1 {
 
 .portfolio-grid .portfolio-item:hover .portfolio-card__play,
 .premium-work-slide:hover .portfolio-card__play {
-    background: rgba(212, 175, 55, 0.2);
-    transform: scale(1.08);
+    box-shadow: 0 1rem 2.25rem rgba(0, 0, 0, 0.42), 0 0 0 0.35rem rgba(212, 175, 55, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.46);
+    transform: translate(-50%, -50%) scale(1.08);
 }
 
 .portfolio-grid .portfolio-overlay,
