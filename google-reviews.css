@@ -1,0 +1,55 @@
+/* Live Google Business Profile review additions. Static cards still work when
+   this stylesheet or the PHP endpoint is not available (for example on GitHub Pages). */
+.gw-avatar.gw-avatar-photo {
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(212, 175, 55, 0.45);
+}
+
+.gw-avatar.gw-avatar-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.gw-owner-reply {
+    margin-top: 0.2rem;
+    padding: 0.95rem 1rem;
+    border-left: 2px solid var(--gold, #d4af37);
+    background: rgba(212, 175, 55, 0.07);
+    border-radius: 0 10px 10px 0;
+}
+
+.gw-owner-reply-title {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--gold-light, #f1d56e);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.gw-owner-reply-text {
+    margin: 0;
+    color: var(--gray-light, #d2d2d8);
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+.gw-slider-viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gw-slider-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    .gw-owner-reply {
+        padding: 0.8rem 0.85rem;
+    }
+}

@@ -2451,10 +2451,12 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260713-team-geno-photo">
+    <link rel="stylesheet" href="google-reviews.css?v=20260713-php-prep">
     <script src="premium.js?v=20260713-mobile-responsive" defer></script>
     <script src="experience.js?v=20260713-unified-player" defer></script>
     <script src="portfolio-data.js?v=20260713-unified-player" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
+    <script src="google-reviews.js?v=20260713-php-prep" defer></script>
 </head>
 
 <body class="home-page">
@@ -2950,8 +2952,8 @@
         </div>
     </section>
 
-    <!-- Reviews Section (Google Widget Mock) -->
-    <section class="testimonials" id="recenze">
+    <!-- Google reviews: static cards are the GitHub Pages fallback; PHP hosting replaces them with live data. -->
+    <section class="testimonials" id="recenze" data-google-reviews data-google-reviews-endpoint="api/google-reviews.php">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Google recenze</div>
@@ -2964,12 +2966,12 @@
                         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"
                             height="30">
                         <div>
-                            <div class="gw-score">5.0 <span class="gw-stars">★★★★★</span></div>
-                            <div class="gw-reviews-count">Na základě 50+ recenzí</div>
+                            <div class="gw-score"><span data-google-review-score>5.0</span> <span class="gw-stars" data-google-review-stars aria-label="5 z 5 hvězdiček">★★★★★</span></div>
+                            <div class="gw-reviews-count" data-google-review-count>Na základě 50+ recenzí</div>
                         </div>
                     </div>
                     <a href="https://www.google.com/search?q=ivproduction+hradec+kralove&review=1" target="_blank"
-                        class="gw-write-btn">Napsat
+                        class="gw-write-btn" data-google-review-link rel="noopener noreferrer">Napsat
                         recenzi</a>
                 </div>
 
@@ -3521,93 +3523,23 @@
                     </div>
 
                     <!-- Navigation Arrows -->
-                    <button class="gw-nav-btn gw-prev" aria-label="Předchozí">
+                    <button class="gw-nav-btn gw-prev" type="button" aria-label="Předchozí recenze">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                            stroke-width="2" aria-hidden="true">
                             <path d="M15 18l-6-6 6-6" />
                         </svg>
                     </button>
-                    <button class="gw-nav-btn gw-next" aria-label="Další">
+                    <button class="gw-nav-btn gw-next" type="button" aria-label="Další recenze">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                            stroke-width="2" aria-hidden="true">
                             <path d="M9 18l6-6-6-6" />
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    const track = document.getElementById('gwTrack');
-                                    const viewport = document.getElementById('gwViewport'); // We scroll this
-                                    const container = document.querySelector('.gw-slider-container');
-                                    const nextBtn = document.querySelector('.gw-next');
-                                    const prevBtn = document.querySelector('.gw-prev');
-
-                                    let isHovered = false;
-                                    const scrollSpeed = 0.8;
-                                    const cardWidth = 320 + 32; // width + gap
-
-                                    // Cloning logic for infinite loop
-                                    const originalCards = Array.from(track.children);
-
-                                    // Clone cards enough times to fill space and allow scrolling
-                                    // 2 sets is good
-                                    originalCards.forEach(card => {
-                                        const clone = card.cloneNode(true);
-                                        track.appendChild(clone);
-                                    });
-                                    originalCards.forEach(card => {
-                                        const clone = card.cloneNode(true);
-                                        track.appendChild(clone);
-                                    });
-
-                                    // Start position
-                                    let animationId;
-
-                                    function autoScroll() {
-                                        if (!isHovered) {
-                                            // CRITICAL FIX: Scroll the VIEWPORT, not the TRACK
-                                            viewport.scrollLeft += scrollSpeed;
-
-                                            // Infinite Loop Reset Logic
-                                            // When we have scrolled past the first set(s) of content
-                                            // The total width of the first set of cards = originalCards.length * cardWidth
-                                            // We reset when we've scrolled that distance
-                                            const resetThreshold = originalCards.length * cardWidth;
-
-                                            if (viewport.scrollLeft >= resetThreshold) {
-                                                // Smoothly snap back to 0 (or subtraction) to wrap around
-                                                // To make it seamless, we subtract the chunk width
-                                                viewport.scrollLeft = viewport.scrollLeft - resetThreshold;
-                                            }
-                                        }
-                                        animationId = requestAnimationFrame(autoScroll);
-                                    }
-
-                                    // Start the loop
-                                    animationId = requestAnimationFrame(autoScroll);
-
-                                    // Manual Navigation
-                                    nextBtn.addEventListener('click', () => {
-                                        viewport.scrollBy({ left: cardWidth, behavior: 'smooth' });
-                                    });
-
-                                    prevBtn.addEventListener('click', () => {
-                                        viewport.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-                                    });
-
-                                    // Pause on container hover
-                                    container.addEventListener('mouseenter', () => isHovered = true);
-                                    container.addEventListener('mouseleave', () => isHovered = false);
-
-                                    // Touch support
-                                    container.addEventListener('touchstart', () => isHovered = true);
-                                    container.addEventListener('touchend', () => isHovered = false);
-                                });
-                            </script>
-
-
+                        </svg>
+                    </button>
                 </div>
 
                 <div style="text-align: center; margin-top: 1.5rem;">
                     <a href="https://www.google.com/search?q=ivproduction+hradec+kralove&check_reviews=1"
-                        target="_blank"
+                        target="_blank" data-google-maps-link rel="noopener noreferrer"
                         style="color: var(--gold); font-weight: 500; text-decoration: none; transition: color 0.3s;">Zobrazit
                         další recenze na
                         Google Maps →</a>

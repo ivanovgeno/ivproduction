@@ -1,0 +1,3 @@
+# Never publish Google Business Profile OAuth credentials or review cache.
+/api/private/google-reviews-config.php
+/api/cache/google-reviews.json
