@@ -2450,8 +2450,8 @@
             border-radius: 16px;
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260713-team-pyramid">
-    <script src="experience.js?v=20260713-team-pyramid" defer></script>
+    <link rel="stylesheet" href="premium.css?v=20260713-team-centered">
+    <script src="experience.js?v=20260713-team-centered" defer></script>
 </head>
 
 <body class="home-page">
@@ -2704,7 +2704,7 @@
             </div>
 
             <div class="about-content">
-                <div class="about-text reveal">
+                <div class="about-text about-text--story reveal">
                     <p class="about-intro">Jmenuji se <strong>Geno Ivanov</strong> a jsem zakladatel IV Production.</p>
 
                     <p>Se svoji ženou žiji nedaleko Jaroměře ve Východních Čechách, ale vzhledem k povaze mé práce
@@ -2717,37 +2717,38 @@
                         natáčení různých akcí, plesů, konferencí, eventů či koncertů.</p>
                 </div>
 
-                <div class="about-team reveal">
-                    <h3
-                        style="background: linear-gradient(135deg, #8B6914 0%, #C9A227 25%, #FFE55C 50%, #C9A227 75%, #8B6914 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                        Náš tým</h3>
+                <div class="about-team about-team--pyramid reveal">
+                    <div class="about-team-heading">
+                        <span class="about-team-kicker">Lidé za obrazem</span>
+                        <h3>Náš tým</h3>
+                    </div>
                     <div class="team-grid team-grid--pyramid">
                         <article class="team-member team-member--lead">
                             <div class="team-photo team-photo--placeholder" data-photo-slot="geno" role="img"
-                                aria-label="Vyhrazený prostor pro budoucí fotografii Gena">
+                                aria-label="Prostor pro budoucí fotografii Gena">
                                 <span class="team-photo-initial" aria-hidden="true">G</span>
                                 <span class="team-photo-status">Foto brzy</span>
                             </div>
-                            <div class="team-name">Geno</div>
-                            <div class="team-role">Zakladatel & Hlavní kameraman</div>
+                            <h4 class="team-name">Geno</h4>
+                            <p class="team-role">Zakladatel &amp; hlavní kameraman</p>
                         </article>
                         <article class="team-member">
                             <div class="team-photo team-photo--placeholder" data-photo-slot="marketa" role="img"
-                                aria-label="Vyhrazený prostor pro budoucí fotografii Markéty">
+                                aria-label="Prostor pro budoucí fotografii Markéty">
                                 <span class="team-photo-initial" aria-hidden="true">M</span>
                                 <span class="team-photo-status">Foto brzy</span>
                             </div>
-                            <div class="team-name">Markéta</div>
-                            <div class="team-role">Kreativní ředitelka & Koordinace</div>
+                            <h4 class="team-name">Markéta</h4>
+                            <p class="team-role">Kreativní ředitelka &amp; koordinace</p>
                         </article>
                         <article class="team-member">
                             <div class="team-photo team-photo--placeholder" data-photo-slot="sofie" role="img"
-                                aria-label="Vyhrazený prostor pro budoucí fotografii Sofie">
+                                aria-label="Prostor pro budoucí fotografii Sofie">
                                 <span class="team-photo-initial" aria-hidden="true">S</span>
                                 <span class="team-photo-status">Foto brzy</span>
                             </div>
-                            <div class="team-name">Sofie</div>
-                            <div class="team-role">Kamera, postprodukce & grafika</div>
+                            <h4 class="team-name">Sofie</h4>
+                            <p class="team-role">Kamera, postprodukce &amp; grafika</p>
                         </article>
                     </div>
                 </div>
@@ -2759,7 +2760,7 @@
                 <p class="tech-intro">Používáme profesionální vybavení pro dosažení nejlepších výsledků</p>
 
                 <div class="tech-category">
-                    <h4 class="tech-category-title">Kamery</h4>
+                    <button type="button" class="tech-category-title" aria-expanded="false">Kamery</button>
                     <div class="tech-grid">
                         <div class="tech-item">
                             <img src="tech-sony-a7siii.png" alt="Sony A7S III" class="tech-img">
@@ -2795,7 +2796,7 @@
                 </div>
 
                 <div class="tech-category">
-                    <h4 class="tech-category-title">Objektivy</h4>
+                    <button type="button" class="tech-category-title" aria-expanded="false">Objektivy</button>
                     <div class="tech-grid">
                         <div class="tech-item">
                             <img src="tech-sony-35mm.png" alt="Sony 35mm f/1.4 GM" class="tech-img">
@@ -2837,7 +2838,7 @@
                 </div>
 
                 <div class="tech-category">
-                    <h4 class="tech-category-title">Drony & Stabilizace</h4>
+                    <button type="button" class="tech-category-title" aria-expanded="false">Drony &amp; Stabilizace</button>
                     <div class="tech-grid">
                         <div class="tech-item">
                             <img src="tech-dji-air2s.png" alt="DJI Air 2S" class="tech-img">
@@ -2867,7 +2868,7 @@
                 </div>
 
                 <div class="tech-category">
-                    <h4 class="tech-category-title">Zvuk & Světla</h4>
+                    <button type="button" class="tech-category-title" aria-expanded="false">Zvuk &amp; Světla</button>
                     <div class="tech-grid">
                         <div class="tech-item">
                             <img src="tech-dji-mic2.png" alt="DJI Mic 2" class="tech-img">
@@ -4210,29 +4211,24 @@
             if (!wasActive) item.classList.add('active');
         }
 
-        // Tech Accordion Toggle
+        // Tech accordion: every category starts closed; only one is open at a time.
+        const techCategories = document.querySelectorAll('.tech-category');
         document.querySelectorAll('.tech-category-title').forEach(title => {
             title.addEventListener('click', function () {
                 const category = this.parentElement;
-                const wasActive = category.classList.contains('active');
+                const willOpen = !category.classList.contains('active');
 
-                // Close all categories
-                document.querySelectorAll('.tech-category').forEach(cat => {
+                techCategories.forEach(cat => {
                     cat.classList.remove('active');
+                    cat.querySelector('.tech-category-title')?.setAttribute('aria-expanded', 'false');
                 });
 
-                // Toggle clicked category
-                if (!wasActive) {
+                if (willOpen) {
                     category.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
                 }
             });
         });
-
-        // Open first category by default
-        const firstCategory = document.querySelector('.tech-category');
-        if (firstCategory) {
-            firstCategory.classList.add('active');
-        }
 
 
         // Unified Counter Animation
