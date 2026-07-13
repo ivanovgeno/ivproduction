@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = isOpen ? 'hidden' : '';
 
         if (isOpen) {
+            mobileOverlay.scrollTop = 0;
             mobileOverlay.querySelector('a')?.focus();
         } else if (restoreFocus) {
             lastFocusedElement?.focus();
@@ -60,7 +61,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeMenu();
+        if (event.key === 'Escape') {
+            closeMenu();
+            return;
+        }
+
+        if (event.key !== 'Tab' || !mobileOverlay.classList.contains('active')) return;
+
+        const focusableItems = [...mobileOverlay.querySelectorAll('a[href], button:not([disabled])')]
+            .filter((item) => item.offsetParent !== null);
+        const firstItem = focusableItems[0];
+        const lastItem = focusableItems[focusableItems.length - 1];
+
+        if (!firstItem || !lastItem) {
+            event.preventDefault();
+            return;
+        }
+
+        if (event.shiftKey && document.activeElement === firstItem) {
+            event.preventDefault();
+            lastItem.focus();
+        } else if (!event.shiftKey && document.activeElement === lastItem) {
+            event.preventDefault();
+            firstItem.focus();
+        }
     });
 
     mobileQuery.addEventListener('change', () => {
