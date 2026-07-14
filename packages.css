@@ -66,11 +66,11 @@
 .package-card {
     display: flex;
     flex-direction: column;
-    transform: translateY(-0.45rem);
+    transform: none;
 }
 
 .package-card:hover {
-    transform: translateY(-0.75rem);
+    transform: translateY(-0.7rem);
 }
 
 .package-card .pricing-name {
@@ -137,13 +137,13 @@
         linear-gradient(145deg, rgba(32, 29, 19, 0.98), rgba(10, 10, 15, 0.98));
     border-color: var(--gold-shine, #ffe55c);
     box-shadow: 0 1.5rem 4.5rem rgba(201, 162, 39, 0.28), inset 0 1px 0 rgba(255, 244, 184, 0.16);
-    transform: translateY(-1.45rem);
+    transform: none;
     z-index: 2;
 }
 
 .pricing-card.is-popular:hover {
-    box-shadow: 0 1.5rem 4.5rem rgba(201, 162, 39, 0.28), inset 0 1px 0 rgba(255, 244, 184, 0.16);
-    transform: translateY(-1.45rem);
+    box-shadow: 0 2rem 5rem rgba(201, 162, 39, 0.36), inset 0 1px 0 rgba(255, 244, 184, 0.16);
+    transform: translateY(-1.1rem);
 }
 
 /* Replace the old badge with a prominent premium corner sash. */
@@ -157,20 +157,21 @@
     box-shadow: 0 0.65rem 1.8rem rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     color: var(--dark, #0a0a0f);
     display: grid;
-    font-size: 0.64rem;
+    font-size: 0.66rem;
     font-weight: 900;
-    letter-spacing: 0.1em;
-    padding: 0.66rem 0.5rem;
+    height: 2.25rem;
+    letter-spacing: 0.08em;
+    padding: 0;
     position: absolute;
     place-items: center;
-    right: -5.05rem;
+    right: -1.8rem;
     text-align: center;
-    top: 1.52rem;
+    top: 4.5rem;
     transform: rotate(45deg);
     transition: none !important;
     text-transform: uppercase;
     white-space: nowrap;
-    width: 17rem;
+    width: 13.5rem;
     z-index: 3;
 }
 
@@ -219,19 +220,19 @@
     }
 
     .pricing-card.is-popular {
-        transform: translateY(-0.85rem);
+        transform: none;
     }
 
     .pricing-card.is-popular:hover {
-        transform: translateY(-0.85rem);
+        transform: translateY(-0.72rem);
     }
 
     .package-card {
-        transform: translateY(-0.2rem);
+        transform: none;
     }
 
     .package-card:hover {
-        transform: translateY(-0.2rem);
+        transform: translateY(-0.4rem);
     }
 
     .package-description {
