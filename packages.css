@@ -157,21 +157,20 @@
     box-shadow: 0 0.65rem 1.8rem rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     color: var(--dark, #0a0a0f);
     display: grid;
-    font-size: 0.66rem;
+    font-size: 0.64rem;
     font-weight: 900;
-    height: 2.25rem;
-    letter-spacing: 0.08em;
-    padding: 0;
+    letter-spacing: 0.1em;
+    padding: 0.66rem 0.5rem;
     position: absolute;
     place-items: center;
-    right: -1.8rem;
+    right: -5.05rem;
     text-align: center;
-    top: 4.5rem;
+    top: 1.52rem;
     transform: rotate(45deg);
     transition: none !important;
     text-transform: uppercase;
     white-space: nowrap;
-    width: 13.5rem;
+    width: 17rem;
     z-index: 3;
 }
 
@@ -179,7 +178,8 @@
     display: block;
     line-height: 1;
     text-align: center;
-    transform: translateX(0);
+    /* The sash stays fixed; only its label is shifted into the visual centre. */
+    transform: translateX(1.4rem);
     width: 100%;
 }
 
