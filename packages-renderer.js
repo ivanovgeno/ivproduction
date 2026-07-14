@@ -15,7 +15,7 @@
 
         if (item.popular) {
             card.classList.add('featured', 'is-popular');
-            card.appendChild(textElement('div', 'package-popular-badge', item.popularLabel || 'Nejoblíbenější'));
+            card.appendChild(textElement('div', 'package-popular-ribbon', item.popularLabel || 'Nejoblíbenější'));
         }
 
         if (item.partner) {
@@ -25,6 +25,18 @@
             if (item.type !== 'owned') {
                 card.appendChild(textElement('p', 'package-partner-name', item.partner));
             }
+        }
+
+        if (item.linkUrl) {
+            var externalLink = document.createElement('a');
+            externalLink.className = 'package-external-link';
+            externalLink.href = item.linkUrl;
+            externalLink.textContent = item.linkLabel || 'Zobrazit více';
+            if (/^https?:\/\//i.test(item.linkUrl)) {
+                externalLink.target = '_blank';
+                externalLink.rel = 'noopener noreferrer';
+            }
+            card.appendChild(externalLink);
         }
 
         card.appendChild(textElement('h3', 'pricing-name', item.name));

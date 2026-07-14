@@ -50,11 +50,11 @@
 .package-grid {
     display: grid;
     gap: 1.4rem;
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .package-showcase-main .pricing-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .package-grid-partners {
@@ -101,29 +101,75 @@
     margin: 0 0 0.8rem;
 }
 
-.pricing-card.is-popular {
-    border-color: var(--gold-shine, #ffe55c);
-    box-shadow: 0 1.5rem 4.5rem rgba(201, 162, 39, 0.19);
+.package-external-link {
+    align-items: center;
+    color: var(--gold-pale, #fff4b8);
+    display: inline-flex;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    margin: 0.1rem 0 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 220ms ease, text-shadow 220ms ease;
+    width: fit-content;
 }
 
-/* Replace the old diagonal ribbon with a clearly legible, accessible badge. */
+.package-external-link::after {
+    content: '↗';
+    font-size: 1rem;
+    margin-left: 0.42rem;
+}
+
+.package-external-link:hover {
+    color: var(--gold-shine, #ffe55c);
+    text-shadow: 0 0 1rem rgba(232, 197, 71, 0.42);
+}
+
+.pricing-card.is-popular {
+    background:
+        radial-gradient(circle at 50% -10%, rgba(255, 229, 92, 0.22), transparent 52%),
+        linear-gradient(145deg, rgba(32, 29, 19, 0.98), rgba(10, 10, 15, 0.98));
+    border-color: var(--gold-shine, #ffe55c);
+    box-shadow: 0 1.5rem 4.5rem rgba(201, 162, 39, 0.28), inset 0 1px 0 rgba(255, 244, 184, 0.16);
+    transform: translateY(-0.55rem);
+    z-index: 2;
+}
+
+/* Replace the old badge with a prominent premium corner sash. */
 .pricing-card.is-popular::before {
     content: none;
 }
 
-.package-popular-badge {
+.package-popular-ribbon {
     align-items: center;
     background: var(--gradient, linear-gradient(135deg, #8b6914, #ffe55c, #8b6914));
-    border-radius: 999px;
+    box-shadow: 0 0.65rem 1.8rem rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     color: var(--dark, #0a0a0f);
     display: inline-flex;
-    font-size: 0.69rem;
+    font-size: 0.64rem;
     font-weight: 900;
     letter-spacing: 0.1em;
-    margin: -0.45rem 0 1.15rem;
-    padding: 0.48rem 0.78rem;
+    padding: 0.58rem 3.7rem;
+    position: absolute;
+    right: -3.55rem;
+    text-align: center;
+    top: 1.32rem;
+    transform: rotate(45deg);
     text-transform: uppercase;
-    width: fit-content;
+    white-space: nowrap;
+    z-index: 3;
+}
+
+.package-card--main[data-package-id='eco'] { order: 1; }
+.package-card--main[data-package-id='premium'] { order: 2; }
+.package-card--main[data-package-id='standard'] { order: 3; }
+.package-card--main[data-package-id='na-miru'] { order: 4; }
+
+@media (min-width: 1121px) {
+    .package-card--main[data-package-id='na-miru'] {
+        grid-column: 2;
+    }
 }
 
 @media (max-width: 760px) {
@@ -146,12 +192,17 @@
         font-size: 0.92rem;
     }
 
+    .pricing-card.is-popular {
+        transform: none;
+    }
+
     .package-description {
         min-height: 0;
     }
 }
 
 @media (min-width: 761px) and (max-width: 1120px) {
+    .package-grid,
     .package-showcase-main .pricing-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }

@@ -74,6 +74,8 @@
                         <div class="full"><label for="fieldFeatures">Položky balíčku</label><textarea id="fieldFeatures" placeholder="Jedna položka na řádek"></textarea></div>
                         <div><label for="fieldPartner">Spolupráce / označení</label><input id="fieldPartner" placeholder="např. Marek Kyncl Fotograf"></div>
                         <div><label for="fieldType">Typ označení</label><select id="fieldType"><option value="">Bez označení</option><option value="partner">Ve spolupráci s</option><option value="owned">Vlastní služba IV Production</option></select></div>
+                        <div><label for="fieldLinkLabel">Text externího odkazu</label><input id="fieldLinkLabel" placeholder="např. Portfolio fotografa"></div>
+                        <div><label for="fieldLinkUrl">Adresa externího odkazu</label><input id="fieldLinkUrl" type="url" placeholder="https://…"></div>
                     </div>
                     <div class="check"><input id="fieldPopular" type="checkbox"><label for="fieldPopular">Zvýraznit jako nejoblíbenější</label></div>
                     <div class="actions"><button type="submit">Uložit do náhledu</button><button class="secondary danger" id="removePackage" type="button">Smazat balíček</button><button class="secondary" id="restoreData" type="button">Vrátit původní data</button></div>
@@ -99,7 +101,7 @@
                 name: document.getElementById('fieldName'), price: document.getElementById('fieldPrice'),
                 description: document.getElementById('fieldDescription'), ctaLabel: document.getElementById('fieldCtaLabel'),
                 ctaHref: document.getElementById('fieldCtaHref'), features: document.getElementById('fieldFeatures'),
-                partner: document.getElementById('fieldPartner'), type: document.getElementById('fieldType'), popular: document.getElementById('fieldPopular')
+                partner: document.getElementById('fieldPartner'), type: document.getElementById('fieldType'), linkLabel: document.getElementById('fieldLinkLabel'), linkUrl: document.getElementById('fieldLinkUrl'), popular: document.getElementById('fieldPopular')
             };
             function selectedGroup() { return data[pageSelect.value][groupSelect.value]; }
             function setStatus(message) { status.textContent = message; }
@@ -130,7 +132,7 @@
                 if (!item) return;
                 fields.name.value = item.name || ''; fields.price.value = item.price || ''; fields.description.value = item.description || '';
                 fields.ctaLabel.value = item.ctaLabel || ''; fields.ctaHref.value = item.ctaHref || ''; fields.features.value = (item.features || []).join('\n');
-                fields.partner.value = item.partner || ''; fields.type.value = item.type || ''; fields.popular.checked = Boolean(item.popular);
+                fields.partner.value = item.partner || ''; fields.type.value = item.type || ''; fields.linkLabel.value = item.linkLabel || ''; fields.linkUrl.value = item.linkUrl || ''; fields.popular.checked = Boolean(item.popular);
                 document.getElementById('editorTitle').textContent = 'Upravit: ' + (item.name || 'nový balíček');
             }
             function slugify(value) { return value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') || 'novy-balicek'; }
@@ -139,8 +141,9 @@
                 previous.id = previous.id || slugify(fields.name.value); previous.name = fields.name.value.trim(); previous.price = fields.price.value.trim(); previous.description = fields.description.value.trim();
                 previous.ctaLabel = fields.ctaLabel.value.trim() || 'Nezávazně poptat'; previous.ctaHref = fields.ctaHref.value.trim() || 'kontakt.html#poptavka';
                 previous.features = fields.features.value.split('\n').map(function (line) { return line.trim(); }).filter(Boolean);
-                previous.partner = fields.partner.value.trim(); previous.type = fields.type.value; previous.popular = fields.popular.checked;
+                previous.partner = fields.partner.value.trim(); previous.type = fields.type.value; previous.linkLabel = fields.linkLabel.value.trim(); previous.linkUrl = fields.linkUrl.value.trim(); previous.popular = fields.popular.checked;
                 if (!previous.partner) { delete previous.partner; delete previous.type; }
+                if (!previous.linkUrl) { delete previous.linkLabel; delete previous.linkUrl; }
                 if (!previous.popular) { delete previous.popular; delete previous.popularLabel; }
                 renderList(); setStatus('Změna je uložená do náhledu. Pro zveřejnění stáhněte soubor.');
             });

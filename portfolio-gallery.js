@@ -147,6 +147,124 @@
     }
 
     function initRelatedWorkSliders() {
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function setupLoopingAutoplay(slider, viewport) {
+            const originalSlides = Array.from(viewport.querySelectorAll('.premium-work-slide'));
+            if (originalSlides.length < 2 || reducedMotion.matches) return null;
+
+            const cloneSlides = originalSlides.map((slide) => {
+                const clone = slide.cloneNode(true);
+                clone.dataset.sliderClone = 'true';
+                clone.setAttribute('aria-hidden', 'true');
+                clone.setAttribute('tabindex', '-1');
+                return clone;
+            });
+            cloneSlides.forEach((slide) => viewport.append(slide));
+
+            const state = { timer: null, hovering: false, dragging: false };
+
+            const loopWidth = () => {
+                const firstClone = cloneSlides[0];
+                const firstOriginal = originalSlides[0];
+                return firstClone && firstOriginal ? firstClone.offsetLeft - firstOriginal.offsetLeft : 0;
+            };
+
+            const stepWidth = () => {
+                const firstSlide = originalSlides[0];
+                const gap = Number.parseFloat(window.getComputedStyle(viewport).columnGap || window.getComputedStyle(viewport).gap || '0');
+                return firstSlide ? firstSlide.getBoundingClientRect().width + gap : viewport.clientWidth * 0.85;
+            };
+
+            const setInstantPosition = (left) => {
+                const previousBehavior = viewport.style.scrollBehavior;
+                const previousSnap = viewport.style.scrollSnapType;
+                viewport.style.scrollBehavior = 'auto';
+                viewport.style.scrollSnapType = 'none';
+                viewport.scrollLeft = left;
+                window.requestAnimationFrame(() => {
+                    viewport.style.scrollBehavior = previousBehavior;
+                    viewport.style.scrollSnapType = previousSnap;
+                });
+            };
+
+            const normalizeLoop = () => {
+                const width = loopWidth();
+                if (width && viewport.scrollLeft >= width - 1) {
+                    setInstantPosition(viewport.scrollLeft - width);
+                }
+            };
+
+            const move = (direction) => {
+                const width = loopWidth();
+                const step = stepWidth();
+                if (!width || !step) return;
+
+                if (direction < 0 && viewport.scrollLeft <= 1) {
+                    setInstantPosition(width);
+                    window.requestAnimationFrame(() => viewport.scrollBy({ left: -step, behavior: 'smooth' }));
+                    return;
+                }
+
+                viewport.scrollBy({ left: direction * step, behavior: 'smooth' });
+            };
+
+            const stop = () => {
+                if (state.timer) window.clearTimeout(state.timer);
+                state.timer = null;
+            };
+
+            const schedule = () => {
+                stop();
+                if (document.hidden || state.dragging || reducedMotion.matches) return;
+                const delay = state.hovering ? 7200 : 3600;
+                state.timer = window.setTimeout(() => {
+                    move(1);
+                    schedule();
+                }, delay);
+            };
+
+            slider.classList.add('is-autoplaying');
+            viewport.addEventListener('scroll', normalizeLoop, { passive: true });
+            slider.addEventListener('mouseenter', () => {
+                state.hovering = true;
+                slider.classList.add('is-slowed');
+                schedule();
+            });
+            slider.addEventListener('mouseleave', () => {
+                state.hovering = false;
+                slider.classList.remove('is-slowed');
+                schedule();
+            });
+            viewport.addEventListener('pointerdown', () => {
+                state.dragging = true;
+                stop();
+            });
+            viewport.addEventListener('pointerup', () => {
+                state.dragging = false;
+                schedule();
+            });
+            viewport.addEventListener('pointercancel', () => {
+                state.dragging = false;
+                schedule();
+            });
+            slider.addEventListener('focusin', stop);
+            slider.addEventListener('focusout', (event) => {
+                if (!slider.contains(event.relatedTarget)) schedule();
+            });
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) stop();
+                else schedule();
+            });
+            reducedMotion.addEventListener?.('change', () => {
+                if (reducedMotion.matches) stop();
+                else schedule();
+            });
+            schedule();
+
+            return { move, schedule };
+        }
+
         document.querySelectorAll('[data-portfolio-slider]').forEach((section) => {
             const categories = (section.dataset.portfolioCategories || '')
                 .split(',')
@@ -169,20 +287,32 @@
                     </div>
                     <a href="portfolio.html?category=${encodeURIComponent(category)}#projekty" class="related-work__link">Zobrazit celé portfolio <i aria-hidden="true">→</i></a>
                 </div>
-                <div class="premium-work-slider">
+                <div class="premium-work-slider" data-portfolio-autoplay>
                     <button class="premium-work-slider__control" type="button" data-slider-previous aria-label="Předchozí ukázky">←</button>
-                    <div class="premium-work-slider__viewport" tabindex="0" aria-label="Posuvník ukázek">
+                    <div class="premium-work-slider__viewport" tabindex="0" aria-label="Automaticky posouvané ukázky z portfolia">
                         ${matchingProjects.map((project) => projectCard(project, 'premium-work-slide')).join('')}
                     </div>
                     <button class="premium-work-slider__control" type="button" data-slider-next aria-label="Další ukázky">→</button>
                 </div>`;
 
+            const slider = section.querySelector('.premium-work-slider');
             const viewport = section.querySelector('.premium-work-slider__viewport');
+            const loop = setupLoopingAutoplay(slider, viewport);
             section.querySelector('[data-slider-previous]')?.addEventListener('click', () => {
-                viewport.scrollBy({ left: -Math.round(viewport.clientWidth * 0.86), behavior: 'smooth' });
+                if (loop) {
+                    loop.move(-1);
+                    loop.schedule();
+                } else {
+                    viewport.scrollBy({ left: -Math.round(viewport.clientWidth * 0.86), behavior: 'smooth' });
+                }
             });
             section.querySelector('[data-slider-next]')?.addEventListener('click', () => {
-                viewport.scrollBy({ left: Math.round(viewport.clientWidth * 0.86), behavior: 'smooth' });
+                if (loop) {
+                    loop.move(1);
+                    loop.schedule();
+                } else {
+                    viewport.scrollBy({ left: Math.round(viewport.clientWidth * 0.86), behavior: 'smooth' });
+                }
             });
             bindProjectCards(section);
         });
@@ -198,3 +328,4 @@
         initRelatedWorkSliders();
     });
 })();
+

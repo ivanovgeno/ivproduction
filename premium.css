@@ -3653,3 +3653,64 @@ body.page-portfolio .hero h1 {
 .about-team--pyramid .team-photo--geno img {
     object-position: 42% 46%;
 }
+
+
+/* Infinite related-work carousel: calm motion, a richer premium focus, and touch-friendly control. */
+.premium-work-slider.is-autoplaying .premium-work-slider__viewport {
+    cursor: grab;
+    scroll-snap-stop: always;
+    touch-action: pan-y pan-x;
+}
+
+.premium-work-slider.is-autoplaying .premium-work-slider__viewport:active {
+    cursor: grabbing;
+}
+
+.premium-work-slider.is-autoplaying::after {
+    background: linear-gradient(90deg, rgba(16, 16, 20, 0.72), transparent 9%, transparent 91%, rgba(16, 16, 20, 0.72));
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 2;
+}
+
+.premium-work-slider.is-autoplaying .premium-work-slider__control {
+    z-index: 4;
+}
+
+.premium-work-slide {
+    box-shadow: 0 1rem 2.4rem rgba(0, 0, 0, 0.2);
+    transform: translateZ(0);
+    transition: border-color 300ms ease, box-shadow 360ms ease, transform 420ms var(--ease-premium);
+}
+
+.premium-work-slide:hover {
+    border-color: rgba(255, 229, 92, 0.72);
+    box-shadow: 0 1.35rem 3rem rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(240, 212, 119, 0.1);
+    transform: translateY(-0.34rem);
+}
+
+.premium-work-slider.is-slowed .premium-work-slide {
+    border-color: rgba(240, 212, 119, 0.3);
+}
+
+@media (max-width: 760px) {
+    .premium-work-slider.is-autoplaying::after {
+        background: linear-gradient(90deg, rgba(16, 16, 20, 0.54), transparent 13%, transparent 87%, rgba(16, 16, 20, 0.54));
+    }
+
+    .premium-work-slide:hover {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .premium-work-slider.is-autoplaying .premium-work-slider__viewport {
+        scroll-behavior: auto;
+    }
+
+    .premium-work-slide {
+        transition: none;
+    }
+}
