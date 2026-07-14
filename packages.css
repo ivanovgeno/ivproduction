@@ -178,6 +178,7 @@
     display: block;
     line-height: 1;
     text-align: center;
+    transform: translateY(0.75rem);
     white-space: nowrap;
 }
 
