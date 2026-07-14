@@ -15,7 +15,10 @@
 
         if (item.popular) {
             card.classList.add('featured', 'is-popular');
-            card.appendChild(textElement('div', 'package-popular-ribbon', item.popularLabel || 'Nejoblíbenější'));
+            var ribbon = document.createElement('div');
+            ribbon.className = 'package-popular-ribbon';
+            ribbon.appendChild(textElement('span', 'package-popular-ribbon__text', item.popularLabel || 'Nejoblíbenější'));
+            card.appendChild(ribbon);
         }
 
         if (item.partner) {

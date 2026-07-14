@@ -66,6 +66,11 @@
 .package-card {
     display: flex;
     flex-direction: column;
+    transform: translateY(-0.45rem);
+}
+
+.package-card:hover {
+    transform: translateY(-0.75rem);
 }
 
 .package-card .pricing-name {
@@ -132,13 +137,13 @@
         linear-gradient(145deg, rgba(32, 29, 19, 0.98), rgba(10, 10, 15, 0.98));
     border-color: var(--gold-shine, #ffe55c);
     box-shadow: 0 1.5rem 4.5rem rgba(201, 162, 39, 0.28), inset 0 1px 0 rgba(255, 244, 184, 0.16);
-    transform: translateY(-0.55rem);
+    transform: translateY(-1.45rem);
     z-index: 2;
 }
 
 .pricing-card.is-popular:hover {
     box-shadow: 0 1.5rem 4.5rem rgba(201, 162, 39, 0.28), inset 0 1px 0 rgba(255, 244, 184, 0.16);
-    transform: translateY(-0.55rem);
+    transform: translateY(-1.45rem);
 }
 
 /* Replace the old badge with a prominent premium corner sash. */
@@ -151,13 +156,13 @@
     background: var(--gradient, linear-gradient(135deg, #8b6914, #ffe55c, #8b6914));
     box-shadow: 0 0.65rem 1.8rem rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     color: var(--dark, #0a0a0f);
-    display: inline-flex;
+    display: grid;
     font-size: 0.64rem;
     font-weight: 900;
-    justify-content: center;
     letter-spacing: 0.1em;
     padding: 0.66rem 0.5rem;
     position: absolute;
+    place-items: center;
     right: -5.05rem;
     text-align: center;
     top: 1.52rem;
@@ -167,6 +172,14 @@
     white-space: nowrap;
     width: 17rem;
     z-index: 3;
+}
+
+.package-popular-ribbon__text {
+    display: block;
+    line-height: 1;
+    text-align: center;
+    transform: translateX(0);
+    width: 100%;
 }
 
 .pricing-card.is-popular:hover .package-popular-ribbon {
@@ -206,7 +219,19 @@
     }
 
     .pricing-card.is-popular {
-        transform: none;
+        transform: translateY(-0.85rem);
+    }
+
+    .pricing-card.is-popular:hover {
+        transform: translateY(-0.85rem);
+    }
+
+    .package-card {
+        transform: translateY(-0.2rem);
+    }
+
+    .package-card:hover {
+        transform: translateY(-0.2rem);
     }
 
     .package-description {
