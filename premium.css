@@ -2933,20 +2933,22 @@ body.page-portfolio .hero h1 {
     }
 
     .premium-work-slider__control {
-        bottom: -3.9rem;
-        top: auto;
-        transform: none;
+        bottom: auto;
+        height: 2.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 2.75rem;
     }
 
     .premium-work-slider__control:hover {
-        transform: scale(1.04);
+        transform: translateY(-50%) scale(1.04);
     }
 
-    .premium-work-slider__control[data-slider-previous] { left: calc(50% - 3.25rem); }
-    .premium-work-slider__control[data-slider-next] { right: calc(50% - 3.25rem); }
+    .premium-work-slider__control[data-slider-previous] { left: 0.45rem; }
+    .premium-work-slider__control[data-slider-next] { right: 0.45rem; }
 
     .premium-work-slider__viewport {
-        padding-bottom: 5rem;
+        padding-bottom: 0.8rem;
     }
 
     .portfolio-video-modal__close {

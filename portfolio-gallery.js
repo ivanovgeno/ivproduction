@@ -217,7 +217,7 @@
             const schedule = () => {
                 stop();
                 if (document.hidden || state.dragging || reducedMotion.matches) return;
-                const delay = state.hovering ? 7200 : 3600;
+                const delay = state.hovering ? 4800 : 2400;
                 state.timer = window.setTimeout(() => {
                     move(1);
                     schedule();
@@ -328,4 +328,3 @@
         initRelatedWorkSliders();
     });
 })();
-

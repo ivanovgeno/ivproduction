@@ -136,6 +136,11 @@
     z-index: 2;
 }
 
+.pricing-card.is-popular:hover {
+    box-shadow: 0 1.5rem 4.5rem rgba(201, 162, 39, 0.28), inset 0 1px 0 rgba(255, 244, 184, 0.16);
+    transform: translateY(-0.55rem);
+}
+
 /* Replace the old badge with a prominent premium corner sash. */
 .pricing-card.is-popular::before {
     content: none;
@@ -149,16 +154,24 @@
     display: inline-flex;
     font-size: 0.64rem;
     font-weight: 900;
+    justify-content: center;
     letter-spacing: 0.1em;
-    padding: 0.58rem 3.7rem;
+    padding: 0.66rem 0.5rem;
     position: absolute;
-    right: -3.55rem;
+    right: -5.05rem;
     text-align: center;
-    top: 1.32rem;
+    top: 1.52rem;
     transform: rotate(45deg);
+    transition: none !important;
     text-transform: uppercase;
     white-space: nowrap;
+    width: 17rem;
     z-index: 3;
+}
+
+.pricing-card.is-popular:hover .package-popular-ribbon {
+    filter: none;
+    transform: rotate(45deg);
 }
 
 .package-card--main[data-package-id='eco'] { order: 1; }
