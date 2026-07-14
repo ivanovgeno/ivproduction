@@ -176,14 +176,9 @@
 
 .package-popular-ribbon__text {
     display: block;
-    left: 50%;
     line-height: 1;
-    position: absolute;
     text-align: center;
-    top: 50%;
-    transform: translate(-50%, -50%);
     white-space: nowrap;
-    width: max-content;
 }
 
 .pricing-card.is-popular:hover .package-popular-ribbon {
