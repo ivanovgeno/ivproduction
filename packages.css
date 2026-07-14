@@ -178,7 +178,8 @@
     display: block;
     line-height: 1;
     text-align: center;
-    transform: translateY(0.75rem);
+    /* The parent sash is rotated 45deg; a tiny negative Y nudge centers the text optically. */
+    transform: translateY(-0.2rem);
     white-space: nowrap;
 }
 
