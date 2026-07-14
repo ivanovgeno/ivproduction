@@ -1,0 +1,158 @@
+/* IV Production – reusable package sections */
+.package-showcase {
+    overflow: hidden;
+    position: relative;
+}
+
+.package-showcase::before {
+    background: radial-gradient(circle, rgba(232, 197, 71, 0.15), transparent 68%);
+    content: '';
+    height: 36rem;
+    left: -14rem;
+    pointer-events: none;
+    position: absolute;
+    top: -18rem;
+    width: 36rem;
+}
+
+.package-showcase-partners {
+    background: linear-gradient(180deg, #0a0a0f 0%, #11111a 100%);
+}
+
+.package-showcase-extras {
+    background: linear-gradient(180deg, #11111a 0%, #0a0a0f 100%);
+}
+
+.package-showcase .container {
+    position: relative;
+    z-index: 1;
+}
+
+.package-section-kicker {
+    color: var(--gold-shine, #ffe55c);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    margin: 0 auto 0.8rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.package-lead {
+    color: var(--gray-light, #9ca3af);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    margin: 0 auto 2.8rem;
+    max-width: 47rem;
+    text-align: center;
+}
+
+.package-grid {
+    display: grid;
+    gap: 1.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+}
+
+.package-showcase-main .pricing-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.package-grid-partners {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 auto;
+    max-width: 58rem;
+}
+
+.package-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.package-card .pricing-name {
+    line-height: 1.16;
+}
+
+.package-card .pricing-features {
+    flex: 1;
+}
+
+.package-description {
+    color: var(--gray-light, #9ca3af);
+    font-size: 0.96rem;
+    line-height: 1.65;
+    margin: 0.25rem 0 1rem;
+    min-height: 4.8rem;
+}
+
+.package-partner-label {
+    color: var(--gold-shine, #ffe55c);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    margin: 0 0 0.25rem;
+    text-transform: uppercase;
+}
+
+.package-partner-name {
+    color: var(--gold-pale, #fff4b8);
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 0.8rem;
+}
+
+.pricing-card.is-popular {
+    border-color: var(--gold-shine, #ffe55c);
+    box-shadow: 0 1.5rem 4.5rem rgba(201, 162, 39, 0.19);
+}
+
+/* Replace the old diagonal ribbon with a clearly legible, accessible badge. */
+.pricing-card.is-popular::before {
+    content: none;
+}
+
+.package-popular-badge {
+    align-items: center;
+    background: var(--gradient, linear-gradient(135deg, #8b6914, #ffe55c, #8b6914));
+    border-radius: 999px;
+    color: var(--dark, #0a0a0f);
+    display: inline-flex;
+    font-size: 0.69rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    margin: -0.45rem 0 1.15rem;
+    padding: 0.48rem 0.78rem;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+@media (max-width: 760px) {
+    .package-grid,
+    .package-grid-partners,
+    .package-showcase-main .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .package-showcase {
+        padding: 4rem 0;
+    }
+
+    .package-lead {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .package-card .pricing-features li {
+        font-size: 0.92rem;
+    }
+
+    .package-description {
+        min-height: 0;
+    }
+}
+
+@media (min-width: 761px) and (max-width: 1120px) {
+    .package-showcase-main .pricing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

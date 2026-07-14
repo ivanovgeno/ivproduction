@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Správa balíčků | IV Production</title>
+    <style>
+        :root { --bg:#09090d; --panel:#15151d; --panel-soft:#1c1c26; --line:rgba(232,197,71,.24); --gold:#e8c547; --text:#f7f7f8; --muted:#b4b4bf; --danger:#ef7777; }
+        * { box-sizing:border-box; }
+        body { background:radial-gradient(circle at top right, rgba(201,162,39,.15), transparent 32rem),var(--bg); color:var(--text); font:16px/1.5 Arial,sans-serif; margin:0; min-height:100vh; }
+        .app { margin:0 auto; max-width:1200px; padding:3rem 1.5rem 5rem; }
+        .eyebrow { color:var(--gold); font-size:.75rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+        h1 { font-family:Georgia,serif; font-size:clamp(2rem,5vw,3.8rem); line-height:1.06; margin:.35rem 0 1rem; }
+        h1 span { color:var(--gold); }
+        .notice { background:rgba(232,197,71,.08); border:1px solid var(--line); border-radius:14px; color:var(--muted); margin:1.5rem 0 2rem; padding:1rem 1.1rem; }
+        .notice strong { color:var(--text); }
+        .toolbar,.editor-grid { display:grid; gap:1rem; }
+        .toolbar { grid-template-columns:repeat(3,minmax(0,1fr)); margin-bottom:1rem; }
+        .editor-grid { grid-template-columns:minmax(15rem,.72fr) minmax(0,1.6fr); }
+        .panel { background:linear-gradient(150deg,rgba(28,28,38,.98),rgba(16,16,22,.98)); border:1px solid var(--line); border-radius:18px; padding:1.15rem; }
+        .panel h2 { font-family:Georgia,serif; font-size:1.35rem; margin:0 0 1rem; }
+        label { color:var(--muted); display:block; font-size:.82rem; font-weight:700; letter-spacing:.04em; margin:.8rem 0 .35rem; text-transform:uppercase; }
+        input,textarea,select { background:#0d0d13; border:1px solid rgba(255,255,255,.16); border-radius:10px; color:var(--text); font:inherit; padding:.72rem .78rem; width:100%; }
+        textarea { min-height:5.8rem; resize:vertical; }
+        input:focus,textarea:focus,select:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(232,197,71,.12); outline:none; }
+        .package-list { display:grid; gap:.55rem; }
+        .package-item { background:transparent; border:1px solid rgba(255,255,255,.11); border-radius:10px; color:var(--text); cursor:pointer; padding:.78rem; text-align:left; width:100%; }
+        .package-item:hover,.package-item[aria-current="true"] { border-color:var(--gold); background:rgba(232,197,71,.09); }
+        .package-item small { color:var(--muted); display:block; margin-top:.15rem; }
+        .form-grid { display:grid; gap:1rem; grid-template-columns:repeat(2,minmax(0,1fr)); }
+        .full { grid-column:1 / -1; }
+        .check { align-items:center; display:flex; gap:.55rem; margin:1rem 0; }
+        .check input { accent-color:var(--gold); height:1.05rem; width:1.05rem; }
+        .check label { color:var(--text); cursor:pointer; margin:0; text-transform:none; }
+        .actions { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.25rem; }
+        button { background:linear-gradient(120deg,#9e7718,#ffe55c,#a57c19); border:0; border-radius:10px; color:#111; cursor:pointer; font-weight:800; padding:.78rem 1rem; }
+        button:hover { filter:brightness(1.06); transform:translateY(-1px); }
+        button.secondary { background:transparent; border:1px solid rgba(255,255,255,.26); color:var(--text); }
+        button.danger { border-color:rgba(239,119,119,.6); color:#ffb2b2; }
+        .status { color:var(--muted); font-size:.9rem; margin:.8rem 0 0; min-height:1.4rem; }
+        .help { border-top:1px solid rgba(255,255,255,.1); color:var(--muted); font-size:.92rem; margin-top:2rem; padding-top:1.4rem; }
+        code { background:#07070a; border-radius:4px; color:#fff4b8; padding:.1rem .3rem; }
+        @media (max-width:760px) { .toolbar,.editor-grid,.form-grid { grid-template-columns:1fr; } .app { padding:2rem 1rem 4rem; } }
+    </style>
+    <script src="packages-data.js"></script>
+</head>
+<body>
+    <main class="app">
+        <p class="eyebrow">IV Production · interní nástroj</p>
+        <h1>Správa <span>balíčků</span></h1>
+        <div class="notice"><strong>Jak to funguje dnes:</strong> tento nástroj upraví balíčky jen ve vašem prohlížeči. Kliknutím na <strong>Stáhnout soubor</strong> získáte nový <code>packages-data.js</code>, který pak nahrajete do GitHubu nebo mi ho pošlete. GitHub Pages neumí bezpečně ukládat změny přímo z webu bez přihlášení a serveru.</div>
+
+        <div class="toolbar panel">
+            <div><label for="pageSelect">Stránka</label><select id="pageSelect"></select></div>
+            <div><label for="groupSelect">Sekce</label><select id="groupSelect"></select></div>
+            <div class="actions"><button id="addPackage" type="button">Přidat balíček</button><button class="secondary" id="downloadData" type="button">Stáhnout soubor</button></div>
+        </div>
+
+        <div class="editor-grid">
+            <aside class="panel">
+                <h2>Balíčky v sekci</h2>
+                <div class="package-list" id="packageList"></div>
+            </aside>
+            <section class="panel">
+                <h2 id="editorTitle">Upravit balíček</h2>
+                <form id="packageForm">
+                    <div class="form-grid">
+                        <div><label for="fieldName">Název</label><input id="fieldName" required></div>
+                        <div><label for="fieldPrice">Cena</label><input id="fieldPrice" placeholder="např. 22 000 Kč"></div>
+                        <div class="full"><label for="fieldDescription">Krátký popis</label><textarea id="fieldDescription"></textarea></div>
+                        <div><label for="fieldCtaLabel">Text tlačítka</label><input id="fieldCtaLabel" placeholder="Nezávazně poptat"></div>
+                        <div><label for="fieldCtaHref">Odkaz tlačítka</label><input id="fieldCtaHref" placeholder="kontakt.html#poptavka"></div>
+                        <div class="full"><label for="fieldFeatures">Položky balíčku</label><textarea id="fieldFeatures" placeholder="Jedna položka na řádek"></textarea></div>
+                        <div><label for="fieldPartner">Spolupráce / označení</label><input id="fieldPartner" placeholder="např. Marek Kyncl Fotograf"></div>
+                        <div><label for="fieldType">Typ označení</label><select id="fieldType"><option value="">Bez označení</option><option value="partner">Ve spolupráci s</option><option value="owned">Vlastní služba IV Production</option></select></div>
+                    </div>
+                    <div class="check"><input id="fieldPopular" type="checkbox"><label for="fieldPopular">Zvýraznit jako nejoblíbenější</label></div>
+                    <div class="actions"><button type="submit">Uložit do náhledu</button><button class="secondary danger" id="removePackage" type="button">Smazat balíček</button><button class="secondary" id="restoreData" type="button">Vrátit původní data</button></div>
+                    <p class="status" id="status" aria-live="polite"></p>
+                </form>
+            </section>
+        </div>
+
+        <p class="help">Pro přidání balíčků na další stránku stačí později přidat její název do datového souboru a na stránku vložit sekci s atributy <code>data-package-page</code> a <code>data-package-group</code>. Při přesunu na PHP hosting lze tento editor napojit na přihlášené ukládání na server; bez přihlášení by to nebylo bezpečné.</p>
+    </main>
+
+    <script>
+        (function () {
+            var pristine = JSON.parse(JSON.stringify(window.IVP_PACKAGE_DATA || {}));
+            var data = JSON.parse(JSON.stringify(pristine));
+            var pageSelect = document.getElementById('pageSelect');
+            var groupSelect = document.getElementById('groupSelect');
+            var list = document.getElementById('packageList');
+            var form = document.getElementById('packageForm');
+            var status = document.getElementById('status');
+            var currentIndex = 0;
+            var fields = {
+                name: document.getElementById('fieldName'), price: document.getElementById('fieldPrice'),
+                description: document.getElementById('fieldDescription'), ctaLabel: document.getElementById('fieldCtaLabel'),
+                ctaHref: document.getElementById('fieldCtaHref'), features: document.getElementById('fieldFeatures'),
+                partner: document.getElementById('fieldPartner'), type: document.getElementById('fieldType'), popular: document.getElementById('fieldPopular')
+            };
+            function selectedGroup() { return data[pageSelect.value][groupSelect.value]; }
+            function setStatus(message) { status.textContent = message; }
+            function fillPages() {
+                pageSelect.replaceChildren();
+                Object.keys(data).forEach(function (page) { var opt = new Option(page, page); pageSelect.add(opt); });
+                fillGroups();
+            }
+            function fillGroups() {
+                groupSelect.replaceChildren();
+                Object.keys(data[pageSelect.value]).forEach(function (group) { var opt = new Option(group, group); groupSelect.add(opt); });
+                currentIndex = 0; renderList();
+            }
+            function renderList() {
+                var packages = selectedGroup();
+                list.replaceChildren();
+                packages.forEach(function (item, index) {
+                    var button = document.createElement('button'); button.type = 'button'; button.className = 'package-item';
+                    button.setAttribute('aria-current', String(index === currentIndex));
+                    button.textContent = item.name || 'Nový balíček';
+                    var small = document.createElement('small'); small.textContent = item.price || 'Cena není vyplněná'; button.appendChild(small);
+                    button.addEventListener('click', function () { currentIndex = index; renderList(); fillForm(); }); list.appendChild(button);
+                });
+                fillForm();
+            }
+            function fillForm() {
+                var item = selectedGroup()[currentIndex];
+                if (!item) return;
+                fields.name.value = item.name || ''; fields.price.value = item.price || ''; fields.description.value = item.description || '';
+                fields.ctaLabel.value = item.ctaLabel || ''; fields.ctaHref.value = item.ctaHref || ''; fields.features.value = (item.features || []).join('\n');
+                fields.partner.value = item.partner || ''; fields.type.value = item.type || ''; fields.popular.checked = Boolean(item.popular);
+                document.getElementById('editorTitle').textContent = 'Upravit: ' + (item.name || 'nový balíček');
+            }
+            function slugify(value) { return value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') || 'novy-balicek'; }
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); var previous = selectedGroup()[currentIndex];
+                previous.id = previous.id || slugify(fields.name.value); previous.name = fields.name.value.trim(); previous.price = fields.price.value.trim(); previous.description = fields.description.value.trim();
+                previous.ctaLabel = fields.ctaLabel.value.trim() || 'Nezávazně poptat'; previous.ctaHref = fields.ctaHref.value.trim() || 'kontakt.html#poptavka';
+                previous.features = fields.features.value.split('\n').map(function (line) { return line.trim(); }).filter(Boolean);
+                previous.partner = fields.partner.value.trim(); previous.type = fields.type.value; previous.popular = fields.popular.checked;
+                if (!previous.partner) { delete previous.partner; delete previous.type; }
+                if (!previous.popular) { delete previous.popular; delete previous.popularLabel; }
+                renderList(); setStatus('Změna je uložená do náhledu. Pro zveřejnění stáhněte soubor.');
+            });
+            document.getElementById('addPackage').addEventListener('click', function () {
+                selectedGroup().push({ id: 'novy-balicek-' + Date.now(), name: 'Nový balíček', price: 'Cena na míru', description: '', features: [], ctaLabel: 'Nezávazně poptat', ctaHref: 'kontakt.html#poptavka' });
+                currentIndex = selectedGroup().length - 1; renderList(); setStatus('Nový balíček je připravený k úpravě.');
+            });
+            document.getElementById('removePackage').addEventListener('click', function () {
+                if (selectedGroup().length < 1) return; selectedGroup().splice(currentIndex, 1); currentIndex = Math.max(0, currentIndex - 1); renderList(); setStatus('Balíček byl z náhledu odstraněn.');
+            });
+            document.getElementById('restoreData').addEventListener('click', function () {
+                if (!window.confirm('Vrátit všechny změny od otevření této stránky?')) return; data = JSON.parse(JSON.stringify(pristine)); fillPages(); setStatus('Původní data jsou znovu načtena.');
+            });
+            document.getElementById('downloadData').addEventListener('click', function () {
+                var content = '/* IV Production – veřejná data balíčků */\nwindow.IVP_PACKAGE_DATA = ' + JSON.stringify(data, null, 4) + ';\n';
+                var link = document.createElement('a'); link.href = URL.createObjectURL(new Blob([content], {type:'text/javascript;charset=utf-8'})); link.download = 'packages-data.js'; link.click(); URL.revokeObjectURL(link.href); setStatus('Soubor packages-data.js se stáhl.');
+            });
+            pageSelect.addEventListener('change', fillGroups); groupSelect.addEventListener('change', function () { currentIndex = 0; renderList(); }); fillPages();
+        }());
+    </script>
+</body>
+</html>

@@ -29,7 +29,7 @@
           "url": "https://www.ivproduction.cz/svatby.html",
           "telephone": "+420773210194",
           "email": "video@ivproduction.cz",
-          "priceRange": "16 000–22 000 Kč",
+          "priceRange": "od 16 000 Kč",
           "areaServed": [
             { "@type": "AdministrativeArea", "name": "Královéhradecký kraj" },
             { "@type": "Country", "name": "Česká republika" }
@@ -435,10 +435,13 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260713-weddings-conversion-seo">
+    <link rel="stylesheet" href="packages.css?v=20260714-package-system">
     <script src="premium.js?v=20260713-mobile-responsive" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
+    <script src="packages-data.js?v=20260714-package-system" defer></script>
+    <script src="packages-renderer.js?v=20260714-package-system" defer></script>
 
     <style>
         .wedding-hero-kicker {
@@ -703,57 +706,30 @@
         </div>
     </section>
 
-    <section class="section" style="background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%);">
+    <section class="section package-showcase package-showcase-main" style="background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%);" data-package-page="svatby" data-package-group="main">
         <div class="container">
+            <p class="package-section-kicker">Svatební video</p>
             <h2 class="section-title">Vyberte si rozsah, <span>ne kompromis</span></h2>
             <p class="section-subtitle">Každý balíček můžete před finálním potvrzením doladit podle vašeho dne, místa i priorit.</p>
+            <div class="pricing-grid" data-packages-list></div>
+        </div>
+    </section>
 
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-name">ECO</div>
-                    <div class="pricing-price"><span>16 000 Kč</span></div>
-                    <ul class="pricing-features">
-                        <li>Licencovaná hudba</li>
-                        <li>12 hodin natáčení</li>
-                        <li>Videoklip 4–7 minut</li>
-                        <li>Až 3 kamery během obřadu</li>
-                        <li>Dronové záběry</li>
-                        <li>Doprava po celé ČR zdarma</li>
-                        <li>2 roky uschování záznamů</li>
-                    </ul>
-                    <a href="kontakt.html#poptavka" class="pricing-btn">Zjistit dostupnost</a>
-                </div>
+    <section class="section package-showcase package-showcase-partners" data-package-page="svatby" data-package-group="partners">
+        <div class="container">
+            <p class="package-section-kicker">Ve spolupráci s</p>
+            <h2 class="section-title">Foto a video, <span>sladěné od začátku</span></h2>
+            <p class="package-lead">Chcete mít fotografii i film vyřešené v jednom kroku? Společné balíčky spojují práci IV Production s vybraným partnerem do jasně domluveného celku.</p>
+            <div class="package-grid package-grid-partners" data-packages-list></div>
+        </div>
+    </section>
 
-                <div class="pricing-card featured">
-                    <div class="pricing-name">STANDARD</div>
-                    <div class="pricing-price"><span>18 000 Kč</span></div>
-                    <ul class="pricing-features">
-                        <li>Vše z balíčku ECO</li>
-                        <li>Svatební highlight 1–2 min</li>
-                        <li>Dva profesionální kameramani</li>
-                        <li>Filmový střih s autentickým zvukem</li>
-                        <li>Doprava po celé ČR zdarma</li>
-                        <li>2 roky uschování záznamů</li>
-                        <li>Priority zákaznická podpora</li>
-                    </ul>
-                    <a href="kontakt.html#poptavka" class="pricing-btn">Zjistit dostupnost</a>
-                </div>
-
-                <div class="pricing-card">
-                    <div class="pricing-name">PREMIUM</div>
-                    <div class="pricing-price"><span>22 000 Kč</span></div>
-                    <ul class="pricing-features">
-                        <li>Vše z balíčku STANDARD</li>
-                        <li>Film z celého dne 30–120 min</li>
-                        <li>Flash disk s dárkovou krabičkou</li>
-                        <li>Vše smluvně a přehledně potvrzené</li>
-                        <li>Doprava po celé ČR zdarma</li>
-                        <li>2 roky uschování záznamů</li>
-                        <li>VIP zákaznická péče</li>
-                    </ul>
-                    <a href="kontakt.html#poptavka" class="pricing-btn">Zjistit dostupnost</a>
-                </div>
-            </div>
+    <section class="section package-showcase package-showcase-extras" data-package-page="svatby" data-package-group="extras">
+        <div class="container">
+            <p class="package-section-kicker">Navíc pro váš den</p>
+            <h2 class="section-title">Doplňky, které dotáhnou <span>atmosféru</span></h2>
+            <p class="package-lead">Vyberte si jen to, co vašemu dni opravdu přidá radost, pohodlí nebo další krásnou vzpomínku. Vše spojíme do jedné přehledné poptávky.</p>
+            <div class="package-grid" data-packages-list></div>
         </div>
     </section>
 
