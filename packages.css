@@ -175,11 +175,12 @@
 }
 
 .package-popular-ribbon__text {
+    align-self: center;
     display: block;
+    justify-self: center;
     line-height: 1;
     text-align: center;
-    /* The parent sash is rotated 45deg; a tiny negative Y nudge centers the text optically. */
-    transform: translateY(-0.2rem);
+    transform: none !important;
     white-space: nowrap;
 }
 
