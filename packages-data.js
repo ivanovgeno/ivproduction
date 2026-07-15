@@ -197,6 +197,69 @@ window.IVP_PACKAGE_DATA = {
             }
         ]
     },
+    plesy: {
+        main: [
+            {
+                id: 'ples-standard',
+                name: 'STANDARD VIDEO',
+                price: '10 000 Kč',
+                description: 'Dynamická filmová vzpomínka pro třídu, která chce zachytit celý maturitní večer.',
+                features: [
+                    'Profesionální natáčení plesu od začátku do konce',
+                    'Krátký sestříhaný videoklip z nejlepších okamžiků',
+                    'Fotobudka zdarma – host platí pouze 50 Kč za tištěnou fotografii',
+                    'Královéhradecký kraj zdarma, ostatní kraje 9 Kč/km ze startu Jasenná',
+                    'Druhý kameraman +3 000 Kč',
+                    'Dlouhé video +5 000 Kč',
+                    'Instagram Reel +3 500 Kč',
+                    'Gravírovaný flash disk 500 Kč/ks, od 5 ks 400 Kč/ks',
+                    'Při 2 a více třídách 300 Kč za studenta, minimálně 10 000 Kč'
+                ],
+                ctaLabel: 'Ověřit termín plesu',
+                ctaHref: 'kontakt.html#poptavka'
+            },
+            {
+                id: 'ples-premium',
+                name: 'PREMIUM FOTO + VIDEO',
+                price: '19 000 Kč',
+                description: 'Kompletní fotografie a video v jednom sladěném týmu pro ještě plnější vzpomínku.',
+                features: [
+                    'Profesionální focení a natáčení celého plesu',
+                    'Krátký sestříhaný videoklip z nejlepších okamžiků',
+                    'Fotobudka zdarma a kupon na 1 tištěnou fotografii pro každého studenta',
+                    'Doprava po celé České republice zdarma',
+                    'Druhý kameraman +2 500 Kč',
+                    'Dlouhé video +5 000 Kč',
+                    'Instagram Reel +3 000 Kč',
+                    'Gravírovaný flash disk 450 Kč/ks, od 5 ks 350 Kč/ks',
+                    'Při 2 a více třídách 600 Kč za studenta, minimálně 19 000 Kč'
+                ],
+                ctaLabel: 'Poptat Premium',
+                ctaHref: 'kontakt.html#poptavka',
+                popular: true,
+                popularLabel: 'Nejčastější volba'
+            },
+            {
+                id: 'ples-all-in-one',
+                name: 'ALL IN ONE',
+                price: '28 000 Kč',
+                description: 'Nejkomplexnější balíček s fotografiemi, krátkým i dlouhým videem, fotobudkou a 360° zážitkem.',
+                features: [
+                    'Profesionální focení a natáčení celého plesu',
+                    'Krátký dynamický videoklip i dlouhé video z celého večera',
+                    '360° video koutek a 1 kupon zdarma pro každého maturanta',
+                    'Fotobudka zdarma a kupon na 1 tištěnou fotografii pro každého studenta',
+                    'Doprava po celé České republice zdarma',
+                    'Druhý kameraman +2 000 Kč',
+                    'Instagram Reel +2 500 Kč',
+                    'Gravírovaný flash disk 450 Kč/ks, od 5 ks 350 Kč/ks',
+                    'Při 2 a více třídách 900 Kč za studenta, minimálně 28 000 Kč'
+                ],
+                ctaLabel: 'Poptat All in One',
+                ctaHref: 'kontakt.html#poptavka'
+            }
+        ]
+    },
     reality: {
         main: [
             {

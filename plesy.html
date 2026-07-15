@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plesová Videa & Aftermovie | IV Production</title>
+    <title>Maturitní ples – kameraman, foto a fotobudka | IV Production</title>
     <meta name="description"
-        content="Profesionální plesová videa a aftermovie. Maturitní, firemní a městské plesy. Dva kameramani s dronem. Celá ČR.">
-    <link rel="canonical" href="https://www.ivproduction.cz/plesy.html">
+        content="Profesionální video a fotografie maturitního plesu, fotobudka i 360° koutek. Balíčky od 10 000 Kč, doprava po celé ČR a nezávazná nabídka.">
+    <link rel="canonical" href="https://www.ivproduction.cz/plesy">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -298,10 +298,214 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260715-social-icons">
+    <link rel="stylesheet" href="packages.css?v=20260715-plesy-packages">
     <script src="premium.js?v=20260715-unified-shell" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260712-portfoliohub" defer></script>
-    <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
+    <script src="portfolio-gallery.js?v=20260715-plesy-autoplay" defer></script>
+    <script src="packages-data.js?v=20260715-plesy-packages" defer></script>
+    <script src="packages-renderer.js?v=20260715-plesy-packages" defer></script>
+
+    <style>
+        body.page-event .hero h1::before {
+            content: 'MATURITNÍ PLESY · CELÁ ČR';
+        }
+
+        .event-hero-actions,
+        .event-final-actions {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .event-hero-proof {
+            color: rgba(250, 249, 246, 0.65) !important;
+            font-size: 0.78rem !important;
+            font-weight: 700;
+            letter-spacing: 0.075em;
+            margin: 1.15rem 0 0 !important;
+            text-transform: uppercase;
+        }
+
+        .event-intro {
+            background:
+                radial-gradient(circle at 12% 18%, rgba(212, 175, 55, 0.1), transparent 26rem),
+                #101014;
+            padding: clamp(5rem, 8vw, 7.5rem) 2rem;
+        }
+
+        .event-intro-copy {
+            color: rgba(250, 249, 246, 0.72);
+            font-size: clamp(1rem, 1.4vw, 1.15rem);
+            line-height: 1.82;
+            margin: 0 auto;
+            max-width: 58rem;
+            text-align: center;
+        }
+
+        .event-intro-copy p + p {
+            margin-top: 1.2rem;
+        }
+
+        .event-highlights {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin: clamp(2.3rem, 5vw, 3.7rem) auto 0;
+            max-width: 72rem;
+        }
+
+        .event-highlight {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015));
+            border: 1px solid rgba(240, 212, 119, 0.17);
+            border-radius: 0.85rem;
+            padding: clamp(1.35rem, 2vw, 1.8rem);
+        }
+
+        .event-highlight strong {
+            color: var(--light);
+            display: block;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.28rem;
+            line-height: 1.15;
+            margin-bottom: 0.7rem;
+        }
+
+        .event-highlight span {
+            color: rgba(250, 249, 246, 0.63);
+            font-size: 0.92rem;
+            line-height: 1.62;
+        }
+
+        .event-work {
+            margin-top: 0;
+        }
+
+        .event-price-note {
+            color: rgba(250, 249, 246, 0.56);
+            font-size: 0.82rem;
+            line-height: 1.65;
+            margin: 1.6rem auto 0;
+            max-width: 54rem;
+            text-align: center;
+        }
+
+        .event-experience {
+            background:
+                radial-gradient(circle at 85% 10%, rgba(212, 175, 55, 0.12), transparent 25rem),
+                #101014;
+        }
+
+        .event-experience-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 2.5rem;
+        }
+
+        .event-experience-card {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(250, 249, 246, 0.11);
+            border-radius: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 18rem;
+            padding: clamp(1.45rem, 2.5vw, 2.1rem);
+        }
+
+        .event-experience-card p:first-child {
+            color: var(--gold-light);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .event-experience-card h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+            line-height: 1.08;
+            margin-bottom: 1rem;
+        }
+
+        .event-experience-card p:not(:first-child) {
+            color: rgba(250, 249, 246, 0.67);
+            line-height: 1.7;
+            margin-bottom: 1.35rem;
+        }
+
+        .event-experience-card .btn {
+            justify-content: center;
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .event-final {
+            background:
+                linear-gradient(115deg, rgba(212, 175, 55, 0.12), transparent 38%),
+                #0b0b0e;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.14);
+            border-top: 1px solid rgba(212, 175, 55, 0.16);
+        }
+
+        .event-final-inner {
+            align-items: center;
+            display: flex;
+            gap: 2rem;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 72rem;
+        }
+
+        .event-final-copy {
+            max-width: 47rem;
+        }
+
+        .event-final-copy .section-title,
+        .event-final-copy .section-subtitle {
+            margin-left: 0;
+            text-align: left;
+        }
+
+        @media (max-width: 900px) {
+            .event-highlights,
+            .event-experience-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .event-experience-card {
+                min-height: 0;
+            }
+
+            .event-final-inner {
+                align-items: stretch;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .event-final-copy .section-title,
+            .event-final-copy .section-subtitle {
+                margin-inline: auto;
+                text-align: center;
+            }
+
+            .event-final-actions,
+            .event-hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .event-final-actions .btn,
+            .event-hero-actions .btn {
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body class="page-event">
@@ -363,96 +567,91 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Aftermovie, které vrátí <span>energii večera</span></h1>
-            <p>Od prvního nástupu po poslední tanec. Zachytíme rytmus, emoce i momenty, které dělají z vaší akce událost.</p>
-            <a href="kontakt.html" class="btn btn-primary">Poptat aftermovie</a>
+            <h1>Maturitní ples, který si budete pamatovat <span>i druhý den</span></h1>
+            <p>Sháníte kameramana pro váš maturiťák? Zachytíme nástup, šerpování, půlnoční překvapení i nejlepší okamžiky party, aby vám tenhle večer zůstal napořád.</p>
+            <div class="event-hero-actions">
+                <a href="kontakt.html#poptavka" class="btn btn-primary">Ověřit termín plesu</a>
+                <a href="#cenik" class="btn btn-outline">Prohlédnout balíčky</a>
+            </div>
+            <p class="event-hero-proof">Video · fotografie · fotobudka · 360° koutek · celá ČR</p>
         </div>
     </section>
 
-    <section class="section" style="padding-bottom: 0;">
+    <section class="event-intro">
         <div class="container">
-            <h2 class="section-title">Nezapomenutelná <span>atmosféra</span></h2>
-            <div
-                style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--gray-light); line-height: 1.8; font-size: 1.1rem;">
-                <p style="margin-bottom: 1.5rem;">
-                    Maturitní ples je vyvrcholením středoškolských let a my jsme tu od toho, abychom tento večer
-                    zaznamenali v celé jeho kráse. Vytváříme dynamická aftermovies plná energie, emocí a těch nejlepších
-                    momentů večera, ke kterým se budete rádi vracet i po letech.
-                </p>
-                <p>
-                    Kromě maturitních plesů natáčíme i firemní večírky, konference, festivaly a další společenské
-                    události. Díky našim zkušenostem a profesionální technice dokážeme zachytit atmosféru jakékoliv akce
-                    tak, že diváka vtáhneme přímo do děje.
-                </p>
+            <h2 class="section-title">Jedna velká party. <span>Vzpomínka na celý život.</span></h2>
+            <div class="event-intro-copy">
+                <p>Věříme, že maturitní ples bude jedinečný zážitek. A upřímně? Druhý den si asi nebudete pamatovat úplně všechno. Proto jsme tu my, abychom ty neopakovatelné momenty zachytili za vás.</p>
+                <p>Vaše maturitní video nebude jen připomenutím toho, co se událo. Za pár let vám vrátí spolužáky, atmosféru i dobu, kdy jste dokázali bezstarostně pařit. A jednou ho možná s nadšením ukážete i vlastním dětem.</p>
+            </div>
+            <div class="event-highlights">
+                <article class="event-highlight">
+                    <strong>Celý večer bez ztracených momentů</strong>
+                    <span>Od slavnostního nástupu až po závěr party sledujeme dění, emoce i spontánní okamžiky.</span>
+                </article>
+                <article class="event-highlight">
+                    <strong>Dynamický klip, který má energii</strong>
+                    <span>Nejlepší části večera spojíme do svižného filmu, který si rádi pustíte i nasdílíte.</span>
+                </article>
+                <article class="event-highlight">
+                    <strong>Foto a zážitkové koutky na jednom místě</strong>
+                    <span>Podle balíčku přidáme fotografie, fotobudku i 360° video koutek pro maturanty a hosty.</span>
+                </article>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Typy <span>akcí</span></h2>
-            <p class="section-subtitle">Natáčíme všechny druhy společenských událostí</p>
+    <section class="related-work event-work" data-portfolio-slider data-portfolio-categories="plesy" data-portfolio-title="Ukázky z portfolia" data-portfolio-accent="maturitních plesů"></section>
 
-            <div class="types-grid">
-                <div class="type-card">
-                    <div class="type-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800');">
-                    </div>
-                    <div class="type-content">
-                        <h3>Maturitní plesy</h3>
-                        <p>Zachytíme každý důležitý moment vašeho maturitního plesu</p>
-                        <div class="type-price">od 8 000 Kč</div>
-                    </div>
-                </div>
-                <div class="type-card">
-                    <div class="type-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?w=800');">
-                    </div>
-                    <div class="type-content">
-                        <h3>Firemní akce</h3>
-                        <p>Profesionální dokumentace vašich firemních událostí</p>
-                        <div class="type-price">od 10 000 Kč</div>
-                    </div>
-                </div>
-                <div class="type-card">
-                    <div class="type-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800');">
-                    </div>
-                    <div class="type-content">
-                        <h3>Městské plesy</h3>
-                        <p>Reprezentativní video vaší městské události</p>
-                        <div class="type-price">od 12 000 Kč</div>
-                    </div>
-                </div>
-            </div>
+    <section class="section package-showcase package-showcase-main" id="cenik" data-package-page="plesy" data-package-group="main">
+        <div class="container">
+            <p class="package-section-kicker">Ceník maturitních plesů</p>
+            <h2 class="section-title">Vyberte si, jak velkou <span>vzpomínku chcete</span></h2>
+            <p class="section-subtitle">Tři přehledné možnosti od samostatného videa až po kompletní foto, video, fotobudku a 360° zážitek.</p>
+            <div class="pricing-grid" data-packages-list></div>
+            <p class="event-price-note">U tištěných fotografií z fotobudky platí podmínky uvedené u konkrétního balíčku. Rozsah, volný termín a konečnou cenu vám vždy potvrdíme předem v nezávazné nabídce.</p>
         </div>
     </section>
 
-    <section class="section" style="background: linear-gradient(180deg, rgba(18,18,26,1) 0%, var(--dark) 100%);">
-        <div class="container">
-            <h2 class="section-title">Co <span>získáte</span></h2>
-            <p class="section-subtitle">Kompletní balíček pro vaši akci</p>
-
-            <div class="features-list">
-                <div class="feature"><span class="feature-check">✓</span> Aftermovie 2–4 minuty</div>
-                <div class="feature"><span class="feature-check">✓</span> Dva profesionální kameramani</div>
-                <div class="feature"><span class="feature-check">✓</span> Dronové záběry</div>
-                <div class="feature"><span class="feature-check">✓</span> Licencovaná hudba</div>
-                <div class="feature"><span class="feature-check">✓</span> Dodání do 14 dnů</div>
-                <div class="feature"><span class="feature-check">✓</span> Doprava po celé ČR zdarma</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
+    <section class="section event-experience">
         <div class="container" style="text-align: center;">
-            <h2 class="section-title">Plánujete <span>akci?</span></h2>
-            <p class="section-subtitle">Kontaktujte nás pro nezávaznou nabídku</p>
-            <a href="kontakt.html" class="btn btn-primary">Nezávazná poptávka</a>
+            <h2 class="section-title">K plesu přidáme i <span>zážitek pro hosty</span></h2>
+            <p class="section-subtitle">Fotobudka, fotografie a 360° video koutek se postarají o další momenty, které si hosté odnesou domů.</p>
+            <div class="event-experience-grid">
+                <article class="event-experience-card">
+                    <p>Fotobudka jako bonus</p>
+                    <h3>Rekvizity, zábava a fotografie přímo na místě</h3>
+                    <p>Ke standardnímu video balíčku přivezeme fotobudku zdarma. Hosté platí pouze vytištěnou fotografii 10 × 15 cm podle podmínek balíčku.</p>
+                    <a href="fotobudka.html" class="btn btn-outline">Zjistit více o fotobudce</a>
+                </article>
+                <article class="event-experience-card">
+                    <p>Foto + video</p>
+                    <h3>Jeden sladěný tým pro celý večer</h3>
+                    <p>Balíčky Premium a All in One spojují profesionální fotografii s videem, abyste nemuseli koordinovat několik dodavatelů.</p>
+                    <a href="https://www.marekyncl.cz/portfolio" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Portfolio fotografa</a>
+                </article>
+                <article class="event-experience-card">
+                    <p>360° video koutek</p>
+                    <h3>Krátká videa, která rozhýbou celý ples</h3>
+                    <p>V balíčku All in One dostane každý maturant jeden kupon zdarma a zábavný vertikální výstup připravený ke sdílení.</p>
+                    <a href="360budka.html" class="btn btn-outline">Prohlédnout 360° Budku</a>
+                </article>
+            </div>
         </div>
     </section>
 
-    <section class="related-work" data-portfolio-slider data-portfolio-categories="plesy" data-portfolio-title="Energie, kterou jde cítit" data-portfolio-accent="i z obrazovky"></section>
+    <section class="section event-final">
+        <div class="container event-final-inner">
+            <div class="event-final-copy">
+                <h2 class="section-title">Nejde o maturitní ples? <span>Není problém.</span></h2>
+                <p class="section-subtitle">Natáčíme také městské plesy, firemní večírky a další společenské události. Podle programu a rozsahu vám připravíme individuální nabídku.</p>
+            </div>
+            <div class="event-final-actions">
+                <a href="kontakt.html#poptavka" class="btn btn-primary">Nezávazně poptat termín</a>
+                <a href="tel:+420773210194" class="btn btn-outline">Zavolat +420 773 210 194</a>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="footer-grid">
