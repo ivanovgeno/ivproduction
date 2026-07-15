@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maturitní ples – kameraman, foto a fotobudka | IV Production</title>
+    <title>Video a foto maturitního plesu pro vaši třídu | IV Production</title>
     <meta name="description"
-        content="Profesionální video a fotografie maturitního plesu, fotobudka i 360° koutek. Balíčky od 10 000 Kč, doprava po celé ČR a nezávazná nabídka.">
+        content="Proměňte maturitní ples vaší třídy ve film, ke kterému se budete vracet. Video, foto, fotobudka i 360° koutek. Při více třídách od 300 Kč za studenta.">
     <link rel="canonical" href="https://www.ivproduction.cz/plesy">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -303,7 +303,7 @@
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-gallery.js?v=20260715-plesy-autoplay" defer></script>
-    <script src="packages-data.js?v=20260715-plesy-packages" defer></script>
+    <script src="packages-data.js?v=20260715-plesy-students" defer></script>
     <script src="packages-renderer.js?v=20260715-plesy-packages" defer></script>
 
     <style>
@@ -389,6 +389,50 @@
             margin: 1.6rem auto 0;
             max-width: 54rem;
             text-align: center;
+        }
+
+        .student-price-strip {
+            align-items: center;
+            background: linear-gradient(120deg, rgba(201, 162, 39, 0.18), rgba(255, 229, 92, 0.06));
+            border: 1px solid rgba(232, 197, 71, 0.3);
+            border-radius: 1rem;
+            display: grid;
+            gap: 1.25rem;
+            grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(9rem, 0.65fr));
+            margin: 0 auto clamp(3rem, 6vw, 5rem);
+            max-width: 78rem;
+            padding: clamp(1.4rem, 3vw, 2rem);
+        }
+
+        .student-price-strip__lead strong,
+        .student-price-strip__item strong {
+            color: var(--light);
+            display: block;
+        }
+
+        .student-price-strip__lead strong {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.35rem, 2vw, 1.75rem);
+            line-height: 1.15;
+            margin-bottom: 0.45rem;
+        }
+
+        .student-price-strip__lead span,
+        .student-price-strip__item span {
+            color: rgba(250, 249, 246, 0.62);
+            font-size: 0.82rem;
+            line-height: 1.45;
+        }
+
+        .student-price-strip__item {
+            border-left: 1px solid rgba(250, 249, 246, 0.12);
+            padding-left: 1.25rem;
+        }
+
+        .student-price-strip__item strong {
+            color: var(--gold-light);
+            font-size: clamp(1.15rem, 2vw, 1.5rem);
+            margin-bottom: 0.25rem;
         }
 
         .event-experience {
@@ -504,6 +548,18 @@
                 text-align: center;
                 width: 100%;
             }
+
+            .student-price-strip {
+                grid-template-columns: minmax(0, 1fr);
+                text-align: center;
+            }
+
+            .student-price-strip__item {
+                border-left: 0;
+                border-top: 1px solid rgba(250, 249, 246, 0.12);
+                padding-left: 0;
+                padding-top: 1rem;
+            }
         }
     </style>
 </head>
@@ -567,35 +623,35 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Maturitní ples, který si budete pamatovat <span>i druhý den</span></h1>
-            <p>Sháníte kameramana pro váš maturiťák? Zachytíme nástup, šerpování, půlnoční překvapení i nejlepší okamžiky party, aby vám tenhle večer zůstal napořád.</p>
+            <h1>Váš maturiťák. Vaše třída. <span>Váš film.</span></h1>
+            <p>Jeden večer, na který čekáte celé roky. Zachytíme nástup, šerpování, půlnoční překvapení i party tak, aby se k ní mohla vrátit celá třída — ne jen přes roztřesená videa z mobilu.</p>
             <div class="event-hero-actions">
-                <a href="kontakt.html#poptavka" class="btn btn-primary">Ověřit termín plesu</a>
-                <a href="#cenik" class="btn btn-outline">Prohlédnout balíčky</a>
+                <a href="kontakt.html#poptavka" class="btn btn-primary">Chci ověřit náš termín</a>
+                <a href="#cenik" class="btn btn-outline">Kolik to vyjde třídu?</a>
             </div>
-            <p class="event-hero-proof">Video · fotografie · fotobudka · 360° koutek · celá ČR</p>
+            <p class="event-hero-proof">Při více třídách od 300 Kč za studenta · video · foto · fotobudka · 360°</p>
         </div>
     </section>
 
     <section class="event-intro">
         <div class="container">
-            <h2 class="section-title">Jedna velká party. <span>Vzpomínka na celý život.</span></h2>
+            <h2 class="section-title">Měsíce příprav. Jedna noc. <span>Vzpomínka celé třídy.</span></h2>
             <div class="event-intro-copy">
-                <p>Věříme, že maturitní ples bude jedinečný zážitek. A upřímně? Druhý den si asi nebudete pamatovat úplně všechno. Proto jsme tu my, abychom ty neopakovatelné momenty zachytili za vás.</p>
-                <p>Vaše maturitní video nebude jen připomenutím toho, co se událo. Za pár let vám vrátí spolužáky, atmosféru i dobu, kdy jste dokázali bezstarostně pařit. A jednou ho možná s nadšením ukážete i vlastním dětem.</p>
+                <p>Ples připravujete týdny nebo měsíce, ale samotný večer uteče neuvěřitelně rychle. Vy si ho máte užít se spolužáky — ne hlídat, kdo právě natáčí a jestli má vůbec správně zaostřeno.</p>
+                <p>Vytvoříme pro vás film plný lidí, hlášek, emocí a energie, která patřila jen vaší třídě. Za pár let vám jediným kliknutím vrátí nástup, šerpy, půlnočko i chvíle, o kterých se bude ještě dlouho mluvit.</p>
             </div>
             <div class="event-highlights">
                 <article class="event-highlight">
-                    <strong>Celý večer bez ztracených momentů</strong>
-                    <span>Od slavnostního nástupu až po závěr party sledujeme dění, emoce i spontánní okamžiky.</span>
+                    <strong>Vy paříte. My hlídáme momenty.</strong>
+                    <span>Od nástupu a šerpování až po půlnočko a parket. Nemusíte nikoho ze třídy pověřit natáčením.</span>
                 </article>
                 <article class="event-highlight">
-                    <strong>Dynamický klip, který má energii</strong>
-                    <span>Nejlepší části večera spojíme do svižného filmu, který si rádi pustíte i nasdílíte.</span>
+                    <strong>Klip, který chcete hned sdílet</strong>
+                    <span>Žádný nudný záznam. Nejlepší momenty sestříháme do dynamického filmu s energií vašeho večera.</span>
                 </article>
                 <article class="event-highlight">
-                    <strong>Foto a zážitkové koutky na jednom místě</strong>
-                    <span>Podle balíčku přidáme fotografie, fotobudku i 360° video koutek pro maturanty a hosty.</span>
+                    <strong>Jeden tým, méně řešení pro třídu</strong>
+                    <span>Video, fotografie, fotobudku i 360° koutek můžete vyřešit společně a bez koordinace několika dodavatelů.</span>
                 </article>
             </div>
         </div>
@@ -605,35 +661,44 @@
 
     <section class="section package-showcase package-showcase-main" id="cenik" data-package-page="plesy" data-package-group="main">
         <div class="container">
+            <div class="student-price-strip" aria-label="Orientační cena na studenta při spojení dvou a více tříd">
+                <div class="student-price-strip__lead">
+                    <strong>Kolik to vyjde jednoho studenta?</strong>
+                    <span>Při spojení dvou a více tříd. Konečnou cenu vždy potvrdíme podle rozsahu a místa.</span>
+                </div>
+                <div class="student-price-strip__item"><strong>od 300 Kč</strong><span>Standard Video</span></div>
+                <div class="student-price-strip__item"><strong>od 600 Kč</strong><span>Premium Foto + Video</span></div>
+                <div class="student-price-strip__item"><strong>od 900 Kč</strong><span>All in One</span></div>
+            </div>
             <p class="package-section-kicker">Ceník maturitních plesů</p>
-            <h2 class="section-title">Vyberte si, jak velkou <span>vzpomínku chcete</span></h2>
-            <p class="section-subtitle">Tři přehledné možnosti od samostatného videa až po kompletní foto, video, fotobudku a 360° zážitek.</p>
+            <h2 class="section-title">Vyberte balíček, na kterém se <span>shodne celá třída</span></h2>
+            <p class="section-subtitle">Od profesionálního videa až po kompletní plesový zážitek s fotografem, fotobudkou a 360° koutkem. Žádné skryté překvapení — vše si potvrdíme předem.</p>
             <div class="pricing-grid" data-packages-list></div>
-            <p class="event-price-note">U tištěných fotografií z fotobudky platí podmínky uvedené u konkrétního balíčku. Rozsah, volný termín a konečnou cenu vám vždy potvrdíme předem v nezávazné nabídce.</p>
+            <p class="event-price-note">Stačí, když se ozve jeden zástupce třídy. Napište datum, město a počet tříd nebo studentů — ověříme termín a pošleme přehlednou nabídku, kterou můžete rovnou sdílet do třídní skupiny.</p>
         </div>
     </section>
 
     <section class="section event-experience">
         <div class="container" style="text-align: center;">
-            <h2 class="section-title">K plesu přidáme i <span>zážitek pro hosty</span></h2>
-            <p class="section-subtitle">Fotobudka, fotografie a 360° video koutek se postarají o další momenty, které si hosté odnesou domů.</p>
+            <h2 class="section-title">Ať se baví parket, spolužáci <span>i učitelé</span></h2>
+            <p class="section-subtitle">Přidejte k filmu atrakce, kolem kterých se během večera přirozeně potká celá třída i hosté.</p>
             <div class="event-experience-grid">
                 <article class="event-experience-card">
                     <p>Fotobudka jako bonus</p>
-                    <h3>Rekvizity, zábava a fotografie přímo na místě</h3>
-                    <p>Ke standardnímu video balíčku přivezeme fotobudku zdarma. Hosté platí pouze vytištěnou fotografii 10 × 15 cm podle podmínek balíčku.</p>
+                    <h3>Fotka se spolužáky hned do ruky</h3>
+                    <p>Ke standardnímu video balíčku přivezeme fotobudku zdarma. Rekvizity prolomí ledy a hosté platí jen vytištěnou fotografii 10 × 15 cm podle podmínek balíčku.</p>
                     <a href="fotobudka.html" class="btn btn-outline">Zjistit více o fotobudce</a>
                 </article>
                 <article class="event-experience-card">
                     <p>Foto + video</p>
-                    <h3>Jeden sladěný tým pro celý večer</h3>
-                    <p>Balíčky Premium a All in One spojují profesionální fotografii s videem, abyste nemuseli koordinovat několik dodavatelů.</p>
+                    <h3>Fotky, na kterých nikdo ze třídy nechybí</h3>
+                    <p>Balíčky Premium a All in One spojují fotografa s videem. Jeden sladěný tým pokryje slavnostní část, skupinky i party.</p>
                     <a href="https://www.marekyncl.cz/portfolio" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Portfolio fotografa</a>
                 </article>
                 <article class="event-experience-card">
                     <p>360° video koutek</p>
-                    <h3>Krátká videa, která rozhýbou celý ples</h3>
-                    <p>V balíčku All in One dostane každý maturant jeden kupon zdarma a zábavný vertikální výstup připravený ke sdílení.</p>
+                    <h3>Vertikální video rovnou na sítě</h3>
+                    <p>V balíčku All in One dostane každý maturant jeden kupon zdarma a krátký výstup připravený pro Stories, Reels nebo TikTok.</p>
                     <a href="360budka.html" class="btn btn-outline">Prohlédnout 360° Budku</a>
                 </article>
             </div>
@@ -643,12 +708,12 @@
     <section class="section event-final">
         <div class="container event-final-inner">
             <div class="event-final-copy">
-                <h2 class="section-title">Nejde o maturitní ples? <span>Není problém.</span></h2>
-                <p class="section-subtitle">Natáčíme také městské plesy, firemní večírky a další společenské události. Podle programu a rozsahu vám připravíme individuální nabídku.</p>
+                <h2 class="section-title">Máte datum? <span>Ověřte ho dřív než jiná třída.</span></h2>
+                <p class="section-subtitle">Pošlete nám město, termín a přibližný počet studentů. Nezávazně ověříme dostupnost a připravíme nabídku, kterou snadno přepošlete spolužákům.</p>
             </div>
             <div class="event-final-actions">
-                <a href="kontakt.html#poptavka" class="btn btn-primary">Nezávazně poptat termín</a>
-                <a href="tel:+420773210194" class="btn btn-outline">Zavolat +420 773 210 194</a>
+                <a href="kontakt.html#poptavka" class="btn btn-primary">Ověřit termín naší třídy</a>
+                <a href="tel:+420773210194" class="btn btn-outline">Rychle se zeptat telefonem</a>
             </div>
         </div>
     </section>
