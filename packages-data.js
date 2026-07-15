@@ -264,9 +264,11 @@ window.IVP_PACKAGE_DATA = {
                 id: 'ples-na-miru',
                 name: 'PLES NA MÍRU',
                 price: 'Individuální cena',
-                description: 'Kompletní nabídka pro městský, firemní, reprezentační, sportovní nebo jakýkoliv jiný ples.',
+                description: 'Kompletní produkční a technická nabídka pro městský, firemní, reprezentační, sportovní nebo jakýkoliv jiný ples.',
                 features: [
                     'Video, fotografie nebo kompletní produkční tým podle potřeby',
+                    'Kompletní profesionální osvětlení sálu, pódia i tanečního parketu',
+                    'Ozvučení přizpůsobené velikosti prostoru, programu a počtu hostů',
                     'Fotobudka a 360° video koutek jako volitelné rozšíření',
                     'Rozsah natáčení přizpůsobený programu a počtu hostů',
                     'Krátký dynamický sestřih, dlouhé video i obsah na sociální sítě',
