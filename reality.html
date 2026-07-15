@@ -482,6 +482,173 @@
             border-top: 1px solid rgba(201, 162, 39, 0.18);
         }
 
+        .related-work.reality-media-showcase {
+            margin-top: 0;
+        }
+
+        .reality-showcase-note {
+            color: rgba(248, 248, 250, 0.68);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            line-height: 1.65;
+            margin: 0;
+            max-width: 22rem;
+            text-align: right;
+            text-transform: uppercase;
+        }
+
+        .reality-photo-slide::before {
+            background: rgba(12, 12, 15, 0.78);
+            border: 1px solid rgba(240, 212, 119, 0.42);
+            border-radius: 999px;
+            color: var(--gold-light);
+            content: 'ZVĚTŠIT';
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            padding: 0.48rem 0.72rem;
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            transition: background-color 260ms ease, color 260ms ease, transform 300ms ease;
+            z-index: 3;
+        }
+
+        .reality-photo-slide:hover::before {
+            background: var(--gradient);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .reality-photo-lightbox {
+            align-items: center;
+            display: flex;
+            inset: 0;
+            justify-content: center;
+            opacity: 0;
+            padding: clamp(1rem, 4vw, 3rem);
+            pointer-events: none;
+            position: fixed;
+            transition: opacity 240ms ease, visibility 240ms ease;
+            visibility: hidden;
+            z-index: 11030;
+        }
+
+        .reality-photo-lightbox.is-open {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+        }
+
+        .reality-photo-lightbox__backdrop {
+            background: rgba(4, 4, 7, 0.94);
+            inset: 0;
+            position: absolute;
+        }
+
+        .reality-photo-lightbox__dialog {
+            background: #101014;
+            border: 1px solid rgba(240, 212, 119, 0.35);
+            border-radius: 14px;
+            box-shadow: 0 2rem 7rem rgba(0, 0, 0, 0.7);
+            max-width: 88rem;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .reality-photo-lightbox__image {
+            display: block;
+            height: min(78vh, 58rem);
+            object-fit: contain;
+            width: 100%;
+        }
+
+        .reality-photo-lightbox__caption {
+            color: rgba(248, 248, 250, 0.78);
+            font-size: 0.86rem;
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 0.85rem 1.2rem;
+            text-align: center;
+        }
+
+        .reality-photo-lightbox__close {
+            align-items: center;
+            background: var(--gradient);
+            border: 0;
+            border-radius: 7px;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            font-size: 1.5rem;
+            height: 2.8rem;
+            justify-content: center;
+            position: absolute;
+            right: 0.8rem;
+            top: 0.8rem;
+            width: 2.8rem;
+            z-index: 2;
+        }
+
+        .reality-tour-shell {
+            display: grid;
+            gap: clamp(1rem, 2.5vw, 2rem);
+            grid-template-columns: minmax(0, 2.2fr) minmax(17rem, 0.8fr);
+            margin: 0 auto;
+            max-width: 76rem;
+        }
+
+        .reality-tour-frame {
+            aspect-ratio: 16 / 10;
+            background: #08080b;
+            border: 1px solid rgba(240, 212, 119, 0.28);
+            border-radius: 14px;
+            box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.34);
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .reality-tour-frame iframe {
+            border: 0;
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+
+        .reality-tour-info {
+            align-self: stretch;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012));
+            border: 1px solid rgba(240, 212, 119, 0.2);
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(1.4rem, 3vw, 2.2rem);
+        }
+
+        .reality-tour-info h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .reality-tour-info p {
+            color: var(--gray-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .reality-tour-info .btn {
+            border-radius: 7px;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+        }
+
         @media (max-width: 1100px) {
             .benefits-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -519,6 +686,28 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
+
+            .reality-tour-shell {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .reality-tour-frame {
+                aspect-ratio: 4 / 3;
+            }
+
+            .reality-photo-lightbox {
+                padding: 0.65rem;
+            }
+
+            .reality-photo-lightbox__image {
+                height: min(72vh, 42rem);
+            }
+
+            .reality-showcase-note {
+                max-width: none;
+                text-align: center;
+                width: 100%;
+            }
         }
 
         .footer {
@@ -542,6 +731,7 @@
     <script src="portfolio-gallery.js?v=20260715-reality-autoplay" defer></script>
     <script src="packages-data.js?v=20260715-reality-pricing" defer></script>
     <script src="packages-renderer.js?v=20260715-reality-pricing" defer></script>
+    <script src="reality-showcase.js?v=20260715-photo-tour-v1" defer></script>
 </head>
 
 <body class="page-reality">
@@ -620,6 +810,42 @@
     </section>
 
     <section class="related-work" data-portfolio-slider data-portfolio-categories="reality" data-portfolio-title="Ukázky z portfolia" data-portfolio-accent="realitních filmů"></section>
+
+    <section class="related-work reality-media-showcase reality-photo-showcase" aria-labelledby="reality-photo-title" data-reality-photo-showcase>
+        <div class="related-work__header">
+            <div>
+                <p class="related-work__eyebrow">REALITNÍ FOTOGRAFIE</p>
+                <h2 id="reality-photo-title">Ukázky fotografií <span>nemovitostí</span></h2>
+            </div>
+            <p class="reality-showcase-note">HDR zpracování · rovné linie · přirozené barvy</p>
+        </div>
+        <div class="premium-work-slider" data-reality-photo-slider>
+            <button class="premium-work-slider__control" type="button" data-slider-previous data-photo-previous aria-label="Předchozí fotografie">←</button>
+            <div class="premium-work-slider__viewport" tabindex="0" aria-label="Automaticky posouvané ukázky realitních fotografií" data-reality-photo-track></div>
+            <button class="premium-work-slider__control" type="button" data-slider-next data-photo-next aria-label="Další fotografie">→</button>
+        </div>
+    </section>
+
+    <section class="related-work reality-media-showcase reality-tour-showcase" aria-labelledby="reality-tour-title">
+        <div class="related-work__header">
+            <div>
+                <p class="related-work__eyebrow">INTERAKTIVNÍ PREZENTACE</p>
+                <h2 id="reality-tour-title">Ukázky 3D <span>prohlídek</span></h2>
+            </div>
+            <p class="reality-showcase-note">Projděte si prostor vlastním tempem</p>
+        </div>
+        <div class="reality-tour-shell">
+            <div class="reality-tour-frame">
+                <iframe src="https://my.matterport.com/show/?m=Sk4my8rkJoB" title="Ukázka interaktivní 3D prohlídky nemovitosti" loading="lazy" allow="fullscreen; xr-spatial-tracking" allowfullscreen></iframe>
+            </div>
+            <div class="reality-tour-info">
+                <p class="related-work__eyebrow">MATTERPORT 3D</p>
+                <h3>Nemovitost otevřená zájemcům 24/7</h3>
+                <p>Interaktivní prohlídka umožní projít dispozici, vnímat návaznost místností a lépe se rozhodnout ještě před osobní návštěvou.</p>
+                <a class="btn btn-primary" href="https://my.matterport.com/show/?m=Sk4my8rkJoB" target="_blank" rel="noopener noreferrer">Otevřít celou prohlídku</a>
+            </div>
+        </div>
+    </section>
 
     <section class="section">
         <div class="container">
