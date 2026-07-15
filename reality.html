@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Prohlídky Nemovitostí & Dron | IV Production</title>
+    <title>Profesionální video a foto pro reality | IV Production</title>
     <meta name="description"
-        content="Profesionální video a foto pro realitní makléře. Videoprohlídky, dron, virtuální 3D prohlídky. Prodávejte rychleji a za vyšší cenu.">
-    <link rel="canonical" href="https://www.ivproduction.cz/reality.html">
+        content="Profesionální videoprohlídky, HDR fotografie, dron a virtuální 3D prohlídky pro realitní makléře v Královéhradeckém kraji i celé ČR.">
+    <link rel="canonical" href="https://www.ivproduction.cz/reality/">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -284,7 +284,241 @@
         }
 
         .benefit p {
-            color: var(--gray);
+            color: var(--gray-light);
+        }
+
+        .reality-eyebrow {
+            color: var(--gold-shine);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .reality-intro {
+            color: var(--gray-light);
+            font-size: 1.08rem;
+            line-height: 1.85;
+            margin: 0 auto;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .reality-intro p + p {
+            margin-top: 1.25rem;
+        }
+
+        .benefits-grid {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .benefit {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012));
+            border: 1px solid rgba(250, 249, 246, 0.12);
+            border-radius: 10px;
+            display: block;
+            min-height: 100%;
+            padding: 1.65rem;
+            position: relative;
+        }
+
+        .benefit::before {
+            background: var(--gradient);
+            content: '';
+            height: 2px;
+            left: 1.65rem;
+            position: absolute;
+            top: 0;
+            width: 2.5rem;
+        }
+
+        .benefit h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .benefit p {
+            font-size: 0.94rem;
+            line-height: 1.65;
+        }
+
+        .service-card {
+            text-align: left;
+        }
+
+        .service-card p {
+            color: var(--gray-light);
+            line-height: 1.65;
+            margin-bottom: 0;
+        }
+
+        .service-tag {
+            color: var(--gold-shine);
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            margin-bottom: 1.15rem;
+            text-transform: uppercase;
+        }
+
+        .reality-pricing {
+            background:
+                radial-gradient(circle at 12% 0%, rgba(232, 197, 71, 0.11), transparent 35%),
+                linear-gradient(180deg, #0d0d13 0%, var(--dark) 100%);
+        }
+
+        .reality-price-grid {
+            display: grid;
+            gap: 1.35rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .price-panel {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+            border: 1px solid rgba(250, 249, 246, 0.13);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .price-panel__label {
+            color: var(--gold-shine);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+        }
+
+        .price-panel h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .price-panel__intro {
+            color: var(--gray-light);
+            font-size: 0.94rem;
+            line-height: 1.6;
+            margin-bottom: 1.35rem;
+        }
+
+        .price-list {
+            list-style: none;
+        }
+
+        .price-list li {
+            align-items: start;
+            border-top: 1px solid rgba(250, 249, 246, 0.09);
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: minmax(0, 1fr) auto;
+            padding: 0.85rem 0;
+        }
+
+        .price-list span {
+            color: rgba(248, 248, 250, 0.84);
+            line-height: 1.45;
+        }
+
+        .price-list strong {
+            color: var(--gold-light);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-top: 1.1rem;
+        }
+
+        .price-features li {
+            color: var(--gray-light);
+            line-height: 1.55;
+            padding: 0.42rem 0 0.42rem 1.15rem;
+            position: relative;
+        }
+
+        .price-features li::before {
+            background: var(--gold-light);
+            content: '';
+            height: 1px;
+            left: 0;
+            position: absolute;
+            top: 1.15rem;
+            width: 0.55rem;
+        }
+
+        .travel-note {
+            align-items: center;
+            background: rgba(201, 162, 39, 0.075);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 10px;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: space-between;
+            margin-top: 1.35rem;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .travel-note p {
+            color: var(--gray-light);
+            margin: 0;
+        }
+
+        .travel-note strong {
+            color: var(--gold-shine);
+            font-size: 1.15rem;
+            white-space: nowrap;
+        }
+
+        .reality-cta {
+            background:
+                linear-gradient(110deg, rgba(5, 5, 8, 0.97), rgba(18, 16, 10, 0.91)),
+                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600') center/cover;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.18);
+            border-top: 1px solid rgba(201, 162, 39, 0.18);
+        }
+
+        @media (max-width: 1100px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .reality-price-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .price-panel:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .benefits-grid,
+            .reality-price-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-panel:last-child {
+                grid-column: auto;
+            }
+
+            .price-panel {
+                padding: 1.4rem;
+            }
+
+            .price-list li {
+                gap: 0.65rem;
+            }
+
+            .travel-note {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
 
         .footer {
@@ -301,10 +535,13 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260713-menu-centered-slider">
+    <link rel="stylesheet" href="packages.css?v=20260715-reality-pricing">
     <script src="premium.js?v=20260713-mobile-responsive" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
+    <script src="packages-data.js?v=20260715-reality-pricing" defer></script>
+    <script src="packages-renderer.js?v=20260715-reality-pricing" defer></script>
 </head>
 
 <body class="page-reality">
@@ -364,59 +601,58 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Video prohlídka, která prodává <span>pocit z místa</span></h1>
-            <p>Filmový pohled na prostor, dronové záběry i 3D prohlídka. Pomůžeme kupujícím představit si, že už jsou doma.</p>
-            <a href="kontakt.html" class="btn btn-primary">Poptat video nemovitosti</a>
+            <p class="reality-eyebrow">VIDEO · FOTO · DRON · 3D PROHLÍDKY</p>
+            <h1>Profesionální prezentace <span>pro realitní makléře</span></h1>
+            <p>Pomůžeme vám zaujmout více zájemců a představit nemovitost v tom nejlepším světle — od prvního záběru až po hotové výstupy pro portály a sociální sítě.</p>
+            <a href="kontakt.html#poptavka" class="btn btn-primary">Poptat prezentaci nemovitosti</a>
         </div>
     </section>
 
     <section class="section" style="padding-bottom: 0;">
         <div class="container">
-            <h2 class="section-title">Moderní prezentace <span>nemovitostí</span></h2>
-            <div
-                style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--gray-light); line-height: 1.8; font-size: 1.1rem;">
-                <p style="margin-bottom: 1.5rem;">
-                    V dnešní digitální době je kvalitní prezentace nemovitosti klíčem k rychlému a úspěšnému prodeji.
-                    Nabízíme komplexní služby pro realitní makléře i developery, od profesionálních videoprohlídek přes
-                    dronové záběry až po virtuální 3D scanování.
-                </p>
-                <p>
-                    Naše videa pomáhají zájemcům lépe navnímat prostor a atmosféru nemovitosti ještě před samotnou
-                    prohlídkou, což šetří čas vám i vašim klientům. Zvyšte atraktivitu svého portfolia a zaujměte na
-                    první pohled s našimi vizuálními službami.
-                </p>
+            <p class="reality-eyebrow" style="text-align: center;">REALITY – FOTO A VIDEO</p>
+            <h2 class="section-title">Váš inzerát musí <span>zaujmout okamžitě</span></h2>
+            <div class="reality-intro">
+                <p>Dnešní realitní trh je vysoce konkurenční a kvalitní prezentace je klíčem k úspěchu. V IV Production pomáháme realitním makléřům odlišit se pomocí profesionálních videoprohlídek, HDR fotografií a virtuálních 3D prohlídek.</p>
+                <p>Každý výstup připravíme pro okamžité použití na realitních portálech, sociálních sítích i vašem webu. Zájemce tak získá jasnější představu o prostoru ještě před osobní prohlídkou a vy šetříte čas sobě i klientům.</p>
             </div>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Proč <span>spolupracovat</span> s námi?</h2>
-            <p class="section-subtitle">Pomáháme realitním makléřům v Královéhradeckém kraji prodávat rychleji</p>
+            <h2 class="section-title">Proč spolupracovat <span>právě s námi</span></h2>
+            <p class="section-subtitle">Jedna produkce, všechny vizuální výstupy a jasná domluva</p>
 
             <div class="benefits-grid">
                 <div class="benefit">
                     <div>
-                        <h3>Rychlejší prodej</h3>
-                        <p>Nemovitosti s videem se prodávají až o 30% rychleji</p>
+                        <h3>Video, které prodává</h3>
+                        <p>Atraktivní interiér i exteriér, plynulý pohyb kamery a střih, který zaujme během prvních sekund.</p>
                     </div>
                 </div>
                 <div class="benefit">
                     <div>
-                        <h3>Vyšší cena</h3>
-                        <p>Profesionální prezentace zvyšuje vnímanou hodnotu</p>
+                        <h3>Profesionální fotografie</h3>
+                        <p>HDR fotografie, srovnání linií a drobné retuše ukážou nemovitost čistě a důvěryhodně.</p>
                     </div>
                 </div>
                 <div class="benefit">
                     <div>
-                        <h3>Online prohlídky</h3>
-                        <p>Šetřete čas – klienti si prohlédnou nemovitost z domova</p>
+                        <h3>Virtuální prohlídky</h3>
+                        <p>Zájemci se mohou nemovitostí projít online kdykoliv a odkudkoliv, ještě před osobní návštěvou.</p>
                     </div>
                 </div>
                 <div class="benefit">
                     <div>
-                        <h3>Expresní dodání</h3>
-                        <p>Video máte do 48 hodin od natáčení</p>
+                        <h3>Kompletní postprodukce</h3>
+                        <p>Materiály dostanete upravené a připravené pro web, realitní portály i sociální sítě.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div>
+                        <h3>Rychlé a férové řešení</h3>
+                        <p>V realitách rozhoduje čas. Rozsah, cenu i termín dodání si potvrdíme předem a přehledně.</p>
                     </div>
                 </div>
             </div>
@@ -425,43 +661,123 @@
 
     <section class="section" style="background: linear-gradient(180deg, rgba(18,18,26,1) 0%, var(--dark) 100%);">
         <div class="container">
-            <h2 class="section-title">Naše <span>služby</span></h2>
-            <p class="section-subtitle">Kompletní řešení pro prezentaci nemovitostí</p>
+            <h2 class="section-title">Co pro vaši nabídku <span>připravíme</span></h2>
+            <p class="section-subtitle">Obsah přizpůsobíme typu nemovitosti i místu, kde ho budete publikovat</p>
 
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>Video prohlídka</h3>
-                    <p>Profesionální video s cinematic look</p>
-                    <div class="service-price">od 3 000 Kč</div>
+                    <span class="service-tag">01 / VIDEO</span>
+                    <h3>Videoprohlídky</h3>
+                    <p>Filmové prohlídky bytů, domů i komerčních prostor s plynulými záběry interiéru a exteriéru.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Dronové záběry</h3>
-                    <p>Letecké záběry okolí a pozemku</p>
-                    <div class="service-price">od 2 000 Kč</div>
+                    <span class="service-tag">02 / DRON</span>
+                    <h3>Letecké záběry</h3>
+                    <p>Pohled na dům, pozemek, příjezdovou cestu i okolí, který zasadí nabídku do správného kontextu.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Fotografie</h3>
-                    <p>HDR fotografie interiéru i exteriéru</p>
-                    <div class="service-price">od 2 500 Kč</div>
+                    <span class="service-tag">03 / FOTO</span>
+                    <h3>HDR fotografie</h3>
+                    <p>Profesionální fotografie interiéru a exteriéru se srovnáním svislic a drobnými retušemi.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Virtuální prohlídka 3D</h3>
-                    <p>Interaktivní 3D prohlídka nemovitosti</p>
-                    <div class="service-price">od 4 000 Kč</div>
+                    <span class="service-tag">04 / 3D</span>
+                    <h3>Virtuální 3D prohlídky</h3>
+                    <p>Interaktivní online prohlídka, díky které si zájemce projde dispozici vlastním tempem.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-tag">05 / SOCIAL</span>
+                    <h3>Formáty pro sociální sítě</h3>
+                    <p>Úprava hlavního videa do vertikálního či dalšího formátu pro Reels, Stories a placenou propagaci.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-tag">06 / KOMENTÁŘ</span>
+                    <h3>Komentované prohlídky</h3>
+                    <p>Prohlídka s makléřem, mluveným komentářem a titulky pro srozumitelné představení hlavních výhod.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <div class="container" style="text-align: center;">
-            <h2 class="section-title">Zvyšte své <span>prodeje</span></h2>
-            <p class="section-subtitle">Kontaktujte nás pro nezávaznou nabídku</p>
-            <a href="kontakt.html" class="btn btn-primary">Nezávazná poptávka</a>
+    <section class="section reality-pricing" id="cenik">
+        <div class="container">
+            <p class="reality-eyebrow" style="text-align: center;">CENÍK SLUŽEB</p>
+            <h2 class="section-title">Vyberte si přesně to, <span>co nabídka potřebuje</span></h2>
+            <p class="section-subtitle">Jednotlivé služby můžete libovolně kombinovat</p>
+
+            <div class="reality-price-grid">
+                <article class="price-panel">
+                    <p class="price-panel__label">VIDEO</p>
+                    <h3>Videoprohlídka nemovitosti</h3>
+                    <p class="price-panel__intro">Cena podle typu a velikosti prezentované nemovitosti.</p>
+                    <ul class="price-list">
+                        <li><span>Dům</span><strong>7 000 Kč</strong></li>
+                        <li><span>Menší byt do 4+kk</span><strong>4 500 Kč</strong></li>
+                        <li><span>Velký byt 4+kk a více</span><strong>5 500 Kč</strong></li>
+                        <li><span>Dronové záběry</span><strong>1 000 Kč</strong></li>
+                        <li><span>Další formát pro sociální sítě</span><strong>1 000 Kč</strong></li>
+                        <li><span>Komentovaná prohlídka s titulky</span><strong>1 000 Kč</strong></li>
+                    </ul>
+                </article>
+
+                <article class="price-panel">
+                    <p class="price-panel__label">VIRTUÁLNÍ PROHLÍDKA</p>
+                    <h3>Interaktivní 3D tour</h3>
+                    <p class="price-panel__intro">Cena se odvíjí od celkové podlahové plochy nemovitosti.</p>
+                    <ul class="price-list">
+                        <li><span>Do 45 m²</span><strong>1 900 Kč</strong></li>
+                        <li><span>46–65 m²</span><strong>2 300 Kč</strong></li>
+                        <li><span>66–100 m²</span><strong>2 900 Kč</strong></li>
+                        <li><span>101–150 m²</span><strong>3 200 Kč</strong></li>
+                        <li><span>151–200 m²</span><strong>3 600 Kč</strong></li>
+                    </ul>
+                </article>
+
+                <article class="price-panel">
+                    <p class="price-panel__label">FOTOGRAFIE</p>
+                    <h3>Profesionální foto</h3>
+                    <p class="price-panel__intro">Doporučený rozsah jsou dvě fotografie na místnost, případně dle domluvy.</p>
+                    <ul class="price-list">
+                        <li><span>Cena za jednu fotografii</span><strong>150 Kč</strong></li>
+                    </ul>
+                    <ul class="price-features">
+                        <li>HDR zpracování fotografie</li>
+                        <li>Srovnání svislic</li>
+                        <li>Drobné retuše</li>
+                        <li>Interiér i exteriér nemovitosti</li>
+                    </ul>
+                </article>
+            </div>
+
+            <div class="travel-note">
+                <div>
+                    <p class="price-panel__label">DOPRAVA</p>
+                    <p>Počítá se z adresy Jasenná 131, 552 22, Královéhradecký kraj.</p>
+                </div>
+                <strong>7 Kč / km</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="section package-showcase package-showcase-main" data-package-page="reality" data-package-group="main">
+        <div class="container">
+            <p class="package-section-kicker">ZVÝHODNĚNÉ CENOVÉ BALÍČKY</p>
+            <h2 class="section-title">Kompletní prezentace <span>v jednom balíčku</span></h2>
+            <p class="package-lead">Video, fotografie i virtuální prohlídku spojíme do jednoho konzistentního výstupu pro vaši nabídku.</p>
+            <div class="pricing-grid" data-packages-list></div>
         </div>
     </section>
 
     <section class="related-work" data-portfolio-slider data-portfolio-categories="reality" data-portfolio-title="Ukázky realitních filmů" data-portfolio-accent="v pohybu"></section>
+
+    <section class="section reality-cta">
+        <div class="container" style="text-align: center;">
+            <p class="reality-eyebrow">NEZÁVAZNÁ POPTÁVKA</p>
+            <h2 class="section-title">Posuňte svou realitní prezentaci <span>na vyšší úroveň</span></h2>
+            <p class="section-subtitle">Napište nám typ nemovitosti, lokalitu a požadované služby. Ozveme se s jasným návrhem dalšího postupu.</p>
+            <a href="kontakt.html#poptavka" class="btn btn-primary">Poptat foto, video nebo 3D</a>
+        </div>
+    </section>
 
     <footer class="footer">
         <p>© 2026 <a href="index.html">IV Production</a>. Všechna práva vyhrazena.</p>

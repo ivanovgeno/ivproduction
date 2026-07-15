@@ -196,5 +196,61 @@ window.IVP_PACKAGE_DATA = {
                 ctaHref: 'kontakt.html#poptavka'
             }
         ]
+    },
+    reality: {
+        main: [
+            {
+                id: 'reality-standard',
+                name: 'STANDARD VIDEO',
+                price: '8 000 Kč',
+                description: 'Profesionální video pro samostatnou prezentaci nemovitosti.',
+                features: [
+                    'Natáčení videoprohlídky nemovitosti',
+                    'Plynulé záběry interiéru a exteriéru',
+                    'Střih, barevné korekce a základní postprodukce',
+                    'Dodání pro web a realitní portály',
+                    'Letecké záběry z dronu',
+                    'Komentovaná prohlídka s titulky'
+                ],
+                ctaLabel: 'Poptat Standard',
+                ctaHref: 'kontakt.html#poptavka'
+            },
+            {
+                id: 'reality-premium',
+                name: 'PREMIUM',
+                price: '12 500 Kč',
+                description: 'Kombinace videa a fotografií pro maximálně přesvědčivou nabídku.',
+                features: [
+                    'Profesionální video nemovitosti',
+                    'Komentovaná prohlídka s titulky',
+                    'Letecké záběry z dronu',
+                    'Formát videa pro sociální sítě',
+                    'HDR fotografie interiéru a exteriéru',
+                    'Srovnání svislic a drobné retuše',
+                    'Dodání pro web, sítě a realitní portály'
+                ],
+                ctaLabel: 'Poptat Premium',
+                ctaHref: 'kontakt.html#poptavka',
+                popular: true,
+                popularLabel: 'Nejžádanější'
+            },
+            {
+                id: 'reality-all-in-one',
+                name: 'ALL IN ONE',
+                price: '15 000 Kč',
+                description: 'Kompletní balíček pro nejvyšší úroveň prezentace nemovitosti.',
+                features: [
+                    'Profesionální video včetně komentáře a titulků',
+                    'Letecké záběry z dronu',
+                    'Formát videa pro sociální sítě',
+                    'HDR fotografie interiéru a exteriéru',
+                    'Srovnání svislic a drobné retuše',
+                    'Virtuální prohlídka celé nemovitosti',
+                    'Doprava zdarma'
+                ],
+                ctaLabel: 'Poptat All in One',
+                ctaHref: 'kontakt.html#poptavka'
+            }
+        ]
     }
 };
