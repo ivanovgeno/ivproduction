@@ -791,10 +791,10 @@ body.home-page .hero-stats {
 
 .social-btn {
     align-items: center;
-    background: rgba(212, 175, 55, 0.1);
-    border: 1px solid rgba(212, 175, 55, 0.18);
+    background: rgba(201, 162, 39, 0.1);
+    border: 1px solid rgba(201, 162, 39, 0.28);
     border-radius: 12px;
-    color: rgba(250, 249, 246, 0.74);
+    color: var(--gold);
     display: flex;
     height: 44px;
     justify-content: center;
@@ -803,12 +803,28 @@ body.home-page .hero-stats {
     width: 44px;
 }
 
+.social-btn svg {
+    display: block;
+    height: 20px;
+    width: 20px;
+}
+
+.social-btn svg polygon {
+    fill: var(--dark);
+    transition: fill 0.3s ease;
+}
+
 .social-btn:hover,
 .social-btn:focus-visible {
     background: var(--gradient);
     border-color: transparent;
     color: var(--dark);
     transform: translateY(-3px);
+}
+
+.social-btn:hover svg polygon,
+.social-btn:focus-visible svg polygon {
+    fill: var(--gray-light);
 }
 
 .footer-legal {
