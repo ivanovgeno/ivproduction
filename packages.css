@@ -206,7 +206,9 @@
 
 .package-showcase[data-package-page='reality'] .pricing-grid {
     align-items: stretch;
+    display: grid !important;
     gap: clamp(1rem, 2vw, 1.5rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     margin: 0 auto;
     max-width: 76rem;
 }
@@ -293,18 +295,24 @@
 }
 
 .package-showcase[data-package-page='reality'] .pricing-btn {
+    align-items: center;
     background: var(--gradient, linear-gradient(135deg, #8b6914, #ffe55c, #8b6914));
     border: 0;
     border-radius: 7px;
     box-shadow: none;
     color: #121215 !important;
+    display: flex;
     font-size: 0.82rem;
     font-weight: 700;
+    justify-content: center;
     letter-spacing: 0.035em;
     margin-top: auto;
     min-height: 3.45rem;
     padding: 0.9rem 1rem;
+    text-align: center;
+    text-decoration: none !important;
     text-transform: uppercase;
+    width: 100%;
 }
 
 @media (min-width: 1121px) {
@@ -357,6 +365,10 @@
         padding: 4.35rem 1.3rem 1.4rem;
     }
 
+    .package-showcase[data-package-page='reality'] .pricing-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
     .package-showcase[data-package-page='reality'] .package-description {
         min-height: 0;
     }
@@ -374,7 +386,7 @@
     }
 
     .package-showcase[data-package-page='reality'] .pricing-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     }
 
     .package-showcase[data-package-page='reality'] .package-card {
