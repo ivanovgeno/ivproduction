@@ -243,22 +243,6 @@
     box-shadow: 0 1.8rem 5rem rgba(201, 162, 39, 0.23), inset 0 1px 0 rgba(255, 244, 184, 0.16);
 }
 
-.package-showcase[data-package-page='reality'] .package-popular-ribbon {
-    border: 1px solid rgba(255, 244, 184, 0.5);
-    border-radius: 999px;
-    box-shadow: 0 0.65rem 1.5rem rgba(201, 162, 39, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.48);
-    left: clamp(1.35rem, 2.3vw, 2.15rem);
-    padding: 0.52rem 0.9rem;
-    right: auto;
-    top: 1.15rem;
-    transform: none;
-    width: auto;
-}
-
-.package-showcase[data-package-page='reality'] .pricing-card.is-popular:hover .package-popular-ribbon {
-    transform: none;
-}
-
 .package-showcase[data-package-page='reality'] .pricing-name {
     color: #fffdf6;
     font-size: clamp(1.45rem, 2vw, 1.8rem);
@@ -393,8 +377,7 @@
         padding: 4.3rem clamp(1rem, 1.8vw, 1.35rem) 1.3rem;
     }
 
-    .package-showcase[data-package-page='reality'] .package-card:not(.is-popular)::before,
-    .package-showcase[data-package-page='reality'] .package-popular-ribbon {
+    .package-showcase[data-package-page='reality'] .package-card:not(.is-popular)::before {
         left: clamp(1rem, 1.8vw, 1.35rem);
     }
 
