@@ -312,8 +312,8 @@
             text-decoration: none;
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260713-menu-centered-slider">
-    <script src="premium.js?v=20260713-mobile-responsive" defer></script>
+    <link rel="stylesheet" href="premium.css?v=20260715-unified-shell">
+    <script src="premium.js?v=20260715-unified-shell" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
@@ -324,6 +324,7 @@
         <div class="header-inner">
             <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
 
+            <!-- Mobile Menu Toggle -->
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -333,6 +334,7 @@
             <nav class="nav">
                 <a href="svatby.html">Svatby</a>
                 <a href="reality.html">Reality</a>
+                <a href="plesy.html">Plesy</a>
                 <div class="nav-dropdown">
                     <a href="fotobudka.html" class="nav-dropdown-trigger">Fotobudky ▾</a>
                     <div class="nav-dropdown-menu">
@@ -340,7 +342,6 @@
                         <a href="360budka.html">360° Budka</a>
                     </div>
                 </div>
-                <a href="plesy.html">Plesy</a>
                 <div class="nav-dropdown">
                     <a href="index.html#sluzby" class="nav-dropdown-trigger">Další služby ▾</a>
                     <div class="nav-dropdown-menu">
@@ -356,15 +357,16 @@
             </nav>
         </div>
 
+        <!-- Mobile Menu Overlay -->
         <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Hlavní navigace" aria-hidden="true">
             <a href="index.html" class="mobile-menu-link">Domů</a>
             <a href="svatby.html" class="mobile-menu-link">Svatby</a>
-            <a href="plesy.html" class="mobile-menu-link">Plesy</a>
             <a href="reality.html" class="mobile-menu-link">Reality</a>
-            <a href="promo.html" class="mobile-menu-link">Promo</a>
-            <a href="reels.html" class="mobile-menu-link">Reels</a>
+            <a href="plesy.html" class="mobile-menu-link">Plesy</a>
             <a href="fotobudka.html" class="mobile-menu-link">Fotobudka</a>
             <a href="360budka.html" class="mobile-menu-link">360° Budka</a>
+            <a href="promo.html" class="mobile-menu-link">Promo</a>
+            <a href="reels.html" class="mobile-menu-link">Reels</a>
             <a href="konference.html" class="mobile-menu-link">Konference</a>
             <a href="podcast.html" class="mobile-menu-link">Podcast</a>
             <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
@@ -454,7 +456,80 @@
     <section class="related-work" data-portfolio-slider data-portfolio-categories="fotobudka,plesy" data-portfolio-title="Zábava, která spojuje hosty" data-portfolio-accent="na každé akci"></section>
 
     <footer class="footer">
-        <p>© 2026 <a href="index.html">IV Production</a>. Všechna práva vyhrazena.</p>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo"><img src="logo-light.png" alt="IV Production"></a>
+                <p>Profesionální video produkce a fotobudky pro nezapomenutelné momenty.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/IVproductionCZ" class="social-btn" aria-label="Facebook"
+                        target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/ivproduction_video/" class="social-btn" aria-label="Instagram"
+                        target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="https://tiktok.com/@ivproduction" class="social-btn" aria-label="TikTok" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com/@ivproduction" class="social-btn" aria-label="YouTube" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Služby</h4>
+                <ul>
+                    <li><a href="svatby.html">Svatby</a></li>
+                    <li><a href="reality.html">Reality</a></li>
+                    <li><a href="plesy.html">Plesy</a></li>
+                    <li><a href="fotobudka.html">Fotobudka</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Informace</h4>
+                <ul>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="index.html#faq">Časté otázky</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="tel:+420773210194">+420 773 210 194</a></li>
+                    <li><a href="mailto:video@ivproduction.cz">video@ivproduction.cz</a></li>
+                    <li>Hradec Králové a celá ČR</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-legal">
+            <a href="obchodni-podminky.html">Obchodní podmínky</a>
+            <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
+            <a href="marketingovy-souhlas.html">Marketingový souhlas</a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 IV Production. Všechna práva vyhrazena.</p>
+        </div>
     </footer>
     <!-- Global Floating Elements -->
     <style>

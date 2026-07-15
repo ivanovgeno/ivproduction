@@ -729,17 +729,118 @@ body.home-page .hero-stats {
 .footer {
     background: #0b0b0d;
     border-top: 1px solid rgba(212, 175, 55, 0.18);
+    padding: 4rem 2rem 2rem;
+}
+
+.footer-grid {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin: 0 auto 3rem;
+    max-width: 1400px;
+}
+
+.footer-brand .logo {
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.footer-brand p {
+    color: var(--gray);
+}
+
+.footer-logo img {
+    height: 60px;
+    margin-bottom: 1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
 }
 
 .footer h4 {
     color: var(--gold-light);
     font-size: 0.72rem;
     letter-spacing: 0.13em;
+    margin-bottom: 1.5rem;
     text-transform: uppercase;
 }
 
 .footer-links a {
     color: rgba(250, 249, 246, 0.58);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+    color: var(--gold-light);
+}
+
+.footer-social {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.social-btn {
+    align-items: center;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 12px;
+    color: rgba(250, 249, 246, 0.74);
+    display: flex;
+    height: 44px;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    width: 44px;
+}
+
+.social-btn:hover,
+.social-btn:focus-visible {
+    background: var(--gradient);
+    border-color: transparent;
+    color: var(--dark);
+    transform: translateY(-3px);
+}
+
+.footer-legal {
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem auto 0;
+    max-width: 1400px;
+    padding: 1.5rem 0;
+}
+
+.footer-legal a {
+    color: rgba(250, 249, 246, 0.58);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover,
+.footer-legal a:focus-visible {
+    color: var(--gold-light);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(250, 249, 246, 0.58);
+    margin: 0 auto;
+    max-width: 1400px;
+    padding-top: 2rem;
+    text-align: center;
 }
 
 /* Deliberate microinteractions: physical motion, restrained gold reflection. */
