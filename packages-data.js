@@ -258,6 +258,24 @@ window.IVP_PACKAGE_DATA = {
                 ctaLabel: 'Chceme celý zážitek',
                 ctaHref: 'kontakt.html#poptavka'
             }
+        ],
+        other: [
+            {
+                id: 'ples-na-miru',
+                name: 'PLES NA MÍRU',
+                price: 'Individuální cena',
+                description: 'Kompletní nabídka pro městský, firemní, reprezentační, sportovní nebo jakýkoliv jiný ples.',
+                features: [
+                    'Video, fotografie nebo kompletní produkční tým podle potřeby',
+                    'Fotobudka a 360° video koutek jako volitelné rozšíření',
+                    'Rozsah natáčení přizpůsobený programu a počtu hostů',
+                    'Krátký dynamický sestřih, dlouhé video i obsah na sociální sítě',
+                    'Individuální kalkulace dopravy, techniky a počtu členů týmu',
+                    'Přehledná nezávazná nabídka potvrzená předem'
+                ],
+                ctaLabel: 'Připravit nabídku na míru',
+                ctaHref: 'kontakt.html#poptavka'
+            }
         ]
     },
     reality: {

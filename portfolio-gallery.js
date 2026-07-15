@@ -147,11 +147,9 @@
     }
 
     function initRelatedWorkSliders() {
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
         function setupLoopingAutoplay(slider, viewport) {
             const originalSlides = Array.from(viewport.querySelectorAll('.premium-work-slide'));
-            if (originalSlides.length < 2 || reducedMotion.matches) return null;
+            if (originalSlides.length < 2) return null;
 
             const cloneSlides = originalSlides.map((slide) => {
                 const clone = slide.cloneNode(true);
@@ -162,7 +160,7 @@
             });
             cloneSlides.forEach((slide) => viewport.append(slide));
 
-            const state = { timer: null, hovering: false, dragging: false };
+            const state = { timer: null, normalizeTimer: null, hovering: false, dragging: false };
 
             const loopWidth = () => {
                 const firstClone = cloneSlides[0];
@@ -195,6 +193,11 @@
                 }
             };
 
+            const queueNormalize = () => {
+                if (state.normalizeTimer) window.clearTimeout(state.normalizeTimer);
+                state.normalizeTimer = window.setTimeout(normalizeLoop, 180);
+            };
+
             const move = (direction) => {
                 const width = loopWidth();
                 const step = stepWidth();
@@ -216,8 +219,8 @@
 
             const schedule = () => {
                 stop();
-                if (document.hidden || state.dragging || reducedMotion.matches) return;
-                const delay = state.hovering ? 4800 : 2400;
+                if (document.hidden || state.dragging) return;
+                const delay = state.hovering ? 4200 : 2000;
                 state.timer = window.setTimeout(() => {
                     move(1);
                     schedule();
@@ -225,7 +228,7 @@
             };
 
             slider.classList.add('is-autoplaying');
-            viewport.addEventListener('scroll', normalizeLoop, { passive: true });
+            viewport.addEventListener('scroll', queueNormalize, { passive: true });
             slider.addEventListener('mouseenter', () => {
                 state.hovering = true;
                 slider.classList.add('is-slowed');
@@ -240,27 +243,20 @@
                 state.dragging = true;
                 stop();
             });
-            viewport.addEventListener('pointerup', () => {
+            const resumeAfterPointer = () => {
+                if (!state.dragging) return;
                 state.dragging = false;
+                queueNormalize();
                 schedule();
-            });
-            viewport.addEventListener('pointercancel', () => {
-                state.dragging = false;
-                schedule();
-            });
-            slider.addEventListener('focusin', stop);
-            slider.addEventListener('focusout', (event) => {
-                if (!slider.contains(event.relatedTarget)) schedule();
-            });
+            };
+            window.addEventListener('pointerup', resumeAfterPointer, { passive: true });
+            window.addEventListener('pointercancel', resumeAfterPointer, { passive: true });
+            viewport.addEventListener('touchend', resumeAfterPointer, { passive: true });
             document.addEventListener('visibilitychange', () => {
                 if (document.hidden) stop();
                 else schedule();
             });
-            reducedMotion.addEventListener?.('change', () => {
-                if (reducedMotion.matches) stop();
-                else schedule();
-            });
-            schedule();
+            window.setTimeout(schedule, 650);
 
             return { move, schedule };
         }

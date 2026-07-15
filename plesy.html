@@ -302,8 +302,8 @@
     <script src="premium.js?v=20260715-unified-shell" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260712-portfoliohub" defer></script>
-    <script src="portfolio-gallery.js?v=20260715-plesy-autoplay" defer></script>
-    <script src="packages-data.js?v=20260715-plesy-students" defer></script>
+    <script src="portfolio-gallery.js?v=20260715-plesy-autoplay-v2" defer></script>
+    <script src="packages-data.js?v=20260715-plesy-custom" defer></script>
     <script src="packages-renderer.js?v=20260715-plesy-packages" defer></script>
 
     <style>
@@ -492,6 +492,24 @@
                 #0b0b0e;
             border-bottom: 1px solid rgba(212, 175, 55, 0.14);
             border-top: 1px solid rgba(212, 175, 55, 0.16);
+        }
+
+        .event-custom-package {
+            background:
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12), transparent 28rem),
+                linear-gradient(180deg, #101014, #0b0b0e);
+            border-top: 1px solid rgba(212, 175, 55, 0.16);
+        }
+
+        .event-custom-package .pricing-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 42rem) !important;
+            justify-content: center;
+            margin-inline: auto;
+        }
+
+        .event-custom-package .package-card {
+            min-height: 0;
         }
 
         .event-final-inner {
@@ -702,6 +720,15 @@
                     <a href="360budka.html" class="btn btn-outline">Prohlédnout 360° Budku</a>
                 </article>
             </div>
+        </div>
+    </section>
+
+    <section class="section package-showcase package-showcase-extras event-custom-package" data-package-page="plesy" data-package-group="other">
+        <div class="container">
+            <p class="package-section-kicker">Nabídka pro další společenské akce</p>
+            <h2 class="section-title">Pořádáte jiný ples? <span>Připravíme ho na míru.</span></h2>
+            <p class="section-subtitle">Městský, firemní, reprezentační, sportovní i spolkový ples. Rozsah služeb a cenu sestavíme přesně podle programu, počtu hostů a vašich priorit.</p>
+            <div class="pricing-grid" data-packages-list></div>
         </div>
     </section>
 
