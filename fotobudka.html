@@ -453,48 +453,50 @@
             background: #0b0b0f;
         }
 
-        .budka-section-visual {
-            aspect-ratio: 16 / 7;
-            border: 1px solid rgba(240, 212, 119, 0.24);
-            border-radius: 1.15rem;
-            box-shadow: 0 1.6rem 4.5rem rgba(0, 0, 0, 0.34);
-            margin: 2.6rem auto 0;
-            max-width: 76rem;
-            overflow: hidden;
+        .budka-point-icon {
+            align-items: center;
+            background:
+                radial-gradient(circle at 35% 28%, rgba(255, 229, 92, 0.2), transparent 45%),
+                rgba(201, 162, 39, 0.075);
+            border: 1px solid rgba(240, 212, 119, 0.26);
+            border-radius: 1rem;
+            color: var(--gold-light);
+            display: flex;
+            height: 4rem;
+            justify-content: center;
+            margin-bottom: 1.15rem;
             position: relative;
+            transition: background 300ms ease, border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+            width: 4rem;
         }
 
-        .budka-section-visual::after {
-            background: linear-gradient(180deg, transparent 48%, rgba(5, 5, 8, 0.68));
+        .budka-point-icon::after {
+            border: 1px solid rgba(255, 229, 92, 0.12);
+            border-radius: 0.72rem;
             content: '';
-            inset: 0;
-            pointer-events: none;
+            inset: 0.38rem;
             position: absolute;
         }
 
-        .budka-section-visual img {
-            display: block;
-            height: 100%;
-            object-fit: cover;
-            transition: filter 650ms ease, transform 900ms cubic-bezier(0.2, 0.72, 0.2, 1);
-            width: 100%;
+        .budka-point-icon svg {
+            fill: none;
+            height: 2rem;
+            position: relative;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.7;
+            width: 2rem;
+            z-index: 1;
         }
 
-        .budka-section-visual:hover img {
-            filter: brightness(1.06) saturate(1.04);
-            transform: scale(1.025);
-        }
-
-        .budka-section-visual figcaption {
-            bottom: clamp(1rem, 2.4vw, 1.8rem);
-            color: rgba(255, 255, 255, 0.92);
-            font-size: clamp(0.75rem, 1.2vw, 0.9rem);
-            font-weight: 700;
-            left: clamp(1rem, 2.4vw, 1.8rem);
-            letter-spacing: 0.1em;
-            position: absolute;
-            text-transform: uppercase;
-            z-index: 2;
+        .budka-step:hover .budka-point-icon,
+        .budka-tech-card:hover .budka-point-icon,
+        .budka-requirement:hover .budka-point-icon {
+            background: rgba(201, 162, 39, 0.16);
+            border-color: rgba(255, 229, 92, 0.62);
+            box-shadow: 0 0.9rem 2.4rem rgba(201, 162, 39, 0.15);
+            transform: translateY(-0.22rem);
         }
 
         .budka-steps {
@@ -783,9 +785,9 @@
         .budka-requirements-grid {
             display: grid;
             gap: 1.2rem;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             margin: 2.7rem auto 0;
-            max-width: 72rem;
+            max-width: 76rem;
         }
 
         .budka-requirement {
@@ -793,6 +795,13 @@
             border: 1px solid rgba(250, 249, 246, 0.1);
             border-radius: 1rem;
             padding: clamp(1.4rem, 2.6vw, 2rem);
+            transition: border-color 300ms ease, box-shadow 350ms ease, transform 350ms ease;
+        }
+
+        .budka-requirement:hover {
+            border-color: rgba(255, 229, 92, 0.4);
+            box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.25);
+            transform: translateY(-0.35rem);
         }
 
         .budka-requirement h3 {
@@ -883,10 +892,6 @@
                 grid-auto-columns: 86%;
             }
 
-            .budka-section-visual {
-                aspect-ratio: 4 / 3;
-                margin-top: 2rem;
-            }
 
             .budka-gallery-control[data-gallery-prev] { left: 0.35rem; }
             .budka-gallery-control[data-gallery-next] { right: 0.35rem; }
@@ -994,16 +999,12 @@
                 <p class="package-section-kicker">Jednodušší už to být nemůže</p>
                 <h2 class="section-title">Jak IV Budka <span>funguje?</span></h2>
                 <p class="section-subtitle">Hosté se baví sami, naše obsluha je ale vždy nablízku a celý průběh hlídá.</p>
-                <figure class="budka-section-visual">
-                    <img src="assets/fotobudka/section-how.webp" alt="Hosté používající IV Budku a přebírající čerstvě vytištěnou fotografii" loading="lazy">
-                    <figcaption>Od první pózy k hotové fotografii během několika sekund</figcaption>
-                </figure>
                 <div class="budka-steps">
-                    <article class="budka-step"><strong>1</strong><h3>Vyberte rekvizity</h3><p>Čím bláznivější kombinace, tím lepší výsledná fotka.</p></article>
-                    <article class="budka-step"><strong>2</strong><h3>Postavte se před pozadí</h3><p>Na dotykovém monitoru se hned uvidíte a snadno doladíte pozici.</p></article>
-                    <article class="budka-step"><strong>3</strong><h3>Počkejte na odpočet</h3><p>Podívejte se do objektivu, zkuste nemrkat a předveďte nejlepší pózu.</p></article>
-                    <article class="budka-step"><strong>4</strong><h3>Vyberte záběr</h3><p>Když se nepovede, jednoduše pořídíte další a vyberete si ten pravý.</p></article>
-                    <article class="budka-step"><strong>5</strong><h3>Vyzvedněte výtisk</h3><p>Sdělíte počet kopií a do 10 sekund držíte hotovou fotografii.</p></article>
+                    <article class="budka-step"><strong>1</strong><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 15c2.5-1.2 5.3-1.7 8-1.7s5.5.5 8 1.7l-1 5H5l-1-5Z"/><path d="M8 13.8V8l4-4 4 4v5.8"/><path d="m6 8 2 1m10-1-2 1"/></svg></div><h3>Vyberte rekvizity</h3><p>Čím bláznivější kombinace, tím lepší výsledná fotka.</p></article>
+                    <article class="budka-step"><strong>2</strong><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M6.5 19c.8-3 2.7-4.5 5.5-4.5s4.7 1.5 5.5 4.5"/></svg></div><h3>Postavte se před pozadí</h3><p>Na dotykovém monitoru se hned uvidíte a snadno doladíte pozici.</p></article>
+                    <article class="budka-step"><strong>3</strong><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6M12 5V2"/></svg></div><h3>Počkejte na odpočet</h3><p>Podívejte se do objektivu, zkuste nemrkat a předveďte nejlepší pózu.</p></article>
+                    <article class="budka-step"><strong>4</strong><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="10" cy="12" r="3"/><path d="m14.5 14.5 2-2 2.5 2.5M7 5l1-2h4l1 2"/></svg></div><h3>Vyberte záběr</h3><p>Když se nepovede, jednoduše pořídíte další a vyberete si ten pravý.</p></article>
+                    <article class="budka-step"><strong>5</strong><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h12v11H6z"/><path d="M8 14v7h8v-7M9 7h6M9 10h4"/><path d="M4 6H2v10h4m14-10h2v10h-4"/></svg></div><h3>Vyzvedněte výtisk</h3><p>Sdělíte počet kopií a do 10 sekund držíte hotovou fotografii.</p></article>
                 </div>
             </div>
         </section>
@@ -1081,17 +1082,13 @@
             <div class="container">
                 <p class="package-section-kicker">Spolehlivá technika</p><h2 class="section-title">Co pracuje <span>uvnitř IV Budky</span></h2>
                 <p class="section-subtitle">Profesionální komponenty pro rychlý provoz a kvalitní výsledek za každého světla.</p>
-                <figure class="budka-section-visual">
-                    <img src="assets/fotobudka/section-tech.webp" alt="Profesionální fotoaparát, fototiskárna, počítač, dotykový displej a studiový blesk IV Budky" loading="lazy">
-                    <figcaption>Profesionální sestava sladěná pro rychlost a stálou kvalitu</figcaption>
-                </figure>
                 <div class="budka-tech-grid">
-                    <article class="budka-tech-card"><span class="budka-card-number">FOTO</span><h3>Fotoaparát Canon</h3><p>Ostré fotografie s přirozeným podáním barev a dostatkem detailů.</p></article>
-                    <article class="budka-tech-card"><span class="budka-card-number">TISK</span><h3>Fototiskárna DNP</h3><p>Rychlý profesionální tisk s dlouhou životností a konzistentní kvalitou.</p></article>
-                    <article class="budka-tech-card"><span class="budka-card-number">VÝKON</span><h3>Apple Mac mini</h3><p>Bleskové zpracování fotografií a stabilní komunikace všech částí systému.</p></article>
-                    <article class="budka-tech-card"><span class="budka-card-number">SVĚTLO</span><h3>Zábleskové světlo Godox</h3><p>Čisté a rovnoměrné nasvícení tváří i v tmavém sále nebo večer.</p></article>
-                    <article class="budka-tech-card"><span class="budka-card-number">OVLÁDÁNÍ</span><h3>Dotykový monitor HP</h3><p>Velké a intuitivní rozhraní, které snadno zvládnou děti i dospělí.</p></article>
-                    <article class="budka-tech-card"><span class="budka-card-number">SCÉNA</span><h3>Fotostěna a rekvizity</h3><p>Promyšlené zázemí, které dotvoří každý záběr a přitáhne pozornost hostů.</p></article>
+                    <article class="budka-tech-card"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 7h3l1.5-2h5L16 7h3a2 2 0 0 1 2 2v9H3V9a2 2 0 0 1 2-2Z"/><circle cx="12" cy="12.5" r="4"/><path d="M18 10h.01"/></svg></div><span class="budka-card-number">FOTO</span><h3>Fotoaparát Canon</h3><p>Ostré fotografie s přirozeným podáním barev a dostatkem detailů.</p></article>
+                    <article class="budka-tech-card"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 8V3h12v5M5 18H3V8h18v10h-2"/><rect x="6" y="14" width="12" height="7"/><path d="M8 17h8M17 11h.01"/></svg></div><span class="budka-card-number">TISK</span><h3>Fototiskárna DNP</h3><p>Rychlý profesionální tisk s dlouhou životností a konzistentní kvalitou.</p></article>
+                    <article class="budka-tech-card"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="13" rx="3"/><path d="M9 21h6M12 18v3M8 9h8M8 13h5"/></svg></div><span class="budka-card-number">VÝKON</span><h3>Apple Mac mini</h3><p>Bleskové zpracování fotografií a stabilní komunikace všech částí systému.</p></article>
+                    <article class="budka-tech-card"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m13 2-7 12h6l-1 8 7-12h-6l1-8Z"/><path d="M4 5 2 3m18 2 2-2"/></svg></div><span class="budka-card-number">SVĚTLO</span><h3>Zábleskové světlo Godox</h3><p>Čisté a rovnoměrné nasvícení tváří i v tmavém sále nebo večer.</p></article>
+                    <article class="budka-tech-card"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m9 13 2-2 2 2 3-3M9 17h6M12 7h.01"/></svg></div><span class="budka-card-number">OVLÁDÁNÍ</span><h3>Dotykový monitor HP</h3><p>Velké a intuitivní rozhraní, které snadno zvládnou děti i dospělí.</p></article>
+                    <article class="budka-tech-card"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V6h16v15M4 9h16"/><path d="m8 16 2-3 2 2 2-4 2 5M7 6V3m10 3V3"/></svg></div><span class="budka-card-number">SCÉNA</span><h3>Fotostěna a rekvizity</h3><p>Promyšlené zázemí, které dotvoří každý záběr a přitáhne pozornost hostů.</p></article>
                 </div>
             </div>
         </section>
@@ -1099,13 +1096,13 @@
         <section class="section budka-requirements">
             <div class="container">
                 <p class="package-section-kicker">Příprava bez překvapení</p><h2 class="section-title">Co potřebujeme <span>na místě</span></h2>
-                <figure class="budka-section-visual">
-                    <img src="assets/fotobudka/section-preparation.webp" alt="Připravený prostor pro IV Budku uvnitř sálu vedle venkovního svatebního stanu" loading="lazy">
-                    <figcaption>Promyšlené umístění uvnitř i při venkovní akci</figcaption>
-                </figure>
                 <div class="budka-requirements-grid">
-                    <article class="budka-requirement"><h3>Uvnitř</h3><ul><li>Zdroj elektřiny 220 V co nejblíže fotokoutku</li><li>Prostor přibližně 3 × 3 metry a alespoň 3 metry před pozadím</li><li>Jeden až dva stolky pro bezpečné rozmístění rekvizit</li><li>Internet pouze při okamžitém posílání nebo promítání fotografií</li></ul></article>
-                    <article class="budka-requirement"><h3>Venkovní akce</h3><p>Můžeme přivézt bílý stan se třemi bočnicemi pro stabilní světelné podmínky. Stan je nutné ukotvit, proto je nejlepší travnatý povrch. Beton nebo jiné nestandardní umístění nám prosím nahlaste předem.</p></article>
+                    <article class="budka-requirement"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 2v7m8-7v7M6 9h12v3a6 6 0 0 1-12 0V9Z"/><path d="M12 18v4"/></svg></div><h3>Elektřina 230 V</h3><p>Běžnou zásuvku potřebujeme co nejblíže fotokoutku, aby kabely nepřekážely hostům.</p></article>
+                    <article class="budka-requirement"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h6M4 4v6m16-6h-6m6 0v6M4 20h6m-6 0v-6m16 6h-6m6 0v-6"/><path d="M8 12h8M12 8v8"/></svg></div><h3>Prostor 3 × 3 metry</h3><p>Pro IV Budku a pozadí vyhraďte přibližně 3 × 3 metry a další 3 metry před scénou.</p></article>
+                    <article class="budka-requirement"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9h16v5H4zM7 14v7m10-7v7M8 6h8"/></svg></div><h3>Stolek na rekvizity</h3><p>Jeden až dva stolky využijeme pro přehledné a bezpečné rozmístění všech doplňků.</p></article>
+                    <article class="budka-requirement"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8 16a6 6 0 0 1 8 0M11 19.5a2 2 0 0 1 2 0"/><circle cx="12" cy="21" r=".5"/></svg></div><h3>Internet podle potřeby</h3><p>Připojení potřebujeme jen pro okamžité odesílání nebo živé promítání fotografií.</p></article>
+                    <article class="budka-requirement"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v11m14-11v11M3 21h18"/><path d="M8 21v-7h8v7"/></svg></div><h3>Venkovní bílý stan</h3><p>Pro stabilní světlo můžeme přivézt bílý stan se třemi bočnicemi a ochranou techniky.</p></article>
+                    <article class="budka-requirement"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v12M8 7l4-4 4 4M5 21c2-3 4.3-4.5 7-4.5s5 1.5 7 4.5"/><path d="M3 21h18"/></svg></div><h3>Bezpečné ukotvení</h3><p>Ideální je travnatý povrch. Beton nebo jiné umístění nám prosím nahlaste předem.</p></article>
                 </div>
             </div>
         </section>
