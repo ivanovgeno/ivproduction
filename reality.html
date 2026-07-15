@@ -364,6 +364,242 @@
             text-transform: uppercase;
         }
 
+        .reality-offer {
+            background:
+                radial-gradient(circle at 12% 12%, rgba(232, 197, 71, 0.12), transparent 25rem),
+                radial-gradient(circle at 88% 88%, rgba(139, 105, 20, 0.1), transparent 28rem),
+                linear-gradient(180deg, #111116 0%, #09090d 100%);
+            border-bottom: 1px solid rgba(240, 212, 119, 0.13);
+            border-top: 1px solid rgba(240, 212, 119, 0.13);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .reality-offer::before {
+            background: linear-gradient(90deg, transparent, rgba(240, 212, 119, 0.38), transparent);
+            content: '';
+            height: 1px;
+            left: 50%;
+            position: absolute;
+            top: 0;
+            transform: translateX(-50%);
+            width: min(72rem, 82vw);
+        }
+
+        .reality-offer__intro {
+            margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+            max-width: 62rem;
+            text-align: center;
+        }
+
+        .reality-offer__intro .section-title {
+            margin-bottom: 1.15rem;
+        }
+
+        .reality-offer__intro .section-subtitle {
+            color: rgba(248, 248, 250, 0.7);
+            line-height: 1.75;
+            margin: 0 auto;
+            max-width: 54rem;
+        }
+
+        .reality-offer .services-grid {
+            gap: clamp(1rem, 2vw, 1.4rem);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .reality-offer .service-card {
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.012)),
+                #101014;
+            border: 1px solid rgba(240, 212, 119, 0.18);
+            border-radius: 14px;
+            box-shadow: 0 1.25rem 3.5rem rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+            overflow: hidden;
+            padding: clamp(1.5rem, 2.6vw, 2.2rem);
+            position: relative;
+            text-align: left;
+            transform: translateZ(0);
+            transition: border-color 300ms ease, box-shadow 400ms ease, transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reality-offer .service-card::before {
+            background: var(--gradient);
+            content: '';
+            height: 2px;
+            inset: 0 0 auto;
+            opacity: 0.72;
+            position: absolute;
+            transform: scaleX(0.22);
+            transform-origin: left;
+            transition: opacity 300ms ease, transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reality-offer .service-card::after {
+            background: radial-gradient(circle, rgba(240, 212, 119, 0.12), transparent 68%);
+            content: '';
+            height: 14rem;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            right: -7rem;
+            top: -7rem;
+            transition: opacity 350ms ease;
+            width: 14rem;
+        }
+
+        .reality-offer .service-card:hover {
+            border-color: rgba(240, 212, 119, 0.52);
+            box-shadow: 0 1.8rem 4.5rem rgba(0, 0, 0, 0.34), 0 0 0 1px rgba(240, 212, 119, 0.08);
+            transform: translateY(-0.55rem);
+        }
+
+        .reality-offer .service-card:hover::before {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        .reality-offer .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-card__top {
+            align-items: center;
+            display: flex;
+            gap: 0.85rem;
+            justify-content: space-between;
+            margin-bottom: 1.45rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-number {
+            align-items: center;
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid rgba(240, 212, 119, 0.34);
+            border-radius: 50%;
+            color: var(--gold-light);
+            display: inline-flex;
+            flex: 0 0 auto;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 0.88rem;
+            height: 2.6rem;
+            justify-content: center;
+            width: 2.6rem;
+        }
+
+        .service-kicker {
+            color: rgba(248, 248, 250, 0.54);
+            font-size: 0.66rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-align: right;
+            text-transform: uppercase;
+        }
+
+        .reality-offer .service-card h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.45rem, 2.1vw, 1.9rem);
+            letter-spacing: -0.025em;
+            line-height: 1.08;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reality-offer .service-card > p {
+            color: rgba(248, 248, 250, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.72;
+            margin-bottom: 1.4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-benefits {
+            border-top: 1px solid rgba(248, 248, 250, 0.09);
+            list-style: none;
+            margin: auto 0 0;
+            padding: 1.15rem 0 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-benefits li {
+            color: rgba(248, 248, 250, 0.82);
+            font-size: 0.84rem;
+            line-height: 1.5;
+            padding: 0.3rem 0 0.3rem 1.1rem;
+            position: relative;
+        }
+
+        .service-benefits li::before {
+            background: var(--gold-light);
+            border-radius: 50%;
+            content: '';
+            height: 0.3rem;
+            left: 0;
+            position: absolute;
+            top: 0.83rem;
+            width: 0.3rem;
+        }
+
+        .service-result {
+            align-items: center;
+            background: rgba(201, 162, 39, 0.07);
+            border: 1px solid rgba(240, 212, 119, 0.14);
+            border-radius: 8px;
+            color: var(--gold-light);
+            display: flex;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            line-height: 1.45;
+            margin-top: 1.25rem;
+            min-height: 3.2rem;
+            padding: 0.75rem 0.9rem;
+            position: relative;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        .reality-offer__cta {
+            align-items: center;
+            background: linear-gradient(120deg, rgba(201, 162, 39, 0.11), rgba(255, 255, 255, 0.025));
+            border: 1px solid rgba(240, 212, 119, 0.23);
+            border-radius: 14px;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: space-between;
+            margin-top: clamp(1.5rem, 3vw, 2.2rem);
+            padding: clamp(1.25rem, 2.5vw, 1.75rem);
+        }
+
+        .reality-offer__cta p {
+            color: rgba(248, 248, 250, 0.72);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .reality-offer__cta strong {
+            color: var(--light);
+            display: block;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.35rem;
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
+        }
+
+        .reality-offer__cta .btn {
+            border-radius: 7px;
+            flex: 0 0 auto;
+            justify-content: center;
+            text-align: center;
+        }
+
         .reality-pricing {
             background:
                 radial-gradient(circle at 12% 0%, rgba(232, 197, 71, 0.11), transparent 35%),
@@ -654,6 +890,10 @@
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
+            .reality-offer .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .reality-price-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
@@ -706,6 +946,24 @@
             .reality-showcase-note {
                 max-width: none;
                 text-align: center;
+                width: 100%;
+            }
+
+            .reality-offer .services-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .reality-offer .service-card:hover {
+                transform: none;
+            }
+
+            .reality-offer__cta {
+                align-items: stretch;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .reality-offer__cta .btn {
                 width: 100%;
             }
         }
@@ -887,42 +1145,62 @@
         </div>
     </section>
 
-    <section class="section" style="background: linear-gradient(180deg, rgba(18,18,26,1) 0%, var(--dark) 100%);">
+    <section class="section reality-offer" aria-labelledby="reality-offer-title">
         <div class="container">
-            <h2 class="section-title">Co pro vaši nabídku <span>připravíme</span></h2>
-            <p class="section-subtitle">Obsah přizpůsobíme typu nemovitosti i místu, kde ho budete publikovat</p>
+            <div class="reality-offer__intro">
+                <p class="reality-eyebrow">KOMPLETNÍ PREZENTACE NEMOVITOSTÍ</p>
+                <h2 class="section-title" id="reality-offer-title">Obsah, který promění inzerát v <span>silnou nabídku</span></h2>
+                <p class="section-subtitle">Profesionální video, realitní fotografie, dron a virtuální 3D prohlídka v jednotném stylu — připravené pro realitní portály, váš web i sociální sítě.</p>
+            </div>
 
             <div class="services-grid">
-                <div class="service-card">
-                    <span class="service-tag">01 / VIDEO</span>
-                    <h3>Videoprohlídky</h3>
-                    <p>Filmové prohlídky bytů, domů i komerčních prostor s plynulými záběry interiéru a exteriéru.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-tag">02 / DRON</span>
-                    <h3>Letecké záběry</h3>
-                    <p>Pohled na dům, pozemek, příjezdovou cestu i okolí, který zasadí nabídku do správného kontextu.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-tag">03 / FOTO</span>
-                    <h3>HDR fotografie</h3>
-                    <p>Profesionální fotografie interiéru a exteriéru se srovnáním svislic a drobnými retušemi.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-tag">04 / 3D</span>
-                    <h3>Virtuální 3D prohlídky</h3>
-                    <p>Interaktivní online prohlídka, díky které si zájemce projde dispozici vlastním tempem.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-tag">05 / SOCIAL</span>
-                    <h3>Formáty pro sociální sítě</h3>
-                    <p>Úprava hlavního videa do vertikálního či dalšího formátu pro Reels, Stories a placenou propagaci.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-tag">06 / KOMENTÁŘ</span>
-                    <h3>Komentované prohlídky</h3>
-                    <p>Prohlídka s makléřem, mluveným komentářem a titulky pro srozumitelné představení hlavních výhod.</p>
-                </div>
+                <article class="service-card">
+                    <div class="service-card__top"><span class="service-number" aria-hidden="true">01</span><span class="service-kicker">VIDEO PRO REALITY</span></div>
+                    <h3>Videoprohlídka nemovitosti</h3>
+                    <p>Plynulá filmová prezentace bytu, domu nebo komerčního prostoru ukáže dispozici, atmosféru i hlavní přednosti během prvních sekund.</p>
+                    <ul class="service-benefits"><li>Interiér, exteriér a detailní záběry</li><li>Profesionální střih a licencovaná hudba</li></ul>
+                    <span class="service-result">Více pozornosti pro váš inzerát</span>
+                </article>
+                <article class="service-card">
+                    <div class="service-card__top"><span class="service-number" aria-hidden="true">02</span><span class="service-kicker">REALITNÍ FOTO</span></div>
+                    <h3>Profesionální fotografie nemovitostí</h3>
+                    <p>Prémiové HDR fotografie interiéru i exteriéru představí prostor světlý, přirozený a důvěryhodný bez zkreslení reality.</p>
+                    <ul class="service-benefits"><li>Srovnání perspektivy a svislých linií</li><li>HDR zpracování a citlivé retuše</li></ul>
+                    <span class="service-result">Silný první dojem v nabídce</span>
+                </article>
+                <article class="service-card">
+                    <div class="service-card__top"><span class="service-number" aria-hidden="true">03</span><span class="service-kicker">DRON</span></div>
+                    <h3>Dronové záběry a letecké fotografie</h3>
+                    <p>Letecké video zasadí nemovitost do kontextu lokality a přehledně ukáže dům, pozemek, příjezdovou cestu i okolní vybavenost.</p>
+                    <ul class="service-benefits"><li>Přehledné představení pozemku a okolí</li><li>Filmové průlety pro video i sociální sítě</li></ul>
+                    <span class="service-result">Kompletní obraz nemovitosti a lokality</span>
+                </article>
+                <article class="service-card">
+                    <div class="service-card__top"><span class="service-number" aria-hidden="true">04</span><span class="service-kicker">MATTERPORT 3D</span></div>
+                    <h3>Virtuální 3D prohlídka nemovitosti</h3>
+                    <p>Interaktivní Matterport prohlídka umožní zájemcům projít dispozici online, vlastním tempem a kdykoliv před osobní návštěvou.</p>
+                    <ul class="service-benefits"><li>Online přístup k nemovitosti 24/7</li><li>Jasnější představa o návaznosti místností</li></ul>
+                    <span class="service-result">Kvalifikovanější zájemci o prohlídku</span>
+                </article>
+                <article class="service-card">
+                    <div class="service-card__top"><span class="service-number" aria-hidden="true">05</span><span class="service-kicker">REELS A SOCIAL</span></div>
+                    <h3>Vertikální video nemovitosti pro Reels</h3>
+                    <p>Dynamický formát 9:16 představí nabídku na Instagramu, Facebooku i TikToku a pomůže oslovit zájemce mimo realitní portály.</p>
+                    <ul class="service-benefits"><li>Formát připravený pro mobilní obrazovky</li><li>Rychlý střih s důrazem na první sekundy</li></ul>
+                    <span class="service-result">Větší dosah na sociálních sítích</span>
+                </article>
+                <article class="service-card">
+                    <div class="service-card__top"><span class="service-number" aria-hidden="true">06</span><span class="service-kicker">MAKLÉŘ PŘED KAMEROU</span></div>
+                    <h3>Komentovaná videoprohlídka s makléřem</h3>
+                    <p>Osobní prezentace s mluveným komentářem a titulky vysvětlí klíčové výhody nemovitosti a současně podpoří značku makléře.</p>
+                    <ul class="service-benefits"><li>Srozumitelný komentář a profesionální titulky</li><li>Vhodné pro web, inzerci i sociální sítě</li></ul>
+                    <span class="service-result">Vyšší důvěra v nabídku i makléře</span>
+                </article>
+            </div>
+
+            <div class="reality-offer__cta">
+                <p><strong>Vybereme kombinaci, která dává smysl právě vaší nemovitosti.</strong>Rozsah, cenu i termín dodání vám potvrdíme předem.</p>
+                <a href="kontakt.html#poptavka" class="btn btn-primary">Poptat prezentaci nemovitosti</a>
             </div>
         </div>
     </section>
