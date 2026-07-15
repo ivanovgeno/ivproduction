@@ -453,6 +453,50 @@
             background: #0b0b0f;
         }
 
+        .budka-section-visual {
+            aspect-ratio: 16 / 7;
+            border: 1px solid rgba(240, 212, 119, 0.24);
+            border-radius: 1.15rem;
+            box-shadow: 0 1.6rem 4.5rem rgba(0, 0, 0, 0.34);
+            margin: 2.6rem auto 0;
+            max-width: 76rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .budka-section-visual::after {
+            background: linear-gradient(180deg, transparent 48%, rgba(5, 5, 8, 0.68));
+            content: '';
+            inset: 0;
+            pointer-events: none;
+            position: absolute;
+        }
+
+        .budka-section-visual img {
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 650ms ease, transform 900ms cubic-bezier(0.2, 0.72, 0.2, 1);
+            width: 100%;
+        }
+
+        .budka-section-visual:hover img {
+            filter: brightness(1.06) saturate(1.04);
+            transform: scale(1.025);
+        }
+
+        .budka-section-visual figcaption {
+            bottom: clamp(1rem, 2.4vw, 1.8rem);
+            color: rgba(255, 255, 255, 0.92);
+            font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+            font-weight: 700;
+            left: clamp(1rem, 2.4vw, 1.8rem);
+            letter-spacing: 0.1em;
+            position: absolute;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
         .budka-steps {
             display: grid;
             gap: 1rem;
@@ -514,6 +558,14 @@
             overflow: hidden;
             position: relative;
             scroll-snap-align: start;
+        }
+
+        .budka-gallery-shell.is-autoplaying .budka-gallery {
+            cursor: grab;
+        }
+
+        .budka-gallery-shell.is-autoplaying .budka-gallery:active {
+            cursor: grabbing;
         }
 
         .budka-gallery--backgrounds figure {
@@ -831,6 +883,11 @@
                 grid-auto-columns: 86%;
             }
 
+            .budka-section-visual {
+                aspect-ratio: 4 / 3;
+                margin-top: 2rem;
+            }
+
             .budka-gallery-control[data-gallery-prev] { left: 0.35rem; }
             .budka-gallery-control[data-gallery-next] { right: 0.35rem; }
 
@@ -937,6 +994,10 @@
                 <p class="package-section-kicker">Jednodušší už to být nemůže</p>
                 <h2 class="section-title">Jak IV Budka <span>funguje?</span></h2>
                 <p class="section-subtitle">Hosté se baví sami, naše obsluha je ale vždy nablízku a celý průběh hlídá.</p>
+                <figure class="budka-section-visual">
+                    <img src="assets/fotobudka/section-how.webp" alt="Hosté používající IV Budku a přebírající čerstvě vytištěnou fotografii" loading="lazy">
+                    <figcaption>Od první pózy k hotové fotografii během několika sekund</figcaption>
+                </figure>
                 <div class="budka-steps">
                     <article class="budka-step"><strong>1</strong><h3>Vyberte rekvizity</h3><p>Čím bláznivější kombinace, tím lepší výsledná fotka.</p></article>
                     <article class="budka-step"><strong>2</strong><h3>Postavte se před pozadí</h3><p>Na dotykovém monitoru se hned uvidíte a snadno doladíte pozici.</p></article>
@@ -1020,6 +1081,10 @@
             <div class="container">
                 <p class="package-section-kicker">Spolehlivá technika</p><h2 class="section-title">Co pracuje <span>uvnitř IV Budky</span></h2>
                 <p class="section-subtitle">Profesionální komponenty pro rychlý provoz a kvalitní výsledek za každého světla.</p>
+                <figure class="budka-section-visual">
+                    <img src="assets/fotobudka/section-tech.webp" alt="Profesionální fotoaparát, fototiskárna, počítač, dotykový displej a studiový blesk IV Budky" loading="lazy">
+                    <figcaption>Profesionální sestava sladěná pro rychlost a stálou kvalitu</figcaption>
+                </figure>
                 <div class="budka-tech-grid">
                     <article class="budka-tech-card"><span class="budka-card-number">FOTO</span><h3>Fotoaparát Canon</h3><p>Ostré fotografie s přirozeným podáním barev a dostatkem detailů.</p></article>
                     <article class="budka-tech-card"><span class="budka-card-number">TISK</span><h3>Fototiskárna DNP</h3><p>Rychlý profesionální tisk s dlouhou životností a konzistentní kvalitou.</p></article>
@@ -1034,6 +1099,10 @@
         <section class="section budka-requirements">
             <div class="container">
                 <p class="package-section-kicker">Příprava bez překvapení</p><h2 class="section-title">Co potřebujeme <span>na místě</span></h2>
+                <figure class="budka-section-visual">
+                    <img src="assets/fotobudka/section-preparation.webp" alt="Připravený prostor pro IV Budku uvnitř sálu vedle venkovního svatebního stanu" loading="lazy">
+                    <figcaption>Promyšlené umístění uvnitř i při venkovní akci</figcaption>
+                </figure>
                 <div class="budka-requirements-grid">
                     <article class="budka-requirement"><h3>Uvnitř</h3><ul><li>Zdroj elektřiny 220 V co nejblíže fotokoutku</li><li>Prostor přibližně 3 × 3 metry a alespoň 3 metry před pozadím</li><li>Jeden až dva stolky pro bezpečné rozmístění rekvizit</li><li>Internet pouze při okamžitém posílání nebo promítání fotografií</li></ul></article>
                     <article class="budka-requirement"><h3>Venkovní akce</h3><p>Můžeme přivézt bílý stan se třemi bočnicemi pro stabilní světelné podmínky. Stan je nutné ukotvit, proto je nejlepší travnatý povrch. Beton nebo jiné nestandardní umístění nám prosím nahlaste předem.</p></article>
@@ -1277,12 +1346,92 @@
     <script>
         document.querySelectorAll('[data-photo-gallery]').forEach((shell) => {
             const gallery = shell.querySelector('.budka-gallery');
-            const move = (direction) => {
-                if (!gallery) return;
-                gallery.scrollBy({ left: direction * Math.max(280, gallery.clientWidth * 0.78), behavior: 'smooth' });
+            if (!gallery) return;
+
+            const originals = Array.from(gallery.querySelectorAll('figure'));
+            if (originals.length < 2) return;
+
+            const clones = originals.map((figure) => {
+                const clone = figure.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                clone.dataset.galleryClone = 'true';
+                gallery.append(clone);
+                return clone;
+            });
+
+            const state = { timer: null, normalizeTimer: null, hovering: false, dragging: false };
+            const loopWidth = () => clones[0].offsetLeft - originals[0].offsetLeft;
+            const stepWidth = () => {
+                const gap = Number.parseFloat(getComputedStyle(gallery).columnGap || getComputedStyle(gallery).gap || '0');
+                return originals[0].getBoundingClientRect().width + gap;
             };
-            shell.querySelector('[data-gallery-prev]')?.addEventListener('click', () => move(-1));
-            shell.querySelector('[data-gallery-next]')?.addEventListener('click', () => move(1));
+
+            const setInstantPosition = (left) => {
+                const previousBehavior = gallery.style.scrollBehavior;
+                const previousSnap = gallery.style.scrollSnapType;
+                gallery.style.scrollBehavior = 'auto';
+                gallery.style.scrollSnapType = 'none';
+                gallery.scrollLeft = left;
+                requestAnimationFrame(() => {
+                    gallery.style.scrollBehavior = previousBehavior;
+                    gallery.style.scrollSnapType = previousSnap;
+                });
+            };
+
+            const normalize = () => {
+                const width = loopWidth();
+                if (width && gallery.scrollLeft >= width - 1) setInstantPosition(gallery.scrollLeft - width);
+            };
+
+            const queueNormalize = () => {
+                clearTimeout(state.normalizeTimer);
+                state.normalizeTimer = setTimeout(normalize, 180);
+            };
+
+            const move = (direction) => {
+                const width = loopWidth();
+                const step = stepWidth();
+                if (!width || !step) return;
+                if (direction < 0 && gallery.scrollLeft <= 1) {
+                    setInstantPosition(width);
+                    requestAnimationFrame(() => gallery.scrollBy({ left: -step, behavior: 'smooth' }));
+                    return;
+                }
+                gallery.scrollBy({ left: direction * step, behavior: 'smooth' });
+            };
+
+            const stop = () => {
+                clearTimeout(state.timer);
+                state.timer = null;
+            };
+
+            const schedule = () => {
+                stop();
+                if (document.hidden || state.dragging) return;
+                state.timer = setTimeout(() => {
+                    move(1);
+                    schedule();
+                }, state.hovering ? 4200 : 2000);
+            };
+
+            shell.classList.add('is-autoplaying');
+            gallery.addEventListener('scroll', queueNormalize, { passive: true });
+            shell.addEventListener('mouseenter', () => { state.hovering = true; schedule(); });
+            shell.addEventListener('mouseleave', () => { state.hovering = false; schedule(); });
+            gallery.addEventListener('pointerdown', () => { state.dragging = true; stop(); });
+            const resume = () => {
+                if (!state.dragging) return;
+                state.dragging = false;
+                queueNormalize();
+                schedule();
+            };
+            gallery.addEventListener('pointerup', resume);
+            gallery.addEventListener('pointercancel', resume);
+            gallery.addEventListener('lostpointercapture', resume);
+            document.addEventListener('visibilitychange', schedule);
+            shell.querySelector('[data-gallery-prev]')?.addEventListener('click', () => { move(-1); schedule(); });
+            shell.querySelector('[data-gallery-next]')?.addEventListener('click', () => { move(1); schedule(); });
+            schedule();
         });
     </script>
 </body>
