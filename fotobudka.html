@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fotobudka na Svatbu & Akce | IV Budka</title>
+    <title>Fotobudka na svatbu, ples a firemní akci | IV Budka</title>
     <meta name="description"
-        content="Prémiová fotobudka s neomezeným tiskem a online galerií. Svatby, plesy, firemní akce. Cena od 6000 Kč.">
-    <link rel="canonical" href="https://www.ivproduction.cz/fotobudka.html">
+        content="IV Budka s okamžitým tiskem do 10 sekund, rekvizitami, obsluhou a grafikou na míru. Svatby od 5 000 Kč, plesy, oslavy i firemní akce po celé ČR.">
+    <link rel="canonical" href="https://www.ivproduction.cz/fotobudka">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -315,8 +315,535 @@
     <link rel="stylesheet" href="premium.css?v=20260715-social-icons">
     <script src="premium.js?v=20260715-unified-shell" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
-    <script src="portfolio-data.js?v=20260712-portfoliohub" defer></script>
-    <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
+    <style>
+        body.page-fotobudka {
+            background: #0a0a0f;
+        }
+
+        body.page-fotobudka .hero {
+            min-height: clamp(42rem, 82vh, 58rem);
+            overflow: hidden;
+            padding: 9rem 2rem 5rem;
+        }
+
+        body.page-fotobudka .hero::before {
+            background-image: url('fotobudka-bg.jpg');
+            background-position: center 42%;
+            filter: brightness(0.46) saturate(0.82);
+            transform: scale(1.025);
+        }
+
+        body.page-fotobudka .hero::after {
+            background:
+                radial-gradient(circle at 62% 42%, rgba(201, 162, 39, 0.13), transparent 35%),
+                linear-gradient(90deg, rgba(8, 8, 12, 0.94) 0%, rgba(8, 8, 12, 0.73) 48%, rgba(8, 8, 12, 0.48) 100%),
+                linear-gradient(180deg, rgba(8, 8, 12, 0.12), #0a0a0f 100%);
+        }
+
+        body.page-fotobudka .hero-content {
+            margin: 0 auto;
+            max-width: 76rem;
+            text-align: left;
+            width: 100%;
+        }
+
+        body.page-fotobudka .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(3.2rem, 6.7vw, 7.1rem);
+            letter-spacing: -0.055em;
+            line-height: 0.91;
+            max-width: 58rem;
+        }
+
+        body.page-fotobudka .hero p {
+            color: rgba(250, 249, 246, 0.76);
+            font-size: clamp(1.05rem, 1.65vw, 1.3rem);
+            line-height: 1.65;
+            max-width: 45rem;
+        }
+
+        body.page-fotobudka .package-section-kicker {
+            color: var(--gold-shine);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            margin: 0 auto 0.85rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .budka-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-top: 1.7rem;
+        }
+
+        .budka-hero-proof {
+            color: rgba(250, 249, 246, 0.59) !important;
+            font-size: 0.76rem !important;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            margin: 1.35rem 0 0 !important;
+            text-transform: uppercase;
+        }
+
+        .budka-intro {
+            background:
+                radial-gradient(circle at 14% 20%, rgba(201, 162, 39, 0.12), transparent 28rem),
+                #101014;
+        }
+
+        .budka-intro-copy {
+            color: rgba(250, 249, 246, 0.72);
+            font-size: clamp(1rem, 1.35vw, 1.13rem);
+            line-height: 1.82;
+            margin: 0 auto;
+            max-width: 58rem;
+            text-align: center;
+        }
+
+        .budka-benefits {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: clamp(2.5rem, 5vw, 4rem);
+        }
+
+        .budka-benefit,
+        .budka-step,
+        .budka-tech-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+            border: 1px solid rgba(240, 212, 119, 0.16);
+            border-radius: 1rem;
+        }
+
+        .budka-benefit {
+            min-height: 14rem;
+            padding: clamp(1.35rem, 2.3vw, 1.9rem);
+        }
+
+        .budka-card-number {
+            color: var(--gold-light);
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .budka-benefit h3,
+        .budka-step h3,
+        .budka-tech-card h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.35rem, 2vw, 1.7rem);
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        .budka-benefit p,
+        .budka-step p,
+        .budka-tech-card p {
+            color: rgba(250, 249, 246, 0.63);
+            font-size: 0.93rem;
+            line-height: 1.65;
+        }
+
+        .budka-how {
+            background: #0b0b0f;
+        }
+
+        .budka-steps {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            margin-top: 2.8rem;
+        }
+
+        .budka-step {
+            padding: 1.35rem;
+        }
+
+        .budka-step strong {
+            align-items: center;
+            background: var(--gradient);
+            border-radius: 50%;
+            color: #111115;
+            display: flex;
+            font-size: 0.82rem;
+            height: 2.35rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            width: 2.35rem;
+        }
+
+        .budka-gallery-section {
+            background:
+                radial-gradient(circle at 82% 12%, rgba(201, 162, 39, 0.12), transparent 27rem),
+                linear-gradient(180deg, #111116, #0b0b0f);
+            overflow: hidden;
+        }
+
+        .budka-gallery-shell {
+            margin-top: 2.7rem;
+            position: relative;
+        }
+
+        .budka-gallery {
+            display: grid;
+            gap: 1rem;
+            grid-auto-columns: minmax(19rem, 32%);
+            grid-auto-flow: column;
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
+            padding: 0.4rem 0.2rem 1rem;
+            scroll-behavior: smooth;
+            scroll-snap-type: inline mandatory;
+            scrollbar-width: none;
+        }
+
+        .budka-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .budka-gallery figure {
+            aspect-ratio: 4 / 3;
+            background: #18181d;
+            border: 1px solid rgba(240, 212, 119, 0.18);
+            border-radius: 0.9rem;
+            overflow: hidden;
+            position: relative;
+            scroll-snap-align: start;
+        }
+
+        .budka-gallery--backgrounds figure {
+            aspect-ratio: 1 / 1;
+        }
+
+        .budka-gallery img {
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 400ms ease, transform 650ms ease;
+            width: 100%;
+        }
+
+        .budka-gallery figure:hover img {
+            filter: brightness(1.06) saturate(1.06);
+            transform: scale(1.045);
+        }
+
+        .budka-gallery .budka-gallery-contain img {
+            object-fit: contain;
+            padding: 0.45rem;
+        }
+
+        .budka-gallery figcaption {
+            background: linear-gradient(180deg, transparent, rgba(5, 5, 8, 0.9));
+            bottom: 0;
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            inset-inline: 0;
+            letter-spacing: 0.06em;
+            padding: 2.8rem 1rem 0.9rem;
+            position: absolute;
+            text-transform: uppercase;
+        }
+
+        .budka-gallery-control {
+            align-items: center;
+            background: rgba(10, 10, 15, 0.9);
+            border: 1px solid rgba(240, 212, 119, 0.48);
+            border-radius: 50%;
+            color: var(--gold-light);
+            cursor: pointer;
+            display: flex;
+            font-size: 1.3rem;
+            height: 3rem;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3rem;
+            z-index: 3;
+        }
+
+        .budka-gallery-control:hover {
+            background: var(--gradient);
+            color: #111115;
+        }
+
+        .budka-gallery-control[data-gallery-prev] { left: -1.35rem; }
+        .budka-gallery-control[data-gallery-next] { right: -1.35rem; }
+
+        .budka-pricing {
+            background: #101014;
+        }
+
+        .budka-ples-offer {
+            align-items: center;
+            background:
+                radial-gradient(circle at 20% 0%, rgba(255, 229, 92, 0.15), transparent 22rem),
+                linear-gradient(135deg, rgba(38, 34, 20, 0.97), rgba(12, 12, 16, 0.98));
+            border: 1px solid rgba(255, 229, 92, 0.42);
+            border-radius: 1rem;
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr auto;
+            margin: 2.8rem auto 1.25rem;
+            max-width: 76rem;
+            padding: clamp(1.5rem, 3vw, 2.2rem);
+        }
+
+        .budka-ples-offer h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.15rem);
+            margin-bottom: 0.45rem;
+        }
+
+        .budka-ples-offer p {
+            color: rgba(250, 249, 246, 0.67);
+            line-height: 1.65;
+        }
+
+        .budka-ples-price {
+            color: var(--gold-light);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3.25rem);
+            font-weight: 700;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .budka-ples-price small {
+            color: rgba(250, 249, 246, 0.58);
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .budka-packages {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin: 2.7rem auto 0;
+            max-width: 76rem;
+        }
+
+        .budka-package {
+            background: linear-gradient(150deg, rgba(28, 28, 33, 0.98), rgba(10, 10, 14, 0.99));
+            border: 1px solid rgba(240, 212, 119, 0.17);
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            padding: clamp(1.5rem, 2.6vw, 2.1rem);
+            transition: border-color 280ms ease, box-shadow 350ms ease, transform 350ms ease;
+        }
+
+        .budka-package:hover {
+            border-color: rgba(255, 229, 92, 0.52);
+            box-shadow: 0 1.7rem 4rem rgba(0, 0, 0, 0.3);
+            transform: translateY(-0.65rem);
+        }
+
+        .budka-package--featured {
+            background:
+                radial-gradient(circle at 50% -5%, rgba(255, 229, 92, 0.2), transparent 45%),
+                linear-gradient(150deg, rgba(38, 34, 20, 0.99), rgba(10, 10, 14, 0.99));
+            border-color: rgba(255, 229, 92, 0.72);
+        }
+
+        .budka-package-label {
+            color: var(--gold-light);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .budka-package h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            line-height: 1.05;
+        }
+
+        .budka-package-price {
+            color: var(--gold-light);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.1rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            margin: 1.2rem 0;
+        }
+
+        .budka-package ul {
+            flex: 1;
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .budka-package li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+            color: rgba(250, 249, 246, 0.7);
+            display: flex;
+            font-size: 0.9rem;
+            gap: 0.65rem;
+            line-height: 1.45;
+            padding: 0.68rem 0;
+        }
+
+        .budka-package li::before {
+            color: var(--gold-light);
+            content: '✓';
+            font-weight: 800;
+        }
+
+        .budka-custom-offer {
+            color: rgba(250, 249, 246, 0.65);
+            line-height: 1.7;
+            margin: 2rem auto 0;
+            max-width: 58rem;
+            text-align: center;
+        }
+
+        .budka-tech {
+            background: linear-gradient(180deg, #0b0b0f, #101014);
+        }
+
+        .budka-tech-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 2.8rem;
+        }
+
+        .budka-tech-card {
+            padding: 1.35rem;
+        }
+
+        .budka-requirements {
+            background: #0b0b0e;
+        }
+
+        .budka-requirements-grid {
+            display: grid;
+            gap: 1.2rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin: 2.7rem auto 0;
+            max-width: 72rem;
+        }
+
+        .budka-requirement {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(250, 249, 246, 0.1);
+            border-radius: 1rem;
+            padding: clamp(1.4rem, 2.6vw, 2rem);
+        }
+
+        .budka-requirement h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .budka-requirement p,
+        .budka-requirement li {
+            color: rgba(250, 249, 246, 0.66);
+            line-height: 1.7;
+        }
+
+        .budka-requirement ul {
+            list-style: none;
+        }
+
+        .budka-requirement li + li {
+            margin-top: 0.5rem;
+        }
+
+        .budka-requirement li::before {
+            color: var(--gold-light);
+            content: '—';
+            margin-right: 0.55rem;
+        }
+
+        .budka-final {
+            background:
+                radial-gradient(circle at 18% 0%, rgba(201, 162, 39, 0.15), transparent 25rem),
+                #101014;
+            border-block: 1px solid rgba(201, 162, 39, 0.15);
+            text-align: center;
+        }
+
+        .budka-final .section-subtitle {
+            margin-inline: auto;
+            max-width: 46rem;
+        }
+
+        @media (max-width: 980px) {
+            .budka-benefits,
+            .budka-packages,
+            .budka-tech-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .budka-steps {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .budka-package:hover {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 700px) {
+            body.page-fotobudka .hero {
+                min-height: 46rem;
+                padding-inline: 1.25rem;
+            }
+
+            body.page-fotobudka .hero::after {
+                background: linear-gradient(180deg, rgba(8, 8, 12, 0.42), rgba(8, 8, 12, 0.92) 76%, #0a0a0f 100%);
+            }
+
+            body.page-fotobudka .hero-content {
+                text-align: center;
+            }
+
+            .budka-hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .budka-hero-actions .btn {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .budka-steps,
+            .budka-requirements-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .budka-gallery {
+                grid-auto-columns: 86%;
+            }
+
+            .budka-gallery-control[data-gallery-prev] { left: 0.35rem; }
+            .budka-gallery-control[data-gallery-next] { right: 0.35rem; }
+
+            .budka-ples-offer {
+                grid-template-columns: minmax(0, 1fr);
+                text-align: center;
+            }
+
+            .budka-ples-price {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body class="page-fotobudka">
@@ -376,84 +903,152 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Fotobudka, kterou hosté <span>nepustí z ruky</span></h1>
-            <p>Neomezený tisk, online galerie a zkušená obsluha. Zábava, která přirozeně propojí hosty a zůstane jim v ruce.</p>
-            <a href="kontakt.html" class="btn btn-primary">Poptat fotobudku</a>
-        </div>
-    </section>
-
-    <section class="section" style="padding-bottom: 0;">
-        <div class="container">
-            <h2 class="section-title">Zábava, která <span>spojuje</span></h2>
-            <div
-                style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--gray-light); line-height: 1.8; font-size: 1.1rem;">
-                <p style="margin-bottom: 1.5rem;">
-                    Hledáte způsob, jak oživit svou svatbu, firemní večírek nebo oslavu? Naše moderní fotobudka je
-                    zárukou skvělé zábavy pro všechny generace. Okamžitý tisk fotografií, množství vtipných rekvizit a
-                    možnost sdílení na sociální sítě zajistí, že se vaši hosté nebudou nudit ani minutu.
-                </p>
-                <p>
-                    Fotokoutek není jen o focení, je to zážitek. Každá vytištěná fotka slouží jako krásná památka na
-                    vaši akci. Nabízíme různé formáty tisku, personalizovanou grafiku na míru a profesionální obsluhu,
-                    která se postará o hladký průběh po celou dobu pronájmu.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Vyberte si <span>typ budky</span></h2>
-            <p class="section-subtitle">Máme dvě varianty pro různé typy akcí</p>
-
-            <div class="budka-types">
-                <div class="budka-card">
-                    <h3>IV Budka</h3>
-                    <p class="subtitle">Klasická fotobudka</p>
-                    <ul class="budka-features">
-                        <li>Neomezený počet fotografií</li>
-                        <li>Okamžitý tisk na místě</li>
-                        <li>Online galerie pro hosty</li>
-                        <li>Rekvizity v ceně</li>
-                        <li>Obsluha po celou dobu</li>
-                        <li>Vlastní grafika na fotky</li>
-                    </ul>
-                    <div class="budka-price">od 6 000 Kč</div>
-                    <a href="kontakt.html" class="budka-btn">Nezávazná poptávka</a>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Fotobudka, která rozesměje <span>celou akci</span></h1>
+                <p>Okamžitý tisk do 10 sekund, hromada rekvizit, grafika na míru a obsluha, která se postará o vše. Vy jen vyberete pozadí a začnete se bavit.</p>
+                <div class="budka-hero-actions">
+                    <a href="kontakt.html#poptavka" class="btn btn-primary">Ověřit volný termín</a>
+                    <a href="#cenik" class="btn btn-outline">Prohlédnout ceník</a>
                 </div>
+                <p class="budka-hero-proof">Svatby · plesy · oslavy · firemní akce · okamžitý tisk · celá ČR</p>
+            </div>
+        </section>
 
-                <div class="budka-card">
-                    <h3>IV Budka 360°</h3>
-                    <p class="subtitle">Rotační video budka</p>
-                    <ul class="budka-features">
-                        <li>360° videa pro sociální sítě</li>
-                        <li>Slow motion efekty</li>
-                        <li>Okamžité sdílení</li>
-                        <li>Virální obsah pro hosty</li>
-                        <li>Obsluha po celou dobu</li>
-                        <li>Branded overlay</li>
-                    </ul>
-                    <div class="budka-price">od 8 000 Kč</div>
-                    <a href="kontakt.html" class="budka-btn">Nezávazná poptávka</a>
+        <section class="section budka-intro">
+            <div class="container">
+                <p class="package-section-kicker">Naše vlastní IV Budka</p>
+                <h2 class="section-title">Od prvního návrhu až po detail <span>vznikla vlastníma rukama</span></h2>
+                <p class="budka-intro-copy">IV Budku jsme postavili od základu sami a promítli do ní zkušenosti z let focení a natáčení akcí. Výsledkem je intuitivní fotobudka, kterou zvládnou děti i technicky méně zdatní hosté — a přesto u ní vždy zůstává naše obsluha.</p>
+                <div class="budka-benefits">
+                    <article class="budka-benefit"><span class="budka-card-number">01 · RYCHLOST</span><h3>Fotka v ruce do 10 sekund</h3><p>Profesionální tiskárna DNP vytiskne ostrou a trvanlivou fotografii dřív, než si stihnete sundat rekvizity.</p></article>
+                    <article class="budka-benefit"><span class="budka-card-number">02 · VLASTNÍ STYL</span><h3>Grafika připravená pro vaši akci</h3><p>Spodní lištu nebo celý rámeček sladíme se svatbou, firemní identitou, plesem či tématem oslavy.</p></article>
+                    <article class="budka-benefit"><span class="budka-card-number">03 · POZADÍ</span><h3>Klasické i digitální světy</h3><p>Vyberte fyzické pozadí nebo hosty díky klíčování přeneste na Měsíc, do kouzelné školy či kamkoliv jinam.</p></article>
+                    <article class="budka-benefit"><span class="budka-card-number">04 · REKVIZITY</span><h3>Výbava pro každou generaci</h3><p>Klobouky, brýle, čelenky, masky i tematické cedulky vozíme na svatby, narozeniny, Halloween i Vánoce.</p></article>
+                    <article class="budka-benefit"><span class="budka-card-number">05 · FORMÁTY</span><h3>Fotka 10 × 15 nebo foto strip</h3><p>Zvolte klasickou fotografii nebo oblíbený proužek tří snímků 5 × 15 cm. Výsledky získáte také elektronicky.</p></article>
+                    <article class="budka-benefit"><span class="budka-card-number">06 · NAVÍC ZDARMA</span><h3>GIF a Boomerang bez příplatku</h3><p>Když zrovna není fronta, vytvoříme hostům pohyblivý GIF nebo Boomerang připravený ke sdílení.</p></article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" style="background: linear-gradient(180deg, rgba(18,18,26,1) 0%, var(--dark) 100%);">
-        <div class="container" style="text-align: center;">
-            <h2 class="section-title">Speciální <span>nabídka</span></h2>
-            <p class="section-subtitle" style="max-width: 600px; margin-left: auto; margin-right: auto;">
-                K video balíčkům navíc kompletní fotokoutek s naší IV Budkou pouze za <strong
-                    style="color: var(--gold);">6 000 Kč</strong> po celou dobu naší přítomnosti!
-            </p>
-            <a href="kontakt.html" class="btn btn-primary">Nezávazná poptávka</a>
-        </div>
-    </section>
+        <section class="section budka-how">
+            <div class="container">
+                <p class="package-section-kicker">Jednodušší už to být nemůže</p>
+                <h2 class="section-title">Jak IV Budka <span>funguje?</span></h2>
+                <p class="section-subtitle">Hosté se baví sami, naše obsluha je ale vždy nablízku a celý průběh hlídá.</p>
+                <div class="budka-steps">
+                    <article class="budka-step"><strong>1</strong><h3>Vyberte rekvizity</h3><p>Čím bláznivější kombinace, tím lepší výsledná fotka.</p></article>
+                    <article class="budka-step"><strong>2</strong><h3>Postavte se před pozadí</h3><p>Na dotykovém monitoru se hned uvidíte a snadno doladíte pozici.</p></article>
+                    <article class="budka-step"><strong>3</strong><h3>Počkejte na odpočet</h3><p>Podívejte se do objektivu, zkuste nemrkat a předveďte nejlepší pózu.</p></article>
+                    <article class="budka-step"><strong>4</strong><h3>Vyberte záběr</h3><p>Když se nepovede, jednoduše pořídíte další a vyberete si ten pravý.</p></article>
+                    <article class="budka-step"><strong>5</strong><h3>Vyzvedněte výtisk</h3><p>Sdělíte počet kopií a do 10 sekund držíte hotovou fotografii.</p></article>
+                </div>
+            </div>
+        </section>
 
-    <section class="related-work" data-portfolio-slider data-portfolio-categories="fotobudka,plesy" data-portfolio-title="Zábava, která spojuje hosty" data-portfolio-accent="na každé akci"></section>
+        <section class="section budka-gallery-section">
+            <div class="container">
+                <p class="package-section-kicker">Skutečné momenty</p>
+                <h2 class="section-title">Ukázky fotografií <span>z IV Budky</span></h2>
+                <p class="section-subtitle">Svatby, plesy i večírky. Každá akce má vlastní atmosféru a grafiku.</p>
+                <div class="budka-gallery-shell" data-photo-gallery>
+                    <button class="budka-gallery-control" type="button" data-gallery-prev aria-label="Předchozí fotografie">←</button>
+                    <div class="budka-gallery" tabindex="0" aria-label="Galerie fotografií z IV Budky">
+                        <figure><img src="assets/fotobudka/gallery-01.webp" alt="Hosté pózující v IV Budce" loading="lazy"><figcaption>Zábava pro všechny hosty</figcaption></figure>
+                        <figure class="budka-gallery-contain"><img src="assets/fotobudka/gallery-02.webp" alt="IV Budka připravená na akci" loading="lazy"><figcaption>IV Budka na místě</figcaption></figure>
+                        <figure><img src="assets/fotobudka/gallery-03.webp" alt="Vytištěná fotografie z fotobudky" loading="lazy"><figcaption>Vzpomínka ihned do ruky</figcaption></figure>
+                        <figure><img src="assets/fotobudka/gallery-04.webp" alt="Hosté s rekvizitami ve fotokoutku" loading="lazy"><figcaption>Rekvizity a originální pózy</figcaption></figure>
+                        <figure><img src="assets/fotobudka/gallery-05.webp" alt="Fotografie hostů z večerní akce" loading="lazy"><figcaption>Fotografie z večerní akce</figcaption></figure>
+                    </div>
+                    <button class="budka-gallery-control" type="button" data-gallery-next aria-label="Další fotografie">→</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section budka-pricing" id="cenik">
+            <div class="container">
+                <p class="package-section-kicker">Přehledná nabídka</p>
+                <h2 class="section-title">Kolik IV Budka <span>stojí?</span></h2>
+                <p class="section-subtitle">Ceny a obsah balíčků vycházejí z původní nabídky IV Budky.</p>
+                <article class="budka-ples-offer">
+                    <div><p class="budka-package-label">Plesy</p><h3>Pronájem IV Budky s obsluhou zdarma</h3><p>Doprava po Královéhradeckém kraji je zahrnutá. Vzdálenější lokality řešíme individuálně.</p></div>
+                    <div class="budka-ples-price">50 Kč<small>za každou vytištěnou fotografii</small></div>
+                </article>
+                <div class="budka-packages">
+                    <article class="budka-package">
+                        <p class="budka-package-label">Svatba · 1 hodina</p><h3>Fotokoutek MINI</h3><div class="budka-package-price">5 000 Kč</div>
+                        <ul><li>Pozadí z naší nabídky</li><li>Neomezený tisk fotografií 10 × 15 cm</li><li>Grafické zpracování rámečku</li><li>Profesionální obsluha</li></ul>
+                        <a href="kontakt.html#poptavka" class="budka-btn">Ověřit termín</a>
+                    </article>
+                    <article class="budka-package budka-package--featured">
+                        <p class="budka-package-label">Svatba · 2 hodiny · oblíbená volba</p><h3>Fotokoutek STANDARD</h3><div class="budka-package-price">8 000 Kč</div>
+                        <ul><li>Pozadí z nabídky nebo připravené na míru</li><li>Rozsáhlá sada rekvizit</li><li>Neomezený tisk fotografií 10 × 15 cm</li><li>Grafické zpracování rámečku</li><li>Profesionální obsluha</li></ul>
+                        <a href="kontakt.html#poptavka" class="budka-btn">Poptat Standard</a>
+                    </article>
+                    <article class="budka-package">
+                        <p class="budka-package-label">Svatba · 3 hodiny</p><h3>Fotokoutek PREMIUM</h3><div class="budka-package-price">10 000 Kč</div>
+                        <ul><li>Pozadí z nabídky nebo připravené na míru</li><li>Rozsáhlá sada rekvizit</li><li>Neomezený tisk fotografií 10 × 15 cm</li><li>Grafické zpracování rámečku</li><li>Profesionální obsluha</li></ul>
+                        <a href="kontakt.html#poptavka" class="budka-btn">Poptat Premium</a>
+                    </article>
+                </div>
+                <p class="budka-custom-offer">Firemní večírky, narozeninové oslavy, koncerty, kulturní akce a další příležitosti naceníme individuálně podle délky, lokality a požadovaného rozsahu.</p>
+            </div>
+        </section>
+
+        <section class="section budka-gallery-section">
+            <div class="container">
+                <p class="package-section-kicker">Vzhled podle vaší akce</p>
+                <h2 class="section-title">Galerie dostupných <span>pozadí</span></h2>
+                <p class="section-subtitle">Konkrétní dostupnost i možnost pozadí na míru potvrdíme při rezervaci.</p>
+                <div class="budka-gallery-shell" data-photo-gallery>
+                    <button class="budka-gallery-control" type="button" data-gallery-prev aria-label="Předchozí pozadí">←</button>
+                    <div class="budka-gallery budka-gallery--backgrounds" tabindex="0" aria-label="Galerie pozadí pro IV Budku">
+                        <figure><img src="assets/fotobudka/background-01.webp" alt="Stříbrné třpytivé pozadí pro fotobudku" loading="lazy"><figcaption>Stříbrné třpytky</figcaption></figure>
+                        <figure><img src="assets/fotobudka/background-02.webp" alt="Světlé pozadí se srdíčky pro fotobudku" loading="lazy"><figcaption>Světelná srdíčka</figcaption></figure>
+                        <figure><img src="assets/fotobudka/background-03.webp" alt="Modré třpytivé pozadí pro fotobudku" loading="lazy"><figcaption>Modré třpytky</figcaption></figure>
+                        <figure><img src="assets/fotobudka/background-04.webp" alt="Dřevěná stěna s květinami pro fotobudku" loading="lazy"><figcaption>Dřevo a květiny</figcaption></figure>
+                        <figure><img src="assets/fotobudka/background-05.webp" alt="Černé pozadí se zlatými světly pro fotobudku" loading="lazy"><figcaption>Zlatá světla</figcaption></figure>
+                        <figure><img src="assets/fotobudka/background-06.webp" alt="Zlaté třpytivé pozadí pro fotobudku" loading="lazy"><figcaption>Zlaté třpytky</figcaption></figure>
+                    </div>
+                    <button class="budka-gallery-control" type="button" data-gallery-next aria-label="Další pozadí">→</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section budka-tech">
+            <div class="container">
+                <p class="package-section-kicker">Spolehlivá technika</p><h2 class="section-title">Co pracuje <span>uvnitř IV Budky</span></h2>
+                <p class="section-subtitle">Profesionální komponenty pro rychlý provoz a kvalitní výsledek za každého světla.</p>
+                <div class="budka-tech-grid">
+                    <article class="budka-tech-card"><span class="budka-card-number">FOTO</span><h3>Fotoaparát Canon</h3><p>Ostré fotografie s přirozeným podáním barev a dostatkem detailů.</p></article>
+                    <article class="budka-tech-card"><span class="budka-card-number">TISK</span><h3>Fototiskárna DNP</h3><p>Rychlý profesionální tisk s dlouhou životností a konzistentní kvalitou.</p></article>
+                    <article class="budka-tech-card"><span class="budka-card-number">VÝKON</span><h3>Apple Mac mini</h3><p>Bleskové zpracování fotografií a stabilní komunikace všech částí systému.</p></article>
+                    <article class="budka-tech-card"><span class="budka-card-number">SVĚTLO</span><h3>Zábleskové světlo Godox</h3><p>Čisté a rovnoměrné nasvícení tváří i v tmavém sále nebo večer.</p></article>
+                    <article class="budka-tech-card"><span class="budka-card-number">OVLÁDÁNÍ</span><h3>Dotykový monitor HP</h3><p>Velké a intuitivní rozhraní, které snadno zvládnou děti i dospělí.</p></article>
+                    <article class="budka-tech-card"><span class="budka-card-number">SCÉNA</span><h3>Fotostěna a rekvizity</h3><p>Promyšlené zázemí, které dotvoří každý záběr a přitáhne pozornost hostů.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section budka-requirements">
+            <div class="container">
+                <p class="package-section-kicker">Příprava bez překvapení</p><h2 class="section-title">Co potřebujeme <span>na místě</span></h2>
+                <div class="budka-requirements-grid">
+                    <article class="budka-requirement"><h3>Uvnitř</h3><ul><li>Zdroj elektřiny 220 V co nejblíže fotokoutku</li><li>Prostor přibližně 3 × 3 metry a alespoň 3 metry před pozadím</li><li>Jeden až dva stolky pro bezpečné rozmístění rekvizit</li><li>Internet pouze při okamžitém posílání nebo promítání fotografií</li></ul></article>
+                    <article class="budka-requirement"><h3>Venkovní akce</h3><p>Můžeme přivézt bílý stan se třemi bočnicemi pro stabilní světelné podmínky. Stan je nutné ukotvit, proto je nejlepší travnatý povrch. Beton nebo jiné nestandardní umístění nám prosím nahlaste předem.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section budka-final">
+            <div class="container">
+                <p class="package-section-kicker">Rezervace IV Budky</p><h2 class="section-title">Vaši hosté si odnesou víc než <span>jen vzpomínku</span></h2>
+                <p class="section-subtitle">Pošlete datum, místo a typ akce. Ověříme dostupnost a doporučíme variantu, která dává smysl pro počet hostů i plánovaný program.</p>
+                <a href="kontakt.html#poptavka" class="btn btn-primary">Nezávazně ověřit termín</a>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="footer-grid">
@@ -678,6 +1273,17 @@
                 behavior: 'smooth'
             });
         }
+    </script>
+    <script>
+        document.querySelectorAll('[data-photo-gallery]').forEach((shell) => {
+            const gallery = shell.querySelector('.budka-gallery');
+            const move = (direction) => {
+                if (!gallery) return;
+                gallery.scrollBy({ left: direction * Math.max(280, gallery.clientWidth * 0.78), behavior: 'smooth' });
+            };
+            shell.querySelector('[data-gallery-prev]')?.addEventListener('click', () => move(-1));
+            shell.querySelector('[data-gallery-next]')?.addEventListener('click', () => move(1));
+        });
     </script>
 </body>
 
