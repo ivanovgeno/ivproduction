@@ -804,6 +804,44 @@
             transform: translateY(-0.35rem);
         }
 
+        .budka-weather-notice {
+            align-items: center;
+            background:
+                radial-gradient(circle at 9% 50%, rgba(255, 229, 92, 0.2), transparent 22rem),
+                linear-gradient(135deg, rgba(43, 37, 18, 0.98), rgba(14, 14, 18, 0.99));
+            border-color: rgba(255, 229, 92, 0.68);
+            box-shadow: 0 1.4rem 3.8rem rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 229, 92, 0.08);
+            display: grid;
+            gap: 1.25rem;
+            grid-column: 1 / -1;
+            grid-template-columns: auto minmax(0, 1fr);
+        }
+
+        .budka-weather-notice .budka-point-icon {
+            height: 4.7rem;
+            margin: 0;
+            width: 4.7rem;
+        }
+
+        .budka-weather-label {
+            color: var(--gold-light);
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            margin-bottom: 0.45rem;
+            text-transform: uppercase;
+        }
+
+        .budka-weather-notice h3 {
+            font-size: clamp(1.55rem, 2.6vw, 2.15rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .budka-weather-notice strong {
+            color: #fff4c4;
+        }
+
         .budka-requirement h3 {
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 1.65rem;
@@ -895,6 +933,11 @@
 
             .budka-gallery-control[data-gallery-prev] { left: 0.35rem; }
             .budka-gallery-control[data-gallery-next] { right: 0.35rem; }
+
+            .budka-weather-notice {
+                grid-template-columns: minmax(0, 1fr);
+                text-align: left;
+            }
 
             .budka-ples-offer {
                 grid-template-columns: minmax(0, 1fr);
@@ -1103,6 +1146,10 @@
                     <article class="budka-requirement"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8 16a6 6 0 0 1 8 0M11 19.5a2 2 0 0 1 2 0"/><circle cx="12" cy="21" r=".5"/></svg></div><h3>Internet podle potřeby</h3><p>Připojení potřebujeme jen pro okamžité odesílání nebo živé promítání fotografií.</p></article>
                     <article class="budka-requirement"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v11m14-11v11M3 21h18"/><path d="M8 21v-7h8v7"/></svg></div><h3>Venkovní bílý stan</h3><p>Pro stabilní světlo můžeme přivézt bílý stan se třemi bočnicemi a ochranou techniky.</p></article>
                     <article class="budka-requirement"><div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v12M8 7l4-4 4 4M5 21c2-3 4.3-4.5 7-4.5s5 1.5 7 4.5"/><path d="M3 21h18"/></svg></div><h3>Bezpečné ukotvení</h3><p>Ideální je travnatý povrch. Beton nebo jiné umístění nám prosím nahlaste předem.</p></article>
+                    <article class="budka-requirement budka-weather-notice">
+                        <div class="budka-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 14a8 8 0 0 1 16 0H4Z"/><path d="M12 6V3M12 14v5a2 2 0 0 0 4 0M6 18l-1 2m14-2 1 2"/><path d="M3 10 1.5 9M21 10l1.5-1"/></svg></div>
+                        <div><span class="budka-weather-label">Důležité pro každou venkovní akci</span><h3>Mokrá varianta musí být zajištěná předem</h3><p>Pro případ deště, bouřky nebo silného větru je nutné zajistit <strong>krytý, suchý a bezpečný náhradní prostor</strong>, kam lze IV Budku i techniku okamžitě přesunout. Bez potvrzené mokré varianty nelze venkovní provoz bezpečně garantovat.</p></div>
+                    </article>
                 </div>
             </div>
         </section>
