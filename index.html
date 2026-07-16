@@ -9,12 +9,23 @@
     <meta name="description"
         content="Profesionální video produkce pro svatby, reality a promo videa. Dva zkušení kameramani s dronem. Hradec Králové a celá ČR. Kvalita, emoce, kreativita.">
     <link rel="canonical" href="https://www.ivproduction.cz/">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="favicon.png">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="cs_CZ">
     <meta property="og:title" content="IV Production | Svatební video, reality a fotobudky">
     <meta property="og:description" content="Profesionální video produkce pro svatby, reality, eventy a firemní promo. Hradec Králové a celá ČR.">
     <meta property="og:url" content="https://www.ivproduction.cz/">
+    <meta property="og:site_name" content="IV Production">
     <meta property="og:image" content="https://www.ivproduction.cz/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="IV Production – profesionální video produkce a fotobudky">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IV Production | Svatební video, reality a fotobudky">
+    <meta name="twitter:description" content="Profesionální video produkce pro svatby, reality, eventy a firemní promo. Hradec Králové a celá ČR.">
+    <meta name="twitter:image" content="https://www.ivproduction.cz/og-image.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2450,11 +2461,12 @@
             border-radius: 16px;
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260715-social-icons">
+    <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
     <link rel="stylesheet" href="google-reviews.css?v=20260713-php-prep">
-    <script src="premium.js?v=20260715-unified-shell" defer></script>
+    <script src="premium.js?v=20260716-audit-fixes" defer></script>
+    <script src="contact-form-fallback.js?v=20260716-runtime-detection" defer></script>
     <script src="experience.js?v=20260713-unified-player" defer></script>
-    <script src="portfolio-data.js?v=20260713-unified-player" defer></script>
+    <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
     <script src="google-reviews.js?v=20260714-github-pages" defer></script>
 </head>
@@ -2462,7 +2474,7 @@
 <body class="home-page">
     <header class="header" id="header" data-unified-nav>
         <div class="header-inner">
-            <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
+            <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production" width="1024" height="531" decoding="async" loading="eager" fetchpriority="high"></a>
 
             <!-- Mobile Menu Toggle -->
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
@@ -2585,7 +2597,7 @@
 
             <div class="services-grid">
                 <div class="service-card service-card--wedding reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85');">
+                    style="background-image: url('assets/site/wedding-two.webp');">
                     <div class="service-card-label" aria-hidden="true"><span>01</span> Svatební videa</div>
                     <h3>Svatební videa</h3>
                     <p>Zachytíme emoce vašeho velkého dne. Filmový příběh, který budete sledovat znovu a znovu.</p>
@@ -2593,7 +2605,7 @@
                 </div>
 
                 <div class="service-card service-card--real-estate reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85');">
+                    style="background-image: url('assets/site/house.webp');">
                     <div class="service-card-label" aria-hidden="true"><span>02</span> Reality</div>
                     <h3>Reality</h3>
                     <p>Profesionální video prohlídky, dronové záběry a virtuální 3D prohlídky nemovitostí.</p>
@@ -2601,7 +2613,7 @@
                 </div>
 
                 <div class="service-card service-card--event reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85');">
+                    style="background-image: url('assets/site/event.webp');">
                     <div class="service-card-label" aria-hidden="true"><span>03</span> Plesy a akce</div>
                     <h3>Plesy a akce</h3>
                     <p>Aftermovie, které zachytí atmosféru a energii vaší události.</p>
@@ -2609,7 +2621,7 @@
                 </div>
 
                 <div class="service-card service-card--promo reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85');">
+                    style="background-image: url('assets/site/promo.webp');">
                     <div class="service-card-label" aria-hidden="true"><span>04</span> Promo videa</div>
                     <h3>Promo videa</h3>
                     <p>Reklamní spoty a prezentační videa pro vaši firmu nebo projekt.</p>
@@ -2617,7 +2629,7 @@
                 </div>
 
                 <div class="service-card service-card--reels reveal" id="reels"
-                    style="background-image: url('https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=1200&q=85');">
+                    style="background-image: url('assets/site/reels.webp');">
                     <div class="service-card-label" aria-hidden="true"><span>05</span> Reels</div>
                     <h3>Reels</h3>
                     <p>Krátká vertikální videa pro sociální sítě, která zaujmou hned v prvních vteřinách.</p>
@@ -2639,7 +2651,7 @@
                 </div>
 
                 <div class="service-card service-card--conference reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=85');">
+                    style="background-image: url('assets/site/conference.webp');">
                     <div class="service-card-label" aria-hidden="true"><span>08</span> Konference</div>
                     <h3>Konference</h3>
                     <p>Profesionální dokumentace konferencí, seminářů a firemních setkání.</p>
@@ -2647,7 +2659,7 @@
                 </div>
 
                 <div class="service-card service-card--podcast reveal"
-                    style="background-image: url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=1200&q=85');">
+                    style="background-image: url('assets/site/podcast.webp');">
                     <div class="service-card-label" aria-hidden="true"><span>09</span> Podcast</div>
                     <h3>Podcast</h3>
                     <p>Natáčení podcastů ve vysoké kvalitě. Video i audio produkce.</p>
@@ -2768,13 +2780,13 @@
                     <button type="button" class="tech-category-title" aria-expanded="false">Kamery</button>
                     <div class="tech-grid">
                         <div class="tech-item">
-                            <img src="tech-sony-a7siii.png" alt="Sony A7S III" class="tech-img">
+                            <img src="tech-sony-a7siii.png" alt="Sony A7S III" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">Sony A7S III</div>
                             <div class="tech-desc">Špičková kamera s neuvěřitelnou citlivostí na světlo, díky které
                                 zachytíme každý detail vaší svatby i v té nejtmavší atmosfře bez šumu. </div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-sony-a7iv.png" alt="Sony A7 IV" class="tech-img">
+                            <img src="tech-sony-a7iv.png" alt="Sony A7 IV" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">Sony A7 IV</div>
                             <div class="tech-desc">Nejnovější hybridní technologie pro dokonale ostrý obraz v 4K
                                 rozlišení s věrným podáním barev vaší pleti.</div>
@@ -2786,7 +2798,7 @@
                                 záložní kamera pro zachycení každého okamžiku z více úhlů.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-dji-osmo-pocket3.png" alt="DJI Osmo Pocket 3" class="tech-img">
+                            <img src="tech-dji-osmo-pocket3.png" alt="DJI Osmo Pocket 3" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">DJI Osmo Pocket 3</div>
                             <div class="tech-desc">Inovativní kamera s 1" snímačem, která nám umožňuje být nenápadní a
                                 zachytit ty nejupřímnější emoce přímo v centru dění.</div>
@@ -2804,7 +2816,7 @@
                     <button type="button" class="tech-category-title" aria-expanded="false">Objektivy</button>
                     <div class="tech-grid">
                         <div class="tech-item">
-                            <img src="tech-sony-35mm.png" alt="Sony 35mm f/1.4 GM" class="tech-img">
+                            <img src="tech-sony-35mm.png" alt="Sony 35mm f/1.4 GM" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">Sony 35mm f/1.4 GM</div>
                             <div class="tech-desc">Mistrovský objektiv řady G Master s úchvatnou kresbou, který dodává
                                 záběrům ten pravý filmový vzhled.</div>
@@ -2846,7 +2858,7 @@
                     <button type="button" class="tech-category-title" aria-expanded="false">Drony &amp; Stabilizace</button>
                     <div class="tech-grid">
                         <div class="tech-item">
-                            <img src="tech-dji-air2s.png" alt="DJI Air 2S" class="tech-img">
+                            <img src="tech-dji-air2s.png" alt="DJI Air 2S" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">DJI Air 2S</div>
                             <div class="tech-desc">Dron s velkým 1" snímačem pro dechberoucí letecké záběry vaší svatby
                                 nebo lokace v kinematografické kvalitě 5.4K.</div>
@@ -2858,7 +2870,7 @@
                                 dodají vašemu videu moderní "drive".</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-dji-rs3.png" alt="DJI RS 3" class="tech-img">
+                            <img src="tech-dji-rs3.png" alt="DJI RS 3" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">DJI RS 3</div>
                             <div class="tech-desc">Profesionální stabilizátor, díky kterému jsou všechny naše pohyby
                                 kamerou hladké jako ve filmu, bez jakéhokoliv třesu.</div>
@@ -2876,13 +2888,13 @@
                     <button type="button" class="tech-category-title" aria-expanded="false">Zvuk &amp; Světla</button>
                     <div class="tech-grid">
                         <div class="tech-item">
-                            <img src="tech-dji-mic2.png" alt="DJI Mic 2" class="tech-img">
+                            <img src="tech-dji-mic2.png" alt="DJI Mic 2" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">DJI Mic 2</div>
                             <div class="tech-desc">Špičkový systém pro nahrávání zvuku v 32-bitové hloubce, který
                                 zaručí, že váš slib i proslovy budou znít křišťálově čistě.</div>
                         </div>
                         <div class="tech-item">
-                            <img src="tech-rode-wirelessgo2.png" alt="Rode Wireless GO II" class="tech-img">
+                            <img src="tech-rode-wirelessgo2.png" alt="Rode Wireless GO II" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">Rode Wireless GO II</div>
                             <div class="tech-desc">Spolehlivé záložní mikrofony, abychom měli jistotu, že nám neunikne
                                 žádné slovo ani v náročných podmínkách.</div>
@@ -2932,8 +2944,8 @@
             </div>
             <div class="studio-content">
                 <div class="studio-image reveal">
-                    <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200"
-                        alt="IV Production Studio">
+                    <img src="assets/site/studio.webp"
+                        alt="IV Production Studio" width="1600" height="1067" decoding="async" loading="lazy">
                 </div>
                 <div class="studio-info reveal">
                     <h3>Profesionální prostředí</h3>
@@ -2964,7 +2976,7 @@
                 <div class="gw-header">
                     <div class="gw-rating-box">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"
-                            height="30">
+                            height="30" width="272" decoding="async" loading="lazy">
                         <div>
                             <div class="gw-score"><span data-google-review-score>5.0</span> <span class="gw-stars" data-google-review-stars aria-label="5 z 5 hvězdiček">★★★★★</span></div>
                             <div class="gw-reviews-count" data-google-review-count>Na základě 50+ recenzí</div>
@@ -2989,7 +3001,7 @@
                                         <div class="gw-date">před 4 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Rádi bychom Vám touto formou ještě jednou poděkovali za úžasná
@@ -3009,7 +3021,7 @@
                                         <div class="gw-date">před týdnem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Agentůru Iv Production můžu z vlastní zkušenosti jenom doporučit.
@@ -3027,7 +3039,7 @@
                                         <div class="gw-date">před 2 měsíci</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Chceme moc poděkovat Genovi Ivanovovi a všem co se o nás starali, za
@@ -3045,7 +3057,7 @@
                                         <div class="gw-date">před 3 měsíci</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Moc děkujeme za naprosto úžasné zachycení našeho svatebního dne! 🎥✨
@@ -3063,7 +3075,7 @@
                                         <div class="gw-date">před 10 měsíci</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Nejlepší fotokoutek !!! Doporučeno !</p>
@@ -3078,7 +3090,7 @@
                                         <div class="gw-date">před 10 měsíci</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Naprostá spokojenost</p>
@@ -3093,7 +3105,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Super fotka</p>
@@ -3108,7 +3120,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Geno s Market nam prirostli k srdci uz na svatbe meho kamarada. Jsou
@@ -3125,7 +3137,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Pokud chcete kvalitní produkt a jako bonus milou a příjemnou
@@ -3141,7 +3153,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Geno nam natacel maturitni ples. Skvělá spoluprace, moc mily
@@ -3158,7 +3170,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Po týdnech hledání svatebního kameramana jsem náhodou narazila na IV
@@ -3176,7 +3188,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Když jsme plánovali svatbu, tak jsme opravdu pečlivě vybírali
@@ -3194,7 +3206,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Geno a Maky nám natáčeli náš svatební den a výsledek je nádherný!
@@ -3211,7 +3223,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Geno je přesně ten kameraman kterého hledáte! Svoji práci dělá vážně
@@ -3228,7 +3240,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Se službami jsem vždy maximálně spokojená. Profesionální přístup.</p>
@@ -3243,7 +3255,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Jednoznačně DOPORUČUJEM ✨. Profesionální přístup, organizace, velmi
@@ -3260,7 +3272,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Skvělý kameraman :) Doporučuji</p>
@@ -3275,7 +3287,7 @@
                                         <div class="gw-date">před rokem</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Jsme naprosto spokojené! Video krásné, skvělá komunikace a
@@ -3291,7 +3303,7 @@
                                         <div class="gw-date">před 2 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Už jsme spolupracovali s hodně kameramany a fotografy a víme, že
@@ -3308,7 +3320,7 @@
                                         <div class="gw-date">před 2 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Skvělá komunikace, perfektní svatební videa, přátelská atmosféra. IV
@@ -3325,7 +3337,7 @@
                                         <div class="gw-date">před 2 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Jsme rádi že jsme se pro svatební video s manželem rozhodli.
@@ -3342,7 +3354,7 @@
                                         <div class="gw-date">před 2 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Geno a Markéta jsou profesionálové na správném místě. Vždy byli tam,
@@ -3359,7 +3371,7 @@
                                         <div class="gw-date">před 2 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Mockrát děkujeme za svatebni video. Jsem moc ráda, že jsme si vybrali
@@ -3375,7 +3387,7 @@
                                         <div class="gw-date">před 2 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Geno je super kameraman/střihač a moc fajn člověk. Spolupracuju s ním
@@ -3391,7 +3403,7 @@
                                         <div class="gw-date">před 2 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Profesionální přístup.</p>
@@ -3406,7 +3418,7 @@
                                         <div class="gw-date">před 3 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Kameramana pro naší svatbu jsme hledali dlouho. Ve chvíli kdy jsme
@@ -3424,7 +3436,7 @@
                                         <div class="gw-date">před 3 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Jsem ráda, že jsem si u manžela svatební video prosadila. Byla to ta
@@ -3441,12 +3453,12 @@
                                         <div class="gw-date">před 3 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Absolutně 100% výsledek a absolutně 100% spokojenost, video je
                                     nádherné, domluva byla vždy rychlá a bezchybná. Profesionálové na svém místě a
-                                    užasní lidé ! absolutně všem doporučuji <3< /p>
+                                    úžasní lidé! Absolutně všem doporučuji &lt;3</p>
                             </div>
 
                             <!-- Monika Ekrtová -->
@@ -3458,13 +3470,13 @@
                                         <div class="gw-date">před 3 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Geno a Markét jsou profesionálové, kteří dokázali skrze objektiv
                                     zhmotnit pohádku. Věříme, že jsme nezískali jen naprosto skvělé video, ale také jsme
                                     poznali skvělé lidi, za kterými se vždy budeme rádi vracet. Geno a Markét, děkujeme.
-                                    <3< /p>
+                                    &lt;3</p>
                             </div>
 
                             <!-- Denisa Boháčová -->
@@ -3476,7 +3488,7 @@
                                         <div class="gw-date">před 3 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Geno byl po celou dobu natáčení naši svatby naprostým profesionálem a
@@ -3493,7 +3505,7 @@
                                         <div class="gw-date">před 4 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Vřele můžeme s manželkou doporučit, se svatebním videem jsme naprosto
@@ -3511,7 +3523,7 @@
                                         <div class="gw-date">před 4 lety</div>
                                     </div>
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                        class="gw-google-logo" alt="G">
+                                        class="gw-google-logo" alt="G" width="48" height="48" decoding="async" loading="lazy">
                                 </div>
                                 <div class="gw-card-stars">★★★★★</div>
                                 <p class="gw-text">Ještě jednou moc děkujeme IV svatby za to, že nám natočili na památku
@@ -3939,7 +3951,7 @@
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="index.html" class="logo footer-logo"><img src="logo-light.png" alt="IV Production"></a>
+                <a href="index.html" class="logo footer-logo"><img src="logo-light.png" alt="IV Production" width="1024" height="531" decoding="async" loading="lazy"></a>
                 <p>Profesionální video produkce a fotobudky pro nezapomenutelné momenty.</p>
                 <div class="footer-social">
                     <a href="https://www.facebook.com/IVproductionCZ" class="social-btn" aria-label="Facebook"
@@ -4153,41 +4165,45 @@
             statsObserver.observe(el);
         });
 
-        // Lightbox Functionality
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById("lightbox-img");
-        const captionText = document.getElementById("lightbox-caption");
+        // Lightbox Functionality: the modal is declared below this script, so initialization
+        // must wait until the complete document has been parsed.
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const captionText = document.getElementById('lightbox-caption');
+            const closeButton = document.querySelector('.lightbox-close');
 
-        document.querySelectorAll('.portfolio-item img, .studio-image img').forEach(img => {
-            img.style.cursor = 'pointer';
-            img.addEventListener('click', function () {
-                lightbox.style.display = "flex";
-                lightboxImg.src = this.src;
-                // Use alt text or portfolio title for caption
-                const title = this.parentElement.querySelector('.portfolio-title')?.innerText || this.alt;
-                captionText.innerHTML = title;
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            if (!lightbox || !lightboxImg || !captionText || !closeButton) return;
+
+            document.querySelectorAll('.portfolio-item img, .studio-image img').forEach(img => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function () {
+                    lightbox.style.display = 'flex';
+                    lightboxImg.src = this.src;
+                    const title = this.parentElement.querySelector('.portfolio-title')?.innerText || this.alt;
+                    captionText.textContent = title;
+                    document.body.style.overflow = 'hidden';
+                });
             });
-        });
 
-        const closeLightbox = () => {
-            lightbox.style.display = "none";
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-        }
+            const closeLightbox = () => {
+                lightbox.style.display = 'none';
+                lightboxImg.removeAttribute('src');
+                document.body.style.overflow = '';
+            };
 
-        document.querySelector('.lightbox-close').onclick = closeLightbox;
+            closeButton.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox) {
+                    closeLightbox();
+                }
+            });
 
-        lightbox.onclick = function (e) {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        }
-
-        // Keydown 'Esc' to close
-        document.addEventListener('keydown', function (event) {
-            if (event.key === "Escape") {
-                closeLightbox();
-            }
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && lightbox.style.display === 'flex') {
+                    closeLightbox();
+                }
+            });
         });
     </script>
 

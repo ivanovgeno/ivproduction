@@ -8,6 +8,9 @@
     <meta name="description"
         content="Svatební kameraman z Hradce Králové pro Královéhradecký kraj i celou ČR. Emotivní svatební video, dva kameramani, dron a autentický zvuk. Ověřte si termín.">
     <link rel="canonical" href="https://www.ivproduction.cz/svatby.html">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="favicon.png">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="cs_CZ">
@@ -15,9 +18,14 @@
     <meta property="og:description" content="Emotivní svatební film, autentický zvuk, dron a osobní přístup. Natáčíme v Královéhradeckém kraji i po celé ČR.">
     <meta property="og:url" content="https://www.ivproduction.cz/svatby.html">
     <meta property="og:site_name" content="IV Production">
+    <meta property="og:image" content="https://www.ivproduction.cz/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Svatební video IV Production">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Svatební kameraman Hradec Králové | IV Production">
     <meta name="twitter:description" content="Svatební film, který vrátí váš den do života. Hradec Králové, Královéhradecký kraj a celá ČR.">
+    <meta name="twitter:image" content="https://www.ivproduction.cz/og-image.jpg">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -192,7 +200,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920') center/cover;
+            background: url('assets/site/wedding.webp') center/cover;
             filter: brightness(0.55);
         }
 
@@ -434,11 +442,11 @@
             text-decoration: none;
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260715-social-icons">
+    <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
     <link rel="stylesheet" href="packages.css?v=20260714-package-system">
-    <script src="premium.js?v=20260715-unified-shell" defer></script>
+    <script src="premium.js?v=20260716-audit-fixes" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
-    <script src="portfolio-data.js?v=20260712-portfoliohub" defer></script>
+    <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
     <script src="packages-data.js?v=20260714-package-system" defer></script>
     <script src="packages-renderer.js?v=20260714-package-system" defer></script>
@@ -602,7 +610,7 @@
 <body class="page-wedding">
     <header class="header" id="header" data-unified-nav>
         <div class="header-inner">
-            <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
+            <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production" width="1024" height="531" decoding="async" loading="eager" fetchpriority="high"></a>
 
             <!-- Mobile Menu Toggle -->
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
@@ -681,7 +689,7 @@
         </div>
     </section>
 
-    <section class="related-work" data-portfolio-slider data-portfolio-categories="svatby" data-portfolio-title="Ukázky z portfolia" data-portfolio-accent="svatebních filmů"></section>
+    <section class="related-work" id="ukazky" data-portfolio-slider data-portfolio-categories="svatby" data-portfolio-title="Ukázky z portfolia" data-portfolio-accent="svatebních filmů"></section>
 
     <section class="section">
         <div class="container">
@@ -708,7 +716,7 @@
         </div>
     </section>
 
-    <section class="section package-showcase package-showcase-main" style="background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%);" data-package-page="svatby" data-package-group="main">
+    <section class="section package-showcase package-showcase-main" id="balicky" style="background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%);" data-package-page="svatby" data-package-group="main">
         <div class="container">
             <p class="package-section-kicker">Svatební video</p>
             <h2 class="section-title">Vyberte si rozsah, <span>ne kompromis</span></h2>
@@ -793,7 +801,7 @@
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="index.html" class="logo footer-logo"><img src="logo-light.png" alt="IV Production"></a>
+                <a href="index.html" class="logo footer-logo"><img src="logo-light.png" alt="IV Production" width="1024" height="531" decoding="async" loading="lazy"></a>
                 <p>Profesionální video produkce a fotobudky pro nezapomenutelné momenty.</p>
                 <div class="footer-social">
                     <a href="https://www.facebook.com/IVproductionCZ" class="social-btn" aria-label="Facebook"

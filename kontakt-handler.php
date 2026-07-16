@@ -7,6 +7,16 @@ function redirect_to_contact(string $status): void
     exit;
 }
 
+// The frontend uses this same-origin check to distinguish PHP hosting from a
+// static GitHub Pages deployment without ever exposing credentials.
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && ($_GET['health'] ?? '') === '1') {
+    header('Content-Type: application/json; charset=utf-8');
+    header('Cache-Control: no-store');
+    header('X-Content-Type-Options: nosniff');
+    echo '{"ok":true,"service":"ivp-contact"}';
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     redirect_to_contact('error');
 }

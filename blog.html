@@ -10,11 +10,25 @@
     <meta name="description"
         content="Blog IV Production - tipy pro svatební videa, realitní marketing, trendy ve video produkci a novinky z naší dílny.">
     <link rel="canonical" href="https://www.ivproduction.cz/blog.html">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="favicon.png">
 
     <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="cs_CZ">
     <meta property="og:title" content="Blog | IV Production">
     <meta property="og:description" content="Tipy a novinky z profesionální video produkce">
+    <meta property="og:url" content="https://www.ivproduction.cz/blog.html">
+    <meta property="og:site_name" content="IV Production">
     <meta property="og:image" content="https://www.ivproduction.cz/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Blog IV Production o videu, svatbách a realitním marketingu">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog | IV Production">
+    <meta name="twitter:description" content="Praktické tipy pro svatební videa, realitní marketing a profesionální video produkci.">
+    <meta name="twitter:image" content="https://www.ivproduction.cz/og-image.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -345,6 +359,7 @@
         }
 
         .category-btn {
+            font: inherit;
             padding: 0.5rem 1.25rem;
             border-radius: 25px;
             background: rgba(201, 162, 39, 0.1);
@@ -360,6 +375,67 @@
             background: var(--gradient);
             color: var(--dark);
             border-color: transparent;
+        }
+
+        .blog-card[hidden],
+        .featured-article[hidden] {
+            display: none;
+        }
+
+        .blog-filter-status {
+            color: var(--gray-light);
+            font-size: .92rem;
+            margin: -1.75rem 0 2rem;
+            min-height: 1.5rem;
+            text-align: center;
+        }
+
+        .blog-articles {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .blog-article-detail {
+            background: linear-gradient(145deg, rgba(18, 18, 26, .96), rgba(8, 8, 12, .98));
+            border: 1px solid rgba(201, 162, 39, .18);
+            border-radius: 24px;
+            scroll-margin-top: 7rem;
+            padding: clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .blog-article-detail:target {
+            border-color: rgba(232, 197, 71, .72);
+            box-shadow: 0 20px 70px rgba(201, 162, 39, .16);
+        }
+
+        .blog-article-detail .article-kicker {
+            color: var(--gold);
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .blog-article-detail h2 {
+            font-size: clamp(1.7rem, 4vw, 2.55rem);
+            line-height: 1.15;
+            margin: .55rem 0 1rem;
+        }
+
+        .blog-article-detail p,
+        .blog-article-detail li {
+            color: var(--gray-light);
+        }
+
+        .blog-article-detail ul {
+            display: grid;
+            gap: .55rem;
+            margin: 1rem 0 1.6rem 1.2rem;
+        }
+
+        .blog-article-detail .btn {
+            margin-top: .8rem;
         }
 
         .footer {
@@ -389,15 +465,16 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260715-social-icons">
-    <script src="premium.js?v=20260715-unified-shell" defer></script>
+    <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
+    <script src="premium.js?v=20260716-audit-fixes" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
+    <script src="blog.js?v=20260716-functional-blog" defer></script>
 </head>
 
 <body class="page-blog">
     <header class="header" id="header" data-unified-nav>
         <div class="header-inner">
-            <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production"></a>
+            <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production" width="1024" height="531" decoding="async" loading="eager" fetchpriority="high"></a>
 
             <!-- Mobile Menu Toggle -->
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
@@ -463,32 +540,33 @@
         <div class="container">
             <!-- Categories -->
             <div class="blog-categories">
-                <a href="#" class="category-btn active">Vše</a>
-                <a href="#" class="category-btn">Svatby</a>
-                <a href="#" class="category-btn">Reality</a>
-                <a href="#" class="category-btn">Promo</a>
-                <a href="#" class="category-btn">Tipy & Triky</a>
+                <button type="button" class="category-btn active" data-blog-filter="all" aria-pressed="true">Vše</button>
+                <button type="button" class="category-btn" data-blog-filter="svatby" aria-pressed="false">Svatby</button>
+                <button type="button" class="category-btn" data-blog-filter="reality" aria-pressed="false">Reality</button>
+                <button type="button" class="category-btn" data-blog-filter="promo" aria-pressed="false">Promo</button>
+                <button type="button" class="category-btn" data-blog-filter="tipy" aria-pressed="false">Tipy &amp; triky</button>
             </div>
+            <p class="blog-filter-status" id="blogFilterStatus" aria-live="polite"></p>
 
             <!-- Featured Article -->
-            <article class="featured-article">
+            <article class="featured-article" data-blog-category="svatby">
                 <div class="featured-image"
-                    style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800');">
+                    style="background-image: url('assets/site/camera.webp');">
                 </div>
                 <div class="featured-content">
-                    <span class="featured-label">⭐ Doporučený článek</span>
+                    <span class="featured-label">Doporučený článek</span>
                     <h2>Jak vybrat svatebního kameramana: 7 klíčových otázek</h2>
                     <p>Výběr správného kameramana pro váš velký den je zásadní rozhodnutí. V tomto článku vám poradíme,
                         na co se ptát a čemu věnovat pozornost.</p>
-                    <a href="#" class="btn btn-primary">Číst článek →</a>
+                    <a href="#jak-vybrat-kameramana" class="btn btn-primary">Číst článek →</a>
                 </div>
             </article>
 
             <!-- Blog Grid -->
             <div class="blog-grid">
-                <a href="#" class="blog-card">
+                <a href="#trendy-svatebni-video-2026" class="blog-card" data-blog-category="svatby">
                     <div class="blog-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=600');">
+                        style="background-image: url('assets/site/wedding.webp');">
                         <span class="blog-category">Svatby</span>
                     </div>
                     <div class="blog-content">
@@ -500,23 +578,23 @@
                     </div>
                 </a>
 
-                <a href="#" class="blog-card">
+                <a href="#video-prodava-nemovitosti" class="blog-card" data-blog-category="reality">
                     <div class="blog-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600');">
+                        style="background-image: url('assets/site/reality.webp');">
                         <span class="blog-category">Reality</span>
                     </div>
                     <div class="blog-content">
                         <span class="blog-date">10. ledna 2026</span>
                         <h3>Proč video prodává nemovitosti rychleji</h3>
-                        <p>Statistiky ukazují, že nemovitosti s profesionálním videem se prodávají až o 30% rychleji.
-                            Zjistěte proč.</p>
+                        <p>Profesionální video pomáhá zájemci rychle pochopit prostor, atmosféru i hlavní výhody
+                            nemovitosti. Zjistěte, jak ho využít.</p>
                         <span class="blog-read-more">Číst více →</span>
                     </div>
                 </a>
 
-                <a href="#" class="blog-card">
+                <a href="#tipy-pro-firemni-video" class="blog-card" data-blog-category="tipy">
                     <div class="blog-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600');">
+                        style="background-image: url('assets/site/video-production.webp');">
                         <span class="blog-category">Tipy & Triky</span>
                     </div>
                     <div class="blog-content">
@@ -528,9 +606,9 @@
                     </div>
                 </a>
 
-                <a href="#" class="blog-card">
+                <a href="#viralni-video-socialni-site" class="blog-card" data-blog-category="promo">
                     <div class="blog-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600');">
+                        style="background-image: url('assets/site/reels.webp');">
                         <span class="blog-category">Promo</span>
                     </div>
                     <div class="blog-content">
@@ -541,9 +619,9 @@
                     </div>
                 </a>
 
-                <a href="#" class="blog-card">
+                <a href="#svatebni-lokace-kralovehradecky-kraj" class="blog-card" data-blog-category="svatby">
                     <div class="blog-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?w=600');">
+                        style="background-image: url('assets/site/event-detail.webp');">
                         <span class="blog-category">Svatby</span>
                     </div>
                     <div class="blog-content">
@@ -554,9 +632,9 @@
                     </div>
                 </a>
 
-                <a href="#" class="blog-card">
+                <a href="#hudba-ve-videu" class="blog-card" data-blog-category="tipy">
                     <div class="blog-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600');">
+                        style="background-image: url('assets/site/music.webp');">
                         <span class="blog-category">Tipy & Triky</span>
                     </div>
                     <div class="blog-content">
@@ -567,13 +645,109 @@
                     </div>
                 </a>
             </div>
+
+            <div class="blog-articles" aria-label="Celé články">
+                <article class="blog-article-detail" id="jak-vybrat-kameramana">
+                    <p class="article-kicker">Svatby · průvodce výběrem</p>
+                    <h2>Jak vybrat svatebního kameramana: 7 klíčových otázek</h2>
+                    <p>Nejdůležitější není jen technika, ale způsob práce, komunikace a schopnost zachytit den bez zbytečného narušování jeho průběhu. Před rezervací si proto ověřte celý proces od příprav až po předání filmu.</p>
+                    <ul>
+                        <li>Kolik lidí bude na místě a které části dne budou pokryté?</li>
+                        <li>Jak bude zaznamenaný zvuk obřadu, slibů a proslovů?</li>
+                        <li>Jak dlouhý film a jaké krátké výstupy získáte?</li>
+                        <li>Je hudba licencovaná a je vše potvrzené smlouvou?</li>
+                        <li>Jak dlouho jsou záběry zálohované a jak probíhá předání?</li>
+                    </ul>
+                    <p>Dobrá nabídka má být srozumitelná a má přesně říct, co dostanete. U IV Production si před potvrzením termínu společně projdeme harmonogram, priority i výstupy.</p>
+                    <a href="svatby.html#balicky" class="btn btn-primary">Prohlédnout svatební balíčky</a>
+                </article>
+
+                <article class="blog-article-detail" id="trendy-svatebni-video-2026">
+                    <p class="article-kicker">Svatby · inspirace 2026</p>
+                    <h2>Trendy ve svatebních videích pro rok 2026</h2>
+                    <p>Největší hodnotu dnes nemá přehlídka efektů, ale přirozený film s autentickým zvukem, citlivou kamerou a rytmem, který odpovídá konkrétnímu páru.</p>
+                    <ul>
+                        <li>Krátký filmový highlight doplněný delší vzpomínkou z celého dne.</li>
+                        <li>Čistý záznam slibů, proslovů a spontánních reakcí hostů.</li>
+                        <li>Jemné dronové záběry, pokud to místo a počasí umožní.</li>
+                        <li>Vertikální ukázka připravená pro bezpečné sdílení na telefonu.</li>
+                    </ul>
+                    <a href="svatby.html#ukazky" class="btn btn-primary">Pustit si svatební ukázky</a>
+                </article>
+
+                <article class="blog-article-detail" id="video-prodava-nemovitosti">
+                    <p class="article-kicker">Reality · marketing nemovitostí</p>
+                    <h2>Proč profesionální video pomáhá nabídce nemovitosti</h2>
+                    <p>Fotografie ukáže jednotlivé místnosti. Dobře připravené video ale vysvětlí jejich návaznost, měřítko a atmosféru. Zájemce si rychleji vytvoří přesnější představu ještě před prohlídkou.</p>
+                    <ul>
+                        <li>Úvod musí během několika sekund ukázat hlavní důvod, proč nabídce věnovat pozornost.</li>
+                        <li>Plynulý pohyb kamery má vysvětlovat dispozici, ne pouze vytvářet efekt.</li>
+                        <li>Dron, komentář, titulky a vertikální verze rozšiřují možnosti propagace.</li>
+                        <li>Jednotný obraz fotografií a videa posiluje důvěryhodnost makléře.</li>
+                    </ul>
+                    <a href="reality.html#cenik" class="btn btn-primary">Porovnat realitní balíčky</a>
+                </article>
+
+                <article class="blog-article-detail" id="tipy-pro-firemni-video">
+                    <p class="article-kicker">Tipy a triky · firemní video</p>
+                    <h2>5 kroků k lepšímu firemnímu videu</h2>
+                    <p>Profesionální výsledek začíná ještě před zapnutím kamery. Nejprve určete jednoho konkrétního diváka a jednu akci, kterou má po zhlédnutí udělat.</p>
+                    <ul>
+                        <li>Stanovte jediný hlavní cíl videa.</li>
+                        <li>Začněte problémem nebo výsledkem, který diváka zajímá.</li>
+                        <li>Připravte jednoduchý scénář a reálné situace z vaší práce.</li>
+                        <li>Počítejte s různými formáty pro web a sociální sítě.</li>
+                        <li>Ukončete video jasnou a přirozenou výzvou k dalšímu kroku.</li>
+                    </ul>
+                    <a href="promo.html" class="btn btn-primary">Zjistit možnosti promo videa</a>
+                </article>
+
+                <article class="blog-article-detail" id="viralni-video-socialni-site">
+                    <p class="article-kicker">Promo · krátká videa</p>
+                    <h2>Jak připravit video, které udrží pozornost na sociálních sítích</h2>
+                    <p>Virální výsledek nelze slíbit, ale lze výrazně zvýšit šanci, že divák neodejde v prvních vteřinách. Rozhoduje srozumitelný začátek, tempo a obsah vytvořený pro konkrétní platformu.</p>
+                    <ul>
+                        <li>První záběr musí být čitelný i bez zvuku.</li>
+                        <li>Jedno video má nést jednu hlavní myšlenku.</li>
+                        <li>Titulky musí být velké a mimo ovládací prvky aplikace.</li>
+                        <li>Střih má podporovat sdělení, ne ho přehlušit.</li>
+                    </ul>
+                    <a href="reels.html" class="btn btn-primary">Prohlédnout produkci Reels</a>
+                </article>
+
+                <article class="blog-article-detail" id="svatebni-lokace-kralovehradecky-kraj">
+                    <p class="article-kicker">Svatby · Královéhradecký kraj</p>
+                    <h2>Jak vybrat lokaci, která bude dobře fungovat i ve svatebním filmu</h2>
+                    <p>Při výběru místa sledujte nejen vzhled, ale také světlo, návaznost prostor, možnosti pohybu hostů a mokrou variantu. Právě tyto detaily rozhodují, zda bude den plynulý i při změně počasí.</p>
+                    <ul>
+                        <li>Ověřte místo pro přípravy, obřad, portréty a večerní program.</li>
+                        <li>Zjistěte pravidla pro dron a dostupnost elektrické energie.</li>
+                        <li>Počítejte s časem na přesuny mezi jednotlivými částmi dne.</li>
+                        <li>Připravte důstojnou krytou variantu pro déšť a silný vítr.</li>
+                    </ul>
+                    <a href="kontakt.html#poptavka" class="btn btn-primary">Probrat místo a termín</a>
+                </article>
+
+                <article class="blog-article-detail" id="hudba-ve-videu">
+                    <p class="article-kicker">Tipy a triky · postprodukce</p>
+                    <h2>Hudba ve videu: Jak vybrat správný soundtrack</h2>
+                    <p>Hudba určuje tempo a emoci, ale musí zároveň respektovat příběh a místo zveřejnění. Známá skladba bez licence může způsobit ztlumení nebo odstranění videa ze sociálních sítí.</p>
+                    <ul>
+                        <li>Volte skladbu podle nálady příběhu, ne pouze podle aktuálního trendu.</li>
+                        <li>Pro veřejné použití pracujte s odpovídající licencí.</li>
+                        <li>Hudba nesmí překrýt důležité výpovědi, sliby ani přirozený zvuk.</li>
+                        <li>Tempo střihu přizpůsobte obsahu a cílovému divákovi.</li>
+                    </ul>
+                    <a href="kontakt.html#poptavka" class="btn btn-primary">Probrat váš video projekt</a>
+                </article>
+            </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="index.html" class="logo footer-logo"><img src="logo-light.png" alt="IV Production"></a>
+                <a href="index.html" class="logo footer-logo"><img src="logo-light.png" alt="IV Production" width="1024" height="531" decoding="async" loading="lazy"></a>
                 <p>Profesionální video produkce a fotobudky pro nezapomenutelné momenty.</p>
                 <div class="footer-social">
                     <a href="https://www.facebook.com/IVproductionCZ" class="social-btn" aria-label="Facebook"

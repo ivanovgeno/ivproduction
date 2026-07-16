@@ -1997,7 +1997,7 @@ body.page-blog .blog-hero {
     background-color: #111115;
     background-image:
         linear-gradient(90deg, rgba(10, 10, 13, 0.94) 0%, rgba(10, 10, 13, 0.68) 48%, rgba(10, 10, 13, 0.28) 100%),
-        url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=2200&q=88');
+        url('assets/site/blog-writing.webp');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2007,7 +2007,7 @@ body.page-calculator .calc-hero {
     background-color: #111115;
     background-image:
         linear-gradient(90deg, rgba(10, 10, 13, 0.94) 0%, rgba(10, 10, 13, 0.7) 48%, rgba(10, 10, 13, 0.3) 100%),
-        url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=2200&q=88');
+        url('assets/site/conference-room.webp');
     background-position: center 48%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2017,7 +2017,7 @@ body.page-portfolio .hero {
     background-color: #111115;
     background-image:
         linear-gradient(90deg, rgba(10, 10, 13, 0.94) 0%, rgba(10, 10, 13, 0.68) 48%, rgba(10, 10, 13, 0.25) 100%),
-        url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=2200&q=88');
+        url('assets/site/camera.webp');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2027,7 +2027,7 @@ body.page-contact .hero {
     background-color: #111115;
     background-image:
         linear-gradient(90deg, rgba(10, 10, 13, 0.95) 0%, rgba(10, 10, 13, 0.72) 50%, rgba(10, 10, 13, 0.3) 100%),
-        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=2200&q=88');
+        url('assets/site/laptop.webp');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2037,7 +2037,7 @@ body.page-privacy .legal-hero {
     background-color: #111115;
     background-image:
         linear-gradient(90deg, rgba(10, 10, 13, 0.96) 0%, rgba(10, 10, 13, 0.74) 55%, rgba(10, 10, 13, 0.33) 100%),
-        url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=2200&q=88');
+        url('assets/site/marketing.webp');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2047,7 +2047,7 @@ body.page-terms .legal-hero {
     background-color: #111115;
     background-image:
         linear-gradient(90deg, rgba(10, 10, 13, 0.96) 0%, rgba(10, 10, 13, 0.74) 55%, rgba(10, 10, 13, 0.33) 100%),
-        url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=2200&q=88');
+        url('assets/site/documents.webp');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2057,7 +2057,7 @@ body.page-marketing-consent .legal-hero {
     background-color: #111115;
     background-image:
         linear-gradient(90deg, rgba(10, 10, 13, 0.96) 0%, rgba(10, 10, 13, 0.74) 55%, rgba(10, 10, 13, 0.33) 100%),
-        url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2200&q=88');
+        url('assets/site/business.webp');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3822,6 +3822,22 @@ body.page-portfolio .hero h1 {
     .premium-work-slide:hover {
         transform: none;
     }
+}
+
+.form-static-status {
+    background: rgba(201, 162, 39, 0.08);
+    border: 1px solid rgba(240, 212, 119, 0.2);
+    border-radius: 0.75rem;
+    color: rgba(250, 249, 246, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    margin-top: 0.85rem;
+    padding: 0.75rem 0.9rem;
+}
+
+.form-static-status.is-ready {
+    border-color: rgba(255, 229, 92, 0.55);
+    color: #fff4c4;
 }
 
 @media (prefers-reduced-motion: reduce) {

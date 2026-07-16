@@ -39,9 +39,15 @@
         button.secondary { background:transparent; border:1px solid rgba(255,255,255,.26); color:var(--text); }
         button.danger { border-color:rgba(239,119,119,.6); color:#ffb2b2; }
         .status { color:var(--muted); font-size:.9rem; margin:.8rem 0 0; min-height:1.4rem; }
+        .status.success { color:#9ee6b2; }
+        .status.error { color:#ffb2b2; }
+        .github-connect { margin:1.5rem 0 1rem; }
+        .github-connect-grid { align-items:end; display:grid; gap:1rem; grid-template-columns:minmax(0,1fr) auto; }
+        .github-connect .actions { margin:0; }
+        .secure-note { color:var(--muted); font-size:.83rem; margin:.65rem 0 0; }
         .help { border-top:1px solid rgba(255,255,255,.1); color:var(--muted); font-size:.92rem; margin-top:2rem; padding-top:1.4rem; }
         code { background:#07070a; border-radius:4px; color:#fff4b8; padding:.1rem .3rem; }
-        @media (max-width:760px) { .toolbar,.editor-grid,.form-grid { grid-template-columns:1fr; } .app { padding:2rem 1rem 4rem; } }
+        @media (max-width:760px) { .toolbar,.editor-grid,.form-grid,.github-connect-grid { grid-template-columns:1fr; } .app { padding:2rem 1rem 4rem; } }
     </style>
     <script src="packages-data.js"></script>
 </head>
@@ -49,12 +55,28 @@
     <main class="app">
         <p class="eyebrow">IV Production · interní nástroj</p>
         <h1>Správa <span>balíčků</span></h1>
-        <div class="notice"><strong>Jak to funguje dnes:</strong> tento nástroj upraví balíčky jen ve vašem prohlížeči. Kliknutím na <strong>Stáhnout soubor</strong> získáte nový <code>packages-data.js</code>, který pak nahrajete do GitHubu nebo mi ho pošlete. GitHub Pages neumí bezpečně ukládat změny přímo z webu bez přihlášení a serveru.</div>
+        <div class="notice"><strong>Centrální správa:</strong> po bezpečném připojení ke GitHubu načte editor aktuální veřejná data. Tlačítko <strong>Zveřejnit na webu</strong> uloží změny do repozitáře, takže se po dokončení nasazení projeví všem návštěvníkům. Token se drží pouze v paměti otevřené záložky a nikam se neukládá.</div>
+
+        <section class="panel github-connect" aria-labelledby="githubConnectTitle">
+            <h2 id="githubConnectTitle">Připojení k centrálním datům</h2>
+            <div class="github-connect-grid">
+                <div>
+                    <label for="githubToken">GitHub fine-grained token</label>
+                    <input id="githubToken" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+                </div>
+                <div class="actions">
+                    <button id="connectGitHub" type="button">Připojit GitHub</button>
+                    <button id="publishGitHub" type="button" disabled>Zveřejnit na webu</button>
+                </div>
+            </div>
+            <p class="secure-note">Použijte token omezený pouze na repozitář <code>ivanovgeno/ivproduction</code> a oprávnění <code>Contents: Read and write</code>. Po zavření stránky token zmizí.</p>
+            <p class="status" id="githubStatus" role="status" aria-live="polite">Editor je zatím v bezpečném lokálním režimu.</p>
+        </section>
 
         <div class="toolbar panel">
             <div><label for="pageSelect">Stránka</label><select id="pageSelect"></select></div>
             <div><label for="groupSelect">Sekce</label><select id="groupSelect"></select></div>
-            <div class="actions"><button id="addPackage" type="button">Přidat balíček</button><button class="secondary" id="downloadData" type="button">Stáhnout soubor</button></div>
+            <div class="actions"><button id="addPackage" type="button">Přidat balíček</button><button class="secondary" id="downloadData" type="button">Stáhnout zálohu</button></div>
         </div>
 
         <div class="editor-grid">
@@ -84,7 +106,7 @@
             </section>
         </div>
 
-        <p class="help">Pro přidání balíčků na další stránku stačí později přidat její název do datového souboru a na stránku vložit sekci s atributy <code>data-package-page</code> a <code>data-package-group</code>. Při přesunu na PHP hosting lze tento editor napojit na přihlášené ukládání na server; bez přihlášení by to nebylo bezpečné.</p>
+        <p class="help">Postup: připojte GitHub, upravte balíček, klikněte na <strong>Uložit do náhledu</strong> a nakonec na <strong>Zveřejnit na webu</strong>. Stažená záloha zůstává jako nouzová možnost. Pro přidání balíčků na další stránku stačí doplnit její název do dat a na stránku vložit sekci s atributy <code>data-package-page</code> a <code>data-package-group</code>.</p>
     </main>
 
     <script>
@@ -96,6 +118,13 @@
             var list = document.getElementById('packageList');
             var form = document.getElementById('packageForm');
             var status = document.getElementById('status');
+            var githubStatus = document.getElementById('githubStatus');
+            var githubTokenInput = document.getElementById('githubToken');
+            var connectGitHubButton = document.getElementById('connectGitHub');
+            var publishGitHubButton = document.getElementById('publishGitHub');
+            var githubToken = '';
+            var githubSha = '';
+            var githubApiUrl = 'https://api.github.com/repos/ivanovgeno/ivproduction/contents/packages-data.js';
             var currentIndex = 0;
             var fields = {
                 name: document.getElementById('fieldName'), price: document.getElementById('fieldPrice'),
@@ -105,6 +134,42 @@
             };
             function selectedGroup() { return data[pageSelect.value][groupSelect.value]; }
             function setStatus(message) { status.textContent = message; }
+            function setGitHubStatus(message, type) {
+                githubStatus.textContent = message;
+                githubStatus.className = 'status' + (type ? ' ' + type : '');
+            }
+            function sourceFromData() {
+                return '/* IV Production – veřejná data balíčků */\nwindow.IVP_PACKAGE_DATA = ' + JSON.stringify(data, null, 4) + ';\n';
+            }
+            function decodeBase64Utf8(value) {
+                var binary = atob(value.replace(/\s/g, ''));
+                var bytes = Uint8Array.from(binary, function (character) { return character.charCodeAt(0); });
+                return new TextDecoder().decode(bytes);
+            }
+            function encodeBase64Utf8(value) {
+                var bytes = new TextEncoder().encode(value);
+                var binary = '';
+                var chunkSize = 0x8000;
+                for (var offset = 0; offset < bytes.length; offset += chunkSize) {
+                    binary += String.fromCharCode.apply(null, bytes.subarray(offset, offset + chunkSize));
+                }
+                return btoa(binary);
+            }
+            function parsePackageSource(source) {
+                var target = {};
+                Function('window', source + '\nreturn window.IVP_PACKAGE_DATA;')(target);
+                if (!target.IVP_PACKAGE_DATA || typeof target.IVP_PACKAGE_DATA !== 'object') {
+                    throw new Error('Datový soubor nemá očekávaný formát.');
+                }
+                return target.IVP_PACKAGE_DATA;
+            }
+            function githubHeaders() {
+                return {
+                    Accept: 'application/vnd.github+json',
+                    Authorization: 'Bearer ' + githubToken,
+                    'X-GitHub-Api-Version': '2022-11-28'
+                };
+            }
             function fillPages() {
                 pageSelect.replaceChildren();
                 Object.keys(data).forEach(function (page) { var opt = new Option(page, page); pageSelect.add(opt); });
@@ -145,7 +210,7 @@
                 if (!previous.partner) { delete previous.partner; delete previous.type; }
                 if (!previous.linkUrl) { delete previous.linkLabel; delete previous.linkUrl; }
                 if (!previous.popular) { delete previous.popular; delete previous.popularLabel; }
-                renderList(); setStatus('Změna je uložená do náhledu. Pro zveřejnění stáhněte soubor.');
+                renderList(); setStatus('Změna je uložená do náhledu. Pro publikaci klikněte na „Zveřejnit na webu“.');
             });
             document.getElementById('addPackage').addEventListener('click', function () {
                 selectedGroup().push({ id: 'novy-balicek-' + Date.now(), name: 'Nový balíček', price: 'Cena na míru', description: '', features: [], ctaLabel: 'Nezávazně poptat', ctaHref: 'kontakt.html#poptavka' });
@@ -158,8 +223,60 @@
                 if (!window.confirm('Vrátit všechny změny od otevření této stránky?')) return; data = JSON.parse(JSON.stringify(pristine)); fillPages(); setStatus('Původní data jsou znovu načtena.');
             });
             document.getElementById('downloadData').addEventListener('click', function () {
-                var content = '/* IV Production – veřejná data balíčků */\nwindow.IVP_PACKAGE_DATA = ' + JSON.stringify(data, null, 4) + ';\n';
+                var content = sourceFromData();
                 var link = document.createElement('a'); link.href = URL.createObjectURL(new Blob([content], {type:'text/javascript;charset=utf-8'})); link.download = 'packages-data.js'; link.click(); URL.revokeObjectURL(link.href); setStatus('Soubor packages-data.js se stáhl.');
+            });
+            connectGitHubButton.addEventListener('click', async function () {
+                githubToken = githubTokenInput.value.trim();
+                if (!githubToken) { setGitHubStatus('Vložte omezený GitHub token.', 'error'); return; }
+                connectGitHubButton.disabled = true;
+                publishGitHubButton.disabled = true;
+                setGitHubStatus('Načítám aktuální balíčky z GitHubu…');
+                try {
+                    var response = await fetch(githubApiUrl + '?ref=main', { headers: githubHeaders() });
+                    var payload = await response.json();
+                    if (!response.ok) throw new Error(payload.message || 'GitHub připojení se nezdařilo.');
+                    data = parsePackageSource(decodeBase64Utf8(payload.content));
+                    pristine = JSON.parse(JSON.stringify(data));
+                    githubSha = payload.sha;
+                    githubTokenInput.value = '';
+                    fillPages();
+                    publishGitHubButton.disabled = false;
+                    setGitHubStatus('Připojeno. Pracujete s aktuálními daty z větve main.', 'success');
+                } catch (error) {
+                    githubToken = '';
+                    githubSha = '';
+                    setGitHubStatus('Připojení selhalo: ' + error.message, 'error');
+                } finally {
+                    connectGitHubButton.disabled = false;
+                }
+            });
+            publishGitHubButton.addEventListener('click', async function () {
+                if (!githubToken || !githubSha) { setGitHubStatus('Nejdříve připojte GitHub.', 'error'); return; }
+                if (!window.confirm('Zveřejnit aktuální balíčky všem návštěvníkům webu?')) return;
+                publishGitHubButton.disabled = true;
+                setGitHubStatus('Ukládám změny do GitHubu…');
+                try {
+                    var response = await fetch(githubApiUrl, {
+                        method: 'PUT',
+                        headers: Object.assign({ 'Content-Type': 'application/json' }, githubHeaders()),
+                        body: JSON.stringify({
+                            message: 'Aktualizovat balíčky přes administrační sekci',
+                            content: encodeBase64Utf8(sourceFromData()),
+                            sha: githubSha,
+                            branch: 'main'
+                        })
+                    });
+                    var payload = await response.json();
+                    if (!response.ok) throw new Error(payload.message || 'Uložení se nezdařilo.');
+                    githubSha = payload.content.sha;
+                    pristine = JSON.parse(JSON.stringify(data));
+                    setGitHubStatus('Změny jsou uložené. GitHub Pages je obvykle zveřejní během několika minut.', 'success');
+                } catch (error) {
+                    setGitHubStatus('Publikace selhala: ' + error.message + ' Znovu načtěte aktuální data.', 'error');
+                } finally {
+                    publishGitHubButton.disabled = false;
+                }
             });
             pageSelect.addEventListener('change', fillGroups); groupSelect.addEventListener('change', function () { currentIndex = 0; renderList(); }); fillPages();
         }());

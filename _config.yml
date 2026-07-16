@@ -1,0 +1,22 @@
+lang: cs-CZ
+title: IV Production
+url: https://www.ivproduction.cz
+
+# Serverové a pracovní soubory nesmí GitHub Pages publikovat jako čitelný zdroj.
+exclude:
+  - kontakt-handler.php
+  - api
+  - scripts
+  - dist
+  - Záloha z git hub 27.1.2026 aktualní
+  - zálohy
+  - index chyba.html
+  - index_v1_backup.html
+  - README.md
+  - GOOGLE_REVIEW_SETUP.md
+  - GOOGLE_REVIEWS_PHP_HOSTING.md
+  - seo-texty.md
+  - analyze_structure.py
+  - update_mobile_menu.py
+
+plugins: []

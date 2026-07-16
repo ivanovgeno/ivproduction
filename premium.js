@@ -95,3 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
     positionOverlay();
     setMenuState(false);
 });
+
+// Prevent opened third-party pages from retaining access to the IV Production tab.
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+        const rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+        rel.add('noopener');
+        rel.add('noreferrer');
+        link.setAttribute('rel', [...rel].join(' '));
+    });
+});
