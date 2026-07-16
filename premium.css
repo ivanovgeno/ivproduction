@@ -2104,15 +2104,25 @@ body.page-contact .hero > h1 {
     margin-bottom: 1.15rem;
 }
 
-.portfolio-closing-cta {
+body.page-portfolio .portfolio-closing-cta {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
     margin-top: 0.25rem;
-    text-decoration: none;
+    min-width: 14.5rem;
+    text-align: center;
+    text-decoration: none !important;
 }
 
 @media (max-width: 760px) {
     body.page-portfolio .hero-cta,
     body.page-contact .hero-cta {
         margin-top: 1.35rem;
+    }
+
+    body.page-portfolio .portfolio-closing-cta {
+        min-width: 0;
+        width: min(100%, 22rem);
     }
 }
 
