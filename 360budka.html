@@ -4,32 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>360° Video Budka | IV Production – Virální zážitek pro vaše hosty</title>
+    <title>360° videobudka na svatbu, ples a firemní akci | IV Budka 360</title>
     <meta name="description"
-        content="360° video budka pro svatby, plesy a firemní akce. Virální videa, okamžité sdílení. ✓ Obsluha v ceně ✓ Celá ČR">
+        content="Pronájem 360° videobudky pro svatby, plesy, firemní večírky a festivaly. Až 5 osob, efekty, rekvizity, obsluha a okamžité sdílení po celé ČR.">
     <link rel="canonical" href="https://www.ivproduction.cz/360budka.html">
     <meta name="theme-color" content="#0a0a0f">
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="favicon.png">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="cs_CZ">
-    <meta property="og:title" content="360° Video Budka | IV Production">
-    <meta property="og:description" content="360° video budka pro svatby, plesy a firemní akce. Virální videa a okamžité sdílení po celé ČR.">
+    <meta property="og:title" content="360° videobudka na svatbu, ples a firemní akci | IV Budka 360">
+    <meta property="og:description"
+        content="Hosté na platformě, kamera v pohybu a hotové video připravené ke sdílení ještě během akce.">
     <meta property="og:url" content="https://www.ivproduction.cz/360budka.html">
     <meta property="og:site_name" content="IV Production">
-    <meta property="og:image" content="https://www.ivproduction.cz/og-image.jpg">
+    <meta property="og:image" content="https://www.ivproduction.cz/assets/360budka/og.webp">
+    <meta property="og:image:type" content="image/webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="360° video budka IV Production">
+    <meta property="og:image:alt" content="Hosté při natáčení v IV Budce 360">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="360° Video Budka | IV Production">
-    <meta name="twitter:description" content="Virální 360° videa a zábava pro hosty na vaší akci.">
-    <meta name="twitter:image" content="https://www.ivproduction.cz/og-image.jpg">
+    <meta name="twitter:title" content="360° videobudka | IV Budka 360">
+    <meta name="twitter:description"
+        content="360° video, rekvizity, vlastní branding a okamžité sdílení pro akce po celé ČR.">
+    <meta name="twitter:image" content="https://www.ivproduction.cz/assets/360budka/og.webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <link rel="preload" as="image" href="assets/360budka/hero.webp" fetchpriority="high">
 
     <style>
         :root {
@@ -40,6 +44,7 @@
             --primary: var(--gold);
             --secondary: #12121A;
             --dark: #0A0A0F;
+            --darker: #050508;
             --light: #F8F8FA;
             --gray: #6B7280;
             --gray-light: #9CA3AF;
@@ -48,9 +53,9 @@
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html {
@@ -58,35 +63,35 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
             background: var(--dark);
             color: var(--light);
+            font-family: 'Outfit', sans-serif;
             line-height: 1.6;
         }
 
         .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            background: rgba(10, 10, 15, 0.95);
             backdrop-filter: blur(20px);
+            background: rgba(10, 10, 15, 0.95);
             border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+            left: 0;
+            padding: 1rem 2rem;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 1000;
         }
 
         .header-inner {
-            max-width: 1400px;
-            margin: 0 auto;
+            align-items: center;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            margin: 0 auto;
+            max-width: 1400px;
         }
 
         .logo {
-            display: flex;
             align-items: center;
+            display: flex;
             text-decoration: none;
         }
 
@@ -96,110 +101,34 @@
         }
 
         .nav {
+            align-items: center;
             display: flex;
             gap: 2rem;
-            align-items: center;
         }
 
         .nav a {
             color: var(--light);
-            text-decoration: none;
             font-weight: 500;
+            text-decoration: none;
             transition: all 0.3s ease;
         }
 
-        .nav a:hover {
+        .nav a:hover,
+        .nav a.active {
             color: var(--gold-shine);
         }
 
         .nav-cta {
             background: var(--gradient);
+            border-radius: 50px;
             color: var(--dark) !important;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
             font-weight: 600 !important;
-        }
-
-        @media (max-width: 900px) {
-            .nav {
-                display: none;
-            }
-        }
-
-        .hero {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('360budka-bg.jpg') center/cover;
-            filter: brightness(0.5);
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(10, 10, 15, 0.2) 0%, rgba(10, 10, 15, 0.8) 100%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            max-width: 900px;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 span {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--gray-light);
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: var(--gradient);
-            color: var(--dark);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-gold);
+            padding: 0.75rem 1.5rem;
         }
 
         .container {
-            max-width: 1400px;
             margin: 0 auto;
+            max-width: 1400px;
             padding: 0 2rem;
         }
 
@@ -210,210 +139,922 @@
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
-            text-align: center;
             margin-bottom: 1rem;
+            text-align: center;
         }
 
         .section-title span {
             background: var(--gradient);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .section-subtitle {
-            text-align: center;
-            color: var(--gray);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: linear-gradient(145deg, rgba(18, 18, 26, 0.9), rgba(10, 10, 15, 0.95));
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(201, 162, 39, 0.15);
-            transition: all 0.4s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(201, 162, 39, 0.4);
-            box-shadow: var(--shadow-gold);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-title span {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .feature-text {
             color: var(--gray-light);
+            font-size: 1.1rem;
+            margin: 0 auto 3rem;
+            text-align: center;
         }
 
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+        .btn {
+            align-items: center;
+            border-radius: 50px;
+            display: inline-flex;
+            font-weight: 600;
+            gap: 0.5rem;
+            justify-content: center;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            transition: all 0.3s;
         }
 
-        .pricing-card {
-            background: linear-gradient(145deg, rgba(18, 18, 26, 0.9), rgba(10, 10, 15, 0.95));
-            border-radius: 24px;
-            padding: 2.5rem;
-            border: 1px solid rgba(201, 162, 39, 0.15);
-            transition: all 0.4s;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(201, 162, 39, 0.4);
-            box-shadow: var(--shadow-gold);
-        }
-
-        .pricing-card.featured {
-            border-color: var(--gold);
-        }
-
-        .pricing-card.featured::before {
-            content: 'NEJOBLÍBENĚJŠÍ';
-            position: absolute;
-            top: 1.5rem;
-            right: -3rem;
+        .btn-primary {
             background: var(--gradient);
             color: var(--dark);
-            padding: 0.5rem 4rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            transform: rotate(45deg);
         }
 
-        .pricing-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-price span {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .pricing-features li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--gray-light);
-        }
-
-        .pricing-features li::before {
-            content: '✓';
-            color: var(--gold);
-            margin-right: 0.75rem;
-        }
-
-        .cta-section {
-            padding: 5rem 0;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), transparent);
-            border-top: 1px solid rgba(201, 162, 39, 0.1);
-            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section h2 span {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .cta-section p {
-            color: var(--gray-light);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
+        .btn-primary:hover {
+            box-shadow: var(--shadow-gold);
+            transform: translateY(-3px);
         }
 
         .footer {
-            background: var(--secondary);
-            padding: 3rem 2rem;
-            text-align: center;
+            background: var(--darker);
             border-top: 1px solid rgba(201, 162, 39, 0.1);
-        }
-
-        .footer p {
             color: var(--gray);
+            padding: 3rem 2rem;
         }
 
         .footer a {
-            color: var(--gold);
+            color: var(--primary);
             text-decoration: none;
         }
+
+        @media (max-width: 900px) {
+            .nav {
+                display: none;
+            }
+        }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
+    <link rel="stylesheet" href="premium.css?v=20260721-360-upgrade">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
+    <style>
+        body.page-360 {
+            background: #0a0a0f;
+        }
+
+        body.page-360 .hero {
+            align-items: center;
+            display: flex;
+            min-height: clamp(47rem, 88vh, 62rem);
+            overflow: hidden;
+            padding: 9rem 2rem 5rem;
+            position: relative;
+        }
+
+        body.page-360 .hero::before {
+            background-image: url('assets/360budka/hero.webp');
+            background-position: 68% 18%;
+            background-size: cover;
+            content: '';
+            filter: brightness(0.58) saturate(0.9);
+            inset: 0;
+            position: absolute;
+            transform: scale(1.02);
+        }
+
+        body.page-360 .hero::after {
+            background:
+                radial-gradient(circle at 72% 42%, rgba(212, 175, 55, 0.12), transparent 31%),
+                linear-gradient(90deg, rgba(7, 7, 10, 0.97) 0%, rgba(7, 7, 10, 0.9) 34%, rgba(7, 7, 10, 0.42) 69%, rgba(7, 7, 10, 0.25) 100%),
+                linear-gradient(180deg, rgba(7, 7, 10, 0.18), #0a0a0f 100%);
+            content: '';
+            inset: 0;
+            position: absolute;
+        }
+
+        .booth-hero-content {
+            margin: 0 auto;
+            max-width: 76rem;
+            position: relative;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .booth-kicker,
+        .package-section-kicker {
+            color: var(--gold-light);
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            margin-bottom: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .package-section-kicker {
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        body.page-360 .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(3.2rem, 6.8vw, 7.2rem);
+            letter-spacing: -0.06em;
+            line-height: 0.9;
+            margin-bottom: 1.45rem;
+            max-width: 57rem;
+        }
+
+        body.page-360 .hero h1 span {
+            background: var(--gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        body.page-360 .hero p {
+            color: rgba(250, 249, 246, 0.76);
+            font-size: clamp(1.03rem, 1.6vw, 1.28rem);
+            line-height: 1.68;
+            max-width: 44rem;
+        }
+
+        .booth-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-top: 1.8rem;
+        }
+
+        .booth-hero-proof {
+            color: rgba(250, 249, 246, 0.58) !important;
+            font-size: 0.73rem !important;
+            font-weight: 800;
+            letter-spacing: 0.11em;
+            margin-top: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        .booth-story {
+            background:
+                radial-gradient(circle at 14% 15%, rgba(201, 162, 39, 0.11), transparent 28rem),
+                #101014;
+        }
+
+        .booth-story-grid {
+            align-items: center;
+            display: grid;
+            gap: clamp(2.5rem, 7vw, 6rem);
+            grid-template-columns: minmax(0, 0.92fr) minmax(20rem, 1.08fr);
+            margin: 0 auto;
+            max-width: 76rem;
+        }
+
+        .booth-story-copy .package-section-kicker,
+        .booth-story-copy .section-title {
+            margin-inline: 0;
+            text-align: left;
+        }
+
+        .booth-story-copy p {
+            color: rgba(250, 249, 246, 0.68);
+            font-size: clamp(1rem, 1.35vw, 1.13rem);
+            line-height: 1.82;
+        }
+
+        .booth-story-copy p + p {
+            margin-top: 1rem;
+        }
+
+        .booth-platform {
+            background:
+                radial-gradient(circle at 50% 74%, rgba(212, 175, 55, 0.18), transparent 45%),
+                linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015));
+            border: 1px solid rgba(240, 212, 119, 0.2);
+            border-radius: 1.25rem;
+            min-height: 27rem;
+            overflow: hidden;
+            padding: clamp(1.2rem, 3vw, 2.2rem);
+            position: relative;
+        }
+
+        .booth-platform img {
+            display: block;
+            height: auto;
+            margin: 2.2rem auto 0;
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .booth-platform-stat {
+            background: rgba(10, 10, 15, 0.86);
+            border: 1px solid rgba(255, 229, 92, 0.38);
+            border-radius: 0.9rem;
+            box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.32);
+            color: rgba(250, 249, 246, 0.7);
+            padding: 0.85rem 1rem;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .booth-platform-stat strong {
+            color: var(--gold-light);
+            display: block;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.65rem;
+            line-height: 1;
+        }
+
+        .booth-platform-stat span {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .booth-platform-stat--one {
+            left: 1rem;
+            top: 1rem;
+        }
+
+        .booth-platform-stat--two {
+            bottom: 1rem;
+            right: 1rem;
+        }
+
+        .booth-benefits {
+            background: #0b0b0f;
+        }
+
+        .booth-benefit-grid,
+        .booth-included-grid,
+        .booth-requirement-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 2.8rem;
+        }
+
+        .booth-card,
+        .booth-step,
+        .booth-requirement {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+            border: 1px solid rgba(240, 212, 119, 0.16);
+            border-radius: 1rem;
+            padding: clamp(1.35rem, 2.3vw, 1.9rem);
+            transition: border-color 300ms ease, box-shadow 350ms ease, transform 350ms ease;
+        }
+
+        .booth-card:hover,
+        .booth-step:hover,
+        .booth-requirement:hover {
+            border-color: rgba(255, 229, 92, 0.46);
+            box-shadow: 0 1.3rem 3.5rem rgba(0, 0, 0, 0.28);
+            transform: translateY(-0.4rem);
+        }
+
+        .booth-icon {
+            align-items: center;
+            background:
+                radial-gradient(circle at 35% 28%, rgba(255, 229, 92, 0.2), transparent 45%),
+                rgba(201, 162, 39, 0.075);
+            border: 1px solid rgba(240, 212, 119, 0.27);
+            border-radius: 1rem;
+            color: var(--gold-light);
+            display: flex;
+            height: 4rem;
+            justify-content: center;
+            margin-bottom: 1.15rem;
+            position: relative;
+            width: 4rem;
+        }
+
+        .booth-icon::after {
+            border: 1px solid rgba(255, 229, 92, 0.12);
+            border-radius: 0.72rem;
+            content: '';
+            inset: 0.38rem;
+            position: absolute;
+        }
+
+        .booth-icon svg {
+            fill: none;
+            height: 2rem;
+            position: relative;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.7;
+            width: 2rem;
+            z-index: 1;
+        }
+
+        .booth-card-label {
+            color: var(--gold-light);
+            display: block;
+            font-size: 0.67rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .booth-card h3,
+        .booth-step h3,
+        .booth-requirement h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.35rem, 2vw, 1.72rem);
+            line-height: 1.08;
+            margin-bottom: 0.7rem;
+        }
+
+        .booth-card p,
+        .booth-step p,
+        .booth-requirement p {
+            color: rgba(250, 249, 246, 0.64);
+            font-size: 0.93rem;
+            line-height: 1.68;
+        }
+
+        .booth-showcase {
+            background:
+                radial-gradient(circle at 80% 10%, rgba(201, 162, 39, 0.12), transparent 28rem),
+                linear-gradient(180deg, #111116, #0b0b0f);
+            overflow: hidden;
+        }
+
+        .booth-video-grid {
+            display: grid;
+            gap: clamp(1rem, 2.5vw, 2rem);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin: 2.8rem auto 0;
+            max-width: 66rem;
+        }
+
+        .booth-video-card {
+            background: linear-gradient(160deg, rgba(38, 34, 20, 0.9), rgba(7, 7, 10, 0.98) 32%);
+            border: 1px solid rgba(240, 212, 119, 0.24);
+            border-radius: 1.7rem;
+            box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.34);
+            overflow: hidden;
+            padding: 0.5rem;
+            position: relative;
+        }
+
+        .booth-video-card::before {
+            background: rgba(255, 255, 255, 0.16);
+            border-radius: 1rem;
+            content: '';
+            height: 0.3rem;
+            left: 50%;
+            position: absolute;
+            top: 0.9rem;
+            transform: translateX(-50%);
+            width: 2.7rem;
+            z-index: 2;
+        }
+
+        .booth-video-card video {
+            aspect-ratio: 9 / 16;
+            background: #050508;
+            border-radius: 1.32rem;
+            display: block;
+            height: auto;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .booth-video-caption {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            padding: 0.85rem 0.7rem 0.45rem;
+        }
+
+        .booth-video-caption strong {
+            font-size: 0.77rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .booth-video-caption span {
+            color: var(--gold-light);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .booth-how {
+            background: #101014;
+        }
+
+        .booth-steps {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 2.8rem;
+        }
+
+        .booth-step-number {
+            align-items: center;
+            background: var(--gradient);
+            border-radius: 50%;
+            color: #111115;
+            display: flex;
+            font-size: 0.82rem;
+            font-weight: 800;
+            height: 2.35rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            width: 2.35rem;
+        }
+
+        .booth-gallery-section {
+            background: #0b0b0f;
+        }
+
+        .booth-gallery {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: 1.25fr 0.75fr;
+            grid-template-rows: repeat(2, minmax(14rem, 24rem));
+            margin: 2.8rem auto 0;
+            max-width: 76rem;
+        }
+
+        .booth-gallery figure {
+            background: #17171c;
+            border: 1px solid rgba(240, 212, 119, 0.18);
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .booth-gallery figure:first-child {
+            grid-row: 1 / 3;
+        }
+
+        .booth-gallery img {
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 400ms ease, transform 700ms ease;
+            width: 100%;
+        }
+
+        .booth-gallery figure:first-child img {
+            object-position: center 28%;
+        }
+
+        .booth-gallery figure:nth-child(2) img {
+            object-position: center 24%;
+        }
+
+        .booth-gallery figure:hover img {
+            filter: brightness(1.06) saturate(1.06);
+            transform: scale(1.035);
+        }
+
+        .booth-gallery figcaption {
+            background: linear-gradient(180deg, transparent, rgba(5, 5, 8, 0.9));
+            bottom: 0;
+            color: #fff;
+            font-size: 0.76rem;
+            font-weight: 800;
+            inset-inline: 0;
+            letter-spacing: 0.08em;
+            padding: 3rem 1rem 1rem;
+            position: absolute;
+            text-transform: uppercase;
+        }
+
+        .booth-offer {
+            background:
+                radial-gradient(circle at 16% 12%, rgba(255, 229, 92, 0.12), transparent 25rem),
+                #101014;
+        }
+
+        .booth-offer-card {
+            align-items: start;
+            background:
+                radial-gradient(circle at 14% 0%, rgba(255, 229, 92, 0.18), transparent 26rem),
+                linear-gradient(135deg, rgba(38, 34, 20, 0.98), rgba(10, 10, 14, 0.99));
+            border: 1px solid rgba(255, 229, 92, 0.48);
+            border-radius: 1.25rem;
+            display: grid;
+            gap: clamp(2rem, 5vw, 4.5rem);
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+            margin: 2.8rem auto 0;
+            max-width: 76rem;
+            padding: clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .booth-offer-copy h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .booth-offer-copy > p {
+            color: rgba(250, 249, 246, 0.68);
+            line-height: 1.75;
+        }
+
+        .booth-duration-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            list-style: none;
+            margin: 1.4rem 0 1.7rem;
+        }
+
+        .booth-duration-list li {
+            background: rgba(255, 255, 255, 0.055);
+            border: 1px solid rgba(255, 229, 92, 0.25);
+            border-radius: 99px;
+            color: rgba(250, 249, 246, 0.78);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.5rem 0.78rem;
+        }
+
+        .booth-offer-list {
+            display: grid;
+            gap: 0.2rem;
+            list-style: none;
+        }
+
+        .booth-offer-list li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            color: rgba(250, 249, 246, 0.72);
+            display: flex;
+            font-size: 0.92rem;
+            gap: 0.7rem;
+            line-height: 1.5;
+            padding: 0.72rem 0;
+        }
+
+        .booth-offer-list li::before {
+            color: var(--gold-light);
+            content: '✓';
+            font-weight: 800;
+        }
+
+        .booth-requirements {
+            background: #0b0b0e;
+        }
+
+        .booth-requirement-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-inline: auto;
+            max-width: 76rem;
+        }
+
+        .booth-weather-notice {
+            align-items: center;
+            background:
+                radial-gradient(circle at 8% 50%, rgba(255, 229, 92, 0.2), transparent 21rem),
+                linear-gradient(135deg, rgba(43, 37, 18, 0.98), rgba(14, 14, 18, 0.99));
+            border-color: rgba(255, 229, 92, 0.62);
+            display: grid;
+            gap: 1.2rem;
+            grid-column: 1 / -1;
+            grid-template-columns: auto minmax(0, 1fr);
+        }
+
+        .booth-weather-notice .booth-icon {
+            margin: 0;
+        }
+
+        .booth-weather-notice strong {
+            color: #fff3bd;
+        }
+
+        .booth-faq {
+            background: #101014;
+        }
+
+        .booth-faq-list {
+            display: grid;
+            gap: 0.8rem;
+            margin: 2.8rem auto 0;
+            max-width: 60rem;
+        }
+
+        .booth-faq details {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(240, 212, 119, 0.16);
+            border-radius: 0.9rem;
+            padding: 0 1.25rem;
+        }
+
+        .booth-faq details[open] {
+            border-color: rgba(255, 229, 92, 0.42);
+        }
+
+        .booth-faq summary {
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            justify-content: space-between;
+            list-style: none;
+            padding: 1.2rem 0;
+        }
+
+        .booth-faq summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .booth-faq summary::after {
+            color: var(--gold-light);
+            content: '+';
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-left: 1rem;
+        }
+
+        .booth-faq details[open] summary::after {
+            content: '−';
+        }
+
+        .booth-faq details p {
+            color: rgba(250, 249, 246, 0.66);
+            line-height: 1.75;
+            padding: 0 0 1.25rem;
+        }
+
+        .booth-final {
+            background:
+                radial-gradient(circle at 18% 0%, rgba(201, 162, 39, 0.15), transparent 25rem),
+                #0b0b0f;
+            border-block: 1px solid rgba(201, 162, 39, 0.15);
+            text-align: center;
+        }
+
+        .booth-final .section-subtitle {
+            max-width: 48rem;
+        }
+
+        .back-to-top {
+            align-items: center;
+            background: var(--dark);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            border-radius: 50%;
+            bottom: 2rem;
+            color: var(--gold);
+            cursor: pointer;
+            display: flex;
+            height: 50px;
+            justify-content: center;
+            opacity: 0;
+            position: fixed;
+            right: 2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            visibility: hidden;
+            width: 50px;
+            z-index: 9999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--gradient);
+            border-color: transparent;
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        .back-to-top svg {
+            fill: none;
+            height: 24px;
+            stroke: currentColor;
+            width: 24px;
+        }
+
+        .quick-contact {
+            bottom: 6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: fixed;
+            right: 2rem;
+            z-index: 10000;
+        }
+
+        .qc-btn {
+            align-items: center;
+            backdrop-filter: blur(5px);
+            background: rgba(10, 10, 15, 0.82);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            height: 50px;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 50px;
+        }
+
+        .qc-btn-whatsapp { color: #25D366; }
+        .qc-btn-messenger { color: #0084FF; }
+
+        .qc-btn:hover {
+            background: var(--gradient);
+            border-color: transparent;
+            color: var(--dark);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .qc-btn svg {
+            fill: currentColor;
+            height: 28px;
+            width: 28px;
+        }
+
+        @media (max-width: 1050px) {
+            .booth-benefit-grid,
+            .booth-included-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .booth-requirement-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 900px) {
+            .booth-story-grid,
+            .booth-offer-card {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .booth-story-copy .package-section-kicker,
+            .booth-story-copy .section-title {
+                text-align: center;
+            }
+
+            .booth-story-copy p {
+                text-align: center;
+            }
+
+            .booth-steps {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 700px) {
+            body.page-360 .hero {
+                min-height: 49rem;
+                padding-inline: 1.25rem;
+            }
+
+            body.page-360 .hero::before {
+                background-position: 55% 17%;
+            }
+
+            body.page-360 .hero::after {
+                background: linear-gradient(180deg, rgba(7, 7, 10, 0.38), rgba(7, 7, 10, 0.88) 63%, #0a0a0f 100%);
+            }
+
+            .booth-hero-content {
+                padding-top: 12rem;
+                text-align: center;
+            }
+
+            body.page-360 .hero p {
+                margin-inline: auto;
+            }
+
+            .booth-hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .booth-hero-actions .btn {
+                width: 100%;
+            }
+
+            .booth-benefit-grid,
+            .booth-included-grid,
+            .booth-video-grid,
+            .booth-steps,
+            .booth-requirement-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .booth-video-grid {
+                max-width: 23rem;
+            }
+
+            .booth-gallery {
+                display: flex;
+                gap: 0.8rem;
+                margin-inline: -0.2rem;
+                overflow-x: auto;
+                padding: 0.2rem 0.2rem 1rem;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none;
+            }
+
+            .booth-gallery::-webkit-scrollbar {
+                display: none;
+            }
+
+            .booth-gallery figure,
+            .booth-gallery figure:first-child {
+                aspect-ratio: 4 / 5;
+                flex: 0 0 86%;
+                grid-row: auto;
+                min-height: 0;
+                scroll-snap-align: center;
+            }
+
+            .booth-weather-notice {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .booth-weather-notice .booth-icon {
+                margin-bottom: 0.2rem;
+            }
+
+            .quick-contact {
+                bottom: 5.6rem;
+                right: 1rem;
+            }
+
+            .back-to-top {
+                bottom: 1.1rem;
+                right: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .booth-card,
+            .booth-step,
+            .booth-requirement,
+            .booth-gallery img {
+                transition: none;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "IV Budka 360",
+      "serviceType": "Pronájem 360° videobudky",
+      "description": "360° videobudka s obsluhou, efekty, rekvizitami, vlastní grafikou a okamžitým sdílením pro svatby, plesy, firemní akce a festivaly.",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Česká republika"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "IV Production",
+        "url": "https://www.ivproduction.cz/"
+      },
+      "url": "https://www.ivproduction.cz/360budka.html"
+    }
+    </script>
 </head>
 
 <body class="page-360">
     <header class="header" id="header" data-unified-nav>
         <div class="header-inner">
-            <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production" width="1024" height="531" decoding="async" loading="eager" fetchpriority="high"></a>
+            <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production" width="1024"
+                    height="531" decoding="async" loading="eager" fetchpriority="high"></a>
 
-            <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
+            <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu"
+                aria-controls="mobileMenuOverlay" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <nav class="nav">
+            <nav class="nav" aria-label="Hlavní navigace">
                 <a href="svatby.html">Svatby</a>
                 <a href="reality.html">Reality</a>
                 <a href="plesy.html">Plesy</a>
                 <div class="nav-dropdown">
-                    <a href="fotobudka.html" class="nav-dropdown-trigger">Fotobudky ▾</a>
+                    <a href="fotobudka.html" class="nav-dropdown-trigger active">Fotobudky ▾</a>
                     <div class="nav-dropdown-menu">
                         <a href="fotobudka.html">Fotobudka</a>
-                        <a href="360budka.html">360° Budka</a>
+                        <a href="360budka.html" class="active" aria-current="page">360° Budka</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -427,18 +1068,18 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
-                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+                <a href="kontakt.html#poptavka" class="nav-cta">Nezávazná poptávka</a>
             </nav>
         </div>
 
-        <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Hlavní navigace" aria-hidden="true">
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true"
+            aria-label="Hlavní navigace" aria-hidden="true" inert>
             <a href="index.html" class="mobile-menu-link">Domů</a>
             <a href="svatby.html" class="mobile-menu-link">Svatby</a>
             <a href="reality.html" class="mobile-menu-link">Reality</a>
             <a href="plesy.html" class="mobile-menu-link">Plesy</a>
             <a href="fotobudka.html" class="mobile-menu-link">Fotobudka</a>
-            <a href="360budka.html" class="mobile-menu-link">360° Budka</a>
+            <a href="360budka.html" class="mobile-menu-link active" aria-current="page">360° Budka</a>
             <a href="promo.html" class="mobile-menu-link">Promo</a>
             <a href="reels.html" class="mobile-menu-link">Reels</a>
             <a href="konference.html" class="mobile-menu-link">Konference</a>
@@ -446,145 +1087,338 @@
             <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
             <a href="blog.html" class="mobile-menu-link">Blog</a>
-            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
+            <a href="kontakt.html#poptavka" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>360° video, které <span>rozhýbe dav</span></h1>
-            <p>Hosté vstoupí do záběru, vy odcházíte s videi připravenými ke sdílení. Výrazný zážitek pro ples, svatbu i firemní akci.</p>
-            <a href="kontakt.html" class="btn btn-primary">Rezervovat 360° budku</a>
-        </div>
-    </section>
+    <main>
+        <section class="hero">
+            <div class="booth-hero-content">
+                <span class="booth-kicker">IV Budka 360 · videozážitek pro hosty</span>
+                <h1>Zážitek, který se točí <span>kolem vašich hostů</span></h1>
+                <p>Na platformu vstoupí až pět lidí, kamera je obkrouží ze všech stran a během chvíle vznikne krátké
+                    video s efekty, hudbou a vlastním logem — připravené rovnou ke sdílení.</p>
+                <div class="booth-hero-actions">
+                    <a href="kontakt.html?service=360budka#poptavka" class="btn btn-primary">Ověřit volný termín</a>
+                    <a href="#ukazky" class="btn btn-outline">Přehrát skutečné ukázky</a>
+                </div>
+                <p class="booth-hero-proof">Až 5 osob · okamžité sdílení · obsluha a rekvizity · svatby · plesy ·
+                    firemní akce · celá ČR</p>
+            </div>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Co je <span>360° budka</span>?</h2>
-            <p class="section-subtitle">Moderní atrakce pro svatby, plesy a firemní akce</p>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3 class="feature-title"><span>Virální</span> videa</h3>
-                    <p class="feature-text">Efektní slow-motion videa, která jsou perfektní pro TikTok a Instagram.</p>
-                </div>
-                <div class="feature-card">
-                    <h3 class="feature-title"><span>360°</span> rotace</h3>
-                    <p class="feature-text">Plynulá rotace kamery kolem hostů pro dramatický efekt.</p>
-                </div>
-                <div class="feature-card">
-                    <h3 class="feature-title"><span>Okamžité</span> sdílení</h3>
-                    <p class="feature-text">Hotové video na mobilu hostů během pár sekund.</p>
-                </div>
-                <div class="feature-card">
-                    <h3 class="feature-title"><span>Vlastní</span> hudba</h3>
-                    <p class="feature-text">Výběr z knihovny hudby nebo vaše vlastní skladba.</p>
-                </div>
-                <div class="feature-card">
-                    <h3 class="feature-title"><span>Custom</span> branding</h3>
-                    <p class="feature-text">Logo, barvy a text podle vaší akce nebo firemního stylu.</p>
-                </div>
-                <div class="feature-card">
-                    <h3 class="feature-title"><span>Obsluha</span> v ceně</h3>
-                    <p class="feature-text">Profesionální operátor, který se o vše postará.</p>
+        <section class="section booth-story">
+            <div class="container">
+                <div class="booth-story-grid">
+                    <div class="booth-story-copy">
+                        <p class="package-section-kicker">Jedna platforma. Nekonečně reakcí.</p>
+                        <h2 class="section-title">Moderní atrakce, která <span>vtáhne hosty do dění</span></h2>
+                        <p>Hosté stojí na platformě, zatímco kamera plynule obíhá kolem nich a zachytí každý pohyb i
+                            atmosféru. Software záběr během několika okamžiků zpracuje do krátkého videa se zpomalením,
+                            zrychlením, zpětným chodem a dalšími efekty.</p>
+                        <p>Výsledek se dá sdílet ještě během akce. Hosté si tak neodnášejí jen vzpomínku, ale obsah,
+                            který chtějí hned ukázat dál.</p>
+                    </div>
+                    <figure class="booth-platform">
+                        <div class="booth-platform-stat booth-platform-stat--one"><strong>360°</strong><span>plynulá
+                                rotace</span></div>
+                        <img src="assets/360budka/platform.webp" alt="Černozlatá platforma IV Budka 360" width="1400"
+                            height="775" loading="lazy" decoding="async">
+                        <div class="booth-platform-stat booth-platform-stat--two"><strong>5</strong><span>osob na
+                                platformě</span></div>
+                    </figure>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" style="background: var(--secondary);">
-        <div class="container">
-            <h2 class="section-title">Ceník <span>360° budky</span></h2>
-            <p class="section-subtitle">Pronájem včetně dopravy, instalace a obsluhy</p>
-
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-name">3 hodiny</div>
-                    <div class="pricing-price"><span>8 000 Kč</span></div>
-                    <ul class="pricing-features">
-                        <li>3 hodiny provozu</li>
-                        <li>Neomezený počet videí</li>
-                        <li>Okamžité sdílení</li>
-                        <li>Profesionální obsluha</li>
-                        <li>Doprava do 50 km zdarma</li>
-                    </ul>
-                    <a href="kontakt.html" class="btn btn-primary"
-                        style="width: 100%; justify-content: center;">Rezervovat</a>
-                </div>
-                <div class="pricing-card" style="position: relative; overflow: hidden;">
-                    <div class="pricing-name">5 hodin</div>
-                    <div class="pricing-price"><span>11 000 Kč</span></div>
-                    <ul class="pricing-features">
-                        <li>5 hodin provozu</li>
-                        <li>Neomezený počet videí</li>
-                        <li>Okamžité sdílení</li>
-                        <li>Custom branding</li>
-                        <li>Doprava do 100 km zdarma</li>
-                    </ul>
-                    <a href="kontakt.html" class="btn btn-primary"
-                        style="width: 100%; justify-content: center;">Rezervovat</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-name">Celá akce</div>
-                    <div class="pricing-price"><span>15 000 Kč</span></div>
-                    <ul class="pricing-features">
-                        <li>Až 8 hodin provozu</li>
-                        <li>Neomezený počet videí</li>
-                        <li>Premium efekty</li>
-                        <li>Rekvizity a doplňky</li>
-                        <li>Doprava po celé ČR</li>
-                    </ul>
-                    <a href="kontakt.html" class="btn btn-primary"
-                        style="width: 100%; justify-content: center;">Rezervovat</a>
+        <section class="section booth-benefits">
+            <div class="container">
+                <p class="package-section-kicker">Co hosté skutečně dostanou</p>
+                <h2 class="section-title">Nejen video. <span>Celý zážitek kolem něj.</span></h2>
+                <p class="section-subtitle">Techniku, scénu i průběh hlídáme my. Hosté mají jediný úkol — bavit se.</p>
+                <div class="booth-benefit-grid">
+                    <article class="booth-card">
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12"
+                                    r="8" /><path d="M12 4a8 8 0 0 1 7.5 5M20 4v5h-5M12 20a8 8 0 0 1-7.5-5M4 20v-5h5" /></svg></div>
+                        <span class="booth-card-label">360° pohyb</span>
+                        <h3>Kamera obíhá kolem vás</h3>
+                        <p>Rotující rameno vytvoří dynamický záběr z úhlu, který běžným telefonem nevznikne.</p>
+                    </article>
+                    <article class="booth-card">
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path
+                                    d="M4 17 8 7l4 10 4-10 4 10M3 20h18" /></svg></div>
+                        <span class="booth-card-label">Efekty</span>
+                        <h3>Slow motion, reverse i speed up</h3>
+                        <p>Zpomalení, zrychlení, zpětný chod nebo třpytky promění krátký záběr v hotový party klip.</p>
+                    </article>
+                    <article class="booth-card">
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2"
+                                    width="10" height="20" rx="2" /><path d="M10 5h4M10 18h4M4 9l3-3m-3 3 3 3M20 15l-3-3m3 3-3 3" /></svg></div>
+                        <span class="booth-card-label">Sdílení</span>
+                        <h3>Video rovnou do telefonu</h3>
+                        <p>Hotový klip mohou hosté získat a sdílet na sociální sítě ještě v průběhu akce.</p>
+                    </article>
+                    <article class="booth-card">
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5"
+                                    width="16" height="14" rx="2" /><path d="m8 14 2-2 2 2 4-5 2 3M8 9h.01" /></svg></div>
+                        <span class="booth-card-label">Vlastní styl</span>
+                        <h3>Logo a grafika vaší akce</h3>
+                        <p>Do výsledku vložíme animované logo, jména, datum nebo firemní prvky podle zadání.</p>
+                    </article>
+                    <article class="booth-card">
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path
+                                    d="M9 18V5l10-2v13M9 9l10-2M6 18a3 2 0 1 1-6 0 3 2 0 0 1 6 0Zm13-2a3 2 0 1 1-6 0 3 2 0 0 1 6 0Z" /></svg></div>
+                        <span class="booth-card-label">Hudba</span>
+                        <h3>Zvuk sladěný s atmosférou</h3>
+                        <p>Hudební stopu přizpůsobíme typu akce, aby video působilo jako jeden hotový celek.</p>
+                    </article>
+                    <article class="booth-card">
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path
+                                    d="M4 15c2.5-1.2 5.3-1.7 8-1.7s5.5.5 8 1.7l-1 5H5l-1-5Z" /><path d="M8 13.8V8l4-4 4 4v5.8M6 8l2 1m10-1-2 1" /></svg></div>
+                        <span class="booth-card-label">Rekvizity</span>
+                        <h3>Money gun, bubliny i svítící brýle</h3>
+                        <p>Masky, brýle a akční rekvizity pomohou rozjet zábavu i hostům, kteří se nejdřív ostýchají.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="cta-section">
-        <div class="container">
-            <h2>Udělejte z vaší akce <span>virální hit</span></h2>
-            <p>Rezervujte 360° budku a zajistěte hostům nezapomenutelný zážitek.</p>
-            <a href="kontakt.html" class="btn btn-primary">Rezervovat termín</a>
-        </div>
-    </section>
+        <section class="section booth-showcase" id="ukazky">
+            <div class="container">
+                <p class="package-section-kicker">Takto to vypadá v praxi</p>
+                <h2 class="section-title">Skutečná videa <span>z IV Budky 360</span></h2>
+                <p class="section-subtitle">Žádná simulace ani fotobanka. Tohle si hosté opravdu odnášejí z akce.</p>
+                <div class="booth-video-grid">
+                    <article class="booth-video-card">
+                        <video controls muted loop playsinline preload="metadata"
+                            poster="assets/360budka/video-01-poster.webp"
+                            aria-label="Ukázka videa z IV Budky 360 s party rekvizitami">
+                            <source src="assets/360budka/video-01.mp4" type="video/mp4">
+                            Váš prohlížeč nepodporuje přehrávání videa.
+                        </video>
+                        <div class="booth-video-caption"><strong>Party energie</strong><span>360° klip</span></div>
+                    </article>
+                    <article class="booth-video-card">
+                        <video controls muted loop playsinline preload="metadata"
+                            poster="assets/360budka/video-02-poster.webp"
+                            aria-label="Ukázka červeně nasvícené IV Budky 360">
+                            <source src="assets/360budka/video-02.mp4" type="video/mp4">
+                            Váš prohlížeč nepodporuje přehrávání videa.
+                        </video>
+                        <div class="booth-video-caption"><strong>LED scéna</strong><span>360° klip</span></div>
+                    </article>
+                    <article class="booth-video-card">
+                        <video controls muted loop playsinline preload="metadata"
+                            poster="assets/360budka/video-03-poster.webp"
+                            aria-label="Ukázka hostů s bublinkovou pistolí v IV Budce 360">
+                            <source src="assets/360budka/video-03.mp4" type="video/mp4">
+                            Váš prohlížeč nepodporuje přehrávání videa.
+                        </video>
+                        <div class="booth-video-caption"><strong>Bubliny a rekvizity</strong><span>360° klip</span></div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    <section class="related-work" data-portfolio-slider data-portfolio-categories="360budka,plesy" data-portfolio-title="Momentky, které se hned sdílejí" data-portfolio-accent="dál"></section>
+        <section class="section booth-how">
+            <div class="container">
+                <p class="package-section-kicker">Jednodušší už to být nemůže</p>
+                <h2 class="section-title">Jak IV Budka 360 <span>funguje?</span></h2>
+                <p class="section-subtitle">Od první pózy po hotový klip během několika jednoduchých kroků.</p>
+                <div class="booth-steps">
+                    <article class="booth-step"><span class="booth-step-number">1</span>
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path
+                                    d="M4 15c2.5-1.2 5.3-1.7 8-1.7s5.5.5 8 1.7l-1 5H5l-1-5Z" /><path d="M8 13.8V8l4-4 4 4v5.8" /></svg></div>
+                        <h3>Vyberete rekvizity</h3>
+                        <p>Money gun, bubble gun, svítící brýle, masky nebo vlastní nápad.</p>
+                    </article>
+                    <article class="booth-step"><span class="booth-step-number">2</span>
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="8"
+                                    r="3" /><circle cx="16" cy="8" r="3" /><path d="M2.5 20c.8-4 2.6-6 5.5-6s4.7 2 5.5 6M10.5 20c.8-4 2.6-6 5.5-6s4.7 2 5.5 6" /></svg></div>
+                        <h3>Vstoupíte na platformu</h3>
+                        <p>Pohodlně se na ni vejde až pět lidí, takže může vzniknout společný záběr.</p>
+                    </article>
+                    <article class="booth-step"><span class="booth-step-number">3</span>
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12"
+                                    r="7" /><path d="M12 5a7 7 0 0 1 6.5 4.5M19 5v5h-5M5 19v-5h5" /></svg></div>
+                        <h3>Kamera vás obkrouží</h3>
+                        <p>Obsluha spustí plynulou rotaci a během několika vteřin zachytí celou akci.</p>
+                    </article>
+                    <article class="booth-step"><span class="booth-step-number">4</span>
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path
+                                    d="M12 16V3M8 7l4-4 4 4M5 13v7h14v-7" /><path d="M8 20h8" /></svg></div>
+                        <h3>Video hned sdílíte</h3>
+                        <p>Efekty, hudba i branding se doplní automaticky a výsledek je připravený k odeslání.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section booth-gallery-section">
+            <div class="container">
+                <p class="package-section-kicker">Scéna, která přitahuje pozornost</p>
+                <h2 class="section-title">Stylové zázemí a <span>rekvizity v akci</span></h2>
+                <p class="section-subtitle">Nasvícené pozadí, černozlatá platforma a červený koberec vytvoří atrakci,
+                    kterou hosté nepřehlédnou.</p>
+                <div class="booth-gallery">
+                    <figure><img src="assets/360budka/action-group.webp"
+                            alt="Hosté s rekvizitami na platformě IV Budka 360" width="1195" height="1800"
+                            loading="lazy" decoding="async"><figcaption>Zábava pro skupiny hostů</figcaption></figure>
+                    <figure><img src="assets/360budka/action-couple.webp"
+                            alt="Pár s money gun během natáčení v IV Budce 360" width="1168" height="1800"
+                            loading="lazy" decoding="async"><figcaption>Money rain v pohybu</figcaption></figure>
+                    <figure><img src="assets/360budka/setup.webp"
+                            alt="Kompletní sestava IV Budky 360 s nasvícením a červeným kobercem" width="1200"
+                            height="1600" loading="lazy" decoding="async"><figcaption>Kompletní sestava na místě</figcaption></figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="section booth-offer" id="nabidka">
+            <div class="container">
+                <p class="package-section-kicker">Cenová nabídka na míru</p>
+                <h2 class="section-title">Vyberte délku. <span>Zbytek zařídíme.</span></h2>
+                <p class="section-subtitle">Cena se odvíjí od termínu, místa, délky provozu a požadované podoby
+                    videa. Vždy ji potvrdíme před rezervací.</p>
+                <article class="booth-offer-card">
+                    <div class="booth-offer-copy">
+                        <span class="booth-card-label">IV Budka 360</span>
+                        <h3>Nabídka přesně pro vaši akci</h3>
+                        <p>Každá akce má jiný termín, místo i rozsah. Pošlete nám základní informace — doporučíme
+                            vhodnou délku provozu a připravíme jasnou individuální kalkulaci.</p>
+                        <ul class="booth-duration-list">
+                            <li>3 hodiny</li><li>4 hodiny</li><li>celá akce</li><li>jiný rozsah</li>
+                        </ul>
+                        <a href="kontakt.html?service=360budka#poptavka" class="btn btn-primary">Nezávazně zjistit cenu</a>
+                    </div>
+                    <ul class="booth-offer-list">
+                        <li>Platforma až pro 5 osob a dvě špičková zařízení Apple</li>
+                        <li>Profesionální obsluha po celou objednanou dobu</li>
+                        <li>Stylové nasvícené pozadí a červený koberec</li>
+                        <li>Vlastní animované logo a hudba podle typu akce</li>
+                        <li>Slow motion, speed up, reverse a další efekty</li>
+                        <li>Okamžité sdílení a online galerie pořízených videí</li>
+                        <li>Money gun, bubble gun, svítící brýle, masky a další rekvizity</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="section booth-requirements">
+            <div class="container">
+                <p class="package-section-kicker">Příprava bez překvapení</p>
+                <h2 class="section-title">Co potřebujeme <span>na místě</span></h2>
+                <p class="section-subtitle">Když jsou tyto podmínky splněné, instalace i provoz proběhnou bezpečně a
+                    plynule.</p>
+                <div class="booth-requirement-grid">
+                    <article class="booth-requirement">
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path
+                                    d="M4 4h6M4 4v6m16-6h-6m6 0v6M4 20h6m-6 0v-6m16 6h-6m6 0v-6" /><path d="M8 12h8M12 8v8" /></svg></div>
+                        <h3>Prostor minimálně 3 × 3 m</h3>
+                        <p>Čím více volného místa kolem scény zůstane, tím pohodlněji se hosté vystřídají.</p>
+                    </article>
+                    <article class="booth-requirement">
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path
+                                    d="M5 21V3m14 18V3M3 5h18M8 9h8M8 15h8" /></svg></div>
+                        <h3>Výška alespoň 2,6 m</h3>
+                        <p>Rameno kamery potřebuje bezpečný prostor nad platformou bez světel a nízkých dekorací.</p>
+                    </article>
+                    <article class="booth-requirement">
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path
+                                    d="M4 9h16v5H4zM7 14v7m10-7v7M8 6h8" /></svg></div>
+                        <h3>Stůl na rekvizity</h3>
+                        <p>Hosté si na něm pohodlně vyberou brýle, masky, money gun a další doplňky.</p>
+                    </article>
+                    <article class="booth-requirement">
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path
+                                    d="M8 2v7m8-7v7M6 9h12v3a6 6 0 0 1-12 0V9Z" /><path d="M12 18v4" /></svg></div>
+                        <h3>Elektřina 230 V</h3>
+                        <p>Běžnou zásuvku potřebujeme v bezpečné vzdálenosti od místa instalace.</p>
+                    </article>
+                    <article class="booth-requirement booth-weather-notice">
+                        <div class="booth-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path
+                                    d="M4 14a8 8 0 0 1 16 0H4Z" /><path d="M12 6V3M12 14v5a2 2 0 0 0 4 0M6 18l-1 2m14-2 1 2" /></svg></div>
+                        <div><span class="booth-card-label">Důležité pro venkovní akce</span>
+                            <h3>Krytý prostor a mokrá varianta se domlouvají předem</h3>
+                            <p>Techniku lze bezpečně provozovat jen na rovném, suchém a chráněném místě. Pro případ
+                                deště nebo silného větru musí být potvrzený <strong>krytý náhradní prostor</strong>.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section booth-faq">
+            <div class="container">
+                <p class="package-section-kicker">Nejčastější otázky</p>
+                <h2 class="section-title">Co chcete vědět <span>před rezervací</span></h2>
+                <div class="booth-faq-list">
+                    <details>
+                        <summary>Za jak dlouho hosté dostanou hotové video?</summary>
+                        <p>Zpracování probíhá automaticky během několika okamžiků. Pokud je na místě vhodné připojení,
+                            mohou hosté klip získat a sdílet ještě během akce.</p>
+                    </details>
+                    <details>
+                        <summary>Kolik lidí může být na platformě současně?</summary>
+                        <p>Platforma je navržená až pro 5 osob. Konkrétní počet vždy přizpůsobíme bezpečnosti, pohodlí
+                            hostů a zvoleným rekvizitám.</p>
+                    </details>
+                    <details>
+                        <summary>Lze do videa přidat naše logo nebo jména?</summary>
+                        <p>Ano. Připravíme vlastní animované logo, jména novomanželů, datum, firemní identitu nebo jiný
+                            grafický prvek podle typu akce.</p>
+                    </details>
+                    <details>
+                        <summary>Na jaké akce se IV Budka 360 hodí?</summary>
+                        <p>Nejčastěji ji vozíme na svatby, plesy, firemní večírky, oslavy a veřejné festivaly. Nabídku
+                            přizpůsobíme prostoru i plánovanému programu.</p>
+                    </details>
+                    <details>
+                        <summary>Je součástí vždy obsluha a rekvizity?</summary>
+                        <p>Ano. Obsluha pomáhá hostům, hlídá bezpečný provoz a stará se o techniku. Součástí jsou také
+                            party rekvizity včetně money gun, bubble gun, svítících brýlí a masek.</p>
+                    </details>
+                    <details>
+                        <summary>Kolik pronájem stojí?</summary>
+                        <p>Cenu sestavujeme na míru podle termínu, lokality a délky provozu — 3 hodiny, 4 hodiny, celá
+                            akce nebo jiný rozsah. Přesnou kalkulaci dostanete před potvrzením rezervace.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-work" data-portfolio-slider data-portfolio-categories="360budka,plesy"
+            data-portfolio-title="Další momenty, které se hned sdílejí" data-portfolio-accent="z akcí"></section>
+
+        <section class="section booth-final">
+            <div class="container">
+                <p class="package-section-kicker">Rezervace IV Budky 360</p>
+                <h2 class="section-title">Až se kamera rozjede, <span>hosté se přidají sami</span></h2>
+                <p class="section-subtitle">Pošlete datum, místo a typ akce. Ověříme dostupnost, doporučíme délku
+                    provozu a připravíme přehlednou nabídku bez skrytých překvapení.</p>
+                <a href="kontakt.html?service=360budka#poptavka" class="btn btn-primary">Nezávazně ověřit termín</a>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="index.html" class="logo footer-logo"><img src="logo-light.png" alt="IV Production" width="1024" height="531" decoding="async" loading="lazy"></a>
+                <a href="index.html" class="logo footer-logo"><img src="logo-light.png" alt="IV Production"
+                        width="1024" height="531" decoding="async" loading="lazy"></a>
                 <p>Profesionální video produkce a fotobudky pro nezapomenutelné momenty.</p>
                 <div class="footer-social">
                     <a href="https://www.facebook.com/IVproductionCZ" class="social-btn" aria-label="Facebook"
-                        target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                        </svg>
-                    </a>
+                        target="_blank" rel="noopener noreferrer"><svg width="20" height="20" viewBox="0 0 24 24"
+                            fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg></a>
                     <a href="https://www.instagram.com/ivproduction_video/" class="social-btn" aria-label="Instagram"
-                        target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                        </svg>
-                    </a>
-                    <a href="https://tiktok.com/@ivproduction" class="social-btn" aria-label="TikTok" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-                        </svg>
-                    </a>
-                    <a href="https://youtube.com/@ivproduction" class="social-btn" aria-label="YouTube" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-                        </svg>
-                    </a>
+                        target="_blank" rel="noopener noreferrer"><svg width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20"
+                                height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg></a>
+                    <a href="https://tiktok.com/@ivproduction" class="social-btn" aria-label="TikTok" target="_blank"
+                        rel="noopener noreferrer"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" /></svg></a>
+                    <a href="https://youtube.com/@ivproduction" class="social-btn" aria-label="YouTube" target="_blank"
+                        rel="noopener noreferrer"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg></a>
                 </div>
             </div>
 
@@ -595,6 +1429,7 @@
                     <li><a href="reality.html">Reality</a></li>
                     <li><a href="plesy.html">Plesy</a></li>
                     <li><a href="fotobudka.html">Fotobudka</a></li>
+                    <li><a href="360budka.html">360° Budka</a></li>
                 </ul>
             </div>
 
@@ -610,7 +1445,7 @@
             <div class="footer-links">
                 <h4>Kontakt</h4>
                 <ul>
-                    <li><a href="tel:+420773210194">+420 773 210 194</a></li>
+                    <li><a href="tel:+420773210194">+420&nbsp;773&nbsp;210&nbsp;194</a></li>
                     <li><a href="mailto:video@ivproduction.cz">video@ivproduction.cz</a></li>
                     <li>Hradec Králové a celá ČR</li>
                 </ul>
@@ -627,152 +1462,49 @@
             <p>© 2026 IV Production. Všechna práva vyhrazena.</p>
         </div>
     </footer>
-    <!-- Global Floating Elements -->
-    <style>
-        /* Back to Top */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--dark);
-            border: 1px solid rgba(201, 162, 39, 0.4);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 9999;
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            color: var(--gold);
-            text-decoration: none;
-        }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--gradient);
-            color: var(--dark);
-            border-color: transparent;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(201, 162, 39, 0.3);
-        }
-
-        .back-to-top svg {
-            width: 24px;
-            height: 24px;
-            stroke: currentColor;
-            fill: none;
-        }
-
-        /* Quick Contact */
-        .quick-contact {
-            position: fixed;
-            right: 2rem;
-            bottom: 6rem;
-            /* Stacks above Back to Top */
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            z-index: 10000;
-        }
-
-        .qc-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(201, 162, 39, 0.4);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .qc-btn-whatsapp {
-            background: rgba(10, 10, 15, 0.8);
-            color: #25D366;
-        }
-
-        .qc-btn-messenger {
-            background: rgba(10, 10, 15, 0.8);
-            color: #0084FF;
-        }
-
-        .qc-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            background: var(--gradient);
-            /* Gold Gradient on Hover */
-            border-color: transparent;
-            box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
-        }
-
-        .qc-btn:hover svg {
-            fill: var(--dark);
-            /* Icon turns dark on gold background */
-        }
-
-        .qc-btn svg {
-            width: 28px;
-            height: 28px;
-            fill: currentColor;
-            transition: fill 0.3s ease;
-            z-index: 2;
-        }
-    </style>
-
-    <a href="#" class="back-to-top" onclick="scrollToTop(); return false;">
+    <a href="#" class="back-to-top" aria-label="Zpět nahoru">
         <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 19V5M5 12l7-7 7 7" />
         </svg>
     </a>
 
-    <div class="quick-contact">
-        <!-- Messenger (Corrected Icon) -->
-        <a href="https://m.me/ivproductioncz" target="_blank" class="qc-btn qc-btn-messenger"
-            title="Napsat na Messenger">
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M12 2C6.347 2 2 6.167 2 11.25c0 2.9 1.416 5.503 3.693 7.21l-.57 2.922 3.093-1.637c1.196.44 2.493.687 3.847.687 5.626 0 10.187-4.167 10.187-9.25C22.187 6.167 17.627 2 12 2zm1.217 12.35l-2.023-3.136-4.07 3.136 4.39-4.522 2.07 3.083 4.02-3.083-4.387 4.522z" />
-            </svg>
+    <div class="quick-contact" role="group" aria-label="Rychlý kontakt">
+        <a href="https://m.me/ivproductioncz" target="_blank" rel="noopener noreferrer"
+            class="qc-btn qc-btn-messenger" title="Napsat na Messenger" aria-label="Napsat na Messenger">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.347 2 2 6.167 2 11.25c0 2.9 1.416 5.503 3.693 7.21l-.57 2.922 3.093-1.637c1.196.44 2.493.687 3.847.687 5.626 0 10.187-4.167 10.187-9.25C22.187 6.167 17.627 2 12 2zm1.217 12.35-2.023-3.136-4.07 3.136 4.39-4.522 2.07 3.083 4.02-3.083-4.387 4.522z" /></svg>
         </a>
-        <!-- WhatsApp -->
-        <a href="https://wa.me/420773210194" target="_blank" class="qc-btn qc-btn-whatsapp" title="Napsat na WhatsApp">
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-            </svg>
+        <a href="https://wa.me/420773210194" target="_blank" rel="noopener noreferrer"
+            class="qc-btn qc-btn-whatsapp" title="Napsat na WhatsApp" aria-label="Napsat na WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" /></svg>
         </a>
     </div>
 
     <script>
-        // Back to Top Logic
-        const backToTopBtn = document.querySelector('.back-to-top');
-        if (backToTopBtn) {
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (backToTopButton) {
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
+                backToTopButton.classList.toggle('visible', window.scrollY > 300);
+            }, { passive: true });
+            backToTopButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
 
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        const showcaseVideos = document.querySelectorAll('.booth-video-card video');
+        if ('IntersectionObserver' in window && showcaseVideos.length) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    const video = entry.target;
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: [0, 0.55] });
+            showcaseVideos.forEach((video) => videoObserver.observe(video));
         }
     </script>
 </body>

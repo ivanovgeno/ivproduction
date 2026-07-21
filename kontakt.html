@@ -741,6 +741,7 @@
                                 <option value="ples">Plesy a akce</option>
                                 <option value="promo">Promo video</option>
                                 <option value="fotobudka">Fotobudka</option>
+                                <option value="360budka">360° video budka</option>
                                 <option value="jine">Jiné</option>
                             </select>
                         </div>
@@ -883,7 +884,12 @@
 
     <script>
         const status = new URLSearchParams(window.location.search).get('status');
+        const requestedService = new URLSearchParams(window.location.search).get('service');
         const formStatus = document.getElementById('formStatus');
+        const serviceSelect = document.getElementById('service');
+        if (serviceSelect && requestedService && [...serviceSelect.options].some((option) => option.value === requestedService)) {
+            serviceSelect.value = requestedService;
+        }
         if (formStatus && status) {
             formStatus.classList.add('is-visible');
             if (status === 'sent') {

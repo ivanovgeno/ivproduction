@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileToggle.setAttribute('aria-expanded', String(isOpen));
         mobileToggle.setAttribute('aria-label', isOpen ? 'Zavřít menu' : 'Otevřít menu');
         mobileOverlay.setAttribute('aria-hidden', String(!isOpen));
+        mobileOverlay.inert = !isOpen;
         document.body.style.overflow = isOpen ? 'hidden' : '';
 
         if (isOpen) {
