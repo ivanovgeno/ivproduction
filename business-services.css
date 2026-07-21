@@ -1,0 +1,857 @@
+/* Shared commercial layout for Reels, conference and podcast service pages. */
+
+:where(.page-reels, .page-conference, .page-podcast) {
+    --business-border: rgba(250, 249, 246, 0.13);
+    --business-border-gold: rgba(212, 175, 55, 0.36);
+    --business-copy: rgba(250, 249, 246, 0.7);
+    --business-surface: rgba(255, 255, 255, 0.035);
+}
+
+:where(.page-reels, .page-conference, .page-podcast) .hero-content {
+    max-width: 52rem;
+}
+
+.service-hero-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: flex-start;
+}
+
+.service-hero-proof {
+    align-items: center;
+    color: rgba(250, 249, 246, 0.72) !important;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.76rem !important;
+    font-weight: 700;
+    gap: 0.45rem 1rem;
+    letter-spacing: 0.055em;
+    margin: 1.35rem 0 0 !important;
+    text-transform: uppercase;
+}
+
+.service-hero-proof span {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.48rem;
+}
+
+.service-hero-proof span::before {
+    background: var(--gold-light);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+    content: '';
+    height: 0.34rem;
+    width: 0.34rem;
+}
+
+.business-container {
+    margin: 0 auto;
+    max-width: 1260px;
+    padding-inline: 2rem;
+    width: 100%;
+}
+
+.business-intro,
+.business-section,
+.business-process,
+.business-faq,
+.business-final {
+    padding: clamp(5rem, 8vw, 7.5rem) 0;
+}
+
+.business-intro {
+    border-bottom: 1px solid var(--business-border);
+}
+
+.business-intro__grid {
+    align-items: end;
+    display: grid;
+    gap: clamp(2.5rem, 7vw, 6rem);
+    grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+}
+
+.business-eyebrow {
+    color: var(--gold-light);
+    font-size: 0.69rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+}
+
+.business-intro h2,
+.business-section__header h2,
+.business-scope-card h2,
+.business-faq__header h2,
+.business-final h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.052em;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+}
+
+.business-intro h2 {
+    font-size: clamp(2.7rem, 5vw, 5rem);
+    line-height: 0.98;
+    margin: 0 0 1.4rem;
+    max-width: 50rem;
+}
+
+.business-intro h2 span,
+.business-section__header h2 span,
+.business-faq__header h2 span,
+.business-final h2 span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.business-intro__lead {
+    color: var(--business-copy);
+    font-size: clamp(1rem, 1.5vw, 1.14rem);
+    line-height: 1.78;
+    margin: 0;
+    max-width: 47rem;
+}
+
+.business-truth {
+    background:
+        linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(255, 255, 255, 0.018));
+    border: 1px solid var(--business-border-gold);
+    border-radius: 10px;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    position: relative;
+}
+
+.business-truth::before {
+    background: linear-gradient(90deg, var(--gold-light), transparent);
+    content: '';
+    height: 1px;
+    left: 1.5rem;
+    position: absolute;
+    right: 45%;
+    top: 0;
+}
+
+.business-truth strong {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.18;
+    margin-bottom: 0.8rem;
+}
+
+.business-truth p {
+    color: var(--business-copy);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.business-facts {
+    border-bottom: 1px solid var(--business-border);
+    border-top: 1px solid var(--business-border);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+.business-fact {
+    border-right: 1px solid var(--business-border);
+    padding: 1.4rem clamp(1rem, 3vw, 2rem);
+}
+
+.business-fact:last-child {
+    border-right: 0;
+}
+
+.business-fact strong {
+    color: var(--gold-light);
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.35rem, 2.3vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+}
+
+.business-fact span {
+    color: rgba(250, 249, 246, 0.56);
+    display: block;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    margin-top: 0.35rem;
+}
+
+.business-section--tint,
+.business-process {
+    background:
+        radial-gradient(circle at 82% 8%, rgba(212, 175, 55, 0.09), transparent 24rem),
+        #101014;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.14);
+    border-top: 1px solid rgba(212, 175, 55, 0.14);
+}
+
+.business-section__header,
+.business-faq__header {
+    margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+    max-width: 55rem;
+    text-align: center;
+}
+
+.business-section__header h2,
+.business-faq__header h2 {
+    font-size: clamp(2.65rem, 4.8vw, 4.7rem);
+    line-height: 1;
+    margin: 0 0 1rem;
+}
+
+.business-section__header > p:last-child,
+.business-faq__header > p:last-child {
+    color: var(--business-copy);
+    font-size: 1.04rem;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 46rem;
+}
+
+.business-feature-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.business-feature-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.012));
+    border: 1px solid var(--business-border);
+    border-radius: 10px;
+    min-height: 14.5rem;
+    padding: 1.75rem;
+    position: relative;
+    transition: border-color 360ms var(--ease-premium), box-shadow 360ms var(--ease-premium), transform 360ms var(--ease-premium);
+}
+
+.business-feature-card__index {
+    color: var(--gold-light);
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    margin-bottom: 2.2rem;
+}
+
+.business-feature-card h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.48rem;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+    margin: 0 0 0.7rem;
+}
+
+.business-feature-card p {
+    color: var(--business-copy);
+    font-size: 0.92rem;
+    line-height: 1.66;
+    margin: 0;
+}
+
+.business-packages {
+    align-items: stretch;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.business-package-card {
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.012));
+    border: 1px solid var(--business-border);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    padding: clamp(1.45rem, 2.6vw, 2.25rem);
+    position: relative;
+    transition: border-color 360ms var(--ease-premium), box-shadow 360ms var(--ease-premium), transform 360ms var(--ease-premium);
+}
+
+.business-package-card--featured {
+    border-color: rgba(212, 175, 55, 0.72);
+    box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.1);
+}
+
+.business-package-badge {
+    align-self: flex-start;
+    background: var(--gradient);
+    border-radius: 4px;
+    color: #121215;
+    font-size: 0.63rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    margin-bottom: 1.1rem;
+    padding: 0.42rem 0.65rem;
+    text-transform: uppercase;
+}
+
+.business-package-type {
+    color: var(--gold-light);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    margin: 0 0 0.65rem;
+    text-transform: uppercase;
+}
+
+.business-package-card h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.8rem, 2.7vw, 2.35rem);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 1;
+    margin: 0 0 0.85rem;
+}
+
+.business-package-description {
+    color: var(--business-copy);
+    font-size: 0.92rem;
+    line-height: 1.62;
+    margin: 0 0 1.45rem;
+    min-height: 4.5rem;
+}
+
+.business-package-price {
+    align-items: baseline;
+    border-bottom: 1px solid var(--business-border);
+    border-top: 1px solid var(--business-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.55rem;
+    margin-bottom: 1.25rem;
+    padding: 1.15rem 0;
+}
+
+.business-package-price strong {
+    color: var(--gold-light);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 3.3vw, 2.8rem);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 1;
+}
+
+.business-package-price span {
+    color: rgba(250, 249, 246, 0.5);
+    font-size: 0.72rem;
+}
+
+.business-package-list {
+    display: grid;
+    gap: 0;
+    list-style: none;
+    margin: 0 0 1.35rem;
+    padding: 0;
+}
+
+.business-package-list li {
+    border-bottom: 1px solid rgba(250, 249, 246, 0.07);
+    color: rgba(250, 249, 246, 0.75);
+    font-size: 0.86rem;
+    line-height: 1.5;
+    padding: 0.72rem 0 0.72rem 1.35rem;
+    position: relative;
+}
+
+.business-package-list li::before {
+    color: var(--gold-light);
+    content: '✓';
+    font-size: 0.76rem;
+    font-weight: 800;
+    left: 0;
+    position: absolute;
+    top: 0.77rem;
+}
+
+.business-package-scope {
+    color: rgba(250, 249, 246, 0.48);
+    font-size: 0.73rem;
+    line-height: 1.55;
+    margin: auto 0 1.2rem;
+}
+
+.business-package-card .btn {
+    justify-content: center;
+    width: 100%;
+}
+
+.business-pricing-note {
+    background: rgba(212, 175, 55, 0.06);
+    border-left: 2px solid rgba(212, 175, 55, 0.6);
+    color: rgba(250, 249, 246, 0.64);
+    font-size: 0.82rem;
+    line-height: 1.65;
+    margin: 1.5rem 0 0;
+    padding: 0.9rem 1rem;
+}
+
+.business-scope-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.business-scope-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.012));
+    border: 1px solid var(--business-border);
+    border-radius: 10px;
+    padding: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.business-scope-card h2 {
+    font-size: clamp(2rem, 3vw, 2.85rem);
+    line-height: 1.04;
+    margin: 0 0 0.8rem;
+}
+
+.business-scope-card > p {
+    color: var(--business-copy);
+    font-size: 0.91rem;
+    line-height: 1.65;
+    margin: 0 0 1.25rem;
+}
+
+.business-price-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.business-price-list li {
+    align-items: baseline;
+    border-top: 1px solid rgba(250, 249, 246, 0.09);
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+}
+
+.business-price-list span {
+    color: rgba(250, 249, 246, 0.68);
+    font-size: 0.84rem;
+}
+
+.business-price-list strong {
+    color: var(--gold-light);
+    flex: 0 0 auto;
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-align: right;
+}
+
+.business-plain-list {
+    display: grid;
+    gap: 0.8rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.business-plain-list li {
+    color: rgba(250, 249, 246, 0.68);
+    font-size: 0.86rem;
+    line-height: 1.58;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.business-plain-list li::before {
+    background: var(--gold-light);
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 0.72rem;
+    width: 0.55rem;
+}
+
+.business-process__grid {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 3.25rem;
+}
+
+.business-process__step {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--business-border);
+    min-height: 17rem;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.business-process__number {
+    align-items: center;
+    border: 1px solid rgba(212, 175, 55, 0.58);
+    border-radius: 50%;
+    color: var(--gold-light);
+    display: inline-flex;
+    font-size: 0.68rem;
+    font-weight: 800;
+    height: 2.65rem;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    margin-bottom: 2rem;
+    width: 2.65rem;
+}
+
+.business-process__step h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.42rem;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+    margin: 0 0 0.75rem;
+}
+
+.business-process__step p {
+    color: var(--business-copy);
+    font-size: 0.87rem;
+    line-height: 1.65;
+    margin: 0;
+}
+
+.business-faq__grid {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0 auto;
+    max-width: 60rem;
+}
+
+.business-faq details {
+    background: rgba(255, 255, 255, 0.028);
+    border: 1px solid var(--business-border);
+    border-radius: 8px;
+    transition: background-color 260ms ease, border-color 260ms ease;
+}
+
+.business-faq details[open] {
+    background: rgba(212, 175, 55, 0.055);
+    border-color: rgba(212, 175, 55, 0.45);
+}
+
+.business-faq summary {
+    cursor: pointer;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    list-style: none;
+    padding: 1.25rem 3.5rem 1.25rem 1.35rem;
+    position: relative;
+}
+
+.business-faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.business-faq summary::after {
+    color: var(--gold-light);
+    content: '+';
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+    position: absolute;
+    right: 1.35rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.business-faq details[open] summary::after {
+    content: '−';
+}
+
+.business-faq details p {
+    color: var(--business-copy);
+    font-size: 0.91rem;
+    line-height: 1.72;
+    margin: 0;
+    max-width: 53rem;
+    padding: 0 3.5rem 1.35rem 1.35rem;
+}
+
+.business-final {
+    background:
+        linear-gradient(105deg, rgba(212, 175, 55, 0.12), transparent 58%),
+        #101014;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.16);
+    border-top: 1px solid rgba(212, 175, 55, 0.16);
+}
+
+.business-final__inner {
+    align-items: center;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.business-final__inner > * {
+    min-width: 0;
+}
+
+.business-final h2 {
+    font-size: clamp(2.5rem, 4.3vw, 4.35rem);
+    line-height: 1;
+    margin: 0 0 0.9rem;
+    max-width: 53rem;
+}
+
+.business-final p {
+    color: var(--business-copy);
+    line-height: 1.68;
+    margin: 0;
+    max-width: 46rem;
+}
+
+.business-final .btn {
+    justify-content: center;
+    min-width: 13rem;
+}
+
+:where(.page-reels, .page-conference, .page-podcast) #cenik,
+:where(.page-reels, .page-conference, .page-podcast) #poptavka {
+    scroll-margin-top: 6rem;
+}
+
+/* Legacy floating actions moved out of body markup on these three pages. */
+.back-to-top {
+    align-items: center;
+    background: var(--dark);
+    border: 1px solid rgba(201, 162, 39, 0.4);
+    border-radius: 50%;
+    bottom: 2rem;
+    color: var(--gold);
+    cursor: pointer;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    opacity: 0;
+    position: fixed;
+    right: 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    visibility: hidden;
+    width: 50px;
+    z-index: 9999;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--gradient);
+    border-color: transparent;
+    box-shadow: 0 10px 20px rgba(201, 162, 39, 0.3);
+    color: var(--dark);
+    transform: translateY(-5px);
+}
+
+.back-to-top svg {
+    fill: none;
+    height: 24px;
+    stroke: currentColor;
+    width: 24px;
+}
+
+.quick-contact {
+    bottom: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: fixed;
+    right: 2rem;
+    z-index: 10000;
+}
+
+.qc-btn {
+    align-items: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(201, 162, 39, 0.4);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 50px;
+}
+
+.qc-btn-whatsapp {
+    background: rgba(10, 10, 15, 0.8);
+    color: #25d366;
+}
+
+.qc-btn-messenger {
+    background: rgba(10, 10, 15, 0.8);
+    color: #0084ff;
+}
+
+.qc-btn:hover {
+    background: var(--gradient);
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.qc-btn:hover svg {
+    fill: var(--dark);
+}
+
+.qc-btn svg {
+    fill: currentColor;
+    height: 28px;
+    transition: fill 0.3s ease;
+    width: 28px;
+    z-index: 2;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .business-feature-card:hover,
+    .business-package-card:hover {
+        border-color: rgba(212, 175, 55, 0.72);
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28), inset 0 0 0 1px rgba(212, 175, 55, 0.1);
+        transform: translateY(-6px);
+    }
+
+    .business-faq details:hover {
+        border-color: rgba(212, 175, 55, 0.42);
+    }
+}
+
+@media (max-width: 980px) {
+    .business-intro__grid,
+    .business-final__inner {
+        align-items: start;
+        grid-template-columns: 1fr;
+    }
+
+    .business-truth {
+        max-width: 42rem;
+    }
+
+    .business-feature-grid,
+    .business-packages {
+        grid-template-columns: 1fr;
+    }
+
+    .business-feature-card {
+        min-height: 0;
+    }
+
+    .business-package-description {
+        min-height: 0;
+    }
+
+    .business-package-card {
+        margin-inline: auto;
+        max-width: 43rem;
+        width: 100%;
+    }
+
+    .business-process__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .business-process__step {
+        min-height: 14rem;
+    }
+
+    .business-final .btn {
+        width: min(100%, 23rem);
+    }
+}
+
+@media (max-width: 720px) {
+    .business-container {
+        padding-inline: 1.15rem;
+    }
+
+    .service-hero-actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .service-hero-actions .btn {
+        margin-inline: 0 !important;
+        width: min(100%, 23rem);
+    }
+
+    .service-hero-proof {
+        justify-content: center;
+    }
+
+    .business-intro,
+    .business-section,
+    .business-process,
+    .business-faq,
+    .business-final {
+        padding-block: clamp(4rem, 14vw, 5rem);
+    }
+
+    .business-intro h2,
+    .business-section__header h2,
+    .business-scope-card h2,
+    .business-faq__header h2,
+    .business-final h2,
+    .business-final h2 span {
+        overflow-wrap: anywhere;
+    }
+
+    .business-facts,
+    .business-scope-grid,
+    .business-process__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .business-fact {
+        border-bottom: 1px solid var(--business-border);
+        border-right: 0;
+        text-align: center;
+    }
+
+    .business-fact:last-child {
+        border-bottom: 0;
+    }
+
+    .business-process__step {
+        min-height: 0;
+    }
+
+    .business-price-list li {
+        align-items: flex-start;
+    }
+
+    .business-faq summary {
+        font-size: 1.08rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .business-feature-card,
+    .business-package-card,
+    .business-faq details {
+        transition: none;
+    }
+}
