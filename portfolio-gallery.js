@@ -151,19 +151,25 @@
             const originalSlides = Array.from(viewport.querySelectorAll('.premium-work-slide'));
             if (originalSlides.length < 2) return null;
 
-            const cloneSlides = originalSlides.map((slide) => {
+            const cloneSlide = (slide) => {
                 const clone = slide.cloneNode(true);
                 clone.dataset.sliderClone = 'true';
                 clone.setAttribute('aria-hidden', 'true');
                 clone.setAttribute('tabindex', '-1');
                 return clone;
-            });
-            cloneSlides.forEach((slide) => viewport.append(slide));
+            };
+
+            // Keep three identical sets in the track. Two sets are not enough when
+            // the viewport shows three cards but the category contains only two:
+            // the browser reaches its maximum scroll position before the loop point.
+            const firstCloneSet = originalSlides.map(cloneSlide);
+            const secondCloneSet = originalSlides.map(cloneSlide);
+            [...firstCloneSet, ...secondCloneSet].forEach((slide) => viewport.append(slide));
 
             const state = { timer: null, normalizeTimer: null, hovering: false, dragging: false };
 
             const loopWidth = () => {
-                const firstClone = cloneSlides[0];
+                const firstClone = firstCloneSet[0];
                 const firstOriginal = originalSlides[0];
                 return firstClone && firstOriginal ? firstClone.offsetLeft - firstOriginal.offsetLeft : 0;
             };
@@ -275,14 +281,16 @@
             const title = section.dataset.portfolioTitle || 'Vybrané ukázky';
             const accent = section.dataset.portfolioAccent || 'z portfolia';
             const category = categories[0] || 'all';
+            const showHeader = section.dataset.portfolioHeader !== 'false';
+            section.classList.toggle('related-work--slider-only', !showHeader);
             section.innerHTML = `
-                <div class="related-work__header">
+                ${showHeader ? `<div class="related-work__header">
                     <div>
                         <p class="related-work__eyebrow">UKÁZKY Z PORTFOLIA</p>
                         <h2>${escapeHtml(title)} <span>${escapeHtml(accent)}</span></h2>
                     </div>
                     <a href="portfolio.html?category=${encodeURIComponent(category)}#projekty" class="related-work__link">Zobrazit celé portfolio <i aria-hidden="true">→</i></a>
-                </div>
+                </div>` : ''}
                 <div class="premium-work-slider" data-portfolio-autoplay>
                     <button class="premium-work-slider__control" type="button" data-slider-previous aria-label="Předchozí ukázky">←</button>
                     <div class="premium-work-slider__viewport" tabindex="0" aria-label="Automaticky posouvané ukázky z portfolia">

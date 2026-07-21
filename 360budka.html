@@ -197,11 +197,11 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260721-360-upgrade">
+    <link rel="stylesheet" href="premium.css?v=20260721-360-slider-loop">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
-    <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
+    <script src="portfolio-gallery.js?v=20260721-infinite-loop" defer></script>
     <style>
         body.page-360 {
             background: #0a0a0f;
@@ -486,10 +486,14 @@
                 radial-gradient(circle at 80% 10%, rgba(201, 162, 39, 0.12), transparent 28rem),
                 linear-gradient(180deg, #111116, #0b0b0f);
             overflow: hidden;
+            padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
         }
 
-        .booth-showcase + .related-work {
+        .booth-showcase + .related-work--slider-only {
+            background: linear-gradient(180deg, #0b0b0f 0%, #111116 100%);
+            border-top: 0;
             margin-top: 0;
+            padding-top: clamp(1rem, 2vw, 1.75rem);
         }
 
         .booth-video-grid {
@@ -1225,7 +1229,7 @@
         </section>
 
         <section class="related-work" data-portfolio-slider data-portfolio-categories="360budka"
-            data-portfolio-title="Další ukázky" data-portfolio-accent="z IV Budky 360"></section>
+            data-portfolio-header="false"></section>
 
         <section class="section booth-how">
             <div class="container">
