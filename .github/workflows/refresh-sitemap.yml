@@ -1,0 +1,47 @@
+name: Aktualizovat sitemapu
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '*.html'
+      - 'scripts/generate-sitemap.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sitemap-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Načíst web a historii souborů
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Nastavit Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Vygenerovat sitemapu
+        run: node scripts/generate-sitemap.mjs
+
+      - name: Uložit aktuální data změn
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "Sitemap je aktuální."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "Aktualizovat sitemapu"
+          git push

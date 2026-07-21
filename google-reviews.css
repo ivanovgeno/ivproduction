@@ -49,6 +49,54 @@
 }
 
 @media (max-width: 640px) {
+    .testimonials {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .testimonials > .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .google-widget-wrapper {
+        padding: 1.25rem 1rem;
+    }
+
+    .gw-header,
+    .gw-rating-box {
+        align-items: stretch;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .gw-rating-box > img {
+        height: auto;
+        max-width: 170px;
+        width: 100%;
+    }
+
+    .gw-write-btn {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .gw-slider-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .gw-slider-viewport {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .gw-card {
+        max-width: 320px;
+        width: calc(100vw - 4.25rem);
+    }
+
     .gw-owner-reply {
         padding: 0.8rem 0.85rem;
     }

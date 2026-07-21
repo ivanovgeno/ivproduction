@@ -13,8 +13,8 @@
     --dark: #121215;
     --darker: #0b0b0d;
     --light: #faf9f6;
-    --gray: #a5a39e;
-    --gray-light: #d2d0c9;
+    --gray: #b7b7c0;
+    --gray-light: #d2d2d8;
     --gradient: linear-gradient(108deg, #9c731d 0%, #d4af37 38%, #fff0b8 52%, #d4af37 67%, #8d671c 100%);
     --gradient-dark: linear-gradient(180deg, #17171a 0%, #121215 100%);
     --shadow-gold: 0 18px 45px rgba(212, 175, 55, 0.15);
@@ -71,6 +71,7 @@ body::before {
 .logo img,
 .header.scrolled .logo img {
     height: 46px;
+    width: auto;
 }
 
 .nav {
@@ -752,6 +753,7 @@ body.home-page .hero-stats {
 .footer-logo img {
     height: 60px;
     margin-bottom: 1rem;
+    width: auto;
 }
 
 .footer-links ul {
@@ -764,12 +766,108 @@ body.home-page .hero-stats {
     margin-bottom: 0.75rem;
 }
 
+.footer h3,
 .footer h4 {
     color: var(--gold-light);
     font-size: 0.72rem;
     letter-spacing: 0.13em;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
+}
+
+/* Shared floating controls: kept in the stylesheet so every page has valid HTML. */
+.back-to-top {
+    align-items: center;
+    background: var(--dark);
+    border: 1px solid rgba(201, 162, 39, 0.4);
+    border-radius: 50%;
+    bottom: 2rem;
+    color: var(--gold);
+    cursor: pointer;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    opacity: 0;
+    position: fixed;
+    right: 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    visibility: hidden;
+    width: 50px;
+    z-index: 9999;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+    background: var(--gradient);
+    border-color: transparent;
+    box-shadow: 0 10px 20px rgba(201, 162, 39, 0.3);
+    color: var(--dark);
+    transform: translateY(-5px);
+}
+
+.back-to-top svg {
+    fill: none;
+    height: 24px;
+    stroke: currentColor;
+    width: 24px;
+}
+
+.quick-contact {
+    bottom: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: fixed;
+    right: 2rem;
+    z-index: 10000;
+}
+
+.qc-btn {
+    align-items: center;
+    backdrop-filter: blur(5px);
+    background: rgba(10, 10, 15, 0.82);
+    border: 1px solid rgba(201, 162, 39, 0.4);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 50px;
+}
+
+.qc-btn-whatsapp {
+    color: #25d366;
+}
+
+.qc-btn-messenger {
+    color: #0084ff;
+}
+
+.qc-btn:hover,
+.qc-btn:focus-visible {
+    background: var(--gradient);
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
+    color: var(--dark);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.qc-btn svg {
+    fill: currentColor;
+    height: 28px;
+    transition: fill 0.3s ease;
+    width: 28px;
+    z-index: 2;
 }
 
 .footer-links a {

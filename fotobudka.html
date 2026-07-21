@@ -329,8 +329,8 @@
             text-decoration: none;
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
-    <link rel="stylesheet" href="service-inquiry.css?v=20260721-menu-cta">
+    <link rel="stylesheet" href="premium.css?v=20260721-site-audit-fixes">
+    <link rel="stylesheet" href="service-inquiry.css?v=20260721-accessibility">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
     <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
@@ -1130,7 +1130,7 @@
             <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production" width="1024" height="531" decoding="async" loading="eager" fetchpriority="high"></a>
 
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
+            <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1150,6 +1150,7 @@
                 <div class="nav-dropdown">
                     <a href="index.html#sluzby" class="nav-dropdown-trigger">Další služby ▾</a>
                     <div class="nav-dropdown-menu">
+                        <a href="promo.html">Promo</a>
                         <a href="reels.html">Reels</a>
                         <a href="konference.html">Konference</a>
                         <a href="podcast.html">Podcast</a>
@@ -1163,7 +1164,7 @@
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Hlavní navigace" aria-hidden="true">
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Hlavní navigace" aria-hidden="true" inert>
             <a href="index.html" class="mobile-menu-link">Domů</a>
             <a href="svatby.html" class="mobile-menu-link">Svatby</a>
             <a href="reality.html" class="mobile-menu-link">Reality</a>
@@ -1232,7 +1233,7 @@
                 <p class="section-subtitle">Svatby, plesy i večírky. Každá akce má vlastní atmosféru a grafiku.</p>
                 <div class="budka-gallery-shell" data-photo-gallery>
                     <button class="budka-gallery-control" type="button" data-gallery-prev aria-label="Předchozí fotografie">←</button>
-                    <div class="budka-gallery" tabindex="0" aria-label="Galerie fotografií z IV Budky">
+                    <div class="budka-gallery" tabindex="0" role="region" aria-label="Galerie fotografií z IV Budky">
                         <figure><img src="assets/fotobudka/gallery-01.webp" alt="Hosté pózující v IV Budce" loading="lazy" width="1600" height="1200" decoding="async"><figcaption>Zábava pro všechny hosty</figcaption></figure>
                         <figure class="budka-gallery-contain"><img src="assets/fotobudka/gallery-02.webp" alt="IV Budka připravená na akci" loading="lazy" width="610" height="1600" decoding="async"><figcaption>IV Budka na místě</figcaption></figure>
                         <figure><img src="assets/fotobudka/gallery-03.webp" alt="Vytištěná fotografie z fotobudky" loading="lazy" width="1600" height="1067" decoding="async"><figcaption>Vzpomínka ihned do ruky</figcaption></figure>
@@ -1250,7 +1251,7 @@
                 <h2 class="section-title">Kolik IV Budka <span>stojí?</span></h2>
                 <p class="section-subtitle">Ceny a obsah balíčků vycházejí z původní nabídky IV Budky.</p>
                 <article class="budka-ples-offer">
-                    <div><p class="budka-package-label">Plesy</p><h3>Pronájem IV Budky s obsluhou zdarma</h3><p>Doprava po Královéhradeckém kraji je zahrnutá. Vzdálenější lokality řešíme individuálně.</p></div>
+                    <div><p class="budka-package-label">Plesy</p><h3>Pronájem IV Budky s obsluhou zdarma</h3><p>Doprava po Královéhradeckém kraji je zahrnutá. Mimo kraj účtujeme 9 Kč/km ze startu Jasenná.</p></div>
                     <div class="budka-ples-price">50 Kč<small>za každou vytištěnou fotografii</small></div>
                 </article>
                 <div class="budka-packages">
@@ -1281,7 +1282,7 @@
                 <p class="section-subtitle">Konkrétní dostupnost i možnost pozadí na míru potvrdíme při rezervaci.</p>
                 <div class="budka-gallery-shell" data-photo-gallery>
                     <button class="budka-gallery-control" type="button" data-gallery-prev aria-label="Předchozí pozadí">←</button>
-                    <div class="budka-gallery budka-gallery--backgrounds" tabindex="0" aria-label="Galerie pozadí pro IV Budku">
+                    <div class="budka-gallery budka-gallery--backgrounds" tabindex="0" role="region" aria-label="Galerie pozadí pro IV Budku">
                         <figure><img src="assets/fotobudka/background-01.webp" alt="Stříbrné třpytivé pozadí pro fotobudku" loading="lazy" width="1023" height="694" decoding="async"><figcaption>Stříbrné třpytky</figcaption></figure>
                         <figure><img src="assets/fotobudka/background-02.webp" alt="Světlé pozadí se srdíčky pro fotobudku" loading="lazy" width="1179" height="785" decoding="async"><figcaption>Světelná srdíčka</figcaption></figure>
                         <figure><img src="assets/fotobudka/background-03.webp" alt="Modré třpytivé pozadí pro fotobudku" loading="lazy" width="1179" height="776" decoding="async"><figcaption>Modré třpytky</figcaption></figure>
@@ -1421,7 +1422,7 @@
                             </div>
                             <div class="inquiry-field inquiry-field--wide">
                                 <label for="photobooth-address">Místo konání *</label>
-                                <input id="photobooth-address" name="address" type="text" autocomplete="street-address" placeholder="Název místa, obec nebo adresa" required>
+                                <input id="photobooth-address" name="address" type="text" autocomplete="address-line1" placeholder="Název místa, obec nebo adresa" required>
                             </div>
                             <div class="inquiry-field">
                                 <label for="photobooth-package">Balíček / délka provozu *</label>
@@ -1515,7 +1516,7 @@
             </div>
 
             <div class="footer-links">
-                <h4>Služby</h4>
+                <h3>Služby</h3>
                 <ul>
                     <li><a href="svatby.html">Svatby</a></li>
                     <li><a href="reality.html">Reality</a></li>
@@ -1525,7 +1526,7 @@
             </div>
 
             <div class="footer-links">
-                <h4>Informace</h4>
+                <h3>Informace</h3>
                 <ul>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="kontakt.html">Kontakt</a></li>
@@ -1534,7 +1535,7 @@
             </div>
 
             <div class="footer-links">
-                <h4>Kontakt</h4>
+                <h3>Kontakt</h3>
                 <ul>
                     <li><a href="tel:+420773210194">+420 773 210 194</a></li>
                     <li><a href="mailto:video@ivproduction.cz">video@ivproduction.cz</a></li>
@@ -1554,110 +1555,8 @@
         </div>
     </footer>
     <!-- Global Floating Elements -->
-    <style>
-        /* Back to Top */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--dark);
-            border: 1px solid rgba(201, 162, 39, 0.4);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 9999;
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            color: var(--gold);
-            text-decoration: none;
-        }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--gradient);
-            color: var(--dark);
-            border-color: transparent;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(201, 162, 39, 0.3);
-        }
-
-        .back-to-top svg {
-            width: 24px;
-            height: 24px;
-            stroke: currentColor;
-            fill: none;
-        }
-
-        /* Quick Contact */
-        .quick-contact {
-            position: fixed;
-            right: 2rem;
-            bottom: 6rem;
-            /* Stacks above Back to Top */
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            z-index: 10000;
-        }
-
-        .qc-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(201, 162, 39, 0.4);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .qc-btn-whatsapp {
-            background: rgba(10, 10, 15, 0.8);
-            color: #25D366;
-        }
-
-        .qc-btn-messenger {
-            background: rgba(10, 10, 15, 0.8);
-            color: #0084FF;
-        }
-
-        .qc-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            background: var(--gradient);
-            /* Gold Gradient on Hover */
-            border-color: transparent;
-            box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
-        }
-
-        .qc-btn:hover svg {
-            fill: var(--dark);
-            /* Icon turns dark on gold background */
-        }
-
-        .qc-btn svg {
-            width: 28px;
-            height: 28px;
-            fill: currentColor;
-            transition: fill 0.3s ease;
-            z-index: 2;
-        }
-    </style>
-
-    <a href="#" class="back-to-top" onclick="scrollToTop(); return false;">
+    <a href="#" class="back-to-top" aria-label="Zpět nahoru" onclick="scrollToTop(); return false;">
         <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 19V5M5 12l7-7 7 7" />
         </svg>
@@ -1666,14 +1565,14 @@
     <div class="quick-contact">
         <!-- Messenger (Corrected Icon) -->
         <a href="https://m.me/ivproductioncz" target="_blank" class="qc-btn qc-btn-messenger"
-            title="Napsat na Messenger">
+            title="Napsat na Messenger" aria-label="Napsat IV Production na Messengeru">
             <svg viewBox="0 0 24 24">
                 <path
                     d="M12 2C6.347 2 2 6.167 2 11.25c0 2.9 1.416 5.503 3.693 7.21l-.57 2.922 3.093-1.637c1.196.44 2.493.687 3.847.687 5.626 0 10.187-4.167 10.187-9.25C22.187 6.167 17.627 2 12 2zm1.217 12.35l-2.023-3.136-4.07 3.136 4.39-4.522 2.07 3.083 4.02-3.083-4.387 4.522z" />
             </svg>
         </a>
         <!-- WhatsApp -->
-        <a href="https://wa.me/420773210194" target="_blank" class="qc-btn qc-btn-whatsapp" title="Napsat na WhatsApp">
+        <a href="https://wa.me/420773210194" target="_blank" class="qc-btn qc-btn-whatsapp" title="Napsat na WhatsApp" aria-label="Napsat IV Production na WhatsAppu">
             <svg viewBox="0 0 24 24">
                 <path
                     d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />

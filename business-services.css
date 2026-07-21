@@ -184,7 +184,7 @@
 }
 
 .business-fact span {
-    color: rgba(250, 249, 246, 0.56);
+    color: rgba(250, 249, 246, 0.72);
     display: block;
     font-size: 0.78rem;
     line-height: 1.5;
@@ -349,7 +349,7 @@
 }
 
 .business-package-price span {
-    color: rgba(250, 249, 246, 0.5);
+    color: rgba(250, 249, 246, 0.72);
     font-size: 0.72rem;
 }
 
@@ -381,7 +381,7 @@
 }
 
 .business-package-scope {
-    color: rgba(250, 249, 246, 0.48);
+    color: rgba(250, 249, 246, 0.72);
     font-size: 0.73rem;
     line-height: 1.55;
     margin: auto 0 1.2rem;

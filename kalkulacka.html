@@ -141,6 +141,25 @@
             font-size: 1.1rem;
         }
 
+        .calculator-intro {
+            margin: 0 auto 1.5rem;
+            max-width: 850px;
+            text-align: center;
+        }
+
+        .calculator-intro h2 {
+            color: var(--light);
+            font-size: clamp(1.55rem, 3vw, 2.15rem);
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+        }
+
+        .calculator-intro p {
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
         /* Calculator Form */
         .calculator {
             background: linear-gradient(145deg, rgba(18, 18, 26, 0.9), rgba(10, 10, 15, 0.95));
@@ -403,7 +422,7 @@
             color: var(--gold) !important;
         }
     </style>
-    <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
+    <link rel="stylesheet" href="premium.css?v=20260721-site-audit-fixes">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
 </head>
@@ -414,7 +433,7 @@
             <a href="index.html" class="logo"><img src="logo-light.png" alt="IV Production" width="1024" height="531" decoding="async" loading="eager" fetchpriority="high"></a>
 
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
+            <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -434,6 +453,7 @@
                 <div class="nav-dropdown">
                     <a href="index.html#sluzby" class="nav-dropdown-trigger">Další služby ▾</a>
                     <div class="nav-dropdown-menu">
+                        <a href="promo.html">Promo</a>
                         <a href="reels.html">Reels</a>
                         <a href="konference.html">Konference</a>
                         <a href="podcast.html">Podcast</a>
@@ -447,7 +467,7 @@
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Hlavní navigace" aria-hidden="true">
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Hlavní navigace" aria-hidden="true" inert>
             <a href="index.html" class="mobile-menu-link">Domů</a>
             <a href="svatby.html" class="mobile-menu-link">Svatby</a>
             <a href="reality.html" class="mobile-menu-link">Reality</a>
@@ -474,28 +494,32 @@
     </section>
 
     <section class="container" id="kalkulace">
+        <div class="calculator-intro">
+            <h2>Orientační kalkulace pro první představu</h2>
+            <p>Kalkulačka používá zjednodušený model, a proto se může lišit od veřejných balíčků na jednotlivých stránkách. Závaznou cenu určí konkrétní rozsah, termín, místo a technické požadavky. Doprava mimo oblast zahrnutou v dané službě se účtuje 9 Kč/km ze startu Jasenná.</p>
+        </div>
         <div class="calculator">
             <!-- Service Type -->
             <div class="calc-section">
                 <h3>1. Typ služby</h3>
                 <div class="calc-options" id="serviceType">
                     <div class="calc-option" data-price="15000" data-name="Svatební video">
-                        <div class="calc-option-icon">??</div>
+                        <div class="calc-option-icon" aria-hidden="true">01</div>
                         <div class="calc-option-name">Svatební video</div>
                         <div class="calc-option-price">od 15 000 Kč</div>
                     </div>
                     <div class="calc-option" data-price="8000" data-name="Realitní video">
-                        <div class="calc-option-icon">??</div>
+                        <div class="calc-option-icon" aria-hidden="true">02</div>
                         <div class="calc-option-name">Realitní video</div>
                         <div class="calc-option-price">od 8 000 Kč</div>
                     </div>
                     <div class="calc-option" data-price="12000" data-name="Promo video">
-                        <div class="calc-option-icon">??</div>
+                        <div class="calc-option-icon" aria-hidden="true">03</div>
                         <div class="calc-option-name">Promo video</div>
                         <div class="calc-option-price">od 12 000 Kč</div>
                     </div>
                     <div class="calc-option" data-price="6000" data-name="Fotobudka">
-                        <div class="calc-option-icon">??</div>
+                        <div class="calc-option-icon" aria-hidden="true">04</div>
                         <div class="calc-option-name">Fotobudka</div>
                         <div class="calc-option-price">od 6 000 Kč</div>
                     </div>
@@ -507,17 +531,17 @@
                 <h3>2. Balíček</h3>
                 <div class="calc-options" id="packageType">
                     <div class="calc-option" data-multiplier="1" data-name="Základní">
-                        <div class="calc-option-icon">?</div>
+                        <div class="calc-option-icon" aria-hidden="true">1×</div>
                         <div class="calc-option-name">Základní</div>
                         <div class="calc-option-price">1 kameraman</div>
                     </div>
                     <div class="calc-option" data-multiplier="1.5" data-name="Standard">
-                        <div class="calc-option-icon">??</div>
+                        <div class="calc-option-icon" aria-hidden="true">2×</div>
                         <div class="calc-option-name">Standard</div>
                         <div class="calc-option-price">2 kameramani</div>
                     </div>
                     <div class="calc-option" data-multiplier="2" data-name="Premium">
-                        <div class="calc-option-icon">???</div>
+                        <div class="calc-option-icon" aria-hidden="true">2+</div>
                         <div class="calc-option-name">Premium</div>
                         <div class="calc-option-price">2 kameramani + dron</div>
                     </div>
@@ -570,7 +594,7 @@
             <div class="calc-result">
                 <div class="result-label">Orientační cena</div>
                 <div class="result-price" id="totalPrice">0 Kč</div>
-                <div class="result-note">* Finální cena závisí na konkrétních požadavcích</div>
+                <div class="result-note">Nejde o závaznou nabídku. Finální cenu vždy potvrdíme předem podle konkrétního zadání.</div>
                 <a href="kontakt.html" class="btn btn-primary">Nezávazná poptávka ›</a>
             </div>
         </div>
@@ -614,7 +638,7 @@
             </div>
 
             <div class="footer-links">
-                <h4>Služby</h4>
+                <h3>Služby</h3>
                 <ul>
                     <li><a href="svatby.html">Svatby</a></li>
                     <li><a href="reality.html">Reality</a></li>
@@ -624,7 +648,7 @@
             </div>
 
             <div class="footer-links">
-                <h4>Informace</h4>
+                <h3>Informace</h3>
                 <ul>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="kontakt.html">Kontakt</a></li>
@@ -633,7 +657,7 @@
             </div>
 
             <div class="footer-links">
-                <h4>Kontakt</h4>
+                <h3>Kontakt</h3>
                 <ul>
                     <li><a href="tel:+420773210194">+420 773 210 194</a></li>
                     <li><a href="mailto:video@ivproduction.cz">video@ivproduction.cz</a></li>
@@ -704,63 +728,15 @@
         updateTotal();
     </script>
     <!-- Quick Contact Buttons -->
-    <style>
-        .quick-contact {
-            position: fixed;
-            right: 2rem;
-            bottom: 6rem;
-            /* Starts above BackToTop */
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            z-index: 1000;
-        }
-
-        .qc-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(201, 162, 39, 0.4);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            text-decoration: none;
-        }
-
-        .qc-btn-whatsapp {
-            background: rgba(37, 211, 102, 0.15);
-            color: #25D366;
-        }
-
-        .qc-btn-messenger {
-            background: rgba(0, 132, 255, 0.15);
-            color: #0084FF;
-        }
-
-        .qc-btn:hover {
-            transform: scale(1.1);
-            filter: brightness(1.2);
-            border-color: var(--primary);
-        }
-
-        .qc-btn svg {
-            width: 28px;
-            height: 28px;
-            fill: currentColor;
-        }
-    </style>
     <div class="quick-contact">
         <a href="https://m.me/ivproductioncz" target="_blank" class="qc-btn qc-btn-messenger"
-            title="Napsat na Messenger">
+            title="Napsat na Messenger" aria-label="Napsat IV Production na Messengeru">
             <svg viewBox="0 0 24 24">
                 <path
                     d="M12 2C6.48 2 2 6.03 2 11c0 2.87 1.56 5.34 3.97 6.91-.06.77-.32 2.19-1.97 4.09 2.17.06 4.39-.93 5.47-1.8.8.23 1.65.36 2.53.36 5.52 0 10-4.03 10-9s-4.48-9-10-9zm1.19 11.75L10.06 10.3l-3.37 3.44 3.69-3.94 3.12 3.44 3.37-3.44-3.68 3.95z" />
             </svg>
         </a>
-        <a href="https://wa.me/420773210194" target="_blank" class="qc-btn qc-btn-whatsapp" title="Napsat na WhatsApp">
+        <a href="https://wa.me/420773210194" target="_blank" class="qc-btn qc-btn-whatsapp" title="Napsat na WhatsApp" aria-label="Napsat IV Production na WhatsAppu">
             <svg viewBox="0 0 24 24">
                 <path
                     d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />

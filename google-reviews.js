@@ -105,6 +105,7 @@
         card.append(user);
 
         const cardStars = element('div', 'gw-card-stars', stars(reviewRating));
+        cardStars.setAttribute('role', 'img');
         cardStars.setAttribute('aria-label', `${reviewRating} z 5 hvězdiček`);
         card.append(cardStars);
         card.append(element(
