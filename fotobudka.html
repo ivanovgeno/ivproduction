@@ -648,6 +648,138 @@
         .budka-gallery-control[data-gallery-prev] { left: -1.35rem; }
         .budka-gallery-control[data-gallery-next] { right: -1.35rem; }
 
+        .budka-props-section {
+            background:
+                radial-gradient(circle at 14% 16%, rgba(255, 229, 92, 0.1), transparent 24rem),
+                linear-gradient(155deg, #0c0c10 0%, #151419 100%);
+            border-block: 1px solid rgba(240, 212, 119, 0.13);
+            overflow: hidden;
+        }
+
+        .budka-props-layout {
+            align-items: stretch;
+            display: grid;
+            gap: clamp(1.5rem, 4vw, 3.5rem);
+            grid-template-columns: minmax(18rem, 0.9fr) minmax(0, 1.1fr);
+            margin-top: 2.8rem;
+        }
+
+        .budka-props-visual {
+            background: #18181d;
+            border: 1px solid rgba(240, 212, 119, 0.24);
+            border-radius: 1rem;
+            box-shadow: 0 1.8rem 4rem rgba(0, 0, 0, 0.28);
+            min-height: 36rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .budka-props-visual::after {
+            background: linear-gradient(180deg, transparent 48%, rgba(5, 5, 8, 0.92) 100%);
+            content: '';
+            inset: 0;
+            pointer-events: none;
+            position: absolute;
+        }
+
+        .budka-props-visual img {
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 58%;
+            transition: filter 420ms ease, transform 700ms ease;
+            width: 100%;
+        }
+
+        .budka-props-visual:hover img {
+            filter: brightness(1.05) saturate(1.05);
+            transform: scale(1.025);
+        }
+
+        .budka-props-visual figcaption {
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            inset-inline: 0;
+            padding: clamp(1.25rem, 3vw, 2rem);
+            position: absolute;
+            z-index: 1;
+        }
+
+        .budka-props-visual figcaption span {
+            color: var(--gold-light);
+            font-size: 0.66rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .budka-props-visual figcaption strong {
+            color: #fff;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.45rem, 2.4vw, 2rem);
+            line-height: 1.08;
+        }
+
+        .budka-props-copy {
+            align-content: center;
+            display: grid;
+            gap: 1.6rem;
+        }
+
+        .budka-props-intro {
+            color: rgba(250, 249, 246, 0.74);
+            font-size: clamp(1rem, 1.5vw, 1.12rem);
+            line-height: 1.8;
+            margin: 0;
+            max-width: 43rem;
+        }
+
+        .budka-props-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .budka-prop-card {
+            background: linear-gradient(145deg, rgba(31, 31, 36, 0.9), rgba(17, 17, 21, 0.96));
+            border: 1px solid rgba(240, 212, 119, 0.17);
+            border-radius: 0.9rem;
+            min-height: 12.2rem;
+            padding: 1.4rem;
+            transition: border-color 260ms ease, box-shadow 320ms ease, transform 320ms ease;
+        }
+
+        .budka-prop-card:hover {
+            border-color: rgba(255, 229, 92, 0.5);
+            box-shadow: 0 1rem 2.6rem rgba(0, 0, 0, 0.24);
+            transform: translateY(-0.25rem);
+        }
+
+        .budka-prop-card span {
+            color: var(--gold-light);
+            display: block;
+            font-size: 0.66rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            margin-bottom: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        .budka-prop-card h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.3rem, 2vw, 1.65rem);
+            line-height: 1.08;
+            margin-bottom: 0.65rem;
+        }
+
+        .budka-prop-card p {
+            color: rgba(250, 249, 246, 0.64);
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
         .budka-pricing {
             background: #101014;
         }
@@ -901,8 +1033,18 @@
         @media (max-width: 980px) {
             .budka-benefits,
             .budka-packages,
-            .budka-tech-grid {
+            .budka-tech-grid,
+            .budka-props-layout {
                 grid-template-columns: minmax(0, 1fr);
+            }
+
+            .budka-props-visual {
+                aspect-ratio: 16 / 10;
+                min-height: 0;
+            }
+
+            .budka-props-visual img {
+                object-position: center 68%;
             }
 
             .budka-steps {
@@ -945,6 +1087,18 @@
 
             .budka-gallery {
                 grid-auto-columns: 86%;
+            }
+
+            .budka-props-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .budka-props-visual {
+                aspect-ratio: 4 / 3;
+            }
+
+            .budka-prop-card {
+                min-height: 0;
             }
 
 
@@ -1134,6 +1288,31 @@
                         <figure><img src="assets/fotobudka/background-06.webp" alt="Zlaté třpytivé pozadí pro fotobudku" loading="lazy" width="1034" height="723" decoding="async"><figcaption>Zlaté třpytky</figcaption></figure>
                     </div>
                     <button class="budka-gallery-control" type="button" data-gallery-next aria-label="Další pozadí">→</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section budka-props-section" id="rekvizity">
+            <div class="container">
+                <p class="package-section-kicker">Výbava pro každou generaci</p>
+                <h2 class="section-title">Rekvizity, které <span>rozjedou zábavu</span></h2>
+                <p class="section-subtitle">Na každou akci přivezeme pestrý výběr. Hosté si mohou kombinovat doplňky podle nálady i tématu večera.</p>
+                <div class="budka-props-layout">
+                    <figure class="budka-props-visual">
+                        <img src="assets/fotobudka/props-overview.webp"
+                            alt="Stůl s klobouky, parukami, čelenkami a vtipnými cedulkami u IV Budky"
+                            loading="lazy" width="1043" height="1114" decoding="async">
+                        <figcaption><span>Vždy v ceně vybraných balíčků</span><strong>Celý stůl plný nápadů</strong></figcaption>
+                    </figure>
+                    <div class="budka-props-copy">
+                        <p class="budka-props-intro">Od decentních doplňků po úplně bláznivé kombinace. Výběr pravidelně doplňujeme a na svatbu, ples, oslavu i firemní večírek připravíme rekvizity tak, aby si vybraly děti, rodiče i prarodiče.</p>
+                        <div class="budka-props-grid">
+                            <article class="budka-prop-card"><span>01 · Doplňky</span><h3>Brýle a čelenky</h3><p>Výrazné brýle, korunky, ouška i další drobnosti, které promění hosty během pár vteřin.</p></article>
+                            <article class="budka-prop-card"><span>02 · Proměna</span><h3>Klobouky, paruky a masky</h3><p>Rekvizity pro odvážnější pózy, skupinové fotografie i momenty, na které se nezapomíná.</p></article>
+                            <article class="budka-prop-card"><span>03 · Hlášky</span><h3>Vtipné cedulky</h3><p>Krátké hlášky a tematické nápisy pro svatby, plesy, narozeniny i firemní večírky.</p></article>
+                            <article class="budka-prop-card"><span>04 · Na míru akci</span><h3>Tematické sady</h3><p>Svatba, narozeninová party, Halloween nebo Vánoce — výběr sladíme s charakterem události.</p></article>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
