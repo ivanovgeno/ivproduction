@@ -330,5 +330,6 @@
         initHomePortfolio();
         initPortfolioPage();
         initRelatedWorkSliders();
+        bindProjectCards(document);
     });
 })();

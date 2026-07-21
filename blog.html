@@ -397,54 +397,6 @@
             text-align: center;
         }
 
-        .blog-articles {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 4rem;
-        }
-
-        .blog-article-detail {
-            background: linear-gradient(145deg, rgba(18, 18, 26, .96), rgba(8, 8, 12, .98));
-            border: 1px solid rgba(201, 162, 39, .18);
-            border-radius: 24px;
-            scroll-margin-top: 7rem;
-            padding: clamp(1.5rem, 4vw, 3rem);
-        }
-
-        .blog-article-detail:target {
-            border-color: rgba(232, 197, 71, .72);
-            box-shadow: 0 20px 70px rgba(201, 162, 39, .16);
-        }
-
-        .blog-article-detail .article-kicker {
-            color: var(--gold);
-            font-size: .78rem;
-            font-weight: 700;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-
-        .blog-article-detail h2 {
-            font-size: clamp(1.7rem, 4vw, 2.55rem);
-            line-height: 1.15;
-            margin: .55rem 0 1rem;
-        }
-
-        .blog-article-detail p,
-        .blog-article-detail li {
-            color: var(--gray-light);
-        }
-
-        .blog-article-detail ul {
-            display: grid;
-            gap: .55rem;
-            margin: 1rem 0 1.6rem 1.2rem;
-        }
-
-        .blog-article-detail .btn {
-            margin-top: .8rem;
-        }
-
         .footer {
             padding: 3rem 2rem;
             background: var(--darker);
@@ -566,13 +518,13 @@
                     <h2>Jak vybrat svatebního kameramana: 7 klíčových otázek</h2>
                     <p>Výběr správného kameramana pro váš velký den je zásadní rozhodnutí. V tomto článku vám poradíme,
                         na co se ptát a čemu věnovat pozornost.</p>
-                    <a href="#jak-vybrat-kameramana" class="btn btn-primary">Číst článek →</a>
+                    <a href="jak-vybrat-svatebniho-kameramana.html" class="btn btn-primary">Číst článek →</a>
                 </div>
             </article>
 
             <!-- Blog Grid -->
             <div class="blog-grid">
-                <a href="#trendy-svatebni-video-2026" class="blog-card" data-blog-category="svatby">
+                <a href="trendy-svatebni-video-2026.html" class="blog-card" data-blog-category="svatby">
                     <div class="blog-image"
                         style="background-image: url('assets/site/wedding.webp');">
                         <span class="blog-category">Svatby</span>
@@ -586,7 +538,7 @@
                     </div>
                 </a>
 
-                <a href="#video-prodava-nemovitosti" class="blog-card" data-blog-category="reality">
+                <a href="proc-video-pomaha-prodat-nemovitost.html" class="blog-card" data-blog-category="reality">
                     <div class="blog-image"
                         style="background-image: url('assets/site/reality.webp');">
                         <span class="blog-category">Reality</span>
@@ -600,7 +552,7 @@
                     </div>
                 </a>
 
-                <a href="#tipy-pro-firemni-video" class="blog-card" data-blog-category="tipy">
+                <a href="jak-pripravit-firemni-video.html" class="blog-card" data-blog-category="tipy">
                     <div class="blog-image"
                         style="background-image: url('assets/site/video-production.webp');">
                         <span class="blog-category">Tipy & Triky</span>
@@ -614,7 +566,7 @@
                     </div>
                 </a>
 
-                <a href="#viralni-video-socialni-site" class="blog-card" data-blog-category="promo">
+                <a href="video-pro-socialni-site.html" class="blog-card" data-blog-category="promo">
                     <div class="blog-image"
                         style="background-image: url('assets/site/reels.webp');">
                         <span class="blog-category">Promo</span>
@@ -627,20 +579,20 @@
                     </div>
                 </a>
 
-                <a href="#svatebni-lokace-kralovehradecky-kraj" class="blog-card" data-blog-category="svatby">
+                <a href="svatebni-lokace-kralovehradecky-kraj.html" class="blog-card" data-blog-category="svatby">
                     <div class="blog-image"
                         style="background-image: url('assets/site/event-detail.webp');">
                         <span class="blog-category">Svatby</span>
                     </div>
                     <div class="blog-content">
                         <span class="blog-date">20. prosince 2025</span>
-                        <h3>Nejkrásnější svatební lokace v Královéhradeckém kraji</h3>
-                        <p>Přehled romantických míst ideálních pro svatbu a natáčení - zámky, vinice, příroda.</p>
+                        <h3>Jak vybrat svatební lokaci v Královéhradeckém kraji</h3>
+                        <p>Co ověřit kvůli světlu, zvuku, přesunům, hostům i důstojné variantě pro špatné počasí.</p>
                         <span class="blog-read-more">Číst více →</span>
                     </div>
                 </a>
 
-                <a href="#hudba-ve-videu" class="blog-card" data-blog-category="tipy">
+                <a href="hudba-ve-videu.html" class="blog-card" data-blog-category="tipy">
                     <div class="blog-image"
                         style="background-image: url('assets/site/music.webp');">
                         <span class="blog-category">Tipy & Triky</span>
@@ -654,101 +606,6 @@
                 </a>
             </div>
 
-            <div class="blog-articles" role="region" aria-label="Celé články">
-                <article class="blog-article-detail" id="jak-vybrat-kameramana">
-                    <p class="article-kicker">Svatby · průvodce výběrem</p>
-                    <h2>Jak vybrat svatebního kameramana: 7 klíčových otázek</h2>
-                    <p>Nejdůležitější není jen technika, ale způsob práce, komunikace a schopnost zachytit den bez zbytečného narušování jeho průběhu. Před rezervací si proto ověřte celý proces od příprav až po předání filmu.</p>
-                    <ul>
-                        <li>Kolik lidí bude na místě a které části dne budou pokryté?</li>
-                        <li>Jak bude zaznamenaný zvuk obřadu, slibů a proslovů?</li>
-                        <li>Jak dlouhý film a jaké krátké výstupy získáte?</li>
-                        <li>Je hudba licencovaná a je vše potvrzené smlouvou?</li>
-                        <li>Jak dlouho jsou záběry zálohované a jak probíhá předání?</li>
-                    </ul>
-                    <p>Dobrá nabídka má být srozumitelná a má přesně říct, co dostanete. U IV Production si před potvrzením termínu společně projdeme harmonogram, priority i výstupy.</p>
-                    <a href="svatby.html#balicky" class="btn btn-primary">Prohlédnout svatební balíčky</a>
-                </article>
-
-                <article class="blog-article-detail" id="trendy-svatebni-video-2026">
-                    <p class="article-kicker">Svatby · inspirace 2026</p>
-                    <h2>Trendy ve svatebních videích pro rok 2026</h2>
-                    <p>Největší hodnotu dnes nemá přehlídka efektů, ale přirozený film s autentickým zvukem, citlivou kamerou a rytmem, který odpovídá konkrétnímu páru.</p>
-                    <ul>
-                        <li>Krátký filmový highlight doplněný delší vzpomínkou z celého dne.</li>
-                        <li>Čistý záznam slibů, proslovů a spontánních reakcí hostů.</li>
-                        <li>Jemné dronové záběry, pokud to místo a počasí umožní.</li>
-                        <li>Vertikální ukázka připravená pro bezpečné sdílení na telefonu.</li>
-                    </ul>
-                    <a href="svatby.html#ukazky" class="btn btn-primary">Pustit si svatební ukázky</a>
-                </article>
-
-                <article class="blog-article-detail" id="video-prodava-nemovitosti">
-                    <p class="article-kicker">Reality · marketing nemovitostí</p>
-                    <h2>Proč profesionální video pomáhá nabídce nemovitosti</h2>
-                    <p>Fotografie ukáže jednotlivé místnosti. Dobře připravené video ale vysvětlí jejich návaznost, měřítko a atmosféru. Zájemce si rychleji vytvoří přesnější představu ještě před prohlídkou.</p>
-                    <ul>
-                        <li>Úvod musí během několika sekund ukázat hlavní důvod, proč nabídce věnovat pozornost.</li>
-                        <li>Plynulý pohyb kamery má vysvětlovat dispozici, ne pouze vytvářet efekt.</li>
-                        <li>Dron, komentář, titulky a vertikální verze rozšiřují možnosti propagace.</li>
-                        <li>Jednotný obraz fotografií a videa posiluje důvěryhodnost makléře.</li>
-                    </ul>
-                    <a href="reality.html#cenik" class="btn btn-primary">Porovnat realitní balíčky</a>
-                </article>
-
-                <article class="blog-article-detail" id="tipy-pro-firemni-video">
-                    <p class="article-kicker">Tipy a triky · firemní video</p>
-                    <h2>5 kroků k lepšímu firemnímu videu</h2>
-                    <p>Profesionální výsledek začíná ještě před zapnutím kamery. Nejprve určete jednoho konkrétního diváka a jednu akci, kterou má po zhlédnutí udělat.</p>
-                    <ul>
-                        <li>Stanovte jediný hlavní cíl videa.</li>
-                        <li>Začněte problémem nebo výsledkem, který diváka zajímá.</li>
-                        <li>Připravte jednoduchý scénář a reálné situace z vaší práce.</li>
-                        <li>Počítejte s různými formáty pro web a sociální sítě.</li>
-                        <li>Ukončete video jasnou a přirozenou výzvou k dalšímu kroku.</li>
-                    </ul>
-                    <a href="promo.html" class="btn btn-primary">Zjistit možnosti promo videa</a>
-                </article>
-
-                <article class="blog-article-detail" id="viralni-video-socialni-site">
-                    <p class="article-kicker">Promo · krátká videa</p>
-                    <h2>Jak připravit video, které udrží pozornost na sociálních sítích</h2>
-                    <p>Virální výsledek nelze slíbit, ale lze výrazně zvýšit šanci, že divák neodejde v prvních vteřinách. Rozhoduje srozumitelný začátek, tempo a obsah vytvořený pro konkrétní platformu.</p>
-                    <ul>
-                        <li>První záběr musí být čitelný i bez zvuku.</li>
-                        <li>Jedno video má nést jednu hlavní myšlenku.</li>
-                        <li>Titulky musí být velké a mimo ovládací prvky aplikace.</li>
-                        <li>Střih má podporovat sdělení, ne ho přehlušit.</li>
-                    </ul>
-                    <a href="reels.html" class="btn btn-primary">Prohlédnout produkci Reels</a>
-                </article>
-
-                <article class="blog-article-detail" id="svatebni-lokace-kralovehradecky-kraj">
-                    <p class="article-kicker">Svatby · Královéhradecký kraj</p>
-                    <h2>Jak vybrat lokaci, která bude dobře fungovat i ve svatebním filmu</h2>
-                    <p>Při výběru místa sledujte nejen vzhled, ale také světlo, návaznost prostor, možnosti pohybu hostů a mokrou variantu. Právě tyto detaily rozhodují, zda bude den plynulý i při změně počasí.</p>
-                    <ul>
-                        <li>Ověřte místo pro přípravy, obřad, portréty a večerní program.</li>
-                        <li>Zjistěte pravidla pro dron a dostupnost elektrické energie.</li>
-                        <li>Počítejte s časem na přesuny mezi jednotlivými částmi dne.</li>
-                        <li>Připravte důstojnou krytou variantu pro déšť a silný vítr.</li>
-                    </ul>
-                    <a href="kontakt.html#poptavka" class="btn btn-primary">Probrat místo a termín</a>
-                </article>
-
-                <article class="blog-article-detail" id="hudba-ve-videu">
-                    <p class="article-kicker">Tipy a triky · postprodukce</p>
-                    <h2>Hudba ve videu: Jak vybrat správný soundtrack</h2>
-                    <p>Hudba určuje tempo a emoci, ale musí zároveň respektovat příběh a místo zveřejnění. Známá skladba bez licence může způsobit ztlumení nebo odstranění videa ze sociálních sítí.</p>
-                    <ul>
-                        <li>Volte skladbu podle nálady příběhu, ne pouze podle aktuálního trendu.</li>
-                        <li>Pro veřejné použití pracujte s odpovídající licencí.</li>
-                        <li>Hudba nesmí překrýt důležité výpovědi, sliby ani přirozený zvuk.</li>
-                        <li>Tempo střihu přizpůsobte obsahu a cílovému divákovi.</li>
-                    </ul>
-                    <a href="kontakt.html#poptavka" class="btn btn-primary">Probrat váš video projekt</a>
-                </article>
-            </div>
         </div>
     </section>
 

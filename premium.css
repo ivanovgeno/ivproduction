@@ -3948,6 +3948,197 @@ body.page-portfolio .hero h1 {
     color: #fff4c4;
 }
 
+/* Homepage studio uses its own balanced grid instead of the legacy generic
+   two-column layout, so image and copy share one visual baseline. */
+body.home-page .studio {
+    overflow: hidden;
+    position: relative;
+}
+
+body.home-page .studio::before {
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.13), transparent 68%);
+    content: '';
+    height: 34rem;
+    pointer-events: none;
+    position: absolute;
+    right: -12rem;
+    top: 6rem;
+    width: 34rem;
+}
+
+.studio-showcase {
+    align-items: stretch;
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 2.6rem);
+    grid-template-columns: minmax(0, 1.08fr) minmax(22rem, 0.92fr);
+    margin: 0 auto;
+    max-width: 1280px;
+    position: relative;
+}
+
+.studio-visual {
+    border: 1px solid rgba(212, 175, 55, 0.26);
+    border-radius: 14px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.34);
+    margin: 0;
+    min-height: 34rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.studio-visual::after {
+    background: linear-gradient(180deg, transparent 54%, rgba(8, 8, 10, 0.9) 100%);
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+.studio-visual img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+}
+
+.studio-visual figcaption {
+    bottom: 1.5rem;
+    display: grid;
+    gap: 0.2rem;
+    left: 1.5rem;
+    position: absolute;
+    right: 1.5rem;
+    z-index: 1;
+}
+
+.studio-visual figcaption span,
+.studio-eyebrow {
+    color: var(--gold-light);
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.studio-visual figcaption strong {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.35rem, 2vw, 1.8rem);
+    font-weight: 600;
+}
+
+.studio-panel {
+    align-content: center;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.058), rgba(255, 255, 255, 0.014));
+    border: 1px solid rgba(250, 249, 246, 0.13);
+    border-radius: 14px;
+    display: grid;
+    padding: clamp(2rem, 4vw, 3.7rem);
+}
+
+.studio-eyebrow {
+    margin: 0 0 1rem;
+}
+
+.studio-panel h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.35rem, 4vw, 4rem);
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    line-height: 0.98;
+    margin: 0 0 1.25rem;
+    text-wrap: balance;
+}
+
+.studio-panel > p:not(.studio-eyebrow) {
+    color: rgba(250, 249, 246, 0.72);
+    line-height: 1.75;
+    margin: 0;
+}
+
+.studio-feature-grid {
+    border-bottom: 1px solid rgba(250, 249, 246, 0.13);
+    border-top: 1px solid rgba(250, 249, 246, 0.13);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style: none;
+    margin: 1.8rem 0;
+    padding: 0;
+}
+
+.studio-feature-grid li {
+    color: rgba(250, 249, 246, 0.64);
+    display: grid;
+    font-size: 0.76rem;
+    gap: 0.1rem;
+    line-height: 1.45;
+    padding: 0.9rem 0.75rem 0.9rem 0;
+}
+
+.studio-feature-grid li:nth-child(even) {
+    border-left: 1px solid rgba(250, 249, 246, 0.13);
+    padding-left: 0.9rem;
+}
+
+.studio-feature-grid li:nth-child(n + 3) {
+    border-top: 1px solid rgba(250, 249, 246, 0.13);
+}
+
+.studio-feature-grid strong {
+    color: var(--light);
+    font-size: 0.86rem;
+}
+
+.studio-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+@media (max-width: 980px) {
+    .studio-showcase {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .studio-visual {
+        aspect-ratio: 16 / 10;
+        min-height: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .studio-visual {
+        aspect-ratio: 4 / 3;
+    }
+
+    .studio-panel {
+        padding: 1.5rem;
+    }
+
+    .studio-feature-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .studio-feature-grid li:nth-child(even) {
+        border-left: 0;
+        padding-left: 0;
+    }
+
+    .studio-feature-grid li:nth-child(n + 2) {
+        border-top: 1px solid rgba(250, 249, 246, 0.13);
+    }
+
+    .studio-actions,
+    .studio-actions .btn {
+        width: 100%;
+    }
+
+    .studio-actions .btn {
+        justify-content: center;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .premium-work-slider.is-autoplaying .premium-work-slider__viewport {
         scroll-behavior: auto;
