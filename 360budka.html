@@ -198,7 +198,9 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260721-360-slider-loop">
+    <link rel="stylesheet" href="service-inquiry.css?v=20260721-tailored-forms">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
+    <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
     <script src="portfolio-gallery.js?v=20260721-infinite-loop" defer></script>
@@ -1076,7 +1078,7 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
-                <a href="kontakt.html#poptavka" class="nav-cta">Nezávazná poptávka</a>
+                <a href="#poptavka" class="nav-cta">Nezávazná poptávka</a>
             </nav>
         </div>
 
@@ -1095,7 +1097,7 @@
             <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
             <a href="blog.html" class="mobile-menu-link">Blog</a>
-            <a href="kontakt.html#poptavka" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
+            <a href="#poptavka" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -1107,7 +1109,7 @@
                 <p>Na platformu vstoupí až pět lidí, kamera je obkrouží ze všech stran a během chvíle vznikne krátké
                     video s efekty, hudbou a vlastním logem — připravené rovnou ke sdílení.</p>
                 <div class="booth-hero-actions">
-                    <a href="kontakt.html?service=360budka#poptavka" class="btn btn-primary">Ověřit volný termín</a>
+                    <a href="#poptavka" class="btn btn-primary">Ověřit volný termín</a>
                     <a href="#ukazky" class="btn btn-outline">Přehrát skutečné ukázky</a>
                 </div>
                 <p class="booth-hero-proof">Až 5 osob · okamžité sdílení · obsluha a rekvizity · svatby · plesy ·
@@ -1300,7 +1302,7 @@
                         <ul class="booth-duration-list">
                             <li>3 hodiny</li><li>4 hodiny</li><li>celá akce</li><li>jiný rozsah</li>
                         </ul>
-                        <a href="kontakt.html?service=360budka#poptavka" class="btn btn-primary">Nezávazně zjistit cenu</a>
+                        <a href="#poptavka" class="btn btn-primary">Nezávazně zjistit cenu</a>
                     </div>
                     <ul class="booth-offer-list">
                         <li>Platforma až pro 5 osob a dvě špičková zařízení Apple</li>
@@ -1404,7 +1406,128 @@
                 <h2 class="section-title">Až se kamera rozjede, <span>hosté se přidají sami</span></h2>
                 <p class="section-subtitle">Pošlete datum, místo a typ akce. Ověříme dostupnost, doporučíme délku
                     provozu a připravíme přehlednou nabídku bez skrytých překvapení.</p>
-                <a href="kontakt.html?service=360budka#poptavka" class="btn btn-primary">Nezávazně ověřit termín</a>
+                <a href="#poptavka" class="btn btn-primary">Nezávazně ověřit termín</a>
+            </div>
+        </section>
+
+        <section class="service-inquiry" id="poptavka" aria-labelledby="booth360-inquiry-title">
+            <div class="service-inquiry__container">
+                <div class="service-inquiry__layout">
+                    <div class="service-inquiry__intro">
+                        <p class="service-inquiry__eyebrow">Rezervace IV Budky 360</p>
+                        <h2 id="booth360-inquiry-title">Roztočte svou akci <span>ve 360°</span></h2>
+                        <p class="service-inquiry__lead">Pošlete termín, místo a představu o provozu. Ověříme prostor, navrhneme délku pronájmu a připravíme vzhled videí podle svatby, plesu nebo firemní identity.</p>
+                        <ul class="service-inquiry__promises">
+                            <li>Platforma až pro 5 osob a profesionální obsluha</li>
+                            <li>Okamžité vertikální video se slow motion efekty</li>
+                            <li>Logo, jména, datum nebo grafika akce na míru</li>
+                        </ul>
+                        <p class="service-inquiry__contact">Rychlé ověření termínu: <a href="tel:+420773210194">+420 773 210 194</a>.</p>
+                    </div>
+
+                    <form class="service-inquiry__form" action="kontakt-handler.php" method="POST" data-service-form data-service-title="IV Budka 360">
+                        <input type="hidden" name="service" value="IV Budka 360">
+                        <input type="hidden" name="return_to" value="360budka.html">
+                        <div class="inquiry-honeypot" aria-hidden="true">
+                            <label for="booth360-company">Společnost</label>
+                            <input id="booth360-company" type="text" name="company" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="service-inquiry__form-header">
+                            <h3>Parametry vaší 360° akce</h3>
+                            <p>Podle údajů ověříme dostupnost, technické podmínky a připravíme přesnou nabídku.</p>
+                        </div>
+                        <div class="inquiry-grid">
+                            <div class="inquiry-field">
+                                <label for="booth360-name">Jméno a příjmení *</label>
+                                <input id="booth360-name" name="name" type="text" autocomplete="name" placeholder="Jan Novák" required>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="booth360-email">E-mail *</label>
+                                <input id="booth360-email" name="email" type="email" autocomplete="email" placeholder="vas@email.cz" required>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="booth360-phone">Telefon</label>
+                                <input id="booth360-phone" name="phone" type="tel" autocomplete="tel" placeholder="+420 123 456 789">
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="booth360-date">Datum akce *</label>
+                                <input id="booth360-date" name="event_date" type="date" required>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="booth360-type">Typ akce *</label>
+                                <select id="booth360-type" name="event_type" required>
+                                    <option value="">Vyberte typ…</option>
+                                    <option value="Svatba">Svatba</option>
+                                    <option value="Maturitní / společenský ples">Maturitní / společenský ples</option>
+                                    <option value="Firemní večírek / aktivace značky">Firemní večírek / aktivace značky</option>
+                                    <option value="Narozeniny / soukromá oslava">Narozeniny / soukromá oslava</option>
+                                    <option value="Festival / veřejná akce">Festival / veřejná akce</option>
+                                    <option value="Jiná akce">Jiná akce</option>
+                                </select>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="booth360-guests">Přibližný počet hostů *</label>
+                                <input id="booth360-guests" name="guest_count" type="number" min="1" max="20000" inputmode="numeric" placeholder="např. 150" required>
+                            </div>
+                            <div class="inquiry-field inquiry-field--wide">
+                                <label for="booth360-address">Místo konání *</label>
+                                <input id="booth360-address" name="address" type="text" autocomplete="street-address" placeholder="Název prostoru, obec nebo adresa" required>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="booth360-duration">Požadovaná délka provozu *</label>
+                                <select id="booth360-duration" name="preferred_duration" required>
+                                    <option value="">Vyberte délku…</option>
+                                    <option value="3 hodiny">3 hodiny</option>
+                                    <option value="4 hodiny">4 hodiny</option>
+                                    <option value="Celá akce">Celá akce</option>
+                                    <option value="Jiná délka">Jiná délka / poradit</option>
+                                </select>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="booth360-branding">Grafika videa *</label>
+                                <select id="booth360-branding" name="branding" required>
+                                    <option value="">Vyberte variantu…</option>
+                                    <option value="Jména a datum / grafika svatby">Jména a datum / grafika svatby</option>
+                                    <option value="Firemní logo a branding">Firemní logo a branding</option>
+                                    <option value="Univerzální vzhled IV Budky 360">Univerzální vzhled IV Budky 360</option>
+                                    <option value="Ještě nevíme">Ještě nevíme – poradíme se</option>
+                                </select>
+                            </div>
+                            <div class="inquiry-field inquiry-field--wide">
+                                <label for="booth360-outdoor">Umístění a mokrá varianta *</label>
+                                <select id="booth360-outdoor" name="outdoor_plan" required>
+                                    <option value="">Vyberte variantu…</option>
+                                    <option value="Uvnitř – rovný prostor alespoň 3 × 3 m a výška 2,6 m">Uvnitř – prostor alespoň 3 × 3 m a výška 2,6 m</option>
+                                    <option value="Venku – krytý suchý prostor a mokrá varianta zajištěna">Venku – krytý prostor i mokrá varianta zajištěny</option>
+                                    <option value="Venku – mokrou variantu ještě řešíme">Venku – mokrou variantu ještě řešíme</option>
+                                    <option value="Ještě nevíme">Ještě nevíme</option>
+                                </select>
+                            </div>
+                            <fieldset class="inquiry-options">
+                                <legend>Co chcete ve videích využít?</legend>
+                                <div class="inquiry-choice-grid">
+                                    <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Money gun a party rekvizity">Money gun a party rekvizity</label>
+                                    <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Bubble gun a světelné efekty">Bubble gun a světelné efekty</label>
+                                    <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Okamžité sdílení hostům">Okamžité sdílení hostům</label>
+                                    <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Promítání videí během akce">Promítání videí během akce</label>
+                                </div>
+                            </fieldset>
+                            <div class="inquiry-field inquiry-field--wide">
+                                <label for="booth360-message">Harmonogram a další požadavky *</label>
+                                <textarea id="booth360-message" name="message" placeholder="Napište čas zahájení, průběh programu, představu o grafice nebo další informace, které máme při nabídce zohlednit…" required></textarea>
+                            </div>
+                            <label class="inquiry-consent">
+                                <input type="checkbox" name="consent" value="1" required>
+                                <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
+                            </label>
+                            <p class="service-inquiry__status form-static-status" data-form-status role="status" aria-live="polite"></p>
+                            <div class="service-inquiry__submit-row">
+                                <button class="service-inquiry__submit" type="submit">Ověřit dostupnost 360° Budky</button>
+                                <p class="service-inquiry__submit-note">Před potvrzením ověříme prostor, bezpečnost i dopravu.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
     </main>

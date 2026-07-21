@@ -330,7 +330,9 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
+    <link rel="stylesheet" href="service-inquiry.css?v=20260721-tailored-forms">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
+    <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <style>
         body.page-fotobudka {
@@ -1156,7 +1158,7 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
-                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+                <a href="#poptavka" class="nav-cta">Nezávazná poptávka</a>
             </nav>
         </div>
 
@@ -1175,7 +1177,7 @@
             <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
             <a href="blog.html" class="mobile-menu-link">Blog</a>
-            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
+            <a href="#poptavka" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -1185,7 +1187,7 @@
                 <h1>Fotobudka, která rozesměje <span>celou akci</span></h1>
                 <p>Okamžitý tisk do 10 sekund, hromada rekvizit, grafika na míru a obsluha, která se postará o vše. Vy jen vyberete pozadí a začnete se bavit.</p>
                 <div class="budka-hero-actions">
-                    <a href="kontakt.html#poptavka" class="btn btn-primary">Ověřit volný termín</a>
+                    <a href="#poptavka" class="btn btn-primary">Ověřit volný termín</a>
                     <a href="#cenik" class="btn btn-outline">Prohlédnout ceník</a>
                 </div>
                 <p class="budka-hero-proof">Svatby · plesy · oslavy · firemní akce · okamžitý tisk · celá ČR</p>
@@ -1255,17 +1257,17 @@
                     <article class="budka-package">
                         <p class="budka-package-label">Svatba · 1 hodina</p><h3>Fotokoutek MINI</h3><div class="budka-package-price">5 000 Kč</div>
                         <ul><li>Pozadí z naší nabídky</li><li>Neomezený tisk fotografií 10 × 15 cm</li><li>Grafické zpracování rámečku</li><li>Profesionální obsluha</li></ul>
-                        <a href="kontakt.html#poptavka" class="budka-btn">Ověřit termín</a>
+                        <a href="#poptavka" class="budka-btn" data-inquiry-package="Fotokoutek MINI – 1 hodina">Ověřit termín</a>
                     </article>
                     <article class="budka-package budka-package--featured">
                         <p class="budka-package-label">Svatba · 2 hodiny · oblíbená volba</p><h3>Fotokoutek STANDARD</h3><div class="budka-package-price">8 000 Kč</div>
                         <ul><li>Pozadí z nabídky nebo připravené na míru</li><li>Rozsáhlá sada rekvizit</li><li>Neomezený tisk fotografií 10 × 15 cm</li><li>Grafické zpracování rámečku</li><li>Profesionální obsluha</li></ul>
-                        <a href="kontakt.html#poptavka" class="budka-btn">Poptat Standard</a>
+                        <a href="#poptavka" class="budka-btn" data-inquiry-package="Fotokoutek STANDARD – 2 hodiny">Poptat Standard</a>
                     </article>
                     <article class="budka-package">
                         <p class="budka-package-label">Svatba · 3 hodiny</p><h3>Fotokoutek PREMIUM</h3><div class="budka-package-price">10 000 Kč</div>
                         <ul><li>Pozadí z nabídky nebo připravené na míru</li><li>Rozsáhlá sada rekvizit</li><li>Neomezený tisk fotografií 10 × 15 cm</li><li>Grafické zpracování rámečku</li><li>Profesionální obsluha</li></ul>
-                        <a href="kontakt.html#poptavka" class="budka-btn">Poptat Premium</a>
+                        <a href="#poptavka" class="budka-btn" data-inquiry-package="Fotokoutek PREMIUM – 3 hodiny">Poptat Premium</a>
                     </article>
                 </div>
                 <p class="budka-custom-offer">Firemní večírky, narozeninové oslavy, koncerty, kulturní akce a další příležitosti naceníme individuálně podle délky, lokality a požadovaného rozsahu.</p>
@@ -1354,7 +1356,123 @@
             <div class="container">
                 <p class="package-section-kicker">Rezervace IV Budky</p><h2 class="section-title">Vaši hosté si odnesou víc než <span>jen vzpomínku</span></h2>
                 <p class="section-subtitle">Pošlete datum, místo a typ akce. Ověříme dostupnost a doporučíme variantu, která dává smysl pro počet hostů i plánovaný program.</p>
-                <a href="kontakt.html#poptavka" class="btn btn-primary">Nezávazně ověřit termín</a>
+                <a href="#poptavka" class="btn btn-primary">Nezávazně ověřit termín</a>
+            </div>
+        </section>
+
+        <section class="service-inquiry" id="poptavka" aria-labelledby="photobooth-inquiry-title">
+            <div class="service-inquiry__container">
+                <div class="service-inquiry__layout">
+                    <div class="service-inquiry__intro">
+                        <p class="service-inquiry__eyebrow">Rezervace IV Budky</p>
+                        <h2 id="photobooth-inquiry-title">Kolik zábavy se vejde <span>do vašeho termínu?</span></h2>
+                        <p class="service-inquiry__lead">Napište datum, místo, počet hostů a vyberte délku provozu. Ověříme dostupnost, vhodné pozadí i podmínky instalace a pošleme kompletní nabídku.</p>
+                        <ul class="service-inquiry__promises">
+                            <li>Profesionální obsluha a rekvizity podle balíčku</li>
+                            <li>Okamžitý tisk fotografií 10 × 15 cm</li>
+                            <li>Grafický rámeček a možnost pozadí na míru</li>
+                        </ul>
+                        <p class="service-inquiry__contact">Rychlé ověření termínu: <a href="tel:+420773210194">+420 773 210 194</a>.</p>
+                    </div>
+
+                    <form class="service-inquiry__form" action="kontakt-handler.php" method="POST" data-service-form data-service-title="Fotobudka IV Budka">
+                        <input type="hidden" name="service" value="Fotobudka IV Budka">
+                        <input type="hidden" name="return_to" value="fotobudka.html">
+                        <div class="inquiry-honeypot" aria-hidden="true">
+                            <label for="photobooth-company">Společnost</label>
+                            <input id="photobooth-company" type="text" name="company" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="service-inquiry__form-header">
+                            <h3>Připravíme fotokoutek pro vaši akci</h3>
+                            <p>Údaje využijeme pro ověření termínu, dopravy, prostoru a správného balíčku.</p>
+                        </div>
+                        <div class="inquiry-grid">
+                            <div class="inquiry-field">
+                                <label for="photobooth-name">Jméno a příjmení *</label>
+                                <input id="photobooth-name" name="name" type="text" autocomplete="name" placeholder="Jan Novák" required>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="photobooth-email">E-mail *</label>
+                                <input id="photobooth-email" name="email" type="email" autocomplete="email" placeholder="vas@email.cz" required>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="photobooth-phone">Telefon</label>
+                                <input id="photobooth-phone" name="phone" type="tel" autocomplete="tel" placeholder="+420 123 456 789">
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="photobooth-date">Datum akce *</label>
+                                <input id="photobooth-date" name="event_date" type="date" required>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="photobooth-type">Typ akce *</label>
+                                <select id="photobooth-type" name="event_type" required>
+                                    <option value="">Vyberte typ…</option>
+                                    <option value="Svatba">Svatba</option>
+                                    <option value="Maturitní / společenský ples">Maturitní / společenský ples</option>
+                                    <option value="Firemní večírek">Firemní večírek</option>
+                                    <option value="Narozeniny / soukromá oslava">Narozeniny / soukromá oslava</option>
+                                    <option value="Festival / veřejná akce">Festival / veřejná akce</option>
+                                    <option value="Jiná akce">Jiná akce</option>
+                                </select>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="photobooth-guests">Přibližný počet hostů *</label>
+                                <input id="photobooth-guests" name="guest_count" type="number" min="1" max="10000" inputmode="numeric" placeholder="např. 100" required>
+                            </div>
+                            <div class="inquiry-field inquiry-field--wide">
+                                <label for="photobooth-address">Místo konání *</label>
+                                <input id="photobooth-address" name="address" type="text" autocomplete="street-address" placeholder="Název místa, obec nebo adresa" required>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="photobooth-package">Balíček / délka provozu *</label>
+                                <select id="photobooth-package" name="package" required>
+                                    <option value="">Vyberte možnost…</option>
+                                    <option value="Fotokoutek MINI – 1 hodina">MINI – 1 hodina</option>
+                                    <option value="Fotokoutek STANDARD – 2 hodiny">STANDARD – 2 hodiny</option>
+                                    <option value="Fotokoutek PREMIUM – 3 hodiny">PREMIUM – 3 hodiny</option>
+                                    <option value="Ples – platba za vytištěnou fotografii">Ples – platba za vytištěnou fotografii</option>
+                                    <option value="Individuální délka">Individuální délka / nabídka</option>
+                                </select>
+                            </div>
+                            <div class="inquiry-field">
+                                <label for="photobooth-backdrop">Preferované pozadí</label>
+                                <select id="photobooth-backdrop" name="backdrop">
+                                    <option value="">Vybereme později…</option>
+                                    <option value="Stříbrné třpytky">Stříbrné třpytky</option>
+                                    <option value="Světelná srdíčka">Světelná srdíčka</option>
+                                    <option value="Modré třpytky">Modré třpytky</option>
+                                    <option value="Dřevo a květiny">Dřevo a květiny</option>
+                                    <option value="Zlatá světla">Zlatá světla</option>
+                                    <option value="Zlaté třpytky">Zlaté třpytky</option>
+                                    <option value="Pozadí na míru">Pozadí na míru</option>
+                                </select>
+                            </div>
+                            <div class="inquiry-field inquiry-field--wide">
+                                <label for="photobooth-outdoor">Kde bude fotobudka stát? *</label>
+                                <select id="photobooth-outdoor" name="outdoor_plan" required>
+                                    <option value="">Vyberte variantu…</option>
+                                    <option value="Uvnitř">Uvnitř</option>
+                                    <option value="Venku – zajištěný krytý prostor a mokrá varianta">Venku – máme krytý prostor i mokrou variantu</option>
+                                    <option value="Venku – mokrou variantu ještě řešíme">Venku – mokrou variantu ještě řešíme</option>
+                                    <option value="Ještě nevíme">Ještě nevíme</option>
+                                </select>
+                            </div>
+                            <div class="inquiry-field inquiry-field--wide">
+                                <label for="photobooth-message">Grafika, harmonogram a další přání *</label>
+                                <textarea id="photobooth-message" name="message" placeholder="Napište čas zahájení, barevný styl rámečku, téma akce nebo další důležité informace…" required></textarea>
+                            </div>
+                            <label class="inquiry-consent">
+                                <input type="checkbox" name="consent" value="1" required>
+                                <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
+                            </label>
+                            <p class="service-inquiry__status form-static-status" data-form-status role="status" aria-live="polite"></p>
+                            <div class="service-inquiry__submit-row">
+                                <button class="service-inquiry__submit" type="submit">Ověřit dostupnost IV Budky</button>
+                                <p class="service-inquiry__submit-note">Před potvrzením ověříme prostor, dopravu i vybranou variantu.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
     </main>

@@ -64,8 +64,22 @@
 
         var action = document.createElement('a');
         action.className = 'pricing-btn';
-        action.href = item.ctaHref || 'kontakt.html#poptavka';
+        var localInquiry = document.querySelector('#poptavka');
+        action.href = localInquiry ? '#poptavka' : (item.ctaHref || 'kontakt.html#poptavka');
         action.textContent = item.ctaLabel || 'Nezávazně poptat';
+        if (localInquiry && group === 'main') {
+            action.addEventListener('click', function () {
+                var packageSelect = localInquiry.querySelector('select[name="package"]');
+                if (!packageSelect) return;
+                var matchingOption = Array.from(packageSelect.options).find(function (option) {
+                    return option.value.toLocaleLowerCase('cs') === String(item.name || '').toLocaleLowerCase('cs');
+                });
+                if (matchingOption) {
+                    packageSelect.value = matchingOption.value;
+                    packageSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            });
+        }
         card.appendChild(action);
         return card;
     }

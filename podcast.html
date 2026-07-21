@@ -370,7 +370,9 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
+    <link rel="stylesheet" href="service-inquiry.css?v=20260721-tailored-forms">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
+    <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
@@ -410,7 +412,7 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
-                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+                <a href="#poptavka" class="nav-cta">Nezávazná poptávka</a>
             </nav>
         </div>
 
@@ -429,7 +431,7 @@
             <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
             <a href="blog.html" class="mobile-menu-link">Blog</a>
-            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
+            <a href="#poptavka" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -437,7 +439,7 @@
         <div class="hero-content">
             <h1>Podcast, který zní i vypadá <span>profesionálně</span></h1>
             <p>Od připraveného setu po hotové epizody. Obraz, čistý zvuk i střih v jednom produkčním zázemí.</p>
-            <a href="kontakt.html" class="btn btn-primary">Rezervovat studio</a>
+            <a href="#poptavka" class="btn btn-primary">Rezervovat studio</a>
         </div>
     </section>
 
@@ -491,7 +493,7 @@
                         <li>Audio mastering</li>
                         <li>YouTube + audio export</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" data-inquiry-package="Jednodílový" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
                 <div class="pricing-card">
@@ -504,7 +506,7 @@
                         <li>Intro/outro animace</li>
                         <li>Klipy pro sociální sítě</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" data-inquiry-package="Série 5 dílů" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
                 <div class="pricing-card">
@@ -517,7 +519,7 @@
                         <li>Grafika a animace</li>
                         <li>Live streaming možnost</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" data-inquiry-package="Premium" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
             </div>
@@ -528,11 +530,134 @@
         <div class="container">
             <h2>Spusťte svůj <span>podcast</span></h2>
             <p>Kontaktujte nás a probereme vaši vizi. Pomůžeme vám od A do Z.</p>
-            <a href="kontakt.html" class="btn btn-primary">Začít spolupráci</a>
+            <a href="#poptavka" class="btn btn-primary">Začít spolupráci</a>
         </div>
     </section>
 
     <section class="related-work" data-portfolio-slider data-portfolio-categories="podcast,promo" data-portfolio-title="Rozhovory, které mají obraz" data-portfolio-accent="i zvuk"></section>
+
+    <section class="service-inquiry" id="poptavka" aria-labelledby="podcast-inquiry-title">
+        <div class="service-inquiry__container">
+            <div class="service-inquiry__layout">
+                <div class="service-inquiry__intro">
+                    <p class="service-inquiry__eyebrow">Poptávka podcastové produkce</p>
+                    <h2 id="podcast-inquiry-title">Dejte svému podcastu <span>obraz i čistý zvuk</span></h2>
+                    <p class="service-inquiry__lead">Ať připravujete první rozhovor nebo pravidelnou sérii, navrhneme počet kamer, scénu, zvuk, střih i krátké klipy tak, aby jeden natáčecí den vytvořil maximum použitelného obsahu.</p>
+                    <ul class="service-inquiry__promises">
+                        <li>Jedna epizoda, série i dlouhodobá produkce</li>
+                        <li>Video pro YouTube a masterované audio pro podcastové platformy</li>
+                        <li>Intro, outro, grafika, titulky a klipy na sociální sítě</li>
+                    </ul>
+                    <p class="service-inquiry__contact">Nápad můžete probrat na <a href="tel:+420773210194">+420 773 210 194</a>.</p>
+                </div>
+
+                <form class="service-inquiry__form" action="kontakt-handler.php" method="POST" data-service-form data-service-title="Podcastová produkce">
+                    <input type="hidden" name="service" value="Podcastová produkce">
+                    <input type="hidden" name="return_to" value="podcast.html">
+                    <div class="inquiry-honeypot" aria-hidden="true">
+                        <label for="podcast-company">Společnost</label>
+                        <input id="podcast-company" type="text" name="company" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="service-inquiry__form-header">
+                        <h3>Brief podcastu nebo videocastu</h3>
+                        <p>Stačí pracovní představa. Formát, scénu i technické řešení můžeme navrhnout společně.</p>
+                    </div>
+                    <div class="inquiry-grid">
+                        <div class="inquiry-field">
+                            <label for="podcast-name">Jméno a příjmení *</label>
+                            <input id="podcast-name" name="name" type="text" autocomplete="name" placeholder="Jan Novák" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="podcast-email">E-mail *</label>
+                            <input id="podcast-email" name="email" type="email" autocomplete="email" placeholder="vas@email.cz" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="podcast-phone">Telefon</label>
+                            <input id="podcast-phone" name="phone" type="tel" autocomplete="tel" placeholder="+420 123 456 789">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="podcast-brand">Název podcastu / značka *</label>
+                            <input id="podcast-brand" name="brand" type="text" data-label="Název podcastu / značka" autocomplete="organization" placeholder="Pracovní název projektu" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="podcast-count">Počet epizod *</label>
+                            <select id="podcast-count" name="episode_count" required>
+                                <option value="">Vyberte rozsah…</option>
+                                <option value="1 epizoda">1 epizoda</option>
+                                <option value="Série 5 epizod">Série 5 epizod</option>
+                                <option value="6 až 12 epizod">6 až 12 epizod</option>
+                                <option value="Pravidelná dlouhodobá produkce">Pravidelná dlouhodobá produkce</option>
+                                <option value="Ještě nevíme">Ještě nevíme</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="podcast-length">Předpokládaná délka epizody *</label>
+                            <select id="podcast-length" name="episode_length" required>
+                                <option value="">Vyberte délku…</option>
+                                <option value="Do 30 minut">Do 30 minut</option>
+                                <option value="30 až 60 minut">30 až 60 minut</option>
+                                <option value="60 až 90 minut">60 až 90 minut</option>
+                                <option value="Delší než 90 minut">Delší než 90 minut</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="podcast-guests">Počet lidí před kamerou *</label>
+                            <select id="podcast-guests" name="guest_count" required>
+                                <option value="">Vyberte počet…</option>
+                                <option value="1 moderátor">1 moderátor</option>
+                                <option value="2 osoby">2 osoby</option>
+                                <option value="3 osoby">3 osoby</option>
+                                <option value="4 a více osob">4 a více osob</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="podcast-package">Preferovaná varianta *</label>
+                            <select id="podcast-package" name="package" required>
+                                <option value="">Vyberte variantu…</option>
+                                <option value="Jednodílový">Jednodílový</option>
+                                <option value="Série 5 dílů">Série 5 dílů</option>
+                                <option value="Premium">Premium</option>
+                                <option value="Produkce na míru">Produkce na míru</option>
+                                <option value="Doporučit vhodnou variantu">Doporučit vhodnou variantu</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="podcast-location">Místo natáčení</label>
+                            <input id="podcast-location" name="filming_location" type="text" placeholder="Naše studio, vaše prostory nebo poradit">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="podcast-launch">Plánovaný start / první natáčení</label>
+                            <input id="podcast-launch" name="launch_date" type="date">
+                        </div>
+                        <fieldset class="inquiry-options">
+                            <legend>Jaké výstupy potřebujete?</legend>
+                            <div class="inquiry-choice-grid">
+                                <label class="inquiry-choice"><input type="checkbox" name="outputs[]" value="Video epizoda pro YouTube">Video epizoda pro YouTube</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="outputs[]" value="Masterované audio pro Spotify / Apple Podcasts">Audio pro podcastové platformy</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="outputs[]" value="Krátké vertikální klipy">Krátké vertikální klipy</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="outputs[]" value="Intro / outro animace">Intro / outro animace</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="outputs[]" value="Titulky a grafika">Titulky a grafika</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="outputs[]" value="Live stream">Live stream</label>
+                            </div>
+                        </fieldset>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="podcast-message">Téma, hosté a představa o stylu *</label>
+                            <textarea id="podcast-message" name="message" placeholder="O čem podcast bude, pro koho je určený, jak má vypadat, zda máte vlastní prostor, vizuální identitu nebo ukázku stylu…" required></textarea>
+                        </div>
+                        <label class="inquiry-consent">
+                            <input type="checkbox" name="consent" value="1" required>
+                            <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
+                        </label>
+                        <p class="service-inquiry__status form-static-status" data-form-status role="status" aria-live="polite"></p>
+                        <div class="service-inquiry__submit-row">
+                            <button class="service-inquiry__submit" type="submit">Poptat podcastovou produkci</button>
+                            <p class="service-inquiry__submit-note">Po briefu navrhneme techniku, scénu i harmonogram.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="footer-grid">

@@ -370,7 +370,9 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
+    <link rel="stylesheet" href="service-inquiry.css?v=20260721-tailored-forms">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
+    <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
@@ -410,7 +412,7 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
-                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+                <a href="#poptavka" class="nav-cta">Nezávazná poptávka</a>
             </nav>
         </div>
 
@@ -429,7 +431,7 @@
             <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
             <a href="blog.html" class="mobile-menu-link">Blog</a>
-            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
+            <a href="#poptavka" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -437,7 +439,7 @@
         <div class="hero-content">
             <h1>Konference, která žije i po <span>posledním potlesku</span></h1>
             <p>Vícekamerový záznam, livestream i sestřih pro další komunikaci. Vaše know-how zůstane dostupné i po skončení akce.</p>
-            <a href="kontakt.html" class="btn btn-primary">Poptat produkci konference</a>
+            <a href="#poptavka" class="btn btn-primary">Poptat produkci konference</a>
         </div>
     </section>
 
@@ -491,7 +493,7 @@
                         <li>Dodání plného záznamu</li>
                         <li>Do 4 hodin akce</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" data-inquiry-package="Základní záznam – 1 až 2 kamery" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
                 <div class="pricing-card">
@@ -504,7 +506,7 @@
                         <li>Střih po jednotlivých blocích</li>
                         <li>Highlight video</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" data-inquiry-package="Profesionální – 3 až 4 kamery" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
                 <div class="pricing-card">
@@ -517,7 +519,7 @@
                         <li>Technická podpora</li>
                         <li>Záznam živého vysílání</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" data-inquiry-package="Live Stream" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
             </div>
@@ -528,11 +530,121 @@
         <div class="container">
             <h2>Plánujete <span>konferenci</span>?</h2>
             <p>Kontaktujte nás a připravíme nabídku na míru vaší akci.</p>
-            <a href="kontakt.html" class="btn btn-primary">Domluvit schůzku</a>
+            <a href="#poptavka" class="btn btn-primary">Domluvit schůzku</a>
         </div>
     </section>
 
     <section class="related-work" data-portfolio-slider data-portfolio-categories="konference,promo" data-portfolio-title="Obsah, který pracuje dál" data-portfolio-accent="po akci"></section>
+
+    <section class="service-inquiry" id="poptavka" aria-labelledby="conference-inquiry-title">
+        <div class="service-inquiry__container">
+            <div class="service-inquiry__layout">
+                <div class="service-inquiry__intro">
+                    <p class="service-inquiry__eyebrow">Poptávka konferenční produkce</p>
+                    <h2 id="conference-inquiry-title">Kolik kamer potřebuje <span>váš program?</span></h2>
+                    <p class="service-inquiry__lead">Pošlete termín, místo, délku a základní strukturu programu. Navrhneme počet kamer, zvuk, záznam jednotlivých bloků, integraci prezentací i živý přenos.</p>
+                    <ul class="service-inquiry__promises">
+                        <li>Záznam přednášek, panelů i celé akce</li>
+                        <li>Profesionální zvuk, prezentace a multi-kamera režie</li>
+                        <li>Highlight video a krátké výstupy pro další propagaci</li>
+                    </ul>
+                    <p class="service-inquiry__contact">Technickou konzultaci domluvíte na <a href="tel:+420773210194">+420 773 210 194</a>.</p>
+                </div>
+
+                <form class="service-inquiry__form" action="kontakt-handler.php" method="POST" data-service-form data-service-title="Konference a live stream">
+                    <input type="hidden" name="service" value="Konference a live stream">
+                    <input type="hidden" name="return_to" value="konference.html">
+                    <div class="inquiry-honeypot" aria-hidden="true">
+                        <label for="conference-company">Společnost</label>
+                        <input id="conference-company" type="text" name="company" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="service-inquiry__form-header">
+                        <h3>Technický brief konference</h3>
+                        <p>Pokud přesné parametry ještě neznáte, vyplňte odhad. Řešení společně doladíme.</p>
+                    </div>
+                    <div class="inquiry-grid">
+                        <div class="inquiry-field">
+                            <label for="conference-name">Kontaktní osoba *</label>
+                            <input id="conference-name" name="name" type="text" autocomplete="name" placeholder="Jan Novák" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="conference-email">E-mail *</label>
+                            <input id="conference-email" name="email" type="email" autocomplete="email" placeholder="vas@email.cz" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="conference-phone">Telefon</label>
+                            <input id="conference-phone" name="phone" type="tel" autocomplete="tel" placeholder="+420 123 456 789">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="conference-brand">Firma / pořadatel *</label>
+                            <input id="conference-brand" name="brand" type="text" data-label="Firma / pořadatel" autocomplete="organization" placeholder="Název organizace" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="conference-date">Datum akce *</label>
+                            <input id="conference-date" name="event_date" type="date" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="conference-duration">Délka programu *</label>
+                            <select id="conference-duration" name="event_duration" required>
+                                <option value="">Vyberte délku…</option>
+                                <option value="Do 4 hodin">Do 4 hodin</option>
+                                <option value="Celodenní akce">Celodenní akce</option>
+                                <option value="Vícedenní konference">Vícedenní konference</option>
+                                <option value="Jiný rozsah">Jiný rozsah</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="conference-address">Místo konání *</label>
+                            <input id="conference-address" name="address" type="text" autocomplete="street-address" placeholder="Název venue, město nebo adresa" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="conference-attendees">Očekávaný počet účastníků</label>
+                            <input id="conference-attendees" name="attendee_count" type="number" min="1" max="100000" inputmode="numeric" placeholder="např. 300">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="conference-package">Předběžný rozsah *</label>
+                            <select id="conference-package" name="package" required>
+                                <option value="">Vyberte možnost…</option>
+                                <option value="Základní záznam – 1 až 2 kamery">Základní záznam – 1 až 2 kamery</option>
+                                <option value="Profesionální – 3 až 4 kamery">Profesionální – 3 až 4 kamery</option>
+                                <option value="Live Stream">Live Stream</option>
+                                <option value="Kombinace na míru">Kombinace na míru</option>
+                                <option value="Doporučit technické řešení">Doporučit technické řešení</option>
+                            </select>
+                        </div>
+                        <fieldset class="inquiry-options">
+                            <legend>Jaké služby potřebujete?</legend>
+                            <div class="inquiry-choice-grid">
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Záznam přednášek po blocích">Záznam přednášek po blocích</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Profesionální ozvučení / záznam zvuku">Profesionální zvuk</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Integrace prezentací a grafiky">Integrace prezentací a grafiky</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Živý přenos">Živý přenos</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Highlight video">Highlight video</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Krátké klipy na sociální sítě">Klipy na sociální sítě</label>
+                            </div>
+                        </fieldset>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="conference-platform">Platforma živého přenosu</label>
+                            <input id="conference-platform" name="livestream_platform" type="text" placeholder="YouTube, Facebook, vlastní platforma, neveřejný přenos nebo zatím nevíme">
+                        </div>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="conference-message">Program a technické požadavky *</label>
+                            <textarea id="conference-message" name="message" placeholder="Počet sálů a řečníků, paralelní program, časy, dostupná technika, požadované výstupy a termín dodání…" required></textarea>
+                        </div>
+                        <label class="inquiry-consent">
+                            <input type="checkbox" name="consent" value="1" required>
+                            <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
+                        </label>
+                        <p class="service-inquiry__status form-static-status" data-form-status role="status" aria-live="polite"></p>
+                        <div class="service-inquiry__submit-row">
+                            <button class="service-inquiry__submit" type="submit">Poptat konferenční produkci</button>
+                            <p class="service-inquiry__submit-note">Před akcí společně potvrdíme technický plán i zálohu.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="footer-grid">

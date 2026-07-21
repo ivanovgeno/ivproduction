@@ -315,13 +315,15 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
+    <link rel="stylesheet" href="service-inquiry.css?v=20260721-tailored-forms">
     <link rel="stylesheet" href="packages.css?v=20260715-plesy-packages">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
+    <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
     <script src="portfolio-gallery.js?v=20260715-plesy-autoplay-v2" defer></script>
     <script src="packages-data.js?v=20260715-plesy-custom-v2" defer></script>
-    <script src="packages-renderer.js?v=20260715-plesy-packages" defer></script>
+    <script src="packages-renderer.js?v=20260721-tailored-forms" defer></script>
 
     <style>
         body.page-event .hero h1::before {
@@ -633,7 +635,7 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
-                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+                <a href="#poptavka" class="nav-cta">Nezávazná poptávka</a>
             </nav>
         </div>
 
@@ -652,7 +654,7 @@
             <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
             <a href="blog.html" class="mobile-menu-link">Blog</a>
-            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
+            <a href="#poptavka" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -661,7 +663,7 @@
             <h1>Váš maturiťák. Vaše třída. <span>Váš film.</span></h1>
             <p>Jeden večer, na který čekáte celé roky. Zachytíme nástup, šerpování, půlnoční překvapení i party tak, aby se k ní mohla vrátit celá třída — ne jen přes roztřesená videa z mobilu.</p>
             <div class="event-hero-actions">
-                <a href="kontakt.html#poptavka" class="btn btn-primary">Chci ověřit náš termín</a>
+                <a href="#poptavka" class="btn btn-primary">Chci ověřit náš termín</a>
                 <a href="#cenik" class="btn btn-outline">Kolik to vyjde třídu?</a>
             </div>
             <p class="event-hero-proof">Při více třídách od 300 Kč za studenta · video · foto · fotobudka · 360°</p>
@@ -756,8 +758,115 @@
                 <p class="section-subtitle">Pošlete nám město, termín a přibližný počet studentů. Nezávazně ověříme dostupnost a připravíme nabídku, kterou snadno přepošlete spolužákům.</p>
             </div>
             <div class="event-final-actions">
-                <a href="kontakt.html#poptavka" class="btn btn-primary">Ověřit termín naší třídy</a>
+                <a href="#poptavka" class="btn btn-primary">Ověřit termín naší třídy</a>
                 <a href="tel:+420773210194" class="btn btn-outline">Rychle se zeptat telefonem</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-inquiry" id="poptavka" aria-labelledby="event-inquiry-title">
+        <div class="service-inquiry__container">
+            <div class="service-inquiry__layout">
+                <div class="service-inquiry__intro">
+                    <p class="service-inquiry__eyebrow">Poptávka plesu a společenské akce</p>
+                    <h2 id="event-inquiry-title">Sestavíme nabídku <span>pro váš večer</span></h2>
+                    <p class="service-inquiry__lead">Stačí jeden zástupce třídy nebo pořadatele. Podle termínu, počtu studentů, programu a vybraných služeb připravíme nabídku, kterou můžete rovnou sdílet s ostatními.</p>
+                    <ul class="service-inquiry__promises">
+                        <li>Maturitní i městské, firemní a reprezentační plesy</li>
+                        <li>Video, fotografie, fotobudka, 360°, osvětlení i zvuk</li>
+                        <li>Jasná cena a rozsah potvrzené před akcí</li>
+                    </ul>
+                    <p class="service-inquiry__contact">Potřebujete rychle ověřit datum? Volejte <a href="tel:+420773210194">+420 773 210 194</a>.</p>
+                </div>
+
+                <form class="service-inquiry__form" action="kontakt-handler.php" method="POST" data-service-form data-service-title="Plesy a společenské akce">
+                    <input type="hidden" name="service" value="Plesy a společenské akce">
+                    <input type="hidden" name="return_to" value="plesy.html">
+                    <div class="inquiry-honeypot" aria-hidden="true">
+                        <label for="event-company">Společnost</label>
+                        <input id="event-company" type="text" name="company" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="service-inquiry__form-header">
+                        <h3>Základní údaje o plesu</h3>
+                        <p>Čím přesnější údaje pošlete, tím přesněji dokážeme nabídku připravit.</p>
+                    </div>
+                    <div class="inquiry-grid">
+                        <div class="inquiry-field">
+                            <label for="event-name">Kontaktní osoba / zástupce třídy *</label>
+                            <input id="event-name" name="name" type="text" autocomplete="name" placeholder="Jan Novák" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="event-email">E-mail *</label>
+                            <input id="event-email" name="email" type="email" autocomplete="email" placeholder="vas@email.cz" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="event-phone">Telefon</label>
+                            <input id="event-phone" name="phone" type="tel" autocomplete="tel" placeholder="+420 123 456 789">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="event-date">Datum plesu *</label>
+                            <input id="event-date" name="event_date" type="date" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="event-type">Typ akce *</label>
+                            <select id="event-type" name="event_type" required>
+                                <option value="">Vyberte typ…</option>
+                                <option value="Maturitní ples">Maturitní ples</option>
+                                <option value="Městský / obecní ples">Městský / obecní ples</option>
+                                <option value="Firemní / reprezentační ples">Firemní / reprezentační ples</option>
+                                <option value="Sportovní / spolkový ples">Sportovní / spolkový ples</option>
+                                <option value="Jiná společenská akce">Jiná společenská akce</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="event-address">Místo konání *</label>
+                            <input id="event-address" name="address" type="text" autocomplete="street-address" placeholder="Sál, město nebo adresa" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="event-classes">Počet tříd</label>
+                            <input id="event-classes" name="class_count" type="number" min="1" max="30" inputmode="numeric" placeholder="např. 2">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="event-students">Přibližný počet studentů / hostů *</label>
+                            <input id="event-students" name="student_count" type="number" min="1" max="5000" inputmode="numeric" placeholder="např. 60" required>
+                        </div>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="event-package">Preferovaný balíček *</label>
+                            <select id="event-package" name="package" required>
+                                <option value="">Vyberte možnost…</option>
+                                <option value="STANDARD VIDEO">STANDARD VIDEO</option>
+                                <option value="PREMIUM FOTO + VIDEO">PREMIUM FOTO + VIDEO</option>
+                                <option value="ALL IN ONE">ALL IN ONE</option>
+                                <option value="PLES NA MÍRU">PLES NA MÍRU</option>
+                                <option value="Ještě nevíme">Ještě nevíme – doporučte nám variantu</option>
+                            </select>
+                        </div>
+                        <fieldset class="inquiry-options">
+                            <legend>O co máte zájem?</legend>
+                            <div class="inquiry-choice-grid">
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Dlouhé video z večera">Dlouhé video z večera</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Fotograf">Fotograf</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Fotobudka">Fotobudka</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="360° video koutek">360° video koutek</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Instagram Reel">Instagram Reel</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Osvětlení a ozvučení">Osvětlení a ozvučení</label>
+                            </div>
+                        </fieldset>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="event-message">Program, harmonogram a další požadavky *</label>
+                            <textarea id="event-message" name="message" placeholder="Napište začátek akce, očekávaný konec, důležité body programu a vše, co máme zohlednit…" required></textarea>
+                        </div>
+                        <label class="inquiry-consent">
+                            <input type="checkbox" name="consent" value="1" required>
+                            <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
+                        </label>
+                        <p class="service-inquiry__status form-static-status" data-form-status role="status" aria-live="polite"></p>
+                        <div class="service-inquiry__submit-row">
+                            <button class="service-inquiry__submit" type="submit">Ověřit termín plesu</button>
+                            <p class="service-inquiry__submit-note">Poptávka je nezávazná a lze ji následně upravit.</p>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>

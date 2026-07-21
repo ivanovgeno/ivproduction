@@ -999,13 +999,15 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
+    <link rel="stylesheet" href="service-inquiry.css?v=20260721-tailored-forms">
     <link rel="stylesheet" href="packages.css?v=20260715-reality-packages-v5">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
+    <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
     <script src="portfolio-gallery.js?v=20260715-reality-autoplay" defer></script>
     <script src="packages-data.js?v=20260715-reality-pricing" defer></script>
-    <script src="packages-renderer.js?v=20260715-reality-pricing" defer></script>
+    <script src="packages-renderer.js?v=20260721-tailored-forms" defer></script>
     <script src="reality-showcase.js?v=20260715-photo-tour-v1" defer></script>
 </head>
 
@@ -1043,7 +1045,7 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
-                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+                <a href="#poptavka" class="nav-cta">Nezávazná poptávka</a>
             </nav>
         </div>
 
@@ -1062,7 +1064,7 @@
             <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
             <a href="blog.html" class="mobile-menu-link">Blog</a>
-            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
+            <a href="#poptavka" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -1071,7 +1073,7 @@
             <p class="reality-eyebrow">VIDEO · FOTO · DRON · 3D PROHLÍDKY</p>
             <h1>Profesionální prezentace <span>pro realitní makléře</span></h1>
             <p>Pomůžeme vám zaujmout více zájemců a představit nemovitost v tom nejlepším světle — od prvního záběru až po hotové výstupy pro portály a sociální sítě.</p>
-            <a href="kontakt.html#poptavka" class="btn btn-primary">Poptat prezentaci nemovitosti</a>
+            <a href="#poptavka" class="btn btn-primary">Poptat prezentaci nemovitosti</a>
         </div>
     </section>
 
@@ -1219,7 +1221,7 @@
 
             <div class="reality-offer__cta">
                 <p><strong>Vybereme kombinaci, která dává smysl právě vaší nemovitosti.</strong>Rozsah, cenu i termín dodání vám potvrdíme předem.</p>
-                <a href="kontakt.html#poptavka" class="btn btn-primary">Poptat prezentaci nemovitosti</a>
+                <a href="#poptavka" class="btn btn-primary">Poptat prezentaci nemovitosti</a>
             </div>
         </div>
     </section>
@@ -1298,7 +1300,125 @@
             <p class="reality-eyebrow">NEZÁVAZNÁ POPTÁVKA</p>
             <h2 class="section-title">Posuňte svou realitní prezentaci <span>na vyšší úroveň</span></h2>
             <p class="section-subtitle">Napište nám typ nemovitosti, lokalitu a požadované služby. Ozveme se s jasným návrhem dalšího postupu.</p>
-            <a href="kontakt.html#poptavka" class="btn btn-primary">Poptat foto, video nebo 3D</a>
+            <a href="#poptavka" class="btn btn-primary">Poptat foto, video nebo 3D</a>
+        </div>
+    </section>
+
+    <section class="service-inquiry" id="poptavka" aria-labelledby="reality-inquiry-title">
+        <div class="service-inquiry__container">
+            <div class="service-inquiry__layout">
+                <div class="service-inquiry__intro">
+                    <p class="service-inquiry__eyebrow">Poptávka realitní prezentace</p>
+                    <h2 id="reality-inquiry-title">Co má vaše nabídka <span>prodávat lépe?</span></h2>
+                    <p class="service-inquiry__lead">Popište nemovitost a vyberte požadované výstupy. Navrhneme kombinaci videa, fotografií, dronu, 3D prohlídky a obsahu pro sítě podle typu nabídky i termínu zveřejnění.</p>
+                    <ul class="service-inquiry__promises">
+                        <li>Jedna návštěva může pokrýt foto, video, dron i 3D</li>
+                        <li>Výstupy pro portály, web i sociální sítě</li>
+                        <li>Rozsah, dopravu a termín dodání potvrdíme předem</li>
+                    </ul>
+                    <p class="service-inquiry__contact">Pro rychlou konzultaci volejte <a href="tel:+420773210194">+420 773 210 194</a>.</p>
+                </div>
+
+                <form class="service-inquiry__form" action="kontakt-handler.php" method="POST" data-service-form data-service-title="Realitní prezentace">
+                    <input type="hidden" name="service" value="Realitní prezentace">
+                    <input type="hidden" name="return_to" value="reality.html">
+                    <div class="inquiry-honeypot" aria-hidden="true">
+                        <label for="reality-company">Společnost</label>
+                        <input id="reality-company" type="text" name="company" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="service-inquiry__form-header">
+                        <h3>Údaje o nemovitosti a výstupech</h3>
+                        <p>Podle těchto informací doporučíme efektivní rozsah a připravíme přesnou kalkulaci.</p>
+                    </div>
+                    <div class="inquiry-grid">
+                        <div class="inquiry-field">
+                            <label for="reality-name">Jméno a příjmení *</label>
+                            <input id="reality-name" name="name" type="text" autocomplete="name" placeholder="Jan Novák" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reality-email">E-mail *</label>
+                            <input id="reality-email" name="email" type="email" autocomplete="email" placeholder="vas@email.cz" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reality-phone">Telefon</label>
+                            <input id="reality-phone" name="phone" type="tel" autocomplete="tel" placeholder="+420 123 456 789">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reality-brand">Realitní kancelář / značka</label>
+                            <input id="reality-brand" name="brand" type="text" data-label="Realitní kancelář / značka" autocomplete="organization" placeholder="Název kanceláře nebo makléře">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reality-property">Typ nemovitosti *</label>
+                            <select id="reality-property" name="property_type" required>
+                                <option value="">Vyberte typ…</option>
+                                <option value="Byt">Byt</option>
+                                <option value="Rodinný dům / vila">Rodinný dům / vila</option>
+                                <option value="Pozemek">Pozemek</option>
+                                <option value="Komerční nemovitost">Komerční nemovitost</option>
+                                <option value="Developerský projekt">Developerský projekt</option>
+                                <option value="Jiný typ">Jiný typ</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reality-area">Přibližná plocha v m²</label>
+                            <input id="reality-area" name="floor_area" type="number" min="1" max="100000" inputmode="decimal" placeholder="např. 125">
+                        </div>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="reality-address">Lokalita / adresa nemovitosti *</label>
+                            <input id="reality-address" name="address" type="text" autocomplete="street-address" placeholder="Obec, ulice nebo přesná adresa" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reality-date">Preferovaný termín realizace</label>
+                            <input id="reality-date" name="date" type="date">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reality-status">V jaké fázi je nabídka? *</label>
+                            <select id="reality-status" name="listing_status" required>
+                                <option value="">Vyberte stav…</option>
+                                <option value="Připravujeme inzerci">Připravujeme inzerci</option>
+                                <option value="Nemovitost už je v nabídce">Nemovitost už je v nabídce</option>
+                                <option value="Potřebujeme rychlý termín">Potřebujeme rychlý termín</option>
+                                <option value="Teprve zjišťujeme možnosti">Teprve zjišťujeme možnosti</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="reality-package">Balíček nebo způsob nacenění *</label>
+                            <select id="reality-package" name="package" required>
+                                <option value="">Vyberte možnost…</option>
+                                <option value="STANDARD VIDEO">STANDARD VIDEO</option>
+                                <option value="PREMIUM">PREMIUM</option>
+                                <option value="ALL IN ONE">ALL IN ONE</option>
+                                <option value="Jednotlivé služby">Jednotlivé služby</option>
+                                <option value="Doporučit nejlepší variantu">Doporučit nejlepší variantu</option>
+                            </select>
+                        </div>
+                        <fieldset class="inquiry-options">
+                            <legend>Jaké výstupy potřebujete?</legend>
+                            <div class="inquiry-choice-grid">
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Videoprohlídka">Videoprohlídka</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="HDR fotografie">HDR fotografie</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Dronové záběry">Dronové záběry</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Interaktivní 3D prohlídka">Interaktivní 3D prohlídka</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Vertikální Reel 9:16">Vertikální Reel 9:16</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="services[]" value="Komentovaná prohlídka s makléřem">Komentovaná prohlídka s makléřem</label>
+                            </div>
+                        </fieldset>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="reality-message">Co máme o nabídce vědět? *</label>
+                            <textarea id="reality-message" name="message" placeholder="Uveďte dispozici, stav nemovitosti, klíčové přednosti, požadovaný termín zveřejnění nebo odkaz na existující inzerát…" required></textarea>
+                        </div>
+                        <label class="inquiry-consent">
+                            <input type="checkbox" name="consent" value="1" required>
+                            <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
+                        </label>
+                        <p class="service-inquiry__status form-static-status" data-form-status role="status" aria-live="polite"></p>
+                        <div class="service-inquiry__submit-row">
+                            <button class="service-inquiry__submit" type="submit">Poptat realitní prezentaci</button>
+                            <p class="service-inquiry__submit-note">Rozsah lze po konzultaci upravit podle konkrétní nabídky.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 

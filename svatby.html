@@ -443,13 +443,15 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
+    <link rel="stylesheet" href="service-inquiry.css?v=20260721-tailored-forms">
     <link rel="stylesheet" href="packages.css?v=20260714-package-system">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
+    <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
     <script src="packages-data.js?v=20260714-package-system" defer></script>
-    <script src="packages-renderer.js?v=20260714-package-system" defer></script>
+    <script src="packages-renderer.js?v=20260721-tailored-forms" defer></script>
 
     <style>
         .wedding-hero-kicker {
@@ -641,7 +643,7 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
-                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+                <a href="#poptavka" class="nav-cta">Nezávazná poptávka</a>
             </nav>
         </div>
 
@@ -660,7 +662,7 @@
             <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
             <a href="blog.html" class="mobile-menu-link">Blog</a>
-            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
+            <a href="#poptavka" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -670,7 +672,7 @@
             <h1>Svatební kameraman, který zachytí <span>vás dva i všechno mezi</span></h1>
             <p>Citlivý svatební film od příprav po první tanec. Skutečné emoce, autentický zvuk a obraz, ke kterému se budete chtít vracet celý život.</p>
             <div class="wedding-hero-actions">
-                <a href="kontakt.html#poptavka" class="btn btn-primary">Ověřit volný termín</a>
+                <a href="#poptavka" class="btn btn-primary">Ověřit volný termín</a>
                 <a href="https://wa.me/420773210194?text=M%C3%A1m%20z%C3%A1jem%20o%20svatebn%C3%AD%20video%20od%20IV%20Production." class="btn btn-secondary" target="_blank" rel="noopener">Napsat přes WhatsApp</a>
             </div>
             <p class="wedding-hero-proof">Osobní přístup · filmový střih · dronové záběry · smluvně a bez starostí</p>
@@ -792,8 +794,101 @@
             <h2 class="section-title">Chcete mít jistotu, že váš den <span>nezůstane jen v paměti?</span></h2>
             <p class="section-subtitle">Pošlete datum a místo svatby. Nezávazně ověříme dostupnost a navrhneme rozsah, který bude dávat smysl právě vám.</p>
             <div class="wedding-final-actions">
-                <a href="kontakt.html#poptavka" class="btn btn-primary">Ověřit termín svatby</a>
+                <a href="#poptavka" class="btn btn-primary">Ověřit termín svatby</a>
                 <a href="tel:+420773210194" class="btn btn-secondary">Zavolat +420 773 210 194</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-inquiry" id="poptavka" aria-labelledby="wedding-inquiry-title">
+        <div class="service-inquiry__container">
+            <div class="service-inquiry__layout">
+                <div class="service-inquiry__intro">
+                    <p class="service-inquiry__eyebrow">Nezávazná svatební poptávka</p>
+                    <h2 id="wedding-inquiry-title">Je váš termín <span>ještě volný?</span></h2>
+                    <p class="service-inquiry__lead">Pošlete nám základní představu o vašem dni. Ověříme dostupnost a doporučíme balíček i doplňky podle místa, programu a toho, co chcete ve filmu uchovat.</p>
+                    <ul class="service-inquiry__promises">
+                        <li>Dostupnost termínu ověříme nezávazně</li>
+                        <li>Rozsah i konečnou cenu potvrdíme předem</li>
+                        <li>Natáčíme v Královéhradeckém kraji i po celé ČR</li>
+                    </ul>
+                    <p class="service-inquiry__contact">Spěchá to? Zavolejte na <a href="tel:+420773210194">+420 773 210 194</a> nebo napište na <a href="mailto:video@ivproduction.cz">video@ivproduction.cz</a>.</p>
+                </div>
+
+                <form class="service-inquiry__form" action="kontakt-handler.php" method="POST" data-service-form data-service-title="Svatební video">
+                    <input type="hidden" name="service" value="Svatební video">
+                    <input type="hidden" name="return_to" value="svatby.html">
+                    <div class="inquiry-honeypot" aria-hidden="true">
+                        <label for="wedding-company">Společnost</label>
+                        <input id="wedding-company" type="text" name="company" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="service-inquiry__form-header">
+                        <h3>Řekněte nám o vaší svatbě</h3>
+                        <p>Pole označená hvězdičkou potřebujeme pro ověření termínu a přípravu nabídky.</p>
+                    </div>
+                    <div class="inquiry-grid">
+                        <div class="inquiry-field">
+                            <label for="wedding-name">Jména snoubenců / kontaktní osoba *</label>
+                            <input id="wedding-name" name="name" type="text" autocomplete="name" placeholder="Anna a Jan Novákovi" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="wedding-email">E-mail *</label>
+                            <input id="wedding-email" name="email" type="email" autocomplete="email" placeholder="vas@email.cz" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="wedding-phone">Telefon</label>
+                            <input id="wedding-phone" name="phone" type="tel" autocomplete="tel" placeholder="+420 123 456 789">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="wedding-date">Datum svatby *</label>
+                            <input id="wedding-date" name="event_date" type="date" required>
+                        </div>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="wedding-address">Místo svatby *</label>
+                            <input id="wedding-address" name="address" type="text" autocomplete="street-address" placeholder="Název místa, obec nebo adresa" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="wedding-package">O jaký rozsah máte zájem? *</label>
+                            <select id="wedding-package" name="package" data-label="Balíček / rozsah" required>
+                                <option value="">Vyberte možnost…</option>
+                                <option value="ECO">ECO</option>
+                                <option value="STANDARD">STANDARD</option>
+                                <option value="PREMIUM">PREMIUM</option>
+                                <option value="Video + fotograf">Video + fotograf</option>
+                                <option value="Svatba na míru">Svatba na míru</option>
+                                <option value="Ještě nevíme">Ještě nevíme – poradíme se</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="wedding-guests">Přibližný počet hostů</label>
+                            <input id="wedding-guests" name="guest_count" type="number" min="2" max="1000" inputmode="numeric" placeholder="např. 80">
+                        </div>
+                        <fieldset class="inquiry-options">
+                            <legend>Co chcete zahrnout navíc?</legend>
+                            <div class="inquiry-choice-grid">
+                                <label class="inquiry-choice"><input type="checkbox" name="extras[]" value="Fotograf">Fotograf</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="extras[]" value="Fotobudka IV Budka">Fotobudka IV Budka</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="extras[]" value="Předsvatební video">Předsvatební video</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="extras[]" value="Video z fotografií">Video z fotografií</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="extras[]" value="Duhohrátky / dětský koutek">Duhohrátky / dětský koutek</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="extras[]" value="Skákací hrad nebo deštníky">Skákací hrad nebo deštníky</label>
+                            </div>
+                        </fieldset>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="wedding-message">Co je pro vás ve videu nejdůležitější? *</label>
+                            <textarea id="wedding-message" name="message" placeholder="Napište nám stručně představu o programu, obřadu, harmonogramu nebo momenty, které určitě nemají chybět…" required></textarea>
+                        </div>
+                        <label class="inquiry-consent">
+                            <input type="checkbox" name="consent" value="1" required>
+                            <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
+                        </label>
+                        <p class="service-inquiry__status form-static-status" data-form-status role="status" aria-live="polite"></p>
+                        <div class="service-inquiry__submit-row">
+                            <button class="service-inquiry__submit" type="submit">Ověřit termín svatby</button>
+                            <p class="service-inquiry__submit-note">Odesláním nevzniká žádná závazná rezervace.</p>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>

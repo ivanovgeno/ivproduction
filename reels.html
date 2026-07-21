@@ -370,7 +370,9 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260716-audit-fixes">
+    <link rel="stylesheet" href="service-inquiry.css?v=20260721-tailored-forms">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
+    <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
@@ -409,7 +411,7 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
-                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+                <a href="#poptavka" class="nav-cta">Nezávazná poptávka</a>
             </nav>
         </div>
 
@@ -427,7 +429,7 @@
             <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
             <a href="blog.html" class="mobile-menu-link">Blog</a>
-            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
+            <a href="#poptavka" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -436,7 +438,7 @@
             <p class="hero-kicker">KRÁTKÁ VIDEA PRO SOCIÁLNÍ SÍTĚ</p>
             <h1>Reels, které <span>zastaví scroll</span></h1>
             <p>Proměníme vaši značku, službu nebo příběh v krátké video, které má rytmus, jasnou myšlenku a funguje na Instagramu, TikToku i YouTube Shorts.</p>
-            <a href="kontakt.html" class="btn btn-primary">Navrhnout Reels</a>
+            <a href="#poptavka" class="btn btn-primary">Navrhnout Reels</a>
         </div>
     </section>
 
@@ -489,7 +491,7 @@
                         <li>Titulky a hudební podkres</li>
                         <li>Výstup připravený k publikaci</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" data-inquiry-package="Reels Start – 1 výstup" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
                 <div class="pricing-card">
@@ -501,7 +503,7 @@
                         <li>Jednotný střihový a titulkový systém</li>
                         <li>Plán výstupů podle témat</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" data-inquiry-package="Obsahová série" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
                 <div class="pricing-card">
@@ -513,7 +515,7 @@
                         <li>Více střihových variant a formátů</li>
                         <li>Materiál pro placenou i organickou komunikaci</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" data-inquiry-package="Kampaň" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
             </div>
@@ -524,11 +526,123 @@
         <div class="container">
             <h2>Pojďme vytvořit Reels, které <span>mají smysl</span></h2>
             <p>Popište nám značku, cíl a termín. Navrhneme formát, který bude fungovat dlouhodobě.</p>
-            <a href="kontakt.html" class="btn btn-primary">Probrat Reels</a>
+            <a href="#poptavka" class="btn btn-primary">Probrat Reels</a>
         </div>
     </section>
 
     <section class="related-work" data-portfolio-slider data-portfolio-categories="reels,promo" data-portfolio-title="Krátké formáty s velkým efektem" data-portfolio-accent="pro sítě"></section>
+
+    <section class="service-inquiry" id="poptavka" aria-labelledby="reels-inquiry-title">
+        <div class="service-inquiry__container">
+            <div class="service-inquiry__layout">
+                <div class="service-inquiry__intro">
+                    <p class="service-inquiry__eyebrow">Poptávka Reels produkce</p>
+                    <h2 id="reels-inquiry-title">Co má vaše značka <span>říct během prvních sekund?</span></h2>
+                    <p class="service-inquiry__lead">Popište značku, cíl a množství obsahu. Navrhneme formát, natáčecí plán i výstupy pro Instagram, Facebook, TikTok nebo placenou kampaň.</p>
+                    <ul class="service-inquiry__promises">
+                        <li>Jednorázový Reel, obsahová série i kompletní kampaň</li>
+                        <li>Koncept, scénář, natáčení, střih, titulky a hudba</li>
+                        <li>Více výstupů z jednoho efektivního natáčecího bloku</li>
+                    </ul>
+                    <p class="service-inquiry__contact">Chcete nejdřív probrat nápad? Zavolejte na <a href="tel:+420773210194">+420 773 210 194</a>.</p>
+                </div>
+
+                <form class="service-inquiry__form" action="kontakt-handler.php" method="POST" data-service-form data-service-title="Reels a krátký obsah">
+                    <input type="hidden" name="service" value="Reels a krátký obsah">
+                    <input type="hidden" name="return_to" value="reels.html">
+                    <div class="inquiry-honeypot" aria-hidden="true">
+                        <label for="reels-company">Společnost</label>
+                        <input id="reels-company" type="text" name="company" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="service-inquiry__form-header">
+                        <h3>Brief pro váš krátký obsah</h3>
+                        <p>Nemusíte mít hotový scénář. Stačí cíl a základní kontext — kreativní řešení navrhneme.</p>
+                    </div>
+                    <div class="inquiry-grid">
+                        <div class="inquiry-field">
+                            <label for="reels-name">Jméno a příjmení *</label>
+                            <input id="reels-name" name="name" type="text" autocomplete="name" placeholder="Jan Novák" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reels-email">E-mail *</label>
+                            <input id="reels-email" name="email" type="email" autocomplete="email" placeholder="vas@email.cz" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reels-phone">Telefon</label>
+                            <input id="reels-phone" name="phone" type="tel" autocomplete="tel" placeholder="+420 123 456 789">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reels-brand">Značka / firma *</label>
+                            <input id="reels-brand" name="brand" type="text" data-label="Značka / firma" autocomplete="organization" placeholder="Název značky" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reels-industry">Obor *</label>
+                            <input id="reels-industry" name="industry" type="text" placeholder="např. reality, gastronomie, e-shop" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reels-goal">Hlavní cíl obsahu *</label>
+                            <select id="reels-goal" name="content_goal" required>
+                                <option value="">Vyberte cíl…</option>
+                                <option value="Zvýšit dosah a povědomí o značce">Zvýšit dosah a povědomí</option>
+                                <option value="Získat poptávky / prodeje">Získat poptávky / prodeje</option>
+                                <option value="Představit produkt nebo službu">Představit produkt nebo službu</option>
+                                <option value="Budovat osobní značku">Budovat osobní značku</option>
+                                <option value="Nábor zaměstnanců">Nábor zaměstnanců</option>
+                                <option value="Jiný cíl">Jiný cíl</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reels-package">Rozsah spolupráce *</label>
+                            <select id="reels-package" name="package" required>
+                                <option value="">Vyberte rozsah…</option>
+                                <option value="Reels Start – 1 výstup">Reels Start – 1 výstup</option>
+                                <option value="Obsahová série">Obsahová série</option>
+                                <option value="Kampaň">Kampaň</option>
+                                <option value="Pravidelná dlouhodobá tvorba">Pravidelná dlouhodobá tvorba</option>
+                                <option value="Doporučit vhodný rozsah">Doporučit vhodný rozsah</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reels-quantity">Předpokládaný počet videí</label>
+                            <input id="reels-quantity" name="quantity" type="number" min="1" max="200" inputmode="numeric" placeholder="např. 6">
+                        </div>
+                        <fieldset class="inquiry-options">
+                            <legend>Kde se bude obsah používat?</legend>
+                            <div class="inquiry-choice-grid">
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="Instagram Reels">Instagram Reels</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="Facebook Reels">Facebook Reels</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="TikTok">TikTok</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="YouTube Shorts">YouTube Shorts</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="Placená reklama">Placená reklama</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="Web / další formáty">Web / další formáty</label>
+                            </div>
+                        </fieldset>
+                        <div class="inquiry-field">
+                            <label for="reels-location">Kde chcete natáčet?</label>
+                            <input id="reels-location" name="filming_location" type="text" placeholder="Provozovna, kancelář, venku nebo poradit">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="reels-deadline">Kdy chcete mít první výstup?</label>
+                            <input id="reels-deadline" name="deadline" type="date">
+                        </div>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="reels-message">Produkt, publikum a vaše představa *</label>
+                            <textarea id="reels-message" name="message" placeholder="Co nabízíte, koho chcete oslovit, co se vám líbí a zda už máte témata, scénáře nebo příklady…" required></textarea>
+                        </div>
+                        <label class="inquiry-consent">
+                            <input type="checkbox" name="consent" value="1" required>
+                            <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
+                        </label>
+                        <p class="service-inquiry__status form-static-status" data-form-status role="status" aria-live="polite"></p>
+                        <div class="service-inquiry__submit-row">
+                            <button class="service-inquiry__submit" type="submit">Navrhnout Reels produkci</button>
+                            <p class="service-inquiry__submit-note">Po briefu doporučíme konkrétní formát a rozsah.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="footer-grid">
