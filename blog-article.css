@@ -315,14 +315,8 @@ body.page-article .mobile-menu-link {
     font-size: 0.82rem;
     font-weight: 600;
     justify-content: center;
-    line-height: 1.2;
     text-decoration: none !important;
     text-transform: uppercase;
-}
-
-.article-cta__button.nav-cta {
-    min-height: 3.35rem;
-    padding: 0.95rem 1.4rem !important;
 }
 
 .article-cta__button:hover,
