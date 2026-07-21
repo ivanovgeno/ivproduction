@@ -14,6 +14,58 @@ body.page-article {
     margin: 0;
 }
 
+/*
+ * Standalone articles do not include the legacy inline header styles used by
+ * the original service pages. Define the complete shared navigation shell
+ * here so every article renders like the rest of the site.
+ */
+body.page-article > .header {
+    backdrop-filter: blur(20px);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+}
+
+body.page-article > .header .header-inner {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+}
+
+body.page-article > .header .logo {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    text-decoration: none;
+}
+
+body.page-article > .header .logo img {
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+body.page-article > .header .nav {
+    align-items: center;
+    display: flex;
+}
+
+body.page-article > .header .nav a {
+    position: relative;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* The mobile overlay is moved directly under <body> while it is open. */
+body.page-article .mobile-menu-link {
+    text-decoration: none;
+}
+
 .article-hero {
     align-items: flex-end;
     display: flex;
