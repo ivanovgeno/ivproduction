@@ -301,6 +301,53 @@ body.page-article .mobile-menu-link {
     margin: 0 0 1.4rem;
 }
 
+/*
+ * Article pages do not load the legacy per-page button foundation. Reuse the
+ * unified navigation CTA skin and provide only the structural styles that a
+ * navigation link normally receives from .nav a.
+ */
+.article-cta__button {
+    align-items: center;
+    border: 0;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.2;
+    text-decoration: none !important;
+    text-transform: uppercase;
+}
+
+.article-cta__button.nav-cta {
+    min-height: 3.35rem;
+    padding: 0.95rem 1.4rem !important;
+}
+
+.article-cta__button:hover,
+.article-cta__button:focus-visible,
+.article-cta__button:active,
+.article-cta__button:visited {
+    color: #121215 !important;
+    text-decoration: none !important;
+}
+
+/* Keep the secondary article-directory action button-like as well. */
+.article-related__header .btn-outline {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    text-decoration: none !important;
+}
+
+.article-related__header .btn-outline:hover,
+.article-related__header .btn-outline:focus-visible,
+.article-related__header .btn-outline:active,
+.article-related__header .btn-outline:visited {
+    text-decoration: none !important;
+}
+
 .article-related {
     background: #0d0d10;
     border-top: 1px solid rgba(250, 249, 246, 0.12);
