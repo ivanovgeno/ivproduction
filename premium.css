@@ -2058,7 +2058,7 @@ body.page-fotobudka .hero h1::before { content: 'FOTOBUDKA NA VAŠI AKCI'; }
 body.page-event .hero h1::before { content: 'PLESY A EVENTY'; }
 body.page-podcast .hero h1::before { content: 'PODCASTOVÁ PRODUKCE'; }
 body.page-conference .hero h1::before { content: 'FIREMNÍ EVENTY'; }
-body.page-promo .hero h1::before { content: 'OBSAH PRO ZNAČKY'; }
+body.page-promo .hero h1::before { content: 'AFTERMOVIE & PROMO'; }
 body.page-reality .hero h1::before { content: 'REALITNÍ PRODUKCE'; }
 body.page-wedding .hero h1::before { content: 'SVATEBNÍ FILM'; }
 body.page-portfolio .hero h1::before { content: 'VYBRANÉ PROJEKTY'; }

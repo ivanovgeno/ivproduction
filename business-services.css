@@ -1,13 +1,13 @@
-/* Shared commercial layout for Reels, conference and podcast service pages. */
+/* Shared commercial layout for Reels, conference, podcast and aftermovie/promo service pages. */
 
-:where(.page-reels, .page-conference, .page-podcast) {
+:where(.page-reels, .page-conference, .page-podcast, .page-promo) {
     --business-border: rgba(250, 249, 246, 0.13);
     --business-border-gold: rgba(212, 175, 55, 0.36);
     --business-copy: rgba(250, 249, 246, 0.7);
     --business-surface: rgba(255, 255, 255, 0.035);
 }
 
-:where(.page-reels, .page-conference, .page-podcast) .hero-content {
+:where(.page-reels, .page-conference, .page-podcast, .page-promo) .hero-content {
     max-width: 52rem;
 }
 
@@ -755,8 +755,8 @@
     min-width: 13rem;
 }
 
-:where(.page-reels, .page-conference, .page-podcast) #cenik,
-:where(.page-reels, .page-conference, .page-podcast) #poptavka {
+:where(.page-reels, .page-conference, .page-podcast, .page-promo) #cenik,
+:where(.page-reels, .page-conference, .page-podcast, .page-promo) #poptavka {
     scroll-margin-top: 6rem;
 }
 
