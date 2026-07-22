@@ -57,18 +57,33 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Natáčíte jen v Královéhradeckém kraji?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Ne. Základnou je Hradec Králové, ale na svatby jezdíme po celé České republice." }
+              "name": "Natáčíte svatby po celé České republice?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ano. Základnou IV Production je Královéhradecký kraj, ale na svatby jezdíme po celé České republice. Doprava po celé ČR je součástí hlavních svatebních balíčků." }
             },
             {
               "@type": "Question",
-              "name": "Kdy máme termín řešit?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Ideálně co nejdříve. Napište nám datum a místo, dostupnost ověříme nezávazně." }
+              "name": "Kdy je nejlepší rezervovat svatebního kameramana?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Jakmile znáte datum a místo svatby. Oblíbené termíny se mohou zaplnit s velkým předstihem, proto nám datum pošlete co nejdříve. Dostupnost ověříme nezávazně." }
             },
             {
               "@type": "Question",
               "name": "Musíme před kamerou něco hrát?",
               "acceptedAnswer": { "@type": "Answer", "text": "Nemusíte. Vedeme vás jen tehdy, když to dává smysl; nejcennější zůstávají přirozené chvíle." }
+            },
+            {
+              "@type": "Question",
+              "name": "Jak dlouho budete na svatbě natáčet?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Hlavní svatební balíčky počítají až s 12 hodinami natáčení. Konkrétní začátek a konec nastavíme podle harmonogramu vašeho dne; pro netypický program připravíme rozsah na míru." }
+            },
+            {
+              "@type": "Question",
+              "name": "Jsou součástí svatebního videa také záběry z dronu?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ano, dronové záběry jsou součástí hlavních svatebních balíčků. Jejich pořízení vždy závisí na počasí, bezpečnosti a pravidlech platných v místě svatby." }
+            },
+            {
+              "@type": "Question",
+              "name": "Můžeme objednat společně video i fotografa?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ano. Nabízíme sladěné balíčky videa a fotografování s ověřenými partnery. Tým si předem rozdělí role a společně připraví harmonogram, aby se fotograf a kameraman během dne vzájemně nerušili." }
             }
           ]
         }
@@ -451,6 +466,7 @@
     </style>
     <link rel="stylesheet" href="premium.css?v=20260721-site-audit-fixes">
     <link rel="stylesheet" href="service-inquiry.css?v=20260721-accessibility">
+    <link rel="stylesheet" href="service-faq.css?v=20260722-wedding-faq">
     <link rel="stylesheet" href="packages.css?v=20260714-package-system">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
     <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
@@ -788,22 +804,38 @@
         </div>
     </section>
 
-    <section class="wedding-faq">
-        <div class="container">
-            <h2 class="section-title">Před rezervací vás možná <span>napadá</span></h2>
-            <div class="wedding-faq-grid">
-                <article class="wedding-faq-item">
-                    <h3>Natáčíte jen v Královéhradeckém kraji?</h3>
-                    <p>Ne. Základnou je Hradec Králové, ale na svatby jezdíme po celé České republice.</p>
-                </article>
-                <article class="wedding-faq-item">
-                    <h3>Kdy máme termín řešit?</h3>
-                    <p>Ideálně co nejdříve. Napište nám datum a místo, dostupnost ověříme nezávazně.</p>
-                </article>
-                <article class="wedding-faq-item">
-                    <h3>Musíme před kamerou něco hrát?</h3>
+    <section class="service-faq" aria-labelledby="wedding-faq-title">
+        <div class="service-faq__container">
+            <header class="service-faq__header">
+                <p class="service-faq__eyebrow">Časté otázky ke svatebnímu videu</p>
+                <h2 id="wedding-faq-title">Co vědět <span>před rezervací</span></h2>
+                <p class="service-faq__lead">Praktické odpovědi k termínu, průběhu natáčení, dronu i společnému balíčku videa a fotografování.</p>
+            </header>
+            <div class="service-faq__list">
+                <details>
+                    <summary>Natáčíte svatby po celé České republice?</summary>
+                    <p>Ano. Základnou IV Production je Královéhradecký kraj, ale na svatby jezdíme po celé České republice. Doprava po celé ČR je součástí hlavních svatebních balíčků.</p>
+                </details>
+                <details>
+                    <summary>Kdy je nejlepší rezervovat svatebního kameramana?</summary>
+                    <p>Jakmile znáte datum a místo svatby. Oblíbené termíny se mohou zaplnit s velkým předstihem, proto nám datum pošlete co nejdříve. Dostupnost ověříme nezávazně.</p>
+                </details>
+                <details>
+                    <summary>Musíme před kamerou něco hrát?</summary>
                     <p>Nemusíte. Vedeme vás jen tehdy, když to dává smysl; nejcennější zůstávají přirozené chvíle.</p>
-                </article>
+                </details>
+                <details>
+                    <summary>Jak dlouho budete na svatbě natáčet?</summary>
+                    <p>Hlavní svatební balíčky počítají až s 12 hodinami natáčení. Konkrétní začátek a konec nastavíme podle harmonogramu vašeho dne; pro netypický program připravíme rozsah na míru.</p>
+                </details>
+                <details>
+                    <summary>Jsou součástí svatebního videa také záběry z dronu?</summary>
+                    <p>Ano, dronové záběry jsou součástí hlavních svatebních balíčků. Jejich pořízení vždy závisí na počasí, bezpečnosti a pravidlech platných v místě svatby.</p>
+                </details>
+                <details>
+                    <summary>Můžeme objednat společně video i fotografa?</summary>
+                    <p>Ano. Nabízíme sladěné balíčky videa a fotografování s ověřenými partnery. Tým si předem rozdělí role a společně připraví harmonogram, aby se fotograf a kameraman během dne vzájemně nerušili.</p>
+                </details>
             </div>
         </div>
     </section>
