@@ -33,6 +33,52 @@
     <meta name="twitter:image" content="https://ivanovgeno.github.io/ivproduction/assets/og/promo.jpg">
     <meta name="twitter:image:alt" content="Promo video pro firmy a značky">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "name": "Promo videa a reklamní spoty",
+          "serviceType": "Produkce reklamních, firemních a produktových videí",
+          "url": "https://www.ivproduction.cz/promo.html",
+          "areaServed": { "@type": "Country", "name": "Česká republika" },
+          "provider": { "@type": "Organization", "name": "IV Production", "url": "https://www.ivproduction.cz/" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Musíme mít před poptávkou hotový scénář?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ne. Stačí popsat značku, produkt, cílové publikum a účel videa. Podle rozsahu připravíme kreativní koncept, scénář i plán natáčení." }
+            },
+            {
+              "@type": "Question",
+              "name": "Co nejvíc ovlivňuje cenu promo videa?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Cenu ovlivňuje délka a počet výstupů, počet natáčecích dnů a lokací, technika, účinkující, náročnost scénáře, animace i způsob použití videa. Přesný rozsah a cenu potvrdíme před zahájením." }
+            },
+            {
+              "@type": "Question",
+              "name": "Připravíte verze pro web, reklamu i sociální sítě?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ano. Z jednoho natáčení lze připravit hlavní video i kratší varianty v poměrech 16:9, 1:1 nebo 9:16 podle webu, kampaně a konkrétních sociálních sítí." }
+            },
+            {
+              "@type": "Question",
+              "name": "Umíte zajistit lokaci, účinkující nebo voiceover?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ano, podle zadání můžeme pracovat s vaším týmem a prostory nebo do produkce zahrnout vyhledání lokace, castingu, moderátora či profesionálního voiceoveru." }
+            },
+            {
+              "@type": "Question",
+              "name": "Jak probíhají korektury a předání?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Po prvním střihu pošleme náhled ke sjednoceným připomínkám. Počet korekčních kol a termín dodání závisí na balíčku a vždy je uvedeme v nabídce před začátkem produkce." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
@@ -377,7 +423,10 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260721-site-audit-fixes">
+    <link rel="stylesheet" href="service-inquiry.css?v=20260721-accessibility">
+    <link rel="stylesheet" href="service-faq.css?v=20260722-service-faq">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
+    <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <script src="portfolio-data.js?v=20260716-local-assets" defer></script>
     <script src="portfolio-gallery.js?v=20260713-unified-player" defer></script>
@@ -418,7 +467,7 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="kontakt.html">Kontakt</a>
-                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+                <a href="#poptavka" class="nav-cta">Nezávazná poptávka</a>
             </nav>
         </div>
 
@@ -437,7 +486,7 @@
             <a href="index.html#jak-to-funguje" class="mobile-menu-link">Jak to funguje</a>
             <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
             <a href="blog.html" class="mobile-menu-link">Blog</a>
-            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
+            <a href="#poptavka" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -445,7 +494,7 @@
         <div class="hero-content">
             <h1>Promo video, které dává značce <span>směr</span></h1>
             <p>Jasná myšlenka, silný obraz a střih, který drží pozornost. Vytvoříme video, které lidem ukáže, proč si vybrat právě vás.</p>
-            <a href="kontakt.html" class="btn btn-primary">Probrat promo video</a>
+            <a href="#poptavka" class="btn btn-primary">Probrat promo video</a>
         </div>
     </section>
 
@@ -499,7 +548,7 @@
                         <li>1 verze videa</li>
                         <li>Dodání do 7 dní</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
                 <div class="pricing-card">
@@ -512,7 +561,7 @@
                         <li>Color grading</li>
                         <li>2 korekční kola</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
                 <div class="pricing-card">
@@ -525,7 +574,7 @@
                         <li>Rozhovory se zaměstnanci</li>
                         <li>Více variant pro různé platformy</li>
                     </ul>
-                    <a href="kontakt.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
+                    <a href="#poptavka" class="btn btn-primary" style="width: 100%; justify-content: center;">Mám
                         zájem</a>
                 </div>
             </div>
@@ -536,11 +585,147 @@
         <div class="container">
             <h2>Pojďme vytvořit <span>váš příběh</span></h2>
             <p>Kontaktujte nás a probereme vaši vizi. Nezávazná konzultace zdarma.</p>
-            <a href="kontakt.html" class="btn btn-primary">Domluvit schůzku</a>
+            <a href="#poptavka" class="btn btn-primary">Domluvit schůzku</a>
         </div>
     </section>
 
     <section class="related-work" data-portfolio-slider data-portfolio-categories="promo,reels" data-portfolio-title="Značky, které jsou vidět" data-portfolio-accent="v pohybu"></section>
+
+    <section class="service-faq" aria-labelledby="promo-faq-title">
+        <div class="service-faq__container">
+            <header class="service-faq__header">
+                <p class="service-faq__eyebrow">Časté otázky k promo videu</p>
+                <h2 id="promo-faq-title">Od prvního nápadu <span>k hotovému videu</span></h2>
+                <p class="service-faq__lead">Scénář, rozpočet, formáty i korektury — odpovědi na věci, které je dobré vyjasnit ještě před začátkem produkce.</p>
+            </header>
+            <div class="service-faq__list">
+                <details>
+                    <summary>Musíme mít před poptávkou hotový scénář?</summary>
+                    <p>Ne. Stačí popsat značku, produkt, cílové publikum a účel videa. Podle rozsahu připravíme kreativní koncept, scénář i plán natáčení.</p>
+                </details>
+                <details>
+                    <summary>Co nejvíc ovlivňuje cenu promo videa?</summary>
+                    <p>Cenu ovlivňuje délka a počet výstupů, počet natáčecích dnů a lokací, technika, účinkující, náročnost scénáře, animace i způsob použití videa. Přesný rozsah a cenu potvrdíme před zahájením.</p>
+                </details>
+                <details>
+                    <summary>Připravíte verze pro web, reklamu i sociální sítě?</summary>
+                    <p>Ano. Z jednoho natáčení lze připravit hlavní video i kratší varianty v poměrech 16:9, 1:1 nebo 9:16 podle webu, kampaně a konkrétních sociálních sítí.</p>
+                </details>
+                <details>
+                    <summary>Umíte zajistit lokaci, účinkující nebo voiceover?</summary>
+                    <p>Ano, podle zadání můžeme pracovat s vaším týmem a prostory nebo do produkce zahrnout vyhledání lokace, castingu, moderátora či profesionálního voiceoveru.</p>
+                </details>
+                <details>
+                    <summary>Jak probíhají korektury a předání?</summary>
+                    <p>Po prvním střihu pošleme náhled ke sjednoceným připomínkám. Počet korekčních kol a termín dodání závisí na balíčku a vždy je uvedeme v nabídce před začátkem produkce.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-inquiry" id="poptavka" aria-labelledby="promo-inquiry-title">
+        <div class="service-inquiry__container">
+            <div class="service-inquiry__layout">
+                <div class="service-inquiry__intro">
+                    <p class="service-inquiry__eyebrow">Poptávka promo videa</p>
+                    <h2 id="promo-inquiry-title">Jaký příběh má vaše značka <span>ukázat?</span></h2>
+                    <p class="service-inquiry__lead">Popište firmu, produkt a hlavní cíl. Navrhneme vhodný formát, rozsah produkce i výstupy pro web, sociální sítě nebo reklamní kampaň.</p>
+                    <ul class="service-inquiry__promises">
+                        <li>Koncept, scénář, produkce i postprodukce na jednom místě</li>
+                        <li>Hlavní video i kratší verze pro vybrané platformy</li>
+                        <li>Rozsah, harmonogram a cenu potvrdíme předem</li>
+                    </ul>
+                    <p class="service-inquiry__contact">Chcete nejdřív probrat nápad? Zavolejte na <a href="tel:+420773210194">+420 773 210 194</a>.</p>
+                </div>
+
+                <form class="service-inquiry__form" action="kontakt-handler.php" method="POST" data-service-form data-service-title="Promo video">
+                    <input type="hidden" name="service" value="Promo video">
+                    <input type="hidden" name="return_to" value="promo.html">
+                    <div class="inquiry-honeypot" aria-hidden="true">
+                        <label for="promo-website">Web</label>
+                        <input id="promo-website" type="text" name="company" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="service-inquiry__form-header">
+                        <h3>Krátký brief k vašemu projektu</h3>
+                        <p>Nemusíte mít hotový scénář. Stačí základní kontext, cíl a představa o využití.</p>
+                    </div>
+                    <div class="inquiry-grid">
+                        <div class="inquiry-field">
+                            <label for="promo-name">Jméno a příjmení *</label>
+                            <input id="promo-name" name="name" type="text" autocomplete="name" placeholder="Jan Novák" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="promo-email">E-mail *</label>
+                            <input id="promo-email" name="email" type="email" autocomplete="email" placeholder="vas@email.cz" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="promo-phone">Telefon</label>
+                            <input id="promo-phone" name="phone" type="tel" autocomplete="tel" placeholder="+420 123 456 789">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="promo-brand">Firma / značka *</label>
+                            <input id="promo-brand" name="brand" type="text" data-label="Firma / značka" autocomplete="organization" placeholder="Název značky" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="promo-type">Jaký výstup hledáte? *</label>
+                            <select id="promo-type" name="project_type" required>
+                                <option value="">Vyberte typ…</option>
+                                <option value="Reklamní spot">Reklamní spot</option>
+                                <option value="Firemní prezentace">Firemní prezentace</option>
+                                <option value="Produktové video">Produktové video</option>
+                                <option value="Brand film">Brand film</option>
+                                <option value="Více formátů pro kampaň">Více formátů pro kampaň</option>
+                                <option value="Potřebuji doporučit">Potřebuji doporučit</option>
+                            </select>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="promo-budget">Orientační rozpočet</label>
+                            <select id="promo-budget" name="budget">
+                                <option value="">Vyberte rozmezí…</option>
+                                <option value="Do 15 000 Kč">Do 15 000 Kč</option>
+                                <option value="15 000–30 000 Kč">15 000–30 000 Kč</option>
+                                <option value="30 000–60 000 Kč">30 000–60 000 Kč</option>
+                                <option value="Nad 60 000 Kč">Nad 60 000 Kč</option>
+                                <option value="Potřebuji nacenit">Potřebuji nacenit</option>
+                            </select>
+                        </div>
+                        <fieldset class="inquiry-options">
+                            <legend>Kde se bude video používat?</legend>
+                            <div class="inquiry-choice-grid">
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="Web">Web</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="Sociální sítě">Sociální sítě</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="Placená reklama">Placená reklama</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="YouTube">YouTube</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="Prezentace / veletrh">Prezentace / veletrh</label>
+                                <label class="inquiry-choice"><input type="checkbox" name="channels[]" value="TV / kino">TV / kino</label>
+                            </div>
+                        </fieldset>
+                        <div class="inquiry-field">
+                            <label for="promo-location">Předpokládaná lokalita natáčení</label>
+                            <input id="promo-location" name="location" type="text" placeholder="Město, provozovna nebo více lokací">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="promo-deadline">Požadovaný termín dokončení</label>
+                            <input id="promo-deadline" name="deadline" type="date">
+                        </div>
+                        <div class="inquiry-field inquiry-field--wide">
+                            <label for="promo-message">Cíl, publikum a vaše představa *</label>
+                            <textarea id="promo-message" name="message" placeholder="Co má video představit, komu je určené, jaký má mít cíl a zda máte příklady nebo podklady…" required></textarea>
+                        </div>
+                        <label class="inquiry-consent">
+                            <input type="checkbox" name="consent" value="1" required>
+                            <span>Souhlasím se zpracováním osobních údajů pro vyřízení poptávky podle <a href="ochrana-osobnich-udaju.html">zásad ochrany osobních údajů</a>.</span>
+                        </label>
+                        <p class="service-inquiry__status form-static-status" data-form-status role="status" aria-live="polite"></p>
+                        <div class="service-inquiry__submit-row">
+                            <button class="service-inquiry__submit" type="submit">Poptat promo video</button>
+                            <p class="service-inquiry__submit-note">Po briefu doporučíme konkrétní formát a další postup.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="footer-grid">

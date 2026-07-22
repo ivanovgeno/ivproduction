@@ -33,6 +33,52 @@
     <meta name="twitter:image" content="https://ivanovgeno.github.io/ivproduction/assets/og/plesy.jpg">
     <meta name="twitter:image:alt" content="Video a fotografie maturitního plesu">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "name": "Video a fotografie maturitních plesů",
+          "serviceType": "Video, fotografie a zážitkové služby pro plesy a společenské akce",
+          "url": "https://www.ivproduction.cz/plesy.html",
+          "areaServed": { "@type": "Country", "name": "Česká republika" },
+          "provider": { "@type": "Organization", "name": "IV Production", "url": "https://www.ivproduction.cz/" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Jak brzy máme rezervovat termín maturitního plesu?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Doporučujeme ozvat se hned po potvrzení sálu a data. Oblíbené páteční a sobotní termíny se obsazují s velkým předstihem, dostupnost však vždy ověříme nezávazně." }
+            },
+            {
+              "@type": "Question",
+              "name": "Lze spojit video, fotografa, fotobudku a 360° koutek?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ano. Jednotlivé služby lze spojit do jednoho sladěného balíčku. Podle počtu studentů, programu a prostoru doporučíme sestavu, která pokryje slavnostní část i večerní zábavu." }
+            },
+            {
+              "@type": "Question",
+              "name": "Co všechno během plesu natáčíte?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Rozsah se řídí zvoleným balíčkem. Běžně zachycujeme příchody, nástup, stužkování nebo šerpování, půlnoční překvapení, skupinové momenty, rozhovory i atmosféru večerní party." }
+            },
+            {
+              "@type": "Question",
+              "name": "Jak se cena rozdělí mezi studenty?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Nabídku připravíme pro celou třídu nebo více tříd a vždy uvedeme celkovou cenu i orientační částku na studenta. Konečná částka závisí na počtu studentů a vybraných službách." }
+            },
+            {
+              "@type": "Question",
+              "name": "Zajišťujete také osvětlení a ozvučení?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ano, u individuálních společenských akcí lze zajistit také osvětlení a ozvučení. Potřebný výkon a technické řešení naceníme podle sálu, programu a počtu hostů." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
@@ -323,6 +369,7 @@
     </style>
     <link rel="stylesheet" href="premium.css?v=20260721-site-audit-fixes">
     <link rel="stylesheet" href="service-inquiry.css?v=20260721-accessibility">
+    <link rel="stylesheet" href="service-faq.css?v=20260722-service-faq">
     <link rel="stylesheet" href="packages.css?v=20260715-plesy-packages">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
     <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
@@ -768,6 +815,38 @@
             <div class="event-final-actions">
                 <a href="#poptavka" class="btn btn-primary">Ověřit termín naší třídy</a>
                 <a href="tel:+420773210194" class="btn btn-outline">Rychle se zeptat telefonem</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-faq" aria-labelledby="event-faq-title">
+        <div class="service-faq__container">
+            <header class="service-faq__header">
+                <p class="service-faq__eyebrow">Časté otázky k plesům</p>
+                <h2 id="event-faq-title">Než začne <span>váš velký večer</span></h2>
+                <p class="service-faq__lead">Odpovědi pro třídy i pořadatele, kteří chtějí mít video, fotografie a zábavné koutky domluvené bez zbytečných nejasností.</p>
+            </header>
+            <div class="service-faq__list">
+                <details>
+                    <summary>Jak brzy máme rezervovat termín maturitního plesu?</summary>
+                    <p>Doporučujeme ozvat se hned po potvrzení sálu a data. Oblíbené páteční a sobotní termíny se obsazují s velkým předstihem, dostupnost však vždy ověříme nezávazně.</p>
+                </details>
+                <details>
+                    <summary>Lze spojit video, fotografa, fotobudku a 360° koutek?</summary>
+                    <p>Ano. Jednotlivé služby lze spojit do jednoho sladěného balíčku. Podle počtu studentů, programu a prostoru doporučíme sestavu, která pokryje slavnostní část i večerní zábavu.</p>
+                </details>
+                <details>
+                    <summary>Co všechno během plesu natáčíte?</summary>
+                    <p>Rozsah se řídí zvoleným balíčkem. Běžně zachycujeme příchody, nástup, stužkování nebo šerpování, půlnoční překvapení, skupinové momenty, rozhovory i atmosféru večerní party.</p>
+                </details>
+                <details>
+                    <summary>Jak se cena rozdělí mezi studenty?</summary>
+                    <p>Nabídku připravíme pro celou třídu nebo více tříd a vždy uvedeme celkovou cenu i orientační částku na studenta. Konečná částka závisí na počtu studentů a vybraných službách.</p>
+                </details>
+                <details>
+                    <summary>Zajišťujete také osvětlení a ozvučení?</summary>
+                    <p>Ano, u individuálních společenských akcí lze zajistit také osvětlení a ozvučení. Potřebný výkon a technické řešení naceníme podle sálu, programu a počtu hostů.</p>
+                </details>
             </div>
         </div>
     </section>

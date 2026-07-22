@@ -33,6 +33,52 @@
     <meta name="twitter:image" content="https://ivanovgeno.github.io/ivproduction/assets/og/fotobudka.jpg">
     <meta name="twitter:image:alt" content="Fotobudka IV Budka pro svatby, plesy a firemní akce">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "name": "Fotobudka IV Budka",
+          "serviceType": "Pronájem fotobudky s okamžitým tiskem a obsluhou",
+          "url": "https://www.ivproduction.cz/fotobudka.html",
+          "areaServed": { "@type": "Country", "name": "Česká republika" },
+          "provider": { "@type": "Organization", "name": "IV Production", "url": "https://www.ivproduction.cz/" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Dostanou hosté fotografii hned na místě?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ano. Fotografie se tisknou přímo během akce na profesionální tiskárně ve formátu 10 × 15 cm. Rozsah tisku se řídí zvoleným balíčkem." }
+            },
+            {
+              "@type": "Question",
+              "name": "Kolik prostoru a jaké připojení fotobudka potřebuje?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Pro budku a pozadí doporučujeme přibližně 3 × 3 metry a volný prostor před scénou. Potřebujeme běžnou zásuvku 230 V; internet je nutný jen pro okamžité odesílání nebo živé promítání fotografií." }
+            },
+            {
+              "@type": "Question",
+              "name": "Lze připravit vlastní rámeček nebo pozadí?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ano. Grafiku fotografie upravíme podle svatby, plesu nebo firemní identity. Domluvit lze také vhodné pozadí a další prvky na míru zvolenému balíčku." }
+            },
+            {
+              "@type": "Question",
+              "name": "Je u fotobudky po celou dobu obsluha?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ano. Profesionální obsluha pomáhá hostům, doplňuje materiál, dohlíží na techniku a udržuje fotokoutek připravený po celou sjednanou dobu provozu." }
+            },
+            {
+              "@type": "Question",
+              "name": "Může být fotobudka venku?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ano, ale technika musí stát na suchém, rovném a bezpečném místě. Pro venkovní akci je nutné předem potvrdit krytý náhradní prostor pro případ deště, bouřky nebo silného větru." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
@@ -338,6 +384,7 @@
     </style>
     <link rel="stylesheet" href="premium.css?v=20260721-site-audit-fixes">
     <link rel="stylesheet" href="service-inquiry.css?v=20260721-accessibility">
+    <link rel="stylesheet" href="service-faq.css?v=20260722-service-faq">
     <script src="premium.js?v=20260716-audit-fixes" defer></script>
     <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
@@ -1365,6 +1412,38 @@
                 <p class="package-section-kicker">Rezervace IV Budky</p><h2 class="section-title">Vaši hosté si odnesou víc než <span>jen vzpomínku</span></h2>
                 <p class="section-subtitle">Pošlete datum, místo a typ akce. Ověříme dostupnost a doporučíme variantu, která dává smysl pro počet hostů i plánovaný program.</p>
                 <a href="#poptavka" class="btn btn-primary">Nezávazně ověřit termín</a>
+            </div>
+        </section>
+
+        <section class="service-faq" aria-labelledby="photobooth-faq-title">
+            <div class="service-faq__container">
+                <header class="service-faq__header">
+                    <p class="service-faq__eyebrow">Časté otázky k IV Budce</p>
+                    <h2 id="photobooth-faq-title">Co vědět <span>před rezervací</span></h2>
+                    <p class="service-faq__lead">Rozměry, tisk, obsluha i venkovní provoz — vše důležité pro hladké zapojení fotobudky do programu vaší akce.</p>
+                </header>
+                <div class="service-faq__list">
+                    <details>
+                        <summary>Dostanou hosté fotografii hned na místě?</summary>
+                        <p>Ano. Fotografie se tisknou přímo během akce na profesionální tiskárně ve formátu 10 × 15 cm. Rozsah tisku se řídí zvoleným balíčkem.</p>
+                    </details>
+                    <details>
+                        <summary>Kolik prostoru a jaké připojení fotobudka potřebuje?</summary>
+                        <p>Pro budku a pozadí doporučujeme přibližně 3 × 3 metry a volný prostor před scénou. Potřebujeme běžnou zásuvku 230 V; internet je nutný jen pro okamžité odesílání nebo živé promítání fotografií.</p>
+                    </details>
+                    <details>
+                        <summary>Lze připravit vlastní rámeček nebo pozadí?</summary>
+                        <p>Ano. Grafiku fotografie upravíme podle svatby, plesu nebo firemní identity. Domluvit lze také vhodné pozadí a další prvky na míru zvolenému balíčku.</p>
+                    </details>
+                    <details>
+                        <summary>Je u fotobudky po celou dobu obsluha?</summary>
+                        <p>Ano. Profesionální obsluha pomáhá hostům, doplňuje materiál, dohlíží na techniku a udržuje fotokoutek připravený po celou sjednanou dobu provozu.</p>
+                    </details>
+                    <details>
+                        <summary>Může být fotobudka venku?</summary>
+                        <p>Ano, ale technika musí stát na suchém, rovném a bezpečném místě. Pro venkovní akci je nutné předem potvrdit krytý náhradní prostor pro případ deště, bouřky nebo silného větru.</p>
+                    </details>
+                </div>
             </div>
         </section>
 
