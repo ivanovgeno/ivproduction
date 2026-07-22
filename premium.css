@@ -1160,6 +1160,11 @@ body.home-page .hero-stats {
         transform: translateY(-2px);
     }
 
+    /* Safari can restore :active/focus state when a page is refreshed under the pointer. */
+    .service-card .service-link:active {
+        transform: none;
+    }
+
     .pricing-card:hover > *,
     .feature-card:hover > *,
     .type-card:hover > *,
