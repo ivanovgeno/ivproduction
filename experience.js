@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const tiltTargets = document.querySelectorAll([
-        '.service-card',
         '.process-step',
         '.portfolio-item',
         '.feature-card',

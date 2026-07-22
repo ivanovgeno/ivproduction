@@ -1147,9 +1147,17 @@ body.home-page .hero-stats {
     }
 
     .service-card:hover h3,
-    .service-card:hover p,
-    .service-card:hover .service-link {
+    .service-card:hover p {
         transform: translateY(-5px);
+    }
+
+    /* Avoid WebKit stacking the card, content and CTA transforms on hover. */
+    .service-card:hover .service-link {
+        transform: none;
+    }
+
+    .service-card:hover .service-link:hover {
+        transform: translateY(-2px);
     }
 
     .pricing-card:hover > *,
@@ -2399,7 +2407,6 @@ body.home-page .hero-content {
     max-width: 10rem;
 }
 
-.service-card,
 .process-step,
 .portfolio-item,
 .feature-card,
