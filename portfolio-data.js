@@ -80,7 +80,7 @@ window.IVPortfolioProjects = [
         title: 'Studio Session',
         label: 'Podcast & Reels',
         categories: ['podcast', 'reels', 'promo'],
-        image: 'hero-bg.png',
+        image: 'hero-bg.jpg',
         alt: 'Video podcast natáčený v profesionálním studiu',
         video: 'https://www.youtube.com/embed/7VZKvRrJV0E'
     }

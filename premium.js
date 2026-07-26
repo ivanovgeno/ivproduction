@@ -8,7 +8,64 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlayOrigin = document.createComment('mobile menu overlay origin');
     mobileOverlay.parentNode.insertBefore(overlayOrigin, mobileOverlay);
     let overlayIsPortaled = false;
-    let lastFocusedElement = null;
+    let focusFrame = null;
+    let backgroundInertState = new Map();
+    const originalBodyOverflow = document.body.style.overflow;
+
+    function getBackgroundNodes() {
+        const backgroundNodes = new Set();
+        let activeBranch = mobileToggle;
+
+        // Keep only the hamburger and the portaled dialog interactive. At every
+        // ancestor level, everything outside the branch containing the toggle is
+        // background content and must therefore be inert while the modal is open.
+        while (activeBranch && activeBranch !== document.body) {
+            const parent = activeBranch.parentElement;
+            if (!parent) break;
+
+            [...parent.children].forEach((sibling) => {
+                if (sibling !== activeBranch && sibling !== mobileOverlay) {
+                    backgroundNodes.add(sibling);
+                }
+            });
+
+            activeBranch = parent;
+        }
+
+        return [...backgroundNodes];
+    }
+
+    function setBackgroundInert(isInert) {
+        if (isInert) {
+            backgroundInertState = new Map();
+            getBackgroundNodes().forEach((node) => {
+                backgroundInertState.set(node, node.inert);
+                node.inert = true;
+            });
+            return;
+        }
+
+        backgroundInertState.forEach((wasInert, node) => {
+            node.inert = wasInert;
+        });
+        backgroundInertState.clear();
+    }
+
+    function focusFirstMenuLink() {
+        if (focusFrame) cancelAnimationFrame(focusFrame);
+
+        // Two animation frames let WebKit apply visibility and the active dialog
+        // state before focus is moved into it.
+        focusFrame = requestAnimationFrame(() => {
+            focusFrame = requestAnimationFrame(() => {
+                focusFrame = null;
+                if (!mobileOverlay.classList.contains('active')) return;
+
+                const firstLink = mobileOverlay.querySelector('a[href]');
+                firstLink?.focus({ preventScroll: true });
+            });
+        });
+    }
 
     function positionOverlay() {
         if (mobileQuery.matches && !overlayIsPortaled) {
@@ -31,13 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileToggle.setAttribute('aria-label', isOpen ? 'Zavřít menu' : 'Otevřít menu');
         mobileOverlay.setAttribute('aria-hidden', String(!isOpen));
         mobileOverlay.inert = !isOpen;
-        document.body.style.overflow = isOpen ? 'hidden' : '';
+        setBackgroundInert(isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : originalBodyOverflow;
 
         if (isOpen) {
             mobileOverlay.scrollTop = 0;
-            mobileOverlay.querySelector('a')?.focus();
+            focusFirstMenuLink();
         } else if (restoreFocus) {
-            lastFocusedElement?.focus();
+            if (focusFrame) cancelAnimationFrame(focusFrame);
+            focusFrame = null;
+            mobileToggle.focus({ preventScroll: true });
         }
     }
 
@@ -49,12 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mobileToggle.addEventListener('click', () => {
         const willOpen = !mobileOverlay.classList.contains('active');
-
-        if (willOpen) {
-            lastFocusedElement = document.activeElement;
-        }
-
-        setMenuState(willOpen);
+        setMenuState(willOpen, !willOpen);
     });
 
     mobileOverlay.querySelectorAll('a').forEach((link) => {

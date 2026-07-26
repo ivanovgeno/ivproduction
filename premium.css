@@ -2783,7 +2783,7 @@ body.page-marketing-consent .legal-hero::before {
 body.page-portfolio .hero {
     background-image:
         linear-gradient(90deg, rgba(10, 10, 13, 0.88) 0%, rgba(10, 10, 13, 0.54) 48%, rgba(10, 10, 13, 0.15) 100%),
-        url('hero-bg.png');
+        url('hero-bg.jpg');
     background-position: center 48%;
     min-height: clamp(25rem, 35vw, 32rem);
     padding-bottom: clamp(3rem, 5vw, 4.5rem);
