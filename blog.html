@@ -297,8 +297,33 @@
             align-items: center;
             gap: 0.5rem;
             color: var(--gold);
-            font-weight: 500;
+            font-weight: 700;
+            line-height: 1.3;
             margin-top: 1rem;
+            padding: 0.72rem 1rem;
+            -webkit-text-decoration-line: none !important;
+            text-decoration: none !important;
+            text-decoration-line: none !important;
+        }
+
+        .blog-card,
+        .blog-card:hover,
+        .blog-card:focus-visible,
+        .blog-card:active,
+        .blog-card:visited,
+        .blog-card .blog-read-more {
+            -webkit-text-decoration-line: none !important;
+            text-decoration: none !important;
+            text-decoration-line: none !important;
+        }
+
+        .blog-card .blog-read-more {
+            color: #121215 !important;
+            text-shadow: none;
+        }
+
+        .blog-card .blog-read-more::after {
+            display: none;
         }
 
         /* Featured Article */
@@ -361,6 +386,29 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-gold);
+        }
+
+        .blog-hero .btn,
+        .featured-content .btn,
+        .blog-hero .btn:hover,
+        .blog-hero .btn:focus-visible,
+        .blog-hero .btn:active,
+        .blog-hero .btn:visited,
+        .featured-content .btn:hover,
+        .featured-content .btn:focus-visible,
+        .featured-content .btn:active,
+        .featured-content .btn:visited {
+            color: #121215 !important;
+            line-height: 1.3;
+            -webkit-text-decoration-line: none !important;
+            text-decoration: none !important;
+            text-decoration-line: none !important;
+            text-shadow: none;
+        }
+
+        .blog-hero .btn::after,
+        .featured-content .btn::after {
+            display: none;
         }
 
         /* Categories */
