@@ -477,13 +477,81 @@
     <script src="packages-renderer.js?v=20260721-tailored-forms" defer></script>
 
     <style>
+        body.page-wedding .hero {
+            align-items: center;
+            justify-content: flex-start;
+            min-height: clamp(44rem, 100svh, 58rem);
+            padding-bottom: clamp(3.25rem, 5vw, 5rem);
+            padding-top: clamp(8rem, 12vw, 10rem);
+        }
+
+        body.page-wedding .hero::before {
+            background-position: center 48%;
+            filter: brightness(0.82) saturate(0.78) contrast(1.08) !important;
+            transform: scale(1.025);
+        }
+
+        body.page-wedding .hero::after {
+            background:
+                linear-gradient(90deg, rgba(8, 8, 10, 0.97) 0%, rgba(8, 8, 10, 0.91) 34%, rgba(8, 8, 10, 0.62) 55%, rgba(8, 8, 10, 0.12) 82%),
+                linear-gradient(0deg, rgba(8, 8, 10, 0.9) 0%, transparent 48%);
+        }
+
+        body.page-wedding .hero-content {
+            margin: 0;
+            max-width: min(42rem, 100%);
+            text-align: left;
+        }
+
         .wedding-hero-kicker {
-            color: rgba(255, 244, 184, 0.88);
-            font-size: 0.74rem;
-            font-weight: 700;
-            letter-spacing: 0.16em;
-            margin-bottom: 1rem;
+            align-items: center;
+            color: rgba(255, 240, 184, 0.92) !important;
+            display: flex;
+            font-family: 'DM Sans', sans-serif !important;
+            font-size: 0.72rem !important;
+            font-weight: 700 !important;
+            gap: 0.7rem;
+            letter-spacing: 0.15em;
+            margin: 0 0 1.35rem !important;
             text-transform: uppercase;
+        }
+
+        .wedding-hero-kicker::before {
+            background: linear-gradient(90deg, var(--gold), var(--gold-shine));
+            content: '';
+            flex: 0 0 2.7rem;
+            height: 1px;
+        }
+
+        body.page-wedding .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(3.45rem, 5.25vw, 5.75rem);
+            font-weight: 600;
+            letter-spacing: -0.058em;
+            line-height: 0.96;
+            margin: 0 0 1.45rem;
+            max-width: 11em;
+            text-wrap: balance;
+        }
+
+        body.page-wedding .hero h1::before {
+            display: none;
+        }
+
+        body.page-wedding .hero h1 span {
+            background: var(--gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .wedding-hero-lead {
+            color: rgba(250, 249, 246, 0.86) !important;
+            font-size: clamp(1.03rem, 1.35vw, 1.17rem) !important;
+            line-height: 1.68;
+            margin: 0 0 1.8rem !important;
+            max-width: 37rem;
         }
 
         .wedding-hero-actions,
@@ -492,12 +560,18 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.85rem;
-            justify-content: center;
+            justify-content: flex-start;
+        }
+
+        .wedding-hero-actions .btn {
+            min-height: 3.45rem;
         }
 
         .wedding-hero-actions .btn-secondary,
         .wedding-final-actions .btn-secondary {
-            border: 1px solid rgba(255, 244, 184, 0.52);
+            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 13, 0.42);
+            border: 1px solid rgba(255, 244, 184, 0.48);
             color: var(--light);
         }
 
@@ -509,11 +583,48 @@
             transform: translateY(-0.2rem);
         }
 
-        .wedding-hero-proof {
-            color: rgba(248, 248, 250, 0.74);
+        .wedding-hero-trust {
+            border-top: 1px solid rgba(255, 244, 184, 0.26);
+            display: grid;
+            gap: 0;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 1.7rem;
+            max-width: 40rem;
+            padding-top: 1.35rem;
+        }
+
+        .wedding-hero-trust-item {
+            min-width: 0;
+            padding: 0 1rem;
+        }
+
+        .wedding-hero-trust-item:first-child {
+            padding-left: 0;
+        }
+
+        .wedding-hero-trust-item + .wedding-hero-trust-item {
+            border-left: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .wedding-hero-trust-item strong,
+        .wedding-hero-trust-item span {
+            display: block;
+        }
+
+        .wedding-hero-trust-item strong {
+            color: var(--gold-shine);
+            font-family: 'DM Sans', sans-serif;
             font-size: 0.9rem;
-            margin: 1.25rem auto 0;
-            max-width: 44rem;
+            font-weight: 700;
+            letter-spacing: 0.025em;
+            line-height: 1.3;
+        }
+
+        .wedding-hero-trust-item span {
+            color: rgba(250, 249, 246, 0.68);
+            font-size: 0.75rem;
+            line-height: 1.4;
+            margin-top: 0.2rem;
         }
 
         .wedding-intro {
@@ -606,6 +717,56 @@
         }
 
         @media (max-width: 760px) {
+            body.page-wedding .hero {
+                align-items: flex-end;
+                justify-content: flex-start;
+                min-height: 100svh;
+                padding: 7rem 1.25rem 2rem;
+            }
+
+            body.page-wedding .hero::before {
+                background-position: 66% center;
+                filter: brightness(0.78) saturate(0.76) contrast(1.08) !important;
+            }
+
+            body.page-wedding .hero::after {
+                background:
+                    linear-gradient(180deg, rgba(8, 8, 10, 0.08) 0%, rgba(8, 8, 10, 0.52) 35%, rgba(8, 8, 10, 0.98) 68%),
+                    linear-gradient(90deg, rgba(8, 8, 10, 0.64), rgba(8, 8, 10, 0.1));
+            }
+
+            body.page-wedding .hero-content {
+                margin: 0;
+                max-width: 38rem;
+                text-align: left;
+            }
+
+            .wedding-hero-kicker {
+                font-size: 0.64rem !important;
+                gap: 0.55rem;
+                letter-spacing: 0.12em;
+                margin-bottom: 1rem !important;
+            }
+
+            .wedding-hero-kicker::before {
+                flex-basis: 1.9rem;
+            }
+
+            body.page-wedding .hero h1 {
+                font-size: clamp(2.75rem, 12vw, 4rem);
+                line-height: 0.98;
+                margin: 0 0 1rem;
+                max-width: 11em;
+                text-align: left;
+            }
+
+            .wedding-hero-lead {
+                font-size: 1rem !important;
+                line-height: 1.58;
+                margin-bottom: 1.25rem !important;
+                max-width: 33rem;
+            }
+
             .wedding-hero-actions,
             .wedding-final-actions {
                 align-items: stretch;
@@ -615,7 +776,33 @@
             .wedding-hero-actions .btn,
             .wedding-final-actions .btn {
                 justify-content: center;
+                margin-inline: 0;
                 width: 100%;
+            }
+
+            .wedding-hero-trust {
+                margin-top: 1.25rem;
+                padding-top: 1rem;
+            }
+
+            .wedding-hero-trust-item {
+                padding: 0 0.65rem;
+            }
+
+            .wedding-hero-trust-item:first-child {
+                padding-left: 0;
+            }
+
+            .wedding-hero-trust-item:last-child {
+                padding-right: 0;
+            }
+
+            .wedding-hero-trust-item strong {
+                font-size: 0.78rem;
+            }
+
+            .wedding-hero-trust-item span {
+                font-size: 0.68rem;
             }
 
             .wedding-promises,
@@ -691,14 +878,27 @@
 
     <section class="hero">
         <div class="hero-content">
-            <p class="wedding-hero-kicker">Hradec Králové · Královéhradecký kraj · celá ČR</p>
-            <h1>Svatební kameraman, který zachytí <span>vás dva i všechno mezi</span></h1>
-            <p>Citlivý svatební film od příprav po první tanec. Skutečné emoce, autentický zvuk a obraz, ke kterému se budete chtít vracet celý život.</p>
+            <p class="wedding-hero-kicker">Svatební kameraman · Hradec Králové · celá ČR</p>
+            <h1>Svatební film, který vrátí váš den <span>k životu.</span></h1>
+            <p class="wedding-hero-lead">Přirozeně zachytíme emoce, hlasy i okamžiky, které během svatby utečou nejrychleji. Výsledkem je film, který nebude jen záznamem, ale skutečnou vzpomínkou.</p>
             <div class="wedding-hero-actions">
                 <a href="#poptavka" class="btn btn-primary">Ověřit volný termín</a>
-                <a href="https://wa.me/420773210194?text=M%C3%A1m%20z%C3%A1jem%20o%20svatebn%C3%AD%20video%20od%20Iv%20Production." class="btn btn-secondary" target="_blank" rel="noopener">Napsat přes WhatsApp</a>
+                <a href="#ukazky" class="btn btn-secondary">Pustit si ukázky filmů</a>
             </div>
-            <p class="wedding-hero-proof">Osobní přístup · filmový střih · dronové záběry · smluvně a bez starostí</p>
+            <div class="wedding-hero-trust" aria-label="Ověřené informace o svatební produkci">
+                <div class="wedding-hero-trust-item">
+                    <strong>★★★★★ 5,0 / 5</strong>
+                    <span>50+ Google recenzí</span>
+                </div>
+                <div class="wedding-hero-trust-item">
+                    <strong>Až 12 hodin</strong>
+                    <span>natáčení vašeho dne</span>
+                </div>
+                <div class="wedding-hero-trust-item">
+                    <strong>2 roky</strong>
+                    <span>uschování vašich záznamů</span>
+                </div>
+            </div>
         </div>
     </section>
 
