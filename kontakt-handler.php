@@ -80,7 +80,7 @@ if (preg_match('/[\r\n]/', $email)) {
 }
 
 $recipient = 'video@ivproduction.cz';
-$subject = $service !== '' ? 'Nová poptávka – ' . $service : 'Nová poptávka z webu IV Production';
+$subject = $service !== '' ? 'Nová poptávka – ' . $service : 'Nová poptávka z webu Iv Production';
 
 $fieldLabels = [
     'name' => 'Jméno a příjmení',
@@ -146,7 +146,7 @@ foreach ($fieldLabels as $key => $label) {
 $body = implode("\n", $bodyLines);
 
 $headers = [
-    'From: IV Production web <noreply@ivproduction.cz>',
+    'From: Iv Production web <noreply@ivproduction.cz>',
     'Reply-To: ' . $email,
     'Content-Type: text/plain; charset=UTF-8',
 ];

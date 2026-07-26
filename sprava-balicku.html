@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <meta name="robots" content="noindex,nofollow">
-    <title>Správa balíčků | IV Production</title>
+    <title>Správa balíčků | Iv Production</title>
     <style>
         :root { --bg:#09090d; --panel:#15151d; --panel-soft:#1c1c26; --line:rgba(232,197,71,.24); --gold:#e8c547; --text:#f7f7f8; --muted:#b4b4bf; --danger:#ef7777; }
         * { box-sizing:border-box; }
@@ -57,7 +57,7 @@
 </head>
 <body>
     <main class="app">
-        <p class="eyebrow">IV Production · interní nástroj</p>
+        <p class="eyebrow">Iv Production · interní nástroj</p>
         <h1>Správa <span>balíčků</span></h1>
         <div class="notice"><strong>Centrální správa:</strong> po bezpečném připojení ke GitHubu načte editor aktuální veřejná data. Tlačítko <strong>Zveřejnit na webu</strong> uloží změny do repozitáře, takže se po dokončení nasazení projeví všem návštěvníkům. Token se drží pouze v paměti otevřené záložky a nikam se neukládá.</div>
 
@@ -99,7 +99,7 @@
                         <div><label for="fieldCtaHref">Odkaz tlačítka</label><input id="fieldCtaHref" placeholder="kontakt.html#poptavka"></div>
                         <div class="full"><label for="fieldFeatures">Položky balíčku</label><textarea id="fieldFeatures" placeholder="Jedna položka na řádek"></textarea></div>
                         <div><label for="fieldPartner">Spolupráce / označení</label><input id="fieldPartner" placeholder="např. Marek Kyncl Fotograf"></div>
-                        <div><label for="fieldType">Typ označení</label><select id="fieldType"><option value="">Bez označení</option><option value="partner">Ve spolupráci s</option><option value="owned">Vlastní služba IV Production</option></select></div>
+                        <div><label for="fieldType">Typ označení</label><select id="fieldType"><option value="">Bez označení</option><option value="partner">Ve spolupráci s</option><option value="owned">Vlastní služba Iv Production</option></select></div>
                         <div><label for="fieldLinkLabel">Text externího odkazu</label><input id="fieldLinkLabel" placeholder="např. Portfolio fotografa"></div>
                         <div><label for="fieldLinkUrl">Adresa externího odkazu</label><input id="fieldLinkUrl" type="url" placeholder="https://…"></div>
                     </div>
@@ -143,7 +143,7 @@
                 githubStatus.className = 'status' + (type ? ' ' + type : '');
             }
             function sourceFromData() {
-                return '/* IV Production – veřejná data balíčků */\nwindow.IVP_PACKAGE_DATA = ' + JSON.stringify(data, null, 4) + ';\n';
+                return '/* Iv Production – veřejná data balíčků */\nwindow.IVP_PACKAGE_DATA = ' + JSON.stringify(data, null, 4) + ';\n';
             }
             function decodeBase64Utf8(value) {
                 var binary = atob(value.replace(/\s/g, ''));

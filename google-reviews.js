@@ -116,7 +116,7 @@
 
         if (replyText) {
             const ownerReply = element('div', 'gw-owner-reply');
-            ownerReply.append(element('strong', 'gw-owner-reply-title', 'Odpověď IV Production'));
+            ownerReply.append(element('strong', 'gw-owner-reply-title', 'Odpověď Iv Production'));
             ownerReply.append(element('p', 'gw-owner-reply-text', replyText));
             card.append(ownerReply);
         }

@@ -1,5 +1,5 @@
 /*
- * IV Production – veřejná data balíčků.
+ * Iv Production – veřejná data balíčků.
  * Tento soubor je jediným zdrojem pro cenové karty na stránkách.
  * Upravovat lze také přes neveřejnou stránku sprava-balicku.html.
  */
@@ -86,7 +86,7 @@ window.IVP_PACKAGE_DATA = {
                 description: 'Jeden sladěný tým pro film i fotografie, od příprav až po poslední tanec.',
                 features: [
                     'Společná příprava harmonogramu',
-                    'Kameraman IV Production + fotograf Marek Kyncl',
+                    'Kameraman Iv Production + fotograf Marek Kyncl',
                     'Jednotná komunikace a sladěný přístup',
                     'Přehledný společný návrh rozsahu'
                 ],
@@ -116,7 +116,7 @@ window.IVP_PACKAGE_DATA = {
             {
                 id: 'iv-budka',
                 type: 'owned',
-                partner: 'Vlastní služba IV Production',
+                partner: 'Vlastní služba Iv Production',
                 name: 'Fotobudka IV Budka',
                 price: 'Dle délky pronájmu',
                 description: 'Zábava pro hosty a okamžitá vzpomínka, kterou si odnesou domů.',

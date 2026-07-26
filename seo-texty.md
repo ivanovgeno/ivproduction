@@ -1,10 +1,10 @@
-# 📊 SEO Optimalizace pro IV Production
+# 📊 SEO Optimalizace pro Iv Production
 
 ## Optimalizované Titulky a Meta Descriptions
 
 ### Homepage
 ```html
-<title>IV Production | Profesionální Video Produkce – Svatby, Reality, Promo videa</title>
+<title>Iv Production | Profesionální Video Produkce – Svatby, Reality, Promo videa</title>
 <meta name="description" content="Profesionální video produkce pro svatby, reality a promo videa. Dva zkušení kameramani s dronem. Hradec Králové a celá ČR. ✓ 500+ akcí ✓ 8 let zkušeností">
 ```
 
@@ -12,7 +12,7 @@
 
 ### Svatby
 ```html
-<title>Svatební Kameraman & Video | IV Production – Emoce navždy</title>
+<title>Svatební Kameraman & Video | Iv Production – Emoce navždy</title>
 <meta name="description" content="Profesionální svatební kameraman s osobním přístupem. Filmové svatební video, dron, 2 kameramani. Ceny od 16 000 Kč. ✓ 300+ svateb ✓ Celá ČR">
 ```
 
@@ -20,7 +20,7 @@
 
 ### Reality
 ```html
-<title>Video Prohlídky Nemovitostí & Dron | IV Production – Královéhradecký kraj</title>
+<title>Video Prohlídky Nemovitostí & Dron | Iv Production – Královéhradecký kraj</title>
 <meta name="description" content="Profesionální video a foto pro realitní makléře. Videoprohlídky, dron, virtuální 3D prohlídky. Prodávejte rychleji a za vyšší cenu. ✓ Expresní dodání">
 ```
 
@@ -32,15 +32,15 @@
 <title>kontakt</title>
 
 <!-- NOVÉ - SPRÁVNĚ -->
-<title>Kontakt | IV Production – Profesionální Video Produkce</title>
-<meta name="description" content="Kontaktujte IV Production pro profesionální svatební videa, realitní prezentace a promo. ☎️ +420 XXX XXX XXX | Hradec Králové a celá ČR">
+<title>Kontakt | Iv Production – Profesionální Video Produkce</title>
+<meta name="description" content="Kontaktujte Iv Production pro profesionální svatební videa, realitní prezentace a promo. ☎️ +420 XXX XXX XXX | Hradec Králové a celá ČR">
 ```
 
 ---
 
 ### Plesy
 ```html
-<title>Plesová Videa & Aftermovie | IV Production – Zachytíme atmosféru</title>
+<title>Plesová Videa & Aftermovie | Iv Production – Zachytíme atmosféru</title>
 <meta name="description" content="Profesionální plesová videa a aftermovie. Maturitní, firemní a městské plesy. Dva kameramani s dronem. ✓ Expresní dodání ✓ Celá ČR">
 ```
 
@@ -61,7 +61,7 @@
 {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "IV Production",
+    "name": "Iv Production",
     "url": "https://www.ivproduction.cz",
     "logo": "https://www.ivproduction.cz/logo.png",
     "description": "Profesionální video produkce a fotobudky",
@@ -83,7 +83,7 @@
 {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "IV Production",
+    "name": "Iv Production",
     "description": "Profesionální video produkce",
     "url": "https://www.ivproduction.cz",
     "telephone": "+420XXXXXXXXX",
@@ -111,7 +111,7 @@
     "serviceType": "Svatební video produkce",
     "provider": {
         "@type": "LocalBusiness",
-        "name": "IV Production"
+        "name": "Iv Production"
     },
     "areaServed": {
         "@type": "Country",
@@ -130,7 +130,7 @@
 
 | Stránka | Problém | Řešení |
 |---------|---------|--------|
-| Kontakt | Title jen "kontakt" | Změnit na "Kontakt \| IV Production – Profesionální Video Produkce" |
+| Kontakt | Title jen "kontakt" | Změnit na "Kontakt \| Iv Production – Profesionální Video Produkce" |
 | Svatby | Překlep "STANDART" | Změnit na "STANDARD" |
 | Všechny | Chybí Schema.org | Přidat JSON-LD strukturovaná data |
 | Všechny | Chybí Open Graph | Přidat og:title, og:description, og:image |
@@ -141,7 +141,7 @@
 
 ```html
 <!-- Homepage -->
-<meta property="og:title" content="IV Production | Profesionální Video Produkce">
+<meta property="og:title" content="Iv Production | Profesionální Video Produkce">
 <meta property="og:description" content="Svatby, reality, promo videa. Dva zkušení kameramani s dronem po celé ČR.">
 <meta property="og:image" content="https://www.ivproduction.cz/og-image.jpg">
 <meta property="og:url" content="https://www.ivproduction.cz">
@@ -149,7 +149,7 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="IV Production | Profesionální Video Produkce">
+<meta name="twitter:title" content="Iv Production | Profesionální Video Produkce">
 <meta name="twitter:description" content="Svatby, reality, promo videa. Dva zkušení kameramani s dronem.">
 <meta name="twitter:image" content="https://www.ivproduction.cz/og-image.jpg">
 ```

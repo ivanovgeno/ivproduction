@@ -112,11 +112,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 body.push(`${fieldLabel(control)}: ${values.join(', ')}`);
             });
 
-            body.push('', 'Odesláno z webu IV Production na GitHub Pages.');
+            body.push('', 'Odesláno z webu Iv Production na GitHub Pages.');
             const serviceTitle = form.dataset.serviceTitle || String(data.get('service') || '').trim();
             const subjectText = serviceTitle
                 ? `Nezávazná poptávka – ${serviceTitle}`
-                : 'Nezávazná poptávka z webu IV Production';
+                : 'Nezávazná poptávka z webu Iv Production';
             const subject = encodeURIComponent(subjectText);
             const message = encodeURIComponent(body.join('\n'));
 

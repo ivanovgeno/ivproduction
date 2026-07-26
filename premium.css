@@ -2043,7 +2043,7 @@ body.page-privacy .legal-hero h1::before,
 body.page-terms .legal-hero h1::before,
 body.page-marketing-consent .legal-hero h1::before {
     color: var(--gold-light);
-    content: 'IV PRODUCTION';
+    content: 'Iv Production';
     display: block;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.68rem;
@@ -2499,7 +2499,7 @@ body.home-page .hero-content {
 
 .about-text--story::before {
     color: var(--gold-light);
-    content: 'IV PRODUCTION · NÁŠ PŘÍBĚH';
+    content: 'Iv Production · NÁŠ PŘÍBĚH';
     display: block;
     font-size: 0.7rem;
     font-weight: 700;

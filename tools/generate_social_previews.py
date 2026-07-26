@@ -34,8 +34,8 @@ class Preview:
 
 
 PREVIEWS = (
-    Preview("homepage", "assets/site/camera.webp", "IV PRODUCTION", "Profesionální video, které má příběh", (0.65, 0.52)),
-    Preview("svatby", "assets/site/wedding.webp", "SVATEBNÍ VIDEO", "Vzpomínky, ke kterým se budete vracet", (0.68, 0.50)),
+    Preview("homepage", "assets/site/camera.webp", "Iv Production", "Profesionální video, které má příběh", (0.65, 0.52)),
+    Preview("svatby", "assets/site/wedding-hero-luxury.webp", "SVATEBNÍ VIDEO", "Vzpomínky, ke kterým se budete vracet", (0.68, 0.50)),
     Preview("reality", "assets/site/luxury-house.webp", "REALITY", "Video a fotografie, které prodávají prostor", (0.70, 0.54)),
     Preview("promo", "assets/site/promo.webp", "PROMO VIDEO", "Představte svou značku ve správném světle", (0.68, 0.50)),
     Preview("plesy", "assets/site/concert.webp", "MATURITNÍ PLESY", "Váš velký večer zachycený naplno", (0.70, 0.45)),
@@ -131,7 +131,7 @@ def render(preview: Preview, gradient: Image.Image, logo: Image.Image) -> Path:
     draw.rectangle((0, 0, WIDTH - 1, HEIGHT - 1), outline=(*GOLD_DARK, 120), width=2)
 
     canvas.alpha_composite(logo, (64, 48))
-    draw.text((154, 58), "IV PRODUCTION", font=font(28, bold=True), fill=GOLD)
+    draw.text((154, 58), "Iv Production", font=font(28, bold=True), fill=GOLD)
     draw_letterspaced(draw, (156, 94), "PROFESIONÁLNÍ VIDEO PRODUKCE", font(11), MUTED, 2)
 
     eyebrow_y = 218

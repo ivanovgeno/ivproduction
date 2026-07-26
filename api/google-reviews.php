@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 /**
- * IV Production — private Google Business Profile review proxy.
+ * Iv Production — private Google Business Profile review proxy.
  *
  * This endpoint is meant for a PHP 8.4 hosting environment. It deliberately
  * keeps OAuth credentials on the server and exposes only the review data that
@@ -309,7 +309,7 @@ try {
 
     ivp_json($payload);
 } catch (Throwable $exception) {
-    error_log('[IV Production] Google reviews sync failed: ' . $exception->getMessage());
+    error_log('[Iv Production] Google reviews sync failed: ' . $exception->getMessage());
 
     // Keep the review section working during a short Google outage or rate
     // limit. The frontend marks no error to visitors and uses this stale cache.

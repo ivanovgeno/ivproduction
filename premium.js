@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setMenuState(false);
 });
 
-// Prevent opened third-party pages from retaining access to the IV Production tab.
+// Prevent opened third-party pages from retaining access to the Iv Production tab.
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[target="_blank"]').forEach((link) => {
         const rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));

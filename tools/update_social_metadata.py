@@ -20,18 +20,18 @@ class Page:
 
 
 PAGES = (
-    Page("index.html", "homepage", "IV Production – profesionální video produkce"),
-    Page("svatby.html", "svatby", "Svatební video IV Production"),
+    Page("index.html", "homepage", "Iv Production – profesionální video produkce"),
+    Page("svatby.html", "svatby", "Svatební video Iv Production"),
     Page("reality.html", "reality", "Profesionální video a fotografie nemovitostí"),
     Page("promo.html", "promo", "Promo video pro firmy a značky"),
     Page("plesy.html", "plesy", "Video a fotografie maturitního plesu"),
     Page("konference.html", "konference", "Profesionální záznam konference a livestream"),
-    Page("podcast.html", "podcast", "Natáčení video podcastu IV Production"),
+    Page("podcast.html", "podcast", "Natáčení video podcastu Iv Production"),
     Page("fotobudka.html", "fotobudka", "Fotobudka IV Budka pro svatby, plesy a firemní akce"),
     Page("360budka.html", "360budka", "Hosté při natáčení v IV Budce 360"),
     Page("reels.html", "reels", "Tvorba krátkých videí a Reels pro firmy"),
-    Page("portfolio.html", "portfolio", "Případové studie a portfolio IV Production"),
-    Page("blog.html", "blog", "Blog IV Production o profesionálním videu"),
+    Page("portfolio.html", "portfolio", "Případové studie a portfolio Iv Production"),
+    Page("blog.html", "blog", "Blog Iv Production o profesionálním videu"),
     Page("jak-vybrat-svatebniho-kameramana.html", "jak-vybrat-svatebniho-kameramana", "Jak vybrat svatebního kameramana"),
     Page("trendy-svatebni-video-2026.html", "trendy-svatebni-video-2026", "Trendy ve svatebních videích 2026"),
     Page("proc-video-pomaha-prodat-nemovitost.html", "proc-video-pomaha-prodat-nemovitost", "Proč profesionální video pomáhá prodat nemovitost"),
@@ -39,11 +39,11 @@ PAGES = (
     Page("video-pro-socialni-site.html", "video-pro-socialni-site", "Jak ve videu pro sociální sítě udržet pozornost"),
     Page("svatebni-lokace-kralovehradecky-kraj.html", "svatebni-lokace-kralovehradecky-kraj", "Jak vybrat svatební lokaci v Královéhradeckém kraji"),
     Page("hudba-ve-videu.html", "hudba-ve-videu", "Jak vybrat správný soundtrack k videu"),
-    Page("kontakt.html", "kontakt", "Kontaktujte IV Production"),
+    Page("kontakt.html", "kontakt", "Kontaktujte Iv Production"),
     Page("kalkulacka.html", "kalkulacka", "Cenová kalkulačka video produkce"),
-    Page("ochrana-osobnich-udaju.html", "ochrana-osobnich-udaju", "Ochrana osobních údajů IV Production"),
-    Page("obchodni-podminky.html", "obchodni-podminky", "Obchodní podmínky IV Production"),
-    Page("marketingovy-souhlas.html", "marketingovy-souhlas", "Marketingový souhlas IV Production"),
+    Page("ochrana-osobnich-udaju.html", "ochrana-osobnich-udaju", "Ochrana osobních údajů Iv Production"),
+    Page("obchodni-podminky.html", "obchodni-podminky", "Obchodní podmínky Iv Production"),
+    Page("marketingovy-souhlas.html", "marketingovy-souhlas", "Marketingový souhlas Iv Production"),
 )
 
 
