@@ -3,41 +3,775 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,follow">
+    <meta name="theme-color" content="#121215">
+
+    <title>Stránka nebyla nalezena | Iv Production</title>
+    <meta name="description" content="Požadovaná stránka nebyla nalezena. Pokračujte na hlavní stránku, do portfolia nebo kontaktujte Iv Production.">
+
+    <base id="site-base" href="/">
+    <script>
+        if (window.location.hostname.endsWith('.github.io')) {
+            document.getElementById('site-base').href = '/ivproduction/';
+        }
+    </script>
+
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
-    <meta name="robots" content="noindex,follow">
-    <meta name="theme-color" content="#0a0a0f">
-    <title>Stránka nebyla nalezena | Iv Production</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="premium.css?v=20260727-404">
+    <script src="premium.js?v=20260722-keyboard-menu" defer></script>
 
     <style>
-        :root { --gold:#e8c547; --dark:#0a0a0f; --light:#fafafa; --muted:#b7b7c0; }
-        * { box-sizing:border-box; }
-        body { align-items:center; background:radial-gradient(circle at 50% 15%,rgba(232,197,71,.14),transparent 34rem),var(--dark); color:var(--light); display:flex; font-family:Arial,sans-serif; justify-content:center; margin:0; min-height:100vh; padding:2rem; text-align:center; }
-        main { max-width:760px; }
-        .logo { height:auto; margin-bottom:2rem; width:190px; }
-        .code { color:var(--gold); font-size:.78rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; }
-        h1 { font-family:Georgia,serif; font-size:clamp(2.5rem,8vw,5.5rem); line-height:1; margin:.8rem 0 1.2rem; }
-        p { color:var(--muted); font-size:clamp(1rem,2.5vw,1.2rem); line-height:1.7; margin:0 auto 2rem; max-width:620px; }
-        .actions { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
-        a { border:1px solid rgba(232,197,71,.55); border-radius:12px; color:var(--light); font-weight:800; padding:.95rem 1.4rem; text-decoration:none; transition:.25s ease; }
-        a.primary { background:linear-gradient(120deg,#9e7718,#ffe55c,#a57c19); border:0; color:#111; }
-        a:hover { box-shadow:0 14px 38px rgba(201,162,39,.24); transform:translateY(-3px); }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            background: #121215;
+            scroll-behavior: smooth;
+        }
+
+        body.page-404 {
+            background: #121215;
+            color: #faf9f6;
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+            min-width: 320px;
+            overflow-x: hidden;
+        }
+
+        .skip-link {
+            background: var(--gold-shine);
+            color: #121215;
+            font-weight: 700;
+            left: 1rem;
+            padding: 0.75rem 1rem;
+            position: fixed;
+            top: -5rem;
+            transition: top 180ms ease;
+            z-index: 2000;
+        }
+
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        .header {
+            background: rgba(18, 18, 21, 0.86);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+            left: 0;
+            padding: 0.8rem 2rem;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 1520px;
+        }
+
+        .logo {
+            align-items: center;
+            display: flex;
+            text-decoration: none;
+        }
+
+        .logo img {
+            display: block;
+            height: 46px;
+            width: auto;
+        }
+
+        .nav {
+            align-items: center;
+            display: flex;
+        }
+
+        .nav a {
+            text-decoration: none;
+        }
+
+        .mobile-menu-overlay a {
+            text-decoration: none;
+        }
+
+        .error-main {
+            overflow: hidden;
+        }
+
+        .error-hero {
+            align-items: center;
+            display: flex;
+            isolation: isolate;
+            min-height: min(54rem, 100svh);
+            overflow: hidden;
+            padding: clamp(8rem, 13vh, 10rem) 2rem clamp(4rem, 8vh, 6rem);
+            position: relative;
+        }
+
+        .error-hero::before {
+            background-image: url('hero-bg.jpg');
+            background-position: center 42%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            content: '';
+            filter: brightness(0.42) saturate(0.78) contrast(1.12);
+            inset: 0;
+            position: absolute;
+            transform: scale(1.02);
+            z-index: -3;
+        }
+
+        .error-hero::after {
+            background:
+                linear-gradient(90deg, rgba(10, 10, 13, 0.98) 0%, rgba(10, 10, 13, 0.88) 42%, rgba(10, 10, 13, 0.34) 100%),
+                linear-gradient(0deg, rgba(10, 10, 13, 0.98) 0%, transparent 46%),
+                radial-gradient(circle at 75% 45%, rgba(212, 175, 55, 0.12), transparent 24rem);
+            content: '';
+            inset: 0;
+            position: absolute;
+            z-index: -2;
+        }
+
+        .error-layout {
+            align-items: center;
+            display: grid;
+            gap: clamp(3rem, 7vw, 7rem);
+            grid-template-columns: minmax(0, 1.06fr) minmax(21rem, 0.94fr);
+            margin: 0 auto;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .error-copy {
+            max-width: 43rem;
+        }
+
+        .error-kicker {
+            align-items: center;
+            color: rgba(255, 240, 184, 0.94);
+            display: flex;
+            font-size: 0.72rem;
+            font-weight: 700;
+            gap: 0.7rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.35rem;
+            text-transform: uppercase;
+        }
+
+        .error-kicker::before {
+            background: linear-gradient(90deg, var(--gold), var(--gold-shine));
+            content: '';
+            flex: 0 0 2.7rem;
+            height: 1px;
+        }
+
+        .error-copy h1 {
+            color: #faf9f6;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(3.35rem, 6vw, 6rem);
+            font-weight: 600;
+            letter-spacing: -0.058em;
+            line-height: 0.97;
+            margin-bottom: 1.5rem;
+            max-width: 10em;
+            text-wrap: balance;
+        }
+
+        .error-copy h1 span {
+            background: var(--gradient);
+            background-clip: text;
+            color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .error-lead {
+            color: rgba(250, 249, 246, 0.82);
+            font-size: clamp(1.02rem, 1.35vw, 1.18rem);
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+            max-width: 38rem;
+        }
+
+        .error-actions {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .error-actions .btn {
+            align-items: center;
+            border-radius: 0.55rem;
+            display: inline-flex;
+            justify-content: center;
+            margin: 0;
+            min-height: 3.45rem;
+            padding: 0.95rem 1.45rem;
+            text-decoration: none;
+        }
+
+        .error-actions .btn svg {
+            fill: none;
+            height: 1rem;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 2;
+            transition: transform 220ms ease;
+            width: 1rem;
+        }
+
+        .error-actions .btn:hover svg {
+            transform: translateX(0.18rem);
+        }
+
+        .error-note {
+            border-top: 1px solid rgba(255, 244, 184, 0.22);
+            color: rgba(250, 249, 246, 0.62);
+            font-size: 0.84rem;
+            margin-top: 1.75rem;
+            max-width: 38rem;
+            padding-top: 1rem;
+        }
+
+        .error-note a {
+            color: var(--gold-pale);
+            font-weight: 600;
+            text-decoration-color: rgba(255, 244, 184, 0.4);
+            text-underline-offset: 0.2rem;
+        }
+
+        .error-frame {
+            aspect-ratio: 4 / 3;
+            background:
+                linear-gradient(145deg, rgba(24, 24, 27, 0.78), rgba(10, 10, 13, 0.88)),
+                radial-gradient(circle at 60% 40%, rgba(212, 175, 55, 0.18), transparent 54%);
+            border: 1px solid rgba(255, 240, 184, 0.34);
+            box-shadow:
+                0 2rem 6rem rgba(0, 0, 0, 0.48),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+            display: grid;
+            max-width: 34rem;
+            place-items: center;
+            position: relative;
+            transform: perspective(70rem) rotateY(-3deg);
+            width: 100%;
+        }
+
+        .error-frame::before,
+        .error-frame::after {
+            border-color: rgba(255, 240, 184, 0.72);
+            border-style: solid;
+            content: '';
+            height: 2.4rem;
+            position: absolute;
+            width: 2.4rem;
+        }
+
+        .error-frame::before {
+            border-width: 1px 0 0 1px;
+            left: 1.15rem;
+            top: 1.15rem;
+        }
+
+        .error-frame::after {
+            border-width: 0 1px 1px 0;
+            bottom: 1.15rem;
+            right: 1.15rem;
+        }
+
+        .frame-status {
+            align-items: center;
+            color: rgba(250, 249, 246, 0.58);
+            display: flex;
+            font-size: 0.62rem;
+            font-weight: 700;
+            gap: 0.45rem;
+            left: 1.25rem;
+            letter-spacing: 0.16em;
+            position: absolute;
+            text-transform: uppercase;
+            top: 1.2rem;
+        }
+
+        .frame-status::before {
+            background: var(--gold-shine);
+            border-radius: 50%;
+            box-shadow: 0 0 0.8rem rgba(255, 240, 184, 0.72);
+            content: '';
+            height: 0.42rem;
+            width: 0.42rem;
+        }
+
+        .frame-ratio {
+            bottom: 1.2rem;
+            color: rgba(250, 249, 246, 0.42);
+            font-size: 0.58rem;
+            letter-spacing: 0.14em;
+            position: absolute;
+            right: 1.25rem;
+            text-transform: uppercase;
+        }
+
+        .frame-code {
+            text-align: center;
+        }
+
+        .frame-code strong {
+            background: var(--gradient);
+            background-clip: text;
+            display: block;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(6rem, 12vw, 10.5rem);
+            font-weight: 600;
+            letter-spacing: -0.09em;
+            line-height: 0.78;
+            padding-right: 0.07em;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .frame-code span {
+            color: rgba(250, 249, 246, 0.62);
+            display: block;
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            margin-top: 1.3rem;
+            text-transform: uppercase;
+        }
+
+        .routes {
+            background:
+                radial-gradient(circle at 12% 0%, rgba(212, 175, 55, 0.08), transparent 25rem),
+                #121215;
+            border-top: 1px solid rgba(212, 175, 55, 0.14);
+            padding: clamp(4rem, 8vw, 6rem) 2rem;
+        }
+
+        .routes-inner {
+            margin: 0 auto;
+            max-width: 1400px;
+        }
+
+        .routes-heading {
+            align-items: end;
+            display: flex;
+            gap: 2rem;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .routes-heading p {
+            color: var(--gold-light);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .routes-heading h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 3.5vw, 3.2rem);
+            font-weight: 600;
+            letter-spacing: -0.045em;
+            line-height: 1.05;
+            margin-top: 0.35rem;
+        }
+
+        .routes-heading > span {
+            color: rgba(250, 249, 246, 0.5);
+            font-size: 0.9rem;
+            max-width: 25rem;
+            text-align: right;
+        }
+
+        .route-grid {
+            display: grid;
+            gap: 1px;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .route-card {
+            background: rgba(250, 249, 246, 0.035);
+            border: 1px solid rgba(250, 249, 246, 0.1);
+            color: #faf9f6;
+            min-height: 11.5rem;
+            padding: 1.55rem;
+            position: relative;
+            text-decoration: none;
+            transition:
+                background-color 240ms ease,
+                border-color 240ms ease,
+                transform 240ms ease;
+        }
+
+        .route-card:hover,
+        .route-card:focus-visible {
+            background: rgba(212, 175, 55, 0.09);
+            border-color: rgba(255, 240, 184, 0.45);
+            transform: translateY(-0.25rem);
+        }
+
+        .route-card small {
+            color: var(--gold-light);
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            margin-bottom: 2.25rem;
+            text-transform: uppercase;
+        }
+
+        .route-card strong {
+            display: block;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.45rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .route-card span {
+            color: rgba(250, 249, 246, 0.58);
+            display: block;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            margin-top: 0.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .route-card svg {
+            bottom: 1.5rem;
+            fill: none;
+            height: 1rem;
+            position: absolute;
+            right: 1.5rem;
+            stroke: var(--gold-shine);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.8;
+            transition: transform 220ms ease;
+            width: 1rem;
+        }
+
+        .route-card:hover svg,
+        .route-card:focus-visible svg {
+            transform: translateX(0.2rem);
+        }
+
+        .error-footer {
+            background: #0b0b0d;
+            border-top: 1px solid rgba(212, 175, 55, 0.16);
+            padding: 1.4rem 2rem;
+        }
+
+        .error-footer-inner {
+            align-items: center;
+            color: rgba(250, 249, 246, 0.48);
+            display: flex;
+            font-size: 0.78rem;
+            gap: 1.5rem;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 1400px;
+        }
+
+        .error-footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+        }
+
+        .error-footer a {
+            color: rgba(250, 249, 246, 0.7);
+            text-decoration: none;
+        }
+
+        .error-footer a:hover {
+            color: var(--gold-shine);
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--gold-shine);
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 1100px) {
+            .error-layout {
+                gap: 3rem;
+                grid-template-columns: minmax(0, 1.15fr) minmax(19rem, 0.85fr);
+            }
+
+            .route-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 900px) {
+            .header {
+                padding: 0.8rem 1.25rem;
+            }
+
+            .error-hero {
+                min-height: auto;
+                padding: 8.5rem 1.5rem 4rem;
+            }
+
+            .error-hero::after {
+                background:
+                    linear-gradient(90deg, rgba(10, 10, 13, 0.96), rgba(10, 10, 13, 0.72)),
+                    linear-gradient(0deg, rgba(10, 10, 13, 1) 0%, transparent 55%);
+            }
+
+            .error-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .error-copy {
+                max-width: 42rem;
+            }
+
+            .error-frame {
+                aspect-ratio: 16 / 7;
+                max-width: 42rem;
+                transform: none;
+            }
+
+            .frame-code strong {
+                font-size: clamp(5rem, 22vw, 8rem);
+            }
+
+            .routes-heading {
+                align-items: start;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .routes-heading > span {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .error-copy h1 {
+                font-size: clamp(3rem, 15vw, 4.3rem);
+            }
+
+            .error-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .error-actions .btn {
+                width: 100%;
+            }
+
+            .error-frame {
+                aspect-ratio: 16 / 9;
+            }
+
+            .frame-status,
+            .frame-ratio {
+                display: none;
+            }
+
+            .routes {
+                padding: 3.5rem 1.25rem;
+            }
+
+            .route-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .route-card {
+                min-height: 9.5rem;
+            }
+
+            .route-card small {
+                margin-bottom: 1.35rem;
+            }
+
+            .error-footer-inner {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .error-hero::before,
+            .error-frame {
+                transform: none;
+            }
+        }
     </style>
 </head>
-<body>
-    <main>
-        <img class="logo" src="logo-light.png" width="1024" height="531" alt="Iv Production">
-        <div class="code">Chyba 404</div>
-        <h1>Tahle stránka už není v záběru.</h1>
-        <p>Odkaz mohl být změněn nebo stránka neexistuje. Vraťte se na hlavní stránku, prohlédněte si portfolio nebo nám rovnou napište.</p>
-        <div class="actions">
-            <a class="primary" href="index.html">Zpět na hlavní stránku</a>
-            <a href="portfolio.html">Prohlédnout portfolio</a>
-            <a href="kontakt.html">Kontaktovat nás</a>
+
+<body class="page-404">
+    <a class="skip-link" href="#main-content">Přeskočit na obsah</a>
+
+    <header class="header" id="header" data-unified-nav>
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="Iv Production – hlavní stránka">
+                <img src="logo-light.png" alt="Iv Production" width="1024" height="531" decoding="async" fetchpriority="high">
+            </a>
+
+            <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Otevřít menu" aria-controls="mobileMenuOverlay" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav" aria-label="Hlavní navigace">
+                <a href="svatby.html">Svatby</a>
+                <a href="reality.html">Reality</a>
+                <a href="plesy.html">Plesy</a>
+                <div class="nav-dropdown">
+                    <a href="fotobudka.html" class="nav-dropdown-trigger">Fotobudky ▾</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="fotobudka.html">Fotobudka</a>
+                        <a href="360budka.html">360° Budka</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="index.html#sluzby" class="nav-dropdown-trigger">Další služby ▾</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="promo.html">Aftermovie &amp; promo</a>
+                        <a href="reels.html">Reels</a>
+                        <a href="konference.html">Konference</a>
+                        <a href="podcast.html">Podcast</a>
+                    </div>
+                </div>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html">Blog</a>
+                <a href="kontakt.html">Kontakt</a>
+                <a href="kontakt.html" class="nav-cta">Nezávazná poptávka</a>
+            </nav>
         </div>
+
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Hlavní navigace" aria-hidden="true" inert>
+            <a href="index.html" class="mobile-menu-link">Domů</a>
+            <a href="svatby.html" class="mobile-menu-link">Svatby</a>
+            <a href="reality.html" class="mobile-menu-link">Reality</a>
+            <a href="plesy.html" class="mobile-menu-link">Plesy</a>
+            <a href="fotobudka.html" class="mobile-menu-link">Fotobudka</a>
+            <a href="360budka.html" class="mobile-menu-link">360° Budka</a>
+            <a href="promo.html" class="mobile-menu-link">Aftermovie &amp; promo</a>
+            <a href="reels.html" class="mobile-menu-link">Reels</a>
+            <a href="konference.html" class="mobile-menu-link">Konference</a>
+            <a href="podcast.html" class="mobile-menu-link">Podcast</a>
+            <a href="portfolio.html" class="mobile-menu-link">Portfolio</a>
+            <a href="blog.html" class="mobile-menu-link">Blog</a>
+            <a href="kontakt.html" class="mobile-menu-link mobile-menu-cta">Nezávazná poptávka</a>
+        </div>
+    </header>
+
+    <main class="error-main" id="main-content">
+        <section class="error-hero" aria-labelledby="error-title">
+            <div class="error-layout">
+                <div class="error-copy">
+                    <p class="error-kicker">Chyba 404 · stránka nebyla nalezena</p>
+                    <h1 id="error-title">Tahle stránka není <span>v záběru.</span></h1>
+                    <p class="error-lead">
+                        Požadovaná stránka neexistuje nebo se její adresa změnila.
+                        Nic se neděje — vraťte se na hlavní stránku, nebo pokračujte tam, kam jste původně mířili.
+                    </p>
+                    <div class="error-actions">
+                        <a class="btn btn-primary" href="index.html">
+                            Zpět na hlavní stránku
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </a>
+                        <a class="btn btn-outline" href="portfolio.html">Prohlédnout portfolio</a>
+                    </div>
+                    <p class="error-note">
+                        Pokud jste sem přišli z odkazu na našem webu, dejte nám prosím vědět na
+                        <a href="mailto:video@ivproduction.cz">video@ivproduction.cz</a>.
+                    </p>
+                </div>
+
+                <div class="error-frame" aria-hidden="true">
+                    <span class="frame-status">Mimo záběr</span>
+                    <div class="frame-code">
+                        <strong>404</strong>
+                        <span>Page not found</span>
+                    </div>
+                    <span class="frame-ratio">Iv Production · 16:9</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="routes" aria-labelledby="routes-title">
+            <div class="routes-inner">
+                <div class="routes-heading">
+                    <div>
+                        <p>Rychlá navigace</p>
+                        <h2 id="routes-title">Kam chcete pokračovat?</h2>
+                    </div>
+                    <span>Vyberte jednu z nejnavštěvovanějších částí webu.</span>
+                </div>
+
+                <nav class="route-grid" aria-label="Doporučené stránky">
+                    <a class="route-card" href="svatby.html">
+                        <small>01 · Služba</small>
+                        <strong>Svatební video</strong>
+                        <span>Balíčky, ukázky a průběh spolupráce.</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                    <a class="route-card" href="reality.html">
+                        <small>02 · Služba</small>
+                        <strong>Reality</strong>
+                        <span>Foto, video, dron a kompletní prezentace.</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                    <a class="route-card" href="fotobudka.html">
+                        <small>03 · Zážitek</small>
+                        <strong>Fotobudky</strong>
+                        <span>Klasická fotobudka i dynamická 360° Budka.</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                    <a class="route-card" href="kontakt.html">
+                        <small>04 · Kontakt</small>
+                        <strong>Nezávazná poptávka</strong>
+                        <span>Popište nám svou představu a termín.</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                </nav>
+            </div>
+        </section>
     </main>
+
+    <footer class="error-footer">
+        <div class="error-footer-inner">
+            <span>© 2026 Iv Production · Hradec Králové a celá ČR</span>
+            <div class="error-footer-links">
+                <a href="tel:+420773210194">+420 773 210 194</a>
+                <a href="mailto:video@ivproduction.cz">video@ivproduction.cz</a>
+                <a href="kontakt.html">Kontakt</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
