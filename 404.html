@@ -256,103 +256,24 @@
         }
 
         .error-frame {
-            aspect-ratio: 4 / 3;
-            background:
-                linear-gradient(145deg, rgba(24, 24, 27, 0.78), rgba(10, 10, 13, 0.88)),
-                radial-gradient(circle at 60% 40%, rgba(212, 175, 55, 0.18), transparent 54%);
-            border: 1px solid rgba(255, 240, 184, 0.34);
+            aspect-ratio: 1388 / 1133;
+            background: #0b0b0d;
             box-shadow:
                 0 2rem 6rem rgba(0, 0, 0, 0.48),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.025);
-            display: grid;
-            max-width: 34rem;
-            place-items: center;
+            display: block;
+            max-width: 36rem;
+            overflow: hidden;
             position: relative;
             transform: perspective(70rem) rotateY(-3deg);
             width: 100%;
         }
 
-        .error-frame::before,
-        .error-frame::after {
-            border-color: rgba(255, 240, 184, 0.72);
-            border-style: solid;
-            content: '';
-            height: 2.4rem;
-            position: absolute;
-            width: 2.4rem;
-        }
-
-        .error-frame::before {
-            border-width: 1px 0 0 1px;
-            left: 1.15rem;
-            top: 1.15rem;
-        }
-
-        .error-frame::after {
-            border-width: 0 1px 1px 0;
-            bottom: 1.15rem;
-            right: 1.15rem;
-        }
-
-        .frame-status {
-            align-items: center;
-            color: rgba(250, 249, 246, 0.58);
-            display: flex;
-            font-size: 0.62rem;
-            font-weight: 700;
-            gap: 0.45rem;
-            left: 1.25rem;
-            letter-spacing: 0.16em;
-            position: absolute;
-            text-transform: uppercase;
-            top: 1.2rem;
-        }
-
-        .frame-status::before {
-            background: var(--gold-shine);
-            border-radius: 50%;
-            box-shadow: 0 0 0.8rem rgba(255, 240, 184, 0.72);
-            content: '';
-            height: 0.42rem;
-            width: 0.42rem;
-        }
-
-        .frame-ratio {
-            bottom: 1.2rem;
-            color: rgba(250, 249, 246, 0.42);
-            font-size: 0.58rem;
-            letter-spacing: 0.14em;
-            position: absolute;
-            right: 1.25rem;
-            text-transform: uppercase;
-        }
-
-        .frame-code {
-            text-align: center;
-        }
-
-        .frame-code strong {
-            background: var(--gradient);
-            background-clip: text;
+        .error-frame-image {
             display: block;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(6rem, 12vw, 10.5rem);
-            font-weight: 600;
-            letter-spacing: -0.09em;
-            line-height: 0.78;
-            padding-right: 0.07em;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .frame-code span {
-            color: rgba(250, 249, 246, 0.62);
-            display: block;
-            font-size: 0.63rem;
-            font-weight: 700;
-            letter-spacing: 0.24em;
-            margin-top: 1.3rem;
-            text-transform: uppercase;
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
         }
 
         .routes {
@@ -548,13 +469,9 @@
             }
 
             .error-frame {
-                aspect-ratio: 16 / 7;
+                aspect-ratio: 1388 / 1133;
                 max-width: 42rem;
                 transform: none;
-            }
-
-            .frame-code strong {
-                font-size: clamp(5rem, 22vw, 8rem);
             }
 
             .routes-heading {
@@ -580,15 +497,6 @@
 
             .error-actions .btn {
                 width: 100%;
-            }
-
-            .error-frame {
-                aspect-ratio: 16 / 9;
-            }
-
-            .frame-status,
-            .frame-ratio {
-                display: none;
             }
 
             .routes {
@@ -713,12 +621,15 @@
                 </div>
 
                 <div class="error-frame" aria-hidden="true">
-                    <span class="frame-status">Mimo záběr</span>
-                    <div class="frame-code">
-                        <strong>404</strong>
-                        <span>Page not found</span>
-                    </div>
-                    <span class="frame-ratio">Iv Production · 16:9</span>
+                    <img
+                        class="error-frame-image"
+                        src="images/404-complete.webp"
+                        alt=""
+                        width="1388"
+                        height="1133"
+                        decoding="async"
+                        fetchpriority="high"
+                    >
                 </div>
             </div>
         </section>
