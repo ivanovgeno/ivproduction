@@ -4142,3 +4142,42 @@ body.home-page .studio::before {
         transition: none;
     }
 }
+
+/* Homepage services: keep every image tile and its overlay pixel-aligned.
+   The base stylesheet and the premium layer previously combined different
+   gradients, which made light/dark seams from the source photos look like
+   uneven overlays. */
+body.home-page .services-grid {
+    grid-auto-rows: 420px;
+}
+
+body.home-page .service-card {
+    background-clip: padding-box;
+    box-sizing: border-box;
+    height: 420px;
+    min-height: 420px;
+    isolation: isolate;
+}
+
+body.home-page .service-card::before {
+    background: linear-gradient(
+        180deg,
+        rgba(8, 8, 11, 0.34) 0%,
+        rgba(8, 8, 11, 0.52) 52%,
+        rgba(8, 8, 11, 0.94) 100%
+    );
+    border-radius: inherit;
+    inset: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 760px) {
+    body.home-page .services-grid {
+        grid-auto-rows: 360px;
+    }
+
+    body.home-page .service-card {
+        height: 360px;
+        min-height: 360px;
+    }
+}
