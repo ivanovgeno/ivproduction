@@ -1,3 +1,12 @@
+// Server-managed content overrides. The site keeps its complete static HTML as
+// a reliable fallback; PHP hosting can publish selected edits through the admin.
+(function loadManagedContent() {
+    const script = document.createElement('script');
+    script.src = 'cms-content.js?v=20260809-admin';
+    script.defer = true;
+    document.head.appendChild(script);
+}());
+
 document.addEventListener('DOMContentLoaded', () => {
     const mobileToggle = document.getElementById('mobileMenuToggle');
     const mobileOverlay = document.getElementById('mobileMenuOverlay');

@@ -1,0 +1,72 @@
+<?php
+require __DIR__ . '/inc/bootstrap.php';
+ivp_require_auth();
+$config = ivp_config();
+?>
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Administrace | Iv Production</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/admin.css?v=1">
+</head>
+<body data-csrf="<?= htmlspecialchars(ivp_csrf(), ENT_QUOTES) ?>">
+<div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+        <a class="brand" href="index.php"><img src="../logo-light.png" alt="Iv Production"><span>Administrace</span></a>
+        <nav>
+            <button class="nav-item is-active" data-view="dashboard"><span>⌂</span>Přehled</button>
+            <button class="nav-item" data-view="content"><span>✎</span>Obsah webu</button>
+            <button class="nav-item" data-view="media"><span>▣</span>Obrázky</button>
+            <button class="nav-item" data-view="history"><span>↶</span>Historie</button>
+            <button class="nav-item" data-view="security"><span>⌁</span>Přístup</button>
+        </nav>
+        <div class="sidebar-bottom">
+            <a href="../index.html" target="_blank" rel="noopener">Otevřít web ↗</a>
+            <a href="logout.php">Odhlásit se</a>
+        </div>
+    </aside>
+    <main class="workspace">
+        <header class="topbar">
+            <button class="menu-button" id="adminMenu" aria-label="Otevřít navigaci">☰</button>
+            <div><p class="eyebrow">IV PRODUCTION</p><h1 id="viewTitle">Přehled webu</h1></div>
+            <div class="save-state" id="saveState">Vše uloženo</div>
+        </header>
+
+        <section class="view is-active" data-panel="dashboard">
+            <?php if (!empty($config['force_password_change'])): ?>
+            <div class="notice warning"><strong>Změňte úvodní heslo.</strong><span>Než začnete upravovat web, nastavte si vlastní heslo v části Přístup.</span><button data-go="security">Změnit heslo</button></div>
+            <?php endif; ?>
+            <div class="welcome-card"><div><p class="eyebrow">SPRÁVA OBSAHU</p><h2>Všechny důležité úpravy na jednom místě.</h2><p>Vyberte stránku, najděte konkrétní sekci a upravte text, odkaz nebo obrázek. Každé uložení se automaticky zálohuje.</p></div><button class="primary" data-go="content">Upravit obsah</button></div>
+            <div class="stats-grid"><article><span>Stránky</span><strong id="pageCount">—</strong><small>spravovaných stránek</small></article><article><span>Poslední změna</span><strong id="lastUpdate">—</strong><small>centrální obsah webu</small></article><article><span>Zálohy</span><strong>30</strong><small>posledních verzí</small></article></div>
+            <div class="quick-grid"><button data-go="content" data-page="index.html"><span>Homepage</span><small>Hero, služby, reference, CTA</small></button><button data-go="content" data-page="kontakt.html"><span>Kontakt</span><small>Formulář, kontakty, FAQ</small></button><button data-go="content" data-page="portfolio.html"><span>Portfolio</span><small>Ukázky práce a popisy</small></button><button data-go="media"><span>Obrázky</span><small>Nahrávání a použití médií</small></button></div>
+        </section>
+
+        <section class="view" data-panel="content">
+            <div class="content-toolbar"><label>Stránka<select id="pageSelect"></select></label><label class="search-field">Hledat v obsahu<input id="contentSearch" type="search" placeholder="např. cena, telefon, nadpis…"></label><a id="previewPage" class="ghost" target="_blank" rel="noopener">Náhled ↗</a></div>
+            <div class="editor-layout"><nav class="section-nav" id="sectionNav"></nav><div class="editor" id="contentEditor"><div class="empty-state">Vyberte stránku. Obsah načteme do přehledných sekcí.</div></div></div>
+            <div class="sticky-save"><span id="changeCount">Žádné neuložené změny</span><button class="primary" id="saveContent" disabled>Uložit změny</button></div>
+        </section>
+
+        <section class="view" data-panel="media">
+            <div class="panel-card"><div class="panel-heading"><div><p class="eyebrow">KNIHOVNA MÉDIÍ</p><h2>Nahrát nový obrázek</h2></div></div><form id="uploadForm" class="upload-box"><input type="file" id="mediaFile" name="file" accept="image/jpeg,image/png,image/webp,image/gif" required><label for="mediaFile"><strong>Přetáhněte obrázek nebo klikněte pro výběr</strong><span>JPG, PNG, WebP nebo GIF · maximálně 8 MB</span></label><button class="primary" type="submit">Nahrát obrázek</button></form><div class="media-grid" id="mediaGrid"></div></div>
+        </section>
+
+        <section class="view" data-panel="history">
+            <div class="panel-card"><div class="panel-heading"><div><p class="eyebrow">AUTOMATICKÉ ZÁLOHY</p><h2>Historie změn</h2></div><button class="ghost" id="refreshHistory">Obnovit</button></div><p class="muted">Před každým uložením vznikne záloha. Jedním kliknutím můžete vrátit celý spravovaný obsah.</p><div class="history-list" id="historyList"></div></div>
+        </section>
+
+        <section class="view" data-panel="security">
+            <div class="panel-card narrow"><p class="eyebrow">ZABEZPEČENÍ</p><h2>Změna přístupových údajů</h2><form id="passwordForm" class="form-stack"><label>Současné heslo<input type="password" name="currentPassword" autocomplete="current-password" required></label><label>Nové heslo<input type="password" name="newPassword" autocomplete="new-password" minlength="12" required><small>Minimálně 12 znaků, použijte velké i malé písmeno a číslo.</small></label><label>Nové heslo znovu<input type="password" name="confirmPassword" autocomplete="new-password" required></label><button class="primary" type="submit">Změnit heslo</button></form></div>
+        </section>
+    </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/admin.js?v=1"></script>
+</body>
+</html>

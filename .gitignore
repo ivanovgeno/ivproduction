@@ -1,3 +1,10 @@
 # Never publish Google Business Profile OAuth credentials or review cache.
 /api/private/google-reviews-config.php
 /api/cache/google-reviews.json
+
+# Runtime data created by the server-side administration.
+/admin/data/login-rate.json
+/admin/data/history/*.json
+/content/site-content.json.tmp
+/assets/uploads/*
+!/assets/uploads/.gitkeep

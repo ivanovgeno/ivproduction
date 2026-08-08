@@ -1303,6 +1303,43 @@ textarea:focus-visible {
     }
 }
 
+/* Contact page consistency -------------------------------------------------
+   kontakt.html still contains legacy inline styles. Keep its navigation and
+   calls to action visually identical to the shared site components. */
+body.page-contact :is(.btn, .nav a, .mobile-menu-link, .info-content a, .social-link, .footer a) {
+    text-decoration: none !important;
+}
+
+body.page-contact .mobile-menu-toggle {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+body.page-contact .mobile-menu-toggle span {
+    border-radius: 999px;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    body.page-contact .contact-form {
+        order: 1;
+    }
+
+    body.page-contact .contact-info {
+        order: 2;
+    }
+
+    body.page-contact .mobile-menu-overlay a,
+    body.page-contact .mobile-menu-overlay a:hover,
+    body.page-contact .mobile-menu-overlay a:focus,
+    body.page-contact .mobile-menu-overlay a:active {
+        text-decoration: none !important;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

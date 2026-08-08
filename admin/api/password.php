@@ -1,0 +1,21 @@
+<?php
+require __DIR__ . '/../inc/bootstrap.php';
+ivp_require_auth(true);
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') ivp_json(['ok' => false, 'error' => 'Nepodporovaná metoda.'], 405);
+ivp_require_csrf();
+$payload = ivp_read_payload();
+$current = (string) ($payload['currentPassword'] ?? '');
+$new = (string) ($payload['newPassword'] ?? '');
+$confirm = (string) ($payload['confirmPassword'] ?? '');
+$config = ivp_config();
+$currentHash = hash_pbkdf2('sha256', $current, (string) $config['password_salt'], (int) $config['password_iterations'], 64, false);
+if (!hash_equals((string) $config['password_hash'], $currentHash)) ivp_json(['ok' => false, 'error' => 'Současné heslo není správné.'], 422);
+if ($new !== $confirm) ivp_json(['ok' => false, 'error' => 'Nová hesla se neshodují.'], 422);
+if (strlen($new) < 12 || !preg_match('/[a-zá-ž]/iu', $new) || !preg_match('/[A-ZÁ-Ž]/u', $new) || !preg_match('/\d/', $new)) ivp_json(['ok' => false, 'error' => 'Heslo musí mít alespoň 12 znaků, velké i malé písmeno a číslo.'], 422);
+$salt = bin2hex(random_bytes(16));
+$config['password_salt'] = $salt;
+$config['password_hash'] = hash_pbkdf2('sha256', $new, $salt, (int) $config['password_iterations'], 64, false);
+$config['force_password_change'] = false;
+$php = "<?php\ndeclare(strict_types=1);\n\nreturn " . var_export($config, true) . ";\n";
+if (file_put_contents(IVP_CONFIG . '.tmp', $php, LOCK_EX) === false || !rename(IVP_CONFIG . '.tmp', IVP_CONFIG)) ivp_json(['ok' => false, 'error' => 'Heslo se nepodařilo uložit.'], 500);
+ivp_json(['ok' => true, 'message' => 'Heslo bylo bezpečně změněno.']);

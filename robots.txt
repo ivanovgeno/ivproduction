@@ -2,6 +2,7 @@
 # https://www.ivproduction.cz
 
 User-agent: *
+Disallow: /admin/
 Allow: /
 
 # Zákaz indexace záložních složek
