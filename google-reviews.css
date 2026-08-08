@@ -475,3 +475,67 @@
         transition: none;
     }
 }
+
+/* Match the review CTAs to the exact premium gold treatment used by the menu CTA. */
+.testimonials .gw-write-btn,
+.testimonials .gw-all-reviews {
+    background: var(--gradient);
+    border-color: transparent;
+    box-shadow: none;
+    color: #121215 !important;
+    isolation: isolate;
+    overflow: hidden;
+    position: relative;
+    transition:
+        border-color 320ms var(--ease-premium),
+        box-shadow 320ms var(--ease-premium),
+        color 260ms ease,
+        transform 320ms var(--ease-premium);
+}
+
+.testimonials .gw-write-btn::after,
+.testimonials .gw-all-reviews::after {
+    background: linear-gradient(105deg, transparent 37%, rgba(255, 255, 255, 0.05) 44%, rgba(255, 255, 255, 0.34) 50%, rgba(255, 255, 255, 0.06) 56%, transparent 63%);
+    content: '';
+    inset: -30% -58%;
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-72%) rotate(8deg);
+    transition: transform 620ms var(--ease-premium);
+    z-index: 1;
+}
+
+.testimonials .gw-write-btn > *,
+.testimonials .gw-all-reviews > * {
+    position: relative;
+    z-index: 2;
+}
+
+.testimonials .gw-write-btn:hover,
+.testimonials .gw-all-reviews:hover {
+    background: var(--gradient);
+    border-color: transparent;
+    box-shadow: 0 13px 25px rgba(0, 0, 0, 0.25), 0 8px 18px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    color: #121215 !important;
+    transform: translateY(-3px);
+}
+
+.testimonials .gw-write-btn:hover::after,
+.testimonials .gw-all-reviews:hover::after {
+    transform: translateX(72%) rotate(8deg);
+}
+
+@media (hover: none) {
+    .testimonials .gw-write-btn:hover,
+    .testimonials .gw-all-reviews:hover {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .testimonials .gw-write-btn::after,
+    .testimonials .gw-all-reviews::after {
+        transition: none;
+    }
+}
+
