@@ -230,7 +230,9 @@
 
         const tick = (time) => {
             if (!lastFrameTime) lastFrameTime = time;
-            const elapsed = Math.min(64, Math.max(0, time - lastFrameTime));
+            // Preserve the intended speed even when the browser throttles
+            // requestAnimationFrame on a busy mobile device or background tab.
+            const elapsed = Math.min(1000, Math.max(0, time - lastFrameTime));
             lastFrameTime = time;
 
             if (!paused && !document.hidden && !reducedMotion.matches && loopWidth > 0) {
