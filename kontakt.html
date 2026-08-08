@@ -347,7 +347,11 @@
         .form-group input,
         .form-group textarea,
         .form-group select {
+            display: block;
             width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            box-sizing: border-box;
             padding: 1rem 1.25rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -356,6 +360,13 @@
             font-family: inherit;
             font-size: 1rem;
             transition: all 0.3s ease;
+        }
+
+        /* Prevent iOS Safari's native date control from exceeding the form width. */
+        .form-group input[type="date"] {
+            inline-size: 100%;
+            min-inline-size: 0;
+            max-inline-size: 100%;
         }
 
         .form-group input:focus,
