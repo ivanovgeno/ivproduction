@@ -2457,7 +2457,7 @@
         }
     </style>
     <link rel="stylesheet" href="premium.css?v=20260809-services-overlay">
-    <link rel="stylesheet" href="google-reviews.css?v=20260721-mobile-accessibility">
+    <link rel="stylesheet" href="google-reviews.css?v=20260809-premium-redesign">
     <script src="premium.js?v=20260722-keyboard-menu" defer></script>
     <script src="contact-form-fallback.js?v=20260716-runtime-detection" defer></script>
     <script src="experience.js?v=20260722-safari-services-v2" defer></script>
@@ -2976,16 +2976,25 @@
             <div class="google-widget-wrapper">
                 <div class="gw-header">
                     <div class="gw-rating-box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"
-                            height="30" width="272" decoding="async" loading="lazy">
-                        <div>
+                        <div class="gw-google-mark" aria-hidden="true">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                                alt="" width="48" height="48" decoding="async" loading="lazy">
+                        </div>
+                        <div class="gw-rating-copy">
+                            <span class="gw-kicker">Ověřené hodnocení na Google</span>
                             <div class="gw-score"><span data-google-review-score>5.0</span> <span class="gw-stars" data-google-review-stars role="img" aria-label="5 z 5 hvězdiček">★★★★★</span></div>
                             <div class="gw-reviews-count" data-google-review-count>Na základě 50+ recenzí</div>
                         </div>
                     </div>
-                    <a href="https://www.google.com/search?q=ivproduction+hradec+kralove&review=1" target="_blank"
-                        class="gw-write-btn" data-google-review-link rel="noopener noreferrer">Napsat
-                        recenzi</a>
+                    <a href="https://search.google.com/local/writereview?placeid=ChIJUTp-ArKUEkcRUnYPKPrxc6o"
+                        target="_blank" class="gw-write-btn" data-google-review-link rel="noopener noreferrer">
+                        <span>Napsat recenzi</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M7 17 17 7" />
+                            <path d="M7 7h10v10" />
+                        </svg>
+                    </a>
                 </div>
 
                 <div class="gw-slider-container" style="position: relative; padding: 0 2rem;">
@@ -3550,12 +3559,17 @@
                     </button>
                 </div>
 
-                <div style="text-align: center; margin-top: 1.5rem;">
-                    <a href="https://www.google.com/search?q=ivproduction+hradec+kralove&check_reviews=1"
-                        target="_blank" data-google-maps-link rel="noopener noreferrer"
-                        style="color: var(--gold); font-weight: 500; text-decoration: none; transition: color 0.3s;">Zobrazit
-                        další recenze na
-                        Google Maps →</a>
+                <div class="gw-footer">
+                    <p>Další zkušenosti našich klientů najdete přímo na firemním profilu.</p>
+                    <a href="https://search.google.com/local/reviews?placeid=ChIJUTp-ArKUEkcRUnYPKPrxc6o"
+                        target="_blank" class="gw-all-reviews" data-google-maps-link rel="noopener noreferrer">
+                        <span>Zobrazit všechny recenze na Googlu</span>
+                        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="m13 6 6 6-6 6" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
