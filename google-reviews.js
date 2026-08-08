@@ -175,12 +175,18 @@
         let resumeTimer = 0;
         let loopWidth = 0;
         let lastFrameTime = 0;
+        let autoPosition = viewport.scrollLeft;
+
+        // The global page styles use smooth scrolling. That is desirable for
+        // buttons, but it prevents frame-by-frame autoplay because every tiny
+        // scrollLeft update starts a new smooth animation.
+        viewport.style.scrollBehavior = 'auto';
 
         const measureLoop = () => {
             const computed = getComputedStyle(track);
             const gap = Number.parseFloat(computed.columnGap || computed.gap) || 0;
             loopWidth = originalCards.reduce((sum, card) => sum + card.getBoundingClientRect().width, 0)
-                + (Math.max(0, originalCards.length - 1) * gap);
+                + (originalCards.length * gap);
         };
 
         const createClones = () => {
@@ -198,8 +204,9 @@
             }
 
             measureLoop();
-            if (loopWidth > 0 && viewport.scrollLeft >= loopWidth) {
-                viewport.scrollLeft %= loopWidth;
+            if (loopWidth > 0) {
+                autoPosition = viewport.scrollLeft % loopWidth;
+                viewport.scrollLeft = autoPosition;
             }
         };
 
@@ -215,6 +222,7 @@
             paused = true;
             window.clearTimeout(resumeTimer);
             resumeTimer = window.setTimeout(() => {
+                autoPosition = viewport.scrollLeft;
                 paused = false;
                 lastFrameTime = performance.now();
             }, delay);
@@ -226,8 +234,13 @@
             lastFrameTime = time;
 
             if (!paused && !document.hidden && !reducedMotion.matches && loopWidth > 0) {
-                viewport.scrollLeft += elapsed * pixelsPerMillisecond;
-                if (viewport.scrollLeft >= loopWidth) viewport.scrollLeft -= loopWidth;
+                // Keep fractional progress in our own accumulator. Safari and
+                // some embedded browsers round tiny scrollLeft increments.
+                autoPosition += elapsed * pixelsPerMillisecond;
+                if (autoPosition >= loopWidth) autoPosition %= loopWidth;
+                viewport.scrollLeft = autoPosition;
+            } else {
+                autoPosition = viewport.scrollLeft;
             }
 
             animationFrame = window.requestAnimationFrame(tick);
@@ -237,6 +250,7 @@
             if (direction < 0 && loopWidth > 0 && viewport.scrollLeft < getStep()) {
                 viewport.scrollLeft += loopWidth;
             }
+            autoPosition = viewport.scrollLeft;
             resumeAfter();
             viewport.scrollBy({ left: direction * getStep(), behavior: 'smooth' });
         };
@@ -260,6 +274,7 @@
             controller.abort();
             window.cancelAnimationFrame(animationFrame);
             window.clearTimeout(resumeTimer);
+            viewport.style.removeProperty('scroll-behavior');
             track.querySelectorAll('[data-gw-clone]').forEach((clone) => clone.remove());
         };
     }
