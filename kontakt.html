@@ -362,11 +362,51 @@
             transition: all 0.3s ease;
         }
 
-        /* Prevent iOS Safari's native date control from exceeding the form width. */
-        .form-group input[type="date"] {
+        /* iOS Safari gives native date controls an intrinsic width. Clamp the
+           form, its field wrapper and the WebKit value so the control cannot
+           extend beyond the card. */
+        .contact-form form {
+            display: block;
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .date-field {
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .date-field input[type="date"] {
+            display: block;
+            width: 100%;
+            min-width: 0 !important;
+            max-width: 100%;
             inline-size: 100%;
-            min-inline-size: 0;
+            min-inline-size: 0 !important;
             max-inline-size: 100%;
+            overflow: hidden;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .date-field input[type="date"]::-webkit-date-and-time-value {
+            min-width: 0;
+            text-align: left;
+        }
+
+        .date-field input[type="date"]::-webkit-calendar-picker-indicator {
+            flex: 0 0 auto;
+            margin: 0;
+        }
+
+        @supports (-webkit-touch-callout: none) {
+            .date-field input[type="date"] {
+                width: -webkit-fill-available;
+                inline-size: -webkit-fill-available;
+            }
         }
 
         .form-group input:focus,
@@ -787,7 +827,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group date-field">
                         <label for="date">Předpokládaný termín</label>
                         <input type="date" id="date" name="date">
                     </div>
