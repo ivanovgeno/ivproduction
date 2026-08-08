@@ -2153,6 +2153,68 @@
             }
         }
 
+        /* Keep the homepage enquiry form inside its card on iOS Safari.
+           Native date controls otherwise keep an intrinsic width and can expand
+           both their grid column and the whole mobile page. */
+        .contact-enquiry-form {
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .contact-enquiry-form .form-row {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            min-width: 0;
+        }
+
+        .contact-enquiry-form .form-group,
+        .contact-enquiry-form .date-field {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .contact-enquiry-form .date-field {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .contact-enquiry-form .date-field input[type="date"] {
+            display: block;
+            width: 100%;
+            min-width: 0 !important;
+            max-width: 100%;
+            inline-size: 100%;
+            min-inline-size: 0 !important;
+            max-inline-size: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .contact-enquiry-form .date-field input[type="date"]::-webkit-date-and-time-value {
+            min-width: 0;
+            text-align: left;
+        }
+
+        .contact-enquiry-form .date-field input[type="date"]::-webkit-calendar-picker-indicator {
+            flex: 0 0 auto;
+            margin: 0;
+        }
+
+        @supports (-webkit-touch-callout: none) {
+            .contact-enquiry-form .date-field input[type="date"] {
+                width: -webkit-fill-available;
+                inline-size: -webkit-fill-available;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contact-enquiry-form .form-row {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
         .form-input,
         .form-textarea {
             width: 100%;
@@ -3754,7 +3816,7 @@
                             <label class="sr-only" for="cta-phone">Telefon</label>
                             <input id="cta-phone" type="tel" class="form-input" name="phone" placeholder="Telefon *" autocomplete="tel" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group date-field">
                             <label class="sr-only" for="cta-event-date">Datum akce</label>
                             <input id="cta-event-date" type="date" class="form-input" name="event_date" required>
                         </div>
