@@ -168,9 +168,20 @@
 
         const controller = new AbortController();
         const signal = controller.signal;
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const pixelsPerMillisecond = 0.03;
         let paused = false;
         let animationFrame = 0;
         let resumeTimer = 0;
+        let loopWidth = 0;
+        let lastFrameTime = 0;
+
+        const measureLoop = () => {
+            const computed = getComputedStyle(track);
+            const gap = Number.parseFloat(computed.columnGap || computed.gap) || 0;
+            loopWidth = originalCards.reduce((sum, card) => sum + card.getBoundingClientRect().width, 0)
+                + (Math.max(0, originalCards.length - 1) * gap);
+        };
 
         const createClones = () => {
             track.querySelectorAll('[data-gw-clone]').forEach((clone) => clone.remove());
@@ -185,6 +196,11 @@
                 clone.dataset.gwClone = 'true';
                 track.append(clone);
             }
+
+            measureLoop();
+            if (loopWidth > 0 && viewport.scrollLeft >= loopWidth) {
+                viewport.scrollLeft %= loopWidth;
+            }
         };
 
         createClones();
@@ -195,39 +211,49 @@
             return (originalCards[0].getBoundingClientRect().width || 320) + gap;
         };
 
-        const originalWidth = () => originalCards.reduce((sum, card) => sum + card.getBoundingClientRect().width, 0)
-            + (Math.max(0, originalCards.length - 1) * (Number.parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0));
+        const resumeAfter = (delay = 1100) => {
+            paused = true;
+            window.clearTimeout(resumeTimer);
+            resumeTimer = window.setTimeout(() => {
+                paused = false;
+                lastFrameTime = performance.now();
+            }, delay);
+        };
 
-        const tick = () => {
-            if (!paused && !document.hidden && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                viewport.scrollLeft += 0.35;
-                const width = originalWidth();
-                if (width > 0 && viewport.scrollLeft >= width) viewport.scrollLeft -= width;
+        const tick = (time) => {
+            if (!lastFrameTime) lastFrameTime = time;
+            const elapsed = Math.min(64, Math.max(0, time - lastFrameTime));
+            lastFrameTime = time;
+
+            if (!paused && !document.hidden && !reducedMotion.matches && loopWidth > 0) {
+                viewport.scrollLeft += elapsed * pixelsPerMillisecond;
+                if (viewport.scrollLeft >= loopWidth) viewport.scrollLeft -= loopWidth;
             }
+
             animationFrame = window.requestAnimationFrame(tick);
         };
 
         const move = (direction) => {
+            if (direction < 0 && loopWidth > 0 && viewport.scrollLeft < getStep()) {
+                viewport.scrollLeft += loopWidth;
+            }
+            resumeAfter();
             viewport.scrollBy({ left: direction * getStep(), behavior: 'smooth' });
         };
 
         previous.addEventListener('click', () => move(-1), { signal });
         next.addEventListener('click', () => move(1), { signal });
-        container.addEventListener('pointerenter', (event) => {
-            if (event.pointerType === 'mouse') paused = true;
-        }, { signal });
-        container.addEventListener('pointerleave', (event) => {
-            if (event.pointerType === 'mouse') paused = false;
-        }, { signal });
         container.addEventListener('pointerdown', () => {
             paused = true;
             window.clearTimeout(resumeTimer);
         }, { signal });
-        container.addEventListener('pointerup', () => {
-            window.clearTimeout(resumeTimer);
-            resumeTimer = window.setTimeout(() => { paused = false; }, 1200);
-        }, { signal });
+        container.addEventListener('pointerup', () => resumeAfter(1400), { signal });
+        container.addEventListener('pointercancel', () => resumeAfter(700), { signal });
+        container.addEventListener('wheel', () => resumeAfter(900), { passive: true, signal });
         window.addEventListener('resize', createClones, { signal });
+        document.addEventListener('visibilitychange', () => {
+            lastFrameTime = performance.now();
+        }, { signal });
 
         animationFrame = window.requestAnimationFrame(tick);
         return () => {
