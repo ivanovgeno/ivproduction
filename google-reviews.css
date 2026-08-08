@@ -1,5 +1,322 @@
-/* Live Google Business Profile review additions. Static cards still work when
-   this stylesheet or the PHP endpoint is not available (for example on GitHub Pages). */
+/* Premium homepage reviews. Static cards remain the GitHub Pages fallback;
+   the PHP endpoint can replace them with live data without changing layout. */
+.testimonials {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 12% 22%, rgba(212, 175, 55, 0.07), transparent 30rem),
+        linear-gradient(180deg, #08080b 0%, #0b0b10 50%, #08080b 100%);
+}
+
+.testimonials::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.32;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+}
+
+.testimonials > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.testimonials .google-widget-wrapper {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: clamp(1.35rem, 3vw, 2.75rem);
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 28px;
+    background: linear-gradient(145deg, rgba(19, 19, 26, 0.97), rgba(10, 10, 14, 0.98));
+    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.34), inset 0 1px rgba(255, 255, 255, 0.035);
+}
+
+.testimonials .google-widget-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: clamp(1.35rem, 3vw, 2.75rem);
+    width: 96px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold, #d4af37), rgba(212, 175, 55, 0));
+}
+
+.testimonials .gw-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: clamp(1.5rem, 3vw, 2.4rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.testimonials .gw-rating-box {
+    display: flex;
+    align-items: center;
+    gap: 1.15rem;
+}
+
+.gw-google-mark {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.045);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.gw-google-mark img {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.gw-rating-copy {
+    min-width: 0;
+}
+
+.gw-kicker {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: rgba(255, 255, 255, 0.54);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.testimonials .gw-score {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+}
+
+.testimonials .gw-stars {
+    color: var(--gold, #d4af37);
+    background: none;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    letter-spacing: 0.08em;
+    -webkit-text-fill-color: currentColor;
+}
+
+.testimonials .gw-reviews-count {
+    margin-top: 0.55rem;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.88rem;
+}
+
+.testimonials .gw-write-btn,
+.gw-all-reviews {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    min-height: 48px;
+    padding: 0.78rem 1.25rem;
+    border: 1px solid rgba(212, 175, 55, 0.48);
+    border-radius: 999px;
+    color: var(--gold-light, #f1d56e) !important;
+    background: rgba(212, 175, 55, 0.055);
+    box-shadow: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.testimonials .gw-write-btn:hover,
+.gw-all-reviews:hover {
+    color: #111 !important;
+    border-color: var(--gold, #d4af37);
+    background: var(--gold, #d4af37);
+    box-shadow: none;
+    transform: translateY(-2px);
+}
+
+.testimonials .gw-write-btn:focus-visible,
+.gw-all-reviews:focus-visible {
+    outline: 2px solid var(--gold-light, #f1d56e);
+    outline-offset: 4px;
+}
+
+.testimonials .gw-slider-container {
+    padding: 0 2.7rem !important;
+}
+
+.testimonials .gw-slider-viewport {
+    margin: 0;
+    padding: 1.4rem 0 1.65rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 2.5%, black 97.5%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 2.5%, black 97.5%, transparent);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.testimonials .gw-slider-track {
+    gap: 1rem;
+    padding: 0.25rem 0;
+}
+
+.testimonials .gw-card {
+    width: min(350px, calc(100vw - 6rem));
+    min-height: 286px;
+    padding: 1.55rem;
+    gap: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.085);
+    border-radius: 20px;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018));
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.testimonials .gw-card::before {
+    content: '“';
+    position: absolute;
+    top: 0.2rem;
+    right: 1rem;
+    left: auto;
+    width: auto;
+    height: auto;
+    color: rgba(212, 175, 55, 0.13);
+    background: none;
+    font-family: Georgia, serif;
+    font-size: 5.2rem;
+    line-height: 1;
+    pointer-events: none;
+    transition: none;
+}
+
+.testimonials .gw-card:hover {
+    z-index: 2;
+    border-color: rgba(212, 175, 55, 0.34);
+    background: linear-gradient(150deg, rgba(212, 175, 55, 0.075), rgba(255, 255, 255, 0.022));
+    box-shadow: none;
+    transform: translateY(-3px);
+}
+
+.testimonials .gw-card:hover::before {
+    left: auto;
+}
+
+.testimonials .gw-user {
+    position: relative;
+    z-index: 1;
+    gap: 0.85rem;
+}
+
+.testimonials .gw-avatar {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    border: 1px solid rgba(212, 175, 55, 0.32) !important;
+    background: rgba(212, 175, 55, 0.08);
+    color: var(--gold-light, #f1d56e) !important;
+    font-size: 0.95rem;
+}
+
+.testimonials .gw-name {
+    color: rgba(255, 255, 255, 0.94);
+    font-size: 0.96rem;
+    font-weight: 600;
+}
+
+.testimonials .gw-date {
+    margin-top: 0.2rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.76rem;
+}
+
+.testimonials .gw-google-logo {
+    width: 18px;
+    height: 18px;
+    opacity: 0.72;
+    filter: none;
+}
+
+.testimonials .gw-card-stars {
+    position: relative;
+    z-index: 1;
+    color: var(--gold, #d4af37);
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+}
+
+.testimonials .gw-text {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.69);
+    font-size: 0.91rem;
+    line-height: 1.72;
+}
+
+.testimonials .gw-nav-btn {
+    width: 42px;
+    height: 42px;
+    border-color: rgba(212, 175, 55, 0.28);
+    background: #111117;
+    color: var(--gold-light, #f1d56e);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+    backdrop-filter: none;
+}
+
+.testimonials .gw-nav-btn:hover {
+    border-color: var(--gold, #d4af37);
+    background: var(--gold, #d4af37);
+    color: #111;
+    box-shadow: none;
+    transform: translateY(-50%) scale(1.04);
+}
+
+.testimonials .gw-prev {
+    left: 0;
+}
+
+.testimonials .gw-next {
+    right: 0;
+}
+
+.gw-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 1.15rem;
+    padding-top: 1.55rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.gw-footer p {
+    max-width: 520px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 0.84rem;
+    line-height: 1.55;
+}
+
+.gw-all-reviews {
+    flex: 0 0 auto;
+}
+
 .gw-avatar.gw-avatar-photo {
     overflow: hidden;
     background: rgba(255, 255, 255, 0.08);
@@ -50,8 +367,8 @@
 
 @media (max-width: 640px) {
     .testimonials {
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
     }
 
     .testimonials > .container {
@@ -60,44 +377,101 @@
     }
 
     .google-widget-wrapper {
-        padding: 1.25rem 1rem;
+        padding: 1.25rem 1rem 1.1rem;
+        border-radius: 22px;
     }
 
-    .gw-header,
-    .gw-rating-box {
+    .testimonials .gw-header {
         align-items: stretch;
         flex-direction: column;
+        gap: 1.2rem;
         width: 100%;
     }
 
-    .gw-rating-box > img {
-        height: auto;
-        max-width: 170px;
-        width: 100%;
+    .testimonials .gw-rating-box {
+        align-items: center;
+        gap: 0.85rem;
     }
 
-    .gw-write-btn {
+    .gw-google-mark {
+        width: 54px;
+        height: 54px;
+        flex-basis: 54px;
+        border-radius: 15px;
+    }
+
+    .gw-google-mark img {
+        width: 26px;
+        height: 26px;
+    }
+
+    .testimonials .gw-score {
+        gap: 0.6rem;
+    }
+
+    .gw-kicker {
+        font-size: 0.62rem;
+    }
+
+    .testimonials .gw-write-btn {
         justify-content: center;
         text-align: center;
         width: 100%;
     }
 
-    .gw-slider-container {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+    .testimonials .gw-slider-container {
+        margin: 0 -1rem;
+        padding: 0 !important;
     }
 
-    .gw-slider-viewport {
-        padding-left: 0;
-        padding-right: 0;
+    .testimonials .gw-slider-viewport {
+        padding: 1rem 1rem 1.25rem;
+        scroll-padding-left: 1rem;
+        mask-image: none;
+        -webkit-mask-image: none;
     }
 
-    .gw-card {
-        max-width: 320px;
-        width: calc(100vw - 4.25rem);
+    .testimonials .gw-card {
+        width: calc(100vw - 4.7rem);
+        min-height: 270px;
+        padding: 1.3rem;
+        scroll-snap-align: start;
+    }
+
+    .testimonials .gw-slider-track {
+        gap: 0.75rem;
+        scroll-snap-type: x mandatory;
+    }
+
+    .testimonials .gw-nav-btn {
+        display: none;
+    }
+
+    .gw-footer {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 0.4rem;
+        padding-top: 1.2rem;
+    }
+
+    .gw-footer p {
+        text-align: center;
+    }
+
+    .gw-all-reviews {
+        width: 100%;
     }
 
     .gw-owner-reply {
         padding: 0.8rem 0.85rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .testimonials .gw-card,
+    .testimonials .gw-write-btn,
+    .gw-all-reviews {
+        transition: none;
     }
 }
