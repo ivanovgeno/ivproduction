@@ -1,0 +1,2 @@
+<section class="page-hero compact"><div class="container page-hero-content"><span class="eyebrow">Právní informace</span><h1><?= e($legal['title']) ?></h1></div></section>
+<section class="section"><div class="container prose"><p><?= e($legal['text']) ?></p><p><strong>Upozornění:</strong> Před ostrým spuštěním bude obsah této stránky nahrazen finálním, právně zkontrolovaným zněním.</p></div></section>
