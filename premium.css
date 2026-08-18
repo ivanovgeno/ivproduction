@@ -59,6 +59,29 @@ body::before {
     padding: 0.8rem 2rem;
 }
 
+/* Keep the shared header identical even on legacy pages whose inline CSS uses
+   .header-content instead of the current .header-inner wrapper. */
+.header[data-unified-nav] {
+    line-height: 1.6;
+}
+
+.header[data-unified-nav] .header-inner {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.header[data-unified-nav] .logo {
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+}
+
+.header[data-unified-nav] .nav a {
+    position: relative;
+}
+
 .header.scrolled {
     background: rgba(18, 18, 21, 0.94);
     border-bottom-color: rgba(212, 175, 55, 0.28);
