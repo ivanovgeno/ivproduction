@@ -13,6 +13,7 @@ function redirect_to_form(string $status, string $returnTo = 'kontakt.html'): vo
         'reels.html',
         'konference.html',
         'podcast.html',
+        'promo.html',
     ];
     if (!in_array($returnTo, $allowedPages, true)) {
         $returnTo = 'kontakt.html';
@@ -151,5 +152,11 @@ $headers = [
     'Content-Type: text/plain; charset=UTF-8',
 ];
 
-$sent = mail($recipient, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, implode("\r\n", $headers));
+$sent = mail(
+    $recipient,
+    '=?UTF-8?B?' . base64_encode($subject) . '?=',
+    $body,
+    implode("\r\n", $headers),
+    '-f noreply@ivproduction.cz'
+);
 redirect_to_form($sent ? 'sent' : 'error', $returnTo);

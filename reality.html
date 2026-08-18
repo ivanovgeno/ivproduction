@@ -21,8 +21,8 @@
     <meta property="og:description" content="Videoprohlídky, HDR fotografie, dron a virtuální 3D prohlídky pro makléře v Královéhradeckém kraji i celé ČR.">
     <meta property="og:url" content="https://www.ivproduction.cz/reality.html">
     <meta property="og:site_name" content="Iv Production">
-    <meta property="og:image" content="https://ivanovgeno.github.io/ivproduction/assets/og/reality.jpg">
-    <meta property="og:image:secure_url" content="https://ivanovgeno.github.io/ivproduction/assets/og/reality.jpg">
+    <meta property="og:image" content="https://www.ivproduction.cz/assets/og/reality.jpg">
+    <meta property="og:image:secure_url" content="https://www.ivproduction.cz/assets/og/reality.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -30,7 +30,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Profesionální video a foto pro reality | Iv Production">
     <meta name="twitter:description" content="Video, fotografie, dron a 3D prohlídky, které pomáhají nemovitosti vyniknout.">
-    <meta name="twitter:image" content="https://ivanovgeno.github.io/ivproduction/assets/og/reality.jpg">
+    <meta name="twitter:image" content="https://www.ivproduction.cz/assets/og/reality.jpg">
     <meta name="twitter:image:alt" content="Profesionální video a fotografie nemovitostí">
 
     <script type="application/ld+json">
@@ -79,12 +79,8 @@
     }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
 
-    <style>
+<style>
         :root {
             --gold-dark: #8B6914;
             --gold: #C9A227;
@@ -1064,6 +1060,8 @@
     <script src="packages-renderer.js?v=20260721-tailored-forms" defer></script>
     <script src="reality-showcase.js?v=20260715-photo-tour-v1" defer></script>
     <link rel="stylesheet" href="premium-heroes.css?v=20260727-all-pages">
+    <link rel="stylesheet" href="privacy-consent.css?v=20260818">
+    <script src="privacy-consent.js?v=20260818" defer></script>
 </head>
 
 <body class="page-reality">
@@ -1187,7 +1185,7 @@
         </div>
         <div class="reality-tour-shell">
             <div class="reality-tour-frame">
-                <iframe src="https://my.matterport.com/show/?m=Sk4my8rkJoB" title="Ukázka interaktivní 3D prohlídky nemovitosti" loading="lazy" allow="fullscreen; xr-spatial-tracking" allowfullscreen></iframe>
+                <iframe data-consent-src="https://my.matterport.com/show/?m=Sk4my8rkJoB" data-consent-service="Matterport" title="Ukázka interaktivní 3D prohlídky nemovitosti" loading="lazy" allow="fullscreen; xr-spatial-tracking" allowfullscreen hidden></iframe>
             </div>
             <div class="reality-tour-info">
                 <p class="related-work__eyebrow">MATTERPORT 3D</p>

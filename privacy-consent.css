@@ -1,0 +1,78 @@
+.privacy-banner {
+    position: fixed;
+    z-index: 100000;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    display: none;
+    width: min(760px, calc(100% - 40px));
+    margin-inline: auto;
+    padding: 22px;
+    color: #f7f3e8;
+    background: rgba(13, 13, 15, .98);
+    border: 1px solid rgba(218, 184, 82, .55);
+    border-radius: 18px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .55);
+    gap: 22px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.privacy-banner.is-visible { display: flex; }
+.privacy-banner__copy { max-width: 480px; }
+.privacy-banner h2 { margin: 0 0 8px; color: #fff; font: 700 1.2rem/1.25 system-ui, sans-serif; }
+.privacy-banner p { margin: 0 0 8px; color: #d7d3c9; font: 400 .94rem/1.55 system-ui, sans-serif; }
+.privacy-banner a { color: #e7c65f; text-decoration: underline; }
+.privacy-banner__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+
+.privacy-button,
+.privacy-settings {
+    appearance: none;
+    border: 1px solid rgba(231, 198, 95, .6);
+    border-radius: 999px;
+    padding: 10px 15px;
+    color: #fff;
+    background: transparent;
+    font: 700 .85rem/1.1 system-ui, sans-serif;
+    cursor: pointer;
+}
+
+.privacy-button--primary { color: #121212; background: #e7c65f; border-color: #e7c65f; }
+.privacy-button:hover,
+.privacy-button:focus-visible,
+.privacy-settings:hover,
+.privacy-settings:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.privacy-settings {
+    position: fixed;
+    z-index: 99990;
+    right: 14px;
+    bottom: 14px;
+    padding: 8px 12px;
+    color: #e7c65f;
+    background: rgba(13, 13, 15, .94);
+}
+
+[data-consent-embed] { position: relative; min-height: 260px; }
+[data-consent-embed] > iframe[hidden] { display: none; }
+.privacy-embed-placeholder {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    padding: 28px;
+    text-align: center;
+    color: #eee9de;
+    background: linear-gradient(145deg, #161619, #0b0b0d);
+    border: 1px solid rgba(231, 198, 95, .28);
+}
+.privacy-embed-placeholder p { max-width: 520px; margin: 0 auto 10px; }
+.privacy-embed-placeholder .privacy-button { margin: 8px auto 0; }
+[data-consent-embed].is-consented > .privacy-embed-placeholder { display: none; }
+
+@media (max-width: 680px) {
+    .privacy-banner { align-items: stretch; flex-direction: column; padding: 18px; }
+    .privacy-banner__actions { justify-content: stretch; }
+    .privacy-banner__actions .privacy-button { flex: 1 1 100%; }
+}

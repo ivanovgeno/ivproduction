@@ -22,7 +22,7 @@ function ivp_youtube_embed_url(string $value): string
             $id = (string) ($query['v'] ?? '');
         }
     }
-    return preg_match('/^[A-Za-z0-9_-]{6,20}$/', $id) ? 'https://www.youtube.com/embed/' . $id : $value;
+    return preg_match('/^[A-Za-z0-9_-]{6,20}$/', $id) ? 'https://www.youtube-nocookie.com/embed/' . $id : $value;
 }
 
 function ivp_portfolio_projects(): array

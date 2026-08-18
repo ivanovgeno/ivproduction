@@ -188,6 +188,7 @@ function ivp_rating_value(mixed $value): int
 
 function ivp_average_rating(mixed $value): float
 {
+    if (is_string($value)) $value = str_replace(',', '.', trim($value));
     if (!is_numeric($value)) return 0.0;
     return max(0.0, min(5.0, round((float) $value, 1)));
 }

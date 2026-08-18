@@ -2,6 +2,19 @@
 require __DIR__ . '/../inc/bootstrap.php';
 ivp_require_auth(true);
 
+function ivp_ini_bytes(string $value): int
+{
+    $value = trim($value);
+    if ($value === '') return PHP_INT_MAX;
+    $number = (float) $value;
+    return match (strtolower(substr($value, -1))) {
+        'g' => (int) ($number * 1024 * 1024 * 1024),
+        'm' => (int) ($number * 1024 * 1024),
+        'k' => (int) ($number * 1024),
+        default => (int) $number,
+    };
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $files = [];
     foreach (glob(IVP_UPLOADS . '/*.{webp,mp4,webm}', GLOB_BRACE) ?: [] as $file) {
@@ -37,9 +50,12 @@ $isImage = in_array($mime, $imageTypes, true);
 $isVideo = isset($videoTypes[$mime]);
 if (!$isImage && !$isVideo) ivp_json(['ok' => false, 'error' => 'Povolené jsou obrázky JPG, PNG, WebP a GIF nebo videa MP4 a WebM.'], 422);
 
-$limit = $isVideo ? 200 * 1024 * 1024 : 12 * 1024 * 1024;
+$applicationLimit = $isVideo ? 200 * 1024 * 1024 : 12 * 1024 * 1024;
+$hostingLimit = min(ivp_ini_bytes((string) ini_get('upload_max_filesize')), ivp_ini_bytes((string) ini_get('post_max_size')));
+$limit = min($applicationLimit, $hostingLimit);
 if ((int) $upload['size'] > $limit) {
-    ivp_json(['ok' => false, 'error' => $isVideo ? 'Video je větší než 200 MB.' : 'Obrázek je větší než 12 MB.'], 422);
+    $limitMb = max(1, (int) floor($limit / 1024 / 1024));
+    ivp_json(['ok' => false, 'error' => "Soubor překračuje aktuální limit hostingu {$limitMb} MB."], 422);
 }
 if (!is_dir(IVP_UPLOADS) && !mkdir(IVP_UPLOADS, 0755, true) && !is_dir(IVP_UPLOADS)) {
     ivp_json(['ok' => false, 'error' => 'Server nemůže vytvořit složku pro média.'], 500);

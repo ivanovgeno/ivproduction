@@ -2,7 +2,7 @@
     'use strict';
 
     const ratingMap = { ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5 };
-    const googleMark = 'https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png';
+    const googleMark = 'assets/google-g.svg';
 
     function ready(callback) {
         if (document.readyState === 'loading') {
@@ -32,7 +32,7 @@
 
     function rating(value) {
         if (typeof value === 'number') return Math.max(0, Math.min(5, value));
-        if (typeof value === 'string') return ratingMap[value.toUpperCase()] || Number(value) || 0;
+        if (typeof value === 'string') return ratingMap[value.toUpperCase()] || Number(value.replace(',', '.')) || 0;
         return 0;
     }
 

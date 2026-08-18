@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-IMAGE_BASE = "https://ivanovgeno.github.io/ivproduction/assets/og"
+IMAGE_BASE = "https://www.ivproduction.cz/assets/og"
 
 
 @dataclass(frozen=True)

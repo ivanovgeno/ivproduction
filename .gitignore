@@ -8,3 +8,4 @@
 /content/site-content.json.tmp
 /assets/uploads/*
 !/assets/uploads/.gitkeep
+release/

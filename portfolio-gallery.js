@@ -57,11 +57,15 @@
 
     function openProject(project, trigger) {
         if (!project?.video) return;
+        const isLocalVideo = /\.(mp4|webm)(?:$|[?#])/i.test(project.video);
+        if (!isLocalVideo && window.IVPPrivacy && !window.IVPPrivacy.hasExternalConsent()) {
+            window.IVPPrivacy.requestExternalConsent(() => openProject(project, trigger));
+            return;
+        }
         const lightbox = ensureLightbox();
         const frame = lightbox.querySelector('iframe');
         const video = lightbox.querySelector('video');
         lightbox._lastTrigger = trigger || document.activeElement;
-        const isLocalVideo = /\.(mp4|webm)(?:$|[?#])/i.test(project.video);
         frame.hidden = isLocalVideo;
         video.hidden = !isLocalVideo;
         if (isLocalVideo) {

@@ -8,7 +8,7 @@ window.IVPortfolioProjects = [
         ],
         "image": "assets/site/wedding.webp",
         "alt": "Svatební pár ve zlatém večerním světle",
-        "video": "https://www.youtube.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
     },
     {
         "id": "luxusni-vila",
@@ -19,7 +19,7 @@ window.IVPortfolioProjects = [
         ],
         "image": "assets/site/reality.webp",
         "alt": "Luxusní interiér nemovitosti",
-        "video": "https://www.youtube.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
     },
     {
         "id": "maturitni-ples",
@@ -32,7 +32,7 @@ window.IVPortfolioProjects = [
         ],
         "image": "assets/site/event.webp",
         "alt": "Konfety a světla na večerní akci",
-        "video": "https://www.youtube.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
     },
     {
         "id": "petra-jan",
@@ -43,7 +43,7 @@ window.IVPortfolioProjects = [
         ],
         "image": "assets/site/wedding-two.webp",
         "alt": "Novomanželé při svatebním obřadu",
-        "video": "https://www.youtube.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
     },
     {
         "id": "moderni-byt",
@@ -54,7 +54,7 @@ window.IVPortfolioProjects = [
         ],
         "image": "assets/site/house.webp",
         "alt": "Moderní dům v denním světle",
-        "video": "https://www.youtube.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
     },
     {
         "id": "business-summit",
@@ -66,7 +66,7 @@ window.IVPortfolioProjects = [
         ],
         "image": "assets/site/conference.webp",
         "alt": "Přednášející na firemní konferenci",
-        "video": "https://www.youtube.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
     },
     {
         "id": "lucie-david",
@@ -77,7 +77,7 @@ window.IVPortfolioProjects = [
         ],
         "image": "assets/site/wedding-three.webp",
         "alt": "Svatební detail ve večerním světle",
-        "video": "https://www.youtube.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
     },
     {
         "id": "mestska-noc",
@@ -90,7 +90,7 @@ window.IVPortfolioProjects = [
         ],
         "image": "assets/site/concert.webp",
         "alt": "Hosté na večerní společenské akci",
-        "video": "https://www.youtube.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
     },
     {
         "id": "studio-session",
@@ -103,6 +103,6 @@ window.IVPortfolioProjects = [
         ],
         "image": "hero-bg.webp",
         "alt": "Video podcast natáčený v profesionálním studiu",
-        "video": "https://www.youtube.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
     }
 ];
