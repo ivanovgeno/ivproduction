@@ -8,16 +8,13 @@ exclude:
   - api
   - scripts
   - tools
-  - dist
-  - Záloha z git hub 27.1.2026 aktualní
-  - zálohy
-  - index chyba.html
-  - index_v1_backup.html
   - README.md
   - GOOGLE_REVIEW_SETUP.md
   - GOOGLE_REVIEWS_PHP_HOSTING.md
   - seo-texty.md
   - analyze_structure.py
   - update_mobile_menu.py
+  - WEDOS_DEPLOYMENT.md
+  - release
 
 plugins: []

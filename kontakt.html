@@ -21,8 +21,8 @@
     <meta property="og:description" content="Poptávka svatebního videa, realitní prezentace, promo videa nebo fotobudky. Hradec Králové a celá ČR.">
     <meta property="og:url" content="https://www.ivproduction.cz/kontakt.html">
     <meta property="og:site_name" content="Iv Production">
-    <meta property="og:image" content="https://ivanovgeno.github.io/ivproduction/assets/og/kontakt.jpg">
-    <meta property="og:image:secure_url" content="https://ivanovgeno.github.io/ivproduction/assets/og/kontakt.jpg">
+    <meta property="og:image" content="https://www.ivproduction.cz/assets/og/kontakt.jpg">
+    <meta property="og:image:secure_url" content="https://www.ivproduction.cz/assets/og/kontakt.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -30,15 +30,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Kontakt | Iv Production">
     <meta name="twitter:description" content="Řekněte nám o svém projektu a připravíme nezávazný další krok.">
-    <meta name="twitter:image" content="https://ivanovgeno.github.io/ivproduction/assets/og/kontakt.jpg">
+    <meta name="twitter:image" content="https://www.ivproduction.cz/assets/og/kontakt.jpg">
     <meta name="twitter:image:alt" content="Kontaktujte Iv Production">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Schema.org -->
+
+<!-- Schema.org -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -633,6 +631,8 @@
     <script src="contact-form-fallback.js?v=20260721-tailored-forms" defer></script>
     <script src="experience.js?v=20260712-portfoliohub" defer></script>
     <link rel="stylesheet" href="premium-heroes.css?v=20260727-all-pages">
+    <link rel="stylesheet" href="privacy-consent.css?v=20260818">
+    <script src="privacy-consent.js?v=20260818" defer></script>
 </head>
 
 <body class="page-contact">
@@ -853,9 +853,10 @@
             <h2>Kde nás najdete</h2>
             <div class="map-container">
                 <iframe
-                    src="https://www.google.com/maps?q=M.%20Majerov%C3%A9%20244%2C%20500%2011%20Hradec%20Kr%C3%A1lov%C3%A9%2011&amp;output=embed"
+                    data-consent-src="https://www.google.com/maps?q=M.%20Majerov%C3%A9%20244%2C%20500%2011%20Hradec%20Kr%C3%A1lov%C3%A9%2011&amp;output=embed"
+                    data-consent-service="Google Maps"
                     title="Mapa adresy Iv Production, M. Majerové 244, Hradec Králové"
-                    allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden>
                 </iframe>
             </div>
         </section>

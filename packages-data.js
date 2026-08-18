@@ -1,7 +1,7 @@
 /*
  * Iv Production – veřejná data balíčků.
  * Tento soubor je jediným zdrojem pro cenové karty na stránkách.
- * Upravovat lze také přes neveřejnou stránku sprava-balicku.html.
+ * Úpravy provádějte v tomto verzovaném souboru.
  */
 window.IVP_PACKAGE_DATA = {
     svatby: {

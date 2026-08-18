@@ -42,22 +42,11 @@ Tento web je navržen s důrazem na **vizuální zážitek**, rychlost a prémio
 4.  **GitHub Integrace**:
     *   Web je nyní plně verzován na GitHubu.
 
-## ✅ Co musíme ještě udělat (Doporučení & TODO)
+## ✅ Stav pro produkci
 
-Ačkoliv je web vizuálně hotový, pro ostrý provoz doporučuji následující kroky:
+Web obsahuje PHP kontaktní formulář, administrační rozhraní, ručně spravované Google recenze, kompletní SEO metadata, právní stránky a souhlas před načtením Google Maps, YouTube a Matterportu. Obrázky nahrané administrací se automaticky převádějí do WebP.
 
-### 1. Obsah a SEO
-*   [ ] **Doplnit reálné texty**: V sekcích „O nás“ nebo detailních popisech služeb.
-*   [ ] **Meta tagy**: Zkontrolovat `description` a `title` pro každou podstránku zvlášť.
-*   [ ] **Obrázky**: Nahradit placeholder obrázky (z Unsplash) za reálné fotky z vaší produkce.
-*   [ ] **Optimalizace**: Komprimovat obrázky do formátu WebP pro rychlejší načítání.
-
-### 2. Funkcionalita
-*   [ ] **Kontaktní formulář**: Momentálně je pouze frontend. Je potřeba napojit na odesílací skript (PHP/Node.js) nebo službu typu Formspree, aby emaily skutečně chodily.
-*   [ ] **Recenze**: Sekce recenzí je statická. Možnost napojit widget přímo z Google Maps (např. přes Elfsight) pro automatické stahování nových recenzí.
-
-### 3. Právní náležitosti
-*   [ ] Zkontrolovat stránky **GDPR (Ochrana osobních údajů)** a **Obchodní podmínky**, zda odpovídají aktuální legislativě a vaší firmě.
+Pro WEDOS nepřenášejte pracovní repozitář naslepo. Čistý balíček a povinné testy po nasazení popisuje [WEDOS_DEPLOYMENT.md](WEDOS_DEPLOYMENT.md).
 
 ## 🚀 Jak pokračovat?
 
