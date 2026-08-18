@@ -83,13 +83,6 @@
                 <button type="button" class="privacy-button privacy-button--primary" data-privacy-allow>Povolit externí obsah</button>
             </div>`;
 
-        const settings = document.createElement('button');
-        settings.type = 'button';
-        settings.className = 'privacy-settings';
-        settings.dataset.privacySettings = '';
-        settings.textContent = 'Soukromí';
-        settings.setAttribute('aria-label', 'Změnit nastavení soukromí');
-
         function hideBanner() {
             banner.classList.remove('is-visible');
             banner.setAttribute('aria-hidden', 'true');
@@ -119,8 +112,7 @@
             if (typeof action === 'function') action();
         });
 
-        settings.addEventListener('click', () => showBanner(true));
-        document.body.append(banner, settings);
+        document.body.append(banner);
 
         window.IVPPrivacy = {
             hasExternalConsent,
@@ -129,10 +121,7 @@
         };
 
         if (hasExternalConsent()) activateEmbeds();
-        else {
-            deactivateEmbeds();
-            if (!readChoice()) showBanner();
-        }
+        else deactivateEmbeds();
 
         function requestExternalConsent(action) {
             if (hasExternalConsent()) {
@@ -160,5 +149,8 @@
     document.addEventListener('DOMContentLoaded', () => {
         ensureEmbedPlaceholders();
         createControls();
+        document.querySelectorAll('[data-privacy-open]').forEach((control) => {
+            control.addEventListener('click', () => window.IVPPrivacy?.showSettings());
+        });
     });
 })();
