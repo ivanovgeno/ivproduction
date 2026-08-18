@@ -290,6 +290,10 @@
         if (!track || !sliderContainer) return;
 
         let destroySlider = initialiseSlider(sliderContainer);
+        if (section.dataset.googleReviewsMode === 'manual') {
+            section.dataset.googleReviewsSource = 'manual';
+            return;
+        }
         const sources = [
             section.dataset.googleReviewsEndpoint || 'api/google-reviews.php',
             section.dataset.googleReviewsStaticSource || 'google-reviews.json'

@@ -3,8 +3,8 @@
     const csrf = document.body.dataset.csrf;
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-    const state = { api: null, page: '', descriptors: [], dirty: new Map(), current: new Map(), saved: new Map() };
-    const titles = { dashboard: 'Přehled webu', content: 'Obsah webu', media: 'Obrázky', history: 'Historie změn', security: 'Přístup a zabezpečení' };
+    const state = { api: null, page: '', descriptors: [], dirty: new Map(), current: new Map(), saved: new Map(), videos: [] };
+    const titles = { dashboard: 'Přehled webu', content: 'Obsah webu', media: 'Média', videos: 'Video projekty', history: 'Historie změn', security: 'Přístup a zabezpečení' };
 
     function toast(message, error = false) {
         const el = $('#toast'); el.textContent = message; el.classList.toggle('is-error', error); el.classList.add('is-visible');
@@ -24,6 +24,7 @@
         $('#viewTitle').textContent = titles[view] || 'Administrace';
         $('#sidebar').classList.remove('is-open');
         if (view === 'media') loadMedia();
+        if (view === 'videos') loadVideos();
         if (view === 'history') loadHistory();
     }
     $$('[data-view]').forEach(button => button.addEventListener('click', () => show(button.dataset.view)));
@@ -72,6 +73,25 @@
         if (title) addDescriptor(list, { selector: 'title', property: 'title', original: title.textContent.trim(), label: 'Titulek stránky', group: 'SEO a sdílení' });
         const description = doc.querySelector('meta[name="description"]');
         if (description) addDescriptor(list, { selector: 'meta[name="description"]', property: 'content', original: description.content, label: 'Meta popis', group: 'SEO a sdílení' });
+        const seoFields = [
+            ['link[rel="canonical"]', 'href', 'Canonical URL'],
+            ['meta[property="og:title"]', 'content', 'Open Graph titulek'],
+            ['meta[property="og:description"]', 'content', 'Open Graph popis'],
+            ['meta[property="og:url"]', 'content', 'Open Graph URL'],
+            ['meta[property="og:image"]', 'content', 'Open Graph obrázek'],
+            ['meta[property="og:image:secure_url"]', 'content', 'Open Graph secure obrázek'],
+            ['meta[name="twitter:title"]', 'content', 'Twitter titulek'],
+            ['meta[name="twitter:description"]', 'content', 'Twitter popis'],
+            ['meta[name="twitter:image"]', 'content', 'Twitter obrázek']
+        ];
+        seoFields.forEach(([selector, property, label]) => {
+            const element = doc.querySelector(selector);
+            const value = element?.getAttribute(property) || '';
+            if (value) addDescriptor(list, { selector, property, original: value, label, group: 'SEO a sdílení', type: 'url' });
+        });
+        doc.querySelectorAll('script[type="application/ld+json"]').forEach((script, node) => {
+            addDescriptor(list, { selector: 'script[type="application/ld+json"]', property: 'json-ld', node, original: script.textContent.trim(), label: `Strukturovaná data JSON-LD ${node + 1}`, group: 'SEO a sdílení' });
+        });
         doc.querySelectorAll('h1,h2,h3,h4,p,li,label,a,button,option').forEach(el => {
             if (el.closest('script,style,svg,noscript') || el.closest('#mobileMenuOverlay') && el.classList.contains('mobile-menu-cta')) return;
             const selector = selectorFor(el, doc);
@@ -84,6 +104,14 @@
             addDescriptor(list, { selector, property: 'src', original: el.getAttribute('src') || '', label: 'Soubor obrázku', group, type: 'url' });
             addDescriptor(list, { selector, property: 'alt', original: el.getAttribute('alt') || '', label: 'Popis obrázku', group });
         });
+        doc.querySelectorAll('video').forEach(el => {
+            const selector = selectorFor(el, doc); const group = groupFor(el);
+            if (el.hasAttribute('src')) addDescriptor(list, { selector, property: 'src', original: el.getAttribute('src') || '', label: 'Soubor videa', group, type: 'url' });
+            addDescriptor(list, { selector, property: 'poster', original: el.getAttribute('poster') || '', label: 'Náhledový obrázek videa', group, type: 'url' });
+        });
+        doc.querySelectorAll('video source').forEach(el => addDescriptor(list, { selector: selectorFor(el, doc), property: 'src', original: el.getAttribute('src') || '', label: 'Zdroj videa', group: groupFor(el), type: 'url' }));
+        doc.querySelectorAll('iframe[src]').forEach(el => addDescriptor(list, { selector: selectorFor(el, doc), property: 'src', original: el.getAttribute('src') || '', label: 'Odkaz vloženého obsahu / videa', group: groupFor(el), type: 'url' }));
+        doc.querySelectorAll('[data-video]').forEach(el => addDescriptor(list, { selector: selectorFor(el, doc), property: 'data-video', original: el.getAttribute('data-video') || '', label: 'Odkaz videa', group: groupFor(el), type: 'url' }));
         doc.querySelectorAll('input[placeholder],textarea[placeholder]').forEach(el => addDescriptor(list, { selector: selectorFor(el, doc), property: 'placeholder', original: el.getAttribute('placeholder') || '', label: 'Nápověda pole', group: groupFor(el) }));
         return list.filter(item => item.original !== '');
     }
@@ -183,14 +211,41 @@
         finally { $('#saveContent').textContent = 'Uložit změny'; }
     });
     async function loadMedia() {
-        const grid = $('#mediaGrid'); grid.innerHTML = '<div class="loading">Načítám obrázky…</div>';
-        try { const data = await api('api/media.php'); grid.innerHTML = data.items.length ? '' : '<div class="empty-state">Zatím jste nenahráli žádný obrázek.</div>'; data.items.forEach(item => { const card = document.createElement('article'); card.className = 'media-card'; card.innerHTML = `<img src="../${item.url}" alt=""><div><strong>${item.name}</strong><button>Kopírovat cestu</button></div>`; $('button', card).addEventListener('click', () => navigator.clipboard.writeText(item.url).then(() => toast('Cesta obrázku zkopírována.'))); grid.append(card); }); }
+        const grid = $('#mediaGrid'); grid.innerHTML = '<div class="loading">Načítám média…</div>';
+        try { const data = await api('api/media.php'); grid.innerHTML = data.items.length ? '' : '<div class="empty-state">Zatím jste nenahráli žádné médium.</div>'; data.items.forEach(item => { const card = document.createElement('article'); card.className = 'media-card'; const preview = document.createElement(item.type === 'video' ? 'video' : 'img'); preview.src = '../' + item.url; if (item.type === 'video') { preview.controls = true; preview.preload = 'metadata'; } else preview.alt = ''; const details = document.createElement('div'); const name = document.createElement('strong'); name.textContent = item.name; const button = document.createElement('button'); button.textContent = 'Kopírovat cestu'; button.addEventListener('click', () => navigator.clipboard.writeText(item.url).then(() => toast('Cesta média zkopírována.'))); details.append(name, button); card.append(preview, details); grid.append(card); }); }
         catch (error) { grid.innerHTML = `<div class="empty-state">${error.message}</div>`; }
     }
     $('#uploadForm').addEventListener('submit', async event => {
         event.preventDefault(); const form = new FormData(event.currentTarget);
         try { const result = await api('api/media.php', { method: 'POST', body: form }); toast(result.message); event.currentTarget.reset(); loadMedia(); }
         catch (error) { toast(error.message, true); }
+    });
+    async function loadVideos() {
+        const container = $('#videoProjects');
+        container.innerHTML = '<div class="loading">Načítám video projekty…</div>';
+        try {
+            const data = await api('api/videos.php'); state.videos = data.items;
+            container.innerHTML = '';
+            data.items.forEach((item, index) => {
+                const row = document.createElement('article'); row.className = 'video-project';
+                const heading = document.createElement('h3'); heading.textContent = item.title || item.id;
+                row.append(heading);
+                [['title', 'Název'], ['label', 'Typ projektu'], ['image', 'Náhledový obrázek'], ['alt', 'Popis obrázku'], ['video', 'YouTube odkaz nebo cesta k videu']].forEach(([key, label]) => {
+                    const field = document.createElement('label'); field.textContent = label;
+                    const input = document.createElement('input'); input.value = item[key] || ''; input.type = key === 'video' || key === 'image' ? 'url' : 'text';
+                    if (key === 'video') input.placeholder = 'https://youtu.be/…';
+                    input.addEventListener('input', () => { state.videos[index][key] = input.value; if (key === 'title') heading.textContent = input.value || item.id; });
+                    field.append(input); row.append(field);
+                });
+                container.append(row);
+            });
+        } catch (error) { container.innerHTML = `<div class="empty-state">${error.message}</div>`; }
+    }
+    $('#saveVideos').addEventListener('click', async event => {
+        event.currentTarget.disabled = true;
+        try { const result = await api('api/videos.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: state.videos }) }); state.videos = result.items; toast(result.message); await loadVideos(); }
+        catch (error) { toast(error.message, true); }
+        finally { event.currentTarget.disabled = false; }
     });
     async function loadHistory() {
         const list = $('#historyList'); list.innerHTML = '<div class="loading">Načítám historii…</div>';

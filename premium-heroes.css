@@ -253,7 +253,7 @@ body[class] .premium-page-hero .premium-hero-lead {
 
 .home-page .premium-page-hero {
     --hero-filter: brightness(0.62) saturate(0.86) contrast(1.08);
-    --hero-image: url('hero-bg.jpg');
+    --hero-image: url('hero-bg.webp');
     --hero-image-position: center 42%;
     --hero-mobile-position: 58% 35%;
 }

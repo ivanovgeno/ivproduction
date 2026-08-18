@@ -40,7 +40,6 @@ PAGES = (
     Page("svatebni-lokace-kralovehradecky-kraj.html", "svatebni-lokace-kralovehradecky-kraj", "Jak vybrat svatební lokaci v Královéhradeckém kraji"),
     Page("hudba-ve-videu.html", "hudba-ve-videu", "Jak vybrat správný soundtrack k videu"),
     Page("kontakt.html", "kontakt", "Kontaktujte Iv Production"),
-    Page("kalkulacka.html", "kalkulacka", "Cenová kalkulačka video produkce"),
     Page("ochrana-osobnich-udaju.html", "ochrana-osobnich-udaju", "Ochrana osobních údajů Iv Production"),
     Page("obchodni-podminky.html", "obchodni-podminky", "Obchodní podmínky Iv Production"),
     Page("marketingovy-souhlas.html", "marketingovy-souhlas", "Marketingový souhlas Iv Production"),

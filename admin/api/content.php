@@ -20,7 +20,7 @@ $records = $payload['records'] ?? null;
 if (!ivp_valid_page($page) || !is_array($records)) ivp_json(['ok' => false, 'error' => 'Neplatná stránka nebo data.'], 422);
 if (count($records) > 1200) ivp_json(['ok' => false, 'error' => 'Příliš mnoho položek.'], 422);
 
-$allowedProperties = ['text-node', 'href', 'src', 'alt', 'content', 'title', 'placeholder'];
+$allowedProperties = ['text-node', 'href', 'src', 'alt', 'poster', 'data-video', 'content', 'title', 'placeholder', 'json-ld'];
 $clean = [];
 foreach ($records as $record) {
     if (!is_array($record)) continue;
@@ -30,8 +30,12 @@ foreach ($records as $record) {
     $node = max(0, min(30, (int) ($record['node'] ?? 0)));
     if ($selector === '' || strlen($selector) > 600 || !in_array($property, $allowedProperties, true) || strlen($value) > 20000) continue;
     $item = ['selector' => $selector, 'property' => $property, 'value' => $value];
-    if ($property === 'text-node') $item['node'] = $node;
+    if ($property === 'text-node' || $property === 'json-ld') $item['node'] = $node;
     $clean[] = $item;
+}
+
+if (!ivp_sync_static_seo($page, $clean)) {
+    ivp_json(['ok' => false, 'error' => 'SEO údaje se nepodařilo zapsat přímo do HTML stránky.'], 500);
 }
 
 $data = ivp_content();
