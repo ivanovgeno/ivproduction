@@ -83,13 +83,14 @@ function ivp_pages(): array
         'svatby.html' => 'Svatby', 'reality.html' => 'Reality', 'plesy.html' => 'Plesy',
         'fotobudka.html' => 'Fotobudka', '360budka.html' => 'Fotobudka 360°', 'promo.html' => 'Aftermovie & promo',
         'reels.html' => 'Reels', 'konference.html' => 'Konference', 'podcast.html' => 'Podcast',
-        'blog.html' => 'Blog', 'kalkulacka.html' => 'Kalkulačka',
+        'blog.html' => 'Blog',
         'jak-vybrat-svatebniho-kameramana.html' => 'Článek: výběr kameramana',
         'jak-pripravit-firemni-video.html' => 'Článek: firemní video',
         'proc-video-pomaha-prodat-nemovitost.html' => 'Článek: prodej nemovitosti',
         'hudba-ve-videu.html' => 'Článek: hudba ve videu',
         'trendy-svatebni-video-2026.html' => 'Článek: trendy 2026',
         'video-pro-socialni-site.html' => 'Článek: sociální sítě',
+        'svatebni-lokace-kralovehradecky-kraj.html' => 'Článek: svatební lokace Královéhradecký kraj',
         'ochrana-osobnich-udaju.html' => 'Ochrana osobních údajů',
         'obchodni-podminky.html' => 'Obchodní podmínky',
         'marketingovy-souhlas.html' => 'Marketingový souhlas',
@@ -100,6 +101,74 @@ function ivp_pages(): array
 function ivp_valid_page(string $page): bool
 {
     return isset(ivp_pages()[$page]);
+}
+
+function ivp_replace_tag_attribute(string $html, string $tag, string $matchAttribute, string $matchValue, string $targetAttribute, string $value): string
+{
+    $pattern = '~<' . preg_quote($tag, '~') . '\\b[^>]*\\b' . preg_quote($matchAttribute, '~') . '\\s*=\\s*"' . preg_quote($matchValue, '~') . '"[^>]*>~i';
+    return (string) preg_replace_callback($pattern, static function (array $match) use ($targetAttribute, $value): string {
+        $escaped = htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+        $tagHtml = $match[0];
+        $attributePattern = '~(\\b' . preg_quote($targetAttribute, '~') . '\\s*=\\s*)".*?"~i';
+        if (preg_match($attributePattern, $tagHtml)) {
+            return (string) preg_replace_callback($attributePattern, static fn(array $attribute): string => $attribute[1] . '"' . $escaped . '"', $tagHtml, 1);
+        }
+        return substr($tagHtml, 0, -1) . ' ' . $targetAttribute . '="' . $escaped . '">';
+    }, $html, 1);
+}
+
+/** @param array<int, array<string, mixed>> $records */
+function ivp_sync_static_seo(string $page, array $records): bool
+{
+    $path = IVP_ROOT . '/' . $page;
+    $html = file_get_contents($path);
+    if ($html === false) return false;
+    $changed = false;
+
+    $metaSelectors = [
+        'meta[name="description"]' => ['name', 'description'],
+        'meta[property="og:title"]' => ['property', 'og:title'],
+        'meta[property="og:description"]' => ['property', 'og:description'],
+        'meta[property="og:url"]' => ['property', 'og:url'],
+        'meta[property="og:image"]' => ['property', 'og:image'],
+        'meta[property="og:image:secure_url"]' => ['property', 'og:image:secure_url'],
+        'meta[name="twitter:title"]' => ['name', 'twitter:title'],
+        'meta[name="twitter:description"]' => ['name', 'twitter:description'],
+        'meta[name="twitter:image"]' => ['name', 'twitter:image'],
+    ];
+
+    foreach ($records as $record) {
+        $selector = (string) ($record['selector'] ?? '');
+        $property = (string) ($record['property'] ?? '');
+        $value = (string) ($record['value'] ?? '');
+        $before = $html;
+
+        if ($selector === 'title' && $property === 'title') {
+            $escaped = htmlspecialchars($value, ENT_NOQUOTES | ENT_SUBSTITUTE, 'UTF-8');
+            $html = (string) preg_replace_callback('~(<title\\b[^>]*>).*?(</title>)~is', static fn(array $match): string => $match[1] . $escaped . $match[2], $html, 1);
+        } elseif ($selector === 'link[rel="canonical"]' && $property === 'href') {
+            $html = ivp_replace_tag_attribute($html, 'link', 'rel', 'canonical', 'href', $value);
+        } elseif (isset($metaSelectors[$selector]) && $property === 'content') {
+            [$matchAttribute, $matchValue] = $metaSelectors[$selector];
+            $html = ivp_replace_tag_attribute($html, 'meta', $matchAttribute, $matchValue, 'content', $value);
+        } elseif ($selector === 'script[type="application/ld+json"]' && $property === 'json-ld') {
+            $decoded = json_decode($value, true);
+            if (!is_array($decoded)) continue;
+            $normalized = json_encode($decoded, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            if ($normalized === false) continue;
+            $target = max(0, (int) ($record['node'] ?? 0));
+            $seen = 0;
+            $html = (string) preg_replace_callback('~(<script\\b[^>]*type="application/ld\\+json"[^>]*>).*?(</script>)~is', static function (array $match) use (&$seen, $target, $normalized): string {
+                if ($seen++ !== $target) return $match[0];
+                return $match[1] . "\n" . $normalized . "\n" . $match[2];
+            }, $html);
+        }
+        if ($html !== $before) $changed = true;
+    }
+
+    if (!$changed) return true;
+    $tmp = $path . '.admin-tmp';
+    return file_put_contents($tmp, $html, LOCK_EX) !== false && rename($tmp, $path);
 }
 
 function ivp_content(): array

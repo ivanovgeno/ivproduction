@@ -13,7 +13,7 @@ $config = ivp_config();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/admin.css?v=1">
+    <link rel="stylesheet" href="assets/admin.css?v=2">
 </head>
 <body data-csrf="<?= htmlspecialchars(ivp_csrf(), ENT_QUOTES) ?>">
 <div class="admin-shell">
@@ -22,7 +22,8 @@ $config = ivp_config();
         <nav>
             <button class="nav-item is-active" data-view="dashboard"><span>⌂</span>Přehled</button>
             <button class="nav-item" data-view="content"><span>✎</span>Obsah webu</button>
-            <button class="nav-item" data-view="media"><span>▣</span>Obrázky</button>
+            <button class="nav-item" data-view="media"><span>▣</span>Média</button>
+            <button class="nav-item" data-view="videos"><span>▶</span>Video projekty</button>
             <button class="nav-item" data-view="history"><span>↶</span>Historie</button>
             <button class="nav-item" data-view="security"><span>⌁</span>Přístup</button>
         </nav>
@@ -44,7 +45,7 @@ $config = ivp_config();
             <?php endif; ?>
             <div class="welcome-card"><div><p class="eyebrow">SPRÁVA OBSAHU</p><h2>Všechny důležité úpravy na jednom místě.</h2><p>Vyberte stránku, najděte konkrétní sekci a upravte text, odkaz nebo obrázek. Každé uložení se automaticky zálohuje.</p></div><button class="primary" data-go="content">Upravit obsah</button></div>
             <div class="stats-grid"><article><span>Stránky</span><strong id="pageCount">—</strong><small>spravovaných stránek</small></article><article><span>Poslední změna</span><strong id="lastUpdate">—</strong><small>centrální obsah webu</small></article><article><span>Zálohy</span><strong>30</strong><small>posledních verzí</small></article></div>
-            <div class="quick-grid"><button data-go="content" data-page="index.html"><span>Homepage</span><small>Hero, služby, reference, CTA</small></button><button data-go="content" data-page="kontakt.html"><span>Kontakt</span><small>Formulář, kontakty, FAQ</small></button><button data-go="content" data-page="portfolio.html"><span>Portfolio</span><small>Ukázky práce a popisy</small></button><button data-go="media"><span>Obrázky</span><small>Nahrávání a použití médií</small></button></div>
+            <div class="quick-grid"><button data-go="content" data-page="index.html"><span>Homepage</span><small>Hero, služby, reference, CTA</small></button><button data-go="content" data-page="kontakt.html"><span>Kontakt</span><small>Formulář, kontakty, FAQ</small></button><button data-go="videos"><span>Video projekty</span><small>YouTube odkazy a náhledové obrázky</small></button><button data-go="media"><span>Média</span><small>Obrázky ve WebP a video soubory</small></button></div>
         </section>
 
         <section class="view" data-panel="content">
@@ -54,7 +55,11 @@ $config = ivp_config();
         </section>
 
         <section class="view" data-panel="media">
-            <div class="panel-card"><div class="panel-heading"><div><p class="eyebrow">KNIHOVNA MÉDIÍ</p><h2>Nahrát nový obrázek</h2></div></div><form id="uploadForm" class="upload-box"><input type="file" id="mediaFile" name="file" accept="image/jpeg,image/png,image/webp,image/gif" required><label for="mediaFile"><strong>Přetáhněte obrázek nebo klikněte pro výběr</strong><span>JPG, PNG, WebP nebo GIF · maximálně 8 MB</span></label><button class="primary" type="submit">Nahrát obrázek</button></form><div class="media-grid" id="mediaGrid"></div></div>
+            <div class="panel-card"><div class="panel-heading"><div><p class="eyebrow">KNIHOVNA MÉDIÍ</p><h2>Nahrát obrázek nebo video</h2></div></div><form id="uploadForm" class="upload-box"><input type="file" id="mediaFile" name="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm" required><label for="mediaFile"><strong>Přetáhněte médium nebo klikněte pro výběr</strong><span>Obrázky se automaticky převedou do WebP (max. 12 MB). MP4 a WebM max. 200 MB; skutečný limit může být nižší podle hostingu.</span></label><button class="primary" type="submit">Nahrát médium</button></form><div class="media-grid" id="mediaGrid"></div></div>
+        </section>
+
+        <section class="view" data-panel="videos">
+            <div class="panel-card"><div class="panel-heading"><div><p class="eyebrow">PORTFOLIO</p><h2>Video projekty</h2></div><button class="primary" id="saveVideos">Uložit videa</button></div><p class="muted">Vložte běžný odkaz z YouTube, YouTube Shorts nebo youtu.be. Při uložení se automaticky převede na bezpečný embed odkaz. Použít lze také cestu k nahranému MP4/WebM z knihovny médií.</p><div class="video-projects" id="videoProjects"><div class="loading">Načítám video projekty…</div></div></div>
         </section>
 
         <section class="view" data-panel="history">
@@ -67,6 +72,6 @@ $config = ivp_config();
     </main>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="assets/admin.js?v=1"></script>
+<script src="assets/admin.js?v=2"></script>
 </body>
 </html>

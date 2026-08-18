@@ -33,7 +33,7 @@
             <div class="portfolio-video-modal__backdrop" data-portfolio-close></div>
             <section class="portfolio-video-modal__dialog" role="dialog" aria-modal="true" aria-label="Přehrávač ukázky">
                 <button class="portfolio-video-modal__close" type="button" data-portfolio-close aria-label="Zavřít video">×</button>
-                <div class="portfolio-video-modal__frame"><iframe title="Ukázka z portfolia" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+                <div class="portfolio-video-modal__frame"><iframe title="Ukázka z portfolia" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><video controls playsinline hidden></video></div>
             </section>`;
         document.body.append(lightbox);
 
@@ -49,6 +49,8 @@
         lightbox.setAttribute('aria-hidden', 'true');
         const frame = lightbox.querySelector('iframe');
         if (frame) frame.src = '';
+        const video = lightbox.querySelector('video');
+        if (video) { video.pause(); video.removeAttribute('src'); video.load(); }
         document.body.style.overflow = '';
         lightbox._lastTrigger?.focus();
     }
@@ -57,8 +59,19 @@
         if (!project?.video) return;
         const lightbox = ensureLightbox();
         const frame = lightbox.querySelector('iframe');
+        const video = lightbox.querySelector('video');
         lightbox._lastTrigger = trigger || document.activeElement;
-        frame.src = `${project.video}${project.video.includes('?') ? '&' : '?'}autoplay=1&rel=0`;
+        const isLocalVideo = /\.(mp4|webm)(?:$|[?#])/i.test(project.video);
+        frame.hidden = isLocalVideo;
+        video.hidden = !isLocalVideo;
+        if (isLocalVideo) {
+            frame.src = '';
+            video.src = project.video;
+            video.play().catch(() => {});
+        } else {
+            video.removeAttribute('src');
+            frame.src = `${project.video}${project.video.includes('?') ? '&' : '?'}autoplay=1&rel=0`;
+        }
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';

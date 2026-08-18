@@ -186,6 +186,12 @@ function ivp_rating_value(mixed $value): int
     };
 }
 
+function ivp_average_rating(mixed $value): float
+{
+    if (!is_numeric($value)) return 0.0;
+    return max(0.0, min(5.0, round((float) $value, 1)));
+}
+
 /** @param array<string, mixed> $review
  *  @return array<string, mixed>
  */
@@ -240,7 +246,7 @@ function ivp_fetch_reviews(array $config): array
         }
 
         if ($page === 0) {
-            $averageRating = (float) ivp_rating_value($data['averageRating'] ?? 0);
+            $averageRating = ivp_average_rating($data['averageRating'] ?? 0);
             $totalReviewCount = is_numeric($data['totalReviewCount'] ?? null) ? (int) $data['totalReviewCount'] : 0;
         }
 

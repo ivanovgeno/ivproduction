@@ -161,6 +161,25 @@ document.addEventListener('DOMContentLoaded', () => {
     setMenuState(false);
 });
 
+// Keep the current-page indication consistent in desktop and mobile menus.
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPage = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    document.querySelectorAll('header nav a[href], #mobileMenuOverlay a[href]').forEach((link) => {
+        let targetPage = '';
+        try { targetPage = (new URL(link.getAttribute('href'), location.href).pathname.split('/').pop() || 'index.html').toLowerCase(); }
+        catch (_) { return; }
+        const isCurrent = targetPage === currentPage;
+        link.classList.toggle('active', isCurrent);
+        if (isCurrent) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+    });
+    document.querySelectorAll('header .nav-dropdown').forEach((dropdown) => {
+        const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+        const hasCurrentChild = Boolean(dropdown.querySelector('.nav-dropdown-menu a[aria-current="page"]'));
+        if (trigger) trigger.classList.toggle('active', hasCurrentChild || trigger.getAttribute('aria-current') === 'page');
+    });
+});
+
 // Prevent opened third-party pages from retaining access to the Iv Production tab.
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[target="_blank"]').forEach((link) => {

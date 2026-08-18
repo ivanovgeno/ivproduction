@@ -54,7 +54,6 @@ PREVIEWS = (
     Preview("svatebni-lokace-kralovehradecky-kraj", "assets/site/wedding-two.webp", "ČLÁNEK · SVATBY", "Jak vybrat svatební lokaci", (0.69, 0.50)),
     Preview("hudba-ve-videu", "assets/site/music.webp", "ČLÁNEK · TIPY", "Jak vybrat správný soundtrack", (0.69, 0.48)),
     Preview("kontakt", "assets/site/conference-room.webp", "KONTAKT", "Pojďme vytvořit něco výjimečného", (0.70, 0.50)),
-    Preview("kalkulacka", "assets/site/laptop.webp", "CENOVÁ KALKULAČKA", "Spočítejte si cenu své produkce", (0.70, 0.50)),
     Preview("ochrana-osobnich-udaju", "assets/site/documents.webp", "INFORMACE", "Ochrana osobních údajů", (0.69, 0.50)),
     Preview("obchodni-podminky", "assets/site/documents.webp", "INFORMACE", "Obchodní podmínky", (0.69, 0.50)),
     Preview("marketingovy-souhlas", "assets/site/marketing.webp", "INFORMACE", "Marketingový souhlas", (0.69, 0.50)),

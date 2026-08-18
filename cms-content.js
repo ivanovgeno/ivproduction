@@ -22,7 +22,13 @@
             element.textContent = record.value;
             return;
         }
-        if (['href', 'src', 'alt', 'content', 'title', 'placeholder'].includes(record.property)) {
+        if (record.property === 'json-ld') {
+            const scripts = document.querySelectorAll(record.selector);
+            const script = scripts[Number(record.node || 0)];
+            if (script) script.textContent = record.value;
+            return;
+        }
+        if (['href', 'src', 'alt', 'poster', 'data-video', 'content', 'title', 'placeholder'].includes(record.property)) {
             element.setAttribute(record.property, record.value);
             if (record.property === 'src' && element.tagName === 'IMG') element.removeAttribute('srcset');
         }

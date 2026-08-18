@@ -6,7 +6,7 @@ files_to_update = [
     "index.html", "svatby.html", "reality.html", "plesy.html", 
     "konference.html", "portfolio.html", "fotobudka.html", 
     "podcast.html", "promo.html", "kontakt.html", "360budka.html",
-    "blog.html", "kalkulacka.html",
+    "blog.html",
     "ochrana-osobnich-udaju.html", "marketingovy-souhlas.html", "obchodni-podminky.html"
 ]
 

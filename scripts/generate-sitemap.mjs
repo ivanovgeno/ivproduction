@@ -30,7 +30,6 @@ const pages = [
     { path: '/svatebni-lokace-kralovehradecky-kraj.html', file: 'svatebni-lokace-kralovehradecky-kraj.html', changefreq: 'yearly', priority: '0.7' },
     { path: '/hudba-ve-videu.html', file: 'hudba-ve-videu.html', changefreq: 'yearly', priority: '0.7' },
     { path: '/kontakt.html', file: 'kontakt.html', changefreq: 'monthly', priority: '0.7' },
-    { path: '/kalkulacka.html', file: 'kalkulacka.html', changefreq: 'monthly', priority: '0.6' },
     { path: '/ochrana-osobnich-udaju.html', file: 'ochrana-osobnich-udaju.html', changefreq: 'yearly', priority: '0.3' },
     { path: '/obchodni-podminky.html', file: 'obchodni-podminky.html', changefreq: 'yearly', priority: '0.3' },
     { path: '/marketingovy-souhlas.html', file: 'marketingovy-souhlas.html', changefreq: 'yearly', priority: '0.3' }
