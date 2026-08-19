@@ -287,10 +287,10 @@ body[class] .premium-page-hero .premium-hero-lead {
 }
 
 .page-reels .premium-page-hero {
-    --hero-filter: brightness(0.72) saturate(0.84) contrast(1.08);
-    --hero-image: url('assets/site/reels.webp');
-    --hero-image-position: 78% center;
-    --hero-mobile-position: 66% center;
+    --hero-filter: brightness(0.88) saturate(0.86) contrast(1.06);
+    --hero-image: url('assets/site/reels-hero-v2.webp');
+    --hero-image-position: 72% center;
+    --hero-mobile-position: 70% center;
 }
 
 .page-conference .premium-page-hero {
@@ -315,24 +315,24 @@ body[class] .premium-page-hero .premium-hero-lead {
 }
 
 .page-portfolio .premium-page-hero {
-    --hero-filter: brightness(0.66) saturate(0.72) contrast(1.1);
-    --hero-image: url('assets/site/video-production.webp');
-    --hero-image-position: 76% center;
-    --hero-mobile-position: 68% center;
+    --hero-filter: brightness(0.86) saturate(0.78) contrast(1.08);
+    --hero-image: url('assets/site/portfolio-hero-v2.webp');
+    --hero-image-position: 72% center;
+    --hero-mobile-position: 70% center;
 }
 
 .page-contact .premium-page-hero {
-    --hero-filter: brightness(0.68) saturate(0.76) contrast(1.1);
-    --hero-image: url('assets/site/studio.webp');
+    --hero-filter: brightness(0.88) saturate(0.82) contrast(1.06);
+    --hero-image: url('assets/site/contact-hero-v2.webp');
     --hero-image-position: 72% center;
-    --hero-mobile-position: 64% center;
+    --hero-mobile-position: 70% center;
 }
 
 .page-blog .premium-page-hero {
-    --hero-filter: brightness(0.68) saturate(0.72) contrast(1.08);
-    --hero-image: url('assets/site/blog-writing.webp');
-    --hero-image-position: 74% center;
-    --hero-mobile-position: 64% center;
+    --hero-filter: brightness(0.86) saturate(0.8) contrast(1.08);
+    --hero-image: url('assets/site/blog-hero-v2.webp');
+    --hero-image-position: 72% center;
+    --hero-mobile-position: 70% center;
 }
 
 .page-calculator .premium-page-hero {
