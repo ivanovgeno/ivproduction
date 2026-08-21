@@ -33,6 +33,7 @@ body[class] .premium-page-hero::before {
     background-size: cover !important;
     content: '' !important;
     filter: var(--hero-filter) !important;
+    height: auto !important;
     inset: var(--premium-hero-header-safe) 0 0 !important;
     -webkit-mask-image: none !important;
     mask-image: none !important;
@@ -40,6 +41,7 @@ body[class] .premium-page-hero::before {
     position: absolute !important;
     transform: scale(1.012) !important;
     transform-origin: center !important;
+    width: auto !important;
     z-index: -2 !important;
 }
 
