@@ -34,6 +34,9 @@ body[class] .premium-page-hero::before {
     content: '' !important;
     filter: var(--hero-filter) !important;
     inset: var(--premium-hero-header-safe) 0 0 !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    opacity: 1 !important;
     position: absolute !important;
     transform: scale(1.012) !important;
     transform-origin: center !important;
