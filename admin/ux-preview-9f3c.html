@@ -1,8 +1,4 @@
-<?php
-require __DIR__ . '/inc/bootstrap.php';
-ivp_require_auth();
-$config = ivp_config();
-?>
+
 <!doctype html>
 <html lang="cs">
 <head>
@@ -37,9 +33,9 @@ $config = ivp_config();
         </header>
 
         <section class="view is-active" data-panel="dashboard">
-            <?php if (!empty($config['force_password_change'])): ?>
+            
             <div class="notice warning"><strong>Změňte úvodní heslo.</strong><span>Než začnete upravovat web, nastavte si vlastní heslo v části Přístup.</span><button data-go="security">Změnit heslo</button></div>
-            <?php endif; ?>
+            
             <div class="welcome-card"><div><p class="eyebrow">SPRÁVA OBSAHU</p><h2>Všechny důležité úpravy na jednom místě.</h2><p>Vyberte stránku, najděte konkrétní sekci a upravte text, odkaz nebo obrázek. Každé uložení se automaticky zálohuje.</p></div><button class="primary" data-go="content">Upravit obsah</button></div>
             <div class="stats-grid"><article><span>Stránky</span><strong id="pageCount">—</strong><small>spravovaných stránek</small></article><article><span>Poslední změna</span><strong id="lastUpdate">—</strong><small>centrální obsah webu</small></article><article><span>Zálohy</span><strong>30</strong><small>posledních verzí</small></article></div>
             <div class="quick-grid"><button data-go="content" data-page="index.html"><span>Homepage</span><small>Hero, služby, reference, CTA</small></button><button data-go="content" data-page="kontakt.html"><span>Kontakt</span><small>Formulář, kontakty, FAQ</small></button><button data-go="videos"><span>Video projekty</span><small>YouTube odkazy a náhledové obrázky</small></button><button data-go="media"><span>Média</span><small>Obrázky ve WebP a video soubory</small></button></div>
@@ -87,6 +83,7 @@ $config = ivp_config();
     </form>
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/ux-preview-mock.js"></script>
 <script src="assets/admin.js?v=20260901-ux"></script>
 </body>
 </html>

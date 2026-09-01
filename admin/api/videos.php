@@ -47,6 +47,7 @@ if (!is_array($items) || count($items) > 50) ivp_json(['ok' => false, 'error' =>
 
 $allowedCategories = ['svatby', 'reality', 'plesy', 'fotobudka', '360budka', 'promo', 'konference', 'podcast', 'reels'];
 $clean = [];
+$ids = [];
 foreach ($items as $item) {
     if (!is_array($item)) continue;
     $id = preg_replace('/[^a-z0-9-]/', '', strtolower((string) ($item['id'] ?? '')));
@@ -54,14 +55,17 @@ foreach ($items as $item) {
     $image = trim((string) ($item['image'] ?? ''));
     if (str_starts_with($video, 'assets/uploads/')) $video = '/' . $video;
     if (preg_match('~^(?:assets/|images/|partners/)~', $image)) $image = '/' . $image;
-    if ($id === '' || strlen($id) > 80 || strlen($video) > 500 || strlen($image) > 500) continue;
+    $title = substr(trim((string) ($item['title'] ?? '')), 0, 240);
+    $categories = array_values(array_intersect($allowedCategories, array_map('strval', (array) ($item['categories'] ?? []))));
+    if ($id === '' || isset($ids[$id]) || $title === '' || !$categories || $video === '' || $image === '' || strlen($id) > 80 || strlen($video) > 500 || strlen($image) > 500) continue;
     if ($video !== '' && !preg_match('~^(https://www\\.youtube(?:-nocookie)?\\.com/embed/[A-Za-z0-9_-]{6,20}|/assets/uploads/[A-Za-z0-9._-]+\\.(?:mp4|webm))$~', $video)) continue;
     if ($image !== '' && !preg_match('~^(?:https://[^\\s]+|[A-Za-z0-9_./-]+\\.(?:webp|png|jpe?g|gif))$~i', $image)) continue;
+    $ids[$id] = true;
     $clean[] = [
         'id' => $id,
-        'title' => substr(trim((string) ($item['title'] ?? '')), 0, 240),
+        'title' => $title,
         'label' => substr(trim((string) ($item['label'] ?? '')), 0, 160),
-        'categories' => array_values(array_intersect($allowedCategories, array_map('strval', (array) ($item['categories'] ?? [])))),
+        'categories' => $categories,
         'image' => $image,
         'alt' => substr(trim((string) ($item['alt'] ?? '')), 0, 400),
         'video' => $video,
@@ -70,7 +74,18 @@ foreach ($items as $item) {
 if (count($clean) !== count($items)) ivp_json(['ok' => false, 'error' => 'Některá položka obsahuje neplatný odkaz nebo údaje.'], 422);
 
 $json = json_encode($clean, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-if ($json === false || file_put_contents(IVP_PORTFOLIO_DATA . '.tmp', "window.IVPortfolioProjects = {$json};\n", LOCK_EX) === false || !rename(IVP_PORTFOLIO_DATA . '.tmp', IVP_PORTFOLIO_DATA)) {
+$source = $json === false ? false : "window.IVPortfolioProjects = {$json};\n";
+$tmp = IVP_PORTFOLIO_DATA . '.tmp';
+if (is_file(IVP_PORTFOLIO_DATA)) {
+    if (!is_dir(IVP_HISTORY)) @mkdir(IVP_HISTORY, 0750, true);
+    @copy(IVP_PORTFOLIO_DATA, IVP_HISTORY . '/portfolio-' . date('Ymd-His') . '-' . bin2hex(random_bytes(2)) . '.js');
+}
+$saved = $source !== false && file_put_contents($tmp, $source, LOCK_EX) !== false && rename($tmp, IVP_PORTFOLIO_DATA);
+if (!$saved) {
+    @unlink($tmp);
+    $saved = $source !== false && file_put_contents(IVP_PORTFOLIO_DATA, $source, LOCK_EX) !== false;
+}
+if (!$saved) {
     ivp_json(['ok' => false, 'error' => 'Videa se nepodařilo uložit.'], 500);
 }
 ivp_json(['ok' => true, 'message' => 'Video projekty byly uloženy.', 'items' => $clean]);
