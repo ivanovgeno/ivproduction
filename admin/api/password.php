@@ -17,5 +17,11 @@ $config['password_salt'] = $salt;
 $config['password_hash'] = hash_pbkdf2('sha256', $new, $salt, (int) $config['password_iterations'], 64, false);
 $config['force_password_change'] = false;
 $php = "<?php\ndeclare(strict_types=1);\n\nreturn " . var_export($config, true) . ";\n";
-if (file_put_contents(IVP_CONFIG . '.tmp', $php, LOCK_EX) === false || !rename(IVP_CONFIG . '.tmp', IVP_CONFIG)) ivp_json(['ok' => false, 'error' => 'Heslo se nepodařilo uložit.'], 500);
+$tmp = IVP_CONFIG . '.tmp';
+$saved = file_put_contents($tmp, $php, LOCK_EX) !== false && rename($tmp, IVP_CONFIG);
+if (!$saved) {
+    @unlink($tmp);
+    $saved = file_put_contents(IVP_CONFIG, $php, LOCK_EX) !== false;
+}
+if (!$saved) ivp_json(['ok' => false, 'error' => 'Heslo se nepodařilo uložit.'], 500);
 ivp_json(['ok' => true, 'message' => 'Heslo bylo bezpečně změněno.']);

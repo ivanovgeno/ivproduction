@@ -175,7 +175,12 @@ function ivp_sync_static_seo(string $page, array $records): bool
 
     if (!$changed) return true;
     $tmp = $path . '.admin-tmp';
-    return file_put_contents($tmp, $html, LOCK_EX) !== false && rename($tmp, $path);
+    if (file_put_contents($tmp, $html, LOCK_EX) !== false && rename($tmp, $path)) return true;
+    @unlink($tmp);
+
+    // Some shared hostings allow replacing an existing file but not creating a
+    // temporary sibling. Keep publishing available in that configuration too.
+    return file_put_contents($path, $html, LOCK_EX) !== false;
 }
 
 function ivp_content(): array
@@ -214,5 +219,9 @@ function ivp_write_content(array $data): bool
     $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     if ($json === false) return false;
     $tmp = IVP_CONTENT . '.tmp';
-    return file_put_contents($tmp, $json . "\n", LOCK_EX) !== false && rename($tmp, IVP_CONTENT);
+    $payload = $json . "\n";
+    if (file_put_contents($tmp, $payload, LOCK_EX) !== false && rename($tmp, IVP_CONTENT)) return true;
+    @unlink($tmp);
+
+    return file_put_contents(IVP_CONTENT, $payload, LOCK_EX) !== false;
 }
