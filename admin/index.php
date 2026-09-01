@@ -10,7 +10,7 @@ $config = ivp_config();
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="robots" content="noindex,nofollow">
     <title>Administrace | Iv Production</title>
-    <link rel="stylesheet" href="assets/admin.css?v=20260901-ux">
+    <link rel="stylesheet" href="assets/admin.css?v=20260901-ux2">
 </head>
 <body data-csrf="<?= htmlspecialchars(ivp_csrf(), ENT_QUOTES) ?>">
 <div class="admin-shell">
@@ -87,6 +87,6 @@ $config = ivp_config();
     </form>
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="assets/admin.js?v=20260901-ux"></script>
+<script src="assets/admin.js?v=20260901-ux2"></script>
 </body>
 </html>
