@@ -333,6 +333,20 @@ body[class] .premium-page-hero .premium-hero-lead {
     --hero-mobile-position: 70% center;
 }
 
+.page-newborn .premium-page-hero {
+    --hero-filter: brightness(0.72) saturate(0.78) contrast(1.06);
+    --hero-image: url('assets/site/newborn-family.webp');
+    --hero-image-position: center;
+    --hero-mobile-position: center;
+}
+
+.page-shop .premium-page-hero {
+    --hero-filter: brightness(0.8) saturate(0.78) contrast(1.06);
+    --hero-image: url('assets/site/event-detail.webp');
+    --hero-image-position: 72% center;
+    --hero-mobile-position: 70% center;
+}
+
 .page-blog .premium-page-hero {
     --hero-filter: brightness(0.86) saturate(0.8) contrast(1.08);
     --hero-image: url('assets/site/blog-hero-back-v2.webp');

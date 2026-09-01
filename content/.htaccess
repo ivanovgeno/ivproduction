@@ -1,5 +1,5 @@
 Options -Indexes
-<FilesMatch "\.(json|bak)$">
+<FilesMatch "\.json$">
     Require all granted
     <IfModule mod_headers.c>
         Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"

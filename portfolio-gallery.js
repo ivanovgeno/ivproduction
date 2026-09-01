@@ -306,7 +306,7 @@
                         <p class="related-work__eyebrow">UKÁZKY Z PORTFOLIA</p>
                         <h2>${escapeHtml(title)} <span>${escapeHtml(accent)}</span></h2>
                     </div>
-                    <a href="portfolio.html?category=${encodeURIComponent(category)}#projekty" class="related-work__link">Zobrazit celé portfolio <i aria-hidden="true">→</i></a>
+                    <a href="/ukazky/?category=${encodeURIComponent(category)}#projekty" class="related-work__link">Zobrazit celé portfolio <i aria-hidden="true">→</i></a>
                 </div>` : ''}
                 <div class="premium-work-slider" data-portfolio-autoplay>
                     <button class="premium-work-slider__control" type="button" data-slider-previous aria-label="Předchozí ukázky">←</button>

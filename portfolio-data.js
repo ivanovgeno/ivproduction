@@ -1,108 +1,102 @@
 window.IVPortfolioProjects = [
     {
-        "id": "tereza-martin",
-        "title": "Tereza & Martin",
+        "id": "tomas-kristyna-2026",
+        "title": "Tomáš & Kristýna · 20. 6. 2026",
         "label": "Svatební film",
         "categories": [
             "svatby"
         ],
-        "image": "assets/site/wedding.webp",
+        "image": "/assets/site/wedding.webp",
         "alt": "Svatební pár ve zlatém večerním světle",
-        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/6AC4PnE1RF4"
     },
     {
-        "id": "luxusni-vila",
-        "title": "Luxusní vila Praha",
+        "id": "rodinny-dum-ceske-mezirici",
+        "title": "Rodinný dům · České Meziříčí",
         "label": "Reality",
         "categories": [
             "reality"
         ],
-        "image": "assets/site/reality.webp",
+        "image": "/assets/site/reality.webp",
         "alt": "Luxusní interiér nemovitosti",
-        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/tL52LiBnCFc"
     },
     {
-        "id": "maturitni-ples",
-        "title": "Maturitní ples 2025",
+        "id": "maturitni-ples-kojetin-2026",
+        "title": "Maturitní ples Kojetín · 6. 2. 2026",
         "label": "Ples & event",
         "categories": [
-            "plesy",
-            "fotobudka",
-            "360budka"
+            "plesy"
         ],
-        "image": "assets/site/event.webp",
+        "image": "/assets/site/event.webp",
         "alt": "Konfety a světla na večerní akci",
-        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/2gdlYieJtOA"
     },
     {
-        "id": "petra-jan",
-        "title": "Petra & Jan",
+        "id": "nikola-martin-2026",
+        "title": "Nikola & Martin · 6. 6. 2026",
         "label": "Svatební film",
         "categories": [
             "svatby"
         ],
-        "image": "assets/site/wedding-two.webp",
+        "image": "/assets/site/wedding-two.webp",
         "alt": "Novomanželé při svatebním obřadu",
-        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/R0lTPK7pN3Q"
     },
     {
-        "id": "moderni-byt",
-        "title": "Moderní byt Hradec",
+        "id": "rodinny-dum-tri-byty",
+        "title": "Rodinný dům se třemi byty",
         "label": "Reality",
         "categories": [
             "reality"
         ],
-        "image": "assets/site/house.webp",
+        "image": "/assets/site/house.webp",
         "alt": "Moderní dům v denním světle",
-        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/_ao-UMGxM3w"
     },
     {
-        "id": "business-summit",
-        "title": "Business Summit 2025",
-        "label": "Konference",
+        "id": "mobility",
+        "title": "Mobility",
+        "label": "Firemní video",
         "categories": [
             "konference",
             "promo"
         ],
-        "image": "assets/site/conference.webp",
+        "image": "/assets/site/conference.webp",
         "alt": "Přednášející na firemní konferenci",
         "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
     },
     {
-        "id": "lucie-david",
-        "title": "Lucie & David",
+        "id": "lucka-josef-2026",
+        "title": "Lucka & Josef · 13. 6. 2026",
         "label": "Svatební film",
         "categories": [
             "svatby"
         ],
-        "image": "assets/site/wedding-three.webp",
+        "image": "/assets/site/wedding-three.webp",
         "alt": "Svatební detail ve večerním světle",
-        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/9FI486Wfrew"
     },
     {
-        "id": "mestska-noc",
-        "title": "Městský ples Jaroměř",
+        "id": "ples-holice-2026",
+        "title": "Ples Holice · 6. 2. 2026",
         "label": "Ples & event",
         "categories": [
-            "plesy",
-            "fotobudka",
-            "360budka"
+            "plesy"
         ],
-        "image": "assets/site/concert.webp",
+        "image": "/assets/site/concert.webp",
         "alt": "Hosté na večerní společenské akci",
-        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
+        "video": "https://www.youtube-nocookie.com/embed/vC2C1xJHi7g"
     },
     {
-        "id": "studio-session",
-        "title": "Studio Session",
-        "label": "Podcast & Reels",
+        "id": "aaa-taxi-promo",
+        "title": "AAA Taxi",
+        "label": "Promo video",
         "categories": [
-            "podcast",
-            "reels",
             "promo"
         ],
-        "image": "hero-bg.webp",
-        "alt": "Video podcast natáčený v profesionálním studiu",
-        "video": "https://www.youtube-nocookie.com/embed/7VZKvRrJV0E"
+        "image": "/assets/site/promo.webp",
+        "alt": "Promo video pro taxislužbu",
+        "video": "https://www.youtube-nocookie.com/embed/r-CEja_yPXs"
     }
 ];

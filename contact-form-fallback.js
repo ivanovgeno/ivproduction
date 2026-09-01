@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const forms = document.querySelectorAll('form[action="kontakt-handler.php"]');
+    const forms = document.querySelectorAll('form[action="/kontakt-handler.php"]');
     if (!forms.length) return;
 
     document.querySelectorAll('[data-inquiry-package]').forEach((link) => {
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let hasPhpHandler = false;
     try {
-        const response = await fetch('kontakt-handler.php?health=1', {
+        const response = await fetch('/kontakt-handler.php?health=1', {
             cache: 'no-store',
             headers: { Accept: 'application/json' }
         });
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 body.push(`${fieldLabel(control)}: ${values.join(', ')}`);
             });
 
-            body.push('', 'Odesláno z webu Iv Production na GitHub Pages.');
+            body.push('', 'Poptávka připravená na webu Iv Production.');
             const serviceTitle = form.dataset.serviceTitle || String(data.get('service') || '').trim();
             const subjectText = serviceTitle
                 ? `Nezávazná poptávka – ${serviceTitle}`

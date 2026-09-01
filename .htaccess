@@ -1,21 +1,86 @@
 Options -Indexes
+DirectoryIndex index.html index.php
 
 ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # One canonical HTTPS host for production.
+    # Development and repository metadata must never be public on hosting.
+    # These checks precede canonical redirects so a blocked implementation
+    # file can never be exposed through a prettier URL.
+    RewriteRule ^(?:\.git|\.github|scripts|tools|release|dist|zálohy|Záloha)(?:/|$) - [F,L,NC]
+    RewriteRule ^(?:index(?:_v1_backup|%20chyba|\s+chyba)|sprava-balicku|kalkulacka)\.html$ - [F,L,NC]
+
+    # Direct requests for implementation files must land on the public URL in
+    # one permanent hop.  THE_REQUEST prevents loops after internal rewrites.
+    RewriteCond %{THE_REQUEST} \s/+index\.html(?:[?\s]|$) [NC]
+    RewriteRule ^index\.html$ https://www.ivproduction.cz/ [R=301,L,NE]
+
+    RewriteCond %{THE_REQUEST} \s/+fotobudka\.html(?:[?\s]|$) [NC]
+    RewriteRule ^fotobudka\.html$ https://www.ivproduction.cz/ivbudka/ [R=301,L,NE]
+    RewriteCond %{THE_REQUEST} \s/+360budka\.html(?:[?\s]|$) [NC]
+    RewriteRule ^360budka\.html$ https://www.ivproduction.cz/ivbudka360/ [R=301,L,NE]
+    RewriteCond %{THE_REQUEST} \s/+promo\.html(?:[?\s]|$) [NC]
+    RewriteRule ^promo\.html$ https://www.ivproduction.cz/aftermovie-promo-hudebniklipy/ [R=301,L,NE]
+    RewriteCond %{THE_REQUEST} \s/+portfolio\.html(?:[?\s]|$) [NC]
+    RewriteRule ^portfolio\.html$ https://www.ivproduction.cz/ukazky/ [R=301,L,NE]
+    RewriteCond %{THE_REQUEST} \s/+blog\.html(?:[?\s]|$) [NC]
+    RewriteRule ^blog\.html$ https://www.ivproduction.cz/svatebni-blog/ [R=301,L,NE]
+
+    RewriteCond %{THE_REQUEST} \s/+l/[^?\s]+/index\.html(?:[?\s]|$) [NC]
+    RewriteRule ^(l/[A-Za-z0-9-]+)/index\.html$ https://www.ivproduction.cz/$1/ [R=301,L,NE]
+
+    # Never turn a missing .html file or the error document into a new URL.
+    RewriteCond %{THE_REQUEST} \s/+([^?\s]+)\.html(?:[?\s]|$) [NC]
+    RewriteCond %{REQUEST_URI} !^/404\.html$ [NC]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^([A-Za-z0-9-]+)\.html$ https://www.ivproduction.cz/$1/ [R=301,L,NE]
+
+    # Alternative slugs from the development version have the same target.
+    RewriteRule ^fotobudka/?$ https://www.ivproduction.cz/ivbudka/ [R=301,L,NE]
+    RewriteRule ^360budka/?$ https://www.ivproduction.cz/ivbudka360/ [R=301,L,NE]
+    RewriteRule ^promo/?$ https://www.ivproduction.cz/aftermovie-promo-hudebniklipy/ [R=301,L,NE]
+    RewriteRule ^portfolio/?$ https://www.ivproduction.cz/ukazky/ [R=301,L,NE]
+    RewriteRule ^blog/?$ https://www.ivproduction.cz/svatebni-blog/ [R=301,L,NE]
+
+    # Indexed Webnode URLs whose content was consolidated in the new site.
+    # Absolute targets keep these migrations to one hop regardless of the
+    # incoming protocol, host or trailing slash.
+    RewriteRule ^(?:predsvatebni-videa|svatebni-videa)/?$ https://www.ivproduction.cz/svatby/ [R=301,L,NE]
+    RewriteRule ^video/?$ https://www.ivproduction.cz/ukazky/ [R=301,L,NE]
+    RewriteRule ^(?:fotokoutky|pozadi)/?$ https://www.ivproduction.cz/ivbudka/ [R=301,L,NE]
+    RewriteRule ^spoluprace/?$ https://www.ivproduction.cz/ukazky/ [R=301,L,NE]
+    RewriteRule ^rezervacenasvatbu/?$ https://www.ivproduction.cz/kontakt/#poptavka [R=301,L,NE]
+    RewriteRule ^evidenceplesu/?$ https://www.ivproduction.cz/plesy/ [R=301,L,NE]
+
+    # Canonical public pages always use a trailing slash.  These rules run
+    # before the generic host redirect to avoid redirect chains.
+    RewriteRule ^(ivbudka|ivbudka360|aftermovie-promo-hudebniklipy|ukazky|svatebni-blog)$ https://www.ivproduction.cz/$1/ [R=301,L,NE]
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^([A-Za-z0-9-]+)$ https://www.ivproduction.cz/$1/ [R=301,L,NE]
+    RewriteCond %{REQUEST_FILENAME}/index.html -f
+    RewriteRule ^(l/[A-Za-z0-9-]+)$ https://www.ivproduction.cz/$1/ [R=301,L,NE]
+
+    # One canonical HTTPS host for production, while preserving the path.
     RewriteCond %{HTTPS} !=on [OR]
     RewriteCond %{HTTP_HOST} !^www\.ivproduction\.cz$ [NC]
     RewriteRule ^ https://www.ivproduction.cz%{REQUEST_URI} [R=301,L,NE]
 
-    # Development and repository metadata must never be public on hosting.
-    RewriteRule ^(?:\.git|\.github|scripts|tools|dist|zálohy|Záloha)(?:/|$) - [F,L,NC]
-    RewriteRule ^(?:index(?:_v1_backup|%20chyba|\s+chyba)|sprava-balicku|kalkulacka)\.html$ - [F,L,NC]
+    # Keep the historically indexed Webnode paths as the canonical public
+    # routes and serve the new static implementation without another redirect.
+    RewriteRule ^ivbudka/?$ fotobudka.html [L]
+    RewriteRule ^ivbudka360/?$ 360budka.html [L]
+    RewriteRule ^aftermovie-promo-hudebniklipy/?$ promo.html [L]
+    RewriteRule ^ukazky/?$ portfolio.html [L]
+    RewriteRule ^svatebni-blog/?$ blog.html [L]
+
+    # All remaining one-segment clean routes map to their .html source file.
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^([A-Za-z0-9-]+)/?$ $1.html [L]
 </IfModule>
 
-<FilesMatch "(?i)(?:^\.|\.(?:md|py|mjs|bak|log|ini|example|lock|yml|yaml))$">
+<FilesMatch "(?i)(?:^\.|\.(?:md|py|mjs|bak|tmp|admin-tmp|log|ini|example|lock|yml|yaml)$)">
     Require all denied
 </FilesMatch>
 
@@ -30,6 +95,10 @@ ErrorDocument 404 /404.html
 <IfModule mod_headers.c>
     <FilesMatch "\.(?:css|js|webp|avif|png|jpg|jpeg|svg|ico|woff2?|mp4|webm)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    # These files are edited by the CMS and do not get a new filename.
+    <FilesMatch "^(?:portfolio-data\.js|packages-data\.js|google-reviews\.json)$">
+        Header set Cache-Control "no-cache, must-revalidate"
     </FilesMatch>
 </IfModule>
 

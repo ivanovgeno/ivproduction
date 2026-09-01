@@ -1,6 +1,6 @@
 # Google recenze — GitHub Pages nyní, PHP hosting později
 
-Web má dva automatické a bezpečné režimy. Na GitHub Pages načítá GitHub Actions všechny Google Business Profile recenze i odpovědi do veřejného souboru `google-reviews.json`. Po přesunu na klasický PHP 8.4 hosting web přednostně použije přímý serverový endpoint `api/google-reviews.php`. Přístupové údaje nejsou v žádné veřejné části webu.
+Web má dva automatické a bezpečné režimy. Na GitHub Pages načítá GitHub Actions všechny Google Business Profile recenze i odpovědi do veřejného souboru `google-reviews.json`. Po přesunu na klasický PHP 8.5 hosting web přednostně použije přímý serverový endpoint `api/google-reviews.php`. Přístupové údaje nejsou v žádné veřejné části webu.
 
 ## Co musí být hotové u Google
 
@@ -33,7 +33,7 @@ Workflow se pak spustí automaticky každých 6 hodin. V případě dočasné ch
 
 ## Nasazení na hosting
 
-1. Nahrajte celý web na hosting s **PHP 8.4**, HTTPS a rozšířením **cURL**.
+1. Nahrajte celý web na hosting s **PHP 8.5**, HTTPS a rozšířením **cURL**.
 2. Zkopírujte `api/private/google-reviews-config.example.php` jako `api/private/google-reviews-config.php`.
 3. Vyplňte jen těchto pět údajů:
    - `google_client_id`

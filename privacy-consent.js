@@ -76,7 +76,7 @@
             <div class="privacy-banner__copy">
                 <h2 id="privacy-banner-title">Nastavení soukromí</h2>
                 <p>Web používá pouze nezbytné úložiště pro vaši volbu. Google Maps, YouTube a Matterport se načtou jen s vaším souhlasem.</p>
-                <a href="ochrana-osobnich-udaju.html">Podrobnosti o zpracování údajů</a>
+                <a href="/ochrana-osobnich-udaju/">Podrobnosti o zpracování údajů</a>
             </div>
             <div class="privacy-banner__actions">
                 <button type="button" class="privacy-button" data-privacy-necessary>Pouze nezbytné</button>

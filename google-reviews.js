@@ -2,7 +2,7 @@
     'use strict';
 
     const ratingMap = { ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5 };
-    const googleMark = 'assets/google-g.svg';
+    const googleMark = '/assets/google-g.svg';
 
     function ready(callback) {
         if (document.readyState === 'loading') {
@@ -295,8 +295,8 @@
             return;
         }
         const sources = [
-            section.dataset.googleReviewsEndpoint || 'api/google-reviews.php',
-            section.dataset.googleReviewsStaticSource || 'google-reviews.json'
+            section.dataset.googleReviewsEndpoint || '/api/google-reviews.php',
+            section.dataset.googleReviewsStaticSource || '/google-reviews.json'
         ].filter((source, index, list) => source && list.indexOf(source) === index);
         const controller = new AbortController();
         const timeout = window.setTimeout(() => controller.abort(), 8000);

@@ -12,7 +12,7 @@ Na hosting nahrajte **obsah** složky `release/wedos`, nikoli celý pracovní re
 
 ## 2. Nastavení hostingu
 
-- nastavte PHP 8.3 nebo 8.4;
+- nastavte PHP 8.5 (web vyžaduje minimálně PHP 8.1);
 - zapněte rozšíření Fileinfo a GD s podporou WebP;
 - aktivujte HTTPS certifikát pro `ivproduction.cz` i `www.ivproduction.cz`;
 - ověřte, že WEDOS respektuje soubory `.htaccess`;
@@ -28,5 +28,14 @@ Google recenze zůstávají v ručním režimu. Soubor `api/private/google-revie
 4. Uložte zkušební změnu textu a následně ji vraťte. Tím se ověří zápis do HTML, JSON a historie.
 5. Zkontrolujte, že HTTP a doména bez `www` přesměrují na `https://www.ivproduction.cz/` a neexistující URL zobrazí vlastní stránku 404.
 6. Ověřte volby „Pouze nezbytné“ a „Povolit externí obsah“ pro mapu, Matterport a YouTube.
+
+## 4. SEO migrace z Webnode
+
+- Doménu nepřevádějte na jiný název; mění se pouze hosting.
+- Před změnou DNS nahrajte a otestujte celý balíček na WEDOSu.
+- Na WEDOSu musí zůstat soubor `.htaccess`. Udržuje historické Webnode URL a všechny ostatní staré adresy směruje jediným přesměrováním 301 na nejbližší obsah.
+- Po přepnutí DNS ověřte `https://www.ivproduction.cz/robots.txt` a `https://www.ivproduction.cz/sitemap.xml`.
+- V Google Search Console ponechte stejnou službu domény a znovu odešlete sitemapu. Nástroj Změna adresy se nepoužívá, protože doména zůstává stejná.
+- Webnode nerušte, dokud na nové doméně neprojdou formuláře, HTTPS, staré URL a několikadenní kontrola indexace.
 
 Přímý upload videa je omezen nižší hodnotou z limitu aplikace 200 MB a aktuálního PHP limitu hostingu. Pro větší videa používejte v administraci YouTube odkaz.

@@ -137,7 +137,7 @@ function ivp_request(string $url, array $headers = [], ?string $body = null): ar
     $response = curl_exec($curl);
     $status = (int) curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
     $error = curl_error($curl);
-    curl_close($curl);
+    unset($curl);
 
     if ($response === false) {
         throw new RuntimeException('Google request failed: ' . $error);

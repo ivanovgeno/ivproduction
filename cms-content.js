@@ -1,8 +1,20 @@
 (function () {
     'use strict';
     if (new URLSearchParams(location.search).has('admin-source')) return;
-    const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-    const source = new URL('content/site-content.json', document.baseURI);
+    const pathParts = location.pathname.split('/').filter(Boolean);
+    const route = (pathParts.at(-1) || '').toLowerCase();
+    const routeFiles = {
+        '': 'index.html',
+        'ivbudka': 'fotobudka.html',
+        'ivbudka360': '360budka.html',
+        'aftermovie-promo-hudebniklipy': 'promo.html',
+        'ukazky': 'portfolio.html',
+        'svatebni-blog': 'blog.html'
+    };
+    const page = pathParts[0] === 'l'
+        ? `${pathParts.slice(0, 2).join('/')}/index.html`
+        : (route.endsWith('.html') ? route : (routeFiles[route] || `${route}.html`));
+    const source = new URL('/content/site-content.json', location.origin);
     let records = [];
 
     function apply(record) {
@@ -29,7 +41,9 @@
             return;
         }
         if (['href', 'src', 'alt', 'poster', 'data-video', 'content', 'title', 'placeholder'].includes(record.property)) {
-            element.setAttribute(record.property, record.value);
+            const isLocalUrl = ['href', 'src', 'poster', 'data-video'].includes(record.property)
+                && /^(?:assets\/|images\/|partners\/)/.test(record.value);
+            element.setAttribute(record.property, isLocalUrl ? `/${record.value}` : record.value);
             if (record.property === 'src' && element.tagName === 'IMG') element.removeAttribute('srcset');
         }
     }

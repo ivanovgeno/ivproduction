@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
         $files[] = [
             'name' => basename($file),
-            'url' => 'assets/uploads/' . rawurlencode(basename($file)),
+            'url' => '/assets/uploads/' . rawurlencode(basename($file)),
             'size' => filesize($file),
             'date' => date('c', filemtime($file)),
             'type' => in_array($extension, ['mp4', 'webm'], true) ? 'video' : 'image',
@@ -68,7 +68,7 @@ $suffix = date('Ymd-His') . '-' . bin2hex(random_bytes(2));
 if ($isVideo) {
     $name = $base . '-' . $suffix . '.' . $videoTypes[$mime];
     if (!move_uploaded_file($upload['tmp_name'], IVP_UPLOADS . '/' . $name)) ivp_json(['ok' => false, 'error' => 'Server nemůže video uložit.'], 500);
-    ivp_json(['ok' => true, 'message' => 'Video bylo nahráno.', 'item' => ['name' => $name, 'url' => 'assets/uploads/' . rawurlencode($name), 'type' => 'video']]);
+    ivp_json(['ok' => true, 'message' => 'Video bylo nahráno.', 'item' => ['name' => $name, 'url' => '/assets/uploads/' . rawurlencode($name), 'type' => 'video']]);
 }
 
 $size = @getimagesize($upload['tmp_name']);
@@ -84,6 +84,6 @@ imagealphablending($image, true);
 imagesavealpha($image, true);
 $name = $base . '-' . $suffix . '.webp';
 $saved = imagewebp($image, IVP_UPLOADS . '/' . $name, 84);
-imagedestroy($image);
+unset($image);
 if (!$saved) ivp_json(['ok' => false, 'error' => 'Server nemůže obrázek převést do WebP.'], 500);
-ivp_json(['ok' => true, 'message' => 'Obrázek byl převeden do WebP a nahrán.', 'item' => ['name' => $name, 'url' => 'assets/uploads/' . rawurlencode($name), 'type' => 'image']]);
+ivp_json(['ok' => true, 'message' => 'Obrázek byl převeden do WebP a nahrán.', 'item' => ['name' => $name, 'url' => '/assets/uploads/' . rawurlencode($name), 'type' => 'image']]);

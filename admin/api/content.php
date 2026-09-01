@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') ivp_json(['ok' => false, 'error' => 'Nepodporovaná metoda.'], 405);
 ivp_require_csrf();
 $payload = ivp_read_payload();
-$page = basename((string) ($payload['page'] ?? ''));
+$page = (string) ($payload['page'] ?? '');
 $records = $payload['records'] ?? null;
 if (!ivp_valid_page($page) || !is_array($records)) ivp_json(['ok' => false, 'error' => 'Neplatná stránka nebo data.'], 422);
 if (count($records) > 1200) ivp_json(['ok' => false, 'error' => 'Příliš mnoho položek.'], 422);

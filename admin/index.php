@@ -25,7 +25,7 @@ $config = ivp_config();
             <button class="nav-item" data-view="security"><span>⌁</span>Přístup</button>
         </nav>
         <div class="sidebar-bottom">
-            <a href="../index.html" target="_blank" rel="noopener">Otevřít web ↗</a>
+            <a href="../" target="_blank" rel="noopener">Otevřít web ↗</a>
             <a href="logout.php">Odhlásit se</a>
         </div>
     </aside>

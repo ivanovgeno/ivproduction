@@ -1,22 +1,24 @@
 <?php
 declare(strict_types=1);
 
-function redirect_to_form(string $status, string $returnTo = 'kontakt.html'): void
+function redirect_to_form(string $status, string $returnTo = '/kontakt/'): void
 {
     $allowedPages = [
-        'kontakt.html',
-        'svatby.html',
-        'plesy.html',
-        'reality.html',
-        'fotobudka.html',
-        '360budka.html',
-        'reels.html',
-        'konference.html',
-        'podcast.html',
-        'promo.html',
+        '/kontakt/',
+        '/svatby/',
+        '/plesy/',
+        '/reality/',
+        '/ivbudka/',
+        '/ivbudka360/',
+        '/reels/',
+        '/konference/',
+        '/podcast/',
+        '/aftermovie-promo-hudebniklipy/',
+        '/tehotenska-a-newborn-videa/',
+        '/ivshop/',
     ];
     if (!in_array($returnTo, $allowedPages, true)) {
-        $returnTo = 'kontakt.html';
+        $returnTo = '/kontakt/';
     }
     header('Location: ' . $returnTo . '?status=' . rawurlencode($status) . '#poptavka', true, 303);
     exit;
@@ -36,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     redirect_to_form('error');
 }
 
-$returnValue = $_POST['return_to'] ?? 'kontakt.html';
-$returnTo = is_string($returnValue) ? trim($returnValue) : 'kontakt.html';
+$returnValue = $_POST['return_to'] ?? '/kontakt/';
+$returnTo = is_string($returnValue) ? trim($returnValue) : '/kontakt/';
 
 // Honeypot: bots fill this field, real visitors never see it.
 if (!empty($_POST['company'] ?? '')) {
@@ -109,8 +111,11 @@ $fieldLabels = [
     'brand' => 'Firma / značka / projekt',
     'industry' => 'Obor',
     'content_goal' => 'Cíl obsahu',
+    'project_type' => 'Typ projektu',
+    'budget' => 'Orientační rozpočet',
     'quantity' => 'Počet výstupů',
     'channels' => 'Kanály / formáty',
+    'location' => 'Místo akce / natáčení',
     'filming_location' => 'Místo natáčení',
     'deadline' => 'Požadovaný termín dodání',
     'event_duration' => 'Délka akce',

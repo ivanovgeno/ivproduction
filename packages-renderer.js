@@ -65,7 +65,7 @@
         var action = document.createElement('a');
         action.className = 'pricing-btn';
         var localInquiry = document.querySelector('#poptavka');
-        action.href = localInquiry ? '#poptavka' : (item.ctaHref || 'kontakt.html#poptavka');
+        action.href = localInquiry ? '#poptavka' : (item.ctaHref || '/kontakt/#poptavka');
         action.textContent = item.ctaLabel || 'Nezávazně poptat';
         if (localInquiry && group === 'main') {
             action.addEventListener('click', function () {

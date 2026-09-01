@@ -1,0 +1,66 @@
+name: Nasadit web na WEDOS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wedos-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Kontrola a FTPS nasazení
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Načíst aktuální verzi webu
+        uses: actions/checkout@v6
+
+      - name: Nastavit Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+
+      - name: Zkontrolovat SEO migraci
+        run: node scripts/check-seo-migration.mjs
+
+      - name: Sestavit čistý WEDOS balíček
+        run: node scripts/build-wedos-package.mjs
+
+      - name: Nahrát web na WEDOS přes FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.WEDOS_FTP_SERVER }}
+          username: ${{ secrets.WEDOS_FTP_USERNAME }}
+          password: ${{ secrets.WEDOS_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./release/wedos/
+          # Samostatný FTP účet pro nasazení má na WEDOS nastavený kořen /www.
+          server-dir: ./
+          state-name: .ivproduction-deploy-state.json
+          dangerous-clean-slate: false
+          log-level: standard
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            admin/config.php
+            admin/data/**
+            api/private/**
+            api/cache/**
+            assets/uploads/**
+            content/site-content.json
+            portfolio-data.js
+
+      - name: Ověřit živý web
+        run: |
+          curl --fail --location --silent --show-error --max-time 30 https://www.ivproduction.cz/ > /dev/null
+          curl --fail --location --silent --show-error --max-time 30 https://www.ivproduction.cz/svatby/ > /dev/null

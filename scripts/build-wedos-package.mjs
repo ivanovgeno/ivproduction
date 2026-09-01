@@ -3,23 +3,25 @@ import path from 'node:path';
 
 const root = path.resolve(import.meta.dirname, '..');
 const output = path.join(root, 'release', 'wedos');
-const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
-const pageFiles = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => {
-    const pathname = new URL(match[1]).pathname.replace(/^\//, '');
-    return pathname || 'index.html';
-});
+const pageFiles = fs.readdirSync(root, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
+    .map((entry) => entry.name);
 
 const rootFiles = new Set([
     ...pageFiles,
     '404.html', '.htaccess', 'robots.txt', 'sitemap.xml', 'kontakt-handler.php'
 ]);
 const rootExtensions = new Set(['.css', '.js', '.json', '.webmanifest', '.ico', '.png', '.jpg', '.jpeg', '.webp', '.svg', '.mp4', '.webm']);
-const publicDirectories = new Set(['admin', 'api', 'assets', 'content', 'images', 'partners']);
+const publicDirectories = new Set(['admin', 'api', 'assets', 'content', 'images', 'l', 'partners']);
 
 function shouldCopy(relative, entry) {
     const parts = relative.split(path.sep);
+    const normalized = parts.join('/');
     if (parts.some((part) => ['.git', '.github', 'release', 'scripts', 'tools', 'dist', 'zálohy'].includes(part))) return false;
-    if (['.md', '.py', '.mjs', '.yml', '.yaml'].includes(path.extname(relative).toLowerCase())) return false;
+    if (['.md', '.py', '.mjs', '.yml', '.yaml', '.bak', '.tmp', '.admin-tmp', '.log'].includes(path.extname(relative).toLowerCase())) return false;
+    if (/^(?:api\/private\/google-reviews-config\.php|api\/cache\/google-reviews\.json|admin\/data\/login-rate\.json)$/.test(normalized)) return false;
+    if (normalized.startsWith('admin/data/history/') && entry.isFile() && entry.name !== '.htaccess') return false;
+    if (/^(?:sprava-balicku|kalkulacka|index_v1_backup|index\s+chyba)\.html$/i.test(normalized)) return false;
     if (relative.endsWith('.gitkeep') || relative.endsWith('.example.php')) return false;
     if (parts.length === 1) return entry.isDirectory() ? publicDirectories.has(relative) : rootFiles.has(relative) || rootExtensions.has(path.extname(relative).toLowerCase());
     return publicDirectories.has(parts[0]);

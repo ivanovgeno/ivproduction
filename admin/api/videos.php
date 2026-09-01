@@ -52,8 +52,10 @@ foreach ($items as $item) {
     $id = preg_replace('/[^a-z0-9-]/', '', strtolower((string) ($item['id'] ?? '')));
     $video = ivp_youtube_embed_url((string) ($item['video'] ?? ''));
     $image = trim((string) ($item['image'] ?? ''));
+    if (str_starts_with($video, 'assets/uploads/')) $video = '/' . $video;
+    if (preg_match('~^(?:assets/|images/|partners/)~', $image)) $image = '/' . $image;
     if ($id === '' || strlen($id) > 80 || strlen($video) > 500 || strlen($image) > 500) continue;
-    if ($video !== '' && !preg_match('~^(https://www\\.youtube(?:-nocookie)?\\.com/embed/[A-Za-z0-9_-]{6,20}|assets/uploads/[A-Za-z0-9._-]+\\.(?:mp4|webm))$~', $video)) continue;
+    if ($video !== '' && !preg_match('~^(https://www\\.youtube(?:-nocookie)?\\.com/embed/[A-Za-z0-9_-]{6,20}|/assets/uploads/[A-Za-z0-9._-]+\\.(?:mp4|webm))$~', $video)) continue;
     if ($image !== '' && !preg_match('~^(?:https://[^\\s]+|[A-Za-z0-9_./-]+\\.(?:webp|png|jpe?g|gif))$~i', $image)) continue;
     $clean[] = [
         'id' => $id,

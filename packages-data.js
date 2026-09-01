@@ -21,7 +21,7 @@ window.IVP_PACKAGE_DATA = {
                     '2 roky uschování záznamů'
                 ],
                 ctaLabel: 'Zjistit dostupnost',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             },
             {
                 id: 'standard',
@@ -38,7 +38,7 @@ window.IVP_PACKAGE_DATA = {
                     'Prioritní zákaznická podpora'
                 ],
                 ctaLabel: 'Zjistit dostupnost',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             },
             {
                 id: 'premium',
@@ -55,7 +55,7 @@ window.IVP_PACKAGE_DATA = {
                     'VIP zákaznická péče'
                 ],
                 ctaLabel: 'Ověřit termín',
-                ctaHref: 'kontakt.html#poptavka',
+                ctaHref: '/kontakt/#poptavka',
                 popular: true,
                 popularLabel: 'Nejoblíbenější'
             },
@@ -71,7 +71,7 @@ window.IVP_PACKAGE_DATA = {
                     'Osobní konzultace před rezervací'
                 ],
                 ctaLabel: 'Sestavit balíček',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             }
         ],
         partners: [
@@ -91,7 +91,7 @@ window.IVP_PACKAGE_DATA = {
                     'Přehledný společný návrh rozsahu'
                 ],
                 ctaLabel: 'Chci video + foto',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             },
             {
                 id: 'scholz',
@@ -109,7 +109,7 @@ window.IVP_PACKAGE_DATA = {
                     'Jedna kontaktní cesta od poptávky po předání'
                 ],
                 ctaLabel: 'Probrat společný balíček',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             }
         ],
         extras: [
@@ -126,7 +126,7 @@ window.IVP_PACKAGE_DATA = {
                     'Snadné sladění s vaším svatebním stylem'
                 ],
                 ctaLabel: 'Přidat fotobudku',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             },
             {
                 id: 'duhohratky',
@@ -141,7 +141,7 @@ window.IVP_PACKAGE_DATA = {
                     'Rozsah domluvíme individuálně'
                 ],
                 ctaLabel: 'Zjistit možnosti',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             },
             {
                 id: 'skakaci-hrad',
@@ -154,7 +154,7 @@ window.IVP_PACKAGE_DATA = {
                     'Doporučení pro bezpečné umístění'
                 ],
                 ctaLabel: 'Prověřit dostupnost',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             },
             {
                 id: 'destniky',
@@ -167,7 +167,7 @@ window.IVP_PACKAGE_DATA = {
                     'Množství podle velikosti svatby'
                 ],
                 ctaLabel: 'Přidat do poptávky',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             },
             {
                 id: 'predsvatebni-video',
@@ -180,7 +180,7 @@ window.IVP_PACKAGE_DATA = {
                     'Filmový střih a licencovaná hudba'
                 ],
                 ctaLabel: 'Vytvořit předsvatební video',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             },
             {
                 id: 'video-z-fotek',
@@ -193,7 +193,7 @@ window.IVP_PACKAGE_DATA = {
                     'Připraveno pro promítání i online sdílení'
                 ],
                 ctaLabel: 'Připravit video z fotek',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             }
         ]
     },
@@ -216,7 +216,7 @@ window.IVP_PACKAGE_DATA = {
                     'Při 2 a více třídách 300 Kč za studenta, minimálně 10 000 Kč'
                 ],
                 ctaLabel: 'Ověřit termín pro třídu',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             },
             {
                 id: 'ples-premium',
@@ -235,7 +235,7 @@ window.IVP_PACKAGE_DATA = {
                     'Při 2 a více třídách 600 Kč za studenta, minimálně 19 000 Kč'
                 ],
                 ctaLabel: 'Chceme Foto + Video',
-                ctaHref: 'kontakt.html#poptavka',
+                ctaHref: '/kontakt/#poptavka',
                 popular: true,
                 popularLabel: 'Volba maturantů'
             },
@@ -256,7 +256,7 @@ window.IVP_PACKAGE_DATA = {
                     'Při 2 a více třídách 900 Kč za studenta, minimálně 28 000 Kč'
                 ],
                 ctaLabel: 'Chceme celý zážitek',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             }
         ],
         other: [
@@ -276,7 +276,7 @@ window.IVP_PACKAGE_DATA = {
                     'Přehledná nezávazná nabídka potvrzená předem'
                 ],
                 ctaLabel: 'Připravit nabídku na míru',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             }
         ]
     },
@@ -296,7 +296,7 @@ window.IVP_PACKAGE_DATA = {
                     'Komentovaná prohlídka s titulky'
                 ],
                 ctaLabel: 'Poptat Standard',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             },
             {
                 id: 'reality-premium',
@@ -313,7 +313,7 @@ window.IVP_PACKAGE_DATA = {
                     'Dodání pro web, sítě a realitní portály'
                 ],
                 ctaLabel: 'Poptat Premium',
-                ctaHref: 'kontakt.html#poptavka',
+                ctaHref: '/kontakt/#poptavka',
                 popular: true,
                 popularLabel: 'Nejžádanější'
             },
@@ -332,7 +332,7 @@ window.IVP_PACKAGE_DATA = {
                     'Doprava zdarma'
                 ],
                 ctaLabel: 'Poptat All in One',
-                ctaHref: 'kontakt.html#poptavka'
+                ctaHref: '/kontakt/#poptavka'
             }
         ]
     }

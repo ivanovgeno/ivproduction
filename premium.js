@@ -2,7 +2,7 @@
 // a reliable fallback; PHP hosting can publish selected edits through the admin.
 (function loadManagedContent() {
     const script = document.createElement('script');
-    script.src = 'cms-content.js?v=20260809-admin';
+    script.src = '/cms-content.js?v=20260826-clean-routes';
     script.defer = true;
     document.head.appendChild(script);
 }());
@@ -163,12 +163,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Keep the current-page indication consistent in desktop and mobile menus.
 document.addEventListener('DOMContentLoaded', () => {
-    const currentPage = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const normalizePath = (pathname) => {
+        let path = pathname.replace(/\/index\.html$/i, '/').replace(/\.html$/i, '/');
+        if (path !== '/' && !path.endsWith('/')) path += '/';
+        return path.replace(/\/{2,}/g, '/').toLowerCase();
+    };
+    const currentPath = normalizePath(location.pathname);
     document.querySelectorAll('header nav a[href], #mobileMenuOverlay a[href]').forEach((link) => {
-        let targetPage = '';
-        try { targetPage = (new URL(link.getAttribute('href'), location.href).pathname.split('/').pop() || 'index.html').toLowerCase(); }
+        let target;
+        try { target = new URL(link.getAttribute('href'), location.href); }
         catch (_) { return; }
-        const isCurrent = targetPage === currentPage;
+        const isCurrent = target.origin === location.origin
+            && !target.hash
+            && normalizePath(target.pathname) === currentPath;
         link.classList.toggle('active', isCurrent);
         if (isCurrent) link.setAttribute('aria-current', 'page');
         else link.removeAttribute('aria-current');
