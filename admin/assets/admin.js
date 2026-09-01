@@ -60,6 +60,7 @@
         if (el.closest('footer')) return 'Patička';
         const section = el.closest('section, main > div, article');
         if (!section) return 'Ostatní obsah';
+        if (section.classList.contains('team-member')) return 'Tým';
         const knownSections = { sluzby: 'Služby', 'jak-to-funguje': 'Jak to funguje', onas: 'O nás', portfolio: 'Portfolio', studio: 'Studio', recenze: 'Reference', partneri: 'Partneři', faq: 'FAQ', poptavka: 'Kontakt' };
         if (knownSections[section.id]) return knownSections[section.id];
         if (section.classList.contains('hero') || section.classList.contains('premium-page-hero')) return 'Hero';
@@ -100,7 +101,7 @@
             addDescriptor(list, { selector: 'script[type="application/ld+json"]', property: 'json-ld', node, original: script.textContent.trim(), label: `Strukturovaná data JSON-LD ${node + 1}`, group: 'SEO a sdílení' });
         });
         doc.querySelectorAll('h1,h2,h3,h4,p,li,label,a,button,option').forEach(el => {
-            if (el.closest('script,style,svg,noscript') || el.closest('#mobileMenuOverlay') && el.classList.contains('mobile-menu-cta')) return;
+            if (el.closest('script,style,svg,noscript,[data-privacy-banner],.privacy-embed-placeholder') || el.closest('#mobileMenuOverlay') && el.classList.contains('mobile-menu-cta')) return;
             const selector = selectorFor(el, doc);
             const textNodes = [...el.childNodes].filter(node => node.nodeType === 3 && node.nodeValue.trim());
             textNodes.forEach((node, index) => addDescriptor(list, { selector, property: 'text-node', node: index, original: node.nodeValue.trim(), label: el.tagName.toLowerCase() === 'a' ? 'Text odkazu' : `Text ${el.tagName.toLowerCase()}`, group: groupFor(el) }));
