@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         'ok' => true,
         'pages' => ivp_pages(),
         'content' => $content,
+        'storage' => ivp_storage_status(),
         'csrf' => ivp_csrf(),
     ]);
 }

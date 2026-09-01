@@ -190,6 +190,8 @@
     async function init() {
         try {
             state.api = await api('api/content.php');
+            const blocked = Object.entries(state.api.storage || {}).filter(([, writable]) => !writable).map(([name]) => name);
+            if (blocked.length) toast(`Server nemůže zapisovat: ${blocked.join(', ')}. Spusťte ve WEDOS opravu práv souborů.`, true);
             const select = $('#pageSelect'); Object.entries(state.api.pages).forEach(([file, label]) => select.add(new Option(label, file)));
             $('#pageCount').textContent = Object.keys(state.api.pages).length;
             $('#lastUpdate').textContent = state.api.content.updatedAt ? new Intl.DateTimeFormat('cs-CZ', { dateStyle: 'medium' }).format(new Date(state.api.content.updatedAt)) : 'Zatím žádná';

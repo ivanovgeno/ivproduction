@@ -184,6 +184,19 @@ function ivp_content(): array
     return is_array($data) ? $data : ['version' => 1, 'pages' => []];
 }
 
+function ivp_storage_status(): array
+{
+    $contentDirectory = dirname(IVP_CONTENT);
+    $historyDirectory = is_dir(IVP_HISTORY) ? IVP_HISTORY : dirname(IVP_HISTORY);
+
+    return [
+        'content' => is_file(IVP_CONTENT) ? is_writable(IVP_CONTENT) : is_writable($contentDirectory),
+        'contentDirectory' => is_dir($contentDirectory) && is_writable($contentDirectory),
+        'history' => is_dir($historyDirectory) && is_writable($historyDirectory),
+        'pages' => is_writable(IVP_ROOT),
+    ];
+}
+
 function ivp_write_content(array $data): bool
 {
     if (!is_dir(IVP_HISTORY)) {

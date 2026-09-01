@@ -55,7 +55,6 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
-            admin/config.php
             admin/data/**
             api/private/**
             api/cache/**
