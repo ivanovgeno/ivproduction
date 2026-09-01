@@ -60,6 +60,10 @@
         if (el.closest('footer')) return 'Patička';
         const section = el.closest('section, main > div, article');
         if (!section) return 'Ostatní obsah';
+        const knownSections = { sluzby: 'Služby', 'jak-to-funguje': 'Jak to funguje', onas: 'O nás', portfolio: 'Portfolio', studio: 'Studio', recenze: 'Reference', partneri: 'Partneři', faq: 'FAQ', poptavka: 'Kontakt' };
+        if (knownSections[section.id]) return knownSections[section.id];
+        if (section.classList.contains('hero') || section.classList.contains('premium-page-hero')) return 'Hero';
+        if (section.classList.contains('stats-section')) return 'Čísla a výsledky';
         const heading = section.querySelector('h1,h2');
         if (heading?.textContent.trim()) return heading.textContent.trim().slice(0, 60);
         if (section.id) return section.id.replace(/[-_]/g, ' ');
@@ -132,7 +136,8 @@
         const visibleCount = [...groups.values()].reduce((sum, fields) => sum + fields.length, 0);
         $('#contentResultCount').textContent = `${visibleCount} ${visibleCount === 1 ? 'pole' : visibleCount < 5 ? 'pole' : 'polí'}`;
         if (!groups.size) { editor.innerHTML = '<div class="empty-state">Pro zadané hledání nebyl nalezen žádný obsah.</div>'; return; }
-        [...groups].forEach(([group, fields], index) => {
+        const groupRank = group => group === 'Hlavička a menu' ? 0 : group === 'SEO a sdílení' ? 100 : group === 'Patička' ? 90 : 10;
+        [...groups].sort(([a], [b]) => groupRank(a) - groupRank(b)).forEach(([group, fields], index) => {
             const id = sectionId(group, index);
             const navButton = document.createElement('button'); navButton.textContent = group; navButton.classList.toggle('is-active', index === 0); navButton.addEventListener('click', () => { $$('.section-nav button').forEach(button => button.classList.remove('is-active')); navButton.classList.add('is-active'); document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }); nav.append(navButton);
             const section = document.createElement('section'); section.className = 'editor-section'; section.id = id;
@@ -191,7 +196,8 @@
                 state.current.set(key, record.value); state.saved.set(key, record.value);
             });
             const filter = $('#sectionFilter'); filter.innerHTML = '<option value="">Všechny sekce</option>';
-            [...new Set(state.descriptors.map(item => item.group))].forEach(group => filter.add(new Option(group, group)));
+            const groupRank = group => group === 'Hlavička a menu' ? 0 : group === 'SEO a sdílení' ? 100 : group === 'Patička' ? 90 : 10;
+            [...new Set(state.descriptors.map(item => item.group))].sort((a, b) => groupRank(a) - groupRank(b)).forEach(group => filter.add(new Option(group, group)));
             renderEditor($('#contentSearch').value, filter.value); updateDirty();
         } catch (error) { $('#contentEditor').innerHTML = `<div class="empty-state">${error.message}</div>`; }
     }
@@ -260,6 +266,7 @@
         $('#portfolioCount').textContent = `${state.videos.length} ${state.videos.length === 1 ? 'projekt' : state.videos.length < 5 ? 'projekty' : 'projektů'}`;
         const visible = state.videos.map((item, index) => ({ item, index })).filter(({ item }) => videoMatches(item));
         if (!visible.length) { container.innerHTML = '<div class="portfolio-empty">Žádný projekt neodpovídá hledání.</div>'; return; }
+        const head = document.createElement('div'); head.className = 'portfolio-list-head'; head.innerHTML = '<span>Projekt</span><span>Kategorie</span><span>Zdroj</span><span>Akce</span>'; container.append(head);
         visible.forEach(({ item, index }) => {
             const row = document.createElement('article'); row.className = 'portfolio-row'; row.draggable = true; row.dataset.index = index;
             const handle = document.createElement('button'); handle.type = 'button'; handle.className = 'drag-handle'; handle.title = 'Přetáhnout projekt'; handle.textContent = '⠿';
