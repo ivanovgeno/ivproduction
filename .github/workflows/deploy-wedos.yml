@@ -28,6 +28,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Vygenerovat aktuální sitemapu
+        run: node scripts/generate-sitemap.mjs
+
       - name: Zkontrolovat SEO migraci
         run: node scripts/check-seo-migration.mjs
 
