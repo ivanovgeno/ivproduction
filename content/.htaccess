@@ -1,7 +1,10 @@
 Options -Indexes
-<FilesMatch "\.json$">
+<FilesMatch "^(?!site-content\.json$).*\.json$">
+    Require all denied
+</FilesMatch>
+<Files "site-content.json">
     Require all granted
     <IfModule mod_headers.c>
         Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
     </IfModule>
-</FilesMatch>
+</Files>

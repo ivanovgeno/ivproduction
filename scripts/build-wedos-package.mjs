@@ -9,7 +9,8 @@ const pageFiles = fs.readdirSync(root, { withFileTypes: true })
 
 const rootFiles = new Set([
     ...pageFiles,
-    '404.html', '.htaccess', 'robots.txt', 'sitemap.xml', 'kontakt-handler.php'
+    '404.html', '.htaccess', 'robots.txt', 'sitemap.xml', 'sitemap.php', 'kontakt-handler.php',
+    'blog-index.php', 'blog-post.php'
 ]);
 const rootExtensions = new Set(['.css', '.js', '.json', '.webmanifest', '.ico', '.png', '.jpg', '.jpeg', '.webp', '.svg', '.mp4', '.webm']);
 const publicDirectories = new Set(['admin', 'api', 'assets', 'content', 'images', 'l', 'partners']);

@@ -11,6 +11,9 @@ ErrorDocument 404 /404.html
     # file can never be exposed through a prettier URL.
     RewriteRule ^(?:\.git|\.github|scripts|tools|release|dist|zálohy|Záloha)(?:/|$) - [F,L,NC]
     RewriteRule ^(?:index(?:_v1_backup|%20chyba|\s+chyba)|sprava-balicku|kalkulacka)\.html$ - [F,L,NC]
+    RewriteCond %{THE_REQUEST} \s/+blog-(?:index|post)\.php(?:[?\s]|$) [NC,OR]
+    RewriteCond %{THE_REQUEST} \s/+sitemap\.php(?:[?\s]|$) [NC]
+    RewriteRule ^ - [F,L]
 
     # Direct requests for implementation files must land on the public URL in
     # one permanent hop.  THE_REQUEST prevents loops after internal rewrites.
@@ -73,7 +76,11 @@ ErrorDocument 404 /404.html
     RewriteRule ^ivbudka360/?$ 360budka.html [L]
     RewriteRule ^aftermovie-promo-hudebniklipy/?$ promo.html [L]
     RewriteRule ^ukazky/?$ portfolio.html [L]
-    RewriteRule ^svatebni-blog/?$ blog.html [L]
+    RewriteRule ^sitemap\.xml$ sitemap.php [L]
+    RewriteRule ^svatebni-blog/?$ blog-index.php [L,QSA]
+    RewriteRule ^(jak-vybrat-svatebniho-kameramana|trendy-svatebni-video-2026|proc-video-pomaha-prodat-nemovitost|jak-pripravit-firemni-video|video-pro-socialni-site|svatebni-lokace-kralovehradecky-kraj|hudba-ve-videu)/?$ blog-post.php?slug=$1 [L,QSA]
+    RewriteRule ^l/([A-Za-z0-9-]+)/?$ blog-post.php?slug=$1 [L,QSA]
+    RewriteRule ^clanky/([A-Za-z0-9-]+)/?$ blog-post.php?slug=$1 [L,QSA]
 
     # All remaining one-segment clean routes map to their .html source file.
     RewriteCond %{DOCUMENT_ROOT}/$1.html -f

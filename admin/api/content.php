@@ -21,7 +21,7 @@ $records = $payload['records'] ?? null;
 if (!ivp_valid_page($page) || !is_array($records)) ivp_json(['ok' => false, 'error' => 'Neplatná stránka nebo data.'], 422);
 if (count($records) > 1200) ivp_json(['ok' => false, 'error' => 'Příliš mnoho položek.'], 422);
 
-$allowedProperties = ['text-node', 'href', 'src', 'alt', 'poster', 'data-video', 'content', 'title', 'placeholder', 'json-ld'];
+$allowedProperties = ['text-node', 'href', 'src', 'alt', 'poster', 'data-video', 'content', 'title', 'placeholder', 'json-ld', 'style-background-image', 'css-var'];
 $clean = [];
 foreach ($records as $record) {
     if (!is_array($record)) continue;
@@ -30,8 +30,16 @@ foreach ($records as $record) {
     $value = (string) ($record['value'] ?? '');
     $node = max(0, min(30, (int) ($record['node'] ?? 0)));
     if ($selector === '' || strlen($selector) > 600 || !in_array($property, $allowedProperties, true) || strlen($value) > 20000) continue;
+    if (in_array($property, ['style-background-image', 'css-var'], true)
+        && $value !== ''
+        && !preg_match('~^(?:https://|/)?[a-zA-Z0-9][a-zA-Z0-9_./%?&=:+~-]*$~D', $value)) continue;
     $item = ['selector' => $selector, 'property' => $property, 'value' => $value];
     if ($property === 'text-node' || $property === 'json-ld') $item['node'] = $node;
+    if ($property === 'css-var') {
+        $styleName = (string) ($record['styleName'] ?? '');
+        if ($styleName !== '--hero-image') continue;
+        $item['styleName'] = $styleName;
+    }
     $clean[] = $item;
 }
 

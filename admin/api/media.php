@@ -15,6 +15,47 @@ function ivp_ini_bytes(string $value): int
     };
 }
 
+/** @return GdImage|resource */
+function ivp_orient_uploaded_image($image, string $source, string $mime)
+{
+    if ($mime !== 'image/jpeg' || !function_exists('exif_read_data')) return $image;
+    $exif = @exif_read_data($source, 'IFD0', true);
+    if (!is_array($exif)) return $image;
+    $orientation = (int) ($exif['IFD0']['Orientation'] ?? $exif['Orientation'] ?? 1);
+    $rotated = match ($orientation) {
+        3 => imagerotate($image, 180, 0),
+        6 => imagerotate($image, -90, 0),
+        8 => imagerotate($image, 90, 0),
+        default => false,
+    };
+    if ($rotated !== false) {
+        imagedestroy($image);
+        return $rotated;
+    }
+    return $image;
+}
+
+/** @return GdImage|resource */
+function ivp_resize_uploaded_image($image, int $maximum = 2400)
+{
+    $width = imagesx($image);
+    $height = imagesy($image);
+    $longest = max($width, $height);
+    if ($longest <= $maximum) return $image;
+    $ratio = $maximum / $longest;
+    $targetWidth = max(1, (int) round($width * $ratio));
+    $targetHeight = max(1, (int) round($height * $ratio));
+    $resized = imagecreatetruecolor($targetWidth, $targetHeight);
+    if ($resized === false) return $image;
+    imagealphablending($resized, false);
+    imagesavealpha($resized, true);
+    $transparent = imagecolorallocatealpha($resized, 0, 0, 0, 127);
+    imagefill($resized, 0, 0, $transparent);
+    imagecopyresampled($resized, $image, 0, 0, 0, 0, $targetWidth, $targetHeight, $width, $height);
+    imagedestroy($image);
+    return $resized;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $files = [];
     foreach (glob(IVP_UPLOADS . '/*.{webp,mp4,webm}', GLOB_BRACE) ?: [] as $file) {
@@ -79,6 +120,8 @@ if (!function_exists('imagecreatefromstring') || !function_exists('imagewebp')) 
 $binary = file_get_contents($upload['tmp_name']);
 $image = $binary === false ? false : @imagecreatefromstring($binary);
 if ($image === false) ivp_json(['ok' => false, 'error' => 'Obrázek se nepodařilo načíst.'], 422);
+$image = ivp_orient_uploaded_image($image, $upload['tmp_name'], $mime);
+$image = ivp_resize_uploaded_image($image);
 if (function_exists('imagepalettetotruecolor')) @imagepalettetotruecolor($image);
 imagealphablending($image, true);
 imagesavealpha($image, true);

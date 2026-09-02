@@ -28,6 +28,15 @@ jobs:
         with:
           node-version: 20
 
+      - name: Nastavit PHP 8.5
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+
+      - name: Zkontrolovat PHP soubory
+        run: find . -path './release' -prune -o -name '*.php' -print0 | xargs -0 -n1 php -l
+
       - name: Vygenerovat aktuální sitemapu
         run: node scripts/generate-sitemap.mjs
 
@@ -61,6 +70,7 @@ jobs:
             api/cache/**
             assets/uploads/**
             content/site-content.json
+            content/blog-posts.json
             portfolio-data.js
 
       - name: Ověřit živý web

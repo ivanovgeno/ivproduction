@@ -40,6 +40,23 @@
             if (script) script.textContent = record.value;
             return;
         }
+        if (record.property === 'css-var') {
+            const styleName = record.styleName === '--hero-image' ? record.styleName : '--hero-image';
+            const cleanValue = String(record.value || '').replace(/["\\]/g, '');
+            element.style.setProperty(styleName, `url("${cleanValue}")`);
+            return;
+        }
+        if (record.property === 'style-background-image') {
+            const cleanValue = String(record.value || '').replace(/["\\]/g, '');
+            element.style.backgroundImage = cleanValue ? `url("${cleanValue}")` : '';
+            if (element.matches('[data-photo-slot],.tech-placeholder')) {
+                element.style.backgroundPosition = cleanValue ? 'center' : '';
+                element.style.backgroundRepeat = cleanValue ? 'no-repeat' : '';
+                element.style.backgroundSize = cleanValue ? (element.classList.contains('tech-placeholder') ? 'contain' : 'cover') : '';
+                element.querySelectorAll(':scope > *').forEach(child => { child.style.visibility = cleanValue ? 'hidden' : ''; });
+            }
+            return;
+        }
         if (['href', 'src', 'alt', 'poster', 'data-video', 'content', 'title', 'placeholder'].includes(record.property)) {
             const isLocalUrl = ['href', 'src', 'poster', 'data-video'].includes(record.property)
                 && /^(?:assets\/|images\/|partners\/)/.test(record.value);
