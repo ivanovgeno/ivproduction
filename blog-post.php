@@ -34,7 +34,10 @@ function ivp_post_replace_html(DOMElement $target, string $html): void
 {
     while ($target->firstChild) $target->removeChild($target->firstChild);
     $fragmentDocument = new DOMDocument('1.0', 'UTF-8');
+    $previous = libxml_use_internal_errors(true);
     $fragmentDocument->loadHTML('<?xml encoding="utf-8"?><div id="fragment-root">' . $html . '</div>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    libxml_clear_errors();
+    libxml_use_internal_errors($previous);
     $root = $fragmentDocument->getElementById('fragment-root');
     if (!$root) return;
     foreach (iterator_to_array($root->childNodes) as $child) $target->appendChild($target->ownerDocument->importNode($child, true));
