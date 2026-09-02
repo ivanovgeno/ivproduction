@@ -114,10 +114,10 @@
     }
 
     function setPortfolioFilter(grid, filter, tabs) {
-        grid.innerHTML = projects
-            .filter((project) => filter === 'all' || project.categories.includes(filter))
-            .map((project) => projectCard(project))
-            .join('');
+        const matchingProjects = projects.filter((project) => filter === 'all' || project.categories.includes(filter));
+        grid.innerHTML = matchingProjects.length
+            ? matchingProjects.map((project) => projectCard(project)).join('')
+            : `<p class="portfolio-grid__empty">V kategorii ${escapeHtml(categoryNames[filter] || 'portfolio')} zatím není zveřejněná žádná ukázka.</p>`;
         bindProjectCards(grid);
         tabs.forEach((tab) => tab.classList.toggle('active', tab.dataset.filter === filter));
     }

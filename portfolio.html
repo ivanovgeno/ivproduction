@@ -247,6 +247,17 @@
             gap: 2rem;
         }
 
+        .portfolio-grid__empty {
+            grid-column: 1 / -1;
+            margin: 1.5rem 0 0;
+            padding: 2.25rem 1.5rem;
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            border-radius: 18px;
+            color: rgba(255, 255, 255, 0.72);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
         .portfolio-item {
             position: relative;
             border-radius: 20px;
@@ -409,7 +420,7 @@
     <script src="/premium.js?v=20260902-team-photo-fix-1" defer></script>
     <script src="/experience.js?v=20260712-portfoliohub" defer></script>
     <script src="/portfolio-data.js?v=20260826-real-projects" defer></script>
-    <script src="/portfolio-gallery.js?v=20260827-final" defer></script>
+    <script src="/portfolio-gallery.js?v=20260902-reels-360-filters" defer></script>
     <link rel="stylesheet" href="/premium-heroes.css?v=20260827-final">
     <link rel="stylesheet" href="/privacy-consent.css?v=20260818-visual-restore">
     <script src="/privacy-consent.js?v=20260818-visual-restore" defer></script>
@@ -615,6 +626,8 @@
                 <button type="button" class="filter-tab" data-portfolio-filter data-filter="plesy">Plesy</button>
                 <button type="button" class="filter-tab" data-portfolio-filter data-filter="promo">Aftermovie &amp; promo</button>
                 <button type="button" class="filter-tab" data-portfolio-filter data-filter="konference">Konference</button>
+                <button type="button" class="filter-tab" data-portfolio-filter data-filter="reels">Reels</button>
+                <button type="button" class="filter-tab" data-portfolio-filter data-filter="360budka">360° videa</button>
             </div>
 
             <div class="portfolio-grid" data-portfolio-grid aria-live="polite"></div>
