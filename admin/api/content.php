@@ -25,24 +25,36 @@ if (count($records) > 1200) ivp_json(['ok' => false, 'error' => 'Příliš mnoho
 
 $allowedProperties = ['text-node', 'href', 'src', 'alt', 'poster', 'data-video', 'content', 'title', 'placeholder', 'json-ld', 'style-background-image', 'css-var'];
 $clean = [];
+$rejected = 0;
 foreach ($records as $record) {
-    if (!is_array($record)) continue;
+    if (!is_array($record)) { $rejected++; continue; }
     $selector = trim((string) ($record['selector'] ?? ''));
     $property = (string) ($record['property'] ?? '');
     $value = (string) ($record['value'] ?? '');
     $node = max(0, min(30, (int) ($record['node'] ?? 0)));
-    if ($selector === '' || strlen($selector) > 600 || !in_array($property, $allowedProperties, true) || strlen($value) > 20000) continue;
-    if (in_array($property, ['style-background-image', 'css-var'], true)
-        && $value !== ''
-        && !preg_match('~^(?:https://|/)?[a-zA-Z0-9][a-zA-Z0-9_./%?&=:+~-]*$~D', $value)) continue;
+    if ($selector === '' || strlen($selector) > 600 || !in_array($property, $allowedProperties, true) || strlen($value) > 20000) { $rejected++; continue; }
+    if (in_array($property, ['style-background-image', 'css-var'], true) && $value !== '') {
+        $isSafeLocalPath = str_starts_with($value, '/')
+            && !str_starts_with($value, '//')
+            && !preg_match('~[\\x00-\\x20"\'\\\\<>]~', $value);
+        $urlParts = parse_url($value);
+        $isSafeHttpsUrl = filter_var($value, FILTER_VALIDATE_URL)
+            && is_array($urlParts)
+            && strtolower((string) ($urlParts['scheme'] ?? '')) === 'https';
+        if (!$isSafeLocalPath && !$isSafeHttpsUrl) { $rejected++; continue; }
+    }
     $item = ['selector' => $selector, 'property' => $property, 'value' => $value];
     if ($property === 'text-node' || $property === 'json-ld') $item['node'] = $node;
     if ($property === 'css-var') {
         $styleName = (string) ($record['styleName'] ?? '');
-        if ($styleName !== '--hero-image') continue;
+        if ($styleName !== '--hero-image') { $rejected++; continue; }
         $item['styleName'] = $styleName;
     }
     $clean[] = $item;
+}
+
+if ($rejected > 0 || count($clean) !== count($records)) {
+    ivp_json(['ok' => false, 'error' => 'Některou změnu server odmítl jako neplatnou. Obnovte administraci a zkuste akci znovu.'], 422);
 }
 
 if (!ivp_sync_static_seo($page, $clean)) {
@@ -72,4 +84,4 @@ if ($mode === 'patch') {
     $data['pages'][$page] = array_values($clean);
 }
 if (!ivp_write_content($data)) ivp_json(['ok' => false, 'error' => 'Obsah se nepodařilo uložit. Zkontrolujte oprávnění složky content.'], 500);
-ivp_json(['ok' => true, 'message' => 'Změny byly publikovány.', 'updatedAt' => $data['updatedAt'], 'version' => $data['version']]);
+ivp_json(['ok' => true, 'message' => 'Změny byly publikovány.', 'updatedAt' => $data['updatedAt'], 'version' => $data['version'], 'records' => $clean]);

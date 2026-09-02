@@ -107,6 +107,9 @@
 
     function selectorFor(element, documentNode) {
         if (element.id) return '#' + cssEscape(element.id);
+        if (element.hasAttribute('data-photo-slot')) {
+            return `[data-photo-slot="${cssEscape(element.getAttribute('data-photo-slot'))}"]`;
+        }
         const parts = [];
         let current = element;
         while (current && current !== documentNode.body && parts.length < 9) {
@@ -281,13 +284,18 @@
             element.style.setProperty(descriptor.styleName || '--hero-image', `url("${String(value).replace(/["\\]/g, '')}")`);
         } else if (descriptor.property === 'style-background-image') {
             const cleanValue = String(value).replace(/["\\]/g, '');
-            element.style.backgroundImage = cleanValue ? `url("${cleanValue}")` : '';
+            if (cleanValue) element.style.setProperty('background-image', `url("${cleanValue}")`, 'important');
+            else element.style.removeProperty('background-image');
             if (element.matches('[data-photo-slot],.tech-placeholder,.service-card')) {
                 element.style.backgroundPosition = cleanValue ? 'center' : '';
                 element.style.backgroundRepeat = cleanValue ? 'no-repeat' : '';
                 element.style.backgroundSize = cleanValue ? (element.classList.contains('tech-placeholder') ? 'contain' : 'cover') : '';
                 if (element.matches('[data-photo-slot],.tech-placeholder')) {
                     element.querySelectorAll(':scope > *').forEach(child => { child.style.visibility = cleanValue ? 'hidden' : ''; });
+                }
+                if (element.hasAttribute('data-photo-slot')) {
+                    element.classList.toggle('team-photo--placeholder', !cleanValue);
+                    element.dataset.photoAssigned = cleanValue ? 'true' : 'false';
                 }
             }
         } else if (descriptor.property === 'json-ld') {
@@ -536,6 +544,9 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ page, mode: 'patch', records })
         });
+        const accepted = new Map((result.records || []).map(record => [recordKey(record), String(record.value ?? '')]));
+        const rejected = records.find(record => accepted.get(recordKey(record)) !== String(record.value ?? ''));
+        if (rejected) throw new Error('Server změnu nepotvrdil. Obnovte administraci a zkuste obrázek vybrat znovu.');
         const merged = new Map((state.api.content.pages[page] || []).map(record => [recordKey(record), record]));
         records.forEach(record => merged.set(recordKey(record), record));
         state.api.content.pages[page] = [...merged.values()];
@@ -677,14 +688,17 @@
     $('#assignSection').addEventListener('change', refreshAssignmentTargets); $('#assignTarget').addEventListener('change', refreshAssignmentTargets);
     $('#mediaAssignForm').addEventListener('submit', async event => {
         event.preventDefault();
-        const target = state.mediaAssignment?.descriptors.find(item => item.key === $('#assignTarget').value);
+        const assignment = state.mediaAssignment;
+        const target = assignment?.descriptors.find(item => item.key === $('#assignTarget').value);
         if (!target) { toast('Vyberte konkrétní umístění.', true); return; }
-        const values = new Map(state.mediaAssignment.descriptors.map(item => [item.key, item.original]));
-        values.set(target.key, state.mediaAssignment.item.url);
+        const mediaUrl = String(assignment.item?.url || '').trim();
+        if (!mediaUrl) { toast('Vybraný soubor nemá platnou cestu. Nahrajte jej prosím znovu.', true); return; }
+        const values = new Map(assignment.descriptors.map(item => [item.key, item.original]));
+        values.set(target.key, mediaUrl);
         try {
-            await savePageRecords(state.mediaAssignment.page, [target], values, false);
+            await savePageRecords(assignment.page, [target], values, false);
             closeDrawers(); toast(`Médium bylo přiřazeno: ${target.label}.`);
-            if (state.page === state.mediaAssignment.page) loadPage(state.page, target.group);
+            if (state.page === assignment.page) loadPage(state.page, target.group);
         } catch (error) { toast(error.message, true); }
     });
 
