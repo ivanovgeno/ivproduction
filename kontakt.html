@@ -789,6 +789,7 @@
                 <h2>Napište nám</h2>
                 <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
                 <form action="/kontakt-handler.php" method="POST">
+                    <input type="hidden" name="return_to" value="/kontakt/">
                     <div class="honeypot" aria-hidden="true">
                         <label for="company">Společnost</label>
                         <input id="company" type="text" name="company" tabindex="-1" autocomplete="off">

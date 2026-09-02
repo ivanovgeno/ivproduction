@@ -83,7 +83,22 @@ if (preg_match('/[\r\n]/', $email)) {
 }
 
 $recipient = 'video@ivproduction.cz';
-$subject = $service !== '' ? 'Nová poptávka – ' . $service : 'Nová poptávka z webu Iv Production';
+$sourceLabels = [
+    '/kontakt/' => 'Kontakt',
+    '/svatby/' => 'Svatby',
+    '/plesy/' => 'Plesy',
+    '/reality/' => 'Reality',
+    '/ivbudka/' => 'Fotobudka',
+    '/ivbudka360/' => 'Fotobudka 360°',
+    '/reels/' => 'Reels',
+    '/konference/' => 'Konference',
+    '/podcast/' => 'Podcast',
+    '/aftermovie-promo-hudebniklipy/' => 'Aftermovie & promo',
+    '/tehotenska-a-newborn-videa/' => 'Těhotenská a newborn videa',
+    '/ivshop/' => 'IV Shop',
+];
+$formSource = $sourceLabels[$returnTo] ?? 'Web Iv Production';
+$subject = 'Nová poptávka – ' . $formSource;
 
 $fieldLabels = [
     'name' => 'Jméno a příjmení',
@@ -128,7 +143,7 @@ $fieldLabels = [
     'message' => 'Doplňující informace',
 ];
 
-$bodyLines = [];
+$bodyLines = ['Zdroj formuláře: ' . $formSource, ''];
 $addedTerm = false;
 foreach ($fieldLabels as $key => $label) {
     $value = clean_field($key, $key === 'message' ? 4000 : 1000);
