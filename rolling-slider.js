@@ -23,7 +23,7 @@
         cloneSet();
 
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-        const state = { frame: 0, previousTime: 0, hovering: false, dragging: false, manualUntil: 0, destroyed: false };
+        const state = { frame: 0, previousTime: 0, position: viewport.scrollLeft, running: false, hovering: false, dragging: false, manualUntil: 0, destroyed: false };
         const speed = Number(options.speed) || 30;
 
         const loopWidth = () => firstClones[0]?.offsetLeft - originals[0]?.offsetLeft || 0;
@@ -35,15 +35,23 @@
         const normalize = () => {
             const width = loopWidth();
             if (!width) return;
-            if (viewport.scrollLeft >= width) viewport.scrollLeft -= width;
-            else if (viewport.scrollLeft < 0) viewport.scrollLeft += width;
+            let left = viewport.scrollLeft;
+            if (left >= width) left -= width;
+            else if (left < 0) left += width;
+            state.position = left;
+            viewport.scrollLeft = left;
         };
         const tick = (time) => {
             if (state.destroyed) return;
-            if (state.previousTime && !document.hidden && !state.hovering && !state.dragging && !reducedMotion.matches && time >= state.manualUntil) {
-                viewport.scrollLeft += Math.min(48, time - state.previousTime) * speed / 1000;
-                normalize();
+            const canRun = !document.hidden && !state.hovering && !state.dragging && !reducedMotion.matches && time >= state.manualUntil;
+            if (state.previousTime && canRun) {
+                if (!state.running) state.position = viewport.scrollLeft;
+                state.position += Math.min(48, time - state.previousTime) * speed / 1000;
+                const width = loopWidth();
+                if (width && state.position >= width) state.position -= width;
+                viewport.scrollLeft = state.position;
             }
+            state.running = canRun;
             state.previousTime = time;
             state.frame = requestAnimationFrame(tick);
         };
