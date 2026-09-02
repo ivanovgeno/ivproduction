@@ -2,7 +2,7 @@
 // a reliable fallback; PHP hosting can publish selected edits through the admin.
 (function loadManagedContent() {
     const script = document.createElement('script');
-    script.src = '/cms-content.js?v=20260826-clean-routes';
+    script.src = '/cms-content.js?v=20260902-editor-fix-1';
     script.defer = true;
     document.head.appendChild(script);
 }());

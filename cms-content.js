@@ -49,11 +49,13 @@
         if (record.property === 'style-background-image') {
             const cleanValue = String(record.value || '').replace(/["\\]/g, '');
             element.style.backgroundImage = cleanValue ? `url("${cleanValue}")` : '';
-            if (element.matches('[data-photo-slot],.tech-placeholder')) {
+            if (element.matches('[data-photo-slot],.tech-placeholder,.service-card')) {
                 element.style.backgroundPosition = cleanValue ? 'center' : '';
                 element.style.backgroundRepeat = cleanValue ? 'no-repeat' : '';
                 element.style.backgroundSize = cleanValue ? (element.classList.contains('tech-placeholder') ? 'contain' : 'cover') : '';
-                element.querySelectorAll(':scope > *').forEach(child => { child.style.visibility = cleanValue ? 'hidden' : ''; });
+                if (element.matches('[data-photo-slot],.tech-placeholder')) {
+                    element.querySelectorAll(':scope > *').forEach(child => { child.style.visibility = cleanValue ? 'hidden' : ''; });
+                }
             }
             return;
         }

@@ -50,9 +50,16 @@
     }
 
     async function api(url, options = {}) {
-        options.headers = { ...(options.headers || {}), 'X-CSRF-Token': csrf };
+        options.headers = { Accept: 'application/json', ...(options.headers || {}), 'X-CSRF-Token': csrf };
         const response = await fetch(url, options);
-        const data = await response.json().catch(() => ({ ok: false, error: 'Server vrátil neplatnou odpověď.' }));
+        const raw = await response.text();
+        let data;
+        try {
+            data = JSON.parse(raw);
+        } catch (_) {
+            console.error('Neplatná odpověď administračního API', { url, status: response.status, body: raw.slice(0, 1000) });
+            data = { ok: false, error: `Server vrátil neplatnou odpověď (HTTP ${response.status}). Obnovte administraci a zkuste akci znovu.` };
+        }
         if (response.status === 401) location.href = 'login.php';
         if (!response.ok || !data.ok) throw new Error(data.error || 'Operace se nepodařila.');
         return data;
@@ -144,6 +151,7 @@
         const tag = element.tagName.toLowerCase();
         const context = contextFor(element);
         if (property === 'css-var') return 'Fotografie na pozadí';
+        if (property === 'style-background-image' && element.classList.contains('service-card')) return context ? `Obrázek pozadí – ${context}` : 'Obrázek pozadí služby';
         if (property === 'style-background-image') return context ? `Fotografie – ${context}` : 'Fotografie na pozadí';
         if (property === 'src' && tag === 'img') return context ? `Fotografie – ${context}` : 'Fotografie';
         if (property === 'alt') return context ? `Popis fotografie – ${context}` : 'Popis fotografie';
@@ -160,6 +168,7 @@
         if (element.classList.contains('tech-name')) return 'Název techniky';
         if (element.classList.contains('tech-desc')) return 'Popis techniky';
         if (element.classList.contains('about-team-kicker') || element.classList.contains('studio-eyebrow')) return 'Malý nadpis';
+        if (element.matches('h1 span,h2 span,h3 span,h4 span,.section-title span')) return 'Zlatá část nadpisu';
         if (tag === 'h1') return 'Hlavní nadpis';
         if (tag === 'h2') return 'Nadpis sekce';
         if (tag === 'h3' || tag === 'h4') return context ? `Název – ${context}` : 'Název položky';
@@ -199,7 +208,7 @@
             });
         }
 
-        documentNode.querySelectorAll('h1,h2,h3,h4,p,li,label,a,button,option,.section-badge,.service-card-label,.about-team-kicker,.studio-eyebrow,.tech-name,.tech-desc').forEach(element => {
+        documentNode.querySelectorAll('h1,h2,h3,h4,h1 span,h2 span,h3 span,h4 span,.section-title span,p,li,label,a,button,option,.section-badge,.service-card-label,.about-team-kicker,.studio-eyebrow,.tech-name,.tech-desc').forEach(element => {
             if (element.closest('script,style,svg,noscript,[data-privacy-banner],.privacy-embed-placeholder,#mobileMenuOverlay') || element.closest('.back-to-top,.quick-contact')) return;
             const selector = selectorFor(element, documentNode);
             const group = groupFor(element);
@@ -226,7 +235,7 @@
             const match = element.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/i);
             if (match?.[1]) addDescriptor(list, { selector: selectorFor(element, documentNode), property: 'style-background-image', original: match[1], label: friendlyLabel(element, 'style-background-image'), group: groupFor(element), context: contextFor(element), type: 'image' });
         });
-        documentNode.querySelectorAll('[data-photo-slot],.tech-placeholder').forEach(element => {
+        documentNode.querySelectorAll('[data-photo-slot],.tech-placeholder,.services .service-card,#sluzby .service-card').forEach(element => {
             const selector = selectorFor(element, documentNode);
             const inline = element.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/i)?.[1] || '';
             addDescriptor(list, {
@@ -273,11 +282,13 @@
         } else if (descriptor.property === 'style-background-image') {
             const cleanValue = String(value).replace(/["\\]/g, '');
             element.style.backgroundImage = cleanValue ? `url("${cleanValue}")` : '';
-            if (element.matches('[data-photo-slot],.tech-placeholder')) {
+            if (element.matches('[data-photo-slot],.tech-placeholder,.service-card')) {
                 element.style.backgroundPosition = cleanValue ? 'center' : '';
                 element.style.backgroundRepeat = cleanValue ? 'no-repeat' : '';
                 element.style.backgroundSize = cleanValue ? (element.classList.contains('tech-placeholder') ? 'contain' : 'cover') : '';
-                element.querySelectorAll(':scope > *').forEach(child => { child.style.visibility = cleanValue ? 'hidden' : ''; });
+                if (element.matches('[data-photo-slot],.tech-placeholder')) {
+                    element.querySelectorAll(':scope > *').forEach(child => { child.style.visibility = cleanValue ? 'hidden' : ''; });
+                }
             }
         } else if (descriptor.property === 'json-ld') {
             const scripts = documentNode.querySelectorAll(descriptor.selector);
@@ -399,8 +410,9 @@
         });
         general.forEach(item => fields.append(fieldControl(item)));
         contextual.forEach((contextItems, context) => {
+            contextItems.sort((a, b) => Number(b.type === 'image') - Number(a.type === 'image'));
             const block = document.createElement('details'); block.className = 'inspector-block';
-            if (contextual.size === 1 || items.length < 10) block.open = true;
+            if (state.selectedGroup === 'Služby' || contextual.size === 1 || items.length < 10) block.open = true;
             const summary = document.createElement('summary');
             const title = document.createElement('strong'); title.textContent = context;
             const count = document.createElement('span'); count.textContent = `${contextItems.length} ${contextItems.length === 1 ? 'položka' : contextItems.length < 5 ? 'položky' : 'položek'}`;
@@ -517,8 +529,16 @@
     }
 
     async function savePageRecords(page, descriptors, values, message = true) {
-        const result = await api('api/content.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page, records: contentRecords(descriptors, values) }) });
-        state.api.content.pages[page] = contentRecords(descriptors, values);
+        const records = contentRecords(descriptors, values);
+        if (!records.length) return { ok: true, message: 'Žádné změny k uložení.', updatedAt: state.api.content.updatedAt };
+        const result = await api('api/content.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ page, mode: 'patch', records })
+        });
+        const merged = new Map((state.api.content.pages[page] || []).map(record => [recordKey(record), record]));
+        records.forEach(record => merged.set(recordKey(record), record));
+        state.api.content.pages[page] = [...merged.values()];
         state.api.content.updatedAt = result.updatedAt;
         if (message) toast(result.message);
         return result;
@@ -537,7 +557,8 @@
     $('#topSaveContent').addEventListener('click', () => $('#saveContent').click());
     $('#saveContent').addEventListener('click', async () => {
         try {
-            await savePageRecords(state.page, state.descriptors, state.current);
+            const changed = state.descriptors.filter(item => (state.current.get(item.key) ?? '') !== (state.saved.get(item.key) ?? ''));
+            await savePageRecords(state.page, changed, state.current);
             state.saved = new Map(state.current);
             renderInspector(); updateDirty();
         } catch (error) { toast(error.message, true); }
@@ -661,7 +682,7 @@
         const values = new Map(state.mediaAssignment.descriptors.map(item => [item.key, item.original]));
         values.set(target.key, state.mediaAssignment.item.url);
         try {
-            await savePageRecords(state.mediaAssignment.page, state.mediaAssignment.descriptors, values, false);
+            await savePageRecords(state.mediaAssignment.page, [target], values, false);
             closeDrawers(); toast(`Médium bylo přiřazeno: ${target.label}.`);
             if (state.page === state.mediaAssignment.page) loadPage(state.page, target.group);
         } catch (error) { toast(error.message, true); }

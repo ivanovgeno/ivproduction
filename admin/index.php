@@ -10,7 +10,7 @@ $config = ivp_config();
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="robots" content="noindex,nofollow">
     <title>Administrace | Iv Production</title>
-    <link rel="stylesheet" href="assets/admin.css?v=20260902-visual-cms">
+    <link rel="stylesheet" href="assets/admin.css?v=20260902-editor-fix-1">
 </head>
 <body class="admin-app" data-csrf="<?= htmlspecialchars(ivp_csrf(), ENT_QUOTES) ?>">
 <div class="admin-shell">
@@ -109,6 +109,6 @@ $config = ivp_config();
 <div class="modal-backdrop" id="mediaPickerModal" hidden><div class="media-modal" role="dialog" aria-modal="true" aria-labelledby="mediaPickerTitle"><header><div><h2 id="mediaPickerTitle">Vybrat z médií</h2><p>Klikněte na obrázek, který chcete použít.</p></div><button class="icon-button" id="closeMediaPicker" aria-label="Zavřít">×</button></header><label class="search-control"><span>⌕</span><input id="mediaPickerSearch" type="search" placeholder="Hledat obrázek…"></label><div class="media-picker-grid" id="mediaPickerGrid"></div></div></div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="assets/admin.js?v=20260902-visual-cms"></script>
+<script src="assets/admin.js?v=20260902-editor-fix-1"></script>
 </body>
 </html>

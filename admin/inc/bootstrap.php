@@ -8,6 +8,10 @@ const IVP_CONTENT = IVP_ROOT . '/content/site-content.json';
 const IVP_HISTORY = IVP_ADMIN . '/data/history';
 const IVP_UPLOADS = IVP_ROOT . '/assets/uploads';
 
+// Warnings must never corrupt JSON responses returned by admin endpoints.
+// WEDOS still records them in the PHP error log for diagnostics.
+ini_set('display_errors', '0');
+ini_set('log_errors', '1');
 ini_set('session.use_strict_mode', '1');
 ini_set('session.cookie_httponly', '1');
 ini_set('session.cookie_samesite', 'Strict');
@@ -160,12 +164,12 @@ function ivp_sync_static_seo(string $page, array $records): bool
 
     if (!$changed) return true;
     $tmp = $path . '.admin-tmp';
-    if (file_put_contents($tmp, $html, LOCK_EX) !== false && rename($tmp, $path)) return true;
+    if (@file_put_contents($tmp, $html, LOCK_EX) !== false && @rename($tmp, $path)) return true;
     @unlink($tmp);
 
     // Some shared hostings allow replacing an existing file but not creating a
     // temporary sibling. Keep publishing available in that configuration too.
-    return file_put_contents($path, $html, LOCK_EX) !== false;
+    return @file_put_contents($path, $html, LOCK_EX) !== false;
 }
 
 function ivp_content(): array
@@ -190,7 +194,7 @@ function ivp_storage_status(): array
 function ivp_write_content(array $data): bool
 {
     if (!is_dir(IVP_HISTORY)) {
-        mkdir(IVP_HISTORY, 0750, true);
+        @mkdir(IVP_HISTORY, 0750, true);
     }
     if (is_file(IVP_CONTENT)) {
         $backup = IVP_HISTORY . '/content-' . date('Ymd-His') . '-' . bin2hex(random_bytes(2)) . '.json';
@@ -205,8 +209,8 @@ function ivp_write_content(array $data): bool
     if ($json === false) return false;
     $tmp = IVP_CONTENT . '.tmp';
     $payload = $json . "\n";
-    if (file_put_contents($tmp, $payload, LOCK_EX) !== false && rename($tmp, IVP_CONTENT)) return true;
+    if (@file_put_contents($tmp, $payload, LOCK_EX) !== false && @rename($tmp, IVP_CONTENT)) return true;
     @unlink($tmp);
 
-    return file_put_contents(IVP_CONTENT, $payload, LOCK_EX) !== false;
+    return @file_put_contents(IVP_CONTENT, $payload, LOCK_EX) !== false;
 }
