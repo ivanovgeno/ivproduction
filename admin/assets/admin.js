@@ -21,6 +21,8 @@
         videos: [],
         videosDirty: false,
         draggedVideo: -1,
+        boothGalleries: { photos: [], backgrounds: [] },
+        boothDirty: false,
         blogPosts: [],
         blogStatus: '',
         blogEditing: null,
@@ -32,6 +34,7 @@
         content: ['Vizuální editor', 'Klikněte na sekci a upravujte ji přímo v náhledu.'],
         media: ['Média', 'Nahrávání a přiřazování fotografií a videí.'],
         videos: ['Portfolio', 'Videoprojekty, kategorie a jejich pořadí.'],
+        booth: ['Fotobudka galerie', 'Fotografie z akcí a nabídka pozadí.'],
         blog: ['Blog', 'Přidávání, úpravy a publikování článků.'],
         history: ['Historie', 'Bezpečné zálohy provedených změn.'],
         security: ['Přístup', 'Změna přístupových údajů.']
@@ -75,6 +78,7 @@
         $('#sidebar').classList.remove('is-open');
         if (view === 'media') loadMedia();
         if (view === 'videos') loadVideos();
+        if (view === 'booth') loadBoothGalleries();
         if (view === 'blog') loadBlog();
         if (view === 'history') loadHistory();
     }
@@ -803,6 +807,64 @@
         try { await persistVideos(index >= 0 ? 'Projekt byl upraven.' : 'Projekt byl přidán.'); closeDrawers(); } catch (_) { state.videos = previous; renderVideos(); }
     });
 
+    // Fotobudka galerie -----------------------------------------------------
+    function galleryNameFromUrl(url) {
+        const name = decodeURIComponent(String(url).split('/').pop() || 'Nová fotografie').replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ');
+        return name.charAt(0).toLocaleUpperCase('cs') + name.slice(1);
+    }
+    function markBoothDirty() {
+        state.boothDirty = true;
+        $('#saveBoothGalleries').disabled = false;
+        $('#boothSaveState').textContent = 'Neuložené změny';
+        $('#saveState').textContent = 'Neuložené změny';
+        $('#saveState').classList.add('is-dirty');
+    }
+    function renderBoothGallery(kind) {
+        const list = $(kind === 'photos' ? '#boothPhotos' : '#boothBackgrounds');
+        const items = state.boothGalleries[kind] || [];
+        list.innerHTML = '';
+        if (!items.length) { list.innerHTML = '<div class="empty-state">Galerie je prázdná. Přidejte alespoň jednu fotografii.</div>'; return; }
+        items.forEach((item, index) => {
+            const card = document.createElement('article'); card.className = 'gallery-admin-card';
+            const image = document.createElement('img'); image.src = item.image; image.alt = '';
+            const fields = document.createElement('div'); fields.className = 'gallery-admin-fields';
+            const titleLabel = document.createElement('label'); titleLabel.textContent = 'Popisek';
+            const title = document.createElement('input'); title.value = item.title || ''; title.maxLength = 180; title.required = true; title.addEventListener('input', () => { item.title = title.value; markBoothDirty(); }); titleLabel.append(title);
+            const altLabel = document.createElement('label'); altLabel.textContent = 'Popis pro Google a čtečky';
+            const alt = document.createElement('input'); alt.value = item.alt || ''; alt.maxLength = 320; alt.addEventListener('input', () => { item.alt = alt.value; markBoothDirty(); }); altLabel.append(alt);
+            fields.append(titleLabel, altLabel);
+            const actions = document.createElement('div'); actions.className = 'gallery-admin-actions';
+            const up = document.createElement('button'); up.type = 'button'; up.textContent = '↑'; up.title = 'Posunout výše'; up.disabled = index === 0; up.addEventListener('click', () => { [items[index - 1], items[index]] = [items[index], items[index - 1]]; markBoothDirty(); renderBoothGallery(kind); });
+            const down = document.createElement('button'); down.type = 'button'; down.textContent = '↓'; down.title = 'Posunout níže'; down.disabled = index === items.length - 1; down.addEventListener('click', () => { [items[index], items[index + 1]] = [items[index + 1], items[index]]; markBoothDirty(); renderBoothGallery(kind); });
+            const replace = document.createElement('button'); replace.type = 'button'; replace.textContent = 'Vyměnit'; replace.addEventListener('click', () => openMediaPicker(url => { item.image = url; markBoothDirty(); renderBoothGallery(kind); }));
+            const remove = document.createElement('button'); remove.type = 'button'; remove.className = 'gallery-remove'; remove.textContent = 'Odstranit'; remove.addEventListener('click', () => { if (!confirm(`Odstranit fotografii „${item.title}“ z galerie?`)) return; items.splice(index, 1); markBoothDirty(); renderBoothGallery(kind); });
+            actions.append(up, down, replace, remove); card.append(image, fields, actions); list.append(card);
+        });
+    }
+    function renderBoothGalleries() { renderBoothGallery('photos'); renderBoothGallery('backgrounds'); }
+    function addBoothImage(kind, url) {
+        state.boothGalleries[kind].push({ id: `${kind}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`, image: url, title: galleryNameFromUrl(url), alt: galleryNameFromUrl(url) });
+        markBoothDirty(); renderBoothGallery(kind);
+    }
+    async function loadBoothGalleries() {
+        try {
+            const data = await api('api/fotobudka-galleries.php');
+            state.boothGalleries = data.galleries || { photos: [], backgrounds: [] };
+            state.boothDirty = false; $('#saveBoothGalleries').disabled = true; $('#boothSaveState').textContent = 'Vše uloženo';
+            renderBoothGalleries();
+        } catch (error) { $('#boothPhotos').innerHTML = `<div class="empty-state">${error.message}</div>`; $('#boothBackgrounds').innerHTML = ''; }
+    }
+    $$('[data-add-gallery]').forEach(button => button.addEventListener('click', () => openMediaPicker(url => addBoothImage(button.dataset.addGallery, url))));
+    $$('[data-upload-gallery]').forEach(input => input.addEventListener('change', async event => { const file = event.target.files[0]; if (!file) return; const item = await uploadFile(file); if (item) addBoothImage(input.dataset.uploadGallery, item.url); event.target.value = ''; }));
+    $('#saveBoothGalleries').addEventListener('click', async () => {
+        if (!state.boothGalleries.photos.length || !state.boothGalleries.backgrounds.length) { toast('Každá galerie musí mít alespoň jednu fotografii.', true); return; }
+        if ([...state.boothGalleries.photos, ...state.boothGalleries.backgrounds].some(item => !item.title.trim())) { toast('Doplňte popisek u všech fotografií.', true); return; }
+        try {
+            const result = await api('api/fotobudka-galleries.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(state.boothGalleries) });
+            state.boothGalleries = result.galleries; state.boothDirty = false; $('#saveBoothGalleries').disabled = true; $('#boothSaveState').textContent = 'Vše uloženo'; $('#saveState').textContent = 'Vše uloženo'; $('#saveState').classList.remove('is-dirty'); renderBoothGalleries(); toast(result.message);
+        } catch (error) { toast(error.message, true); }
+    });
+
     // Blog ------------------------------------------------------------------
     async function loadBlog() {
         try {
@@ -873,6 +935,6 @@
             await loadPage(select.value || 'index.html');
         } catch (error) { toast(error.message, true); $('#sectionNav').innerHTML = `<div class="empty-state">${error.message}</div>`; }
     }
-    window.addEventListener('beforeunload', event => { const contentDirty = [...state.current].some(([key, value]) => value !== state.saved.get(key)); if (contentDirty || state.videosDirty) { event.preventDefault(); event.returnValue = ''; } });
+    window.addEventListener('beforeunload', event => { const contentDirty = [...state.current].some(([key, value]) => value !== state.saved.get(key)); if (contentDirty || state.videosDirty || state.boothDirty) { event.preventDefault(); event.returnValue = ''; } });
     init();
 })();

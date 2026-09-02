@@ -633,6 +633,8 @@
 
         .budka-gallery-shell.is-autoplaying .budka-gallery {
             cursor: grab;
+            scroll-behavior: auto;
+            scroll-snap-type: none;
         }
 
         .budka-gallery-shell.is-autoplaying .budka-gallery:active {
@@ -1297,7 +1299,7 @@
                 <p class="package-section-kicker">Skutečné momenty</p>
                 <h2 class="section-title">Ukázky fotografií <span>z IV Budky</span></h2>
                 <p class="section-subtitle">Svatby, plesy i večírky. Každá akce má vlastní atmosféru a grafiku.</p>
-                <div class="budka-gallery-shell" data-photo-gallery>
+                <div class="budka-gallery-shell" data-photo-gallery data-gallery-kind="photos">
                     <button class="budka-gallery-control" type="button" data-gallery-prev aria-label="Předchozí fotografie">←</button>
                     <div class="budka-gallery" tabindex="0" role="region" aria-label="Galerie fotografií z IV Budky">
                         <figure><img src="/assets/fotobudka/gallery-01.webp" alt="Hosté pózující v IV Budce" loading="lazy" width="1600" height="1200" decoding="async"><figcaption>Zábava pro všechny hosty</figcaption></figure>
@@ -1346,7 +1348,7 @@
                 <p class="package-section-kicker">Vzhled podle vaší akce</p>
                 <h2 class="section-title">Galerie dostupných <span>pozadí</span></h2>
                 <p class="section-subtitle">Konkrétní dostupnost i možnost pozadí na míru potvrdíme při rezervaci.</p>
-                <div class="budka-gallery-shell" data-photo-gallery>
+                <div class="budka-gallery-shell" data-photo-gallery data-gallery-kind="backgrounds">
                     <button class="budka-gallery-control" type="button" data-gallery-prev aria-label="Předchozí pozadí">←</button>
                     <div class="budka-gallery budka-gallery--backgrounds" tabindex="0" role="region" aria-label="Galerie pozadí pro IV Budku">
                         <figure><img src="/assets/fotobudka/background-01.webp" alt="Stříbrné třpytivé pozadí pro fotobudku" loading="lazy" width="1023" height="694" decoding="async"><figcaption>Stříbrné třpytky</figcaption></figure>
@@ -1698,97 +1700,8 @@
             });
         }
     </script>
-    <script>
-        document.querySelectorAll('[data-photo-gallery]').forEach((shell) => {
-            const gallery = shell.querySelector('.budka-gallery');
-            if (!gallery) return;
-
-            const originals = Array.from(gallery.querySelectorAll('figure'));
-            if (originals.length < 2) return;
-
-            const clones = originals.map((figure) => {
-                const clone = figure.cloneNode(true);
-                clone.setAttribute('aria-hidden', 'true');
-                clone.dataset.galleryClone = 'true';
-                gallery.append(clone);
-                return clone;
-            });
-
-            const state = { timer: null, normalizeTimer: null, hovering: false, dragging: false };
-            const loopWidth = () => clones[0].offsetLeft - originals[0].offsetLeft;
-            const stepWidth = () => {
-                const gap = Number.parseFloat(getComputedStyle(gallery).columnGap || getComputedStyle(gallery).gap || '0');
-                return originals[0].getBoundingClientRect().width + gap;
-            };
-
-            const setInstantPosition = (left) => {
-                const previousBehavior = gallery.style.scrollBehavior;
-                const previousSnap = gallery.style.scrollSnapType;
-                gallery.style.scrollBehavior = 'auto';
-                gallery.style.scrollSnapType = 'none';
-                gallery.scrollLeft = left;
-                requestAnimationFrame(() => {
-                    gallery.style.scrollBehavior = previousBehavior;
-                    gallery.style.scrollSnapType = previousSnap;
-                });
-            };
-
-            const normalize = () => {
-                const width = loopWidth();
-                if (width && gallery.scrollLeft >= width - 1) setInstantPosition(gallery.scrollLeft - width);
-            };
-
-            const queueNormalize = () => {
-                clearTimeout(state.normalizeTimer);
-                state.normalizeTimer = setTimeout(normalize, 180);
-            };
-
-            const move = (direction) => {
-                const width = loopWidth();
-                const step = stepWidth();
-                if (!width || !step) return;
-                if (direction < 0 && gallery.scrollLeft <= 1) {
-                    setInstantPosition(width);
-                    requestAnimationFrame(() => gallery.scrollBy({ left: -step, behavior: 'smooth' }));
-                    return;
-                }
-                gallery.scrollBy({ left: direction * step, behavior: 'smooth' });
-            };
-
-            const stop = () => {
-                clearTimeout(state.timer);
-                state.timer = null;
-            };
-
-            const schedule = () => {
-                stop();
-                if (document.hidden || state.dragging) return;
-                state.timer = setTimeout(() => {
-                    move(1);
-                    schedule();
-                }, state.hovering ? 4200 : 2000);
-            };
-
-            shell.classList.add('is-autoplaying');
-            gallery.addEventListener('scroll', queueNormalize, { passive: true });
-            shell.addEventListener('mouseenter', () => { state.hovering = true; schedule(); });
-            shell.addEventListener('mouseleave', () => { state.hovering = false; schedule(); });
-            gallery.addEventListener('pointerdown', () => { state.dragging = true; stop(); });
-            const resume = () => {
-                if (!state.dragging) return;
-                state.dragging = false;
-                queueNormalize();
-                schedule();
-            };
-            gallery.addEventListener('pointerup', resume);
-            gallery.addEventListener('pointercancel', resume);
-            gallery.addEventListener('lostpointercapture', resume);
-            document.addEventListener('visibilitychange', schedule);
-            shell.querySelector('[data-gallery-prev]')?.addEventListener('click', () => { move(-1); schedule(); });
-            shell.querySelector('[data-gallery-next]')?.addEventListener('click', () => { move(1); schedule(); });
-            schedule();
-        });
-    </script>
+    <script src="/rolling-slider.js?v=20260902-continuous-loop-1"></script>
+    <script src="/fotobudka-galleries.js?v=20260902-admin-galleries-1"></script>
 </body>
 
 </html>

@@ -77,3 +77,5 @@ jobs:
         run: |
           curl --fail --location --silent --show-error --max-time 30 https://www.ivproduction.cz/ > /dev/null
           curl --fail --location --silent --show-error --max-time 30 https://www.ivproduction.cz/svatby/ > /dev/null
+          curl --fail --location --silent --show-error --max-time 30 https://www.ivproduction.cz/ivbudka/ > /dev/null
+          curl --fail --silent --show-error --max-time 30 https://www.ivproduction.cz/api/fotobudka-galleries.php | grep -q '"ok":true'

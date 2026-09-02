@@ -165,123 +165,14 @@
 
     function initRelatedWorkSliders() {
         function setupLoopingAutoplay(slider, viewport) {
-            const originalSlides = Array.from(viewport.querySelectorAll('.premium-work-slide'));
-            if (originalSlides.length < 2) return null;
-
-            const cloneSlide = (slide) => {
-                const clone = slide.cloneNode(true);
-                clone.dataset.sliderClone = 'true';
-                clone.setAttribute('aria-hidden', 'true');
-                clone.setAttribute('tabindex', '-1');
-                return clone;
-            };
-
-            // Keep three identical sets in the track. Two sets are not enough when
-            // the viewport shows three cards but the category contains only two:
-            // the browser reaches its maximum scroll position before the loop point.
-            const firstCloneSet = originalSlides.map(cloneSlide);
-            const secondCloneSet = originalSlides.map(cloneSlide);
-            [...firstCloneSet, ...secondCloneSet].forEach((slide) => viewport.append(slide));
-
-            const state = { timer: null, normalizeTimer: null, hovering: false, dragging: false };
-
-            const loopWidth = () => {
-                const firstClone = firstCloneSet[0];
-                const firstOriginal = originalSlides[0];
-                return firstClone && firstOriginal ? firstClone.offsetLeft - firstOriginal.offsetLeft : 0;
-            };
-
-            const stepWidth = () => {
-                const firstSlide = originalSlides[0];
-                const gap = Number.parseFloat(window.getComputedStyle(viewport).columnGap || window.getComputedStyle(viewport).gap || '0');
-                return firstSlide ? firstSlide.getBoundingClientRect().width + gap : viewport.clientWidth * 0.85;
-            };
-
-            const setInstantPosition = (left) => {
-                const previousBehavior = viewport.style.scrollBehavior;
-                const previousSnap = viewport.style.scrollSnapType;
-                viewport.style.scrollBehavior = 'auto';
-                viewport.style.scrollSnapType = 'none';
-                viewport.scrollLeft = left;
-                window.requestAnimationFrame(() => {
-                    viewport.style.scrollBehavior = previousBehavior;
-                    viewport.style.scrollSnapType = previousSnap;
-                });
-            };
-
-            const normalizeLoop = () => {
-                const width = loopWidth();
-                if (width && viewport.scrollLeft >= width - 1) {
-                    setInstantPosition(viewport.scrollLeft - width);
-                }
-            };
-
-            const queueNormalize = () => {
-                if (state.normalizeTimer) window.clearTimeout(state.normalizeTimer);
-                state.normalizeTimer = window.setTimeout(normalizeLoop, 180);
-            };
-
-            const move = (direction) => {
-                const width = loopWidth();
-                const step = stepWidth();
-                if (!width || !step) return;
-
-                if (direction < 0 && viewport.scrollLeft <= 1) {
-                    setInstantPosition(width);
-                    window.requestAnimationFrame(() => viewport.scrollBy({ left: -step, behavior: 'smooth' }));
-                    return;
-                }
-
-                viewport.scrollBy({ left: direction * step, behavior: 'smooth' });
-            };
-
-            const stop = () => {
-                if (state.timer) window.clearTimeout(state.timer);
-                state.timer = null;
-            };
-
-            const schedule = () => {
-                stop();
-                if (document.hidden || state.dragging) return;
-                const delay = state.hovering ? 4200 : 2000;
-                state.timer = window.setTimeout(() => {
-                    move(1);
-                    schedule();
-                }, delay);
-            };
-
-            slider.classList.add('is-autoplaying');
-            viewport.addEventListener('scroll', queueNormalize, { passive: true });
-            slider.addEventListener('mouseenter', () => {
-                state.hovering = true;
-                slider.classList.add('is-slowed');
-                schedule();
-            });
-            slider.addEventListener('mouseleave', () => {
-                state.hovering = false;
-                slider.classList.remove('is-slowed');
-                schedule();
-            });
-            viewport.addEventListener('pointerdown', () => {
-                state.dragging = true;
-                stop();
-            });
-            const resumeAfterPointer = () => {
-                if (!state.dragging) return;
-                state.dragging = false;
-                queueNormalize();
-                schedule();
-            };
-            window.addEventListener('pointerup', resumeAfterPointer, { passive: true });
-            window.addEventListener('pointercancel', resumeAfterPointer, { passive: true });
-            viewport.addEventListener('touchend', resumeAfterPointer, { passive: true });
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) stop();
-                else schedule();
-            });
-            window.setTimeout(schedule, 650);
-
-            return { move, schedule };
+            return window.IVRollingSlider?.setup({
+                root: slider,
+                viewport,
+                itemSelector: '.premium-work-slide',
+                previous: slider.querySelector('[data-slider-previous]'),
+                next: slider.querySelector('[data-slider-next]'),
+                speed: 30
+            }) || null;
         }
 
         document.querySelectorAll('[data-portfolio-slider]').forEach((section) => {
@@ -319,22 +210,14 @@
             const slider = section.querySelector('.premium-work-slider');
             const viewport = section.querySelector('.premium-work-slider__viewport');
             const loop = setupLoopingAutoplay(slider, viewport);
-            section.querySelector('[data-slider-previous]')?.addEventListener('click', () => {
-                if (loop) {
-                    loop.move(-1);
-                    loop.schedule();
-                } else {
+            if (!loop) {
+                section.querySelector('[data-slider-previous]')?.addEventListener('click', () => {
                     viewport.scrollBy({ left: -Math.round(viewport.clientWidth * 0.86), behavior: 'smooth' });
-                }
-            });
-            section.querySelector('[data-slider-next]')?.addEventListener('click', () => {
-                if (loop) {
-                    loop.move(1);
-                    loop.schedule();
-                } else {
+                });
+                section.querySelector('[data-slider-next]')?.addEventListener('click', () => {
                     viewport.scrollBy({ left: Math.round(viewport.clientWidth * 0.86), behavior: 'smooth' });
-                }
-            });
+                });
+            }
             bindProjectCards(section);
         });
     }

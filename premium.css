@@ -3942,7 +3942,8 @@ body.page-portfolio .hero h1 {
 /* Infinite related-work carousel: calm motion, a richer premium focus, and touch-friendly control. */
 .premium-work-slider.is-autoplaying .premium-work-slider__viewport {
     cursor: grab;
-    scroll-snap-stop: always;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
     touch-action: pan-y pan-x;
 }
 

@@ -10,7 +10,7 @@ $config = ivp_config();
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="robots" content="noindex,nofollow">
     <title>Administrace | Iv Production</title>
-    <link rel="stylesheet" href="assets/admin.css?v=20260902-team-photo-fix-1">
+    <link rel="stylesheet" href="assets/admin.css?v=20260902-booth-galleries-1">
 </head>
 <body class="admin-app" data-csrf="<?= htmlspecialchars(ivp_csrf(), ENT_QUOTES) ?>">
 <div class="admin-shell">
@@ -21,6 +21,7 @@ $config = ivp_config();
             <button class="nav-item" data-view="content"><span aria-hidden="true">✎</span>Vizuální editor</button>
             <button class="nav-item" data-view="media"><span aria-hidden="true">▧</span>Média</button>
             <button class="nav-item" data-view="videos"><span aria-hidden="true">▶</span>Portfolio</button>
+            <button class="nav-item" data-view="booth"><span aria-hidden="true">▦</span>Fotobudka galerie</button>
             <button class="nav-item" data-view="blog"><span aria-hidden="true">▤</span>Blog</button>
             <button class="nav-item" data-view="history"><span aria-hidden="true">↶</span>Historie</button>
             <button class="nav-item" data-view="security"><span aria-hidden="true">⚿</span>Přístup</button>
@@ -54,6 +55,7 @@ $config = ivp_config();
                 <button data-go="content" data-page="index.html"><span class="task-icon">✎</span><strong>Upravit stránku</strong><small>Texty, tlačítka a fotografie přímo v náhledu.</small></button>
                 <button data-go="media"><span class="task-icon">▧</span><strong>Nahrát fotografie</strong><small>Nahrajte soubor a vyberte, kde se na webu zobrazí.</small></button>
                 <button data-go="videos"><span class="task-icon">▶</span><strong>Přidat video</strong><small>Správa projektů a pořadí v portfoliu.</small></button>
+                <button data-go="booth"><span class="task-icon">▦</span><strong>Fotobudka galerie</strong><small>Fotografie z akcí a nabídka pozadí.</small></button>
                 <button data-go="blog"><span class="task-icon">▤</span><strong>Napsat článek</strong><small>Vytvoření, úpravy a publikování blogu.</small></button>
             </div>
             <div class="dashboard-status"><div><span>Spravované stránky</span><strong id="pageCount">—</strong></div><div><span>Poslední změna</span><strong id="lastUpdate">—</strong></div><div><span>Automatické zálohy</span><strong>Zapnuté</strong></div></div>
@@ -86,6 +88,15 @@ $config = ivp_config();
             <div class="portfolio-list" id="videoProjects"><div class="loading">Načítám portfolio…</div></div>
         </section>
 
+        <section class="view" data-panel="booth">
+            <div class="view-heading"><div><h2>Fotobudka galerie</h2><p>Fotografie se po uložení ihned zobrazí v automatických sliderech na stránce Fotobudky.</p></div><a class="button ghost" href="../ivbudka/" target="_blank" rel="noopener">Otevřít Fotobudku ↗</a></div>
+            <div class="booth-gallery-layout">
+                <section class="gallery-manager"><header><div><h3>Ukázky fotografií</h3><p>Momentky a výstupy z akcí.</p></div><div class="gallery-add-actions"><button class="button ghost" type="button" data-add-gallery="photos">Vybrat z médií</button><label class="button primary upload-button">Nahrát novou<input type="file" data-upload-gallery="photos" accept="image/jpeg,image/png,image/webp,image/gif"></label></div></header><div class="gallery-admin-list" id="boothPhotos"><div class="loading">Načítám fotografie…</div></div></section>
+                <section class="gallery-manager"><header><div><h3>Dostupná pozadí</h3><p>Varianty pozadí, které nabízíte klientům.</p></div><div class="gallery-add-actions"><button class="button ghost" type="button" data-add-gallery="backgrounds">Vybrat z médií</button><label class="button primary upload-button">Nahrát nové<input type="file" data-upload-gallery="backgrounds" accept="image/jpeg,image/png,image/webp,image/gif"></label></div></header><div class="gallery-admin-list" id="boothBackgrounds"><div class="loading">Načítám pozadí…</div></div></section>
+            </div>
+            <div class="gallery-savebar"><span id="boothSaveState">Vše uloženo</span><button class="button primary" id="saveBoothGalleries" disabled>Uložit galerie</button></div>
+        </section>
+
         <section class="view" data-panel="blog">
             <div class="view-heading"><div><h2>Blog</h2><p>Správa článků</p></div><button class="button primary" id="addBlogPost">＋ Nový článek</button></div>
             <div class="blog-toolbar"><label class="search-control"><span>⌕</span><input id="blogSearch" type="search" placeholder="Hledat článek…"></label><select id="blogCategoryFilter"><option value="">Všechny kategorie</option></select><div class="blog-status-tabs" id="blogStatusTabs"><button class="is-active" data-status="">Vše</button><button data-status="published">Publikované</button><button data-status="draft">Koncepty</button></div></div>
@@ -109,6 +120,6 @@ $config = ivp_config();
 <div class="modal-backdrop" id="mediaPickerModal" hidden><div class="media-modal" role="dialog" aria-modal="true" aria-labelledby="mediaPickerTitle"><header><div><h2 id="mediaPickerTitle">Vybrat z médií</h2><p>Klikněte na obrázek, který chcete použít.</p></div><button class="icon-button" id="closeMediaPicker" aria-label="Zavřít">×</button></header><label class="search-control"><span>⌕</span><input id="mediaPickerSearch" type="search" placeholder="Hledat obrázek…"></label><div class="media-picker-grid" id="mediaPickerGrid"></div></div></div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="assets/admin.js?v=20260902-team-photo-fix-1"></script>
+<script src="assets/admin.js?v=20260902-booth-galleries-1"></script>
 </body>
 </html>
