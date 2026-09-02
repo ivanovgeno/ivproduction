@@ -77,6 +77,7 @@
         options.next?.addEventListener('click', () => move(1));
 
         root.classList.add('is-autoplaying');
+        root.dataset.rollingEngine = 'continuous-20260902';
         state.frame = requestAnimationFrame(tick);
         return { move, normalize };
     }
