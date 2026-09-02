@@ -206,8 +206,10 @@
     <script src="/contact-form-fallback.js?v=20260827-final" defer></script>
     <script src="/experience.js?v=20260712-portfoliohub" defer></script>
     <script src="/portfolio-data.js?v=20260826-real-projects" defer></script>
+    <link rel="stylesheet" href="/motion-fixes-20260902.css">
     <script src="/continuous-slider-20260902.js" defer></script>
-    <script src="/portfolio-gallery.js?v=20260902-continuous-loop-1" defer></script>
+    <script src="/portfolio-gallery-continuous-20260902.js" defer></script>
+    <script src="/booth-video-autoplay-20260902.js" defer></script>
     <style>
         body.page-360 {
             background: #0a0a0f;
@@ -1316,7 +1318,7 @@
                 <p class="section-subtitle">Žádná simulace ani fotobanka. Tohle si hosté opravdu odnášejí z akce.</p>
                 <div class="booth-video-grid">
                     <article class="booth-video-card">
-                        <video controls muted loop playsinline preload="metadata"
+                        <video controls autoplay muted loop playsinline webkit-playsinline preload="metadata"
                             poster="/assets/360budka/video-01-poster.webp"
                             aria-label="Ukázka videa z IV Budky 360 s party rekvizitami">
                             <source src="/assets/360budka/video-01.mp4" type="video/mp4">
@@ -1325,7 +1327,7 @@
                         <div class="booth-video-caption"><strong>Party energie</strong><span>360° klip</span></div>
                     </article>
                     <article class="booth-video-card">
-                        <video controls muted loop playsinline preload="metadata"
+                        <video controls autoplay muted loop playsinline webkit-playsinline preload="metadata"
                             poster="/assets/360budka/video-02-poster.webp"
                             aria-label="Ukázka červeně nasvícené IV Budky 360">
                             <source src="/assets/360budka/video-02.mp4" type="video/mp4">
@@ -1334,7 +1336,7 @@
                         <div class="booth-video-caption"><strong>LED scéna</strong><span>360° klip</span></div>
                     </article>
                     <article class="booth-video-card">
-                        <video controls muted loop playsinline preload="metadata"
+                        <video controls autoplay muted loop playsinline webkit-playsinline preload="metadata"
                             poster="/assets/360budka/video-03-poster.webp"
                             aria-label="Ukázka hostů s bublinkovou pistolí v IV Budce 360">
                             <source src="/assets/360budka/video-03.mp4" type="video/mp4">
@@ -1746,21 +1748,6 @@
                 event.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-        }
-
-        const showcaseVideos = document.querySelectorAll('.booth-video-card video');
-        if ('IntersectionObserver' in window && showcaseVideos.length) {
-            const videoObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    const video = entry.target;
-                    if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
-                        video.play().catch(() => {});
-                    } else {
-                        video.pause();
-                    }
-                });
-            }, { threshold: [0, 0.55] });
-            showcaseVideos.forEach((video) => videoObserver.observe(video));
         }
 
         const boothGallery = document.getElementById('boothGallery');

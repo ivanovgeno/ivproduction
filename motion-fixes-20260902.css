@@ -1,0 +1,42 @@
+.premium-work-slider.is-autoplaying .premium-work-slider__viewport {
+    scroll-behavior: auto !important;
+    scroll-snap-type: none !important;
+}
+
+.premium-work-slider.is-autoplaying .premium-work-slide {
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+}
+
+.booth-video-card {
+    position: relative;
+}
+
+.booth-video-play-fallback {
+    align-items: center;
+    background: rgba(7, 8, 11, .82);
+    border: 1px solid rgba(255, 229, 92, .7);
+    border-radius: 999px;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    font-weight: 700;
+    gap: .55rem;
+    left: 50%;
+    min-height: 46px;
+    padding: .7rem 1.05rem;
+    position: absolute;
+    top: 46%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.booth-video-card.is-autoplay-blocked .booth-video-play-fallback {
+    display: inline-flex;
+}
+
+.booth-video-play-fallback::before {
+    color: #ffe55c;
+    content: '\25B6';
+    font-size: .85em;
+}
