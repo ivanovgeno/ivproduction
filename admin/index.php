@@ -10,7 +10,7 @@ $config = ivp_config();
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="robots" content="noindex,nofollow">
     <title>Administrace | Iv Production</title>
-    <link rel="stylesheet" href="assets/admin-portfolio-homepage-20260903.css">
+    <link rel="stylesheet" href="assets/admin-social-sharing-20260903.css">
 </head>
 <body class="admin-app" data-csrf="<?= htmlspecialchars(ivp_csrf(), ENT_QUOTES) ?>">
 <div class="admin-shell">
@@ -23,6 +23,7 @@ $config = ivp_config();
             <button class="nav-item" data-view="videos"><span aria-hidden="true">▶</span>Portfolio</button>
             <button class="nav-item" data-view="booth"><span aria-hidden="true">▦</span>Fotobudka galerie</button>
             <button class="nav-item" data-view="blog"><span aria-hidden="true">▤</span>Blog</button>
+            <button class="nav-item" data-view="social"><span aria-hidden="true">↗</span>Sdílení na sítích</button>
             <button class="nav-item" data-view="history"><span aria-hidden="true">↶</span>Historie</button>
             <button class="nav-item" data-view="security"><span aria-hidden="true">⚿</span>Přístup</button>
         </nav>
@@ -57,6 +58,7 @@ $config = ivp_config();
                 <button data-go="videos"><span class="task-icon">▶</span><strong>Přidat video</strong><small>Správa projektů a pořadí v portfoliu.</small></button>
                 <button data-go="booth"><span class="task-icon">▦</span><strong>Fotobudka galerie</strong><small>Fotografie z akcí a nabídka pozadí.</small></button>
                 <button data-go="blog"><span class="task-icon">▤</span><strong>Napsat článek</strong><small>Vytvoření, úpravy a publikování blogu.</small></button>
+                <button data-go="social"><span class="task-icon">↗</span><strong>Náhledy pro sítě</strong><small>Obrázek a text při sdílení každé stránky.</small></button>
             </div>
             <div class="dashboard-status"><div><span>Spravované stránky</span><strong id="pageCount">—</strong></div><div><span>Poslední změna</span><strong id="lastUpdate">—</strong></div><div><span>Automatické zálohy</span><strong>Zapnuté</strong></div></div>
         </section>
@@ -103,6 +105,34 @@ $config = ivp_config();
             <div class="blog-list-head"><span>Článek</span><span>Kategorie</span><span>Datum publikace</span><span>Stav</span><span>Akce</span></div><div class="blog-list" id="blogList"><div class="loading">Načítám články…</div></div>
         </section>
 
+        <section class="view" data-panel="social">
+            <div class="view-heading"><div><h2>Sdílení na sociálních sítích</h2><p>Nastavte, co lidé uvidí při odeslání odkazu přes Facebook, Instagram, LinkedIn, WhatsApp nebo X.</p></div><a class="button ghost" id="socialOpenPage" href="../" target="_blank" rel="noopener">Otevřít stránku ↗</a></div>
+            <div class="social-editor-layout">
+                <form class="social-editor-card" id="socialEditor">
+                    <label>Stránka<select id="socialPage" required></select></label>
+                    <div class="social-field-heading"><label for="socialTitle">Titulek karty</label><span id="socialTitleCount">0 / 110</span></div>
+                    <input id="socialTitle" required maxlength="110" autocomplete="off">
+                    <small>Krátký a konkrétní titulek, který dává důvod otevřít stránku.</small>
+                    <div class="social-field-heading"><label for="socialDescription">Popis karty</label><span id="socialDescriptionCount">0 / 240</span></div>
+                    <textarea id="socialDescription" required maxlength="240" rows="4"></textarea>
+                    <small>Jednou až dvěma větami řekněte, co návštěvník na stránce získá.</small>
+                    <label>Obrázek karty<input id="socialImage" required placeholder="/assets/uploads/nahled.webp"></label>
+                    <div class="media-actions"><button type="button" class="button ghost" id="chooseSocialImage">Vybrat z médií</button><label class="button ghost upload-button">Nahrát nový<input type="file" id="uploadSocialImage" accept="image/jpeg,image/png,image/webp"></label></div>
+                    <small>Nejlépe funguje široká fotografie z hero sekce. Doporučený poměr je přibližně 1,91 : 1.</small>
+                    <label>Popis obrázku<input id="socialImageAlt" maxlength="220" placeholder="Co je na obrázku"></label>
+                    <div class="social-actions"><button type="button" class="button ghost" id="resetSocial">Vrátit doporučené hodnoty</button><button type="submit" class="button primary" id="saveSocial" disabled>Uložit a publikovat</button></div>
+                </form>
+                <aside class="social-preview-panel" aria-labelledby="socialPreviewHeading">
+                    <div class="social-preview-heading"><div><span>Živý náhled</span><h3 id="socialPreviewHeading">Takto bude odkaz působit</h3></div><span class="social-preview-status" id="socialPreviewStatus">Doporučený formát</span></div>
+                    <div class="social-preview-card">
+                        <div class="social-preview-media"><img id="socialPreviewImage" alt=""><span>IV PRODUCTION</span></div>
+                        <div class="social-preview-copy"><small id="socialPreviewDomain">IVPRODUCTION.CZ</small><strong id="socialPreviewTitle"></strong><p id="socialPreviewDescription"></p></div>
+                    </div>
+                    <div class="social-preview-tips"><strong>Co funguje nejlépe</strong><ul><li>Jedna výrazná fotografie bez drobného textu</li><li>Titulek s jasným přínosem nebo emocí</li><li>Popis, který doplní titulek a neopakuje ho</li></ul></div>
+                </aside>
+            </div>
+        </section>
+
         <section class="view" data-panel="history"><div class="view-heading"><div><h2>Historie změn</h2><p>Před každým uložením automaticky vytváříme zálohu.</p></div><button class="button ghost" id="refreshHistory">Obnovit</button></div><div class="history-list" id="historyList"></div></section>
 
         <section class="view" data-panel="security"><div class="settings-card"><h2>Změna přístupových údajů</h2><form id="passwordForm" class="form-stack"><label>Současné heslo<input type="password" name="currentPassword" autocomplete="current-password" required></label><label>Nové heslo<input type="password" name="newPassword" autocomplete="new-password" minlength="12" required><small>Minimálně 12 znaků, velké i malé písmeno a číslo.</small></label><label>Nové heslo znovu<input type="password" name="confirmPassword" autocomplete="new-password" required></label><button class="button primary" type="submit">Změnit heslo</button></form></div></section>
@@ -120,6 +150,6 @@ $config = ivp_config();
 <div class="modal-backdrop" id="mediaPickerModal" hidden><div class="media-modal" role="dialog" aria-modal="true" aria-labelledby="mediaPickerTitle"><header><div><h2 id="mediaPickerTitle">Vybrat z médií</h2><p>Klikněte na obrázek, který chcete použít.</p></div><button class="icon-button" id="closeMediaPicker" aria-label="Zavřít">×</button></header><label class="search-control"><span>⌕</span><input id="mediaPickerSearch" type="search" placeholder="Hledat obrázek…"></label><div class="media-picker-grid" id="mediaPickerGrid"></div></div></div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="assets/admin-portfolio-homepage-20260903.js"></script>
+<script src="assets/admin-social-sharing-20260903.js"></script>
 </body>
 </html>

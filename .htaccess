@@ -1,5 +1,5 @@
 Options -Indexes
-DirectoryIndex index.html index.php
+DirectoryIndex page.php index.html index.php
 
 ErrorDocument 404 /404.html
 
@@ -9,8 +9,9 @@ ErrorDocument 404 /404.html
     # Development and repository metadata must never be public on hosting.
     # These checks precede canonical redirects so a blocked implementation
     # file can never be exposed through a prettier URL.
-    RewriteRule ^(?:\.git|\.github|scripts|tools|release|dist|zálohy|Záloha)(?:/|$) - [F,L,NC]
+    RewriteRule ^(?:\.git|\.github|inc|admin/inc|scripts|tools|release|dist|zálohy|Záloha)(?:/|$) - [F,L,NC]
     RewriteRule ^(?:index(?:_v1_backup|%20chyba|\s+chyba)|sprava-balicku|kalkulacka)\.html$ - [F,L,NC]
+    RewriteCond %{THE_REQUEST} \s/+page\.php(?:[?\s]|$) [NC,OR]
     RewriteCond %{THE_REQUEST} \s/+blog-(?:index|post)\.php(?:[?\s]|$) [NC,OR]
     RewriteCond %{THE_REQUEST} \s/+sitemap\.php(?:[?\s]|$) [NC]
     RewriteRule ^ - [F,L]
@@ -72,10 +73,10 @@ ErrorDocument 404 /404.html
 
     # Keep the historically indexed Webnode paths as the canonical public
     # routes and serve the new static implementation without another redirect.
-    RewriteRule ^ivbudka/?$ fotobudka.html [L]
-    RewriteRule ^ivbudka360/?$ 360budka.html [L]
-    RewriteRule ^aftermovie-promo-hudebniklipy/?$ promo.html [L]
-    RewriteRule ^ukazky/?$ portfolio.html [L]
+    RewriteRule ^ivbudka/?$ page.php?file=fotobudka.html [L,QSA]
+    RewriteRule ^ivbudka360/?$ page.php?file=360budka.html [L,QSA]
+    RewriteRule ^aftermovie-promo-hudebniklipy/?$ page.php?file=promo.html [L,QSA]
+    RewriteRule ^ukazky/?$ page.php?file=portfolio.html [L,QSA]
     RewriteRule ^sitemap\.xml$ sitemap.php [L]
     RewriteRule ^svatebni-blog/?$ blog-index.php [L,QSA]
     RewriteRule ^(jak-vybrat-svatebniho-kameramana|trendy-svatebni-video-2026|proc-video-pomaha-prodat-nemovitost|jak-pripravit-firemni-video|video-pro-socialni-site|svatebni-lokace-kralovehradecky-kraj|hudba-ve-videu)/?$ blog-post.php?slug=$1 [L,QSA]
@@ -84,7 +85,7 @@ ErrorDocument 404 /404.html
 
     # All remaining one-segment clean routes map to their .html source file.
     RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-    RewriteRule ^([A-Za-z0-9-]+)/?$ $1.html [L]
+    RewriteRule ^([A-Za-z0-9-]+)/?$ page.php?file=$1.html [L,QSA]
 </IfModule>
 
 <FilesMatch "(?i)(?:^\.|\.(?:md|py|mjs|bak|tmp|admin-tmp|log|ini|example|lock|yml|yaml)$)">

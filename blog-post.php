@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/api/blog-store.php';
+require_once __DIR__ . '/inc/social-meta.php';
 
 $slug = trim((string) ($_GET['slug'] ?? ''), '/');
 $post = ivp_blog_find($slug);
@@ -121,4 +122,10 @@ if ($toc && $body) {
 
 header('Content-Type: text/html; charset=utf-8');
 header('Cache-Control: no-cache, must-revalidate');
-echo $document->saveHTML();
+$rendered = (string) $document->saveHTML();
+echo ivp_social_apply($rendered, $path, [
+    'title' => $title,
+    'description' => $description,
+    'image' => $image,
+    'imageAlt' => (string) $post['imageAlt'],
+]);

@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/api/blog-store.php';
+require_once __DIR__ . '/inc/social-meta.php';
 
 function ivp_blog_escape(string $value): string
 {
@@ -46,4 +47,4 @@ $template = (string) preg_replace('~<!-- BLOG_FEATURED_START -->.*?<!-- BLOG_FEA
 $template = (string) preg_replace('~<!-- BLOG_GRID_START -->.*?<!-- BLOG_GRID_END -->~s', '<!-- BLOG_GRID_START -->' . $gridHtml . '<!-- BLOG_GRID_END -->', $template, 1);
 header('Content-Type: text/html; charset=utf-8');
 header('Cache-Control: no-cache, must-revalidate');
-echo $template;
+echo ivp_social_apply($template, '/svatebni-blog/');

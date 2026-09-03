@@ -43,6 +43,9 @@ jobs:
       - name: Zkontrolovat SEO migraci
         run: node scripts/check-seo-migration.mjs
 
+      - name: Zkontrolovat náhledy pro sociální sítě
+        run: node scripts/check-social-sharing.mjs
+
       - name: Sestavit čistý WEDOS balíček
         run: node scripts/build-wedos-package.mjs
 
@@ -71,6 +74,7 @@ jobs:
             assets/uploads/**
             content/site-content.json
             content/blog-posts.json
+            content/social-meta.json
             portfolio-data.js
 
       - name: Ověřit živý web
