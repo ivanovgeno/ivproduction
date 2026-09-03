@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-03T18:15:00+00:00",
+  "categories": {
+    "cameras": [
+      {"id":"sony-a7s-iii","name":"Sony A7S III","description":"Špičková kamera s neuvěřitelnou citlivostí na světlo, díky které zachytíme každý detail vaší svatby i v té nejtmavší atmosféře bez šumu.","image":"/assets/uploads/sony-a7s-iii-20260903-095233-82ae.webp","alt":"Sony A7S III"},
+      {"id":"sony-a7-iv","name":"Sony A7 IV","description":"Nejnovější hybridní technologie pro dokonale ostrý obraz v 4K rozlišení s věrným podáním barev vaší pleti.","image":"/assets/uploads/sony-a7-iv-20260903-095349-70ac.webp","alt":"Sony A7 IV"},
+      {"id":"sony-a7-iii","name":"Sony A7 III","description":"Osvědčený full-frame standard, který nám slouží jako spolehlivá záložní kamera pro zachycení každého okamžiku z více úhlů.","image":"/assets/uploads/sony-a7-iii-20260903-095509-3b1b.webp","alt":"Sony A7 III"},
+      {"id":"dji-osmo-pocket-3","name":"DJI Osmo Pocket 3","description":"Inovativní kamera s 1\" snímačem, která nám umožňuje být nenápadní a zachytit ty nejupřímnější emoce přímo v centru dění.","image":"/assets/uploads/pocket-3-20260903-095655-d2bd.webp","alt":"DJI Osmo Pocket 3"},
+      {"id":"insta360-x3","name":"Insta360 X3","description":"Unikátní 360° kamera pro kreativní záběry, která dodá vašemu videu dynamiku a perspektivu, jakou jinde nenajdete.","image":"/assets/uploads/insta-360-20260903-095900-9192.webp","alt":"Insta360 X3"}
+    ],
+    "lenses": [
+      {"id":"sony-35mm","name":"Sony 35mm f/1.4 GM","description":"Mistrovský objektiv řady G Master s úchvatnou kresbou, který dodává záběrům ten pravý filmový vzhled.","image":"/assets/uploads/35mm-20260903-100048-ec3f.webp","alt":"Sony 35mm f/1.4 GM"},
+      {"id":"sony-50mm","name":"Sony 50mm f/1.2 GM","description":"Extrémně světelný objektiv pro snové portréty s nádherně rozmazaným pozadím (bokehem), který oddělí vás od okolí.","image":"/assets/uploads/50mm-20260903-100338-c883.webp","alt":"Sony 50mm f/1.2 GM"},
+      {"id":"sony-135mm","name":"Sony 135mm f/1.8 GM","description":"Teleobjektiv s nekompromisní ostrostí, kterým zachytíme vaše emoce na dálku, aniž byste o nás věděli.","image":"/assets/uploads/135mm-20260903-100216-e1e2.webp","alt":"Sony 135mm f/1.8 GM"},
+      {"id":"tamron-70-180","name":"Tamron 70-180 f/2.8 G2","description":"Všestranný teleobjektiv, díky kterému nám neunikne žádný detail ani emoce, i když jsme na druhé straně sálu.","image":"/assets/uploads/70-180mm-20260903-100447-280e.webp","alt":"Tamron 70-180 f/2.8 G2"},
+      {"id":"tamron-28-75","name":"Tamron 28-75 f/2.8 G2","description":"Náš univerzální pracant pro reportážní záběry, který zvládne zachytit celou scénu i detaily bez výměny objektivu.","image":"/assets/uploads/28-75mm-20260903-100551-f13a.webp","alt":"Tamron 28-75 f/2.8 G2"},
+      {"id":"laowa-12mm","name":"Laowa 12mm f/2.8 Zero-D","description":"Ultra-širokoúhlý objektiv s nulovým zkreslením pro epické záběry architektury a velkolepých prostorů.","image":"/assets/uploads/12-20260903-100734-3011.webp","alt":"Laowa 12mm f/2.8 Zero-D"}
+    ],
+    "stabilization": [
+      {"id":"dji-air-2s","name":"DJI Air 2S","description":"Dron s velkým 1\" snímačem pro dechberoucí letecké záběry vaší svatby nebo lokace v kinematografické kvalitě 5.4K.","image":"/assets/uploads/air-2s-20260903-172933-863d.webp","alt":"DJI Air 2S"},
+      {"id":"dji-avata-2","name":"DJI Avata 2","description":"FPV dron pro dynamické a akční průlety interiérem i exteriérem, které dodají vašemu videu moderní drive.","image":"/assets/uploads/avata-2-20260903-172956-8db9.webp","alt":"DJI Avata 2"},
+      {"id":"dji-rs-5","name":"DJI RS 5","description":"Profesionální stabilizátor, díky kterému jsou všechny naše pohyby kamerou hladké jako ve filmu, bez jakéhokoliv třesu.","image":"/assets/uploads/rs5-20260903-173128-cc7f.webp","alt":"DJI RS 5"},
+      {"id":"dji-rsc-2","name":"DJI RSC 2","description":"Kompaktní a lehký gimbal, který nám umožňuje být mobilní a kreativní po celý den natáčení.","image":"","alt":"DJI RSC 2"}
+    ],
+    "audioLights": [
+      {"id":"dji-mic-2","name":"DJI Mic 2","description":"Špičkový systém pro nahrávání zvuku v 32-bitové hloubce, který zaručí, že váš slib i proslovy budou znít křišťálově čistě.","image":"/assets/uploads/dji-mic2-20260903-173643-260a.webp","alt":"DJI Mic 2"},
+      {"id":"tascam-dr-10l","name":"Tascam DR-10L 2x","description":"Spolehlivé záložní mikrofony, abychom měli jistotu, že nám neunikne žádné slovo ani v náročných podmínkách.","image":"/assets/uploads/tascam-20260903-173304-fdbe.webp","alt":"Tascam DR-10L 2x"},
+      {"id":"lensbot-gl-330","name":"Lensbot GL 330","description":"Výkonné studiové světlo, které nám umožní vytvořit perfektní atmosféru a nasvícení i v naprosté tmě.","image":"/assets/uploads/lensbot-gl-330-20260903-174003-7e54.webp","alt":"Lensbot GL 330"},
+      {"id":"lensbot-gl-120rgb","name":"Lensbot GL 120RGB","description":"Kreativní RGB světla pro barvení scény, která dodají vašemu videu unikátní mood a vizuální styl.","image":"/assets/uploads/lensbot-gl-120rgb-20260903-174125-686f.webp","alt":"Lensbot GL 120RGB"}
+    ]
+  }
+}

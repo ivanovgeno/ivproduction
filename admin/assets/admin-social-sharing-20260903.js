@@ -235,6 +235,7 @@
 
         documentNode.querySelectorAll('h1,h2,h3,h4,h1 span,h2 span,h3 span,h4 span,.section-title span,p,li,label,a,button,option,.section-badge,.service-card-label,.about-team-kicker,.studio-eyebrow,.tech-name,.tech-desc,.gw-kicker,[data-google-review-score],[data-google-review-count],.gw-name,.gw-date').forEach(element => {
             if (element.closest('script,style,svg,noscript,[data-privacy-banner],.privacy-embed-placeholder,#mobileMenuOverlay') || element.closest('.back-to-top,.quick-contact')) return;
+            if (element.closest('.tech-grid')) return;
             const selector = selectorFor(element, documentNode);
             const group = groupFor(element);
             const context = contextFor(element);
@@ -243,6 +244,7 @@
             if (element.tagName === 'A' && element.getAttribute('href')) addDescriptor(list, { selector, property: 'href', original: element.getAttribute('href'), label: friendlyLabel(element, 'href'), group, context, type: 'url' });
         });
         documentNode.querySelectorAll('img').forEach(element => {
+            if (element.closest('.tech-grid')) return;
             const selector = selectorFor(element, documentNode); const group = groupFor(element); const context = contextFor(element);
             addDescriptor(list, { selector, property: 'src', original: element.getAttribute('src') || '', label: friendlyLabel(element, 'src'), group, context, type: 'image' });
             addDescriptor(list, { selector, property: 'alt', original: element.getAttribute('alt') || '', label: friendlyLabel(element, 'alt'), group, context });
@@ -261,6 +263,7 @@
             if (match?.[1]) addDescriptor(list, { selector: selectorFor(element, documentNode), property: 'style-background-image', original: match[1], label: friendlyLabel(element, 'style-background-image'), group: groupFor(element), context: contextFor(element), type: 'image' });
         });
         documentNode.querySelectorAll('[data-photo-slot],.tech-placeholder,.services .service-card,#sluzby .service-card').forEach(element => {
+            if (element.closest('.tech-grid')) return;
             const selector = selectorFor(element, documentNode);
             const inline = element.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/i)?.[1] || '';
             addDescriptor(list, {

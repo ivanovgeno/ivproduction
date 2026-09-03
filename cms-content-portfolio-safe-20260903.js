@@ -18,6 +18,8 @@
     let records = [];
 
     function apply(record) {
+        // Individual equipment cards are owned by equipment.json and its dedicated admin manager.
+        if (/tech-(?:category|grid|item|img|placeholder|name|desc)/.test(String(record.selector || ''))) return;
         let element;
         try { element = document.querySelector(record.selector); } catch (_) { return; }
         if (!element) return;

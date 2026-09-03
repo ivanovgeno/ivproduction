@@ -11,6 +11,7 @@ $config = ivp_config();
     <meta name="robots" content="noindex,nofollow">
     <title>Administrace | Iv Production</title>
     <link rel="stylesheet" href="assets/admin-social-sharing-20260903.css">
+    <link rel="stylesheet" href="assets/admin-equipment-20260903.css">
 </head>
 <body class="admin-app" data-csrf="<?= htmlspecialchars(ivp_csrf(), ENT_QUOTES) ?>">
 <div class="admin-shell">
@@ -20,6 +21,7 @@ $config = ivp_config();
             <button class="nav-item is-active" data-view="dashboard"><span aria-hidden="true">⌂</span>Přehled</button>
             <button class="nav-item" data-view="content"><span aria-hidden="true">✎</span>Vizuální editor</button>
             <button class="nav-item" data-view="media"><span aria-hidden="true">▧</span>Média</button>
+            <button class="nav-item" data-view="equipment"><span aria-hidden="true">◈</span>Technika</button>
             <button class="nav-item" data-view="videos"><span aria-hidden="true">▶</span>Portfolio</button>
             <button class="nav-item" data-view="booth"><span aria-hidden="true">▦</span>Fotobudka galerie</button>
             <button class="nav-item" data-view="blog"><span aria-hidden="true">▤</span>Blog</button>
@@ -55,6 +57,7 @@ $config = ivp_config();
             <div class="task-grid">
                 <button data-go="content" data-page="index.html"><span class="task-icon">✎</span><strong>Upravit stránku</strong><small>Texty, tlačítka a fotografie přímo v náhledu.</small></button>
                 <button data-go="media"><span class="task-icon">▧</span><strong>Nahrát fotografie</strong><small>Nahrajte soubor a vyberte, kde se na webu zobrazí.</small></button>
+                <button data-go="equipment"><span class="task-icon">◈</span><strong>Spravovat techniku</strong><small>Přidávání, úpravy a mazání techniky podle kategorií.</small></button>
                 <button data-go="videos"><span class="task-icon">▶</span><strong>Přidat video</strong><small>Správa projektů a pořadí v portfoliu.</small></button>
                 <button data-go="booth"><span class="task-icon">▦</span><strong>Fotobudka galerie</strong><small>Fotografie z akcí a nabídka pozadí.</small></button>
                 <button data-go="blog"><span class="task-icon">▤</span><strong>Napsat článek</strong><small>Vytvoření, úpravy a publikování blogu.</small></button>
@@ -82,6 +85,12 @@ $config = ivp_config();
             <form id="uploadForm" class="media-dropzone"><input type="file" id="mediaFile" name="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm" required><label for="mediaFile"><span class="drop-icon">⇧</span><strong>Přetáhněte fotku nebo video sem</strong><small>Obrázky převedeme do WebP automaticky.</small></label><button class="button ghost" type="submit">Vybrat soubor</button></form>
             <div class="media-toolbar"><label class="search-control"><span>⌕</span><input id="mediaSearch" type="search" placeholder="Hledat soubor…"></label><div class="filter-tabs" id="mediaFilters"><button class="is-active" data-filter="all">Vše</button><button data-filter="image">Obrázky</button><button data-filter="video">Videa</button></div><select id="mediaSort" aria-label="Řazení médií"><option value="newest">Nejnovější</option><option value="oldest">Nejstarší</option><option value="name">Podle názvu</option></select></div>
             <div class="media-grid" id="mediaGrid"><div class="loading">Načítám média…</div></div>
+        </section>
+
+        <section class="view" data-panel="equipment">
+            <div class="view-heading"><div><h2>Technika</h2><p>Položky se po uložení zobrazí v rolovacích nabídkách na homepage.</p></div><a class="button ghost" href="../#onas" target="_blank" rel="noopener">Otevřít homepage ↗</a></div>
+            <div class="equipment-admin" id="equipmentAdmin"><div class="loading">Načítám techniku…</div></div>
+            <div class="equipment-savebar"><span id="equipmentSaveState">Vše uloženo</span><button class="button primary" id="saveEquipment" disabled>Uložit a publikovat</button></div>
         </section>
 
         <section class="view" data-panel="videos">
@@ -151,5 +160,6 @@ $config = ivp_config();
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="assets/admin-social-sharing-20260903.js"></script>
+<script src="assets/admin-equipment-20260903.js"></script>
 </body>
 </html>

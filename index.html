@@ -1769,6 +1769,23 @@
             background: rgba(201, 162, 39, 0.06);
         }
 
+        /* A CMS-assigned photo must never retain the old placeholder label. */
+        .tech-placeholder[style*="background-image"] {
+            color: transparent !important;
+            font-size: 0 !important;
+            letter-spacing: 0 !important;
+            text-shadow: none !important;
+        }
+
+        .tech-media-empty {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 1rem;
+            border: 1px dashed rgba(201, 162, 39, 0.22);
+            border-radius: 14px;
+            background: rgba(201, 162, 39, 0.035);
+        }
+
         .tech-item:hover .tech-img {
             transform: scale(1.05);
             transition: transform 0.3s ease;
@@ -2525,6 +2542,7 @@
     <script src="/continuous-slider-20260902.js" defer></script>
     <script src="/portfolio-gallery-live-20260903b.js" defer></script>
     <script src="/google-reviews-editable-summary-20260902.js" defer></script>
+    <script src="/equipment.js?v=20260903-admin-manager" defer></script>
     <link rel="stylesheet" href="/premium-heroes.css?v=20260827-final">
     <link rel="stylesheet" href="/privacy-consent.css?v=20260818-visual-restore">
     <script src="/privacy-consent.js?v=20260818-visual-restore" defer></script>
@@ -2835,7 +2853,7 @@
 
                 <div class="tech-category">
                     <button type="button" class="tech-category-title" aria-expanded="false">Kamery</button>
-                    <div class="tech-grid">
+                    <div class="tech-grid" data-equipment-category="cameras">
                         <div class="tech-item">
                             <img src="/tech-sony-a7siii.webp" alt="Sony A7S III" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">Sony A7S III</div>
@@ -2871,7 +2889,7 @@
 
                 <div class="tech-category">
                     <button type="button" class="tech-category-title" aria-expanded="false">Objektivy</button>
-                    <div class="tech-grid">
+                    <div class="tech-grid" data-equipment-category="lenses">
                         <div class="tech-item">
                             <img src="/tech-sony-35mm.webp" alt="Sony 35mm f/1.4 GM" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">Sony 35mm f/1.4 GM</div>
@@ -2913,7 +2931,7 @@
 
                 <div class="tech-category">
                     <button type="button" class="tech-category-title" aria-expanded="false">Drony &amp; Stabilizace</button>
-                    <div class="tech-grid">
+                    <div class="tech-grid" data-equipment-category="stabilization">
                         <div class="tech-item">
                             <img src="/tech-dji-air2s.webp" alt="DJI Air 2S" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">DJI Air 2S</div>
@@ -2943,7 +2961,7 @@
 
                 <div class="tech-category">
                     <button type="button" class="tech-category-title" aria-expanded="false">Zvuk &amp; Světla</button>
-                    <div class="tech-grid">
+                    <div class="tech-grid" data-equipment-category="audioLights">
                         <div class="tech-item">
                             <img src="/tech-dji-mic2.webp" alt="DJI Mic 2" class="tech-img" width="1024" height="1024" decoding="async" loading="lazy">
                             <div class="tech-name">DJI Mic 2</div>
