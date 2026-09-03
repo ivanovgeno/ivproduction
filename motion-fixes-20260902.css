@@ -40,3 +40,49 @@
     content: '\25B6';
     font-size: .85em;
 }
+
+/* Plesy: keep the "Volba maturantů" sash fully visible and optically centred. */
+.package-showcase[data-package-page='plesy'] .package-popular-ribbon {
+    align-items: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    left: 1.25rem !important;
+    right: 1.25rem !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    min-height: 2.75rem !important;
+    padding: .72rem 2rem !important;
+    text-align: center !important;
+    transform: none !important;
+    overflow: visible !important;
+}
+
+.package-showcase[data-package-page='plesy'] .package-popular-ribbon__text {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.15 !important;
+    text-align: center !important;
+    transform: none !important;
+    white-space: nowrap !important;
+}
+
+.package-showcase[data-package-page='plesy'] .pricing-card.is-popular:hover .package-popular-ribbon {
+    transform: none !important;
+}
+
+@media (max-width: 420px) {
+    .package-showcase[data-package-page='plesy'] .package-popular-ribbon {
+        left: 1rem !important;
+        right: 1rem !important;
+        padding-left: 1.55rem !important;
+        padding-right: 1.55rem !important;
+    }
+
+    .package-showcase[data-package-page='plesy'] .package-popular-ribbon__text {
+        font-size: .64rem !important;
+        letter-spacing: .1em !important;
+    }
+}
