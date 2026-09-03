@@ -69,9 +69,14 @@ foreach ($items as $item) {
         'image' => $image,
         'alt' => substr(trim((string) ($item['alt'] ?? '')), 0, 400),
         'video' => $video,
+        'homepage' => !empty($item['homepage']),
     ];
 }
 if (count($clean) !== count($items)) ivp_json(['ok' => false, 'error' => 'Některá položka obsahuje neplatný odkaz nebo údaje.'], 422);
+$homepageCount = count(array_filter($clean, static fn(array $item): bool => $item['homepage']));
+if ($homepageCount < 1 || $homepageCount > 6) {
+    ivp_json(['ok' => false, 'error' => 'Pro homepage vyberte 1 až 6 realizací.'], 422);
+}
 
 $json = json_encode($clean, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 $source = $json === false ? false : "window.IVPortfolioProjects = {$json};\n";
