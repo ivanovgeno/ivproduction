@@ -4,6 +4,11 @@
   "services": {
     "svatby": {"label":"Svatby","ribbonLabel":"Nejoblíbenější","x":0,"y":5,"scale":1},
     "plesy": {"label":"Plesy","ribbonLabel":"Volba maturantů","x":0,"y":0,"scale":1},
-    "reality": {"label":"Reality","ribbonLabel":"Nejžádanější","x":0,"y":0,"scale":1}
+    "reality": {"label":"Reality","ribbonLabel":"Nejžádanější","x":0,"y":0,"scale":1},
+    "promo": {"label":"Aftermovie","ribbonLabel":"Nejčastější volba","x":0,"y":0,"scale":1},
+    "reels": {"label":"Reels","ribbonLabel":"Nejčastější volba","x":0,"y":0,"scale":1},
+    "konference": {"label":"Konference","ribbonLabel":"Nejčastější pro firmy","x":0,"y":0,"scale":1},
+    "podcast": {"label":"Podcast","ribbonLabel":"Nejlepší poměr cena / obsah","x":0,"y":0,"scale":1},
+    "fotobudka": {"label":"Fotobudka – 3 hodiny","ribbonLabel":"Nejoblíbenější","x":0,"y":0,"scale":1}
   }
 }

@@ -9,9 +9,23 @@ const IVP_RIBBON_SEED = IVP_ROOT . '/content/package-ribbons.json';
 
 function ivp_ribbon_settings(): array
 {
-    $source = is_file(IVP_RIBBON_LIVE) ? IVP_RIBBON_LIVE : IVP_RIBBON_SEED;
-    $data = json_decode((string) @file_get_contents($source), true);
-    return is_array($data) ? $data : ['version' => 1, 'updatedAt' => null, 'services' => []];
+    $defaults = json_decode((string) @file_get_contents(IVP_RIBBON_SEED), true);
+    if (!is_array($defaults)) return ['version' => 1, 'updatedAt' => null, 'services' => []];
+    if (!is_file(IVP_RIBBON_LIVE)) return $defaults;
+    $saved = json_decode((string) @file_get_contents(IVP_RIBBON_LIVE), true);
+    if (!is_array($saved)) return $defaults;
+
+    $defaults['version'] = $saved['version'] ?? ($defaults['version'] ?? 1);
+    $defaults['updatedAt'] = $saved['updatedAt'] ?? ($defaults['updatedAt'] ?? null);
+    if (isset($saved['updatedBy'])) $defaults['updatedBy'] = $saved['updatedBy'];
+    foreach (($defaults['services'] ?? []) as $key => $definition) {
+        $stored = $saved['services'][$key] ?? null;
+        if (!is_array($stored)) continue;
+        $defaults['services'][$key]['x'] = $stored['x'] ?? ($definition['x'] ?? 0);
+        $defaults['services'][$key]['y'] = $stored['y'] ?? ($definition['y'] ?? 0);
+        $defaults['services'][$key]['scale'] = $stored['scale'] ?? ($definition['scale'] ?? 1);
+    }
+    return $defaults;
 }
 
 function ivp_write_ribbon_settings(array $data): bool

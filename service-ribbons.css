@@ -1,0 +1,42 @@
+[data-ribbon-service] {
+    overflow: hidden;
+    position: relative;
+}
+
+.service-package-ribbon {
+    align-items: center;
+    background: var(--gradient, linear-gradient(135deg, #8b6914, #ffe55c, #8b6914));
+    box-shadow: 0 0.65rem 1.8rem rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    color: var(--dark, #0a0a0f);
+    display: grid;
+    font-size: 0.64rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    padding: 0.66rem 0.5rem;
+    place-items: center;
+    position: absolute;
+    right: -5.05rem;
+    text-align: center;
+    text-transform: uppercase;
+    top: 1.52rem;
+    transform: rotate(45deg);
+    width: 17rem;
+    white-space: nowrap;
+    z-index: 3;
+}
+
+.service-package-ribbon__text {
+    display: block;
+    line-height: 1;
+    text-align: center;
+    transform: translate(var(--ribbon-text-x, 0px), var(--ribbon-text-y, 0px)) scale(var(--ribbon-text-scale, 1));
+    transform-origin: center;
+    white-space: nowrap;
+}
+
+@media (max-width: 420px) {
+    .service-package-ribbon {
+        font-size: 0.59rem;
+        right: -5.35rem;
+    }
+}

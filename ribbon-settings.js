@@ -4,12 +4,13 @@
     function apply(data) {
         const services = data?.settings?.services;
         if (!services) return;
-        document.querySelectorAll('.package-showcase[data-package-page]').forEach(section => {
-            const setting = services[section.dataset.packagePage];
+        document.querySelectorAll('.package-showcase[data-package-page], [data-ribbon-service]').forEach(element => {
+            const service = element.dataset.packagePage || element.dataset.ribbonService;
+            const setting = services[service];
             if (!setting) return;
-            section.style.setProperty('--ribbon-text-x', `${Number(setting.x) || 0}px`);
-            section.style.setProperty('--ribbon-text-y', `${Number(setting.y) || 0}px`);
-            section.style.setProperty('--ribbon-text-scale', String(Number(setting.scale) || 1));
+            element.style.setProperty('--ribbon-text-x', `${Number(setting.x) || 0}px`);
+            element.style.setProperty('--ribbon-text-y', `${Number(setting.y) || 0}px`);
+            element.style.setProperty('--ribbon-text-scale', String(Number(setting.scale) || 1));
         });
     }
 
