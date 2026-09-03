@@ -12,7 +12,7 @@ $config = ivp_config();
     <title>Administrace | Iv Production</title>
     <link rel="stylesheet" href="assets/admin-social-sharing-20260903.css">
     <link rel="stylesheet" href="assets/admin-equipment-20260903.css">
-    <link rel="stylesheet" href="assets/admin-ribbons-20260903.css">
+    <link rel="stylesheet" href="assets/admin-ribbons-20260903.css?v=multiline-1">
 </head>
 <body class="admin-app" data-csrf="<?= htmlspecialchars(ivp_csrf(), ENT_QUOTES) ?>">
 <div class="admin-shell">
@@ -170,6 +170,6 @@ $config = ivp_config();
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="assets/admin-social-sharing-20260903.js"></script>
 <script src="assets/admin-equipment-20260903.js"></script>
-<script src="assets/admin-ribbons-20260903.js"></script>
+<script src="assets/admin-ribbons-20260903.js?v=multiline-1"></script>
 </body>
 </html>

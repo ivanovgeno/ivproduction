@@ -102,7 +102,17 @@
         const band = document.createElement('div');
         band.className = 'ribbon-demo-band';
         const text = document.createElement('span');
-        text.textContent = item.ribbonLabel;
+        const ribbonLines = service === 'konference'
+            ? ['Nejčastější', 'pro firmy']
+            : service === 'podcast'
+                ? ['Nejlepší poměr', 'cena / obsah']
+                : null;
+        if (ribbonLines) {
+            text.className = 'is-multiline';
+            text.append(ribbonLines[0], document.createElement('br'), ribbonLines[1]);
+        } else {
+            text.textContent = item.ribbonLabel;
+        }
         text.style.transform = `translate(${item.x}px, ${item.y}px) scale(${item.scale})`;
         band.append(text);
         preview.append(band);

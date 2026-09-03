@@ -9,6 +9,7 @@
 .admin-app .ribbon-demo.is-diagonal .ribbon-demo-band{transform:rotate(45deg)}
 .admin-app .ribbon-demo.is-horizontal .ribbon-demo-band{clip-path:polygon(4% 0,96% 0,100% 50%,96% 100%,4% 100%,0 50%);width:calc(100% - 48px)}
 .admin-app .ribbon-demo-band span{display:block;line-height:1;transform-origin:center;white-space:nowrap}
+.admin-app .ribbon-demo-band span.is-multiline{line-height:1.12;text-align:center;white-space:normal;width:180px}
 .admin-app .ribbon-controls{display:grid;gap:18px;grid-template-columns:150px minmax(150px,1fr)}
 .admin-app .ribbon-direction-pad{display:grid;gap:6px;grid-template-columns:repeat(3,42px);grid-template-rows:repeat(3,42px);justify-content:center}
 .admin-app .ribbon-direction-pad button,.admin-app .ribbon-size-controls button{background:#fff;border:1px solid var(--cms-line);border-radius:7px;color:#292927;cursor:pointer;font-size:20px;font-weight:700}

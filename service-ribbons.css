@@ -34,6 +34,18 @@
     white-space: nowrap;
 }
 
+.service-package-ribbon__text--multiline {
+    line-height: 1.12;
+    white-space: normal;
+    width: 11rem;
+}
+
+.service-package-ribbon__text--multiline > span {
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+}
+
 @media (max-width: 420px) {
     .service-package-ribbon {
         font-size: 0.59rem;
