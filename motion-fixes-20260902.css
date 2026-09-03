@@ -41,21 +41,25 @@
     font-size: .85em;
 }
 
-/* Plesy: keep the "Volba maturantů" sash fully visible and optically centred. */
+/* Plesy: same diagonal corner sash as weddings, with the label truly centred. */
 .package-showcase[data-package-page='plesy'] .package-popular-ribbon {
     align-items: center !important;
+    border-radius: 0 !important;
+    clip-path: none !important;
     display: flex !important;
     justify-content: center !important;
-    left: 1.25rem !important;
-    right: 1.25rem !important;
-    width: auto !important;
+    left: auto !important;
+    right: -4.85rem !important;
+    top: 1.45rem !important;
+    width: 17.5rem !important;
     max-width: none !important;
-    min-width: 0 !important;
-    min-height: 2.75rem !important;
-    padding: .72rem 2rem !important;
-    text-align: center !important;
-    transform: none !important;
+    min-width: 17.5rem !important;
+    min-height: 0 !important;
+    padding: .68rem .8rem !important;
     overflow: visible !important;
+    text-align: center !important;
+    transform: rotate(45deg) !important;
+    transform-origin: center !important;
 }
 
 .package-showcase[data-package-page='plesy'] .package-popular-ribbon__text {
@@ -63,26 +67,27 @@
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    line-height: 1.15 !important;
+    line-height: 1.1 !important;
     text-align: center !important;
     transform: none !important;
     white-space: nowrap !important;
 }
 
 .package-showcase[data-package-page='plesy'] .pricing-card.is-popular:hover .package-popular-ribbon {
-    transform: none !important;
+    transform: rotate(45deg) !important;
 }
 
 @media (max-width: 420px) {
     .package-showcase[data-package-page='plesy'] .package-popular-ribbon {
-        left: 1rem !important;
-        right: 1rem !important;
-        padding-left: 1.55rem !important;
-        padding-right: 1.55rem !important;
+        right: -5.05rem !important;
+        top: 1.35rem !important;
+        width: 17rem !important;
+        min-width: 17rem !important;
+        padding: .64rem .7rem !important;
     }
 
     .package-showcase[data-package-page='plesy'] .package-popular-ribbon__text {
-        font-size: .64rem !important;
-        letter-spacing: .1em !important;
+        font-size: .61rem !important;
+        letter-spacing: .085em !important;
     }
 }
