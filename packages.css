@@ -430,6 +430,26 @@
         linear-gradient(155deg, rgba(41, 36, 20, 0.99), rgba(12, 12, 15, 0.99));
     border-color: rgba(255, 229, 92, 0.78);
     box-shadow: 0 1.8rem 5rem rgba(201, 162, 39, 0.23), inset 0 1px 0 rgba(255, 244, 184, 0.16);
+    padding-top: 5.15rem;
+}
+
+.package-showcase[data-package-page='plesy'] .package-popular-ribbon {
+    border-radius: 0.18rem;
+    clip-path: polygon(4% 0, 96% 0, 100% 50%, 96% 100%, 4% 100%, 0 50%);
+    font-size: 0.68rem;
+    left: 50%;
+    letter-spacing: 0.13em;
+    max-width: 19rem;
+    min-height: 2.65rem;
+    padding: 0.72rem 1.6rem;
+    right: auto;
+    top: 1.25rem;
+    transform: translateX(-50%);
+    width: calc(100% - 2.5rem);
+}
+
+.package-showcase[data-package-page='plesy'] .pricing-card.is-popular:hover .package-popular-ribbon {
+    transform: translateX(-50%);
 }
 
 .package-showcase[data-package-page='plesy'] .pricing-name {
@@ -438,7 +458,7 @@
     font-size: clamp(1.35rem, 2vw, 1.75rem);
     line-height: 1.08;
     margin: 0 0 0.8rem;
-    padding-right: 2.5rem;
+    padding-right: 0;
 }
 
 .package-showcase[data-package-page='plesy'] .package-description {
