@@ -81,6 +81,11 @@
     transform: rotate(45deg) !important;
 }
 
+/* Svatby: same directional fine-tuning requested for the corner sash. */
+.package-showcase[data-package-page='svatby'] .package-popular-ribbon {
+    right: calc(-5.05rem - 6px) !important;
+}
+
 @media (max-width: 420px) {
     .package-showcase[data-package-page='plesy'] .package-popular-ribbon {
         right: calc(-5.675rem - 15px) !important;
@@ -94,5 +99,9 @@
         font-size: .58rem !important;
         letter-spacing: .065em !important;
         transform: translateX(5px) !important;
+    }
+
+    .package-showcase[data-package-page='svatby'] .package-popular-ribbon {
+        right: calc(-5.05rem - 6px) !important;
     }
 }
