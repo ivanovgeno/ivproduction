@@ -184,6 +184,11 @@
     white-space: nowrap;
 }
 
+/* Wedding sash: optically center the label within the diagonal band. */
+.package-showcase[data-package-page='svatby'] .package-popular-ribbon__text {
+    transform: translateY(5px) !important;
+}
+
 .pricing-card.is-popular:hover .package-popular-ribbon {
     filter: none;
     transform: rotate(45deg);
