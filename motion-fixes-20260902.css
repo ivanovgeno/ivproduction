@@ -49,8 +49,8 @@
     display: flex !important;
     justify-content: center !important;
     left: auto !important;
-    right: -5.35rem !important;
-    top: 1.55rem !important;
+    right: -5.18rem !important;
+    top: 1.50rem !important;
     width: 19.5rem !important;
     max-width: none !important;
     min-width: 19.5rem !important;
@@ -73,7 +73,7 @@
     letter-spacing: .075em !important;
     line-height: 1.15 !important;
     text-align: center !important;
-    transform: none !important;
+    transform: translateX(-2px) !important;
     white-space: nowrap !important;
 }
 
@@ -83,8 +83,8 @@
 
 @media (max-width: 420px) {
     .package-showcase[data-package-page='plesy'] .package-popular-ribbon {
-        right: -5.45rem !important;
-        top: 1.45rem !important;
+        right: -5.30rem !important;
+        top: 1.40rem !important;
         width: 19rem !important;
         min-width: 19rem !important;
         padding: .66rem 1.35rem !important;
@@ -93,5 +93,6 @@
     .package-showcase[data-package-page='plesy'] .package-popular-ribbon__text {
         font-size: .58rem !important;
         letter-spacing: .065em !important;
+        transform: translateX(-2px) !important;
     }
 }
