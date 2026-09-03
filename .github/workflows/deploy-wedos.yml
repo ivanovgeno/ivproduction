@@ -76,6 +76,7 @@ jobs:
             assets/uploads/**
             content/site-content.json
             content/equipment-live.json
+            content/package-ribbons-live.json
             content/blog-posts.json
             content/social-meta.json
             portfolio-data.js

@@ -180,13 +180,9 @@
     justify-self: center;
     line-height: 1;
     text-align: center;
-    transform: none !important;
+    transform: translate(var(--ribbon-text-x, 0px), var(--ribbon-text-y, 0px)) scale(var(--ribbon-text-scale, 1)) !important;
+    transform-origin: center;
     white-space: nowrap;
-}
-
-/* Wedding sash: optically center the label within the diagonal band. */
-.package-showcase[data-package-page='svatby'] .package-popular-ribbon__text {
-    transform: translateY(5px) !important;
 }
 
 .pricing-card.is-popular:hover .package-popular-ribbon {
