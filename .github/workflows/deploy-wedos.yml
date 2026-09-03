@@ -44,7 +44,9 @@ jobs:
         run: node scripts/check-seo-migration.mjs
 
       - name: Zkontrolovat náhledy pro sociální sítě
-        run: node scripts/check-social-sharing.mjs
+        run: |
+          node scripts/check-social-sharing.mjs
+          php scripts/check-social-rendering.php
 
       - name: Sestavit čistý WEDOS balíček
         run: node scripts/build-wedos-package.mjs
@@ -79,7 +81,7 @@ jobs:
 
       - name: Ověřit živý web
         run: |
-          curl --fail --location --silent --show-error --max-time 30 https://www.ivproduction.cz/ > /dev/null
+          curl --fail --location --silent --show-error --max-time 30 https://www.ivproduction.cz/ | grep -Fq 'Video, které má příběh i výsledek | Iv Production'
           curl --fail --location --silent --show-error --max-time 30 https://www.ivproduction.cz/svatby/ > /dev/null
           curl --fail --location --silent --show-error --max-time 30 https://www.ivproduction.cz/ivbudka/ > /dev/null
           curl --fail --silent --show-error --max-time 30 https://www.ivproduction.cz/api/fotobudka-galleries.php | grep -q '"ok":true'
