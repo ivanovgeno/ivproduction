@@ -13,6 +13,7 @@ $config = ivp_config();
     <link rel="stylesheet" href="assets/admin-social-sharing-20260903.css">
     <link rel="stylesheet" href="assets/admin-equipment-20260903.css">
     <link rel="stylesheet" href="assets/admin-ribbons-20260903.css?v=multiline-1">
+    <link rel="stylesheet" href="assets/admin-wedding-galleries-20260907.css?v=1">
 </head>
 <body class="admin-app" data-csrf="<?= htmlspecialchars(ivp_csrf(), ENT_QUOTES) ?>">
 <div class="admin-shell">
@@ -26,6 +27,7 @@ $config = ivp_config();
             <button class="nav-item" data-view="ribbons"><span aria-hidden="true">◇</span>Šerpy balíčků</button>
             <button class="nav-item" data-view="videos"><span aria-hidden="true">▶</span>Portfolio</button>
             <button class="nav-item" data-view="booth"><span aria-hidden="true">▦</span>Fotobudka galerie</button>
+            <button class="nav-item" data-view="wedding-galleries"><span aria-hidden="true">▧</span>Svatební galerie</button>
             <button class="nav-item" data-view="blog"><span aria-hidden="true">▤</span>Blog</button>
             <button class="nav-item" data-view="social"><span aria-hidden="true">↗</span>Sdílení na sítích</button>
             <button class="nav-item" data-view="history"><span aria-hidden="true">↶</span>Historie</button>
@@ -63,6 +65,7 @@ $config = ivp_config();
                 <button data-go="ribbons"><span class="task-icon">◇</span><strong>Upravit šerpy balíčků</strong><small>Posun a velikost textu doporučených balíčků.</small></button>
                 <button data-go="videos"><span class="task-icon">▶</span><strong>Přidat video</strong><small>Správa projektů a pořadí v portfoliu.</small></button>
                 <button data-go="booth"><span class="task-icon">▦</span><strong>Fotobudka galerie</strong><small>Fotografie z akcí a nabídka pozadí.</small></button>
+                <button data-go="wedding-galleries"><span class="task-icon">▧</span><strong>Svatební galerie</strong><small>Slidery fotografů a Duhohrátek včetně zobrazení a skrytí.</small></button>
                 <button data-go="blog"><span class="task-icon">▤</span><strong>Napsat článek</strong><small>Vytvoření, úpravy a publikování blogu.</small></button>
                 <button data-go="social"><span class="task-icon">↗</span><strong>Náhledy pro sítě</strong><small>Obrázek a text při sdílení každé stránky.</small></button>
             </div>
@@ -115,6 +118,12 @@ $config = ivp_config();
                 <section class="gallery-manager"><header><div><h3>Dostupná pozadí</h3><p>Varianty pozadí, které nabízíte klientům.</p></div><div class="gallery-add-actions"><button class="button ghost" type="button" data-add-gallery="backgrounds">Vybrat z médií</button><label class="button primary upload-button">Nahrát nové<input type="file" data-upload-gallery="backgrounds" accept="image/jpeg,image/png,image/webp,image/gif"></label></div></header><div class="gallery-admin-list" id="boothBackgrounds"><div class="loading">Načítám pozadí…</div></div></section>
             </div>
             <div class="gallery-savebar"><span id="boothSaveState">Vše uloženo</span><button class="button primary" id="saveBoothGalleries" disabled>Uložit galerie</button></div>
+        </section>
+
+        <section class="view" data-panel="wedding-galleries">
+            <div class="view-heading"><div><h2>Svatební galerie partnerů</h2><p>Každý partner má vlastní slider. Nahrajte fotografie a přepínačem určete, zda se má na stránce Svatby zobrazit.</p></div><a class="button ghost" href="../svatby/" target="_blank" rel="noopener">Otevřít Svatby ↗</a></div>
+            <div class="wedding-gallery-admin" id="weddingPartnerGalleries"><div class="loading">Načítám galerie…</div></div>
+            <div class="gallery-savebar"><span id="weddingGallerySaveState">Vše uloženo</span><button class="button primary" id="saveWeddingPartnerGalleries" disabled>Uložit a publikovat</button></div>
         </section>
 
         <section class="view" data-panel="blog">
@@ -171,5 +180,6 @@ $config = ivp_config();
 <script src="assets/admin-social-sharing-20260903.js"></script>
 <script src="assets/admin-equipment-20260903.js"></script>
 <script src="assets/admin-ribbons-20260903.js?v=multiline-1"></script>
+<script src="assets/admin-wedding-galleries-20260907.js?v=1"></script>
 </body>
 </html>

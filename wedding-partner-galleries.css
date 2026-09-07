@@ -1,0 +1,105 @@
+.wedding-partner-showcases[hidden] { display: none !important; }
+
+.wedding-partner-showcases {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(201, 162, 39, 0.1), transparent 30rem),
+        linear-gradient(180deg, #0b0b10, #111117);
+    border-block: 1px solid rgba(232, 197, 71, 0.12);
+}
+
+.wedding-partner-showcases__intro {
+    margin: 0 auto 3rem;
+    max-width: 54rem;
+    text-align: center;
+}
+
+.wedding-partner-showcases__intro p {
+    color: rgba(250, 249, 246, 0.7);
+    line-height: 1.65;
+    margin-top: 1rem;
+}
+
+.wedding-partner-list { display: grid; gap: clamp(3.5rem, 7vw, 6rem); }
+
+.wedding-partner-gallery__header {
+    align-items: end;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto 1.4rem;
+    max-width: 1400px;
+}
+
+.wedding-partner-gallery__eyebrow {
+    color: var(--gold-light, #e8c547);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    margin: 0 0 0.55rem;
+    text-transform: uppercase;
+}
+
+.wedding-partner-gallery h3 {
+    color: #fff;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1;
+    margin: 0 0 0.7rem;
+}
+
+.wedding-partner-gallery__notice {
+    color: rgba(250, 249, 246, 0.72);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.wedding-partner-slide {
+    aspect-ratio: 4 / 3;
+    border: 1px solid rgba(232, 197, 71, 0.18);
+    border-radius: 0.8rem;
+    flex: 0 0 clamp(18rem, 34vw, 31rem);
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    scroll-snap-align: start;
+}
+
+.wedding-partner-slide img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms ease;
+    width: 100%;
+}
+
+.wedding-partner-slide:hover img { transform: scale(1.035); }
+
+.wedding-partner-slide figcaption {
+    align-items: end;
+    background: linear-gradient(180deg, transparent 34%, rgba(5, 5, 8, 0.92));
+    bottom: 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    left: 0;
+    padding: 3.5rem 1.1rem 1rem;
+    position: absolute;
+    right: 0;
+}
+
+.wedding-partner-slide figcaption span { color: rgba(255, 255, 255, 0.78); font-size: 0.82rem; }
+.wedding-partner-slide figcaption strong {
+    background: linear-gradient(135deg, #8b6914, #ffe55c, #c9a227);
+    border-radius: 999px;
+    color: #0a0a0f;
+    flex: 0 0 auto;
+    font-size: 0.68rem;
+    letter-spacing: 0.055em;
+    padding: 0.48rem 0.7rem;
+    text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+    .wedding-partner-showcases__intro { text-align: left; }
+    .wedding-partner-slide { flex-basis: min(82vw, 23rem); }
+    .wedding-partner-slide figcaption { align-items: flex-start; flex-direction: column; gap: 0.55rem; }
+}
