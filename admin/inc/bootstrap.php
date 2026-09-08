@@ -87,6 +87,8 @@ function ivp_pages(): array
         'svatby.html' => 'Svatby', 'reality.html' => 'Reality', 'plesy.html' => 'Plesy',
         'fotobudka.html' => 'Fotobudka', '360budka.html' => 'Fotobudka 360°', 'promo.html' => 'Aftermovie & promo',
         'reels.html' => 'Reels', 'konference.html' => 'Konference', 'podcast.html' => 'Podcast',
+        'tehotenska-a-newborn-videa.html' => 'Těhotenská a newborn videa',
+        'blog.html' => 'Blog', 'ivshop.html' => 'IV Shop',
         'ochrana-osobnich-udaju.html' => 'Ochrana osobních údajů',
         'obchodni-podminky.html' => 'Obchodní podmínky',
         'marketingovy-souhlas.html' => 'Marketingový souhlas',

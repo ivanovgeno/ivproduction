@@ -160,6 +160,13 @@
     }
 
     function contextFor(element) {
+        const heroTrustItem = element.closest('.premium-hero-trust-item');
+        if (heroTrustItem) {
+            const items = [...(heroTrustItem.parentElement?.querySelectorAll(':scope > .premium-hero-trust-item') || [])];
+            const position = Math.max(0, items.indexOf(heroTrustItem)) + 1;
+            const heading = heroTrustItem.querySelector('strong')?.textContent.trim().replace(/\s+/g, ' ');
+            return `Doplňkový údaj ${position}${heading ? ` – ${heading}` : ''}`;
+        }
         const owner = element.closest('.team-member,.tech-item,.service-card,.process-step,.portfolio-item,.faq-item,.gw-card,article');
         if (!owner) return '';
         const context = owner.querySelector('.gw-name,.member-name,.team-name,.tech-name,h3,h2,strong');
@@ -190,6 +197,10 @@
         if (element.classList.contains('gw-date')) return 'Datum recenze';
         if (element.classList.contains('gw-text')) return 'Text recenze';
         if (element.classList.contains('service-card-label')) return 'Označení služby';
+        if (element.closest('.premium-hero-trust-item')) {
+            if (tag === 'strong') return 'Hlavní text';
+            if (tag === 'span') return 'Doplňkový text';
+        }
         if (element.classList.contains('tech-name')) return 'Název techniky';
         if (element.classList.contains('tech-desc')) return 'Popis techniky';
         if (element.classList.contains('about-team-kicker') || element.classList.contains('studio-eyebrow')) return 'Malý nadpis';
@@ -233,7 +244,7 @@
             });
         }
 
-        documentNode.querySelectorAll('h1,h2,h3,h4,h1 span,h2 span,h3 span,h4 span,.section-title span,p,li,label,a,button,option,.section-badge,.service-card-label,.about-team-kicker,.studio-eyebrow,.tech-name,.tech-desc,.gw-kicker,[data-google-review-score],[data-google-review-count],.gw-name,.gw-date').forEach(element => {
+        documentNode.querySelectorAll('h1,h2,h3,h4,h1 span,h2 span,h3 span,h4 span,.section-title span,p,li,label,a,button,option,.section-badge,.service-card-label,.about-team-kicker,.studio-eyebrow,.tech-name,.tech-desc,.gw-kicker,[data-google-review-score],[data-google-review-count],.gw-name,.gw-date,.premium-hero-trust-item strong,.premium-hero-trust-item span').forEach(element => {
             if (element.closest('script,style,svg,noscript,[data-privacy-banner],.privacy-embed-placeholder,#mobileMenuOverlay') || element.closest('.back-to-top,.quick-contact')) return;
             if (element.closest('.tech-grid')) return;
             const selector = selectorFor(element, documentNode);

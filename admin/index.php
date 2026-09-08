@@ -177,7 +177,7 @@ $config = ivp_config();
 <div class="modal-backdrop" id="mediaPickerModal" hidden><div class="media-modal" role="dialog" aria-modal="true" aria-labelledby="mediaPickerTitle"><header><div><h2 id="mediaPickerTitle">Vybrat z médií</h2><p>Klikněte na obrázek, který chcete použít.</p></div><button class="icon-button" id="closeMediaPicker" aria-label="Zavřít">×</button></header><label class="search-control"><span>⌕</span><input id="mediaPickerSearch" type="search" placeholder="Hledat obrázek…"></label><div class="media-picker-grid" id="mediaPickerGrid"></div></div></div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="assets/admin-social-sharing-20260903.js"></script>
+<script src="assets/admin-social-sharing-20260903.js?v=hero-trust-20260908"></script>
 <script src="assets/admin-equipment-20260903.js"></script>
 <script src="assets/admin-ribbons-20260903.js?v=multiline-1"></script>
 <script src="assets/admin-wedding-galleries-20260907.js?v=1"></script>
