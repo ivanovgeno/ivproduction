@@ -88,3 +88,4 @@ jobs:
           curl --fail --location --silent --show-error --max-time 30 https://www.ivproduction.cz/ivbudka/ > /dev/null
           curl --fail --silent --show-error --max-time 30 https://www.ivproduction.cz/api/fotobudka-galleries.php | grep -q '"ok":true'
           curl --fail --silent --show-error --max-time 30 https://www.ivproduction.cz/api/wedding-partner-galleries.php | grep -q '"ok":true'
+          curl --fail --silent --show-error --max-time 30 https://www.ivproduction.cz/api/integrations.php | grep -q '"ok":true'

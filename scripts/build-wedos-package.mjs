@@ -20,7 +20,7 @@ function shouldCopy(relative, entry) {
     const normalized = parts.join('/');
     if (parts.some((part) => ['.git', '.github', 'release', 'scripts', 'tools', 'dist', 'zálohy'].includes(part))) return false;
     if (['.md', '.py', '.mjs', '.yml', '.yaml', '.bak', '.tmp', '.admin-tmp', '.log'].includes(path.extname(relative).toLowerCase())) return false;
-    if (/^(?:api\/private\/google-reviews-config\.php|api\/cache\/google-reviews\.json|admin\/data\/login-rate\.json)$/.test(normalized)) return false;
+    if (/^(?:api\/private\/google-reviews-config\.php|api\/cache\/google-reviews\.json|admin\/data\/(?:login-rate|integrations)\.json)$/.test(normalized)) return false;
     if (normalized.startsWith('admin/data/history/') && entry.isFile() && entry.name !== '.htaccess') return false;
     if (/^(?:sprava-balicku|kalkulacka|index_v1_backup|index\s+chyba)\.html$/i.test(normalized)) return false;
     if (relative.endsWith('.gitkeep') || relative.endsWith('.example.php')) return false;

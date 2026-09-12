@@ -40,6 +40,19 @@
 .privacy-button:hover,
 .privacy-button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
+.privacy-settings-link {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.privacy-settings-link:hover,
+.privacy-settings-link:focus-visible { color: #e7c65f; outline: none; }
+
 [data-consent-embed] { position: relative; min-height: 260px; }
 [data-consent-embed] > iframe[hidden] { display: none; }
 .privacy-embed-placeholder {

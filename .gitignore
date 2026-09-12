@@ -5,6 +5,7 @@
 # Runtime data created by the server-side administration.
 /admin/data/login-rate.json
 /admin/data/history/*.json
+/admin/data/integrations.json
 /content/site-content.json.tmp
 /assets/uploads/*
 !/assets/uploads/.gitkeep

@@ -14,6 +14,7 @@ $config = ivp_config();
     <link rel="stylesheet" href="assets/admin-equipment-20260903.css">
     <link rel="stylesheet" href="assets/admin-ribbons-20260903.css?v=multiline-1">
     <link rel="stylesheet" href="assets/admin-wedding-galleries-20260907.css?v=1">
+    <link rel="stylesheet" href="assets/admin-integrations-20260912.css?v=1">
 </head>
 <body class="admin-app" data-csrf="<?= htmlspecialchars(ivp_csrf(), ENT_QUOTES) ?>">
 <div class="admin-shell">
@@ -30,6 +31,7 @@ $config = ivp_config();
             <button class="nav-item" data-view="wedding-galleries"><span aria-hidden="true">▧</span>Svatební galerie</button>
             <button class="nav-item" data-view="blog"><span aria-hidden="true">▤</span>Blog</button>
             <button class="nav-item" data-view="social"><span aria-hidden="true">↗</span>Sdílení na sítích</button>
+            <button class="nav-item" data-view="integrations"><span aria-hidden="true">⌁</span>Integrace a měření</button>
             <button class="nav-item" data-view="history"><span aria-hidden="true">↶</span>Historie</button>
             <button class="nav-item" data-view="security"><span aria-hidden="true">⚿</span>Přístup</button>
         </nav>
@@ -68,6 +70,7 @@ $config = ivp_config();
                 <button data-go="wedding-galleries"><span class="task-icon">▧</span><strong>Svatební galerie</strong><small>Slidery fotografů a Duhohrátek včetně zobrazení a skrytí.</small></button>
                 <button data-go="blog"><span class="task-icon">▤</span><strong>Napsat článek</strong><small>Vytvoření, úpravy a publikování blogu.</small></button>
                 <button data-go="social"><span class="task-icon">↗</span><strong>Náhledy pro sítě</strong><small>Obrázek a text při sdílení každé stránky.</small></button>
+                <button data-go="integrations"><span class="task-icon">⌁</span><strong>Integrace a měření</strong><small>Analytics, reklamní pixely, retargeting a konverze.</small></button>
             </div>
             <div class="dashboard-status"><div><span>Spravované stránky</span><strong id="pageCount">—</strong></div><div><span>Poslední změna</span><strong id="lastUpdate">—</strong></div><div><span>Automatické zálohy</span><strong>Zapnuté</strong></div></div>
         </section>
@@ -160,6 +163,12 @@ $config = ivp_config();
             </div>
         </section>
 
+        <section class="view" data-panel="integrations">
+            <div class="view-heading"><div><h2>Integrace a měření</h2><p>Propojte web s analytikou, reklamními systémy a retargetingem. Vkládejte pouze ID služby.</p></div><a class="button ghost" href="../ochrana-osobnich-udaju/" target="_blank" rel="noopener">Nastavení soukromí ↗</a></div>
+            <div class="integrations-admin" id="integrationsAdmin"><div class="loading">Načítám integrace…</div></div>
+            <div class="integrations-savebar"><span id="integrationsSaveState">Vše uloženo</span><button class="button primary" id="saveIntegrations" disabled>Uložit a publikovat</button></div>
+        </section>
+
         <section class="view" data-panel="history"><div class="view-heading"><div><h2>Historie změn</h2><p>Před každým uložením automaticky vytváříme zálohu.</p></div><button class="button ghost" id="refreshHistory">Obnovit</button></div><div class="history-list" id="historyList"></div></section>
 
         <section class="view" data-panel="security"><div class="settings-card"><h2>Změna přístupových údajů</h2><form id="passwordForm" class="form-stack"><label>Současné heslo<input type="password" name="currentPassword" autocomplete="current-password" required></label><label>Nové heslo<input type="password" name="newPassword" autocomplete="new-password" minlength="12" required><small>Minimálně 12 znaků, velké i malé písmeno a číslo.</small></label><label>Nové heslo znovu<input type="password" name="confirmPassword" autocomplete="new-password" required></label><button class="button primary" type="submit">Změnit heslo</button></form></div></section>
@@ -181,5 +190,6 @@ $config = ivp_config();
 <script src="assets/admin-equipment-20260903.js"></script>
 <script src="assets/admin-ribbons-20260903.js?v=multiline-1"></script>
 <script src="assets/admin-wedding-galleries-20260907.js?v=1"></script>
+<script src="assets/admin-integrations-20260912.js?v=1"></script>
 </body>
 </html>
