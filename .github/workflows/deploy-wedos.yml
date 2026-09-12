@@ -34,7 +34,23 @@ jobs:
           php-version: '8.5'
           coverage: none
 
+      - name: Ověřit PHP úložiště integrací
+        run: php -l api/integrations-store.php
+
+      - name: Ověřit veřejné PHP API integrací
+        if: always()
+        run: php -l api/integrations.php
+
+      - name: Ověřit administrační PHP API integrací
+        if: always()
+        run: php -l admin/api/integrations.php
+
+      - name: Ověřit PHP administrační stránky
+        if: always()
+        run: php -l admin/index.php
+
       - name: Zkontrolovat PHP soubory
+        if: success()
         run: find . -path './release' -prune -o -name '*.php' -print0 | xargs -0 -n1 php -l
 
       - name: Vygenerovat aktuální sitemapu
