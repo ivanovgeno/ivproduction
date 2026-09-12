@@ -8,7 +8,7 @@ function ivp_integration_definitions(): array
     return [
         'gtm' => ['label' => 'Google Tag Manager', 'placeholder' => 'GTM-XXXXXXX', 'pattern' => '~^GTM-[A-Z0-9]{4,12}$~i],
         'ga4' => ['label' => 'Google Analytics 4', 'placeholder' => 'G-XXXXXXXXXX', 'pattern' => '~^G-[A-Z0-9]{5,15}$~i],
-        'googleAds' => ['label' => 'Google Ads a remarketing', 'placeholder' => 'AW-123456789', 'pattern' => '~^AW-[0-9]{5,15}$~i, 'extra' => 'conversionLabel'],
+        'googleAds' => ['label' => 'Google Ads a remarketing', 'placeholder' => 'AW-123456789', 'pattern' => '~^AW-[0-9]{5,15}$~i', 'extra' => 'conversionLabel'],
         'metaPixel' => ['label' => 'Meta Pixel', 'placeholder' => '123456789012345', 'pattern' => '~^[0-9]{5,20}$~'],
         'microsoftClarity' => ['label' => 'Microsoft Clarity', 'placeholder' => 'abc123def4', 'pattern' => '~^[a-z0-9]{5,20}$~i],
         'tiktokPixel' => ['label' => 'TikTok Pixel', 'placeholder' => 'CXXXXXXXXXXXXXXXXX', 'pattern' => '~^[A-Z0-9]{10,30}$~i],
