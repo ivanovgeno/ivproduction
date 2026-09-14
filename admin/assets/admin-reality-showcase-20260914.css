@@ -1,0 +1,38 @@
+.admin-app .reality-showcase-admin { display: grid; gap: 20px; }
+.admin-app .reality-showcase-manager { transition: border-color 180ms ease, opacity 180ms ease; }
+.admin-app .reality-showcase-manager.is-disabled { border-color: #deded8; }
+.admin-app .reality-showcase-manager.is-disabled .gallery-admin-list { opacity: .7; }
+.admin-app .reality-showcase-header-actions { align-items: center; display: flex; gap: 10px; }
+.admin-app .reality-showcase-toggle {
+    align-items: center; background: #f1f1ed; border: 1px solid #d8d8d1; border-radius: 999px;
+    color: #66665f; cursor: pointer; display: inline-flex; font-size: 12px; font-weight: 750;
+    gap: 8px; min-height: 38px; padding: 6px 12px;
+}
+.admin-app .reality-showcase-toggle:has(input:checked) { background: #edf8ef; border-color: #9dccaa; color: #246b38; }
+.admin-app .reality-showcase-toggle input { accent-color: #28783f; height: 17px; margin: 0; min-height: 0; width: 17px; }
+.admin-app .reality-showcase-manager .empty-state { padding: 28px 20px; }
+.admin-app .reality-showcase-manager .upload-button.is-uploading { opacity: .65; pointer-events: none; }
+.admin-app .reality-tour-admin-list { display: grid; gap: 0; }
+.admin-app .reality-tour-admin-card { display: grid; gap: 14px; padding: 18px 20px; }
+.admin-app .reality-tour-admin-card + .reality-tour-admin-card { border-top: 1px solid var(--cms-line-soft); }
+.admin-app .reality-tour-card-head { align-items: center; display: flex; gap: 12px; justify-content: space-between; }
+.admin-app .reality-tour-card-head strong { font-size: 15px; }
+.admin-app .reality-tour-fields { display: grid; gap: 10px; grid-template-columns: minmax(180px,.55fr) minmax(260px,1fr); }
+.admin-app .reality-tour-fields label { color: var(--cms-muted); display: grid; font-size: 11px; gap: 5px; }
+.admin-app .reality-tour-fields label:first-child,
+.admin-app .reality-tour-fields label:last-child { grid-column: 1 / -1; }
+.admin-app .reality-tour-fields input,
+.admin-app .reality-tour-fields textarea { width: 100%; }
+.admin-app .reality-tour-fields textarea { min-height: 78px; resize: vertical; }
+.admin-app .reality-tour-actions { display: flex; gap: 6px; justify-content: flex-end; }
+.admin-app .reality-tour-actions button { background: #fff; border: 1px solid var(--cms-line); border-radius: 6px; color: #333; cursor: pointer; min-height: 36px; padding: 6px 10px; }
+.admin-app .reality-tour-actions button:disabled { cursor: default; opacity: .3; }
+.admin-app .reality-tour-actions .gallery-remove { color: #b43c3c; }
+
+@media (max-width: 760px) {
+    .admin-app .reality-showcase-header-actions { align-items: stretch; display: grid; }
+    .admin-app .reality-showcase-toggle { justify-content: center; }
+    .admin-app .reality-tour-fields { grid-template-columns: 1fr; }
+    .admin-app .reality-tour-fields label { grid-column: 1 / -1; }
+    .admin-app .reality-tour-card-head { align-items: stretch; display: grid; }
+}

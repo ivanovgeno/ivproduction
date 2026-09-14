@@ -14,6 +14,7 @@ $config = ivp_config();
     <link rel="stylesheet" href="assets/admin-equipment-20260903.css">
     <link rel="stylesheet" href="assets/admin-ribbons-20260903.css?v=multiline-1">
     <link rel="stylesheet" href="assets/admin-wedding-galleries-20260907.css?v=1">
+    <link rel="stylesheet" href="assets/admin-reality-showcase-20260914.css?v=1">
     <link rel="stylesheet" href="assets/admin-integrations-20260912.css?v=1">
 </head>
 <body class="admin-app" data-csrf="<?= htmlspecialchars(ivp_csrf(), ENT_QUOTES) ?>">
@@ -29,6 +30,7 @@ $config = ivp_config();
             <button class="nav-item" data-view="videos"><span aria-hidden="true">▶</span>Portfolio</button>
             <button class="nav-item" data-view="booth"><span aria-hidden="true">▦</span>Fotobudka galerie</button>
             <button class="nav-item" data-view="wedding-galleries"><span aria-hidden="true">▧</span>Svatební galerie</button>
+            <button class="nav-item" data-view="reality-showcase"><span aria-hidden="true">⌂</span>Reality galerie</button>
             <button class="nav-item" data-view="blog"><span aria-hidden="true">▤</span>Blog</button>
             <button class="nav-item" data-view="social"><span aria-hidden="true">↗</span>Sdílení na sítích</button>
             <button class="nav-item" data-view="integrations"><span aria-hidden="true">⌁</span>Integrace a měření</button>
@@ -68,6 +70,7 @@ $config = ivp_config();
                 <button data-go="videos"><span class="task-icon">▶</span><strong>Přidat video</strong><small>Správa projektů a pořadí v portfoliu.</small></button>
                 <button data-go="booth"><span class="task-icon">▦</span><strong>Fotobudka galerie</strong><small>Fotografie z akcí a nabídka pozadí.</small></button>
                 <button data-go="wedding-galleries"><span class="task-icon">▧</span><strong>Svatební galerie</strong><small>Slidery fotografů a Duhohrátek včetně zobrazení a skrytí.</small></button>
+                <button data-go="reality-showcase"><span class="task-icon">⌂</span><strong>Reality galerie</strong><small>Fotografie a Matterport 3D prohlídky.</small></button>
                 <button data-go="blog"><span class="task-icon">▤</span><strong>Napsat článek</strong><small>Vytvoření, úpravy a publikování blogu.</small></button>
                 <button data-go="social"><span class="task-icon">↗</span><strong>Náhledy pro sítě</strong><small>Obrázek a text při sdílení každé stránky.</small></button>
                 <button data-go="integrations"><span class="task-icon">⌁</span><strong>Integrace a měření</strong><small>Analytics, reklamní pixely, retargeting a konverze.</small></button>
@@ -127,6 +130,12 @@ $config = ivp_config();
             <div class="view-heading"><div><h2>Svatební galerie partnerů</h2><p>Každý partner má vlastní slider. Nahrajte fotografie a přepínačem určete, zda se má na stránce Svatby zobrazit.</p></div><a class="button ghost" href="../svatby/" target="_blank" rel="noopener">Otevřít Svatby ↗</a></div>
             <div class="wedding-gallery-admin" id="weddingPartnerGalleries"><div class="loading">Načítám galerie…</div></div>
             <div class="gallery-savebar"><span id="weddingGallerySaveState">Vše uloženo</span><button class="button primary" id="saveWeddingPartnerGalleries" disabled>Uložit a publikovat</button></div>
+        </section>
+
+        <section class="view" data-panel="reality-showcase">
+            <div class="view-heading"><div><h2>Reality – galerie a Matterport</h2><p>Spravujte fotografie v automatickém slideru a všechny interaktivní 3D prohlídky.</p></div><a class="button ghost" href="../reality/" target="_blank" rel="noopener">Otevřít Reality ↗</a></div>
+            <div class="reality-showcase-admin" id="realityShowcaseAdmin"><div class="loading">Načítám realitní ukázky…</div></div>
+            <div class="gallery-savebar"><span id="realityShowcaseSaveState">Vše uloženo</span><button class="button primary" id="saveRealityShowcase" disabled>Uložit a publikovat</button></div>
         </section>
 
         <section class="view" data-panel="blog">
@@ -190,6 +199,7 @@ $config = ivp_config();
 <script src="assets/admin-equipment-20260903.js"></script>
 <script src="assets/admin-ribbons-20260903.js?v=multiline-1"></script>
 <script src="assets/admin-wedding-galleries-20260907.js?v=1"></script>
+<script src="assets/admin-reality-showcase-20260914.js?v=1"></script>
 <script src="assets/admin-integrations-20260912.js?v=1"></script>
 </body>
 </html>

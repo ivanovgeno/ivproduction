@@ -903,6 +903,11 @@
             max-width: 76rem;
         }
 
+        .reality-tour-list {
+            display: grid;
+            gap: clamp(2rem, 5vw, 4.5rem);
+        }
+
         .reality-tour-frame {
             aspect-ratio: 16 / 10;
             background: #08080b;
@@ -1061,7 +1066,7 @@
     <script src="/packages-data.js?v=20260715-reality-pricing" defer></script>
     <script src="/packages-renderer.js?v=20260721-tailored-forms" defer></script>
     <script src="/ribbon-settings.js?v=20260903-controls" defer></script>
-    <script src="/reality-showcase-continuous-20260902.js" defer></script>
+    <script src="/reality-showcase-20260914.js" defer></script>
     <link rel="stylesheet" href="/premium-heroes.css?v=20260827-final">
     <link rel="stylesheet" href="/privacy-consent.css?v=20260912-integrations-1">
     <script src="/privacy-consent.js?v=20260912-integrations-1" defer></script>
@@ -1178,7 +1183,7 @@
         </div>
     </section>
 
-    <section class="related-work reality-media-showcase reality-tour-showcase" aria-labelledby="reality-tour-title">
+    <section class="related-work reality-media-showcase reality-tour-showcase" aria-labelledby="reality-tour-title" data-reality-tour-showcase>
         <div class="related-work__header">
             <div>
                 <p class="related-work__eyebrow">INTERAKTIVNÍ PREZENTACE</p>
@@ -1186,17 +1191,7 @@
             </div>
             <p class="reality-showcase-note">Projděte si prostor vlastním tempem</p>
         </div>
-        <div class="reality-tour-shell">
-            <div class="reality-tour-frame">
-                <iframe data-consent-src="https://my.matterport.com/show/?m=Sk4my8rkJoB" data-consent-service="Matterport" title="Ukázka interaktivní 3D prohlídky nemovitosti" loading="lazy" allow="fullscreen; xr-spatial-tracking" allowfullscreen hidden></iframe>
-            </div>
-            <div class="reality-tour-info">
-                <p class="related-work__eyebrow">MATTERPORT 3D</p>
-                <h3>Nemovitost otevřená zájemcům 24/7</h3>
-                <p>Interaktivní prohlídka umožní projít dispozici, vnímat návaznost místností a lépe se rozhodnout ještě před osobní návštěvou.</p>
-                <a class="btn btn-primary" href="https://my.matterport.com/show/?m=Sk4my8rkJoB" target="_blank" rel="noopener noreferrer">Otevřít celou prohlídku</a>
-            </div>
-        </div>
+        <div class="reality-tour-list" data-reality-tour-list></div>
     </section>
 
     <section class="section">
