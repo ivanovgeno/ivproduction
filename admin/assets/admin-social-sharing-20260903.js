@@ -45,7 +45,7 @@
         security: ['Přístup', 'Změna přístupových údajů.']
     };
     const videoCategories = { svatby: 'Svatby', reality: 'Reality', plesy: 'Plesy & eventy', fotobudka: 'Fotobudka', '360budka': '360° budka', promo: 'Promo', konference: 'Konference', podcast: 'Podcast', reels: 'Reels' };
-    const groupPriority = ['Hlavička a menu', 'Hero', 'Služby', 'Jak to funguje', 'O nás', 'Tým', 'Technika', 'Čísla a výsledky', 'Portfolio', 'Studio', 'Reference', 'Partneři', 'FAQ', 'Kontakt', 'Patička', 'SEO a sdílení', 'Ostatní obsah'];
+    const groupPriority = ['Hlavička a menu', 'Hero', 'Služby', 'Ceny a balíčky', 'Jak to funguje', 'O nás', 'Tým', 'Technika', 'Čísla a výsledky', 'Portfolio', 'Studio', 'Reference', 'Partneři', 'FAQ', 'Kontakt', 'Patička', 'SEO a sdílení', 'Ostatní obsah'];
     const publicRoutes = { 'index.html': '/', 'fotobudka.html': '/ivbudka/', '360budka.html': '/ivbudka360/', 'promo.html': '/aftermovie-promo-hudebniklipy/', 'portfolio.html': '/ukazky/', 'blog.html': '/svatebni-blog/' };
 
     function toast(message, error = false) {
@@ -142,7 +142,26 @@
         return 'body > ' + parts.join(' > ');
     }
 
+    function priceTextFor(element) {
+        return [...element.childNodes]
+            .filter(node => node.nodeType === 3 && node.nodeValue.trim())
+            .map(node => node.nodeValue.trim())
+            .join(' ');
+    }
+
+    function isPriceText(value) {
+        const text = String(value || '').replace(/\s+/g, ' ').trim();
+        if (!text) return false;
+        return /(?:\d[\d\s\u00a0.,]*\s*(?:Kč|CZK|EUR|€)|(?:Kč|CZK|EUR|€)\s*\/|^(?:Cena na míru|Dle nabídky|Dle délky pronájmu|Individuální cena)$)/i.test(text);
+    }
+
+    function isPriceElement(element) {
+        return isPriceText(priceTextFor(element))
+            || element.matches('.pricing-price,.business-package-price,.business-price-list strong,.price-list strong,.service-price,.type-price,.budka-price,.budka-ples-price,.budka-package-price,[class*="package-price"],[class*="pricing-price"]');
+    }
+
     function groupFor(element) {
+        if (isPriceElement(element)) return 'Ceny a balíčky';
         if (element.closest('.tech-section,.tech-category,.tech-item')) return 'Technika';
         if (element.closest('.team-section,.team-grid,.team-member')) return 'Tým';
         if (element.closest('.premium-page-hero,.hero,.article-hero,.blog-hero')) return 'Hero';
@@ -160,6 +179,11 @@
     }
 
     function contextFor(element) {
+        const priceRow = element.closest('.price-list li,.business-price-list li');
+        if (priceRow) {
+            const rowLabel = priceRow.querySelector('span')?.textContent.trim().replace(/\s+/g, ' ');
+            if (rowLabel) return rowLabel.slice(0, 70);
+        }
         const heroTrustItem = element.closest('.premium-hero-trust-item');
         if (heroTrustItem) {
             const items = [...(heroTrustItem.parentElement?.querySelectorAll(':scope > .premium-hero-trust-item') || [])];
@@ -167,7 +191,7 @@
             const heading = heroTrustItem.querySelector('strong')?.textContent.trim().replace(/\s+/g, ' ');
             return `Doplňkový údaj ${position}${heading ? ` – ${heading}` : ''}`;
         }
-        const owner = element.closest('.team-member,.tech-item,.service-card,.process-step,.portfolio-item,.faq-item,.gw-card,article');
+        const owner = element.closest('.pricing-card,.business-package-card,.budka-package,.budka-package-card,.team-member,.tech-item,.service-card,.process-step,.portfolio-item,.faq-item,.gw-card,article');
         if (!owner) return '';
         const context = owner.querySelector('.gw-name,.member-name,.team-name,.tech-name,h3,h2,strong');
         return context?.textContent.trim().replace(/\s+/g, ' ').slice(0, 70) || '';
@@ -176,6 +200,7 @@
     function friendlyLabel(element, property) {
         const tag = element.tagName.toLowerCase();
         const context = contextFor(element);
+        if (property === 'text-node' && isPriceElement(element)) return context ? `Cena – ${context}` : 'Cena';
         if (property === 'css-var') return 'Fotografie na pozadí';
         if (property === 'style-background-image' && element.classList.contains('service-card')) return context ? `Obrázek pozadí – ${context}` : 'Obrázek pozadí služby';
         if (property === 'style-background-image') return context ? `Fotografie – ${context}` : 'Fotografie na pozadí';
@@ -253,6 +278,29 @@
             const textNodes = [...element.childNodes].filter(node => node.nodeType === 3 && node.nodeValue.trim());
             textNodes.forEach((node, index) => addDescriptor(list, { selector, property: 'text-node', node: index, original: node.nodeValue.trim(), label: friendlyLabel(element, 'text-node'), group, context }));
             if (element.tagName === 'A' && element.getAttribute('href')) addDescriptor(list, { selector, property: 'href', original: element.getAttribute('href'), label: friendlyLabel(element, 'href'), group, context, type: 'url' });
+        });
+        // Prices use many different wrappers across the site (strong, span or
+        // a plain div). Detect their direct text by value so present and future
+        // packages automatically appear in the visual editor.
+        documentNode.querySelectorAll('body *').forEach(element => {
+            if (element.closest('script,style,svg,noscript,[data-privacy-banner],.privacy-embed-placeholder,#mobileMenuOverlay') || element.closest('.back-to-top,.quick-contact')) return;
+            const selector = selectorFor(element, documentNode);
+            const context = contextFor(element);
+            [...element.childNodes]
+                .filter(node => node.nodeType === 3 && isPriceText(node.nodeValue))
+                .forEach((node, index) => {
+                    const textNodes = [...element.childNodes].filter(item => item.nodeType === 3 && item.nodeValue.trim());
+                    const textNodeIndex = textNodes.indexOf(node);
+                    addDescriptor(list, {
+                        selector,
+                        property: 'text-node',
+                        node: textNodeIndex >= 0 ? textNodeIndex : index,
+                        original: node.nodeValue.trim(),
+                        label: context ? `Cena – ${context}` : 'Cena',
+                        group: 'Ceny a balíčky',
+                        context
+                    });
+                });
         });
         documentNode.querySelectorAll('img').forEach(element => {
             if (element.closest('.tech-grid')) return;
