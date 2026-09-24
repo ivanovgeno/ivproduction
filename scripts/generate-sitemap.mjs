@@ -7,7 +7,18 @@ import { fileURLToPath } from 'node:url';
 
 const projectRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 const sitemapPath = join(projectRoot, 'sitemap.xml');
+const contentPath = join(projectRoot, 'content', 'site-content.json');
 const today = new Date().toISOString().slice(0, 10);
+
+let pageUpdatedAt = {};
+try {
+    const content = JSON.parse(readFileSync(contentPath, 'utf8'));
+    if (content?.pageUpdatedAt && typeof content.pageUpdatedAt === 'object') {
+        pageUpdatedAt = content.pageUpdatedAt;
+    }
+} catch {
+    pageUpdatedAt = {};
+}
 
 const pages = [
     { path: '/', file: 'index.html', changefreq: 'weekly', priority: '1.0' },
@@ -47,12 +58,15 @@ function lastModified(file) {
     if (diff.status === 1) return today;
 
     try {
-        return execFileSync('git', ['log', '-1', '--format=%cs', '--', file], {
+        const gitDate = execFileSync('git', ['log', '-1', '--format=%cs', '--', file], {
             cwd: projectRoot,
             encoding: 'utf8'
         }).trim() || today;
+        const cmsDate = String(pageUpdatedAt[file] || '').slice(0, 10);
+        return /^\d{4}-\d{2}-\d{2}$/.test(cmsDate) && cmsDate > gitDate ? cmsDate : gitDate;
     } catch {
-        return today;
+        const cmsDate = String(pageUpdatedAt[file] || '').slice(0, 10);
+        return /^\d{4}-\d{2}-\d{2}$/.test(cmsDate) ? cmsDate : today;
     }
 }
 

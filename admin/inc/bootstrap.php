@@ -174,6 +174,29 @@ function ivp_sync_static_seo(string $page, array $records): bool
     return @file_put_contents($path, $html, LOCK_EX) !== false;
 }
 
+function ivp_update_sitemap_lastmod(string $page, ?string $updatedAt = null): bool
+{
+    $pagePath = IVP_ROOT . '/' . $page;
+    $sitemapPath = IVP_ROOT . '/sitemap.xml';
+    $html = @file_get_contents($pagePath);
+    $sitemap = @file_get_contents($sitemapPath);
+    if ($html === false || $sitemap === false) return false;
+    if (!preg_match('~<link\b[^>]*\brel\s*=\s*"canonical"[^>]*\bhref\s*=\s*"([^"]+)"[^>]*>~i', $html, $canonical)) return false;
+
+    $date = substr((string) ($updatedAt ?: gmdate('c')), 0, 10);
+    if (!preg_match('~^\d{4}-\d{2}-\d{2}$~', $date)) $date = gmdate('Y-m-d');
+    $url = preg_quote(htmlspecialchars_decode($canonical[1], ENT_QUOTES), '~');
+    $pattern = '~(<url>\s*<loc>' . $url . '</loc>.*?<lastmod>)[^<]+(</lastmod>)~is';
+    $updated = (string) preg_replace($pattern, '${1}' . $date . '${2}', $sitemap, 1, $count);
+    if ($count !== 1) return false;
+    if ($updated === $sitemap) return true;
+
+    $tmp = $sitemapPath . '.admin-tmp';
+    if (@file_put_contents($tmp, $updated, LOCK_EX) !== false && @rename($tmp, $sitemapPath)) return true;
+    @unlink($tmp);
+    return @file_put_contents($sitemapPath, $updated, LOCK_EX) !== false;
+}
+
 function ivp_content(): array
 {
     $data = json_decode((string) @file_get_contents(IVP_CONTENT), true);

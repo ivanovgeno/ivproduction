@@ -65,6 +65,8 @@ $data = ivp_content();
 $data['version'] = ((int) ($data['version'] ?? 0)) + 1;
 $data['updatedAt'] = gmdate('c');
 $data['updatedBy'] = (string) $_SESSION['ivp_user'];
+$data['pageUpdatedAt'] = is_array($data['pageUpdatedAt'] ?? null) ? $data['pageUpdatedAt'] : [];
+$data['pageUpdatedAt'][$page] = $data['updatedAt'];
 if ($mode === 'patch') {
     $recordKey = static function (array $record): string {
         return implode('|', [
@@ -84,4 +86,12 @@ if ($mode === 'patch') {
     $data['pages'][$page] = array_values($clean);
 }
 if (!ivp_write_content($data)) ivp_json(['ok' => false, 'error' => 'Obsah se nepodařilo uložit. Zkontrolujte oprávnění složky content.'], 500);
-ivp_json(['ok' => true, 'message' => 'Změny byly publikovány.', 'updatedAt' => $data['updatedAt'], 'version' => $data['version'], 'records' => $clean]);
+$sitemapUpdated = ivp_update_sitemap_lastmod($page, $data['updatedAt']);
+ivp_json([
+    'ok' => true,
+    'message' => 'Změny byly publikovány.',
+    'updatedAt' => $data['updatedAt'],
+    'version' => $data['version'],
+    'records' => $clean,
+    'sitemapUpdated' => $sitemapUpdated,
+]);
